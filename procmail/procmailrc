@@ -1,0 +1,15 @@
+SHELL=/bin/bash
+PATH=/usr/sbin:/usr/bin
+MAILDIR=$HOME/mail/
+DEFAULT=$MAILDIR/
+LOG=""
+VERBOSE=yes
+PMDIR=$HOME/.procmail
+
+:0 Whc: msgid.lock
+| formail -D 8192 .msgid.cache
+:0 a:
+/dev/null
+
+:0
+$MAILDIR/Inbox/
