@@ -1,0 +1,36 @@
+[general]
+ui = ttyui
+accounts = JasonCox
+fsync = False
+
+[Account JasonCox]
+localrepository = JasonCox-Local
+remoterepository = JasonCox-Remote
+status_backend = sqlite
+
+[Repository JasonCox-Local]
+type = Maildir
+localfolders = ~/mail/
+nametrans = lambda folder: { 'Drafts': 'INBOX.Drafts',
+			     'Sent': 'INBOX.Sent',
+			     'Trash': 'INBOX.Trash',
+			     'Junk': 'INBOX.Junk',
+			     'Inbox': 'INBOX',
+			   }.get( folder, folder )
+
+[Repository JasonCox-Remote]
+type = IMAP
+maxconnections = 1
+remotehost = secure132.inmotionhosting.com
+ssl = yes
+cert_fingerprint = b7f3b9493e3f9f5cdeec2f379f10ad7969ed187c
+remoteuser = jasonc@teamplayinc.com
+remotepass = Steel300
+realdelete = no
+createfolders = False
+nametrans = lambda folder: { 'INBOX.Drafts': 'Drafts',
+			     'INBOX.Sent': 'Sent',
+			     'INBOX.Trash': 'Trash',
+			     'INBOX.Junk': 'Junk',
+			     'INBOX': 'Inbox',
+			   }.get( folder, folder )
