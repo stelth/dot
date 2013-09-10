@@ -1,0 +1,139 @@
+source ~/.mutt/mutt-colors-solarized-dark-16.muttrc
+
+# Name Info
+set realname="Jason Cox"
+set from=jasonc@teamplayinc.com
+
+# SMTP settings
+set sendmail="/usr/bin/msmtp"
+set sendmail_wait = 0
+set envelope_from=yes
+
+set sig_dashes
+set fast_reply
+set askcc
+set fcc_attach
+unset mime_forward
+set forward_format = "Fwd: %s"
+set forward_decode
+set attribution = "On %d, %n wrote:"
+set reply_to
+set reverse_name
+set include
+set forward_quote
+
+set wait_key = no
+
+set edit_headers=yes
+set folder=~/mail/
+set record=+Sent
+set postponed=+Drafts
+
+set mbox_type=Maildir
+set timeout = 3
+set mail_check = 0
+set spoolfile=+/Inbox
+set header_cache=~/.hcache
+set message_cachedir = ~/.messagecache
+
+set trash = ~/mail/Trash
+
+mailboxes =Inbox
+mailboxes =Sent
+mailboxes =Drafts
+mailboxes =Junk
+mailboxes =Trash
+
+auto_view text/html
+
+set mailcap_path = ~/.mutt/mailcap
+
+unset move
+set delete
+set include = yes
+unset mark_old
+set pipe_decode
+set thorough_search
+
+ignore *
+unignore from: to: cc: date: subject:
+unhdr_order *
+hdr_order from: to: cc: date: subject:
+
+set pager_index_lines = 10
+set pager_context = 3
+set pager_stop
+set menu_scroll
+set tilde
+unset markers
+
+set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
+alternative_order text/plain text/enriched text/html
+
+set index_format="[%Z]  %D  %-20.20F  %s"
+set sort=threads
+set sort_browser=reverse-date
+set sort_aux=reverse-last-date-received
+set sort_re
+set editor="vim"
+set followup_to = yes
+set copy = yes
+set date_format = "%m/%d"
+macro index,pager I '<shell-escape>offlineimap<enter>'
+
+set uncollapse_jump
+set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+
+bind index j next-entry
+bind index k previous-entry
+bind index l display-message
+bind index v collapse-thread
+bind index gg first-entry
+bind index G last-entry
+bind index R group-reply
+bind index <tab> sync-mailbox
+bind index <space> collapse-thread
+bind index N search-opposite
+
+bind index,pager <down> sidebar-next
+bind index,pager <up> sidebar-prev
+bind index,pager <right> sidebar-open
+
+macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
+macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
+macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
+macro index a "<limit>all\n" "show all messages (undo limit)"
+macro index d "s=Trash\n" "move message to trash"
+
+bind pager k previous-line
+bind pager j next-line
+bind pager gg top
+bind pager G bottom
+bind pager R group-reply
+bind pager N search-opposite
+
+macro pager d "s=Trash\n" "move message to trash"
+
+bind compose p postpone-message
+bind index p recall-message
+
+bind attach <return> view-mailcap
+
+bind browser l select-entry
+bind attach l view-attach
+
+set sidebar_delim = '   |'
+set sidebar_visible = yes
+set sidebar_width = 24
+set sidebar_sort = yes
+
+set status_chars = " *%A"
+set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
+
+set alias_file=~/.mutt/mutt-alias
+source ~/.mutt/mutt-alias
+set query_command= "abook --mutt-query '%s'"
+macro index,pager A "<pipe-message>abook --add-email-quiet<return>" "Add the sender address to abook"
+macro generic,index,pager \ca "abook" "Launch abook"
+
+# vim: ft=muttrc

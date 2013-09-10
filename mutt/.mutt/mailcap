@@ -1,0 +1,4 @@
+text/html; links %s -html-numbered-links 1; nametemplate=%s.html
+text/html; links -dump %s; nametemplate=%s.html; copiousoutput
+image/*; feh -F %d'
+application/pdf; okular %s'
