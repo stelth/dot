@@ -79,7 +79,7 @@ set editor="vim"
 set followup_to = yes
 set copy = yes
 set date_format = "%m/%d"
-macro index,pager I '<shell-escape>offlineimap<enter>'
+macro index,pager F '<shell-escape>offlineimap<enter>'
 
 set uncollapse_jump
 set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
@@ -123,7 +123,7 @@ bind browser l select-entry
 bind attach l view-attach
 
 set sidebar_delim = '   |'
-set sidebar_visible = yes
+#set sidebar_visible = yes
 set sidebar_width = 24
 set sidebar_sort = yes
 
