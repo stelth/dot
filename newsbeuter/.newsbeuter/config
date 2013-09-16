@@ -289,11 +289,20 @@ text-width 72
 
 # solarized color scheme for newsbeuter <http://www.newsbeuter.org/>
 # more on solarized: http://ethanschoonover.com/solarized
-highlight  feedlist     "^.* N .*$"     cyan        default
-highlight  articlelist  "^.* N .*$"     cyan        default
-color      listnormal                   default     default
-color      listfocus                    black       yellow
-color      info                         color11     black
+
+color background default default
+color listnormal default default
+color listfocus black yellow
+color info default black bold
+color article default default
+color listfocus_unread blue default 
+color listnormal_unread red default bold
+
+highlight feedlist "^ *[0-9]+  *N  *.*" blue default
+
+highlight article "^(Title):.*$" blue default
+highlight article "https?://[^ ]+" red default
+highlight article "\\[image\\ [0-9]+\\]" green default
 
 bind-key j down
 bind-key k up
