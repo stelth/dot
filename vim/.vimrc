@@ -31,7 +31,8 @@
 " 			-> Vimux
 " 			-> vim-colors-solarized
 " 			-> vim-Fugitive
-" 			-> vim-airlien
+" 			-> vim-airline
+" 			-> vim-indent-guides
 " 		-> Coding Plugins
 " 			-> clang_complete
 " 			-> cscope_macros
@@ -95,6 +96,9 @@
 "
 "	-> unite-tag - https://github.com/tsukkee/unite-tag
 "		-> tags source for unite.vim
+"
+"	-> vim-indent-guides - https://github.com/nathanaelkane/vim-indent-guides
+"		-> A Vim plugin for visually displaying indent levels in code
 " }}}
 
 
@@ -157,6 +161,7 @@ NeoBundle 'benmills/vimux'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'bling/vim-airline'
+NeoBundle 'nathanaelkane/vim-indent-guides'
 " }}}
 
 " Programming Plugins {{{
