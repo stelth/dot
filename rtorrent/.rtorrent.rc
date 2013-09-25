@@ -34,16 +34,16 @@ dht_port = 6881
 peer_exchange = yes
 
 # Session tmp file (relative dir is good, absolute is bad)
-session = ./Downloads/.session
+session = ~/Downloads/.session
 
 # Default directory to save the downloaded torrents.
-directory = ./Downloads/
+directory = ~/Downloads/
 
 # Close torrents when diskspace is low.
 schedule = low_diskspace,5,60,close_low_diskspace=2048M
 
 # Watch a directory for new torrents, and stop those that have been deleted (^d)
-schedule = watch_directory,5,5,"load_start=./Downloads/watch/*.torrent"
+schedule = watch_directory,5,5,"load_start=~/Downloads/watch/*.torrent"
 schedule = watch_directory_2,5,5,"load_start=~/Downloads/watch/music/*.torrent,d.set_directory=~/Downloads/music/"
 schedule = watch_directory_3,5,5,"load_start=~/Downloads/watch/television/*.torrent,d.set_directory=~/Downloads/television/"
 schedule = watch_directory_4,5,5,"load_start=~/Downloads/watch/books/*.torrent,d.set_directory=~/Downloads/books/"
