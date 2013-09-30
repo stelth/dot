@@ -43,6 +43,7 @@
 "			-> unite-outline
 "			-> vim-autotags
 "			-> unite-tag
+"			-> pyclewn
 " }}}
 
 " => Plugins Included: {{{
@@ -99,6 +100,9 @@
 "
 "	-> vim-indent-guides - https://github.com/nathanaelkane/vim-indent-guides
 "		-> A Vim plugin for visually displaying indent levels in code
+"
+"	-> pyclewn - https://github.com/xieyu/pyclewn
+"		-> allows using vim as a front end to gdb
 " }}}
 
 
@@ -174,6 +178,7 @@ NeoBundle 'vim-scripts/glsl.vim'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'basilgor/vim-autotags'
 NeoBundle 'tsukkee/unite-tag'
+NeoBundle 'xieyu/pyclewn'
 " }}}
 
 " }}}
