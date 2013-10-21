@@ -13,7 +13,8 @@ set sig_dashes
 set fast_reply
 set askcc
 set fcc_attach
-unset mime_forward
+set mime_forward=yes
+set mime_forward_rest=yes
 set forward_format = "Fwd: %s"
 set forward_decode
 set attribution = "On %d, %n wrote:"
