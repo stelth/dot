@@ -1,7 +1,6 @@
 #!/bin/bash
 
-PROCESSNAME=${1}
-MYPID=`pidof $PROCESSNAME`
+MYPID=${1}
 
 echo "=======";
 echo PID:$MYPID
