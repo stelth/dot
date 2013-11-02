@@ -2,9 +2,9 @@
 
 MYPID=${1}
 
-echo "=======";
+echo "=================";
 echo PID:$MYPID
-echo "--------"
+echo "================="
 Rss=`echo 0 $(cat /proc/$MYPID/smaps  | grep Rss | awk '{print $2}' | sed 's#^#+#') | bc;`
 Shared=`echo 0 $(cat /proc/$MYPID/smaps  | grep Shared | awk '{print $2}' | sed 's#^#+#') | bc;`
 Private=`echo 0 $(cat /proc/$MYPID/smaps  | grep Private | awk '{print $2}' | sed 's#^#+#') | bc;`
