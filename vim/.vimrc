@@ -44,6 +44,7 @@
 "			-> vim-autotags
 "			-> unite-tag
 "			-> pyclewn
+"			-> vim-autotags
 " }}}
 
 " => Plugins Included: {{{
@@ -103,6 +104,9 @@
 "
 "	-> pyclewn - https://github.com/xieyu/pyclewn
 "		-> allows using vim as a front end to gdb
+"
+"	-> vim-autotags - https://github.com/basilgor/vim-autotags
+"		-> vim plugin for easy ctags and cscope handling in a separate directory
 " }}}
 
 
@@ -828,4 +832,5 @@ set noshowmode
 "
 " => vim-autotags {{{
 let g:autotags_no_global = 1
+let g:autotagsdir=$HOME."/.tags"
 " }}}
