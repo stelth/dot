@@ -309,6 +309,7 @@ myStartupHook = do
 	spawn "xmodmap ~/.Xmodmap"
 	spawn "urxvtd -q -f -o"
 	spawn "feh --bg-scale ~/.wallpaper.jpg"
+	spawn "unclutter &"
 
 
 ------------------------------------------------------------------------
