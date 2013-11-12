@@ -305,6 +305,8 @@ myStartupHook = do
 	spawn "urxvtd -q -f -o"
 	spawn "feh --bg-scale ~/.wallpaper.jpg"
 	spawn "/usr/bin/start-pulseaudio-x11"
+	spawn "xset s off"
+	spawn "xset -dpms"
 
 
 ------------------------------------------------------------------------
