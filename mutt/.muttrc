@@ -124,7 +124,7 @@ bind browser l select-entry
 bind attach l view-attach
 
 set sidebar_delim = '   |'
-#set sidebar_visible = yes
+set sidebar_visible = yes
 set sidebar_width = 24
 set sidebar_sort = yes
 
