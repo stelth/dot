@@ -24,4 +24,4 @@ zstyle ':completion::complete:*' cache-path ~/.oh-my-zsh.local/cache/
 # Customize to your needs...
 function dmalloc { eval `command dmalloc -b $*`; }
 
-PATH=$PATH:/opt/cxoffice/bin:~/bin/
+PATH=$PATH:/opt/cxoffice/bin:~/bin/:~/

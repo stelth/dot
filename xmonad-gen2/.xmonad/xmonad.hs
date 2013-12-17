@@ -12,6 +12,7 @@ import XMonad.Layout.Tabbed
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 import Graphics.X11.Xlib
+import XMonad.Actions.SpawnOn
 -- import IO (Handle, hPutStrLn)
 import XMonad.Actions.CycleWS
 import XMonad.Actions.DynamicWorkspaces
@@ -32,8 +33,9 @@ myTerminal = "/usr/bin/urxvtc"
 -- Workspaces
 -- The default number of workspaces (virtual screens) and their names.
 --
-myWorkspaces = ["1:code","2:config","3:web","4:email","5:admin"] ++ map show [6..9]
-
+myWorkspaces = [ "inner"
+	       , "outer"
+	       ]
 
 ------------------------------------------------------------------------
 -- Window rules
@@ -49,19 +51,9 @@ myWorkspaces = ["1:code","2:config","3:web","4:email","5:admin"] ++ map show [6.
 -- To match on the WM_NAME, you can use 'title' in the same way that
 -- 'className' and 'resource' are used below.
 --
-myManageHook = composeAll
+myManageHook = manageSpawn <+> composeAll
     [ className =? "Chromium"       --> doShift "3:web"
-    , resource  =? "desktop_window" --> doIgnore
-    , className =? "Galculator"     --> doFloat
-    , className =? "Google-chrome"  --> doShift "3:web"
-    , resource  =? "gpicview"       --> doFloat
-    , resource  =? "kdesktop"       --> doIgnore
-    , className =? "MPlayer"        --> doFloat
-    , resource  =? "skype"          --> doFloat
-    , className =? "VirtualBox"     --> doShift "4:vm"
-    , className =? "Xchat"          --> doShift "5:media"
-    , isFullscreen --> (doF W.focusDown <+> doFullFloat)]
-
+    ]
 ------------------------------------------------------------------------
 -- Layouts
 -- You can specify and transform your layouts by modifying these values.
@@ -73,12 +65,12 @@ myManageHook = composeAll
 -- which denotes layout choice.
 --
 myLayout = avoidStruts (
-    Tall 1 (3/100) (1/2) |||
-    Mirror (Tall 1 (3/100) (1/2)) |||
-    tabbed shrinkText tabConfig |||
-    Full |||
-    spiral (6/7)) |||
-    noBorders (fullscreenFull Full)
+	Full |||
+	Tall 1 (3/100) (1/2) |||
+	Mirror (Tall 1 (3/100) (1/2)) |||
+	tabbed shrinkText tabConfig |||
+	spiral (6/7)) |||
+	noBorders (fullscreenFull Full)
 
 
 ------------------------------------------------------------------------
@@ -105,7 +97,7 @@ xmobarTitleColor = "#FFB6B0"
 xmobarCurrentWorkspaceColor = "#CEFFAC"
 
 -- Width of the window border in pixels.
-myBorderWidth = 1
+myBorderWidth = 0
 
 alert = dzenConfig centered . show . round
 centered =
@@ -300,31 +292,35 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- per-workspace layout choices.
 --
 -- By default, do nothing.
-myStartupHook = do
-	spawn "numlockx"
-	spawn "xsetroot -cursor_name left_ptr"
-	spawn "xrdb -merge ~/.Xresources"
-	spawn "xmodmap ~/.Xmodmap"
-	spawn "urxvtd -q -f -o"
-	spawn "feh --bg-scale ~/.wallpaper.jpg"
-	spawn "/usr/bin/start-pulseaudio-x11"
-	spawn "xset s off"
-	spawn "xset -dpms"
+-- 
+spawnToWorkspace :: String -> String -> X ()
+spawnToWorkspace program workspace = spawn program >> (windows $ W.greedyView workspace)
 
+myStartupHook :: X ()
+myStartupHook = do
+		spawn "numlockx"
+		spawn "xrdb -merge ~/.Xresources"
+		spawn "urxvtd -q -f -o"
+		spawn "/usr/bin/start-pulseaudio-x11"
+		spawn "xset s off"
+		spawn "xset -dpms"
+		spawn "xinput create-master outer"
+		spawn "xinput reattach 11 14"
+		spawn "xinput --map-to-output 11 DFP3"
+		spawn "xinput --map-to-output 8 DFP1"
+		spawnOn (myWorkspaces!!0) "~/FunStopPhotos --rear"
+		spawnOn (myWorkspaces!!1) "~/FunStopPhotos"
 
 ------------------------------------------------------------------------
 -- Run xmonad with all the defaults we set up.
 --
 main = do
-  xmproc <- spawnPipe "/usr/bin/xmobar ~/.xmonad/xmobar.hs"
   xmonad $ defaults {
       logHook = dynamicLogWithPP $ xmobarPP {
-	    ppOutput = hPutStrLn xmproc
-	  , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
+	  ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
 	  , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
 	  , ppSep = "   "}
       , manageHook = manageDocks <+> myManageHook
-      -- , startupHook = setWMName "LG3D"
   }
  
 
