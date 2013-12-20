@@ -306,7 +306,7 @@ myStartupHook = do
 		spawn "xset -dpms"
 		spawn "xinput create-master outer"
 		spawn "xinput reattach 11 14"
-		spawn "xinput --map-to-output 11 DFP3"
+		spawn "xinput --map-to-output 11 CRT1"
 		spawn "xinput --map-to-output 8 DFP1"
 		spawnOn (myWorkspaces!!0) "~/FunStopPhotos --rear"
 		spawnOn (myWorkspaces!!1) "~/FunStopPhotos"
