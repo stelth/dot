@@ -1,5 +1,6 @@
 vim/.vim/bundle
 zsh/.oh-my-zsh
+zsh/base16-shell
 vim/.vim/.netrwhist
 xmonad*/.xmonad/xmonad-x86_64-linux
 xmonad*/.xmonad/xmonad.o

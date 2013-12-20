@@ -29,7 +29,7 @@
 " 			-> unite.vim
 " 			-> Gundo
 " 			-> Vimux
-" 			-> vim-colors-solarized
+" 			-> base16-vim
 " 			-> vim-Fugitive
 " 			-> vim-airline
 " 			-> vim-indent-guides
@@ -63,8 +63,8 @@
 "	-> Vimux - https://github.com/benmills/vimux
 "		-> Easily interact with tmux from vim.
 "
-"	-> vim-colors-solarized - https://github.com/altercation/vim-colors-solarized
-"		-> precision color scheme for the vim text editor
+"	-> base16-vim - https://github.com/chriskempson/base16-vim
+"		-> Base16 for Vim
 "
 "	-> clang_complete - https://github.com/Rip-Rip/clang_complete
 "		-> Vim plugin that uses clang for completing C/C++ code
@@ -166,7 +166,7 @@ NeoBundle 'Shougo/vimproc', {
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Gundo'
 NeoBundle 'benmills/vimux'
-NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'nathanaelkane/vim-indent-guides'
@@ -315,11 +315,11 @@ if has("gui_running")
 	set guioptions-=T
 	set t_Co=256
 	set background=dark
-	colorscheme solarized
+	colorscheme base16-default
 else
 	set t_Co=256
 	set background=dark
-	colorscheme solarized
+	colorscheme base16-default
 endif
 
 set encoding=utf8
