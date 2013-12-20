@@ -304,7 +304,6 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 myStartupHook = do
 	spawn "numlockx"
 	spawn "xsetroot -cursor_name left_ptr"
-	spawn "xrdb -merge ~/.Xresources"
 	spawn "xscreensaver -no-splash &"
 	spawn "xmodmap ~/.Xmodmap"
 	spawn "urxvtd -q -f -o"

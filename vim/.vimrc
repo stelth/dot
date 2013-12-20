@@ -311,6 +311,8 @@ elseif MySys() == "linux"
 	set shell=/bin/zsh
 endif
 
+let base16colorspace=256
+
 if has("gui_running")
 	set guioptions-=T
 	set t_Co=256
@@ -824,7 +826,7 @@ au BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl set filetype=glsl
 " }}}
 
 " => vim-airline {{{
-let g:airline_theme='solarized'
+let g:airline_theme='base16'
 let g:airline_powerline_fonts=1
 let g:airline_enable_branch=1
 set laststatus=2

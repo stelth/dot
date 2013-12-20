@@ -25,3 +25,7 @@ zstyle ':completion::complete:*' cache-path ~/.oh-my-zsh.local/cache/
 function dmalloc { eval `command dmalloc -b $*`; }
 
 PATH=$PATH:/opt/cxoffice/bin:~/bin/:~/
+
+BASE16_SCHEME="default"
+BASE16_SHELL="$HOME/.dotfiles/zsh/base16-shell/base16-default.dark.sh"
+[[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
