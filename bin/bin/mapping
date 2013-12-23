@@ -1,0 +1,18 @@
+#!/bin/bash
+
+TOUCH_ID1=`xinput | grep IR | grep pointer | awk '{print $8}' | head -1`
+TOUCH_ID1=`sed -e 's#.*=\(\)#\1#' <<< $TOUCH_ID1`
+#echo $TOUCH_ID1
+
+TOUCH_ID2=`xinput | grep IR | grep pointer | awk '{print $8}' | tail -1`
+TOUCH_ID2=`sed -e 's#.*=\(\)#\1#' <<< $TOUCH_ID2`
+#echo $TOUCH_ID2
+
+xinput create-master outer
+OUTER_ID=`xinput | grep "outer pointer" | awk '{print $4}' | head -1`
+OUTER_ID=`sed -e 's#.*=\(\)#\1#' <<< $OUTER_ID`
+#echo $OUTER_ID
+
+xinput reattach $TOUCH_ID2 $OUTER_ID
+xinput --map-to-output $TOUCH_ID2 DFP3
+xinput --map-to-output $TOUCH_ID1 DFP1

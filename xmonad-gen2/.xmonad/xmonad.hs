@@ -304,12 +304,10 @@ myStartupHook = do
 		spawn "/usr/bin/start-pulseaudio-x11"
 		spawn "xset s off"
 		spawn "xset -dpms"
-		spawn "xinput create-master outer"
-		spawn "xinput reattach 11 14"
-		spawn "xinput --map-to-output 11 CRT1"
-		spawn "xinput --map-to-output 8 DFP1"
+		spawn "~/bin/mapping"
 		spawnOn (myWorkspaces!!0) "~/FunStopPhotos --rear"
 		spawnOn (myWorkspaces!!1) "~/FunStopPhotos"
+
 
 ------------------------------------------------------------------------
 -- Run xmonad with all the defaults we set up.
