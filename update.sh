@@ -2,9 +2,9 @@
 
 git svn rebase
 vim +NeoBundleInstall! +qall
-cd zsh/.oh-my-zsh
+cd ~/.dotfiles/zsh/.oh-my-zsh
 git pull --rebase
-cd custom/plugins/zsh-syntax-highlighting
+cd ~/.dotfiles/zsh/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 git pull --rebase
-cd zsh/base16-shell
+cd ~/.dotfiles/zsh/base16-shell
 git pull --rebase
