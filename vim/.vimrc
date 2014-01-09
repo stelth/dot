@@ -184,6 +184,7 @@ NeoBundle 'basilgor/vim-autotags'
 NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'xieyu/pyclewn'
 NeoBundle 'dag/vim2hs'
+NeoBundle 'vhdirk/vim-cmake'
 " }}}
 
 " }}}
