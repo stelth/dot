@@ -33,6 +33,7 @@
 " 			-> vim-Fugitive
 " 			-> vim-airline
 " 			-> vim-indent-guides
+" 			-> ag.vim
 " 		-> Coding Plugins
 " 			-> clang_complete
 " 			-> cscope_macros
@@ -102,6 +103,9 @@
 "	-> vim-indent-guides - https://github.com/nathanaelkane/vim-indent-guides
 "		-> A Vim plugin for visually displaying indent levels in code
 "
+"	-> ag.vim - https://github.com/rking/ag.vim
+"		-> Vim plugin for the_silver_searcher, 'ag', a prelacement for the Perl module / CLI script 'ack'
+"
 "	-> pyclewn - https://github.com/xieyu/pyclewn
 "		-> allows using vim as a front end to gdb
 "
@@ -170,6 +174,7 @@ NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'rking/ag.vim'
 " }}}
 
 " Programming Plugins {{{
