@@ -14,5 +14,5 @@ OUTER_ID=`sed -e 's#.*=\(\)#\1#' <<< $OUTER_ID`
 #echo $OUTER_ID
 
 xinput reattach $TOUCH_ID2 $OUTER_ID
-xinput --map-to-output $TOUCH_ID2 DFP3
-xinput --map-to-output $TOUCH_ID1 DFP1
+xinput --map-to-output $TOUCH_ID2 DFP1
+xinput --map-to-output $TOUCH_ID1 LVDS
