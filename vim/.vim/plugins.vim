@@ -1,8 +1,8 @@
 " Load plugins
 
-NeoBundleCheck
-
 NeoBundleFetch 'Shougo/neobundle.vim'
+
+NeoBundleCheck
 
 NeoBundle 'Shougo/vimproc', {
 	\ 'build' : {
@@ -30,3 +30,4 @@ NeoBundle 'Shougo/unite-outline'
 NeoBundle 'basilgor/vim-autotags'
 NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'vhdirk/vim-cmake'
+NeoBundle 'uarun/vim-protobuf'
