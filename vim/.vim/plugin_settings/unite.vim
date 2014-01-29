@@ -24,14 +24,14 @@ autocmd FileType unite call s:unite_settings()
 nnoremap [unite] <nop>
 nmap <space> [unite]
 
-nnoremap <silent> [unite]<space> :<C-u>Unite -resume -auto-resize -buffer-name=mixed file_rec/async buffer file_mru bookmark<cr>
+nnoremap <silent> [unite]<space> :<C-u>Unite -no-split -resume -no-split -buffer-name=mixed file_rec/async buffer file_mru bookmark<cr>
 nmap <silent> <C-p> [unite]<space>
-nnoremap <silent> [unite]f :<C-u>Unite -resume -auto-resize -buffer-name=files file_rec<cr>
-nnoremap <silent> [unite]r :<C-u>Unite -auto-resize -buffer-name=mru -start-insert file_mru<cr>
-nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yanks history/yank<cr>
-nnoremap <silent> [unite]l :<C-u>Unite -auto-resize -buffer-name=line line<cr>
-nnoremap <silent> [unite]b :<C-u>Unite -auto-resize -buffer-name=buffers buffer<cr>
-nnoremap <silent> [unite]/ :<C-u>Unite -auto-resize -buffer-name=search grep:.<cr>
-nnoremap <silent> [unite]o :<C-u>Unite -auto-resize -buffer-name=outline outline<cr>
-nnoremap <silent> [unite]s :<C-u>Unite -quick-match buffer<cr>
-nnoremap <silent> [unite]t :<C-u>Unite -auto-resize -buffer-name=tags tag<cr>
+nnoremap <silent> [unite]f :<C-u>Unite -resume -no-split -buffer-name=files file_rec<cr>
+nnoremap <silent> [unite]r :<C-u>Unite -no-split -buffer-name=mru -start-insert file_mru<cr>
+nnoremap <silent> [unite]y :<C-u>Unite -no-split -buffer-name=yanks history/yank<cr>
+nnoremap <silent> [unite]l :<C-u>Unite -no-split -buffer-name=line line<cr>
+nnoremap <silent> [unite]b :<C-u>Unite -no-split -buffer-name=buffers buffer<cr>
+nnoremap <silent> [unite]/ :<C-u>Unite -no-split -buffer-name=search grep:.<cr>
+nnoremap <silent> [unite]o :<C-u>Unite -no-split -buffer-name=outline outline<cr>
+nnoremap <silent> [unite]s :<C-u>Unite -no-split -quick-match buffer<cr>
+nnoremap <silent> [unite]t :<C-u>Unite -no-split -buffer-name=tags tag<cr>
