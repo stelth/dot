@@ -1,2 +1,0 @@
-#!/bin/bash
-ctags -R --excmd=number --c++-kinds=+p --fields=+iaS --extra=+q -f ./commontags /usr/include
