@@ -12,7 +12,6 @@ set hlsearch "Highlight search
 set cmdheight=2 "Command bar height
 set relativenumber "Relative line numbers
 set number "Turn on line numbering
-set nohidden "Don't unload my buffer
 set nolazyredraw "Don't redraw while executing macros
 set showmatch "Show matching braces when text indicator is over them
 set laststatus=2 "Always have a status bar

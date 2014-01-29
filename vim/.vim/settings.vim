@@ -39,3 +39,5 @@ set softtabstop=0
 set smarttab
 
 set wrap "Wrap lines
+
+set hidden "Don't unload buffer when it is abandoned
