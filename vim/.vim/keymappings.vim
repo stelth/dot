@@ -6,24 +6,6 @@ nmap <esc>[B <down>
 nmap <esc>[C <right>
 nmap <esc>[D <left>
 
-" Vim hard mode
-inoremap <Up> <NOP>
-inoremap <Down> <NOP>
-inoremap <Left> <NOP>
-inoremap <Right> <NOP>
-
-" Vim hard mode
-vnoremap <Up> <NOP>
-vnoremap <Down> <NOP>
-vnoremap <Left> <NOP>
-vnoremap <Right> <NOP>
-
-" Vim hard mode
-nnoremap <Up> <NOP>
-nnoremap <Down> <NOP>
-nnoremap <Left> <NOP>
-nnoremap <Right> <NOP>
-
 " ctrl-p and ctrl-n to move through lists
 cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>

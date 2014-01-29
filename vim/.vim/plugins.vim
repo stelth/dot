@@ -2,8 +2,6 @@
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-NeoBundleCheck
-
 NeoBundle 'Shougo/vimproc', {
 	\ 'build' : {
 	\ 	'windows' : 'make -f make_mingw32.mak',
@@ -19,7 +17,6 @@ NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'rking/ag.vim'
-
 NeoBundle 'Rip-Rip/clang_complete'
 NeoBundle 'cscope_macros.vim'
 NeoBundle 'Shougo/neocomplcache'
@@ -31,3 +28,6 @@ NeoBundle 'basilgor/vim-autotags'
 NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'vhdirk/vim-cmake'
 NeoBundle 'uarun/vim-protobuf'
+NeoBundle 'wikitopian/hardmode'
+
+NeoBundleCheck
