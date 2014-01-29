@@ -24,9 +24,9 @@ autocmd FileType unite call s:unite_settings()
 nnoremap [unite] <nop>
 nmap <space> [unite]
 
-nnoremap <silent> [unite]<space> :<C-u>Unite -no-split -resume -no-split -buffer-name=mixed file_rec/async buffer file_mru bookmark<cr>
+nnoremap <silent> [unite]<space> :<C-u>Unite -no-split  -buffer-name=mixed file_rec/async buffer file_mru bookmark<cr>
 nmap <silent> <C-p> [unite]<space>
-nnoremap <silent> [unite]f :<C-u>Unite -resume -no-split -buffer-name=files file_rec<cr>
+nnoremap <silent> [unite]f :<C-u>Unite -no-split -buffer-name=files file_rec<cr>
 nnoremap <silent> [unite]r :<C-u>Unite -no-split -buffer-name=mru -start-insert file_mru<cr>
 nnoremap <silent> [unite]y :<C-u>Unite -no-split -buffer-name=yanks history/yank<cr>
 nnoremap <silent> [unite]l :<C-u>Unite -no-split -buffer-name=line line<cr>
