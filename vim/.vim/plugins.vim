@@ -4,7 +4,7 @@ NeoBundleCheck
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-NeoBundle 'Suougo/vimproc', {
+NeoBundle 'Shougo/vimproc', {
 	\ 'build' : {
 	\ 	'windows' : 'make -f make_mingw32.mak',
 	\	'cygwin' : 'make -f make_cygwin.mak',
