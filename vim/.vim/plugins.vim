@@ -28,5 +28,6 @@ NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'vhdirk/vim-cmake'
 NeoBundle 'uarun/vim-protobuf'
 NeoBundle 'wikitopian/hardmode'
+NeoBundle 'tpope/vim-commentary'
 
 NeoBundleCheck
