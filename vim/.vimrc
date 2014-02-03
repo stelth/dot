@@ -1,18 +1,9 @@
 let s:vim_home = '~/.vim/'
 
-let config_list = [
-	\ 'base.vim',
-	\ 'plugins.vim',
-	\ 'functions.vim',
-	\ 'theme.vim',
-	\ 'settings.vim',
-	\ 'leader.vim',
-	\ 'keymappings.vim',
-	\ 'plugin_settings/*.vim'
-\ ]
+for filename in sort( split( glob( '~/.vim/*.vim'), '\n' ) )
+	execute 'source '.filename
+endfor
 
-for files in config_list
-	for f in split( glob( s:vim_home.files), '\n' )
-		exec 'source '.f
-	endfor
+for filename in sort( split( glob( '~/.vim/plugin_settings/*.vim'), '\n' ) )
+	execute 'source '.filename
 endfor
