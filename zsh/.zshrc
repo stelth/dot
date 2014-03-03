@@ -32,3 +32,5 @@ BASE16_SHELL="$HOME/.dotfiles/zsh/base16-shell/base16-default.dark.sh"
 
 bindkey '^T' autosuggest-toggle
 bindkey '^f' vi-forward-blank-word
+
+autosuggest-toggle
