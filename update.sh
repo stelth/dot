@@ -8,3 +8,5 @@ cd ~/.dotfiles/zsh/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 git pull --rebase
 cd ~/.dotfiles/zsh/base16-shell
 git pull --rebase
+cd ~/.dotfiles/zsh/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+git pull --rebase
