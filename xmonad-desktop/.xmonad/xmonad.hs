@@ -15,7 +15,6 @@ import Graphics.X11.Xlib
 -- import IO (Handle, hPutStrLn)
 import XMonad.Actions.CycleWS
 import XMonad.Actions.DynamicWorkspaces
-import XMonad.Actions.Volume
 import XMonad.Util.Dzen
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -152,14 +151,6 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- That is, take a screenshot of everything you see.
   , ((modMask .|. controlMask .|. shiftMask, xK_p),
      spawn "screenshot")
-
-  -- Lower Volume.
-  , ((modMask .|. shiftMask, xK_F6 ),
-  lowerVolume 4 >>= alert)
-
-  -- Raise Volume
-  , ((modMask .|. shiftMask, xK_F7 ),
-  raiseVolume 4 >>= alert)
 
   --------------------------------------------------------------------
   -- "Standard" xmonad key bindings
