@@ -53,6 +53,7 @@ myWorkspaces = [ "inner"
 --
 myManageHook = manageSpawn <+> composeAll
     [ className =? "Chromium"       --> doShift "3:web"
+    , title     =? "onboard"        --> doFloat
     ]
 ------------------------------------------------------------------------
 -- Layouts
