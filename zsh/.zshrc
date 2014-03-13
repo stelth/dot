@@ -3,7 +3,7 @@ export DISABLE_AUTO_UPDATE=true
 export ZSH_THEME="steeef"
 export OH_MY_ZSH_DEBUG="true"
 
-plugins=(history git svn tmux vi-mode zsh-syntax-highlighting history-substring-search extract zsh-autosuggestions)
+plugins=(history git svn tmux vi-mode zsh-syntax-highlighting history-substring-search extract)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -29,8 +29,3 @@ PATH=$PATH:/opt/cxoffice/bin:~/bin
 BASE16_SCHEME="default"
 BASE16_SHELL="$HOME/.dotfiles/zsh/base16-shell/base16-default.dark.sh"
 [[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
-
-bindkey '^T' autosuggest-toggle
-bindkey '^f' vi-forward-blank-word
-
-autosuggest-toggle
