@@ -15,9 +15,10 @@ NeoBundle 'vim-scripts/Gundo'
 NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'bling/vim-airline'
+NeoBundle 'Rip-Rip/clang_complete'
 NeoBundle 'cscope_macros.vim'
+NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'SirVer/ultisnips.git'
-NeoBundle 'honza/vim-snippets'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'tikhomirov/vim-glsl'
 NeoBundle 'basilgor/vim-autotags'
@@ -27,11 +28,5 @@ NeoBundle 'uarun/vim-protobuf'
 NeoBundle 'wikitopian/hardmode'
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'tpope/vim-dispatch'
-
-NeoBundle 'Valloric/YouCompleteMe.git', {
-	\ 'build' : {
-	\	'unix' : './install.sh --clang-completer --system-libclang'
-	\ },
-\ }
 
 NeoBundleCheck
