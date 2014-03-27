@@ -29,5 +29,6 @@ NeoBundle 'uarun/vim-protobuf'
 NeoBundle 'wikitopian/hardmode'
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'tpope/vim-dispatch'
+NeoBundle 'airblade/vim-gitgutter'
 
 NeoBundleCheck
