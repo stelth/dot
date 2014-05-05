@@ -3,7 +3,7 @@
 NEOBUNDLE_PATH="vim/.vim/bundle/neobundle.vim"
 OHMYZSH_PATH="zsh/.oh-my-zsh"
 SYNTAX_HIGHLIGHTING_PATH="zsh/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
-BASE16_PATH="zsh/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+BASE16_PATH="zsh/base16-shell"
 AUTOSUGGEST_PATH="zsh/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
 
 if [ ! -d "$NEOBUNDLE_PATH" ]; then
