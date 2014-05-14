@@ -19,8 +19,6 @@ set wildmenu
 
 set ffs=unix "Default filetype
 
-set clipboard=unnamed "Use X clipboard
-
 filetype plugin on
 filetype indent on
 filetype on
