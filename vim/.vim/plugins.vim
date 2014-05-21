@@ -27,5 +27,6 @@ NeoBundle 'wikitopian/hardmode'
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'tpope/vim-dispatch'
 NeoBundle 'tpope/vim-sensible'
+NeoBundle 'mbbill/undotree'
 
 NeoBundleCheck
