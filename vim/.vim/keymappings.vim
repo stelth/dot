@@ -10,14 +10,5 @@ nmap <esc>[D <left>
 cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
 
-" use backspace to remove search highlights
-nmap <silent> <BS> :nohlsearch<CR>
-
-" ctrl + movement keys to move between buffers / windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
-
 " format source code
 nnoremap <silent> <F5> :%!astyle<CR>

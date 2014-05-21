@@ -7,5 +7,3 @@ if has('vim_starting')
 endif
 
 call neobundle#rc(expand('~/.vim/bundle/')) "neobundle setup
-
-set encoding=utf8 "utf8 mode

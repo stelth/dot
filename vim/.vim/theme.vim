@@ -6,7 +6,6 @@ set t_co=256
 let base16colorspace=256
 colorscheme base16-default
 
-set ruler "Always show current position
 set cursorline cursorcolumn "Highlight cursor with crosshair
 set hlsearch "Highlight search
 set cmdheight=2 "Command bar height
@@ -14,9 +13,6 @@ set relativenumber "Relative line numbers
 set number "Turn on line numbering
 set nolazyredraw "Don't redraw while executing macros
 set showmatch "Show matching braces when text indicator is over them
-set laststatus=2 "Always have a status bar
-set showcmd "Show information about the current command
-syntax enable
 " Don't highlight tabs/spaces
 set list lcs=tab:\|\ 
 
