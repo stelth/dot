@@ -11,7 +11,6 @@ NeoBundle 'Shougo/vimproc', {
 	\	},
 	\ }
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'vim-scripts/Gundo'
 NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'bling/vim-airline'
