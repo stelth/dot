@@ -1,0 +1,137 @@
+2014-05-23 10:52:08		Plugins loaded: alias, aspell, charset, fifo, irc, logger, lua, perl, python, relay, rmodifier, ruby, script, xfer
+2014-05-23 10:52:18		Option changed: irc.server.freenode.nicks = "stelth"  (default: (undefined))
+2014-05-23 10:52:30		Option changed: irc.server.freenode.autoconnect = on  (default: (undefined))
+2014-05-23 10:52:48		Option changed: irc.server.freenode.command = "/msg NickServ identify Steel300"  (default: (undefined))
+2014-05-23 10:55:18		[plugin] (weechat.conf)
+2014-05-23 10:55:18		  weechat.plugin.autoload = "*"
+2014-05-23 10:55:18		1 option (matching with "weechat.plugin.autoload")
+2014-05-23 10:55:36		script: downloading list of scripts...
+2014-05-23 10:55:37		script: 279 scripts for WeeChat 0.4.3
+2014-05-23 10:55:38		perl: loading script "/home/coxj/.weechat/perl/iset.pl"
+2014-05-23 10:55:38		perl: registered script "iset", version 3.4 (Interactive Set for configuration options)
+2014-05-23 10:55:38		New key binding (context "mouse"): @chat(perl.iset):button1 => hsignal:iset_mouse
+2014-05-23 10:55:38		New key binding (context "mouse"): @chat(perl.iset):button2* => hsignal:iset_mouse
+2014-05-23 10:55:38		New key binding (context "mouse"): @chat(perl.iset):wheeldown => /repeat 5 /iset **down
+2014-05-23 10:55:38		New key binding (context "mouse"): @chat(perl.iset):wheelup => /repeat 5 /iset **up
+2014-05-23 10:56:15		Option changed: irc.look.smart_filter = on
+2014-05-23 10:56:30		Option changed: irc.look.smart_filter = off  (default: on)
+2014-05-23 10:59:14		Option changed: weechat.plugin.autoload = "*,!tcl,!fifo,!logger,!xfer,!relay"  (default: "*")
+2014-05-23 10:59:23		perl: loading script "/home/coxj/.weechat/perl/buffers.pl"
+2014-05-23 10:59:23		perl: registered script "buffers", version 4.6 (Sidebar with list of buffers)
+2014-05-23 10:59:23		New key binding (context "mouse"): @item(buffers):button2* => hsignal:buffers_mouse
+2014-05-23 10:59:23		New key binding (context "mouse"): @item(buffers):button1* => hsignal:buffers_mouse
+2014-05-23 10:59:31		python: loading script "/home/coxj/.weechat/python/text_item.py"
+2014-05-23 10:59:31		python: registered script "text_item", version 0.3 (add a plain text to item bar)
+2014-05-23 10:59:37		python: loading script "/home/coxj/.weechat/python/notify.py"
+2014-05-23 10:59:37		python: registered script "notify", version 0.0.8 (notify: A real time notification system for weechat)
+2014-05-23 10:59:51		perl: loading script "/home/coxj/.weechat/perl/highmon.pl"
+2014-05-23 10:59:51		perl: registered script "highmon", version 2.4 (Highlight Monitor)
+2014-05-23 11:00:05		python: loading script "/home/coxj/.weechat/python/buffer_autoset.py"
+2014-05-23 11:00:05		python: registered script "buffer_autoset", version 0.6 (Auto-set buffer properties when a buffer is opened)
+2014-05-23 11:00:19		python: loading script "/home/coxj/.weechat/python/urlserver.py"
+2014-05-23 11:00:19		python: registered script "urlserver", version 1.7 (Shorten URLs with own HTTP server)
+2014-05-23 11:00:19	=!=	Bind error: [Errno -2] Name or service not known
+2014-05-23 11:00:19		URL server not running
+2014-05-23 11:00:36		script: script "iset.pl" is already installed and up-to-date
+2014-05-23 11:00:44		perl: loading script "/home/coxj/.weechat/perl/sort_buffers.pl"
+2014-05-23 11:00:44		perl: registered script "sort_buffers", version 0.4 (irc-buffers will be sorted alphabetically or in reverse order)
+2014-05-23 11:00:53		python: loading script "/home/coxj/.weechat/python/cmd_help.py"
+2014-05-23 11:00:53		python: registered script "cmd_help", version 0.4 (Contextual command line help)
+2014-05-23 11:01:02		perl: loading script "/home/coxj/.weechat/perl/pushover.pl"
+2014-05-23 11:01:02		perl: registered script "pushover", version 0.8 (Send push notifications to your mobile devices using Pushover, NMA or Pushbullet)
+2014-05-23 11:01:46		Option changed: plugins.var.perl.highmon.alignment = "nchannel"
+2014-05-23 11:02:18		URL server listening on ('127.0.0.1', 43595)
+2014-05-23 11:02:18		Option changed: plugins.var.python.urlserver.http_hostname = "127.0.0.1"
+2014-05-23 11:02:26		URL server stopped
+2014-05-23 11:02:26		URL server listening on ('127.0.0.1', 30012)
+2014-05-23 11:02:26		Option changed: plugins.var.python.urlserver.http_port = "30012"
+2014-05-23 11:02:42		Option changed: plugins.var.python.urlserver.http_allowed_ips = "^127.0.0.1$"
+2014-05-23 11:02:54		Option changed: plugins.var.python.urlserver.http_url_prefix = "xox"
+2014-05-23 11:03:38		Option changed: plugins.var.python.urlserver.msg_ignore_buffers = "core.weechat,python.grepirc.freenode.##news,perl.highmon"
+2014-05-23 11:03:49		Option changed: iset.color.bg_selected = 31  (default: red)
+2014-05-23 11:04:00		Option changed: iset.color.option_selected = *white  (default: white)
+2014-05-23 11:04:10		Option changed: iset.color.type_selected = *229  (default: yellow)
+2014-05-23 11:04:19		Option changed: iset.color.value_selected = *121  (default: lightcyan)
+2014-05-23 11:04:26		Option changed: iset.color.type = 229  (default: brown)
+2014-05-23 11:04:33		Option changed: iset.color.value = 121  (default: cyan)
+2014-05-23 11:05:10		Layout of buffers+windows stored in "normal" (current layout: normal)
+2014-05-23 11:05:21		Option changed: weechat.bar.buffers.size_max = 12  (default: 0)
+2014-05-23 11:05:33		Option changed: buffers.color.current_fg = *white  (default: lightcyan)
+2014-05-23 11:05:44		Option changed: buffers.color.current_bg = 31  (default: red)
+2014-05-23 11:05:54		Option changed: buffers.color.hotlist_message_fg = 229  (default: yellow)
+2014-05-23 11:06:05		Option changed: buffers.color.hotlist_private_fg = 121  (default: lightgreen)
+2014-05-23 11:06:13		Option changed: buffers.color.hotlist_highlight_fg = 163  (default: magenta)
+2014-05-23 11:06:22		Option changed: buffers.color.number = 253  (default: lightgreen)
+2014-05-23 11:06:29		Option changed: buffers.color.number_char = 245  (default: lightgreen)
+2014-05-23 11:06:39		Option changed: buffers.look.hide_merged_buffers = private  (default: none)
+2014-05-23 11:06:53		Bar "activetitle" created
+2014-05-23 11:07:02		Option changed: weechat.bar.activetitle.priority = 500  (default: 0)
+2014-05-23 11:07:15		Option changed: weechat.bar.activetitle.conditions = "${active}"  (default: "")
+2014-05-23 11:07:28	=!=	Error: option "weechat.bar.activetitle_color_fg" not found
+2014-05-23 11:07:34	=!=	Error: option "weechat.bar.activetitle_color_bg" not found
+2014-05-23 11:07:44		Option changed: weechat.bar.activetitle.color_bg = 31  (default: default)
+2014-05-23 11:07:50		Option changed: weechat.bar.activetitle.color_fg = *white  (default: default)
+2014-05-23 11:08:02		Option changed: weechat.bar.title.conditions = "${inactive}"  (default: "")
+2014-05-23 11:08:14		Option changed: weechat.bar.title.color_fg = 31  (default: default)
+2014-05-23 11:08:25		Option changed: weechat.bar.title.color_bg = black  (default: blue)
+2014-05-23 11:09:36		Bar "rootstatus" created
+2014-05-23 11:09:48	=!=	Error: unknown command "setweechat.bar.rootstats.color_fg" (type /help for help)
+2014-05-23 11:09:56	=!=	Error: unknown command "setweechat.bar.rootstatus.color_fg" (type /help for help)
+2014-05-23 11:10:01	=!=	Error: unknown command "setweechat.bar.rootstatus.color_bg" (type /help for help)
+2014-05-23 11:10:10		Option changed: weechat.bar.rootstatus.color_fg = 31  (default: default)
+2014-05-23 11:10:14		Option changed: weechat.bar.rootstatus.color_bg = black  (default: default)
+2014-05-23 11:10:23		Option changed: weechat.bar.rootstatus.separator = on  (default: off)
+2014-05-23 11:10:26		Bar "status" deleted
+2014-05-23 11:11:27		Bar "rootinput" created
+2014-05-23 11:11:37		Option changed: weechat.bar.rootinput.color_bg = black  (default: default)
+2014-05-23 11:11:39		Bar "input" deleted
+2014-05-23 11:11:55		Option changed: weechat.bar.nicklist.color_fg = 31  (default: default)
+2014-05-23 11:12:01		Option changed: weechat.bar.nicklist.color_bg = black  (default: default)
+2014-05-23 11:12:07		Option changed: weechat.bar.nicklist.separator = off  (default: on)
+2014-05-23 11:12:44		Option changed: weechat.bar.nicklist.conditions = "${nicklist} && ${window.number} == 1 || ${window.number} == 5"  (default: "${nicklist}")
+2014-05-23 11:13:00	=!=	Error: option "weechat/bar/nicklist.size" not found
+2014-05-23 11:13:08		Option changed: weechat.bar.nicklist.size = 15  (default: 0)
+2014-05-23 11:13:12		Option changed: weechat.bar.nicklist.size_max = 15  (default: 0)
+2014-05-23 11:13:30		Option changed: irc.look.smart_filter = on
+2014-05-23 11:13:45		Filter "irc_smart" added:
+2014-05-23 11:13:45		  [irc_smart] buffer: * / tags: irc_smart_filter / regex: * 
+2014-05-23 11:13:53		Option changed: weechat.look.bar_more_down = "▼"  (default: "++")
+2014-05-23 11:13:57		Option changed: weechat.look.bar_more_left = "◀"  (default: "<<")
+2014-05-23 11:14:00		Option changed: weechat.look.bar_more_right = "▶"  (default: ">>")
+2014-05-23 11:14:04		Option changed: weechat.look.bar_more_up = "▲"  (default: "--")
+2014-05-23 11:14:07		Option changed: weechat.look.buffer_time_format = "${253}%H${245}%M"  (default: "%H:%M:%S")
+2014-05-23 11:14:22		Option changed: weechat.look.color_inactive_message = off  (default: on)
+2014-05-23 11:14:25		Option changed: weechat.look.color_inactive_prefix = off  (default: on)
+2014-05-23 11:14:29		Option changed: weechat.look.color_inactive_prefix_buffer = off  (default: on)
+2014-05-23 11:14:32		Option changed: weechat.look.color_inactive_window = off  (default: on)
+2014-05-23 11:14:36		Option changed: weechat.look.color_nick_offline = on  (default: off)
+2014-05-23 11:14:39		Option changed: weechat.look.day_change = off  (default: on)
+2014-05-23 11:14:42		Option changed: weechat.look.hotlist_count_max = 0  (default: 2)
+2014-05-23 11:14:50		Option changed: weechat.look.hotlist_names_count = 10  (default: 3)
+2014-05-23 11:14:54		Option changed: weechat.look.item_buffer_filter = "•"  (default: "*")
+2014-05-23 11:15:00		Option changed: weechat.look.prefix_align_min = 10  (default: 0)
+2014-05-23 11:15:03		Option changed: weechat.look.prefix_align_max = 10  (default: 0)
+2014-05-23 11:15:07		Option changed: weechat.look.prefix_join = "▬▬▶"  (default: "-->")
+2014-05-23 11:15:10		Option changed: weechat.look.prefix_quit = "◀▬▬"  (default: "<--")
+2014-05-23 11:15:13		Option changed: weechat.look.prefix_suffix = "│"  (default: "|")
+2014-05-23 11:15:17		Option changed: weechat.look.read_marker_string = "─"  (default: "- ")
+2014-05-23 11:15:20		Option changed: weechat.look.separator_horizontal = "="  (default: "-")
+2014-05-23 11:15:25		Option changed: weechat.color.bar_more = 229  (default: lightmagenta)
+2014-05-23 11:15:29		Option changed: weechat.color.chat_highlight = lightred  (default: yellow)
+2014-05-23 11:15:32		Option changed: weechat.color.chat_highlight_bg = default  (default: magenta)
+2014-05-23 11:15:41		Option changed: weechat.color.chat_nick_colors = "25,31,37,43,49,61,67,73,79,85,97,103,109,115,121,133,139,145,151,157,163,169,175,181,187,193,199,205,211,217,223,229"  (default: "cyan,magenta,green,brown,lightblue,default,lightcyan,lightmagenta,lightgreen,blue")
+2014-05-23 11:15:48		Option changed: weechat.color.chat_prefix_join = 121  (default: lightgreen)
+2014-05-23 11:15:51		Option changed: weechat.color.chat_prefix_more = 229  (default: lightmagenta)
+2014-05-23 11:15:55		Option changed: weechat.color.chat_prefix_quit = 163  (default: lightred)
+2014-05-23 11:15:59		Option changed: weechat.color.chat_prefix_suffix = 31  (default: green)
+2014-05-23 11:16:02		Option changed: weechat.color.chat_read_marker = 31  (default: magenta)
+2014-05-23 11:16:06		Option changed: weechat.color.separator = 31  (default: blue)
+2014-05-23 11:16:09		Option changed: weechat.color.status_data_highlight = 163  (default: lightmagenta)
+2014-05-23 11:16:13		Option changed: weechat.color.status_data_msg = 229  (default: yellow)
+2014-05-23 11:16:16		Option changed: weechat.color.status_data_private = 121  (default: lightgreen)
+2014-05-23 11:16:20		Option changed: weechat.color.status_more = 229  (default: yellow)
+2014-05-23 11:16:23		Option changed: weechat.color.status_name = 121  (default: white)
+2014-05-23 11:16:46		URL server stopped
+2014-05-23 11:16:46		python: scripts unloaded
+2014-05-23 11:16:46		Highmon buffer has been closed but output is still set to buffer, unusual results may occur. To recreate the buffer use /highmon fix
+2014-05-23 11:16:46		perl: scripts unloaded
