@@ -13,7 +13,6 @@ NeoBundle 'Shougo/vimproc', {
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'bling/vim-airline'
 NeoBundle 'Rip-Rip/clang_complete'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'SirVer/ultisnips.git'
