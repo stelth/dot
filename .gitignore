@@ -6,3 +6,10 @@ xmonad*/.xmonad/xmonad-x86_64-linux
 xmonad*/.xmonad/xmonad.o
 weechat/.weechat/weechat.log
 weechat/.weechat/urlserver_list.txt
+vim/.vim/bundle/.neobundle
+weechat/.weechat/lua
+weechat/.weechat/ruby
+weechat/.weechat/urlserver_list.txt
+weechat/.weechat/weechat.log
+xmonad-desktop/.xmonad/xmonad-x86_64-linux
+xmonad-desktop/.xmonad/xmonad.o
