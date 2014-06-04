@@ -13,8 +13,6 @@ NeoBundle 'Shougo/vimproc', {
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'Rip-Rip/clang_complete'
-NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'SirVer/ultisnips.git'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'Shougo/unite-outline'
@@ -27,5 +25,10 @@ NeoBundle 'tpope/vim-commentary'
 NeoBundle 'tpope/vim-dispatch'
 NeoBundle 'tpope/vim-sensible'
 NeoBundle 'mbbill/undotree'
+NeoBundle 'Valloric/YouCompleteMe.git' , {
+            \ 'build' : {
+            \    'unix' : './install.sh --clang-completer --system-libclang'
+            \ },
+	    \ }
 
 NeoBundleCheck
