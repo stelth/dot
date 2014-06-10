@@ -33,4 +33,3 @@ nnoremap <silent> [unite]b :<C-u>Unite -no-split -buffer-name=buffers buffer<cr>
 nnoremap <silent> [unite]/ :<C-u>Unite -no-split -buffer-name=search grep:.<cr>
 nnoremap <silent> [unite]o :<C-u>Unite -no-split -buffer-name=outline outline<cr>
 nnoremap <silent> [unite]s :<C-u>Unite -no-split -quick-match buffer<cr>
-nnoremap <silent> [unite]t :<C-u>Unite -no-split -buffer-name=tags tag<cr>
