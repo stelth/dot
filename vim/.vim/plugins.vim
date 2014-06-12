@@ -24,7 +24,7 @@ NeoBundle 'tpope/vim-commentary'
 NeoBundle 'tpope/vim-dispatch'
 NeoBundle 'tpope/vim-sensible'
 NeoBundle 'mbbill/undotree'
-NeoBundle 'Valloric/YouCompleteMe.git' , {
+NeoBundle 'Valloric/YouCompleteMe' , {
             \ 'build' : {
             \    'unix' : './install.sh --clang-completer --system-libclang'
             \ },
