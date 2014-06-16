@@ -11,6 +11,7 @@ NeoBundle 'Shougo/vimproc', {
 	\	},
 	\ }
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'SirVer/ultisnips.git'
