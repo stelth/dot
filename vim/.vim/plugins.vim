@@ -30,5 +30,6 @@ NeoBundle 'Valloric/YouCompleteMe' , {
             \    'unix' : './install.sh --clang-completer --system-libclang'
             \ },
 	    \ }
+NeoBundle 'itchyny/calendar.vim'
 
 NeoBundleCheck
