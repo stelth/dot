@@ -297,6 +297,7 @@ myStartupHook = do
 		spawn "xset s off"
 		spawn "xset -dpms"
 		spawn "~/bin/mapping"
+		spawn "xmodmap ~/.Xmodmap"
 		spawn "amixer sset Master unmute"
 		spawn "amixer sset Master 100%"
 		spawnOn (myWorkspaces!!0) "~/FunStopPhotos --rear"
