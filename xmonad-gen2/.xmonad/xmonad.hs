@@ -142,6 +142,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask .|. controlMask .|. shiftMask, xK_p),
      spawn "screenshot")
 
+  , ((modMask, xK_s),
+     spawn "scrot")
+
   --------------------------------------------------------------------
   -- "Standard" xmonad key bindings
   --
