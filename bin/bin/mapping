@@ -1,18 +1,74 @@
 #!/bin/bash
 
-TOUCH_ID1=`xinput | grep IR | grep pointer | awk '{print $8}' | head -1`
-TOUCH_ID1=`sed -e 's#.*=\(\)#\1#' <<< $TOUCH_ID1`
-#echo $TOUCH_ID1
+DEBUG=""
 
-TOUCH_ID2=`xinput | grep IR | grep pointer | awk '{print $8}' | tail -1`
-TOUCH_ID2=`sed -e 's#.*=\(\)#\1#' <<< $TOUCH_ID2`
-#echo $TOUCH_ID2
+OUTER_MONITOR="DFP1"
+INNER_MONITOR="LVDS"
 
-xinput create-master outer
-OUTER_ID=`xinput | grep "outer pointer" | awk '{print $4}' | head -1`
-OUTER_ID=`sed -e 's#.*=\(\)#\1#' <<< $OUTER_ID`
-#echo $OUTER_ID
+SLEEP_TIME="30s"
 
-xinput reattach $TOUCH_ID2 $OUTER_ID
-xinput --map-to-output $TOUCH_ID2 DFP1
-xinput --map-to-output $TOUCH_ID1 LVDS
+TOUCH_ID1=""
+TOUCH_ID2=""
+OUTER_ID=""
+
+function getTouchId1()
+{
+	TOUCH_ID1=`xinput | grep IR | grep pointer | awk '{print $8}' | head -1`
+	TOUCH_ID1=`sed -e 's#.*=\(\)#\1#' <<< $TOUCH_ID1`
+
+	if [ "${DEBUG}" == "1" ]; then
+		echo $TOUCH_ID1
+	fi
+}
+
+function getTouchId2()
+{
+	TOUCH_ID2=`xinput | grep IR | grep pointer | awk '{print $8}' | tail -1`
+	TOUCH_ID2=`sed -e 's#.*=\(\)#\1#' <<< $TOUCH_ID2`
+
+	if [ "${DEBUG}" == "1" ]; then
+		echo $TOUCH_ID2
+	fi
+}
+
+function getOuterId( )
+{
+	OUTER_ID=`xinput | grep "outer pointer" | awk '{print $4}' | head -1`
+	OUTER_ID=`sed -e 's#.*=\(\)#\1#' <<< $OUTER_ID`
+
+	if [ "${DEBUG}" == "1" ]; then
+		echo $OUTER_ID
+	fi
+}
+
+getOuterId
+
+if [ "${OUTER_ID}" == "" ]; then
+	xinput create-master outer
+	getOuterId
+fi
+
+getTouchId1
+getTouchId2
+
+while true; do
+	while [ "${TOUCH_ID1}" == "${TOUCH_ID2}" ]; do
+		getTouchId1
+		getTouchId2
+
+		sleep ${SLEEP_TIME}
+	done
+
+	xinput reattach ${TOUCH_ID2} ${OUTER_ID}
+	xinput --map-to-output ${TOUCH_ID2} ${OUTER_MONITOR}
+	xinput --map-to-output ${TOUCH_ID1} ${INNER_MONITOR}
+
+	getTouchId1
+	getTouchId2
+	while [ "${TOUCH_ID1}" != "${TOUCH_ID2}" ]; do
+		getTouchId1
+		getTouchId2
+
+		sleep ${SLEEP_TIME}
+	done
+done
