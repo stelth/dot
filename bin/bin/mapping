@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DEBUG="1"
+DEBUG=""
 
 OUTER_MONITOR="DFP1"
 INNER_MONITOR="LVDS"
