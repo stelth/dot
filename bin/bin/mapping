@@ -1,46 +1,95 @@
 #!/bin/bash
 
-DEBUG=""
+DEBUG="1"
 
 OUTER_MONITOR="DFP1"
 INNER_MONITOR="LVDS"
 
-SLEEP_TIME="30s"
+SLEEP_TIME="15s"
 
 TOUCH_ID1=""
 TOUCH_ID2=""
+
+INNER_ID=""
 OUTER_ID=""
+
+MAPPED_INNER_ID=""
+MAPPED_OUTER_ID=""
 
 function getTouchId1()
 {
-	TOUCH_ID1=`xinput | grep IR | grep pointer | awk '{print $8}' | head -1`
+	TOUCH_ID1=`xinput list | grep IR | grep pointer | awk '{print $8}' | head -1`
 	TOUCH_ID1=`sed -e 's#.*=\(\)#\1#' <<< $TOUCH_ID1`
 
 	if [ "${DEBUG}" == "1" ]; then
-		echo $TOUCH_ID1
+		echo "Touch Id 1: ${TOUCH_ID1}"
 	fi
 }
 
 function getTouchId2()
 {
-	TOUCH_ID2=`xinput | grep IR | grep pointer | awk '{print $8}' | tail -1`
+	TOUCH_ID2=`xinput list | grep IR | grep pointer | awk '{print $8}' | tail -1`
 	TOUCH_ID2=`sed -e 's#.*=\(\)#\1#' <<< $TOUCH_ID2`
 
 	if [ "${DEBUG}" == "1" ]; then
-		echo $TOUCH_ID2
+		echo "Touch Id 2: ${TOUCH_ID2}"
 	fi
 }
 
-function getOuterId( )
+function getOuterId()
 {
-	OUTER_ID=`xinput | grep "outer pointer" | awk '{print $4}' | head -1`
+	OUTER_ID=`xinput list | grep "outer pointer" | awk '{print $4}' | head -1`
 	OUTER_ID=`sed -e 's#.*=\(\)#\1#' <<< $OUTER_ID`
 
 	if [ "${DEBUG}" == "1" ]; then
-		echo $OUTER_ID
+		echo "Outer Id: ${OUTER_ID}"
 	fi
 }
 
+function getInnerId()
+{
+	INNER_ID=`xinput list | grep "core pointer" | awk '{print $5}' | head -1`
+	INNER_ID=`sed -e 's#.*=\(\)#\1#' <<< $INNER_ID`
+
+	if [ "${DEBUG}" == "1" ]; then
+		echo "Inner Id: ${INNER_ID}"
+	fi
+}
+
+function getMappedInner()
+{
+	getInnerId
+
+	MAPPED_INNER_ID=`xinput list | grep IR | grep pointer | grep "\(${INNER_ID}\)" | awk '{print $8}' | head -1`
+	MAPPED_INNER_ID=`sed -e 's#.*=\(\)#\1#' <<< $MAPPED_INNER_ID`
+
+	if [ "${DEBUG}" == "1" ]; then
+		echo "Mapped Inner Id: ${MAPPED_INNER_ID}"
+	fi
+}
+
+function getMappedOuter()
+{
+	getOuterId
+
+	MAPPED_OUTER_ID=`xinput list | grep IR | grep pointer | grep "\(${OUTER_ID}\)" | awk '{print $8}' | head -1`
+	MAPPED_OUTER_ID=`sed -e 's#.*=\(\)#\1#' <<< $MAPPED_OUTER_ID`
+
+	if [ "${DEBUG}" == "1" ]; then
+		echo "Mapped Outer Id: ${MAPPED_OUTER_ID}"
+	fi
+}
+
+function doMapping()
+{
+	echo "Doing Mapping ..."
+	xinput reattach ${TOUCH_ID1} ${INNER_ID}
+	xinput reattach ${TOUCH_ID2} ${OUTER_ID}
+	xinput --map-to-output ${TOUCH_ID2} ${OUTER_MONITOR}
+	xinput --map-to-output ${TOUCH_ID1} ${INNER_MONITOR}
+}
+
+getInnerId
 getOuterId
 
 if [ "${OUTER_ID}" == "" ]; then
@@ -48,10 +97,27 @@ if [ "${OUTER_ID}" == "" ]; then
 	getOuterId
 fi
 
-getTouchId1
-getTouchId2
+while [ "${TOUCH_ID1}" == "${TOUCH_ID2}" ]; do
+	getTouchId1
+	getTouchId2
+done
+
+doMapping
+
+getMappedInner
+getMappedOuter
 
 while true; do
+	while [ "${TOUCH_ID1}" == "${MAPPED_INNER_ID}" ] && [ "${TOUCH_ID2}" == "${MAPPED_OUTER_ID}" ]; do
+		getTouchId1
+		getTouchId2
+
+		getMappedInner
+		getMappedOuter
+
+		sleep ${SLEEP_TIME}
+	done
+
 	while [ "${TOUCH_ID1}" == "${TOUCH_ID2}" ]; do
 		getTouchId1
 		getTouchId2
@@ -59,16 +125,11 @@ while true; do
 		sleep ${SLEEP_TIME}
 	done
 
-	xinput reattach ${TOUCH_ID2} ${OUTER_ID}
-	xinput --map-to-output ${TOUCH_ID2} ${OUTER_MONITOR}
-	xinput --map-to-output ${TOUCH_ID1} ${INNER_MONITOR}
+	doMapping
 
 	getTouchId1
 	getTouchId2
-	while [ "${TOUCH_ID1}" != "${TOUCH_ID2}" ]; do
-		getTouchId1
-		getTouchId2
 
-		sleep ${SLEEP_TIME}
-	done
+	getMappedInner
+	getMappedOuter
 done
