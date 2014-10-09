@@ -1,5 +1,11 @@
 " Load plugins
 
+if has('vim_starting')
+	set runtimepath+=~/.vim/bundle/neobundle.vim/ "where the bundles are located
+endif
+
+call neobundle#begin(expand('~/.vim/bundle/'))
+
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'Shougo/vimproc', {
@@ -31,5 +37,7 @@ NeoBundle 'Valloric/YouCompleteMe' , {
             \ },
 	    \ }
 NeoBundle 'itchyny/calendar.vim'
+
+call neobundle#end()
 
 NeoBundleCheck
