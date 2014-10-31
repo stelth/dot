@@ -37,6 +37,7 @@ NeoBundle 'Valloric/YouCompleteMe' , {
             \ },
 	    \ }
 NeoBundle 'itchyny/calendar.vim'
+NeoBundle 'ludovicchabant/vim-gutentags'
 
 call neobundle#end()
 
