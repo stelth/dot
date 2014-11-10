@@ -130,7 +130,7 @@ goto-next-feed no
 ## configuration option: history-limit
 ## description: Defines the maximum number of entries of commandline resp. search history to be saved. To disable history saving, set history-limit to 0.
 ## parameter syntax: <number>
-# history-limit 100
+history-limit 0
 
 ## configuration option: html-renderer
 ## description: If set to "internal", then the internal HTML renderer will be used. Otherwise, the specified command will be executed, the HTML to be rendered will be written to the command's stdin, and the program's output will be displayed. This makes it possible to use other, external programs, such as w3m, links or lynx, to render HTML.
@@ -287,19 +287,21 @@ text-width 72
 ## parameter syntax: <user agent string>
 # user-agent ""
 
-color background default default
-color listnormal default default
-color listfocus black yellow
-color info default black bold
+color background color15 color233
+color listnormal color15 color233
+color listfocus color15 color235
+color info color39 color233 bold
 color article default default
-color listfocus_unread blue default 
-color listnormal_unread red default bold
+color listfocus_unread color221 color233 
+color listnormal_unread color221 color233 bold
 
-highlight feedlist "^ *[0-9]+  *N  *.*" blue default
+highlight feedlist "^ *[0-9]+  *N  *.*" color221 color233
 
-highlight article "^(Title):.*$" blue default
-highlight article "https?://[^ ]+" red default
+highlight article "[\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+" color137 color233
+highlight article "((https?|ftp)://|www)+[\-\.;@,/%~_:?&=\#a-zA-Z0-9+]+" color137 color233
+highlight article "^(Title):.*$" color214 color233
 highlight article "\\[image\\ [0-9]+\\]" green default
+highlight article "^(Feed|Author|Date|Link):.*$" color245 color233
 
 bind-key j down
 bind-key k up
