@@ -287,9 +287,6 @@ text-width 72
 ## parameter syntax: <user agent string>
 # user-agent ""
 
-# solarized color scheme for newsbeuter <http://www.newsbeuter.org/>
-# more on solarized: http://ethanschoonover.com/solarized
-
 color background default default
 color listnormal default default
 color listfocus black yellow

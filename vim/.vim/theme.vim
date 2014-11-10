@@ -3,8 +3,8 @@
 " Color scheme stuffs
 set background=dark
 set t_co=256
-let base16colorspace=256
-colorscheme base16-default
+colorscheme badwolf
+let g:badwolf_darkgutter = 1
 
 set cursorline cursorcolumn "Highlight cursor with crosshair
 set hlsearch "Highlight search
