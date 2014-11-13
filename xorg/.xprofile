@@ -10,4 +10,4 @@ eval "$(/usr/bin/ssh-agent -s)"
 /usr/bin/xrdb -merge ~/.Xresources
 /usr/bin/feh --bg-scale ~/.wallpaper.jpg
 
-exec /usr/bin/xmonad
+/usr/bin/xmonad

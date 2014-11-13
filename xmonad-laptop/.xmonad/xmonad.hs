@@ -292,16 +292,6 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- per-workspace layout choices.
 --
 -- By default, do nothing.
-myStartupHook = do
-	spawn "numlockx"
-	spawn "xsetroot -cursor_name left_ptr"
-	spawn "xrdb -merge ~/.Xresources"
-	spawn "xscreensaver -no-splash &"
-	spawn "xmodmap ~/.Xmodmap"
-	spawn "urxvtd -q -f -o"
-	spawn "feh --bg-scale ~/.wallpaper.jpg"
-	spawn "unclutter -noevents &"
-
 
 ------------------------------------------------------------------------
 -- Run xmonad with all the defaults we set up.
@@ -344,6 +334,5 @@ defaults = defaultConfig {
 
     -- hooks, layouts
     layoutHook         = smartBorders $ myLayout,
-    manageHook         = myManageHook,
-    startupHook        = myStartupHook
+    manageHook         = myManageHook
 }
