@@ -139,7 +139,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
   -- Use this to launch programs without a key binding.
   , ((modMask, xK_p),
-     spawn "dmenu_recent")
+     spawn "~/bin/dmenu_recent")
 
   -- Take a screenshot in select mode.
   -- After pressing this key binding, click a window, or draw a rectangle with
@@ -291,15 +291,6 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- per-workspace layout choices.
 --
 -- By default, do nothing.
-myStartupHook = do
-	spawn "numlockx"
-	spawn "xsetroot -cursor_name left_ptr"
-	spawn "xscreensaver -no-splash &"
-	spawn "xmodmap ~/.Xmodmap"
-	spawn "urxvtd -q -f -o"
-	spawn "feh --bg-scale ~/.wallpaper.jpg"
-	spawn "unclutter -noevents &"
-
 
 ------------------------------------------------------------------------
 -- Run xmonad with all the defaults we set up.
@@ -342,6 +333,5 @@ defaults = defaultConfig {
 
     -- hooks, layouts
     layoutHook         = smartBorders $ myLayout,
-    manageHook         = myManageHook,
-    startupHook        = myStartupHook
+    manageHook         = myManageHook
 }

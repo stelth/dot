@@ -1,0 +1,13 @@
+#!/bin/bash
+
+/usr/bin/numlockx on
+eval "$(/usr/bin/ssh-agent -s)"
+/usr/bin/xscreensaver -no-splash &
+/usr/bin/urxvtd -q -f -o
+/usr/bin/unclutter -noevents &
+/usr/bin/xsetroot -cursor_name left_ptr
+/usr/bin/xmodmap ~/.Xmodmap
+/usr/bin/xrdb -merge ~/.Xresources
+/usr/bin/feh --bg-scale ~/.wallpaper.jpg
+
+exec /usr/bin/xmonad
