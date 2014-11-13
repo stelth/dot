@@ -1,6 +1,6 @@
 #!/bin/bash
 
-git pull --rebas
+git pull --rebase
 vim +NeoBundleInstall! +qall
 vim +NeoBundleClean! +qall
 cd ~/.dotfiles/zsh/.oh-my-zsh
