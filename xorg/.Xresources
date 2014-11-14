@@ -74,3 +74,6 @@ URxvt*font:xft:Inconsolata for Powerline:pixelsize=10
 URxvt.perl-ext-common:default,matcher
 URxvt.url-lanucher:/usr/bin/chromium
 URxvt.matcher.button:1
+
+Xcursor.theme: Ardoise_opaque
+Xcursor.size: 24
