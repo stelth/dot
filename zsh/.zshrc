@@ -1,27 +1,15 @@
-export ZSH=$HOME/.oh-my-zsh
-export DISABLE_AUTO_UPDATE=true
-export ZSH_THEME="steeef"
-export OH_MY_ZSH_DEBUG="true"
+#
+# Executes commands at the start of an interactive session.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
 
-plugins=(history git svn tmux vi-mode zsh-syntax-highlighting history-substring-search extract)
-
-source $ZSH/oh-my-zsh.sh
-
-unset promptcr
-
-alias c='clear'
-alias su='su -'
-
-export DISABLE_AUTO_TITLE="true"
-
-export EDITOR='vim'
-export GREP_OPTIONS='--color=auto'
-export HISTSIZE=1000
-export HISTFILESIZE=1000
-
-zstyle ':completion::complete:*' cache-path ~/.oh-my-zsh.local/cache/
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
 
 # Customize to your needs...
-function dmalloc { eval `command dmalloc -b $*`; }
-
-PATH=$PATH:/opt/cxoffice/bin:~/bin
+alias c='clear'
+alias su='su -'
