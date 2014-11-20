@@ -9,9 +9,4 @@ fi
 
 if [ ! -d "$ZPREZTO_PATH" ]; then
 	git clone --recursive https://github.com/sorin-ionescu/prezto.git zsh/.zprezto
-
-	setopt EXTENDED_GLOB
-	for rcfile in ./zsh/.zprezto/runcoms/^README.md(.N); do
-		cp "$rcfile" "zsh/.${rcfile:t}"
-	done
 fi
