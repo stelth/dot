@@ -1,10 +1,10 @@
 " Load plugins
 
 if empty( glob( '~/.vim/autoload/plug.vim') )
-silent !mkdir -p ~/.vim/autoload
-silent !curl -fLo ~/.vim/autoload/plug.vim
-\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-autocmd VimEnter * PlugInstall
+	silent !mkdir -p ~/.vim/autoload
+	silent !curl -fLo ~/.vim/autoload/plug.vim
+				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	autocmd VimEnter * PlugInstall
 endif
 
 call plug#begin(expand('~/.vim/bundle/'))
@@ -28,12 +28,12 @@ Plug 'mbbill/undotree'
 
 function! BuildYCM(info)
 	if a:info.status == 'installed' || a:info.status == 'updated' || a:info.force
-	!./install.sh
+		!./install.sh --clang-completer --system-libclang --system-boost
 	endif
-	endfunction
+endfunction
 
-	Plug 'Valloric/YouCompleteMe', { 'do' : function('BuildYCM') }
-	Plug 'ludovicchabant/vim-gutentags'
-	Plug 'sjl/badwolf'
+Plug 'Valloric/YouCompleteMe', { 'do' : function('BuildYCM') }
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'sjl/badwolf'
 
 call plug#end()
