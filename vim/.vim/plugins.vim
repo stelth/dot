@@ -1,44 +1,39 @@
 " Load plugins
 
-if has('vim_starting')
-	set runtimepath+=~/.vim/bundle/neobundle.vim/ "where the bundles are located
+if empty( glob( '~/.vim/autoload/plug.vim') )
+silent !mkdir -p ~/.vim/autoload
+silent !curl -fLo ~/.vim/autoload/plug.vim
+\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+autocmd VimEnter * PlugInstall
 endif
 
-call neobundle#begin(expand('~/.vim/bundle/'))
+call plug#begin(expand('~/.vim/bundle/'))
 
-NeoBundleFetch 'Shougo/neobundle.vim'
+Plug 'Shougo/vimproc', { 'do' : 'make -f make_unix.mak' }
 
-NeoBundle 'Shougo/vimproc', {
-	\ 'build' : {
-	\ 	'windows' : 'make -f make_mingw32.mak',
-	\	'cygwin' : 'make -f make_cygwin.mak',
-	\	'mac' : 'make -f make_mak.mak',
-	\	'unix' : 'make -f make_unix.mak',
-	\	},
-	\ }
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'SirVer/ultisnips.git'
-NeoBundle 'honza/vim-snippets'
-NeoBundle 'Shougo/unite-outline'
-NeoBundle 'tikhomirov/vim-glsl'
-NeoBundle 'vhdirk/vim-cmake'
-NeoBundle 'uarun/vim-protobuf'
-NeoBundle 'wikitopian/hardmode'
-NeoBundle 'tpope/vim-commentary'
-NeoBundle 'tpope/vim-dispatch'
-NeoBundle 'tpope/vim-sensible'
-NeoBundle 'mbbill/undotree'
-NeoBundle 'Valloric/YouCompleteMe' , {
-            \ 'build' : {
-            \    'unix' : './install.sh --clang-completer --system-libclang'
-            \ },
-	    \ }
-NeoBundle 'itchyny/calendar.vim'
-NeoBundle 'ludovicchabant/vim-gutentags'
-NeoBundle 'sjl/badwolf'
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/neomru.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'Shougo/unite-outline'
+Plug 'tikhomirov/vim-glsl'
+Plug 'vhdirk/vim-cmake'
+Plug 'uarun/vim-protobuf'
+Plug 'wikitopian/hardmode'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-sensible'
+Plug 'mbbill/undotree'
 
-call neobundle#end()
+function! BuildYCM(info)
+	if a:info.status == 'installed' || a:info.status == 'updated' || a:info.force
+	!./install.sh
+	endif
+	endfunction
 
-NeoBundleCheck
+	Plug 'Valloric/YouCompleteMe', { 'do' : function('BuildYCM') }
+	Plug 'ludovicchabant/vim-gutentags'
+	Plug 'sjl/badwolf'
+
+call plug#end()
