@@ -3,6 +3,7 @@ zsh/.zprezto
 vim/.vim/.netrwhist
 xmonad*/.xmonad/xmonad-x86_64-linux
 xmonad*/.xmonad/xmonad.o
+xmonad*/.xmonad.xmonad.hi
 weechat/.weechat/weechat.log
 weechat/.weechat/urlserver_list.txt
 vim/.vim/bundle/.neobundle
