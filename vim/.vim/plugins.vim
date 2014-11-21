@@ -28,7 +28,7 @@ Plug 'mbbill/undotree'
 
 function! BuildYCM(info)
 	if a:info.status == 'installed' || a:info.status == 'updated' || a:info.force
-		!./install.sh --clang-completer --system-libclang --system-boost
+		!./install.sh --clang-completer --system-libclang
 	endif
 endfunction
 
