@@ -1,0 +1,24 @@
+[user]
+	name = Jason Cox
+	email = jasonc@teamplayinc.com
+[alias]
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %C(green)(%cr)%Creset' --abbrev-commit --date=relative
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+[credential]
+	helper = cache
+[help]
+	autocorrect = 1
+[init]
+[push]
+	default = simple
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+[difftool]
+	prompt = false
+[mergetool]
+	prompt = false
+[color]
+	diff = auto
