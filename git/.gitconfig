@@ -21,4 +21,4 @@
 [mergetool]
 	prompt = false
 [color]
-	diff = auto
+	diff = false
