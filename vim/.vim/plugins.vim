@@ -33,7 +33,7 @@ function! BuildYCM(info)
 endfunction
 
 Plug 'Valloric/YouCompleteMe', { 'do' : function('BuildYCM') }
-Plug 'ludovicchabant/vim-gutentags'
+Plug 'ludovicchabant/vim-gutentags', { 'for' : ['cpp', 'c'] }
 Plug 'sjl/badwolf'
 
 call plug#end()
