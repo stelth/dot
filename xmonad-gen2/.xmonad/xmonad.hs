@@ -293,6 +293,7 @@ spawnToWorkspace program workspace = spawn program >> (windows $ W.greedyView wo
 
 myStartupHook :: X ()
 myStartupHook = do
+		spawn "~/res/post-update.sh"
 		spawn "numlockx"
 		spawn "xrdb -merge ~/.Xresources"
 		spawn "urxvtd -q -f -o"
