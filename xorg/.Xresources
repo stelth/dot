@@ -70,7 +70,7 @@ Xft.dpi: 96
 Xft.rgba: rgb
 
 URxvt*scrollBar:false
-URxvt*font:xft:Inconsolata for Powerline:pixelsize=10
+URxvt*font:xft:Bitstream Vera Sans Mono:pixelsize=9
 URxvt.perl-ext-common:default,matcher
 URxvt.url-lanucher:/usr/bin/chromium
 URxvt.matcher.button:1
