@@ -17,9 +17,10 @@ fi
 # Editors
 #
 
-export EDITOR='vim'
-export VISUAL='vim'
-export PAGER='less'
+export EDITOR='/usr/bin/vim'
+export VISUAL='/usr/bin/vim'
+export PAGER='/usr/bin/vimpager'
+export MANPAGER='/usr/bin/vimmanpager'
 
 #
 # Language
