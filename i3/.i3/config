@@ -41,7 +41,7 @@ bindsym $mod+Shift+Return exec /usr/bin/chromium
 bindsym $mod+Shift+Q kill
 
 # Start dmenu
-bindsym $mod+p exec /usr/bin/dmenu_run
+bindsym $mod+p exec ~/bin/dmenu_recent
 
 # Change focused window
 bindsym $mod+j focus down
