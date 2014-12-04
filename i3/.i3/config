@@ -32,7 +32,7 @@ floating_modifier $mod
 new_window 1pixel
 
 # Lock the workspace
-bindsym $mod+Shift+Control+l exec /usr/bin/xscreensaver-command -lock
+bindsym $mod+Shift+Control+l exec /usr/bin/i3lock -c 000000
 
 # Start a terminal
 bindsym $mod+Return exec /usr/bin/urxvtc
@@ -146,3 +146,7 @@ bar {
 
 bindsym $mod+Right move workspace to output right
 bindsym $mod+Left move workspace to output left
+
+# Shift focus between monitors
+bindsym $mod+e focus output left
+bindsym $mod+w focus output right
