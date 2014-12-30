@@ -35,5 +35,6 @@ endfunction
 Plug 'Valloric/YouCompleteMe', { 'do' : function('BuildYCM') }
 Plug 'ludovicchabant/vim-gutentags', { 'for' : ['cpp', 'c'] }
 Plug 'sjl/badwolf'
+Plug 'idanarye/vim-vebugger'
 
 call plug#end()
