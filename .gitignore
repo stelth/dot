@@ -16,3 +16,7 @@ xmonad-desktop/.xmonad/xmonad-x86_64-linux
 xmonad-desktop/.xmonad/xmonad.o
 weechat/.weechat/script/plugins.xml.gz
 vim/.vim/autoload/
+emacs/.emacs.d/elpa
+emacs/.emads.d/semanticdb
+emacs/.emacs.d/recentf
+emacs/.emacs.d/projectile-bookmarks.eld

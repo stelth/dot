@@ -3,9 +3,9 @@
 ;;; Code:
 (add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
 
-;;;### (autoloads nil "dtrt-indent" "dtrt-indent.el" (21696 1389
-;;;;;;  292887 839000))
-;;; Generated autoloads from dtrt-indent.el
+;;;### (autoloads nil "dtrt-indent" "../../../../../.emacs.d/elpa/dtrt-indent-20140325.1330/dtrt-indent.el"
+;;;;;;  "66859a1f026ac5d614d97e1e9f5add94")
+;;; Generated autoloads from ../../../../../.emacs.d/elpa/dtrt-indent-20140325.1330/dtrt-indent.el
 
 (defvar dtrt-indent-mode nil "\
 Non-nil if Dtrt-Indent mode is enabled.
@@ -34,8 +34,11 @@ use either \\[customize] or the function `dtrt-indent-mode'.")
 
 ;;;***
 
-;;;### (autoloads nil nil ("dtrt-indent-diag.el" "dtrt-indent-pkg.el")
-;;;;;;  (21696 1389 603333 353000))
+;;;### (autoloads nil nil ("../../../../../.emacs.d/elpa/dtrt-indent-20140325.1330/dtrt-indent-autoloads.el"
+;;;;;;  "../../../../../.emacs.d/elpa/dtrt-indent-20140325.1330/dtrt-indent-diag.el"
+;;;;;;  "../../../../../.emacs.d/elpa/dtrt-indent-20140325.1330/dtrt-indent-pkg.el"
+;;;;;;  "../../../../../.emacs.d/elpa/dtrt-indent-20140325.1330/dtrt-indent.el")
+;;;;;;  (21696 13460 420855 490000))
 
 ;;;***
 

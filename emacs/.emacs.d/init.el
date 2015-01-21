@@ -67,7 +67,7 @@
 (install-packages)
 
 ;; This variable must be set before loading helm-gtags
-(setq helm-gtags-prefix-key "\c-cg")
+(setq helm-gtags-prefix-key "\C-cg")
 
 (add-to-list 'load-path "~/.emacs.d/custom")
 

@@ -3,8 +3,9 @@
 ;;; Code:
 (add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
 
-;;;### (autoloads nil "async" "async.el" (21694 64758 679836 298000))
-;;; Generated autoloads from async.el
+;;;### (autoloads nil "async" "../../../../../.emacs.d/elpa/async-20141229.2221/async.el"
+;;;;;;  "c5f10da8ad5edbcc38d80784a36abb89")
+;;; Generated autoloads from ../../../../../.emacs.d/elpa/async-20141229.2221/async.el
 
 (autoload 'async-start-process "async" "\
 Start the executable PROGRAM asynchronously.  See `async-start'.
@@ -68,8 +69,13 @@ returns nil.  It can still be useful, however, as an argument to
 
 ;;;***
 
-;;;### (autoloads nil nil ("async-bytecomp.el" "async-pkg.el" "dired-async.el"
-;;;;;;  "smtpmail-async.el") (21694 64758 898736 366000))
+;;;### (autoloads nil nil ("../../../../../.emacs.d/elpa/async-20141229.2221/async-autoloads.el"
+;;;;;;  "../../../../../.emacs.d/elpa/async-20141229.2221/async-bytecomp.el"
+;;;;;;  "../../../../../.emacs.d/elpa/async-20141229.2221/async-pkg.el"
+;;;;;;  "../../../../../.emacs.d/elpa/async-20141229.2221/async.el"
+;;;;;;  "../../../../../.emacs.d/elpa/async-20141229.2221/dired-async.el"
+;;;;;;  "../../../../../.emacs.d/elpa/async-20141229.2221/smtpmail-async.el")
+;;;;;;  (21696 13439 623239 928000))
 
 ;;;***
 

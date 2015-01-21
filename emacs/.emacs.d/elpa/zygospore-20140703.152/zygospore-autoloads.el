@@ -3,9 +3,9 @@
 ;;; Code:
 (add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
 
-;;;### (autoloads nil "zygospore" "zygospore.el" (21696 2290 756531
-;;;;;;  68000))
-;;; Generated autoloads from zygospore.el
+;;;### (autoloads nil "zygospore" "../../../../../.emacs.d/elpa/zygospore-20140703.152/zygospore.el"
+;;;;;;  "fd590b3290073338d47430f96d140f60")
+;;; Generated autoloads from ../../../../../.emacs.d/elpa/zygospore-20140703.152/zygospore.el
 
 (autoload 'zygospore-toggle-delete-other-windows "zygospore" "\
 Main zygospore func.
@@ -16,6 +16,12 @@ If the current frame has one window,
 it will restore the window configuration to prior to full-framing.
 
 \(fn)" t nil)
+
+;;;***
+
+;;;### (autoloads nil nil ("../../../../../.emacs.d/elpa/zygospore-20140703.152/zygospore-autoloads.el"
+;;;;;;  "../../../../../.emacs.d/elpa/zygospore-20140703.152/zygospore.el")
+;;;;;;  (21696 13544 106005 634000))
 
 ;;;***
 

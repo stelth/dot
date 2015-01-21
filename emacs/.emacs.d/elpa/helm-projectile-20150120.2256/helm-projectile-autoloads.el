@@ -3,9 +3,9 @@
 ;;; Code:
 (add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
 
-;;;### (autoloads nil "helm-projectile" "helm-projectile.el" (21696
-;;;;;;  2162 459168 380000))
-;;; Generated autoloads from helm-projectile.el
+;;;### (autoloads nil "helm-projectile" "../../../../../.emacs.d/elpa/helm-projectile-20150120.2256/helm-projectile.el"
+;;;;;;  "da9cf58b7d8b3c5b78d17b98e714650a")
+;;; Generated autoloads from ../../../../../.emacs.d/elpa/helm-projectile-20150120.2256/helm-projectile.el
 
 (defvar helm-projectile-fuzzy-match t "\
 Enable fuzzy matching for Helm Projectile commands.")
@@ -53,6 +53,12 @@ If invoked outside of a project, displays a list of known projects to jump.
 \(fn &optional ARG)" t nil)
 
 (eval-after-load 'projectile '(progn (define-key projectile-command-map (kbd "h") 'helm-projectile)))
+
+;;;***
+
+;;;### (autoloads nil nil ("../../../../../.emacs.d/elpa/helm-projectile-20150120.2256/helm-projectile-autoloads.el"
+;;;;;;  "../../../../../.emacs.d/elpa/helm-projectile-20150120.2256/helm-projectile.el")
+;;;;;;  (21696 13455 224952 406000))
 
 ;;;***
 

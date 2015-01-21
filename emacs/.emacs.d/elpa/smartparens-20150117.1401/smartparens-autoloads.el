@@ -3,9 +3,9 @@
 ;;; Code:
 (add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
 
-;;;### (autoloads nil "smartparens" "smartparens.el" (21696 1654
-;;;;;;  247695 549000))
-;;; Generated autoloads from smartparens.el
+;;;### (autoloads nil "smartparens" "../../../../../.emacs.d/elpa/smartparens-20150117.1401/smartparens.el"
+;;;;;;  "f8367a8a92fbb346a6dd326c2ac4fba1")
+;;; Generated autoloads from ../../../../../.emacs.d/elpa/smartparens-20150117.1401/smartparens.el
 
 (autoload 'sp-cheat-sheet "smartparens" "\
 Generate a cheat sheet of all the smartparens interactive functions.
@@ -167,9 +167,15 @@ Turn off `show-smartparens-mode'.
 
 ;;;***
 
-;;;### (autoloads nil nil ("smartparens-config.el" "smartparens-html.el"
-;;;;;;  "smartparens-latex.el" "smartparens-lua.el" "smartparens-pkg.el"
-;;;;;;  "smartparens-ruby.el") (21696 1654 514587 640000))
+;;;### (autoloads nil nil ("../../../../../.emacs.d/elpa/smartparens-20150117.1401/smartparens-autoloads.el"
+;;;;;;  "../../../../../.emacs.d/elpa/smartparens-20150117.1401/smartparens-config.el"
+;;;;;;  "../../../../../.emacs.d/elpa/smartparens-20150117.1401/smartparens-html.el"
+;;;;;;  "../../../../../.emacs.d/elpa/smartparens-20150117.1401/smartparens-latex.el"
+;;;;;;  "../../../../../.emacs.d/elpa/smartparens-20150117.1401/smartparens-lua.el"
+;;;;;;  "../../../../../.emacs.d/elpa/smartparens-20150117.1401/smartparens-pkg.el"
+;;;;;;  "../../../../../.emacs.d/elpa/smartparens-20150117.1401/smartparens-ruby.el"
+;;;;;;  "../../../../../.emacs.d/elpa/smartparens-20150117.1401/smartparens.el")
+;;;;;;  (21696 13539 38797 466000))
 
 ;;;***
 

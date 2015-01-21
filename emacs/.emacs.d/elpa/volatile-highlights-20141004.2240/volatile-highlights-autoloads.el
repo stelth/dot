@@ -3,8 +3,9 @@
 ;;; Code:
 (add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
 
-;;;### (autoloads nil nil ("volatile-highlights.el") (21696 825 564026
-;;;;;;  192000))
+;;;### (autoloads nil nil ("../../../../../.emacs.d/elpa/volatile-highlights-20141004.2240/volatile-highlights-autoloads.el"
+;;;;;;  "../../../../../.emacs.d/elpa/volatile-highlights-20141004.2240/volatile-highlights.el")
+;;;;;;  (21696 13542 81868 944000))
 
 ;;;***
 

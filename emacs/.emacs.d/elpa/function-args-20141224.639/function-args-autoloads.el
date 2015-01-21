@@ -3,9 +3,9 @@
 ;;; Code:
 (add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
 
-;;;### (autoloads nil "function-args" "function-args.el" (21695 65481
-;;;;;;  86379 114000))
-;;; Generated autoloads from function-args.el
+;;;### (autoloads nil "function-args" "../../../../../.emacs.d/elpa/function-args-20141224.639/function-args.el"
+;;;;;;  "06d802586f9872018e322cde66e8b3fc")
+;;; Generated autoloads from ../../../../../.emacs.d/elpa/function-args-20141224.639/function-args.el
 
 (autoload 'function-args-mode "function-args" "\
 Minor mode for C++ code completion bindings.
@@ -18,6 +18,12 @@ Minor mode for C++ code completion bindings.
 Set up default key bindings.
 
 \(fn)" nil nil)
+
+;;;***
+
+;;;### (autoloads nil nil ("../../../../../.emacs.d/elpa/function-args-20141224.639/function-args-autoloads.el"
+;;;;;;  "../../../../../.emacs.d/elpa/function-args-20141224.639/function-args.el")
+;;;;;;  (21696 13457 925976 867000))
 
 ;;;***
 

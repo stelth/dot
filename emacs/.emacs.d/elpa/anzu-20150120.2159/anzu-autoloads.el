@@ -3,8 +3,9 @@
 ;;; Code:
 (add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
 
-;;;### (autoloads nil "anzu" "anzu.el" (21696 2154 975378 623000))
-;;; Generated autoloads from anzu.el
+;;;### (autoloads nil "anzu" "../../../../../.emacs.d/elpa/anzu-20150120.2159/anzu.el"
+;;;;;;  "7714c6e133b26a76c991b5dd3532973a")
+;;; Generated autoloads from ../../../../../.emacs.d/elpa/anzu-20150120.2159/anzu.el
 
 (autoload 'anzu-mode "anzu" "\
 minor-mode which display search information in mode-line.
@@ -56,6 +57,12 @@ See `anzu-mode' for more information on Anzu mode.
 
 
 \(fn)" t nil)
+
+;;;***
+
+;;;### (autoloads nil nil ("../../../../../.emacs.d/elpa/anzu-20150120.2159/anzu-autoloads.el"
+;;;;;;  "../../../../../.emacs.d/elpa/anzu-20150120.2159/anzu.el")
+;;;;;;  (21696 13431 103762 834000))
 
 ;;;***
 
