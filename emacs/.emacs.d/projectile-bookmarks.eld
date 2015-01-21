@@ -1,0 +1,1 @@
+("~/.dotfiles/" "~/teamplay/photobooth/src/" "~/emacs-c-ide-demo/")

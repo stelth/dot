@@ -1,0 +1,33 @@
+;; Object src/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "src/"
+  :tables
+  (list
+    (semanticdb-table ".ycm_extra_conf.py"
+      :major-mode 'python-mode
+      :tags 
+        '( ("os" include nil nil [1401 1410])
+            ("ycm_core" include nil nil [1411 1426])
+            ("flags" variable nil nil [1635 3428])
+            ("compilation_database_folder" variable nil nil [3815 3847])
+            ("if" code nil nil [3849 3996])
+            ("SOURCE_EXTENSIONS" variable nil nil [3997 4061])
+            ("DirectoryOfThisScript" function nil nil [4063 4148])
+            ("MakeRelativePathsInFlagsAbsolute" function (:arguments 
+              ( ("flags" variable nil (reparse-symbol function_parameters) [4188 4193])
+                ("working_directory" variable nil (reparse-symbol function_parameters) [4195 4212]))              ) nil [4150 4922])
+            ("IsHeaderFile" function (:arguments 
+              ( ("filename" variable nil (reparse-symbol function_parameters) [4942 4950]))              ) nil [4924 5056])
+            ("GetCompilationInfoForFile" function (:arguments 
+              ( ("filename" variable nil (reparse-symbol function_parameters) [5089 5097]))              ) nil [5058 5813])
+            ("FlagsForFile" function (:arguments 
+              ( ("filename" variable nil (reparse-symbol function_parameters) [5833 5841])
+                ("kwargs" variable nil (reparse-symbol function_parameters) [5843 5851]))              ) nil [5815 6434]))          
+      :file ".ycm_extra_conf.py"
+      :pointmax 6434
+      :fsize 6433
+      :lastmodtime '(21694 47378 723277 178000)
+      :unmatched-syntax nil))
+  :file "!home!coxj!teamplay!photobooth!src!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")
