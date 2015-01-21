@@ -13,3 +13,4 @@ fi
 # Customize to your needs...
 alias c='clear'
 alias su='su -'
+alias em="emacsclient -t"

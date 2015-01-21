@@ -2,6 +2,7 @@
 
 /usr/bin/numlockx on
 eval "$(/usr/bin/ssh-agent -s)"
+/usr/bin/ssh-add
 /usr/bin/urxvtd -q -f -o
 /usr/bin/unclutter -noevents &
 /usr/bin/xsetroot -cursor_name left_ptr
