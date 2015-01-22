@@ -1,0 +1,29 @@
+;; -*- mode: emacs-lisp -*-
+
+(source gnu)
+(source melpa)
+
+(depends-on "cmake-mode")
+(depends-on "company")
+(depends-on "company-c-headers")
+(depends-on "ede-compdb")
+(depends-on "expand-region")
+(depends-on "flx-ido")
+(depends-on "flycheck")
+(depends-on "google-c-style")
+(depends-on "goto-last-change")
+(depends-on "htmlize")
+(depends-on "ibuffer-vc")
+(depends-on "iedit")
+(depends-on "magit")
+(depends-on "markdown-mode")
+(depends-on "projectile")
+(depends-on "session")
+(depends-on "smartparens")
+(depends-on "ssh-config-mode")
+
+(source org)
+
+;(depends-on "org")
+; Use this instead (see https://github.com/cask/cask/issues/119)
+(depends-on "org-plus-contrib")
