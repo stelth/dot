@@ -135,9 +135,9 @@
 (require 'dtrt-indent)
 (dtrt-indent-mode 1)
 
-;; Package: ws-butler
-(require 'ws-butler)
-(add-hook 'prog-mode-hook 'ws-butler-mode)
+; ;; Package: ws-butler
+; (require 'ws-butler)
+; (add-hook 'prog-mode-hook 'ws-butler-mode)
 
 ;; Package: yasnippet
 (require 'yasnippet)
