@@ -1,7 +1,7 @@
 #!/bin/bash
 
 /usr/bin/numlockx on
-eval "$(/usr/bin/ssh-agent -s)"
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 /usr/bin/ssh-add
 /usr/bin/urxvtd -q -f -o
 /usr/bin/unclutter -noevents &
