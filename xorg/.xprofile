@@ -2,6 +2,7 @@
 
 /usr/bin/numlockx on
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+export PATH=/home/coxj/.cask/bin:${PATH}
 /usr/bin/ssh-add
 /usr/bin/urxvtd -q -f -o
 /usr/bin/unclutter -noevents &
