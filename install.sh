@@ -29,16 +29,6 @@ check_environment() {
 }
 check_environment
 
-symlink_dotfiles() {
-	for dst in `cat packages`; do
-		nm=${dst##*/}
-		echo -n "** Symlinking module: ${nm}"
-		output_on_error stow $nm
-		echo " ... Done"
-	done
-}
-symlink_dotfiles
-
 clone_git_repo() {
 	path=$1
 	repo=$2
@@ -58,6 +48,16 @@ clone_git_repo() {
 
 clone_git_repo "zsh/.zprezto" "https://github.com/sorin-ionescu/prezto.git"
 clone_git_repo "emacs/.emacs.d/extern/cask" "https://github.com/cask/cask"
+
+symlink_dotfiles() {
+	for dst in `cat packages`; do
+		nm=${dst##*/}
+		echo -n "** Symlinking module: ${nm}"
+		output_on_error stow $nm
+		echo " ... Done"
+	done
+}
+symlink_dotfiles
 
 install_vim() {
 	if [ -L ~/.vim ]; then
