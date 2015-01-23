@@ -55,10 +55,7 @@
 ;;
 (load custom-file t)
 
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(set-cursor-color "#0A9DFF")
-(provide 'init-themes)
-(load-theme 'badwolf t)
+(load-theme 'zenburn)
 
 ;; Emacs server
 (require 'server)

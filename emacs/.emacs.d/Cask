@@ -21,6 +21,7 @@
 (depends-on "session")
 (depends-on "smartparens")
 (depends-on "ssh-config-mode")
+(depends-on "zenburn-theme")
 
 (source org)
 
