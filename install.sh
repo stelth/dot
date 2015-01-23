@@ -82,17 +82,17 @@ build_lib ".emacs.d/extern/cedet"
 build_lib ".emacs.d/extern/cedet/contrib"
 
 run_cask() {
-	echo -n "** Updating cask"
+	echo -n "** Upgrading cask"
 	(
 	cd "$HOME/.emacs.d"
 	output_on_error $HOME/.emacs.d/extern/cask/bin/cask upgrade
 	) || exit 1
 	echo " ... Done"
 
-	echo -n "** Updating cask packages"
+	echo -n "** Installing cask packages"
 	(
 	cd "$HOME/.emacs.d"
-	output_on_error $HOME/.emacs.d/extern/cask/bin/cask update
+	output_on_error $HOME/.emacs.d/extern/cask/bin/cask install
 	) || exit 1
 	echo " ... Done"
 }
