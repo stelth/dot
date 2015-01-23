@@ -72,15 +72,15 @@ build_lib() {
 	echo -n "** Building: $1"
 
 	(
-	cd $1
+	cd "$HOME/$1"
 	output_on_error make
 	) || exit 1
 	echo " ... Done"
 
 }
 
-build_lib "emacs/.emacs.d/extern/cedet"
-build_lib "emacs/.emacs.d/extern/cedet/contrib"
+build_lib ".emacs.d/extern/cedet"
+build_lib " .emacs.d/extern/cedet/contrib"
 
 run_cask() {
 	echo -n "** Updating cask"
