@@ -30,11 +30,11 @@ check_environment() {
 check_environment
 
 symlink_dotfiles() {
-	echo "** Setting up symlinks to dotfiles in: "
-
 	for dst in `cat packages`; do
 		nm=${dst##*/}
+		echo -n "** Symlinking module: ${nm}"
 		output_on_error stow $nm
+		echo " ... Done"
 	done
 }
 symlink_dotfiles
