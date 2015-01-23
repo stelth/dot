@@ -3,8 +3,7 @@
 " Color scheme stuffs
 set background=dark
 set t_co=256
-colorscheme badwolf
-let g:badwolf_darkgutter = 1
+colorscheme zenburn
 
 set cursorline cursorcolumn "Highlight cursor with crosshair
 set hlsearch "Highlight search
