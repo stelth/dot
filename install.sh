@@ -20,7 +20,7 @@ clone_git_repo() {
 		dir="${path%/*}"
 		mkdir -p dir
 		cd $dir
-		git clone -q ${repo} ${path##*/}
+		output_on_error git clone  --recursive ${repo} ${path##*/}
 		)
 
 		echo " ... Done"
