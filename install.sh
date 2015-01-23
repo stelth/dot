@@ -62,7 +62,7 @@ clone_git_repo "emacs/.emacs.d/extern/cask" "https://github.com/cask/cask"
 install_vim() {
 	if [ -L ~/.vim ]; then
 		echo "** Installing Vim Plugins"
-		output_on_error vim -u vim/.vim/plugins.vim -c 'PlugInstall' -c '
+		output_on_error vim -u vim/.vim/plugins.vim +PlugInstall +qall
 		echo " ... Done"
 	fi
 }
