@@ -1,14 +1,43 @@
 #!/bin/bash
 
+shopt -s nocasematch nullglob
+
+dotfiles=${0%/*}
+dotfiles_abs=$(cd $dotfiles && pwd -L)
+
 output_on_error() {
-	log=$(/usr/bin/mktemp ${0##*/}_log.XXXXXXXX) || exit 1
+	log=$(mktemp ${0##*/}_log.XXXXXXXX) || exit 1
 	trap 'rm "$log"' EXIT INT QUIT TERM
 
 	$* >$log 2>$log || {
-	echo -n "ERROR:"
-	[[ -f $log ]] && cat $log
+		echo -n "ERROR:"
+		[[ -f $log ]] && cat $log
+	}
 }
+
+check_environment() {
+	echo "** Checking environment"
+
+	required_exes=(git make stow)
+
+	for e in ${required_exes[@]}; do
+		hash $e || {
+			echo "!! Missing: $e"
+			exit 1
+		}
+	done
 }
+check_environment
+
+symlink_dotfiles() {
+	echo "** Setting up symlinks to dotfiles in: "
+
+	for dst in `cat packages`; do
+		nm=${dst##*/}
+		output_on_error stow $nm
+	done
+}
+symlink_dotfiles
 
 clone_git_repo() {
 	path=$1
