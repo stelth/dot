@@ -73,20 +73,27 @@ build_lib() {
 
 	(
 	cd "$HOME/$1"
-	output_on_error make
+	output_on_error make EMACS=/usr/bin/emacs
 	) || exit 1
 	echo " ... Done"
 
 }
 
 build_lib ".emacs.d/extern/cedet"
-build_lib " .emacs.d/extern/cedet/contrib"
+build_lib ".emacs.d/extern/cedet/contrib"
 
 run_cask() {
 	echo -n "** Updating cask"
 	(
 	cd "emacs/.emacs.d"
 	output_on_error extern/cask/bin/cask upgrade
+	) || exit 1
+	echo " ... Done"
+
+	echo -n "** Updating cask packages"
+	(
+	cd "emacs/.emacs.d"
+	output_on_error extern/cask/bin/cask update
 	) || exit 1
 	echo " ... Done"
 
