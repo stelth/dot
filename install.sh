@@ -68,30 +68,6 @@ install_vim() {
 }
 install_vim
 
-run_cask() {
-	echo -n "** Updating cask"
-	(
-	cd "emacs/.emacs.d"
-	output_on_error ./extern/cask/bin/cask upgrade
-	) || exit 1
-	echo " ... Done"
-
-	echo -n "** Updating cask packages"
-	(
-	cd "emacs/.emacs.d"
-	output_on_error ./extern/cask/bin/cask update
-	) || exit 1
-	echo " ... Done"
-
-	echo -n "** Installing cask packages"
-	(
-	cd "emacs/.emacs.d"
-	output_on_error ./extern/cask/bin/cask install
-	) || exit 1
-	echo " ... Done"
-}
-run_cask
-
 build_lib() {
 	echo -n "** Building: $1"
 
@@ -105,4 +81,19 @@ build_lib() {
 build_lib ".emacs.d/extern/cedet"
 build_lib ".emacs.d/extern/cedet/contrib"
 
+run_cask() {
+	echo -n "** Updating cask"
+	(
+	cd "$HOME/.emacs.d"
+	output_on_error $HOME/.emacs.d/extern/cask/bin/cask upgrade
+	) || exit 1
+	echo " ... Done"
+
+	echo -n "** Updating cask packages"
+	(
+	cd "$HOME/.emacs.d"
+	output_on_error $HOME/.emacs.d/extern/cask/bin/cask update
+	) || exit 1
+	echo " ... Done"
+}
 run_cask
