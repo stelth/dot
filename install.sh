@@ -1,40 +1,70 @@
-#!/bin/zsh
+#!/bin/bash
 
 output_on_error() {
-	log=$(mktemp ${0##*/}_log.XXXXXXXX) || exit 1
+	log=$(/usr/bin/mktemp ${0##*/}_log.XXXXXXXX) || exit 1
 	trap 'rm "$log"' EXIT INT QUIT TERM
 
 	$* >$log 2>$log || {
-		echo "ERROR:"
-		[[ -f $log ]] && cat $log
-	}
+	echo -n "ERROR:"
+	[[ -f $log ]] && cat $log
+}
 }
 
+clone_git_repo() {
+	path=$1
+	repo=$2
 
+	if [[ ! -d "$path" ]]; then
+		echo -n "** Clone git repo: $path"
+		(
+		dir="${path%/*}"
+		mkdir -p dir
+		cd $dir
+		git clone -q ${repo} ${path##*/}
+		)
 
-ZPREZTO_PATH="zsh/.zprezto"
+		echo " ... Done"
+	fi
+}
 
-vim +PlugInstall +qall
+clone_git_repo "zsh/.zprezto" "https://github.com/sorin-ionescu/prezto.git"
+clone_git_repo "emacs/.emacs.d/extern/cask" "https://github.com/cask/cask"
 
-if [ ! -d "$ZPREZTO_PATH" ]; then
-	git clone --recursive https://github.com/sorin-ionescu/prezto.git ${ZPREZTO_PATH}
-fi
+install_vim() {
+	echo "** Installing Vim Plugins"
+	output_on_error vim +PlugInstall +qall
+	echo " ... Done"
+}
+install_vim
 
-CASK_PATH="emacs/.emacs.d/extern/cask"
+build_lib() {
+	echo -n "** Building: $1"
 
-if [ ! -d "$CASK_PATH" ]; then
-	git clone --recursive https://github.com/cask/cask ${CASK_PATH}
-	${CASK_PATH}/go
-fi
-
-CEDET_PATH="emacs/.emacs.d/extern/cedet"
-(
-	cd ${CEDET_PATH}
+	(
+	cd $1
 	output_on_error make
-)
+	) || exit 1
+	echo " ... Done"
 
-CEDET_CONTRIB_PATH="${CEDET_PATH}/contrib"
-(
-	cd ${CEDET_CONTRIB_PATH}
-	output_on_error make
-)
+}
+
+build_lib "emacs/.emacs.d/extern/cedet"
+build_lib "emacs/.emacs.d/extern/cedet/contrib"
+
+run_cask() {
+	echo -n "** Updating cask"
+	(
+	cd "emacs/.emacs.d"
+	output_on_error extern/cask/bin/cask upgrade
+	) || exit 1
+	echo " ... Done"
+
+	echo -n "** Installing cask packages"
+	(
+	cd "emacs/.emacs.d"
+	output_on_error extern/cask/bin/cask install
+	) || exit 1
+	echo " ... Done"
+}
+
+run_cask
