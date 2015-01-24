@@ -32,6 +32,7 @@
 (require 'init/org)
 (require 'init/projectile)
 (require 'init/ido)
+(require 'init/helm-config)
 
 ;; Setup key bindings
 (require 'init/key-bindings)
@@ -56,11 +57,6 @@
 (load custom-file t)
 
 (load-theme 'zenburn)
-
-;; Emacs server
-(require 'server)
-(unless (server-running-p)
-  (server-start))
 
 ;; Local Variables:
 ;; flycheck-disabled-checkers: (emacs-lisp-checkdoc)

@@ -1,8 +1,9 @@
+
 ;;
-;; C/C++ Stuff
+;; c/c++ stuff
 ;;
 
-;; Set up our own c++ extension mappings for ff-other-file support
+;; set up our own c++ extension mappings for ff-other-file support
 (defvar my-cpp-other-file-alist
   '(("\\.cpp\\'" (".hpp" ".ipp"))
     ("\\.ipp\\'" (".hpp" ".cpp"))
@@ -17,11 +18,12 @@
 (setq-default ff-other-file-alist 'my-cpp-other-file-alist)
 
 (defun my-c-initialization-hook ()
+
   (subword-mode 1)
 
   ;; Show hard tabs
   ;; TODO: Use whitespace mode from Emacs 24
-  ;; (show-ws-hightlight-tabs)
+  ;;(show-ws-highlight-tabs)
 
   ;; (setq ff-ignore-include t)
   (define-key c-mode-base-map [(meta o)] 'projectile-find-other-file)
@@ -35,9 +37,10 @@
 (add-hook 'c-initialization-hook 'my-c-initialization-hook)
 
 (defun my-c-mode-common-hook ()
-  ;; (c-toggle-auto-newline t)
-  ;; (semantic-tag-folding-mode 1)
-  ;; (setq show-trailing-whitespace t)
+
+  ;(c-toggle-auto-newline 1)
+  ;(semantic-tag-folding-mode 1)
+  ;(setq show-trailing-whitespace t)
   )
 (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
 (add-hook 'c-mode-common-hook 'google-set-c-style)

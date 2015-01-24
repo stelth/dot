@@ -16,7 +16,7 @@
 (add-to-list 'auto-mode-alist '("\\.xml$"   . nxml-mode))
 (add-to-list 'auto-mode-alist '("\\.xsl$"   . nxml-mode))
 (add-to-list 'auto-mode-alist '("\\.xsd$"   . nxml-mode))
-					;(add-to-list 'auto-mode-alist '("\\.php[34]?$"   . nxml-mode))
+;(add-to-list 'auto-mode-alist '("\\.php[34]?$"   . nxml-mode))
 
 ;; Shell script
 (add-to-list 'auto-mode-alist '("\\.zsh$" . shell-script-mode))
@@ -28,7 +28,7 @@
 
 ;; Relax NG Compact
 (autoload 'rnc-mode "rnc-mode")
-(setq auto-mode-alist
+(setq auto-mode-alist       
       (cons '("\\.rnc\\'" . rnc-mode) auto-mode-alist))
 
 ;; SSH config files
@@ -40,14 +40,14 @@
 ;; Markdown files
 (autoload 'markdown-mode "markdown-mode"
   "Major mode for editing Markdown files" t)
-					;(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+;(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
 
 ;; CSS mode
 ;; (autoload 'css-mode "css-mode")
-;; (setq auto-mode-alist
+;; (setq auto-mode-alist       
 ;;       (cons '("\\.css\\'" . css-mode) auto-mode-alist))
 
 ;; Javascript mode for .js files

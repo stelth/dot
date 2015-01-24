@@ -5,9 +5,10 @@
 ;; use ibuffer-vc to sort buffers by VC status
 (eval-after-load 'ibuffer
   '(add-hook 'ibuffer-hook
-	     (lambda ()
-	       (ibuffer-vc-set-filter-groups-by-vc-root)
-	       (unless (eq ibuffer-sorting-mode 'alphabetic)
-		 (ibuffer-do-sort-by-alphabetic)))))
+            (lambda ()
+              (ibuffer-vc-set-filter-groups-by-vc-root)
+              (unless (eq ibuffer-sorting-mode 'alphabetic)
+                (ibuffer-do-sort-by-alphabetic)))))
 
 (provide 'init/ibuffer)
+
