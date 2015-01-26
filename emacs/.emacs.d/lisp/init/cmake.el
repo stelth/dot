@@ -1,4 +1,4 @@
-;; Cmake mode for CMake*.txt files
+;; CMake mode for CMake*.txt files
 (defun my-cmake-hook ()
   (setq cmake-tab-width 4)
   (subword-mode 1)

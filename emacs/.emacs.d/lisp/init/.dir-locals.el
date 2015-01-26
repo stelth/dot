@@ -1,4 +1,4 @@
-;;; Directory local variables
+;;; Directory Local Variables
 ;;; See Info node `(emacs) Directory Variables' for more information.
 
 ((emacs-lisp-mode

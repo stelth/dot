@@ -2,8 +2,9 @@
 (require 'flymake)
 (setq flymake-allowed-file-name-masks
       (cons '("\\.[ch]\\(pp\\)?$" ede-compdb-flymake-init)
-	    flymake-allowed-file-name-masks))
+            flymake-allowed-file-name-masks))
 
+;; This makes emacs on Mac sad...
 (setq flymake-gui-warnings-enabled nil)
 
 ;; Enable flymake

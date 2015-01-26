@@ -1,26 +1,27 @@
 ; Allow pasting selection outside of Emacs
 (setq x-select-enable-clipboard t)
 
-					; Auto refresh buffers
+; Auto refresh buffers
 (global-auto-revert-mode 1)
 
-					; Also auto refresh dired, but be quiet about it
+; Also auto refresh dired, but be quiet about it
 (setq global-auto-revert-non-file-buffers t)
 (setq auto-revert-verbose nil)
 
-					; Show keystrokes in progress (TODO: WTF?)
+; Show keystrokes in progress (TODO: WTF?)
 (setq echo-keystrokes 0.1)
 
-					; Move files to trash when deleting
+; Move files to trash when deleting
 (setq delete-by-moving-to-trash t)
 
 ;; Real emacs knights don't use shift to mark things
-					;(setq shift-select-mode nil)
+;(setq shift-select-mode nil)
 
-					; I am a wimp
-(cua-mode t)
+;; Disable auto save and backup
+(setq backup-inhibited t)
+(setq auto-save-default nil)
 
-					; Answering just 'y' or 'n' will do
+; Answering just 'y' or 'n' will do
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; UTF-8 please
@@ -36,34 +37,34 @@
 ;; (put 'transient-mark-mode 'permanent-local t)
 ;; (setq-default transient-mark-mode t)
 
-					; Remove text in active region if inserting text
+; Remove text in active region if inserting text
 (delete-selection-mode 1)
 
-					; Always display line and column numbers
+; Always display line and column numbers
 (setq line-number-mode t)
 (setq column-number-mode t)
 
-					; Screens are wide enough these days
+; Screens are wide enough these days
 (setq-default fill-column 100)
 
-					; Save a list of recent files visited. (open recent file with C-x f)
+; Save a list of recent files visited. (open recent file with C-x f)
 (recentf-mode 1)
 (setq recentf-max-saved-items 100) ;; just 20 is too recent
 
 ;; ;; Undo/redo window configuration with C-c <left>/<right>
 ;; (winner-mode 1)
 
-					; Never insert tabs
+; Never insert tabs
 (setq-default indent-tabs-mode nil)
 
-					; Show me empty lines after buffer end
+; Show me empty lines after buffer end
 (setq-default indicate-empty-lines t)
 
 ;; enable some really cool extensions like C-x C-j(dired-jump)
 (require 'dired-x)
 
 ;; Don't break lines for me, please
-					;(setq-default truncate-lines t)
+;(setq-default truncate-lines t)
 
 ;; ;; Keep cursor away from edges when scrolling up/down
 ;; (require 'smooth-scrolling)
@@ -78,9 +79,9 @@
 
 ;; Add parts of each file's directory to the buffer name if not unique
 (require 'uniquify)
-(setq
- uniquify-buffer-name-style 'post-forward
- uniquify-separator ":")
+(setq 
+  uniquify-buffer-name-style 'post-forward
+  uniquify-separator ":")
 
 ;; Run at full power please
 (put 'downcase-region 'disabled nil)

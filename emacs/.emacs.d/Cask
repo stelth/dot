@@ -22,6 +22,9 @@
 (depends-on "smartparens")
 (depends-on "ssh-config-mode")
 (depends-on "zenburn-theme")
+(depends-on "helm")
+(depends-on "helm-swoop")
+(depends-on "helm-gtags")
 
 (source org)
 
