@@ -1,4 +1,4 @@
-source ~/.mutt/mutt-colors-badwolf.muttrc
+source ~/.mutt/mutt-colors-zenburn.muttrc
 
 # Name Info
 set realname="Jason Cox"
