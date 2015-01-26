@@ -7,7 +7,7 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 /usr/bin/unclutter -noevents &
 /usr/bin/xsetroot -cursor_name left_ptr
 /usr/bin/xrdb -merge ~/.Xresources
-/usr/bin/setxkbmap -option "ctrl:swapcaps"
+/usr/bin/setxkbmap -option "caps:swapescape"
 /usr/bin/feh --bg-scale ~/.wallpaper.jpg
 
 /usr/bin/i3
