@@ -47,7 +47,6 @@ clone_git_repo() {
 }
 
 clone_git_repo "zsh/.zprezto" "https://github.com/sorin-ionescu/prezto.git"
-clone_git_repo "emacs/.emacs.d/extern/cask" "https://github.com/cask/cask"
 
 symlink_dotfiles() {
 	for dst in `cat packages`; do
@@ -67,33 +66,3 @@ install_vim() {
 	fi
 }
 install_vim
-
-build_lib() {
-	echo -n "** Building: $1"
-
-	(
-	cd "$HOME/$1"
-	output_on_error make EMACS=/usr/bin/emacs
-	) || exit 1
-	echo " ... Done"
-
-}
-build_lib ".emacs.d/extern/cedet"
-build_lib ".emacs.d/extern/cedet/contrib"
-
-run_cask() {
-	echo -n "** Upgrading cask"
-	(
-	cd "$HOME/.emacs.d"
-	output_on_error $HOME/.emacs.d/extern/cask/bin/cask upgrade
-	) || exit 1
-	echo " ... Done"
-
-	echo -n "** Installing cask packages"
-	(
-	cd "$HOME/.emacs.d"
-	output_on_error $HOME/.emacs.d/extern/cask/bin/cask install
-	) || exit 1
-	echo " ... Done"
-}
-run_cask
