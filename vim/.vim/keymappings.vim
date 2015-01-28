@@ -11,4 +11,4 @@ cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
 
 " format source code
-nnoremap <silent> <F5> :%!astyle<CR>
+nnoremap <silent> <F5> :%!clang-format<CR>
