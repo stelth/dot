@@ -141,6 +141,7 @@ bindsym $mod+Shift+R restart
 bindsym $mod+Control+Shift+E exit
 
 bar {
+	tray_output none
 	status_command i3status
 }
 
