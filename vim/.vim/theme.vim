@@ -14,6 +14,7 @@ set nolazyredraw "Don't redraw while executing macros
 set showmatch "Show matching braces when text indicator is over them
 " Don't highlight tabs/spaces
 set list lcs=tab:\|\ 
+set colorcolumn=80
 
 set cpoptions+=$ "$ to delimit what is being changed
 

@@ -18,3 +18,6 @@ SpaceBeforeParens: Never
 PointerAlignment: Right
 AllowShortLoopsOnASingleLine: false
 ColumnLimit: 80
+AccessModifierOffset: -8
+BinPackParameters: false
+ConstructorInitializerAllOnOneLineOrOnePerLine: true
