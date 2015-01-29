@@ -34,7 +34,6 @@ endfunction
 Plug 'Valloric/YouCompleteMe', { 'do' : function('BuildYCM') }
 Plug 'ludovicchabant/vim-gutentags', { 'for' : ['cpp', 'c'] }
 Plug 'jnurmine/Zenburn'
-Plug 'farseer90718/vim-taskwarrior'
 Plug 'bling/vim-airline'
 
 call plug#end()
