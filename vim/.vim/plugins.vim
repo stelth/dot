@@ -36,4 +36,6 @@ Plug 'ludovicchabant/vim-gutentags', { 'for' : ['cpp', 'c'] }
 Plug 'jnurmine/Zenburn'
 Plug 'bling/vim-airline'
 
+Plug 'vim-scripts/Conque-GDB'
+
 call plug#end()
