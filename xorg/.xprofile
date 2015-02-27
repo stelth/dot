@@ -1,8 +1,6 @@
 #!/bin/bash
 
 /usr/bin/numlockx on
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
-/usr/bin/ssh-add
 /usr/bin/urxvtd -q -f -o
 /usr/bin/unclutter -noevents &
 /usr/bin/xsetroot -cursor_name left_ptr
