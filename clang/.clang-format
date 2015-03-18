@@ -12,7 +12,7 @@ AllowShortBlocksOnASingleLine: false
 AllowShortFunctionsOnASingleLine: false
 AlwaysBreakTemplateDeclarations: true
 MaxEmptyLinesToKeep: 1
-NamespaceIndentation: Inner
+NamespaceIndentation: None
 SpaceBeforeAssignmentOperators: true
 SpaceBeforeParens: Never
 PointerAlignment: Right
@@ -21,3 +21,12 @@ ColumnLimit: 80
 AccessModifierOffset: -8
 BinPackParameters: false
 ConstructorInitializerAllOnOneLineOrOnePerLine: true
+AllowAllParametersOfDeclarationOnNextLine: true
+AlwaysBreakTemplateDeclarations: true
+SpacesInContainerLiterals: true
+Standard: Cpp11
+AlwaysBreakBeforeMultilineStrings: true
+PenaltyReturnTypeOnItsOwnLine: 100000
+PenaltyExcessCharacter: 100
+PenaltyBreakString: 100000
+KeepEmptyLinesAtTheStartOfBlocks: true
