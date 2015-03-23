@@ -37,5 +37,6 @@ Plug 'jnurmine/Zenburn'
 Plug 'bling/vim-airline'
 Plug 'vim-scripts/Conque-GDB'
 Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'tmux-plugins/vim-tmux-focus-events'
 
 call plug#end()
