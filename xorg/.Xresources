@@ -35,11 +35,12 @@ Xft.antialias: 1
 Xft.dpi: 96
 Xft.rgba: rgb
 
+URxvt.buffered: true
 URxvt*scrollBar:false
 URxvt*font:xft:Bitstream Vera Sans Mono:pixelsize=9
-URxvt.perl-ext-common:default,matcher
-URxvt.url-lanucher:/usr/bin/chromium
-URxvt.matcher.button:1
+URxvt.perl-ext-common: default,matcher
+URxvt.urlLauncher: ~/bin/vimprobtab.sh
+URxvt.matcher.button: 1
 
 Xcursor.theme: Ardoise_opaque
 Xcursor.size: 24

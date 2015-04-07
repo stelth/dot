@@ -10,6 +10,10 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+if [ ! -f /tmp/tabbed.xid ]; then
+	tabbed -d > /tmp/tabbed.xid
+fi
+
 # Customize to your needs...
 alias c='clear'
 alias su='su -'

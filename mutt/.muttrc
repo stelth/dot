@@ -1,140 +1,135 @@
-source ~/.mutt/mutt-colors-zenburn.muttrc
+# directories and commands
+set alias_file		= ~/.mutt/mutt-alias
+set header_cache	= ~/.mutt-local/hcache
+set message_cachedir	= ~/.mutt-local/messagecache
+set certificate_file	= ~/.mutt-local/certificates
+set mailcap_path 	= ~/.mutt/mailcap
+set tmpdir		= ~/.mutt-local/tmp
+set editor		= "/usr/bin/vim -c 'set tw=80 ft=mail' -c 'set wrap' -c 'set nocp' -c '+/^--.$/-1'"
+set ispell		= "/usr/bin/aspell -e -c"
 
-# Name Info
-set realname="Jason Cox"
-set from=jasonc@teamplayinc.com
+# main options
+set mbox_type		= Maildir
+set folder		= ~/mail/
+set trash		= ~/mail/Trash
+set spoolfile		= +/Inbox
+set timeout		= 3
+set mail_check		= 0
+set sort_alias		= alias
+set reverse_alias
+unset move
+set delete
+unset confirmappend
+set quit
+unset mark_old
+set pipe_decode
+set thorough_search
+set text_flowed		= yes
+unset help
+set sendmail		= "/usr/bin/msmtp"
 
-# SMTP settings
-set sendmail="/usr/bin/msmtp"
-set sendmail_wait = 0
-set envelope_from=yes
+# index options
+set sort=threads
+set sort_aux=reverse-last-date-received
+set uncollapse_jump
+set sort_re
+set reply_regexp	= "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
 
+# pager options
+set pager_index_lines	= 10
+set pager_context	= 5
+set pager_stop
+set menu_scroll
+set smart_wrap
+set tilde
+unset markers
+set quote_regexp	= "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
+set status_on_top
+auto_view text/html
+alternative_order text/plain text/enriched text/html
+
+# formats
+set date_format		= "%d/%m/%y at %I:%M%P"
+set index_format	= "%3C  %S   %D  •  %-25.25L %s %> %c"
+set pager_format	= "Reading message %C of %m %> %lL [%P]"
+set folder_format	= "%2C %t %N %8s %d %f"
+set status_format	= " %?M?%M/?%m Mails %?n?%n new, ?%?u?%u unread, ?%?p?%p drafts, ?%?t?%t +tagged, ?%?d?%d deleted, ?[%f %l]  %?b?%b unread messages. ?%>  %V  [%P]"
+set alias_format	= "%4n %t %-20a  %r"
+
+# composing mail
+set realname		= "Jason Cox"
+set from		= jasonc@teamplayinc.com
+set envelope_from
 set sig_dashes
+set edit_headers
 set fast_reply
+set sendmail_wait	= -1
 set askcc
+set askbcc
 set fcc_attach
-set mime_forward=yes
-set mime_forward_rest=yes
-set forward_format = "Fwd: %s"
+set mime_forward
+set mime_forward_rest
+set forward_format	= "Fwd: %s"
 set forward_decode
-set attribution = "On %d, %n wrote:"
+set attribution		= "On %d, %n wrote:"
 set reply_to
 set reverse_name
 set include
 set forward_quote
+set print_command	= "muttprint"
 
-set wait_key = no
+# headers to show
+ignore *
+unignore from: to: cc: date: subject
+hdr_order from: to: cc: date: subject:
 
-set edit_headers=yes
-set folder=~/mail/
-set record=+Sent
-set postponed=+Drafts
-
-set mbox_type=Maildir
-set timeout = 3
-set mail_check = 0
-set spoolfile=+/Inbox
-set header_cache=~/.hcache
-set message_cachedir = ~/.messagecache
-
-set trash = ~/mail/Trash
-
+# boxes
 mailboxes =Inbox
 mailboxes =Sent
 mailboxes =Drafts
 mailboxes =Junk
 mailboxes =Trash
 
-auto_view text/html
+# always sourced
+source $alias_file
+source ~/.mutt/mutt-colors-zenburn.muttrc
 
-set mailcap_path = ~/.mutt/mailcap
-
-unset move
-set delete
-set include = yes
-unset mark_old
-set pipe_decode
-set thorough_search
-
-ignore *
-unignore from: to: cc: date: subject:
-unhdr_order *
-hdr_order from: to: cc: date: subject:
-
-set pager_index_lines = 10
-set pager_context = 3
-set pager_stop
-set menu_scroll
-set tilde
-unset markers
-
-set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
-alternative_order text/plain text/enriched text/html
-
-set index_format="[%Z]  %D  %-20.20F  %s"
-set sort=threads
-set sort_browser=reverse-date
-set sort_aux=reverse-last-date-received
-set sort_re
-set editor="vim"
-set followup_to = yes
-set copy = yes
-set date_format = "%m/%d"
-macro index,pager F '<shell-escape>offlineimap<enter>'
-
-set uncollapse_jump
-set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
-
-bind index j next-entry
-bind index k previous-entry
-bind index l display-message
-bind index v collapse-thread
-bind index gg first-entry
-bind index G last-entry
-bind index R group-reply
-bind index <tab> sync-mailbox
-bind index <space> collapse-thread
-bind index N search-opposite
-
-bind index,pager <down> sidebar-next
-bind index,pager <up> sidebar-prev
-bind index,pager <right> sidebar-open
-
-macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
-macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
-macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
-macro index a "<limit>all\n" "show all messages (undo limit)"
-macro index d "s=Trash\n" "move message to trash"
-
-bind pager k previous-line
-bind pager j next-line
-bind pager gg top
-bind pager G bottom
-bind pager R group-reply
-bind pager N search-opposite
-
-macro pager d "s=Trash\n" "move message to trash"
-
-bind compose p postpone-message
-bind index p recall-message
-
-bind attach <return> view-mailcap
-
-bind browser l select-entry
-bind attach l view-attach
-
+# sidebar
 set sidebar_delim = '   |'
 set sidebar_visible = yes
 set sidebar_width = 24
 set sidebar_sort = yes
 
-set status_chars = " *%A"
-set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
 
-set alias_file=~/.mutt/mutt-alias
-source ~/.mutt/mutt-alias
-set query_command= "abook --mutt-query '%s'"
-macro index,pager A "<pipe-message>abook --add-email-quiet<return>" "Add the sender address to abook"
-macro generic,index,pager \ca "abook" "Launch abook"
+# these just give me headaches
+bind index,pager \# 	noop
+bind index i		noop
+
+# bindings
+bind pager q		exit
+bind pager /		search
+bind pager k		previous-line
+bind pager j		next-line
+bind pager gg		top
+bind pager G		bottom
+bind index gg		first-entry
+bind index G		last-entry
+bind pager K		previous-undeleted
+bind pager J		next-undeleted
+bind index K		previous-unread
+bind index J		next-unread
+bind index W		clear-flag
+bind index w		set-flag
+bind index,pager R	group-reply
+bind compose p		pgp-menu
+bind attach <return>	view-mailcap
+bind index,pager <down>	sidebar-next
+bind index,pager <up>	sidebar-prev
+bind index,pager <right>	sidebar-open
+
+# macros
+macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
+macro index,pager d "s=Trash\n" "move message to trash"
+macro index Z "<shell-escape>/usr/bin/offlineimap -q -u TTYUI<enter>" "sync IMAP"
 
 # vim: ft=muttrc
