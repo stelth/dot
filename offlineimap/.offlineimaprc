@@ -10,7 +10,7 @@ status_backend = sqlite
 
 [Repository JasonCox-Local]
 type = Maildir
-localfolders = ~/mail/
+localfolders = ~/.mail/
 nametrans = lambda folder: { 'Drafts': 'INBOX.Drafts',
 			     'Sent': 'INBOX.Sent',
 			     'Trash': 'INBOX.Trash',
