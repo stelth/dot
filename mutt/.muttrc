@@ -5,13 +5,13 @@ set message_cachedir	= ~/.mutt-local/messagecache
 set certificate_file	= ~/.mutt-local/certificates
 set mailcap_path 	= ~/.mutt/mailcap
 set tmpdir		= ~/.mutt-local/tmp
-set editor		= "/usr/bin/vim -c 'set tw=80 ft=mail' -c 'set wrap' -c 'set nocp' -c '+/^--.$/-1'"
+set editor              = "/usr/bin/vim -c 'set tw=80 ft=mail' -c 'set wrap' -c 'set nocp'"
 set ispell		= "/usr/bin/aspell -e -c"
 
 # main options
 set mbox_type		= Maildir
-set folder		= ~/mail/
-set trash		= ~/mail/Trash
+set folder		= ~/.mail/
+set trash		= ~/.mail/Trash
 set spoolfile		= +/Inbox
 set timeout		= 3
 set mail_check		= 0
@@ -33,7 +33,7 @@ set sort=threads
 set sort_aux=reverse-last-date-received
 set uncollapse_jump
 set sort_re
-set reply_regexp	= "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+set reply_regexp        = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
 
 # pager options
 set pager_index_lines	= 10
@@ -43,18 +43,18 @@ set menu_scroll
 set smart_wrap
 set tilde
 unset markers
-set quote_regexp	= "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
+set quote_regexp        = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
 set status_on_top
 auto_view text/html
 alternative_order text/plain text/enriched text/html
 
 # formats
-set date_format		= "%d/%m/%y at %I:%M%P"
-set index_format	= "%3C  %S   %D  •  %-25.25L %s %> %c"
-set pager_format	= "Reading message %C of %m %> %lL [%P]"
-set folder_format	= "%2C %t %N %8s %d %f"
-set status_format	= " %?M?%M/?%m Mails %?n?%n new, ?%?u?%u unread, ?%?p?%p drafts, ?%?t?%t +tagged, ?%?d?%d deleted, ?[%f %l]  %?b?%b unread messages. ?%>  %V  [%P]"
-set alias_format	= "%4n %t %-20a  %r"
+set date_format         = "%d/%m/%y at %I:%M%P"
+set index_format        = "%3C  %S   %D  •  %-25.25L %s %> %c"
+set pager_format        = "Reading message %C of %m %> %lL [%P]" # pager statusbar
+set folder_format       = "%2C %t %N %8s %d %f"                  # mailbox list view
+set status_format       = " %?M?%M/?%m Mails %?n?%n new, ?%?u?%u unread, ?%?p?%p drafts, ?%?t?%t +tagged, ?%?d?%d deleted, ?[%f %l]  %?b?%b unread messages. ?%>  %V  [%P]"
+set alias_format        = "%4n %t %-20a  %r"
 
 # composing mail
 set realname		= "Jason Cox"
