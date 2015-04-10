@@ -1,0 +1,16 @@
+[database]
+path=/home/coxj/.mail
+
+[user]
+name=Jason Cox
+primary_email=jasonc@teamplayinc.com
+
+[new]
+tags=new;
+ignore=
+
+[search]
+excluded_tags=deleted;spam;
+
+[maildir]
+synchronize_flags=true

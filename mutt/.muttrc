@@ -132,4 +132,15 @@ macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "ma
 macro index,pager d "s=Trash\n" "move message to trash"
 macro index Z "<shell-escape>/usr/bin/offlineimap -q -u TTYUI<enter>" "sync IMAP"
 
+# search with notmuch
+macro index <F8> \
+	"<enter-command>unset wait_key<enter><shell-escape>notmuch-mutt --prompt search<enter><change-folder-readonly>`echo ${XDG_CACHE_HOME:-$HOME/.cache}/notmuch/mutt/results`<enter>" \
+	"notmuch: search mail"
+macro index <F9> \
+	"<enter-command>unset wait_key<enter><enter-command>unignore message-id<enter><pipe-message>notmuch-mutt thread<enter><change-folder-readonly>`echo ${XDG_CACHE_HOME:-$HOME/.cache}/notmuch/mutt/results`<enter><enter-command>set wait_key<enter>" \
+	"search and reconstruct owning thread with notmuch"
+macro index <F6> \
+	"<enter-command>unset wait_key<enter><enter-command>unignore message-id<enter><pipe-message>notmuch-mutt -- tag +deleted<enter>" \
+	"tag messages as deleted with notmuch"
+
 # vim: ft=muttrc
