@@ -35,7 +35,6 @@ Plug 'Valloric/YouCompleteMe', { 'do' : function('BuildYCM') }
 Plug 'ludovicchabant/vim-gutentags', { 'for' : ['cpp', 'c'] }
 Plug 'jnurmine/Zenburn'
 Plug 'bling/vim-airline'
-Plug 'vim-scripts/Conque-GDB'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 
 call plug#end()
