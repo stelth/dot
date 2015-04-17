@@ -25,7 +25,7 @@ update_local
 update_vimplug() {
 	echo -n "** Updating vim plugins"
 	(
-	output_on_error vim -c 'PlugUpgrade' -c 'PlugUpdate' -c 'PlugClean' -c 'qall'
+	output_on_error vim -c 'PlugUpgrade' -c 'PlugUpdate' -c 'PlugClean!' -c 'qall'
 	) || exit 1
 	echo " ... Done"
 }
