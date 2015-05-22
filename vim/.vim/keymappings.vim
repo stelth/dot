@@ -12,9 +12,3 @@ cnoremap <C-N> <Down>
 
 " format source code
 nnoremap <silent> <F5> :%!clang-format<CR>
-
-" clear search highlight
-nnoremap <silent> <C-c> :nohlsearch<CR><C-c>
-
-" open tmux pane
-nnoremap <silent> <F7> :VimuxPromptCommand<CR>
