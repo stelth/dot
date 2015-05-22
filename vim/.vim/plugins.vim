@@ -36,5 +36,6 @@ Plug 'ludovicchabant/vim-gutentags', { 'for' : ['cpp', 'c'] }
 Plug 'jnurmine/Zenburn'
 Plug 'bling/vim-airline'
 Plug 'benmills/vimux'
+Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()

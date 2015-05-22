@@ -6,9 +6,9 @@ number_of_session=`tmux ls 2> /dev/null | wc -l | awk '{print $1}'`
 
 if [ $number_of_session = "0" ]; then
     if [ -z $1 ]; then
-        tmux new -s main
+        strace tmux new -s main 2> /dev/null
     else
-        tmux new -s "$1"
+        strace tmux new -s "$1" 2> /dev/null
     fi
 else
     if [ -z "$1" ]; then
@@ -25,6 +25,6 @@ else
                 exit
             fi
         done
-        tmux new -s "$1"
+        strace tmux new -s "$1" 2>/dev/null
     fi
 fi
