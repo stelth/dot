@@ -21,7 +21,7 @@ nametrans = lambda folder: { 'Drafts': 'INBOX.Drafts',
 [Repository JasonCox-Remote]
 type = IMAP
 maxconnections = 1
-remotehost = secure132.inmotionhosting.com
+remotehost = secure173.inmotionhosting.com
 ssl = yes
 cert_fingerprint = 7bd56256975db204fe1e9bee6e27f58d47e12824
 remoteuser = jasonc@teamplayinc.com
