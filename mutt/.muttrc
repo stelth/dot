@@ -13,6 +13,7 @@ set mbox_type		= Maildir
 set folder		= ~/.mail/
 set trash		= ~/.mail/Trash
 set spoolfile		= +/Inbox
+set record		= +/Sent
 set timeout		= 3
 set mail_check		= 0
 set sort_alias		= alias

@@ -25,3 +25,5 @@ set wrap "Wrap lines
 set hidden "Don't unload buffer when it is abandoned
 
 set clipboard=unnamedplus "Use system clipboard
+
+set spr "split right
