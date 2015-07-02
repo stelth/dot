@@ -37,7 +37,8 @@ zstyle ':prezto:load' pmodule \
   'tmux' \
   'syntax-highlighting' \
   'archive' \
-  'prompt'
+  'prompt' \
+  'emacs'
 
 #
 # Editor
