@@ -15,3 +15,7 @@ nnoremap <silent> <F5> :%!clang-format<CR>
 
 " run command in tmux pane
 nnoremap <silent> <F7> :VimuxPromptCommand<CR>
+
+map <ESC><ESC> :set hls!<CR>
+imap <ESC><ESC> :set hls!<CR>
+vmap <ESC><ESC> :set hls!<CR>
