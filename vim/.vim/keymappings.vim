@@ -17,5 +17,5 @@ nnoremap <silent> <F5> :%!clang-format<CR>
 nnoremap <silent> <F7> :VimuxPromptCommand<CR>
 
 map <BS> :set hls!<CR>
-imap <BS> :set hls!<CR>
+nmap <BS> :set hls!<CR>
 vmap <BS> :set hls!<CR>
