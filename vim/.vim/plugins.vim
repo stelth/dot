@@ -8,8 +8,8 @@ endif
 
 call plug#begin(expand('~/.vim/bundle/'))
 
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'Shougo/vimproc', { 'do' : 'make -f make_unix.mak' }
+
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/neomru.vim'
 Plug 'tpope/vim-fugitive'
