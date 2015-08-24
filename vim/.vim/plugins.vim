@@ -32,6 +32,7 @@ function! BuildYCM(info)
 endfunction
 
 Plug 'Valloric/YouCompleteMe', { 'do' : function('BuildYCM') }
+Plug 'Valloric/ListToggle'
 Plug 'ervandew/supertab'
 Plug 'ludovicchabant/vim-gutentags', { 'for' : ['cpp', 'c'] }
 Plug 'jnurmine/Zenburn'
