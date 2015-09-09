@@ -37,7 +37,7 @@ Xft.rgba: rgb
 
 URxvt.buffered: true
 URxvt*scrollBar:false
-URxvt*font:xft:Hack:pixelsize=9
+URxvt*font:xft:Hack:Regular:pixelsize=9
 URxvt.perl-ext-common: default,matcher
 URxvt.urlLauncher: ~/bin/vimprobtab.sh
 URxvt.matcher.button: 1
