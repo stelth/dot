@@ -136,7 +136,7 @@ bind pager \CO 		sidebar-open
 # macros
 macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
 macro index,pager d "s=Trash\n" "move message to trash"
-macro index Z "<shell-escape>/usr/bin/offlineimap -q -u TTYUI<enter>" "sync IMAP"
+macro index,pager Z "<shell-escape>/usr/bin/offlineimap -q -u TTYUI && notmuch new<enter>" "sync IMAP"
 
 macro index b '<enter-command>toggle sidebar_visible<enter><refresh>'
 macro pager b '<enter-command>toggle sidebar_visible<enter><redraw-screen>'
