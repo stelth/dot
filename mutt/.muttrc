@@ -1,3 +1,5 @@
+set user_agent=no
+
 # directories and commands
 set alias_file		= ~/.mutt/mutt-alias
 set header_cache	= ~/.mutt-local/hcache
@@ -124,24 +126,30 @@ bind index w		set-flag
 bind index,pager R	group-reply
 bind compose p		pgp-menu
 bind attach <return>	view-mailcap
-bind index,pager <down>	sidebar-next
-bind index,pager <up>	sidebar-prev
-bind index,pager <right>	sidebar-open
+bind index \CP 		sidebar-prev
+bind index \CN 		sidebar-next
+bind index \CO 		sidebar-open
+bind pager \CP 		sidebar-prev
+bind pager \CN 		sidebar-next
+bind pager \CO 		sidebar-open
 
 # macros
 macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
 macro index,pager d "s=Trash\n" "move message to trash"
 macro index Z "<shell-escape>/usr/bin/offlineimap -q -u TTYUI<enter>" "sync IMAP"
 
+macro index b '<enter-command>toggle sidebar_visible<enter><refresh>'
+macro pager b '<enter-command>toggle sidebar_visible<enter><redraw-screen>'
+
 # search with notmuch
 macro index <F8> \
-	"<enter-command>unset wait_key<enter><shell-escape>notmuch-mutt --prompt search<enter><change-folder-readonly>`echo ${XDG_CACHE_HOME:-$HOME/.cache}/notmuch/mutt/results`<enter>" \
+	"<enter-command>unset wait_key<enter><shell-escape>~/.mutt/notmuch-mutt.pl --prompt search<enter><change-folder-readonly>`echo ${XDG_CACHE_HOME:-$HOME/.cache}/notmuch/mutt/results`<enter>" \
 	"notmuch: search mail"
 macro index <F9> \
-	"<enter-command>unset wait_key<enter><enter-command>unignore message-id<enter><pipe-message>notmuch-mutt thread<enter><change-folder-readonly>`echo ${XDG_CACHE_HOME:-$HOME/.cache}/notmuch/mutt/results`<enter><enter-command>set wait_key<enter>" \
+	"<enter-command>unset wait_key<enter><enter-command>unignore message-id<enter><pipe-message>~/.mutt/notmuch-mutt.pl thread<enter><change-folder-readonly>`echo ${XDG_CACHE_HOME:-$HOME/.cache}/notmuch/mutt/results`<enter><enter-command>set wait_key<enter>" \
 	"search and reconstruct owning thread with notmuch"
 macro index <F6> \
-	"<enter-command>unset wait_key<enter><enter-command>unignore message-id<enter><pipe-message>notmuch-mutt -- tag +deleted<enter>" \
+	"<enter-command>unset wait_key<enter><enter-command>unignore message-id<enter><pipe-message>~/.mutt/notmuch-mutt.pl -- tag +deleted<enter>" \
 	"tag messages as deleted with notmuch"
 
 # vim: ft=muttrc
