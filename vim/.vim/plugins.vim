@@ -38,7 +38,6 @@ Plug 'ludovicchabant/vim-gutentags', { 'for' : ['cpp', 'c'] }
 Plug 'jnurmine/Zenburn'
 Plug 'bling/vim-airline'
 Plug 'benmills/vimux'
-Plug 'octol/vim-cpp-enhanced-highlight'
 
 Plug 'git@github.com:Stelth300/stealth-syntax.git'
 
