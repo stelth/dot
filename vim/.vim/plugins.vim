@@ -19,7 +19,6 @@ Plug 'Shougo/unite-outline'
 Plug 'tikhomirov/vim-glsl'
 Plug 'vhdirk/vim-cmake'
 Plug 'uarun/vim-protobuf', { 'for' : ['proto'] }
-Plug 'wikitopian/hardmode'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-sensible'
