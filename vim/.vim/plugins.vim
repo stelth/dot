@@ -35,7 +35,6 @@ Plug 'Valloric/ListToggle'
 Plug 'ervandew/supertab'
 Plug 'ludovicchabant/vim-gutentags', { 'for' : ['cpp', 'c'] }
 Plug 'jnurmine/Zenburn'
-Plug 'bling/vim-airline'
 Plug 'benmills/vimux'
 
 Plug 'git@github.com:Stelth300/stealth-syntax.git'
