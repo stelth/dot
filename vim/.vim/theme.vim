@@ -30,3 +30,5 @@ nnoremap <C-Down> <C-W>+<C-W>+
 " Resize vertical split windows
 nnoremap <C-Left> <C-W>><C-W>>
 nnoremap <C-Right> <C-W><<C-W><
+
+set statusline=%F%m%r%h%w\ [%l/%L,\ %v]\ [%p%%]\ %=[TYPE=%Y]\ [FMT=%{&ff}]\ %{\"[ENC=\".(&fenc==\"\"?&enc:&fenc).\"]\"}
