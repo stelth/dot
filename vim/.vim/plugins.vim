@@ -8,16 +8,9 @@ endif
 
 call plug#begin(expand('~/.vim/bundle/'))
 
-Plug 'Shougo/vimproc', { 'do' : 'make -f make_unix.mak' }
-
-Plug 'Shougo/unite.vim'
-Plug 'Shougo/neomru.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'Shougo/unite-outline'
-Plug 'tikhomirov/vim-glsl'
-Plug 'vhdirk/vim-cmake'
 Plug 'uarun/vim-protobuf', { 'for' : ['proto'] }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
@@ -31,11 +24,9 @@ function! BuildYCM(info)
 endfunction
 
 Plug 'Valloric/YouCompleteMe', { 'do' : function('BuildYCM') }
-Plug 'Valloric/ListToggle'
-Plug 'ervandew/supertab'
+" Plug 'ervandew/supertab'
 Plug 'ludovicchabant/vim-gutentags', { 'for' : ['cpp', 'c'] }
 Plug 'jnurmine/Zenburn'
-Plug 'benmills/vimux'
 
 Plug 'git@github.com:Stelth300/stealth-syntax.git'
 
