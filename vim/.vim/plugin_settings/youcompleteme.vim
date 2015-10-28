@@ -5,8 +5,8 @@ let g:ycm_use_ultisnips_completer = 1
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_autoclose_preview_window_after_completion = 1
 
-let g:ycm_key_list_select_completion = [ '<c-n>', '<Down>' ]
-let g:ycm_key_list_previous_completion = [ '<c-p>', '<Up>' ]
+let g:ycm_key_list_select_completion = []
+let g:ycm_key_list_previous_completion = []
 
 let g:Show_diagnostics_ui = 1 "default 1
 
