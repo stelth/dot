@@ -13,9 +13,6 @@ cnoremap <C-N> <Down>
 " format source code
 nnoremap <silent> <F5> :%!clang-format<CR>
 
-" run command in tmux pane
-nnoremap <silent> <F7> :VimuxPromptCommand<CR>
-
 map <BS> :set hls!<CR>
 nmap <BS> :set hls!<CR>
 vmap <BS> :set hls!<CR>
