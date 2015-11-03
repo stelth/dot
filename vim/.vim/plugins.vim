@@ -8,12 +8,11 @@ endif
 
 call plug#begin(expand('~/.vim/bundle/'))
 
-Plug 'tpope/vim-fugitive'
+Plug 'jreybert/vimagit'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'uarun/vim-protobuf', { 'for' : ['proto'] }
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-sensible'
 Plug 'mbbill/undotree'
 
