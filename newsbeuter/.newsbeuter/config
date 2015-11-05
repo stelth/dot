@@ -45,7 +45,7 @@ cache-file "~/.newsbeuter_local/cache.db"
 ## configuration option: cleanup-on-quit
 ## description: If yes, then the cache gets locked and superfluous feeds and items are removed, such as feeds that can't be found in the urls configuration file anymore.
 ## parameter syntax: [yes/no]
-# cleanup-on-quit yes
+cleanup-on-quit yes
 
 ## configuration option: confirm-exit
 ## description: If set to yes, then newsbeuter will ask for confirmation whether the user really wants to quit newsbeuter.
@@ -155,7 +155,7 @@ history-limit 0
 ## configuration option: max-items
 ## description: Set the number of articles to maximally keep per feed. If the number is set to 0, then all articles are kept.
 ## parameter syntax: <number>
-max-items 0
+max-items 100
 
 ## configuration option: notify-format
 ## description: Format string that is used for formatting notifications. See the chapter on format strings for more information.
