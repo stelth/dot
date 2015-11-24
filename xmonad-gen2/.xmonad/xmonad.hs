@@ -301,7 +301,7 @@ myStartupHook = do
 		spawn "/usr/bin/start-pulseaudio-x11"
 		spawn "xset s off"
 		spawn "xset -dpms"
-		spawn "~/bin/mapping"
+		-- spawn "~/bin/mapping"
 		spawn "xmodmap ~/.Xmodmap"
 		spawn "amixer sset Master unmute"
 		spawn "amixer sset Master 100%"
