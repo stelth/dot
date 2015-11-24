@@ -82,7 +82,9 @@ function getMappedOuter()
 
 function doMapping()
 {
-	echo "Doing Mapping ..."
+	if [ "${DEBUG}" == "1" ]; then
+		echo "Doing Mapping ..."
+	fi
 	xinput reattach ${TOUCH_ID1} ${INNER_ID}
 	xinput reattach ${TOUCH_ID2} ${OUTER_ID}
 	xinput --map-to-output ${TOUCH_ID2} ${OUTER_MONITOR}
