@@ -18,14 +18,13 @@ Plug 'mbbill/undotree'
 
 function! BuildYCM(info)
 	if a:info.status == 'installed' || a:info.status == 'updated' || a:info.force
-		silent !./install.sh --clang-completer --system-libclang --system-boost
+		silent !./install.py --clang-completer --system-libclang --system-boost
 	endif
 endfunction
 
 Plug 'Valloric/YouCompleteMe', { 'do' : function('BuildYCM') }
 Plug 'ludovicchabant/vim-gutentags', { 'for' : ['cpp', 'c'] }
 Plug 'jnurmine/Zenburn'
-
 Plug 'ctrlpvim/ctrlp.vim'
 
 Plug 'git@github.com:Stelth300/stealth-syntax.git'
