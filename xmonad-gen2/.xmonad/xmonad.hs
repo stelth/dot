@@ -307,7 +307,6 @@ myStartupHook = do
 		spawn "amixer sset Master 100%"
 		spawnOn (myWorkspaces!!1) "~/FunStopPhotos --rear"
 		spawnOn (myWorkspaces!!0) "~/FunStopPhotos"
-		spawn "~/bin/kill-rear"
 
 
 ------------------------------------------------------------------------
