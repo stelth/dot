@@ -149,5 +149,5 @@ bindsym $mod+Right move workspace to output right
 bindsym $mod+Left move workspace to output left
 
 # Shift focus between monitors
-bindsym $mod+e focus output left
-bindsym $mod+w focus output right
+bindsym $mod+w focus left
+bindsym $mod+e focus right
