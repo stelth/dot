@@ -29,7 +29,7 @@ set pipe_decode
 set thorough_search
 set text_flowed		= yes
 unset help
-set sendmail		= "/usr/bin/msmtp"
+set sendmail		= "/usr/bin/msmtp -a teamplay"
 
 # index options
 set sort=threads
