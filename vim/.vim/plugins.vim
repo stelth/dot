@@ -18,7 +18,7 @@ Plug 'mbbill/undotree'
 
 function! BuildYCM(info)
 	if a:info.status == 'installed' || a:info.status == 'updated' || a:info.force
-		silent !python2 ./install.py --clang-completer --system-libclang --system-boost
+		silent !python2 ./install.py --clang-completer
 	endif
 endfunction
 
