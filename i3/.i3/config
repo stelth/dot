@@ -80,7 +80,7 @@ bindsym $mod+Shift+i focus child
 
 # switch to workspace
 bindsym $mod+1 workspace 1: coding
-bindsym $mod+2 workspace 2: monitor
+bindsym $mod+2 workspace 2: dev-box
 bindsym $mod+3 workspace 3: www
 bindsym $mod+4 workspace 4: mail
 bindsym $mod+5 workspace 5: admin
@@ -92,7 +92,7 @@ bindsym $mod+0 workspace 10
 
 # Move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1: coding
-bindsym $mod+Shift+2 move container to workspace 2: monitor
+bindsym $mod+Shift+2 move container to workspace 2: dev-box
 bindsym $mod+Shift+3 move container to workspace 3: www
 bindsym $mod+Shift+4 move container to workspace 4: mail
 bindsym $mod+Shift+5 move container to workspace 5: admin
