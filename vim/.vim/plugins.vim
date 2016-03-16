@@ -27,6 +27,4 @@ Plug 'ludovicchabant/vim-gutentags', { 'for' : ['cpp', 'c'] }
 Plug 'jnurmine/Zenburn'
 Plug 'ctrlpvim/ctrlp.vim'
 
-Plug 'git@gitlab.com:stelth/stealth-syntax.git'
-
 call plug#end()
