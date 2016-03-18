@@ -14,5 +14,7 @@ fi
 alias c='clear'
 alias su='su -'
 
-export CC=clang
-export CXX=clang++
+if [[ $UID != 0 || $EUID != 0 ]]; then
+	export CC=clang
+	export CXX=clang++
+fi
