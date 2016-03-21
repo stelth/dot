@@ -37,9 +37,6 @@ install_antigen() {
 	(
 	output_on_error git clone https://github.com/zsh-users/antigen.git antigen
 	) || exit 1
-
-	echo -n "** Installing antigen plugins"
-	source ~/.dotfiles/zsh/.zshrc
 }
 install_antigen
 
