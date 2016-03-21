@@ -17,3 +17,5 @@ antigen bundles <<EOBUNDLES
 	Tarrasch/zsh-autoenv
 	miekg/lean
 EOBUNDLES
+
+alias su='su -'
