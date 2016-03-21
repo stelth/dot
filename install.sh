@@ -37,6 +37,7 @@ install_antigen() {
 	(
 	output_on_error git clone https://github.com/zsh-users/antigen.git antigen
 	) || exit 1
+	echo " ... Done"
 }
 install_antigen
 
