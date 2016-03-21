@@ -38,24 +38,7 @@ install_antigen() {
 	echo -n "** Installing antigen plugins"
 	source ~/.dotfiles/zsh/.zshrc
 }
-
-clone_git_repo() {
-	path=$1
-	repo=$2
-
-	if [[ ! -d "$path" ]]; then
-		echo -n "** Clone git repo: $path"
-		(
-		dir="${path%/*}"
-		mkdir -p dir
-		output_on_error git clone  --recursive ${repo} ${path##*/}
-		)
-
-		echo " ... Done"
-	fi
-}
-
-clone_git_repo "antigen" "https://github.com/zsh-users/antigen.git"
+install_antigen
 
 symlink_dotfiles() {
 	for dst in `cat packages`; do
