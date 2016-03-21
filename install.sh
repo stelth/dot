@@ -46,7 +46,7 @@ clone_git_repo() {
 	fi
 }
 
-clone_git_repo "zsh/.zprezto" "https://github.com/sorin-ionescu/prezto.git"
+clone_git_repo "antigen" "https://github.com/zsh-users/antigen.git"
 
 symlink_dotfiles() {
 	for dst in `cat packages`; do

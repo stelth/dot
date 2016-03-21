@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -euo pipefail
+IFS=$'\n\t'
+
 dotfiles=${0%/*}
 dotfiles_abs=$(cd $dotfiles && pwd -L)
 
@@ -31,11 +34,11 @@ update_vimplug() {
 }
 update_vimplug
 
-update_zprezto() {
-	echo -n "** Updating Zprezto"
+update_zsh() {
+	echo -n "** Updating antigen"
 	(
-	cd ~/.dotfiles/zsh/.zprezto
-	output_on_error git pull && git submodule update --init --recursive
+	output_on_error antigen selfupdate
+	output_on_error antigen update
 	) || exit 1
 	echo " ... Done":
 }
