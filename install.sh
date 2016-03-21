@@ -29,6 +29,16 @@ check_environment() {
 }
 check_environment
 
+install_antigen() {
+	echo -n "** Installing antigen"
+	(
+	output_on_error git clone https://github.com/zsh-users/antigen.git antigen
+	) || exit 1
+
+	echo -n "** Installing antigen plugins"
+	source ~/.dotfiles/zsh/.zshrc
+}
+
 clone_git_repo() {
 	path=$1
 	repo=$2
@@ -38,7 +48,6 @@ clone_git_repo() {
 		(
 		dir="${path%/*}"
 		mkdir -p dir
-		cd $dir
 		output_on_error git clone  --recursive ${repo} ${path##*/}
 		)
 
