@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -euo pipefail
+IFS=$'\n\t'
+
 shopt -s nocasematch nullglob
 
 dotfiles=${0%/*}
