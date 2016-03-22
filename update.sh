@@ -42,4 +42,4 @@ update_zsh() {
 	) || exit 1
 	echo " ... Done":
 }
-update_zprezto
+update_zsh
