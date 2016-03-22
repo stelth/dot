@@ -36,6 +36,7 @@ update_vimplug
 
 update_zsh() {
 	echo -n "** Updating antigen"
+	source ${HOME}/.dotfiles/antigen/antigen.zsh
 	(
 	output_on_error antigen selfupdate
 	output_on_error antigen update
