@@ -12,3 +12,4 @@ endif
 
 let g:ctrlp_by_filename = 1
 let g:ctrlp_switch_buffer = 0
+let g:ctrlp_cmd = 'CtrlPBuffer'
