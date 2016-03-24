@@ -32,14 +32,14 @@ check_environment() {
 }
 check_environment
 
-install_antigen() {
-	echo -n "** Installing antigen"
+install_zgen() {
+	echo -n "** Installing zgen"
 	(
 	output_on_error git clone https://github.com/tarjoilija/zgen.git zgen
 	) || exit 1
 	echo " ... Done"
 }
-install_antigen
+install_zgen
 
 symlink_dotfiles() {
 	for dst in `cat packages`; do
