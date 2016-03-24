@@ -24,4 +24,4 @@ emacs/.emacs.d/ede-projects.el
 emacs/.emacs.d/auto-save-list
 emacs/.emacs.d/extern/cask
 packages
-antigen
+zgen
