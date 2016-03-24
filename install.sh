@@ -35,7 +35,7 @@ check_environment
 install_antigen() {
 	echo -n "** Installing antigen"
 	(
-	output_on_error git clone https://github.com/zsh-users/antigen.git antigen
+	output_on_error git clone https://github.com/tarjoilija/zgen.git zgen
 	) || exit 1
 	echo " ... Done"
 }
