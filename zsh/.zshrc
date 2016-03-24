@@ -1,27 +1,28 @@
-source "$HOME/.dotfiles/antigen/antigen.zsh"
+source "${HOME}/.dotfiles/zgen/zgen.zsh"
 
-antigen use oh-my-zsh
+zgen prezto '*:*' color 'yes'
+zgen prezto editor dot-expansion 'yes'
 
-antigen bundles <<EOBUNDLES
-	cp
-	extract
-	git
-	history
-	safe-paste
-	systemd
-	tmux
-	vi-mode
-	zsh-users/zsh-completions
-	Tarrasch/zsh-autoenv
-	miekg/lean
-	zsh-users/zsh-syntax-highlighting
-	zsh-users/zsh-history-substring-search
-EOBUNDLES
+zgen prezto
+zgen prezto environment
+zgen prezto helper
+zgen prezto spectrum
+zgen prezto git
+zgen prezto utility
+zgen prezto editor
+zgen prezto history
+zgen prezto directory
+zgen prezto archive
 
-antigen apply
+zgen load jreese/zsh-titles
+zgen load Tarrasch/zsh-autoenv
+zgen load zsh-users/zsh-syntax-highlighting
+zgen load zsh-users/zsh-history-substring-search
+zgen load sharat87/zsh-vim-mode
+zgen load psprint/zsh-navigation-tools
+zgen load miekg/lean
 
 zmodload zsh/terminfo
-
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
 
