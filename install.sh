@@ -1,9 +1,6 @@
-#!/bin/bash
+#!/bin/zsh
 
-set -euo pipefail
-IFS=$'\n\t'
-
-shopt -s nocasematch nullglob
+source functions.sh
 
 dotfiles=${0%/*}
 dotfiles_abs=$(cd $dotfiles && pwd -L)
@@ -19,13 +16,14 @@ output_on_error() {
 }
 
 check_environment() {
-	echo "** Checking environment"
+	ebegin "Checking environment"
 
 	required_exes=(git make stow)
 
 	for e in ${required_exes[@]}; do
 		hash $e || {
 			echo "!! Missing: $e"
+			eend 1
 			exit 1
 		}
 	done
@@ -33,29 +31,29 @@ check_environment() {
 check_environment
 
 install_zgen() {
-	echo -n "** Installing zgen"
+	ebegin "Installing zgen"
 	(
 	output_on_error git clone https://github.com/tarjoilija/zgen.git zgen
+	eend $?
 	) || exit 1
-	echo " ... Done"
 }
 install_zgen
 
 symlink_dotfiles() {
 	for dst in `cat packages`; do
 		nm=${dst##*/}
-		echo -n "** Symlinking module: ${nm}"
+		ebegin "Symlinking module: ${nm}"
 		output_on_error stow $nm
-		echo " ... Done"
+		eend $?
 	done
 }
 symlink_dotfiles
 
 install_vim() {
 	if [ -L ~/.vim ]; then
-		echo "** Installing Vim Plugins"
+		ebegin "Installing Vim Plugins"
 		output_on_error vim -u vim/.vim/plugins.vim +PlugInstall +qall
-		echo " ... Done"
+		eend $?
 	fi
 }
 install_vim

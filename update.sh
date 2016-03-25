@@ -1,7 +1,7 @@
 #!/bin/zsh
 
-set -euo pipefail
-IFS=$'\n\t'
+source functions.sh
+source "${HOME}/.dotfiles/zgen/zgen.zsh"
 
 dotfiles=${0%/*}
 dotfiles_abs=$(cd $dotfiles && pwd -L)
@@ -11,36 +11,37 @@ output_on_error() {
 	trap 'rm "$log"' EXIT INT QUIT TERM
 
 	$* >$log 2>$log || {
-		echo -n "ERROR:"
 		[[ -f $log ]] && cat $log
 	}
 }
 
 update_local() {
-	echo -n "** Updating local config"
+	ebegin "Updating local config"
 	(
 	output_on_error git pull --rebase
+	eend $?
 	) || exit 1
-	echo " ... Done"
 }
 update_local
 
 update_vimplug() {
-	echo -n "** Updating vim plugins"
+	ebegin "Updating vim plugins"
 	(
 	output_on_error vim -c 'PlugUpgrade' -c 'PlugUpdate' -c 'PlugClean!' -c 'qall'
+	eend $?
 	) || exit 1
-	echo " ... Done"
 }
 update_vimplug
 
 update_zsh() {
-	echo -n "** Updating zgen"
 	(
-	source "./zgen/zgen.zsh"
+	ebegin "Updating zgen"
 	output_on_error zgen selfupdate
+	eend $?
+
+	ebegin "Updating zgen plugins"
 	output_on_error zgen update
+	eend $?
 	) || exit 1
-	echo " ... Done":
 }
 update_zsh
