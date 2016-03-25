@@ -2,19 +2,6 @@
 
 source functions.sh
 
-dotfiles=${0%/*}
-dotfiles_abs=$(cd $dotfiles && pwd -L)
-
-output_on_error() {
-	log=$(mktemp ${0##*/}_log.XXXXXXXX) || exit 1
-	trap 'rm "$log"' EXIT INT QUIT TERM
-
-	$* >$log 2>$log || {
-		echo -n "ERROR:"
-		[[ -f $log ]] && cat $log
-	}
-}
-
 check_environment() {
 	ebegin "Checking environment"
 
@@ -32,10 +19,8 @@ check_environment
 
 install_zgen() {
 	ebegin "Installing zgen"
-	(
-	output_on_error git clone https://github.com/tarjoilija/zgen.git zgen
+	git clone https://github.com/tarjoilija/zgen.git zgen > /dev/null 2>&1
 	eend $?
-	) || exit 1
 }
 install_zgen
 
@@ -43,7 +28,7 @@ symlink_dotfiles() {
 	for dst in `cat packages`; do
 		nm=${dst##*/}
 		ebegin "Symlinking module: ${nm}"
-		output_on_error stow $nm
+		stow $nm > /dev/null 2>&1
 		eend $?
 	done
 }
@@ -52,7 +37,7 @@ symlink_dotfiles
 install_vim() {
 	if [ -L ~/.vim ]; then
 		ebegin "Installing Vim Plugins"
-		output_on_error vim -u vim/.vim/plugins.vim +PlugInstall +qall
+		vim -u vim/.vim/plugins.vim +PlugInstall +qall > /dev/null 2>&1
 		eend $?
 	fi
 }
