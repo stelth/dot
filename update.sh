@@ -37,7 +37,7 @@ update_vimplug
 update_zsh() {
 	echo -n "** Updating zgen"
 	(
-	output_on_error source "${HOME}/.dotfiles/zgen/zgen.zsh"
+	source "./zgen/zgen.zsh"
 	output_on_error zgen selfupdate
 	output_on_error zgen update
 	) || exit 1
