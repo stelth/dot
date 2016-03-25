@@ -14,6 +14,7 @@ check_environment() {
 			exit 1
 		}
 	done
+	eend 0
 }
 check_environment
 
