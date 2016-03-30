@@ -32,3 +32,5 @@ if test "${TERM#screen}" != "$TERM"; then
 fi
 
 alias su='su -'
+
+export PATH=$PATH:~/bin
