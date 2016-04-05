@@ -27,4 +27,7 @@ Plug 'ludovicchabant/vim-gutentags', { 'for' : ['cpp', 'c'] }
 Plug 'jnurmine/Zenburn'
 Plug 'ctrlpvim/ctrlp.vim'
 
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'benmills/vimux'
+
 call plug#end()
