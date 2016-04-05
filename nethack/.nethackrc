@@ -1,3 +1,7 @@
+OPTIONS=role:Monk
+OPTIONS=align:chaotic
+OPTIONS=gender:male
+OPTIONS=name:Jason
 OPTIONS=autodig
 OPTIONS=noautopickup
 OPTIONS=autoquiver
