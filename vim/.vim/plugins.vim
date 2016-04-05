@@ -26,6 +26,5 @@ Plug 'Valloric/YouCompleteMe', { 'do' : function('BuildYCM') }
 Plug 'ludovicchabant/vim-gutentags', { 'for' : ['cpp', 'c'] }
 Plug 'jnurmine/Zenburn'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'sheerun/vim-polyglot'
 
 call plug#end()
