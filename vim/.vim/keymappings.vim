@@ -13,6 +13,4 @@ cnoremap <C-N> <Down>
 " format source code
 nnoremap <silent> <F5> :%!clang-format<CR>
 
-map <BS> :set hls!<CR>
-nmap <BS> :set hls!<CR>
-vmap <BS> :set hls!<CR>
+nnoremap <silent> <bs> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
