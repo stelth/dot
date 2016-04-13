@@ -98,11 +98,10 @@ source $alias_file
 source ~/.mutt/mutt-colors-zenburn.muttrc
 
 # sidebar
-set sidebar_delim = '   |'
+set sidebar_divider_char = '|'
 set sidebar_visible = yes
 set sidebar_width = 24
-set sidebar_sort = yes
-
+set sidebar_sort_method = path
 
 # these just give me headaches
 bind index,pager \# 	noop
