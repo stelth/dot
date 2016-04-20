@@ -30,4 +30,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 
+Plug 'gilligan/vim-lldb'
+
 call plug#end()
