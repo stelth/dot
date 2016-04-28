@@ -1,4 +1,4 @@
-OPTIONS=role:Monk
+OPTIONS=character:Monk
 OPTIONS=align:chaotic
 OPTIONS=gender:male
 OPTIONS=name:Jason
@@ -19,7 +19,6 @@ OPTIONS=noignintr
 OPTIONS=lit_corridor
 OPTIONS=lootabc
 OPTIONS=mail
-OPTIONS=menucolors
 OPTIONS=null
 OPTIONS=prayconfirm
 OPTIONS=pushweapon
@@ -51,9 +50,14 @@ OPTIONS=pickup_burden:stressed
 OPTIONS=runmode:walk
 OPTIONS=sortloot:full
 OPTIONS=suppress_alert:3.4.3
+
+OPTIONS=menucolors
 MENUCOLOR=" blessed "=green
 MENUCOLOR=" holy "=yellow
 MENUCOLOR=" cursed "=red
 MENUCOLOR=" uncursed "=cyan
 MENUCOLOR=" unholy "=brown
 MENUCOLOR=" cursed .* (being worn)"=red&underline
+
+OPTIONS=statushilites
+OPTIONS=hilite_status:hitpoints/30%/bright-magenta/normal
