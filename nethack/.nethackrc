@@ -60,4 +60,4 @@ MENUCOLOR=" unholy "=brown
 MENUCOLOR=" cursed .* (being worn)"=red&underline
 
 OPTIONS=statushilites
-OPTIONS=hilite_status:hitpoints/30%/bright-magenta/normal
+OPTIONS=hilite_status:hitpoints/30%/bright-magenta/green
