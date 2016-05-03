@@ -27,17 +27,17 @@ urxvt*color13:     #ec93d3
 urxvt*color14:     #93e0e3
 urxvt*color15:     #ffffff
 
-Xft.autohint: 0
+Xft.antialias: true
+Xft.hinting: true
+Xft.autohint: false
+Xft.hintstyle: hintmedium
 Xft.lcdfilter: lcddefault
-Xft.hintstyle: hintfull
-Xft.hintint: 1
-Xft.antialias: 1
-Xft.dpi: 96
+Xft.dpi: 120
 Xft.rgba: rgb
 
 URxvt.buffered: true
 URxvt*scrollBar:false
-URxvt*font:xft:Hack:Regular:pixelsize=9
+URxvt*font:xft:Source Code Pro Light:Light:pixelsize=9
 URxvt.perl-ext-common: default,matcher
 URxvt.urlLauncher: ~/bin/vimprobtab.sh
 URxvt.matcher.button: 1
