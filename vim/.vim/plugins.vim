@@ -8,7 +8,6 @@ endif
 
 call plug#begin(expand('~/.vim/bundle/'))
 
-Plug 'jreybert/vimagit'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'uarun/vim-protobuf', { 'for' : ['proto'] }
@@ -29,7 +28,5 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
-
-Plug 'gilligan/vim-lldb'
 
 call plug#end()
