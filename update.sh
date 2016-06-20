@@ -1,5 +1,6 @@
 #!/bin/zsh
 
+source ~/.dotfiles/antigen/antigen.zsh
 source functions.sh
 
 update_local() {
@@ -21,7 +22,7 @@ update_zsh() {
 	antigen selfupdate > /dev/null 2>&1
 	eend $?
 
-	ebegin "Updating zgen plugins"
+	ebegin "Updating antigen plugins"
 	antigen update > /dev/null 2>&1
 	eend $?
 }
