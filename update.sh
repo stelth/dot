@@ -1,6 +1,5 @@
 #!/bin/zsh
 
-source "${HOME}/.dotfiles/zgen/zgen.zsh"
 source functions.sh
 
 update_local() {
@@ -18,12 +17,12 @@ update_vimplug() {
 update_vimplug
 
 update_zsh() {
-	ebegin "Updating zgen"
-	zgen selfupdate > /dev/null 2>&1
+	ebegin "Updating antigen"
+	antigen selfupdate > /dev/null 2>&1
 	eend $?
 
 	ebegin "Updating zgen plugins"
-	zgen update > /dev/null 2>&1
+	antigen update > /dev/null 2>&1
 	eend $?
 }
 update_zsh
