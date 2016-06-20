@@ -21,6 +21,7 @@ zgen load zsh-users/zsh-history-substring-search
 zgen load sharat87/zsh-vim-mode
 zgen load psprint/zsh-navigation-tools
 zgen load miekg/lean
+zgen load tylerreckart/odin
 
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
