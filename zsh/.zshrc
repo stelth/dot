@@ -1,27 +1,26 @@
-source "${HOME}/.dotfiles/zgen/zgen.zsh"
+source ~/.dotfiles/antigen/antigen.zsh
 
-zgen prezto '*:*' color 'yes'
-zgen prezto editor dot-expansion 'yes'
+antigen use oh-my-zsh
 
-zgen prezto
-zgen prezto environment
-zgen prezto helper
-zgen prezto spectrum
-zgen prezto git
-zgen prezto utility
-zgen prezto editor
-zgen prezto history
-zgen prezto directory
-zgen prezto archive
+antigen bundle colored-man-pages
+antigen bundle extract
+antigen bundle git
+antigen bundle gitfast
+antigen bundle git-flow
+antigen bundle history
+antigen bundle systemd
+antigen bundle vi-mode
 
-zgen load jreese/zsh-titles
-zgen load Tarrasch/zsh-autoenv
-zgen load zsh-users/zsh-syntax-highlighting
-zgen load zsh-users/zsh-history-substring-search
-zgen load sharat87/zsh-vim-mode
-zgen load psprint/zsh-navigation-tools
-zgen load miekg/lean
-zgen load tylerreckart/odin
+antigen bundle jreese/zsh-titles
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-history-substring-search
+antigen bundle sharat87/zsh-vim-mode
+antigen bundle psprint/zsh-navigation-tools
+
+antigen theme tylerreckart/odin odin
+
+
+antigen apply
 
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up

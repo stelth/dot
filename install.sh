@@ -18,12 +18,12 @@ check_environment() {
 }
 check_environment
 
-install_zgen() {
-	ebegin "Installing zgen"
-	git clone https://github.com/tarjoilija/zgen.git zgen > /dev/null 2>&1
+install_antigen() {
+	ebegin "Installing antigeh"
+	git clone https://github.com/zsh-users/antigen.git
 	eend $?
 }
-install_zgen
+install_antigen
 
 symlink_dotfiles() {
 	for dst in `cat packages`; do
