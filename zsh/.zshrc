@@ -19,7 +19,6 @@ antigen bundle psprint/zsh-navigation-tools
 
 antigen theme tylerreckart/odin odin
 
-
 antigen apply
 
 zmodload zsh/terminfo
