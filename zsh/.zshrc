@@ -17,7 +17,7 @@ antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle sharat87/zsh-vim-mode
 antigen bundle psprint/zsh-navigation-tools
 
-antigen theme tylerreckart/odin odin
+antigen theme halfo/lambda-mod-zsh-theme lambda-mod
 
 antigen apply
 
