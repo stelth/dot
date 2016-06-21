@@ -21,7 +21,8 @@ function! BuildYCM(info)
 	endif
 endfunction
 
-Plug 'Valloric/YouCompleteMe', { 'do' : function('BuildYCM') }
+Plug 'Valloric/YouCompleteMe', { 'do' : function('BuildYCM'), 'for' : ['c','cpp'] }
+autocmd! User YouCompleteMe if !has('vim_starting') | call youcompleteme#Enable() | endif
 Plug 'ludovicchabant/vim-gutentags', { 'for' : ['cpp', 'c'] }
 Plug 'jnurmine/Zenburn'
 Plug 'ctrlpvim/ctrlp.vim'
