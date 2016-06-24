@@ -1,3 +1,16 @@
 set disassembly-flavor intel
 set disassemble-next-line on
-add-auto-load-safe-path /usr/lib64/gcc/x86_64-pc-linux-gnu/4.8.2/libstdc++.so.6.0.18-gdb.py
+
+python
+import sys
+import os
+sys.path.insert(0, os.path.expanduser('~/bin/gdb_printers/python'))
+
+from libstdcxx.v6.printers import register_libstdcxx_printers
+register_libstdcxx_printers (None)
+
+sys.path.insert(0, os.path.expanduser('~/bin/gdb_printers/python/qt'))
+from qt import register_qt_printers
+register_qt_printers (None)
+
+end
