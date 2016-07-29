@@ -122,7 +122,6 @@ def FlagsForInclude(root):
         return None
 
 def FlagsForCompilationDatabase(root, filename):
-    logging.info("root: " + root + ", filename: " + filename)
     try:
         compilation_db_dir = FindCompilationDB()
         logging.info("Set compilation database directory to " + compilation_db_dir)
