@@ -15,6 +15,8 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-sensible'
 Plug 'mbbill/undotree'
 
+Plug 'vhdirk/vim-cmake'
+
 function! BuildYCM(info)
 	if a:info.status == 'installed' || a:info.status == 'updated' || a:info.force
 		silent !python ./install.py --clang-completer
