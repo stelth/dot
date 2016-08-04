@@ -15,6 +15,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-sensible'
 Plug 'mbbill/undotree'
 
+Plug 'tpope/vim-dispatch'
 Plug 'vhdirk/vim-cmake'
 
 function! BuildYCM(info)
