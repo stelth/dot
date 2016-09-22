@@ -10,23 +10,12 @@ call plug#begin(expand('~/.vim/bundle/'))
 
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'uarun/vim-protobuf', { 'for' : ['proto'] }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-sensible'
 Plug 'mbbill/undotree'
 
 Plug 'tpope/vim-dispatch'
-Plug 'vhdirk/vim-cmake'
 
-function! BuildYCM(info)
-	if a:info.status == 'installed' || a:info.status == 'updated' || a:info.force
-		silent !python ./install.py --clang-completer
-	endif
-endfunction
-
-Plug 'Valloric/YouCompleteMe', { 'do' : function('BuildYCM'), 'for' : ['c','cpp'] }
-autocmd! User YouCompleteMe if !has('vim_starting') | call youcompleteme#Enable() | endif
-Plug 'ludovicchabant/vim-gutentags', { 'for' : ['cpp', 'c'] }
 Plug 'jnurmine/Zenburn'
 Plug 'ctrlpvim/ctrlp.vim'
 
