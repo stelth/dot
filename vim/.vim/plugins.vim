@@ -14,12 +14,15 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-sensible'
 Plug 'mbbill/undotree'
 
+Plug 'tpope/vim-fugitive'
+
 Plug 'tpope/vim-dispatch'
 
-Plug 'jnurmine/Zenburn'
+Plug 'altercation/vim-colors-solarized'
 Plug 'ctrlpvim/ctrlp.vim'
 
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'benmills/vimux'
+Plug 'tmhedberg/SimpylFold'
+Plug 'vim-scripts/indentpython.vim'
+Plug 'nvie/vim-flake8'
 
 call plug#end()

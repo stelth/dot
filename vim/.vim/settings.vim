@@ -27,3 +27,9 @@ set hidden "Don't unload buffer when it is abandoned
 set clipboard=unnamedplus "Use system clipboard
 
 set spr "split right
+
+au BufNewFile,BufRead *.py set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79 expandtab autoindent fileformat=unix
+
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h,*.cpp,*.hpp match BadWhitespace /\s\+$/
+
+let python_highlight_all=1
