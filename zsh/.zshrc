@@ -8,7 +8,6 @@ antigen bundle git
 antigen bundle gitfast
 antigen bundle git-flow
 antigen bundle history
-antigen bundle systemd
 antigen bundle vi-mode
 
 antigen bundle jreese/zsh-titles
