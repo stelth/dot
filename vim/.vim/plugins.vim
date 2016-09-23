@@ -25,4 +25,6 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'vim-scripts/indentpython.vim'
 Plug 'nvie/vim-flake8'
 
+Plug 'Valloric/YouCompleteMe'
+
 call plug#end()
