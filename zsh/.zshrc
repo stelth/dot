@@ -32,3 +32,5 @@ fi
 alias su='su -'
 
 export PATH=$PATH:~/bin
+
+export HOMEBREW_GITHUB_API_TOKEN='e196b520c49ca1cd8b74c96840b83418e999b25f'

@@ -22,3 +22,10 @@ update_zsh() {
 	antigen update > /dev/null 2>&1
 }
 update_zsh
+
+update_brew() {
+	echo "Updating Home Brew packages"
+	brew update
+	brew upgrade
+}
+update_brew
