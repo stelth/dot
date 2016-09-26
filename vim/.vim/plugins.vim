@@ -26,5 +26,6 @@ Plug 'vim-scripts/indentpython.vim'
 Plug 'nvie/vim-flake8'
 
 Plug 'Valloric/YouCompleteMe'
+Plug 'scrooloose/syntastic'
 
 call plug#end()
