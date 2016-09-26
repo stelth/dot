@@ -24,7 +24,7 @@ symlink_dotfiles() {
 	for dst in `cat packages`; do
 		nm=${dst##*/}
 		echo "Symlinking module: ${nm}"
-		stow $nm > /dev/null 2>&1
+		stow $nm > /dev/null
 	done
 }
 symlink_dotfiles
@@ -32,7 +32,7 @@ symlink_dotfiles
 install_vim() {
 	if [ -L ~/.vim ]; then
 		echo "Installing Vim Plugins"
-		vim -u vim/.vim/plugins.vim +PlugInstall +qall > /dev/null 2>&1
+		vim -u vim/.vim/plugins.vim +PlugInstall +qall > /dev/null
 	fi
 }
 install_vim
