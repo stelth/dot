@@ -23,4 +23,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 Plug 'Valloric/YouCompleteMe'
 
+Plug 'klen/python-mode'
+Plug 'davidhalter/jedi-vim'
+
 call plug#end()
