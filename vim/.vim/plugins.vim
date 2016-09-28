@@ -31,5 +31,8 @@ autocmd! User YouCompleteMe if !has('vim_starting') | call youcompleteme#Enable(
 
 Plug 'klen/python-mode'
 Plug 'davidhalter/jedi-vim'
+Plug 'vim-scripts/indentpython.vim'
+
+Plug 'tmhedberg/SimpylFold'
 
 call plug#end()

@@ -24,10 +24,15 @@ set wrap "Wrap lines
 
 set hidden "Don't unload buffer when it is abandoned
 
-set clipboard=unnamedplus "Use system clipboard
+set clipboard=unnamed "Use system clipboard
 
 set spr "split right
 
-au BufNewFile,BufRead *.py set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79 expandtab autoindent fileformat=unix
-
-let python_highlight_all=1
+au BufNewFile,BufRead *.py
+			\ set tabstop=4
+			\ set softtabstop=4
+			\ set shiftwidth=4
+			\ set textwidth=79
+			\ set expandtab
+			\ set autoindent
+			\ set fileformat=unix
