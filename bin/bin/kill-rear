@@ -1,0 +1,9 @@
+#!/bin/bash
+
+export DISPLAY=:0
+
+SCREEN_EXIST=`xrandr | grep DFP1 | grep disconnected`
+
+if [ ! -z "${SCREEN_EXIST// }" ]; then
+	ps -ef | grep FunStopPhotos | grep rear | awk '{print $2}' | xargs kill -9
+fi
