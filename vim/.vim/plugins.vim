@@ -21,7 +21,13 @@ Plug 'tpope/vim-dispatch'
 Plug 'altercation/vim-colors-solarized'
 Plug 'ctrlpvim/ctrlp.vim'
 
-Plug 'Valloric/YouCompleteMe'
+function! BuildYCM(info)
+	if a:info.status == 'installed' || a:info.status == 'updated' || a:info.force
+		silent !python ./install.py --clang-completer
+	endif
+endfunction
+Plug 'Valloric/YouCompleteMe', { 'do' : function('BuildYCM'), 'for' : ['c','cpp'] }
+autocmd! User YouCompleteMe if !has('vim_starting') | call youcompleteme#Enable() | endif
 
 Plug 'klen/python-mode'
 Plug 'davidhalter/jedi-vim'
