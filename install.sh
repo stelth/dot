@@ -15,7 +15,7 @@ check_environment() {
 check_environment
 
 install_antigen() {
-	echo "Installing antigeh"
+	echo "Installing antigen"
 	git clone https://github.com/zsh-users/antigen.git
 }
 install_antigen
