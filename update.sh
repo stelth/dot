@@ -24,8 +24,10 @@ update_zsh() {
 update_zsh
 
 update_brew() {
+	hash brew && {
 	echo "Updating Home Brew packages"
 	brew update
 	brew upgrade
+}
 }
 update_brew
