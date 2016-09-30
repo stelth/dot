@@ -8,6 +8,9 @@ antigen bundle git
 antigen bundle gitfast
 antigen bundle git-flow
 antigen bundle history
+antigen bundle python
+antigen bundle tmux
+antigen bundle tmuxinator
 antigen bundle vi-mode
 
 antigen bundle jreese/zsh-titles
@@ -30,6 +33,9 @@ if test "${TERM#screen}" != "$TERM"; then
 fi
 
 alias su='su -'
+
+export EDITOR=`which vim`
+export SHELL=`which zsh`
 
 export PATH=$PATH:~/bin
 
