@@ -16,9 +16,9 @@ antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle sharat87/zsh-vim-mode
 antigen bundle psprint/zsh-navigation-tools
 
-antigen theme https://github.com/halfo/lambda-mod-zsh-theme lambda-mod
-
 antigen apply
+
+antigen theme robbyrussell/oh-my-zsh themes/dstufft
 
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
