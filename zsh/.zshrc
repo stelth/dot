@@ -21,7 +21,7 @@ antigen bundle psprint/zsh-navigation-tools
 
 antigen apply
 
-antigen theme robbyrussell/oh-my-zsh themes/sorin
+antigen theme robbyrussell/oh-my-zsh themes/dstufft
 
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
