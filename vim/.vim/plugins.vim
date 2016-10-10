@@ -30,6 +30,7 @@ Plug 'Valloric/YouCompleteMe', { 'do' : function('BuildYCM'), 'for' : ['c','cpp'
 autocmd! User YouCompleteMe if !has('vim_starting') | call youcompleteme#Enable() | endif
 
 Plug 'Yggdroot/indentLine'
+Plug 'Raimondi/delimitMate'
 
 " Python plugins
 Plug 'klen/python-mode'
