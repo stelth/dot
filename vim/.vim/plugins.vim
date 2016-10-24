@@ -38,4 +38,6 @@ Plug 'davidhalter/jedi-vim'
 Plug 'vim-scripts/indentpython.vim'
 Plug 'tmhedberg/SimpylFold'
 
+Plug 'christoomey/vim-tmux-navigator'
+
 call plug#end()
