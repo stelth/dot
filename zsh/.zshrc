@@ -2,7 +2,6 @@ source ~/dotfiles/antigen/antigen.zsh
 
 antigen use oh-my-zsh
 
-antigen bundle colored-man-pages
 antigen bundle extract
 antigen bundle git
 antigen bundle gitfast
