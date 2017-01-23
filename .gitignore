@@ -28,4 +28,3 @@ zgen
 antigen
 *.pyc
 .vim.local/*
-.vim.local/.*
