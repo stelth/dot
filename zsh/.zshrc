@@ -1,3 +1,4 @@
+export _ANTIGEN_FAST_BOOT_ENABLED=false
 source ~/dotfiles/antigen/antigen.zsh
 
 antigen use oh-my-zsh
@@ -21,7 +22,7 @@ antigen bundle psprint/zsh-navigation-tools
 
 antigen apply
 
-antigen theme robbyrussell/oh-my-zsh themes/dstufft
+antigen theme af-magic
 
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
