@@ -5,6 +5,9 @@
 [merge]
 	conflicttyle = diff3
 
+[status]
+	showUntrackedFiles = all
+
 [transfer]
 	fsckobjects = true
 
