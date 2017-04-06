@@ -1,21 +1,22 @@
 [user]
 	name = Jason Cox
-	email = jasonc@teamplayinc.com
-[credential]
-	helper = cache
-[help]
-	autocorrect = 1
-[init]
+	email = Jason.P.Cox@ibm.com
+
+[merge]
+	conflicttyle = diff3
+
+[transfer]
+	fsckobjects = true
+
 [push]
 	default = simple
+	followtags = true
+
+[core]
+	editor = vim
+
 [diff]
 	tool = vimdiff
-[merge]
-	tool = vimdiff
-	conflictstyle = diff3
+
 [difftool]
 	prompt = false
-[mergetool]
-	prompt = false
-[color]
-	diff = false
