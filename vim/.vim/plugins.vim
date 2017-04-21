@@ -25,10 +25,10 @@ Plug 'Yggdroot/indentLine'
 Plug 'Raimondi/delimitMate'
 
 " Python plugins
-Plug 'klen/python-mode'
-Plug 'davidhalter/jedi-vim'
-Plug 'vim-scripts/indentpython.vim'
-Plug 'tmhedberg/SimpylFold'
+" Plug 'klen/python-mode'
+" Plug 'davidhalter/jedi-vim'
+" Plug 'vim-scripts/indentpython.vim'
+" Plug 'tmhedberg/SimpylFold'
 
 Plug 'christoomey/vim-tmux-navigator'
 
