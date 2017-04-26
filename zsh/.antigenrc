@@ -19,6 +19,7 @@ antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle sharat87/zsh-vim-mode
 antigen bundle psprint/zsh-navigation-tools
 
-antigen theme eastwood
+antigen bundle mafredri/zsh-async
+antigen bundle sindresorhus/pure
 
 antigen apply
