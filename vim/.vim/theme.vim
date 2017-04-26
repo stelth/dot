@@ -3,7 +3,7 @@
 " Color scheme stuffs
 set background=dark
 set t_co=256
-colorscheme solarized
+colorscheme nord
 
 set cursorline cursorcolumn "Highlight cursor with crosshair
 set hlsearch "Highlight search

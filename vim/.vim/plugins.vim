@@ -18,7 +18,6 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'tpope/vim-dispatch'
 
-Plug 'altercation/vim-colors-solarized'
 Plug 'ctrlpvim/ctrlp.vim'
 
 Plug 'Yggdroot/indentLine'
@@ -31,5 +30,7 @@ Plug 'Raimondi/delimitMate'
 " Plug 'tmhedberg/SimpylFold'
 
 Plug 'christoomey/vim-tmux-navigator'
+
+Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
