@@ -1,28 +1,5 @@
-export _ANTIGEN_FAST_BOOT_ENABLED=false
 source ~/dotfiles/antigen/antigen.zsh
-
-antigen use oh-my-zsh
-
-antigen bundle docker
-antigen bundle extract
-antigen bundle git
-antigen bundle gitfast
-antigen bundle git-flow
-antigen bundle history
-antigen bundle python
-antigen bundle tmux
-antigen bundle tmuxinator
-antigen bundle vi-mode
-
-antigen bundle jreese/zsh-titles
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-history-substring-search
-antigen bundle sharat87/zsh-vim-mode
-antigen bundle psprint/zsh-navigation-tools
-
-antigen apply
-
-antigen theme af-magic
+antigen init ~/.antigenrc
 
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up

@@ -20,6 +20,8 @@ update_zsh() {
 
 	echo "Updating antigen plugins"
 	antigen update > /dev/null
+
+	antigen reset > /dev/null
 }
 update_zsh
 
