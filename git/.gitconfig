@@ -8,9 +8,6 @@
 [status]
 	showUntrackedFiles = all
 
-[transfer]
-	fsckobjects = true
-
 [push]
 	default = simple
 	followtags = true
