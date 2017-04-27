@@ -26,7 +26,4 @@ AlwaysBreakTemplateDeclarations: true
 SpacesInContainerLiterals: true
 Standard: Cpp11
 AlwaysBreakBeforeMultilineStrings: true
-PenaltyReturnTypeOnItsOwnLine: 100000
-PenaltyExcessCharacter: 100
-PenaltyBreakString: 100000
 KeepEmptyLinesAtTheStartOfBlocks: true
