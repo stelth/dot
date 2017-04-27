@@ -4,7 +4,7 @@ source ~/dotfiles/antigen/antigen.zsh
 
 update_local() {
 	echo "Updating local config"
-	git pull --rebase > /dev/null
+	git pull --rebase
 }
 update_local
 
@@ -16,17 +16,17 @@ update_vimplug
 
 update_zsh() {
 	echo "Updating antigen"
-	antigen selfupdate > /dev/null
+	antigen selfupdate
 
 	echo "Updating antigen plugins"
-	antigen update > /dev/null
+	antigen update
 
-	antigen reset > /dev/null
+	antigen reset
 }
 update_zsh
 
 update_brew() {
-	hash brew > /dev/null 2>&1 && {
+	hash brew 2>&1 && {
 		echo "Updating Home Brew packages"
 		brew update
 		brew upgrade
@@ -36,7 +36,7 @@ update_brew() {
 update_brew
 
 update_apt() {
-	hash apt > /dev/null 2>&1 && [[ "`echo $UID`" == "0" ]] && {
+	hash apt 2>&1 && [[ "`echo $UID`" == "0" ]] && {
 		echo "Updating apt packages"
 		apt-get update -y
 		apt-get upgrade -y
