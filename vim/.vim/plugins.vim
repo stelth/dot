@@ -22,7 +22,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 function! BuildYCM(info)
 	if a:info.status == 'installed' || a:info.status == 'updated' || a:info.force
-		silent !python ./install.py --clang-completer --system-libclang --system-boost
+		silent !python ./install.py --clang-completer
 	endif
 endfunction
 Plug 'Valloric/YouCompleteMe', { 'do' : function('BuildYCM') }
