@@ -4,7 +4,7 @@ source ~/dotfiles/antigen/antigen.zsh
 
 update_local() {
 	echo "Updating local config"
-	git pull --rebase
+	git pull
 }
 update_local
 
