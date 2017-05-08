@@ -25,7 +25,11 @@ function! BuildYCM(info)
 		silent !python ./install.py --clang-completer --gocode-completer
 	endif
 endfunction
-Plug 'Valloric/YouCompleteMe', { 'do' : function('BuildYCM') }
+
+let arch = substitute(system('uname -m'), '\n\+$', '', '')
+if arch == "x86_64"
+	Plug 'Valloric/YouCompleteMe', { 'do' : function('BuildYCM') }
+endif
 
 Plug 'Yggdroot/indentLine'
 Plug 'Raimondi/delimitMate'
