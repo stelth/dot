@@ -22,7 +22,7 @@ antigen bundle psprint/zsh-navigation-tools
 antigen bundle mafredri/zsh-async
 antigen bundle sindresorhus/pure
 
-antigen theme nanotech
+antigen theme refined
 
 antigen apply
 
