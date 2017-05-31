@@ -2,6 +2,7 @@ source ~/dotfiles/antigen/antigen.zsh
 
 antigen use oh-my-zsh
 
+# oh-my-zsh bundles
 antigen bundle docker
 antigen bundle extract
 antigen bundle git
@@ -13,14 +14,16 @@ antigen bundle tmux
 antigen bundle tmuxinator
 antigen bundle vi-mode
 
+# third-party bundles
 antigen bundle jreese/zsh-titles
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-history-substring-search
+antigen bundle zdharma/fast-syntax-highlighting
+antigen bundle zdharma/history-search-multi-word
 antigen bundle sharat87/zsh-vim-mode
 antigen bundle psprint/zsh-navigation-tools
-
+antigen bundle willghatch/zsh-saneopt
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zuxfoucault/colored-man-pages_mod
 antigen bundle mafredri/zsh-async
-antigen bundle sindresorhus/pure
 
 antigen theme refined
 
