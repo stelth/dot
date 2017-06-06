@@ -27,3 +27,4 @@ packages
 zgen
 antigen
 *.pyc
+*.viminfo
