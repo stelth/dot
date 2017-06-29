@@ -26,9 +26,17 @@ function! BuildYCM(info)
 	endif
 endfunction
 
+function! BuildYCMPower8(info)
+	if a:info.status == 'installed' || a:info.status == 'updated' || a:info.force
+		silent !python ./install.py --system-libclang --system-boost --clang-completer
+	endif
+endfunction
+
 let arch = substitute(system('uname -m'), '\n\+$', '', '')
-if arch == "x86_64"
+if arch == 'x86_64'
 	Plug 'Valloric/YouCompleteMe', { 'do' : function('BuildYCM') }
+elseif arch == 'ppc64le'
+	Plug 'Valloric/YouCompleteMe', { 'do' : function('BuildYCMPower8')}
 endif
 
 Plug 'Yggdroot/indentLine'
