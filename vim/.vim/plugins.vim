@@ -19,6 +19,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-dispatch'
 
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'bsdelf/bufferhint'
 
 function! BuildYCM(info)
 	if a:info.status == 'installed' || a:info.status == 'updated' || a:info.force
