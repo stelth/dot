@@ -8,7 +8,7 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_key_list_select_completion = []
 let g:ycm_key_list_previous_completion = []
 
-let g:Show_diagnostics_ui = 1 "default 1
+let g:Show_diagnostics_ui = 0 "default 1
 
 "will put icons in Vim's gutter on lines that have a diagnostic set.
 ""Turning this off will also turn off the YcmErrorLine and YcmWarningLine

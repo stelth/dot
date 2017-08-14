@@ -40,6 +40,10 @@ elseif arch == 'ppc64le'
 	Plug 'Valloric/YouCompleteMe', { 'do' : function('BuildYCMPower8')}
 endif
 
+if v:version >= 800
+	Plug 'w0rp/ale'
+endif
+
 Plug 'Yggdroot/indentLine'
 Plug 'Raimondi/delimitMate'
 
