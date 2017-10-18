@@ -40,6 +40,7 @@ update_apt() {
 		echo "Updating apt packages"
 		apt-get update -y
 		apt-get upgrade -y
+		apt-get dist-upgrade -y
 	}
 }
 update_apt
