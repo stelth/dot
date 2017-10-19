@@ -12,6 +12,8 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 Plug 'mbbill/undotree'
 
 Plug 'tpope/vim-fugitive'
