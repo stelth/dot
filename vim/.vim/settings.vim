@@ -8,6 +8,7 @@ set magic "Set magic on, for regular expressions
 " Turn on WiLD menu
 set wildignorecase
 set wildmode=list:longest,list:full
+set wildignore+=*/.git/*,*/tmp/*,*.swp
 
 " Turn backup off
 set nobackup
