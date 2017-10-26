@@ -22,6 +22,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-dispatch'
 
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'nixprime/cpsm', { 'do': 'env PY3=OFF ./install.sh' }
+Plug 'tacahiroy/ctrlp-funky'
+
 Plug 'bsdelf/bufferhint'
 
 function! BuildYCM(info)
