@@ -26,22 +26,11 @@ Plug 'bsdelf/bufferhint'
 
 function! BuildYCM(info)
 	if a:info.status == 'installed' || a:info.status == 'updated' || a:info.force
-		silent !python ./install.py --clang-completer --gocode-completer
-	endif
-endfunction
-
-function! BuildYCMPower8(info)
-	if a:info.status == 'installed' || a:info.status == 'updated' || a:info.force
 		silent !python ./install.py --system-libclang --system-boost --clang-completer
 	endif
 endfunction
 
-let arch = substitute(system('uname -m'), '\n\+$', '', '')
-if arch == 'x86_64'
-	Plug 'Valloric/YouCompleteMe', { 'do' : function('BuildYCM') }
-elseif arch == 'ppc64le'
-	Plug 'Valloric/YouCompleteMe', { 'do' : function('BuildYCMPower8')}
-endif
+Plug 'Valloric/YouCompleteMe', { 'do' : function('BuildYCM') }
 
 if v:version >= 800
 	Plug 'w0rp/ale'
