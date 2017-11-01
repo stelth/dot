@@ -41,6 +41,7 @@ update_apt() {
 		apt-get update -y
 		apt-get upgrade -y
 		apt-get dist-upgrade -y
+		apt autoremove
 	}
 }
 update_apt
