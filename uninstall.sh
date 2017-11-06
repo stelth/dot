@@ -2,7 +2,7 @@
 
 uninstall_antigen() {
 	echo "Uninstalling antigen"
-	[ -f ~/.antigen ] && rm -rf ~/.antigen
+	[ -d ~/.antigen ] && rm -rf ~/.antigen
 }
 uninstall_antigen
 
@@ -26,3 +26,4 @@ uninstall_dotfiles_dir() {
 	cd ~/
 	rm -rf ~/dotfiles
 }
+uninstall_dotfiles_dir
