@@ -25,6 +25,7 @@ install_fzf() {
 	git clone --depth 1 https://github.com/junegunn/fzf.git
 	yes | fzf/install
 }
+install_fzf
 
 symlink_dotfiles() {
 	for dst in `cat packages`; do
