@@ -6,6 +6,13 @@ uninstall_antigen() {
 }
 uninstall_antigen
 
+uninstall_fzf() {
+	echo "Uninstalling fzf"
+	[ -f ~/.fzf/uninstall ] && ~/.fzf/uninstall
+	[ -d ~/.fzf ] && rm -rf ~/.fzf
+}
+uninstall_fzf
+
 unsymlink_dotfiles() {
 	for dst in `cat packages`; do
 		nm=${dst##*/}
@@ -14,12 +21,6 @@ unsymlink_dotfiles() {
 	done
 }
 unsymlink_dotfiles
-
-uninstall_fzf() {
-	echo "Uninstalling fzf"
-	[ -f ~/.fzf/uninstall ] && ~/.fzf/uninstall
-}
-uninstall_fzf
 
 uninstall_dotfiles_dir() {
 	echo "Uninstall dotfiles directory"
