@@ -13,7 +13,7 @@ unsymlink_dotfiles() {
 		stow -D $nm
 	done
 }
-unymlink_dotfiles
+unsymlink_dotfiles
 
 uninstall_fzf() {
 	echo "Uninstalling fzf"
@@ -21,4 +21,8 @@ uninstall_fzf() {
 }
 uninstall_fzf
 
-cd
+uninstall_dotfiles_dir() {
+	echo "Uninstall dotfiles directory"
+	cd ~/
+	rm -rf ~/dotfiles
+}
