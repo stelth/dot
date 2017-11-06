@@ -28,3 +28,5 @@ set hidden "Don't unload buffer when it is abandoned
 set clipboard=unnamed "Use system clipboard
 
 set spr "split right
+
+set grepprg=rg\ --vimgrep
