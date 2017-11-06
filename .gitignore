@@ -26,5 +26,6 @@ emacs/.emacs.d/extern/cask
 packages
 zgen
 antigen
+fzf
 *.pyc
 vim/.vim.local/.viminfo
