@@ -18,8 +18,10 @@ Plug 'tpope/vim-vinegar'
 Plug 'mbbill/undotree'
 
 Plug 'tpope/vim-fugitive'
-
 Plug 'tpope/vim-dispatch'
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 Plug 'bsdelf/bufferhint'
 

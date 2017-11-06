@@ -29,13 +29,6 @@ symlink_dotfiles() {
 }
 symlink_dotfiles
 
-install_fzf() {
-	echo "Installing fzf"
-	git clone --depth 1 https://github.com/junegunn/fzf.git
-	yes | fzf/install
-}
-install_fzf
-
 install_vim() {
 	if [ -L ~/.vim ]; then
 		echo "Installing Vim Plugins"
