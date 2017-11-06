@@ -37,3 +37,7 @@ export SHELL=`which zsh`
 export PATH=$PATH:/usr/local/sbin:~/bin
 
 export HOMEBREW_GITHUB_API_TOKEN='e196b520c49ca1cd8b74c96840b83418e999b25f'
+
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
