@@ -17,7 +17,6 @@ antigen bundle vi-mode
 # third-party bundles
 antigen bundle jreese/zsh-titles
 antigen bundle zdharma/fast-syntax-highlighting
-antigen bundle zdharma/history-search-multi-word
 antigen bundle sharat87/zsh-vim-mode
 antigen bundle psprint/zsh-navigation-tools
 antigen bundle willghatch/zsh-saneopt
