@@ -20,13 +20,6 @@ install_antigen() {
 }
 install_antigen
 
-install_fzf() {
-	echo "Installing fzf"
-	git clone --depth 1 https://github.com/junegunn/fzf.git
-	yes | fzf/install
-}
-install_fzf
-
 symlink_dotfiles() {
 	for dst in `cat packages`; do
 		nm=${dst##*/}
@@ -35,6 +28,13 @@ symlink_dotfiles() {
 	done
 }
 symlink_dotfiles
+
+install_fzf() {
+	echo "Installing fzf"
+	git clone --depth 1 https://github.com/junegunn/fzf.git
+	yes | fzf/install
+}
+install_fzf
 
 install_vim() {
 	if [ -L ~/.vim ]; then
