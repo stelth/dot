@@ -1,0 +1,57 @@
+#!/usr/local/bin/python2
+
+import argparse
+import os.path
+import sys
+
+this_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(this_dir)
+
+# Note: This line MUST come before imports of 3rd party modules. Bizarre errors can occur otherwise
+sys.path.insert(0, parent_dir)
+
+from twisted.internet import reactor, defer
+
+from damascus.command_line import CLIError, generate, build, slave, status, error_log, build_node, download_artifacts
+from damascus.command_line import clear_error, umount_subdirs, show_artifact_ids, show_git_mirrors, sync_git_mirrors
+from damascus.command_line import ui_backend, diff, tag, branch
+
+from damascus import command_line
+
+command_line.CLI_EXECUTABLE_FILE = os.path.abspath(__file__)
+
+parser = argparse.ArgumentParser(prog='Damascus CLI')
+
+sub = parser.add_subparsers()
+
+generate.add_sub_command(sub)
+build.add_sub_command(sub)
+status.add_sub_command(sub)
+download_artifacts.add_sub_command(sub)
+error_log.add_sub_command(sub)
+clear_error.add_sub_command(sub)
+slave.add_sub_command(sub)
+build_node.add_sub_command(sub)
+umount_subdirs.add_sub_command(sub)
+show_artifact_ids.add_sub_command(sub)
+show_git_mirrors.add_sub_command(sub)
+sync_git_mirrors.add_sub_command(sub)
+ui_backend.add_sub_command(sub)
+diff.add_sub_command(sub)
+tag.add_sub_command(sub)
+branch.add_sub_command(sub)
+
+args = parser.parse_args()
+
+try:
+
+    args.handler(args)
+
+except CLIError as e:
+    sys.exit(str(e))
+
+except Exception as e:
+    import traceback
+    traceback.print_exc()
+    sys.exit('Unexpected Error: ' + str(e))
+
