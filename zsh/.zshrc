@@ -42,6 +42,13 @@ mpv() {
 	echo 'print: ; @echo "$(${VAR})"' | make -f Makefile -f - print
 }
 
+rfetch() {
+	NSLASH="$(echo "$1" | perl -pe 's|.*://[^/]+(.*?)/?$|\1|' | grep -o / | wc -l)"
+	NCUT=$((NSLASH > 0 ? NSLASH-1 : 0))
+
+	wget -r -nH --user-agent=Mozilla/5.0 --cut-dirs=${NCUT} --no-parent "${1}"
+}
+
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
