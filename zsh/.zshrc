@@ -24,7 +24,7 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zuxfoucault/colored-man-pages_mod
 antigen bundle mafredri/zsh-async
 
-antigen theme refined
+antigen theme https://gitlab.com/stelth/zsh-themes.git gitster
 
 antigen apply
 
