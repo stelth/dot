@@ -6,13 +6,13 @@ update_local() {
 	echo "Updating local config"
 	git pull
 }
-update_local
+update_local || true
 
 update_vimplug() {
 	echo "Updating vim plugins"
 	vim -c 'PlugUpgrade' -c 'PlugUpdate' -c 'PlugClean!' -c 'qall'
 }
-update_vimplug
+update_vimplug || true
 
 update_zsh() {
 	echo "Updating antigen"
@@ -23,7 +23,7 @@ update_zsh() {
 
 	antigen reset
 }
-update_zsh
+update_zsh || true
 
 update_fzf() {
 	echo "Updating fzf"
@@ -31,6 +31,7 @@ update_fzf() {
 	git pull
 	./install
 }
+update_fzf || true
 
 update_brew() {
 	hash brew 2>&1 && {
@@ -40,7 +41,7 @@ update_brew() {
 		brew cleanup
 	}
 }
-update_brew
+update_brew || true
 
 update_apt() {
 	hash apt 2>&1 && [[ "`echo $UID`" == "0" ]] && {
@@ -51,4 +52,4 @@ update_apt() {
 		apt autoremove -y
 	}
 }
-update_apt
+update_apt || true
