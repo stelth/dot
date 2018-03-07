@@ -25,14 +25,6 @@ update_zsh() {
 }
 update_zsh || true
 
-update_fzf() {
-	echo "Updating fzf"
-	cd ~/.fzf
-	git pull
-	./install
-}
-update_fzf || true
-
 update_brew() {
 	hash brew 2>&1 && {
 		echo "Updating Home Brew packages"
