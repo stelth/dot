@@ -16,6 +16,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-vinegar'
 Plug 'mbbill/undotree'
+Plug 'tpope/vim-db'
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-dispatch'
