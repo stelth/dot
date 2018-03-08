@@ -10,7 +10,7 @@ update_local || true
 
 update_vimplug() {
 	echo "Updating vim plugins"
-	vim -c 'PlugUpgrade' -c 'PlugUpdate' -c 'PlugClean!' -c 'qall'
+	vim -c 'PlugInstall' -c 'PlugUpgrade' -c 'PlugUpdate' -c 'PlugClean!' -c 'qall'
 }
 update_vimplug || true
 
