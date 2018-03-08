@@ -4,7 +4,8 @@ source ~/dotfiles/antigen/antigen.zsh
 
 update_local() {
 	echo "Updating local config"
-	git pull
+	git push
+	git pull | grep -v "Already up-to-date" && ./update.sh
 }
 update_local || true
 
