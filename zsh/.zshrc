@@ -29,6 +29,8 @@ antigen theme awesomepanda
 
 antigen apply
 
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=black,bold'
+
 alias su='su -'
 
 export EDITOR=`which vim`
