@@ -1,5 +1,8 @@
 " Remap Commands
 
+let mapleader="\<space>"
+let maplocalleader="\\"
+
 " work around xinput weirdness
 nmap <esc>[A <up>
 nmap <esc>[B <down>
