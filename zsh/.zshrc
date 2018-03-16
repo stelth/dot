@@ -25,7 +25,7 @@ antigen bundle zuxfoucault/colored-man-pages_mod
 antigen bundle mafredri/zsh-async
 antigen bundle arzzen/calc.plugin.zsh
 
-antigen theme https://gitlab.com/stelth/zsh-themes.git gitster
+antigen theme avit
 
 antigen apply
 
