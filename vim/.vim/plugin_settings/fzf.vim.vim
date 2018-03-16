@@ -1,0 +1,1 @@
+" Settings for fzf.vim

@@ -1,3 +1,5 @@
+"Settings for undotree
+
 nnoremap <F6> :UndotreeToggle<CR>
 
 if has( "persistent_undo" )

@@ -1,4 +1,4 @@
-" Ultisnips settings
+" Settings for ultisnips
 
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"

@@ -1,4 +1,4 @@
-" YouCompleteMe options
+" Settings for YouCompleteMe
 
 let g:ycm_global_ycm_extra_conf = '~/.vim/plugin_settings/ycm_extra_conf.py'
 let g:ycm_use_ultisnips_completer = 1
