@@ -42,6 +42,7 @@ endif
 Plug 'Yggdroot/indentLine'
 Plug 'Raimondi/delimitMate'
 
+Plug 'kana/vim-operator-user'
 Plug 'rhysd/vim-clang-format'
 
 Plug 'christoomey/vim-tmux-navigator'
