@@ -35,9 +35,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'Valloric/YouCompleteMe', { 'do' : function('BuildYCM') }
-if v:version >= 800
-	Plug 'w0rp/ale'
-endif
+Plug 'w0rp/ale'
 Plug 'rhysd/vim-clang-format'
 
 " UI plugins
