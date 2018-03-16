@@ -17,6 +17,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-vinegar'
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-db'
+Plug 'tpope/vim-speeddating'
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-dispatch'
@@ -47,5 +48,7 @@ Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'arcticicestudio/nord-vim'
 Plug 'itchyny/lightline.vim'
+
+Plug 'jceb/vim-orgmode'
 
 call plug#end()
