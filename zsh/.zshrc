@@ -5,6 +5,7 @@ antigen use oh-my-zsh
 # oh-my-zsh bundles
 antigen bundle docker
 antigen bundle extract
+antigen bundle fasd
 antigen bundle git
 antigen bundle gitfast
 antigen bundle git-flow
