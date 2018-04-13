@@ -37,7 +37,7 @@ update_brew() {
 update_brew || true
 
 update_apt() {
-	hash apt 2>&1 && [[ "`echo $UID`" == "0" ]] && {
+	hash apt 2>&1 && hash apt-get && [[ "`echo $UID`" == "0" ]] && {
 		echo "Updating apt packages"
 		apt-get update -y
 		apt-get upgrade -y
