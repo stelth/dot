@@ -6,7 +6,7 @@ check_environment() {
 	required_exes=(git make stow cmake curl go python)
 
 	for e in ${required_exes[@]}; do
-		hash $e || {
+		(( $+commands[$e] )) || {
 			echo "!! Missing: $e"
 			exit 1
 		}
