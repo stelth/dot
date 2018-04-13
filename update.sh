@@ -1,15 +1,19 @@
 #!/bin/zsh
 
 update_local() {
-	echo "Updating local config"
-	git pull 2>&1 | grep -E "up-to-date|up to date" || ./update.sh
-	git push
+	(( $+commands[git] )) && {
+		echo "Updating local config"
+		git pull 2>&1 | grep -E "up-to-date|up to date" || ./update.sh
+		git push
+	}
 }
 update_local || true
 
 update_vimplug() {
-	echo "Updating vim plugins"
-	vim -c 'PlugInstall' -c 'PlugUpgrade' -c 'PlugUpdate' -c 'PlugClean!' -c 'qall'
+	(( $+commands[vim] )) && {
+		echo "Updating vim plugins"
+		vim -c 'PlugInstall' -c 'PlugUpgrade' -c 'PlugUpdate' -c 'PlugClean!' -c 'qall'
+	}
 }
 update_vimplug || true
 
