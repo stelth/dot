@@ -1,7 +1,5 @@
 #!/bin/zsh
 
-source ~/dotfiles/antigen/antigen.zsh
-
 update_local() {
 	echo "Updating local config"
 	git pull 2>&1 | grep -E "up-to-date|up to date" || ./update.sh
@@ -16,6 +14,8 @@ update_vimplug() {
 update_vimplug || true
 
 update_zsh() {
+	source ~/dotfiles/antigen/antigen.zsh
+
 	echo "Updating antigen"
 	antigen selfupdate
 
@@ -37,9 +37,9 @@ update_brew() {
 update_brew || true
 
 update_apt() {
-	hash apt 2>&1 && {
-		hash apt-get 2>&1 && {
-			[[ "`echo $UID`" == "-" ]] && {
+	[[ "`echo $UID`" == "0" ]] && {
+		(( $+commands[apt] )) && {
+			(( $+commands[apt-get] )) && {
 				echo "Updating apt packages"
 				apt-get update -y
 				apt-get upgrade -y
