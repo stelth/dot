@@ -27,7 +27,7 @@ update_zsh() {
 update_zsh || true
 
 update_brew() {
-	hash brew 2>&1 && {
+	(( $+commands[brew] )) && {
 		echo "Updating Home Brew packages"
 		brew update
 		brew upgrade
