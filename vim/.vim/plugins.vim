@@ -8,12 +8,6 @@ endif
 
 call plug#begin(expand('~/.vim/bundle/'))
 
-function! BuildYCM(info)
-	if a:info.status == 'installed' || a:info.status == 'updated' || a:info.force
-		silent !python ./install.py --clang-completer
-	endif
-endfunction
-
 " Base plugins
 Plug 'tpope/vim-sensible'
 
@@ -34,7 +28,6 @@ Plug 'Raimondi/delimitMate'
 " Code plugins
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'Valloric/YouCompleteMe', { 'do' : function('BuildYCM') }
 Plug 'w0rp/ale'
 Plug 'rhysd/vim-clang-format'
 
