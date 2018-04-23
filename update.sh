@@ -3,7 +3,7 @@
 update_local() {
 	(( $+commands[git] )) && {
 		echo "Updating local config"
-		git pull 2>&1 | grep -E "up-to-date|up to date" || { ./update.sh && exit 0}
+		git pull 2>&1 | grep -E "up-to-date|up to date" || { ./update.sh; exit $?}
 		git push
 	}
 }
