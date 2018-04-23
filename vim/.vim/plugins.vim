@@ -31,6 +31,16 @@ Plug 'honza/vim-snippets'
 Plug 'w0rp/ale'
 Plug 'rhysd/vim-clang-format'
 
+" Code autocomplete plugins
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'zchee/deoplete-jedi'
+Plug 'zchee/libclang-python3'
+Plug 'zchee/deoplete-clang'
+Plug 'Shougo/neoinclude.vim'
+
+
 " UI plugins
 Plug 'tpope/vim-vinegar'
 Plug 'mbbill/undotree'
@@ -44,13 +54,5 @@ Plug 'tpope/vim-dadbod'
 Plug 'tpope/vim-fugitive'
 Plug 'jreybert/vimagit'
 Plug 'jceb/vim-orgmode'
-
-Plug 'Shougo/deoplete.nvim'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'zchee/deoplete-jedi'
-Plug 'zchee/libclang-python3'
-Plug 'zchee/deoplete-clang'
-Plug 'Shougo/neoinclude.vim'
 
 call plug#end()
