@@ -3,7 +3,7 @@
 check_environment() {
 	echo "Checking environment"
 
-	required_exes=(git make stow cmake curl go python)
+	required_exes=(git make stow cmake curl go python3)
 
 	for e in ${required_exes[@]}; do
 		(( $+commands[$e] )) || {
