@@ -17,3 +17,7 @@ call deoplete#custom#source('_',
             \ 'disabled_syntaxes', ['Comment', 'String'])
 
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
+let g:deoplete#sources = {}
+let g:deoplete#sources.python = ['LanguageClient']
+let g:deoplete#sources.python3 = ['LanguageClient']

@@ -28,18 +28,18 @@ Plug 'Raimondi/delimitMate'
 " Code plugins
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 Plug 'rhysd/vim-clang-format'
 
 " Code autocomplete plugins
 Plug 'Shougo/deoplete.nvim'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'zchee/deoplete-jedi'
-Plug 'zchee/libclang-python3'
-Plug 'zchee/deoplete-clang'
 Plug 'Shougo/neoinclude.vim'
-
+Plug 'autozimu/LanguageClient-neovim', {
+			\ 'branch': 'next',
+			\ 'do': 'bash install.sh'
+			\ }
 
 " UI plugins
 Plug 'tpope/vim-vinegar'
