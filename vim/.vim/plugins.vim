@@ -28,7 +28,6 @@ Plug 'Raimondi/delimitMate'
 " Code plugins
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-" Plug 'w0rp/ale'
 Plug 'rhysd/vim-clang-format'
 
 " Code autocomplete plugins
