@@ -50,7 +50,6 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'itchyny/lightline.vim'
 
 " Misc plugins
-Plug 'tpope/vim-dadbod'
 Plug 'tpope/vim-fugitive'
 Plug 'jreybert/vimagit'
 Plug 'jceb/vim-orgmode'
