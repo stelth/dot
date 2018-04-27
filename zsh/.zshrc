@@ -39,6 +39,10 @@ export SHELL=`which zsh`
 
 export PATH=$PATH:/usr/local/sbin:~/bin
 
+if [ "$(uname 2> /dev/null)" == "Linux" ]; then
+	export PATH=$PATH:/usr/lib/llvm-6.0/bin
+fi
+
 export HOMEBREW_GITHUB_API_TOKEN='e196b520c49ca1cd8b74c96840b83418e999b25f'
 
 mpv() {
