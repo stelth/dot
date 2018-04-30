@@ -30,3 +30,6 @@ set clipboard=unnamed "Use system clipboard
 set spr "split right
 
 set grepprg=rg\ --vimgrep
+
+" Use posix shell highlighting
+let g:is_posix = 1
