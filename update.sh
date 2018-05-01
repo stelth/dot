@@ -57,7 +57,16 @@ update_apt || true
 
 update_pip3_packages() {
 	(( $+commands[pip3] )) && {
+		echo "Updating pip3 packages"
 		pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip3 install -U
 	}
 }
 update_pip3_packages || true
+
+update_npm_packages() {
+	(( $+commands[npm] )) && {
+		echo "Updating npm packages"
+		npm --depth 1000 update --dev
+	}
+}
+update_npm_packages || true

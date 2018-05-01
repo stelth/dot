@@ -37,7 +37,7 @@ alias su='su -'
 export EDITOR=`which vim`
 export SHELL=`which zsh`
 
-export PATH=$PATH:/usr/local/sbin:~/bin
+export PATH=$PATH:/usr/local/sbin:~/bin:~/node_modules/.bin
 
 if [ "$(uname 2> /dev/null)" == "Linux" ]; then
 	export PATH=$PATH:/usr/lib/llvm-6.0/bin
