@@ -54,3 +54,10 @@ update_apt() {
 	}
 }
 update_apt || true
+
+update_pip3_packages() {
+	(( $+commands[pip3] )) && {
+		pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip3 install -U
+	}
+}
+update_pip3_packages || true
