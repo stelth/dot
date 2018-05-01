@@ -14,6 +14,7 @@ call deoplete#custom#source('_',
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 let g:deoplete#sources = {}
+let g:deoplete#sources.sh = ['LanguageClient']
 let g:deoplete#sources.c = ['LanguageClient']
 let g:deoplete#sources.cpp = ['LanguageClient']
 let g:deoplete#sources.python = ['LanguageClient']
