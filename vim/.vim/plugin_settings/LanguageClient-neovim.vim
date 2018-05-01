@@ -11,6 +11,7 @@ else
 	let g:LanguageClient_serverCommands = {
 				\ 'python': ['/usr/local/bin/pyls'],
 				\ 'cpp': ['/usr/lib/llvm-6.0/bin/clangd'],
-				\ 'c': ['/usr/lib/llvm-6.0/bin/clangd']
+				\ 'c': ['/usr/lib/llvm-6.0/bin/clangd'],
+				\ 'sh': ['~/node_modules/.bin/bash-language-server', 'start']
 				\ }
 endif
