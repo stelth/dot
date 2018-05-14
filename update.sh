@@ -45,7 +45,7 @@ update_apt() {
 		(( $+commands[apt] )) && {
 			(( $+commands[apt-get] )) && {
 				echo "Updating apt packages"
-				apt-get update -y -f --allow-unauthenticated
+				apt-get update -y --allow-unauthenticated
 				apt-get upgrade -y -f --allow-unauthenticated
 				apt-get dist-upgrade -y -f --allow-unauthenticated
 				apt autoremove -y -f
