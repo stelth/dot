@@ -30,4 +30,3 @@ fzf
 *.pyc
 vim/.vim.local/.viminfo
 tmux/.tmux/plugins
-tmux/.tmux/tpm
