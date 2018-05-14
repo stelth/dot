@@ -52,5 +52,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'jreybert/vimagit'
 Plug 'jceb/vim-orgmode'
+Plug 'tmux-plugins/vim-tmux'
 
 call plug#end()
