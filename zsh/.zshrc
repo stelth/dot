@@ -45,11 +45,6 @@ fi
 
 export HOMEBREW_GITHUB_API_TOKEN='e196b520c49ca1cd8b74c96840b83418e999b25f'
 
-mpv() {
-	export VAR=${1}
-	echo 'print: ; @echo "$(${VAR})"' | make -f Makefile -f - print
-}
-
 rfetch() {
 	NSLASH="$(echo "${@: -1}" | perl -pe 's|.*://[^/]+(.*?)/?$|\1|' | grep -o / | wc -l)"
 	NCUT=$((NSLASH > 0 ? NSLASH-1 : 0))
