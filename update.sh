@@ -67,6 +67,11 @@ update_npm_packages() {
 	(( $+commands[npm] )) && {
 		echo "Updating npm packages"
 		npm --depth 1000 update --dev
+
+		[[ "`uname -a | grep Darwin`" || "`echo $UID`" == "0" ]] && {
+			echo "Updating npm binary"
+			npm i -g npm
+		}
 	}
 }
 update_npm_packages || true
