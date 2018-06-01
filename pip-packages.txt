@@ -1,0 +1,13 @@
+autopep8
+mccabe
+neovim
+pip
+pycairo
+pydocstyle
+pyflakes
+pygobject
+python-language-server
+rope
+setuptools
+wheel
+yapf
