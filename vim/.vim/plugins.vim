@@ -16,7 +16,6 @@ Plug 'tpope/vim-dispatch'
 Plug 'kana/vim-operator-user'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'wikitopian/hardmode'
 
 " Editor plugins
 Plug 'tpope/vim-commentary'
