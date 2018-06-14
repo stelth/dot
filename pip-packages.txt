@@ -1,7 +1,6 @@
 autopep8
 mccabe
 neovim
-pip
 pycairo
 pydocstyle
 pyflakes
