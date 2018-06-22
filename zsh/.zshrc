@@ -30,26 +30,6 @@ antigen theme steeef
 
 antigen apply
 
-# List every chroma function except vim
-# revisit this often to see if we can remove it
-FAST_HIGHLIGHT=(
-chroma-autoload chroma/-autoload.ch
-chroma-awk chroma/-awk.ch
-chroma-docker chroma/-docker.ch
-chroma-example chroma/-example.ch
-chroma-git chroma/-git.ch
-chroma-grep chroma/-grep.ch
-chroma-make chroma/-make.ch
-chroma-perl chroma/-perl.ch
-chroma-printf chroma/-printf.ch
-chroma-ruby chroma/-ruby.ch
-chroma-scp chroma/-scp.ch
-chroma-sh chroma/-sh.ch
-chroma-source chroma/-source.ch
-chroma-ssh chroma/-ssh.ch
-chroma-which chroma/-which.ch
-)
-
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=black,bold'
 
 alias su='su -'
