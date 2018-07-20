@@ -27,7 +27,6 @@ mem
 meow
 merge-options
 ms
-npm
 npm-check
 ora
 pkg-dir
