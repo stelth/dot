@@ -3,7 +3,7 @@
 check_environment() {
 	echo "Checking environment"
 
-	required_exes=(git make stow cmake curl go python3)
+	required_exes=(git make stow cmake curl go python3 npm pip3)
 
 	for e in ${required_exes[@]}; do
 		(( $+commands[$e] )) || {
@@ -28,6 +28,19 @@ symlink_dotfiles() {
 	done
 }
 symlink_dotfiles
+
+install_npm() {
+	echo "Installing npm packages"
+	for pkg in $(cat npm-packages.txt); do
+		npm install $pkg
+	done
+}
+install_npm
+
+install pip() {
+	echo "Installing pip packages"
+	pip3 install --user -r pip-packages.txt
+}
 
 install_vim() {
 	if [ -L ~/.vim ]; then
