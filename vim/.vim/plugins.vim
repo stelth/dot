@@ -22,6 +22,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-unimpaired'
 Plug 'Yggdroot/indentLine'
 Plug 'Raimondi/delimitMate'
 
