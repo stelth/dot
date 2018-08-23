@@ -1,6 +1,7 @@
 vim/.vim/bundle
 zsh/.zprezto
 vim/.vim/.netrwhist
+vim/.vim.local
 xmonad*/.xmonad/xmonad-x86_64-linux
 xmonad*/.xmonad/xmonad.o
 xmonad*/.xmonad/xmonad.hi
