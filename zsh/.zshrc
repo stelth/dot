@@ -49,7 +49,7 @@ rfetch() {
 	NSLASH="$(echo "${@: -1}" | perl -pe 's|.*://[^/]+(.*?)/?$|\1|' | grep -o / | wc -l)"
 	NCUT=$((NSLASH > 0 ? NSLASH-1 : 0))
 
-	wget -r -N -nH -l 10 --random-wait --user-agent=Mozilla/5.0 --cut-dirs=${NCUT} --no-parent "$@"
+	wget --mirror -nH --random-wait --user-agent=Mozilla/5.0 --cut-dirs=${NCUT} --no-parent "$@"
 }
 
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
