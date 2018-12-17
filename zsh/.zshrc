@@ -15,6 +15,7 @@ antigen bundle history
 antigen bundle python
 antigen bundle tmux
 antigen bundle tmuxinator
+antigen bundle urltools
 antigen bundle vi-mode
 
 # third-party bundles
