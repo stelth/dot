@@ -17,6 +17,7 @@ antigen bundle tmux
 antigen bundle tmuxinator
 antigen bundle urltools
 antigen bundle vi-mode
+antigen bundle z
 
 # third-party bundles
 antigen bundle jreese/zsh-titles
