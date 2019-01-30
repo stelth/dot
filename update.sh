@@ -35,9 +35,9 @@ update_brew() {
 		echo "Updating Home Brew packages"
 		brew update
 		brew upgrade
+		brew cleanup
 		brew cleanup -s
 		brew doctor
-		brew prune
 		brew missing
 	}
 }
