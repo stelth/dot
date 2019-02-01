@@ -8,7 +8,7 @@ let completionengines = ['google', 'wikipedia', 'imdb', 'amazon']
 
 set noautofocus
 set cncpcompletion
-" set nohud
+set nohud
 set nodimhintcharacters
 unmap a
 map $ lastTab
