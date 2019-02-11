@@ -51,7 +51,6 @@ Plug 'itchyny/lightline.vim'
 
 " Misc plugins
 Plug 'tpope/vim-fugitive'
-Plug 'jreybert/vimagit'
 Plug 'jceb/vim-orgmode'
 Plug 'tmux-plugins/vim-tmux'
 
