@@ -1,5 +1,6 @@
 let configpath = '/Users/coxj/.chrome/cvimrc'
 set localconfig
+
 let hintcharacters = 'asdfgqwertxcvb'
 let zoomFactor = 0.05
 let scrollduration = 250
