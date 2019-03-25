@@ -70,6 +70,7 @@ update_npm_packages() {
 	(( $+commands[npm] )) && {
 		echo "Updating npm packages"
 		npm --depth 1000 update --dev
+		npm audit fix
 	}
 }
 update_npm_packages || true
