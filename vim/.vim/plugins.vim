@@ -49,9 +49,17 @@ Plug 'bsdelf/bufferhint'
 Plug 'arcticicestudio/nord-vim'
 Plug 'itchyny/lightline.vim'
 
+" Org-mode
+Plug 'jceb/vim-orgmode'
+Plug 'vim-scripts/utl.vim'
+Plug 'vim-scripts/taglist.vim'
+Plug 'majutsushi/tagbar'
+Plug 'chrisbra/NrrwRgn'
+Plug 'mattn/calendar-vim'
+Plug 'vim-scripts/SyntaxRange'
+
 " Misc plugins
 Plug 'tpope/vim-fugitive'
-Plug 'jceb/vim-orgmode'
 Plug 'tmux-plugins/vim-tmux'
 
 call plug#end()
