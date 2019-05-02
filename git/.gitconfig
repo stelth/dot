@@ -17,6 +17,7 @@
 
 [diff]
 	tool = vimdiff
+	renamelimit = 999999
 
 [difftool]
 	prompt = false
