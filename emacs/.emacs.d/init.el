@@ -44,3 +44,4 @@ There are two things you can do about this warning:
 (setq make-backup-files nil)
 (setq auto-save-default nil)
 (setq create-lockfiles nil)
+(global-display-line-numbers-mode)
