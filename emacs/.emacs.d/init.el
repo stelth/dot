@@ -45,3 +45,6 @@ There are two things you can do about this warning:
 (setq auto-save-default nil)
 (setq create-lockfiles nil)
 (global-display-line-numbers-mode)
+
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "IN DEV(i)" "IN QA(q)" "|" "DONE(d)" "CANCELLED(c)")))
