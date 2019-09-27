@@ -75,7 +75,7 @@ cleanup-on-quit yes
 ## configuration option: error-log
 ## description: If set, then user errors (e.g. errors regarding defunct RSS feeds) will be logged to this file.
 ## parameter syntax: <path>
-# error-log ""
+ error-log "~/.newsboat/error.log"
 
 ## configuration option: feed-sort-order
 ## description: If set to "firsttag", the feeds in the feed list will be sorted by their first tag in the urls file.
