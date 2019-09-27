@@ -10,6 +10,7 @@ emacs/.emacs.d/semanticdb
 emacs/.emacs.d/org-clock-save.el
 fzf
 newsboat/.newsboat_local
+newsboat/.newsboat/error.log
 packages
 tmux/.tmux/plugins
 vim/.vim.local
