@@ -68,6 +68,7 @@ update_pip3_packages || true
 
 update_npm_packages() {
 	(( $+commands[npm] )) && {
+		npm install -g npm
 		echo "Updating npm packages"
 		npm --depth 1000 update --dev
 		npm audit fix
