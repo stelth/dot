@@ -49,3 +49,4 @@ install_nvim() {
 	/tmp/installer.sh ~/.cache/dein
 	nvim -c'call dein#update' -c'call dein#install' -c'qall'
 }
+install_nvim
