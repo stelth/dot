@@ -9,14 +9,6 @@ update_local() {
 }
 update_local || true
 
-update_vimplug() {
-	(( $+commands[vim] )) && {
-		echo "Updating vim plugins"
-		vim -c 'PlugInstall' -c 'PlugUpgrade' -c 'PlugUpdate' -c 'PlugClean!' -c 'qall'
-	}
-}
-update_vimplug || true
-
 update_zsh() {
 	source ~/dotfiles/antigen/antigen.zsh
 
