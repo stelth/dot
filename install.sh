@@ -34,13 +34,6 @@ install pip() {
 	pip3 install --user -r pip-packages.txt
 }
 
-install_vim() {
-	if [ -L ~/.vim ]; then
-		echo "Installing Vim Plugins"
-		vim -u vim/.vim/plugins.vim +PlugInstall +qall
-	fi
-}
-
 install_nvim() {
 	echo "Install neovim plugins"
 	stow nvim
