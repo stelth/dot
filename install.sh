@@ -29,14 +29,6 @@ symlink_dotfiles() {
 }
 symlink_dotfiles
 
-install_npm() {
-	echo "Installing npm packages"
-	for pkg in $(cat npm-packages.txt); do
-		npm install $pkg
-	done
-}
-install_npm
-
 install pip() {
 	echo "Installing pip packages"
 	pip3 install --user -r pip-packages.txt
