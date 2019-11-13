@@ -11,6 +11,9 @@ if dein#load_state('~/.cache/dein')
 	" Helper plugins
 	call dein#add('christoomey/vim-tmux-navigator')
 
+	" Editor plugins
+	call dein#add('tpope/vim-commentary')
+
 	" Code plugins
 	call dein#add('Shougo/neosnippet.vim')
 	call dein#add('Shougo/neosnippet-snippets')
@@ -21,6 +24,7 @@ if dein#load_state('~/.cache/dein')
 
 	" UI Plugins
 	call dein#add('arcticicestudio/nord-vim')
+	call dein#add('itchyny/lighgline.vim')
 
 	" Misc plugins
 	call dein#add('tpope/vim-fugitive')
