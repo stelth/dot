@@ -38,7 +38,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=black,bold'
 
 alias su='su -'
 
-export EDITOR=`which vim`
+export EDITOR=`which nvim`
 export SHELL=`which zsh`
 
 if [ "$(uname 2> /dev/null)" == "Linux" ]; then
