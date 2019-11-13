@@ -24,7 +24,7 @@ if dein#load_state('~/.cache/dein')
 
 	" UI Plugins
 	call dein#add('arcticicestudio/nord-vim')
-	call dein#add('itchyny/lighgline.vim')
+	call dein#add('itchyny/lightline.vim')
 
 	" Misc plugins
 	call dein#add('tpope/vim-fugitive')
