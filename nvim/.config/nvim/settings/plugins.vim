@@ -29,6 +29,9 @@ if dein#load_state('~/.cache/dein')
 	" Misc plugins
 	call dein#add('tpope/vim-fugitive')
 
+	" File navigation plugins
+	call dein#add('ctrlpvim/ctrlp.vim')
+
 	call dein#end()
 	call dein#save_state()
 endif
