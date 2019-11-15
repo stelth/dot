@@ -13,10 +13,10 @@
 	followtags = true
 
 [core]
-	editor = vim
+	editor = nvim
 
 [diff]
-	tool = vimdiff
+	tool = nvim -d
 	renamelimit = 999999
 
 [difftool]
