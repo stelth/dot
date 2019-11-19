@@ -4,6 +4,7 @@
 
 [merge]
 	conflicttyle = diff3
+	tool = vimdiff
 
 [status]
 	showUntrackedFiles = all
@@ -21,3 +22,6 @@
 
 [difftool]
 	prompt = false
+
+[mergetool "vimdiff"]
+	cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c '$wincmd J'
