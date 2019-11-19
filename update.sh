@@ -57,9 +57,3 @@ update_pip3_packages() {
 	}
 }
 update_pip3_packages || true
-
-update_nvim() {
-	echo "Update neovim plugins"
-	nvim -c'call dein#update()' -c 'call dein#install()' -c'qall'
-}
-update_nvim || true
