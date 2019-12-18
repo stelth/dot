@@ -1,6 +1,6 @@
 source ~/dotfiles/antigen/antigen.zsh
 
-export PATH=/opt/ghc/bin:/usr/local/bin:/usr/local/sbin:~/bin:~/node_modules/.bin:!/.local/bin:$PATH
+export PATH=/opt/ghc/bin:/usr/local/bin:/usr/local/sbin:~/bin:~/node_modules/.bin:~/.local/bin:$PATH
 
 antigen use oh-my-zsh
 
