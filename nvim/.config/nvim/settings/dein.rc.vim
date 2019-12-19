@@ -29,3 +29,7 @@ endif
 if !has('vim_starting') && dein#check_update()
   call dein#update()
 endif
+
+if !has('vim_starting') && dein#check_clean()
+  call map(dein#check_clean(), "delete(v:val, 'rf')")
+endif
