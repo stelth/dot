@@ -23,11 +23,9 @@ call dein#end()
 call dein#save_state()
 
 if !has('vim_starting') && dein#check_install()
-  echom 'Calling install'
   call dein#install()
 endif
 
 if !has('vim_starting') && dein#check_update()
-  echom 'Calling update'
   call dein#update()
 endif

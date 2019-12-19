@@ -141,7 +141,6 @@ hook_post_update = 'call fruzzy#install()'
 repo = 'vimhaskell/haskell-vim'
 on_ft = 'haskell'
 hook_add = '''
-	echom 'Loaded haskell-vim'
 	let g:haskell_classic_highlighting = 1
 	let g:haskell_indif_if = 3
 	let g:haskell_indent_case = 2
@@ -159,5 +158,6 @@ hook_add = '''
 repo = 'neomake/neomake'
 on_event = 'BufRead'
 hook_source = '''
+	let g:neomake_open_list = 2
 	call neomake#configure#automatic('nw', 1000)
 '''

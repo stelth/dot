@@ -18,8 +18,6 @@ if s:dein_dir != '' || &runtimepath !~ '/dein.vim'
 				\ fnamemodify(s:dein_dir, ':p'), '/$', '', '')
 endif
 
-echom 'rtp: ' . &runtimepath
-
 " Load the rest of the neovim settings
 let s:nvim_home = '~/.config/nvim/'
 for filename in sort( split( glob( s:nvim_home . 'settings/*.vim'), '\n' ) )
