@@ -138,7 +138,7 @@ hook_source = 'let g:fruzzy#sortonempty = 0'
 hook_post_update = 'call fruzzy#install()'
 
 [[plugins]]
-repo = 'vimhaskell/haskell-vim'
+repo = 'neovimhaskell/haskell-vim'
 on_ft = 'haskell'
 hook_add = '''
 	let g:haskell_classic_highlighting = 1
