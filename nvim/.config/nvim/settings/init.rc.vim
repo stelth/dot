@@ -1,5 +1,12 @@
 let $CACHE = expand('~/.cache')
 
+let g:mapleader = ','
+let g:maplocalleader = 'm'
+
+nnoremap ; <NOP>
+nnoremap m <NOP>
+nnoremap , <NOP>
+
 if !isdirectory(expand($CACHE))
 	call mkdir(expand($CACHE), 'p')
 endif
