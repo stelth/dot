@@ -1,4 +1,14 @@
-let $CACHE = expand('~/.cache')
+let s:is_windows = has('win32') || has('win64')
+
+function! IsWindows() abort
+  return s:is_windows
+endfunction
+
+function! IsMac() abort
+  return !s:is_windows && !has('win32unix')
+	\ && (has('mac') || has('macunix') || has('gui_macvim')
+	\ ||  (!executable('xdg-open') && system('uname') =~? '^darwin'))
+endfunction
 
 let g:mapleader = ','
 let g:maplocalleader = 'm'
@@ -6,6 +16,12 @@ let g:maplocalleader = 'm'
 nnoremap ; <NOP>
 nnoremap m <NOP>
 nnoremap , <NOP>
+
+if IsWindows()
+  set shellslash
+endif
+
+let $CACHE = expand('~/.cache')
 
 if !isdirectory(expand($CACHE))
 	call mkdir(expand($CACHE), 'p')
@@ -23,4 +39,8 @@ if s:dein_dir != '' || &runtimepath !~ '/dein.vim'
 	endif
 	execute 'set runtimepath^=' . substitute(
 				\ fnamemodify(s:dein_dir, ':p'), '/$', '', '')
+endif
+
+if has('gui_running')
+  set guioptions=Mc
 endif
