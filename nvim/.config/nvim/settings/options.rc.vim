@@ -106,8 +106,8 @@ set cmdheight=2
 set title
 set titlelen=95
 let &g:titlestring="
-      \ ${expand('%:p:~:.')}$(%m%r%w)
-      \ $<\(%{fnamemodify(getcwd(), ':~')}) - VIM"
+      \ %{expand('%:p:~:.')}%(%m%r%w%)
+      \ %<\(%{fnamemodify(getcwd(), ':~')}\) - VIM"
 set showtabline=0
 
 let &g:statusline="%{winnr('$')>1?'['.winnr().'/'.winnr('$')"
