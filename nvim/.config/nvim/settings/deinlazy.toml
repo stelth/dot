@@ -1,8 +1,4 @@
 [[plugins]]
-repo = 'tpope/vim-commentary'
-on_event = 'BufRead'
-
-[[plugins]]
 repo = 'Shougo/neosnippet.vim'
 depends = ['neosnippet-snippets', 'context_filetype.vim']
 on_event = 'InsertCharPre'
@@ -132,3 +128,248 @@ repo = 'raghur/fruzzy'
 on_source = ['denite.nvim']
 hook_source = 'let g:fruzzy#sortonempty = 0'
 hook_post_update = 'call fruzzy#install()'
+
+[[plugins]]
+repo = 'Shougo/neoyank.vim'
+on_event = 'TextYankPost'
+on_source = ['denite.vim']
+
+[[plugins]]
+repo = 'Shougo/echodoc.vim'
+on_event = 'CompleteDone'
+hook_source = '''
+    let g:echodoc#type = 'virtual'
+    call echodoc#enable()'
+'''
+
+[[plugins]]
+repo = 'Shougo/defx.nvim'
+hook_add = '''
+    nnoremap <silent> [Space]f
+    \ :<C-u>Defx -listed -resume -buffer-name=tab`tabpagenr()`<CR>
+'''
+hook_source = '''
+    call defx#custom#column('mark', {
+        \ 'readonly_icon': '✗',
+        \ 'selected_icon': '✓',
+        \ })
+    call defx#custom#column('icon', {
+        \ 'directory_icon': '▸',
+        \ 'opened_icon': '▾',
+        \ 'root_icon': ' ',
+        \ })
+'''
+[plugins.ftplugin]
+defx = '''
+    # Define mappings
+    nnoremap <silent><buffer><expr> <CR>
+        \ defx#async_action('drop')
+    nnoremap <silent><buffer><expr> c
+        \ defx#do_action('copy')
+    nnoremap <silent><buffer><expr> !
+        \ defx#do_action('execute_command')
+    nnoremap <silent><buffer><expr> m
+        \ defx#do_action('move')
+    nnoremap <silent><buffer><expr> p
+        \ defx#do_action('paste')
+    nnoremap <silent><buffer><expr> l
+        \ defx#do_action('open')
+    nnoremap <silent><buffer><expr> E
+        \ defx#do_action('open', 'vsplit')
+    nnoremap <silent><buffer><expr> P
+        \ defx#do_action('open', 'pedit')
+    nnoremap <silent><buffer><expr> o
+        \ defx#do_action('open_or_close_tree')
+    nnoremap <silent><buffer><expr> O
+        \ defx#do_action('open_tree_recursive')
+    nnoremap <silent><buffer><expr> K
+        \ defx#do_action('new_directory')
+    nnoremap <silent><buffer><expr> N
+        \ defx#do_action('new_file')
+    nnoremap <silent><buffer><expr> M
+        \ defx#do_action('new_multiple_files')
+    nnoremap <silent><buffer><expr> C
+        \ defx#do_action('toggle_columns', 'mark:filename:type:size:time')
+    nnoremap <silent><buffer><expr> S
+        \ defx#do_action('toggle_sort', 'Time')
+    nnoremap <silent><buffer><expr> se
+        \ defx#do_action('add_session')
+    nnoremap <silent><buffer><expr> sl
+        \ defx#do_action('load_session')
+    nnoremap <silent><buffer><expr> d
+        \ defx#do_action('remove_trash')
+    nnoremap <silent><buffer><expr> r
+        \ defx#do_action('rename')
+    nnoremap <silent><buffer><expr> x
+        \ defx#do_action('execute_system')
+    nnoremap <silent><buffer><expr> >
+        \ defx#do_action('toggle_ignored_files')
+    nnoremap <silent><buffer><expr> .
+        \ defx#do_action('repeat')
+    nnoremap <silent><buffer><expr> yy
+        \ defx#do_action('yank_path')
+    nnoremap <silent><buffer><expr> h
+        \ defx#do_action('cd', ['..'])
+    nnoremap <silent><buffer><expr> ~
+        \ defx#do_action('cd')
+    nnoremap <silent><buffer><expr> \
+        \ defx#do_action('cd', 'getcwd())
+    nnoremap <silent><buffer><expr> q
+        \ defx#do_action('quit')
+    nnoremap <silent><buffer><expr> <Space>
+        \ defx#do_action('toggle_select') . 'j'
+    nnoremap <silent><buffer><expr> *
+        \ defx#do_action('toggle_select_all')
+    nnoremap <silent><buffer><expr> j
+        \ line('.') == line('$') ? 'gg' : 'j'
+    nnoremap <silent><buffer><expr> k
+        \ line('.') == 1 ? 'G' : 'k'
+    nnoremap <silent><buffer><expr> <C-l>
+        \ defx#do_action('redraw')
+    nnoremap <silent><buffer><expr> <CR>
+        \ defx#do_action('toggle_select_visual')
+    nnoremap <silent><buffer><expr> <C-g>
+        \ defx#do_action('print')
+    nnoremap <silent><buffer><expr> <Tab> winnr('$') != 1 ?
+        \ ':<C-u>wincmd w<CR>' :
+        \ ':<C-u>Defx -buffer-name=temp -split=vertical<CR>'
+'''
+zsh = '''
+    imap <buffer> <C-c> <Plug>(deol_quit)
+'''
+
+[[plugins]]
+repo = 'Shougo/deol.nvim'
+on_source = 'denite.nvim'
+hook_add = '''
+    nnoremap <silent> [Space]s :<C-u>Deol zsh -no-start-insert<CR>
+    nnoremap <silent> N :<C-u>call deol#new(
+        \ {'command': 'zsh', 'start_insert': 0})<CR
+    nnoremap <silent> [Window]D :<C-u>call deol#kill_editor()<CR>
+'''
+
+[plugins.ftplugin]
+deol = '''
+    nnoremap <buffer><silent> [Space]gc
+        \ :<C-u>call deol#send('git commit')<CR>
+    nnoremap <buffer><silent> [Space]gA
+        \ :<C-u>call deol#send('git commit --amend')<CR>
+    nmap <buffer> i <Plug>(deol_edit)
+'''
+
+[[plugins]]
+repo = 'Shougo/junkfile.vim'
+on_source = 'denite.nvim'
+hook_add = '''
+    nnoremap <silent> [Window]e :<C-u>Denite junkfile:new junkfile<CR>
+'''
+
+[[plugins]]
+repo = 'Shougo/neco-vim'
+on_ft = 'vim'
+
+[[plugins]]
+repo = 'Shougo/vinarise.vim'
+on_cmd = 'Vinarise'
+hook_add = '''
+    let g:vinarise_enable_auto_detect = 1
+'''
+
+[[plugins]]
+repo = 'kana/vim-niceblock'
+on_map = {x = '<Plug>'}
+hook_add = '''
+    xmap I <Plug>(niceblock-I)
+    xmap A <Plug>(niceblock-A)
+'''
+
+[[plugins]]
+repo = 'tyru/caw.vim'
+on_map = {nx = '<Plug>'}
+hook_add = '''
+    function! InitCaw() abort
+        if !&l:modifiable
+            silent! nunmap <buffer> gc
+            silent! xunmap <buffer> gc
+            silent! nunmap <buffer> gcc
+            silent! xunmap <buffer> gcc
+        else
+            nmap <buffer> gc <Plug>(caw:prefix)
+            xmap <buffer> gc <Plug>(caw:prefix)
+            nmap <buffer> gcc <Plug>(caw:hatpos:toggle)
+            xmap <buffer> gcc <Plug>(caw:hatpos:toggle)
+        endif
+    endfunction
+    autocmd MyAutoCmd FileType * call InitCaw()
+    call InitCaw()
+'''
+
+[[plugins]]
+repo = 'rhysd/vim-operator-surround'
+on_map = {n = '<Plug>'}
+hook_add = '''
+    nmap <silent>sa <Plug>(operator-surround-append)a
+    nmap <silent>sd <Plug>(operator-surround-delete)a
+    nmap <silent>sr <Plug>(opertor-surround-replace)a
+    nmap <silent>sc <Plug>(operator-surround-replace)a
+'''
+
+[[plugins]]
+repo = 'kana/vim-operator-replace'
+depends = 'vim-operator-user'
+on_map = {n = '<Plug>'}
+hook_add = '''
+    map R <Plug>(operator-replace)
+'''
+
+[[plugins]]
+repo = 'lambdalisue/vim-findent'
+
+[[plugins]]
+repo = 'kana/vim-smartchr'
+on_event = 'InsertCharPre'
+hook_source = '''
+    inoremap <expr> , smartchr#one_of(', ', ',')
+    inoremap <expr> =
+        \ search('\(&\<bar><bar>\<bar>+\<bar>-\<bar>/\<bar>>\<bar><\) \%#', 'bcn')? '<bs>= '
+        \ : search('\(*\<bar>!\)\%#', 'bcn') ? '= '
+        \ : smartchr#one_of(' = ', '=', ' == ')
+    augroup MyAutoCmd
+        " Substitue .. into -> .
+        autocmd FileType c,cpp inoremap <Buffer> <expr> .
+            \ smartchr#loop(',', '->', '...')
+        autocmd FileType vim inoremap <buffer <expr> .
+            \ smartchr#loop('.', ' . ', '..', '...')
+        autocmd FileType lisp,scheme,clojure inoremap <buffer> <expr> = =
+    augroup END
+'''
+
+[[plugins]]
+repo = 'tweekmonster/helpful.vim'
+on_cmd = 'HelpfulVersion'
+
+[[plugins]]
+repo = 'rhysd/vim-gfm-syntax'
+on_ft = 'markdown'
+
+[[plugins]]
+repo = 'machakann/vim-vimhelplint'
+on_ft = 'help'
+[plugins.ftplugin]
+help = '''
+    nnoremap <silent><buffer> ,r :<C-u>VimhelpLint!<CR>
+'''
+
+[[plugins]]
+repo = 'zchee/deoplete-zsh'
+on_ft = ['zsh', 'sh']
+
+[[plugins]]
+repo = 'ncm2/float-preview.nvim'
+on_source = 'deoplete.nvim'
+if = 'has("nvim")'
+hook_source = '''
+    let g:float_preview#docked = 0
+    let g:float_preview#max_width = 60
+    let g:float_preview#max_height = 20
+'''

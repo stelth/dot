@@ -12,3 +12,28 @@ repo = 'sheerun/vim-polyglot'
 hook_add = '''
 	let g:polyglot_disabled = ['markdown', 'tsx', 'typescript', 'csv']
 '''
+
+[[plugins]]
+repo = 'thinca/vim-ft-diff_fold'
+
+[[plugins]]
+repo = 'thinca/vim-ft-help_fold'
+
+[[plugins]]
+repo = 'kana/vim-textobj-user'
+
+[[plugins]]
+repo = 'kana/vim-operator-user'
+
+[[plugins]]
+repo = 'nixprime/cpsm'
+build = 'sh -c "PY3=ON ./install.sh'
+
+[[plugins]]
+repo = 'Shirk/vim-gas'
+
+[[plugins]]
+repo = 'chrisbra/vim-zsh'
+
+[[plugins]]
+repo = 'roxma/nvim-yarp'
