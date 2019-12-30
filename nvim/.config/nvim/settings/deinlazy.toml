@@ -327,7 +327,7 @@ hook_source = '''
         \ : search('\(*\<bar>!\)\%#', 'bcn') ? '= '
         \ : smartchr#one_of(' = ', '=', ' == ')
     augroup MyAutoCmd
-        " Substitue .. into -> .
+        " Substitute .. into -> .
         autocmd FileType c,cpp inoremap <Buffer> <expr> .
             \ smartchr#loop(',', '->', '...')
         autocmd FileType vim inoremap <buffer <expr> .
