@@ -33,7 +33,7 @@ call deoplete#custom#source('denite', 'matchers',
 if IsMac()
   call deoplete#custom#var('clangx', 'clang_binary', '/usr/bin/clang')
 elseif has('unix')
-  call deoplete#custom#var('clangx', 'clang_binary', '/usr/local/bin/clang-9')
+  call deoplete#custom#var('clangx', 'clang_binary', '/usr/bin/clang-9')
 endif
 
 call deoplete#custom#option('ignore_sources', {
