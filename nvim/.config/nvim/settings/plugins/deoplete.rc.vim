@@ -31,7 +31,7 @@ call deoplete#custom#source('denite', 'matchers',
       \ ['matcher_full_fuzzy', 'matcher_length'])
 
 if IsMac()
-  call deoplete#custo#var('clangx', 'clang_binary', '/usr/bin/clang')
+  call deoplete#custom#var('clangx', 'clang_binary', '/usr/bin/clang')
 elseif has('unix')
   call deoplete#custom#var('clangx', 'clang_binary', '/usr/local/bin/clang-9')
 endif
