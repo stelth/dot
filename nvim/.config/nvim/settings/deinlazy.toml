@@ -8,7 +8,7 @@ repo = 'Shougo/echodoc.vim'
 on_event = 'CompleteDone'
 hook_source = '''
     let g:echodoc#type = 'virtual'
-    call echodoc#enable()'
+    call echodoc#enable()
 '''
 
 [[plugins]]
