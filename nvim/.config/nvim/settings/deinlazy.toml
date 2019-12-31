@@ -220,6 +220,11 @@ deol = '''
 '''
 
 [[plugins]]
+repo = 'Shougo/deoplete-clangx'
+depends = 'context_filetype.vim'
+on_event = 'InsertEnter'
+
+[[plugins]]
 repo = 'Shougo/deoplete.nvim'
 depends = ['context_filetype.vim', 'deoplete-jedi']
 on_event = 'InsertEnter'
@@ -231,16 +236,6 @@ hook_source = '''
 [[plugins]]
 repo = 'Shougo/neoinclude.vim'
 on_event = 'InsertCharPre'
-
-[[plugins]]
-repo = 'Shougo/deoplete-clangx'
-depends = 'context_filetype.vim'
-on_event = 'InsertEnter'
-hook_source = '''
-	if has('unix')
-		call deoplete#custom#var('clangx', 'clang_binary', '/usr/bin/clang-9')
-	endif
-'''
 
 [[plugins]]
 repo = 'deoplete-plugins/deoplete-jedi'
