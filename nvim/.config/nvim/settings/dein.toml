@@ -26,10 +26,6 @@ repo = 'kana/vim-textobj-user'
 repo = 'kana/vim-operator-user'
 
 [[plugins]]
-repo = 'nixprime/cpsm'
-build = 'sh -c "PY3=ON ./install.sh'
-
-[[plugins]]
 repo = 'Shirk/vim-gas'
 
 [[plugins]]
