@@ -10,6 +10,10 @@ function! IsMac() abort
 	\ ||  (!executable('xdg-open') && system('uname') =~? '^darwin'))
 endfunction
 
+function! IsLinux() abort
+  return !IsWindows() && !IsMac()
+endfunction
+
 let g:mapleader = ','
 let g:maplocalleader = 'm'
 
