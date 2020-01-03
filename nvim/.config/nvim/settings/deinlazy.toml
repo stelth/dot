@@ -109,7 +109,7 @@ zsh = '''
 
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
-depends = ['neosnippet-snippets', 'context_filetype.vim']
+depends = ['neosnippet-snippets', 'context_filetype']
 on_event = 'InsertCharPre'
 on_ft = 'snippet'
 hook_source = '''
@@ -199,6 +199,7 @@ denite = '''
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
+name = 'context_filetype'
 
 [[plugins]]
 repo = 'Shougo/deol.nvim'
@@ -220,13 +221,9 @@ deol = '''
 '''
 
 [[plugins]]
-repo = 'Shougo/deoplete-clangx'
-depends = 'context_filetype.vim'
-on_event = 'InsertEnter'
-
-[[plugins]]
 repo = 'Shougo/deoplete.nvim'
-depends = ['context_filetype.vim', 'deoplete-jedi']
+name = 'deoplete'
+depends = 'context_filetype'
 on_event = 'InsertEnter'
 hook_source = '''
 	source ~/.config/nvim/settings/plugins/deoplete.rc.vim
@@ -234,8 +231,18 @@ hook_source = '''
 '''
 
 [[plugins]]
+repo = 'Shougo/deoplete-clangx'
+depends = 'deoplete'
+on_event = 'InsertEnter'
+
+[[plugins]]
 repo = 'Shougo/neoinclude.vim'
 on_event = 'InsertCharPre'
+hook_source = '''
+    let g:neoinclude#paths  =  {'cpp': '/usr/include',
+    \ 'c': '/usr/include',
+    \ }
+'''
 
 [[plugins]]
 repo = 'deoplete-plugins/deoplete-jedi'
