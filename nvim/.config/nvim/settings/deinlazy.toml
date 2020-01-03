@@ -245,7 +245,7 @@ hook_source = '''
             \ }
     elseif IsMac()
         let g:neoinclude#paths = {'cpp': '/Library/Developer/CommandLineTools/usr/include/c++/v1',
-            \ 'c': '/CommandLineTools/usr/include/c++/v1',
+            \ 'c': '/Library/Developer/CommandLineTools/usr/include/c++/v1',
             \ }
     endif
 '''
