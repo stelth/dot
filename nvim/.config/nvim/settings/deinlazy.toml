@@ -256,10 +256,6 @@ depends = 'deoplete'
 on_ft  =  'python'
 
 [[plugins]]
-repo = 'tpope/vim-fugitive'
-on_event = 'BufRead'
-
-[[plugins]]
 repo = 'Shougo/junkfile.vim'
 on_source = 'denite.nvim'
 hook_add = '''
