@@ -16,14 +16,6 @@ if exists('&inccommand')
   set inccommand=nosplit
 endif
 
-if exists('&pumblend')
-  set pumblend=20
-endif
-
-if exists('&winblend')
-  set winblend=20
-endif
-
 set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 
 autocmd MyAutoCmd TermOpen * setlocal modifiable
