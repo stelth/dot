@@ -53,7 +53,3 @@ rfetch() {
 
 	wget --mirror -nH --random-wait --user-agent=Mozilla/5.0 --cut-dirs=${NCUT} --no-parent "$@"
 }
-
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
