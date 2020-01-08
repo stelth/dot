@@ -324,25 +324,6 @@ hook_add = '''
 repo = 'lambdalisue/vim-findent'
 
 [[plugins]]
-repo = 'kana/vim-smartchr'
-on_event = 'InsertCharPre'
-hook_source = '''
-    inoremap <expr> , smartchr#one_of(', ', ',')
-    inoremap <expr> =
-        \ search('\(&\<bar><bar>\<bar>+\<bar>-\<bar>/\<bar>>\<bar><\) \%#', 'bcn')? '<bs>= '
-        \ : search('\(*\<bar>!\)\%#', 'bcn') ? '= '
-        \ : smartchr#one_of(' = ', '=', ' == ')
-    augroup MyAutoCmd
-        " Substitute .. into -> .
-        autocmd FileType c,cpp inoremap <Buffer> <expr> .
-            \ smartchr#loop(',', '->', '...')
-        autocmd FileType vim inoremap <buffer <expr> .
-            \ smartchr#loop('.', ' . ', '..', '...')
-        autocmd FileType lisp,scheme,clojure inoremap <buffer> <expr> = =
-    augroup END
-'''
-
-[[plugins]]
 repo = 'tweekmonster/helpful.vim'
 on_cmd = 'HelpfulVersion'
 
