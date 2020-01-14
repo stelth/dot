@@ -213,6 +213,9 @@ alias mv='nocorrect mv'
 alias cp='nocorrect cp'
 alias mkdir='nocorrect mkdir'
 
+# Better su
+alias su='nocorrect su -'
+
 # Improve du, df
 alias du="du -h"
 alias df="df -h"
