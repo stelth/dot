@@ -10,19 +10,6 @@ update_local() {
 }
 update_local || true
 
-update_zsh() {
-	source ~/dotfiles/antigen/antigen.zsh
-
-	echo "Updating antigen"
-	antigen selfupdate
-
-	echo "Updating antigen plugins"
-	antigen update
-
-	antigen reset
-}
-update_zsh || true
-
 update_brew() {
 	(( $+commands[brew] )) && {
 		echo "Updating Home Brew packages"
