@@ -8,7 +8,7 @@ export BROWSER='firefox'
 export SHELL=zsh
 export GOPATH="$HOME/.go"
 export PATH="$HOME/bin:/usr/local/bin:$GOPATH/bin:$PATH"
-export PATH=/usr/local/bin:/usr/local/sbin:~/bin:~/node_modules/.bin:~/.local/bin:$PATH
+export PATH=/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/local/sbin:~/bin:~/node_modules/.bin:~/.local/bin:$PATH
 
 #---- SVN -----------------#
 export SVN_EDITOR="vim"
