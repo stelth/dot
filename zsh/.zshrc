@@ -225,10 +225,6 @@ alias od='od -Ax -tx1z'
 alias hexdump='hexdump -C'
 
 alias vim='TERM=xterm-256color nvim'
-#alias nvim-qt='nvim-qt --geometry 1800x1200'
-alias goneovim='~/Downloads/goneovim/goneovim &>/dev/null &'
-alias gn=goneovim
-alias lock='i3exit lock'
 
 
 #####################################################################
