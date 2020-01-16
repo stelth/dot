@@ -251,7 +251,7 @@ bindkey "^u" backward-kill-line
 
 # Improve terminal title
 case "${TERM}" in
-    kterm*|xterm*|vt100|st*|rxvt*)
+    screen*|kterm*|xterm*|vt100|st*|rxvt*)
         precmd() {
             echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
             vcs_info
