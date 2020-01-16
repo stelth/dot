@@ -6,3 +6,7 @@
 	path = zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
 	branch = master
+[submodule "zsh-titles"]
+	path = zsh-titles
+	url = https://github.com/jreese/zsh-titles.git
+	branch = master

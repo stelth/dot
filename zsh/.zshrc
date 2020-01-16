@@ -115,7 +115,7 @@ PROMPT2="%_%% "
 # Spell miss prompt
 SPROMPT="correct> %R -> %r [n,y,a,e]? "
 
-# Syntax highlight
+source ~/dotfiles/zsh-titles/titles.plugin.zsh
 source ~/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/dotfiles/zsh-autosuggestions/zsh-autosuggestions.zsh
 
