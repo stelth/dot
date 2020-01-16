@@ -358,3 +358,7 @@ hook_source = '''
     let g:float_preview#max_width = 60
     let g:float_preview#max_height = 20
 '''
+
+[[plugins]]
+repo = 'mmarchini/bpftrace.vim'
+on_ft = ['bpftrace']
