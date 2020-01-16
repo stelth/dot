@@ -231,8 +231,8 @@ alias vim='TERM=xterm-256color nvim'
 # keybinds
 ######################################################################
 
-# emacs keybinds
-bindkey -e
+# vi keybinds
+bindkey -v
 
 # History completion
 autoload history-search-end
