@@ -12,6 +12,8 @@ if not functions -q fisher
     fish -c fisher
 end
 
+fish_vi_key_bindings
+
 set pure_symbol_prompt '~>'
 
 # Color theme
@@ -51,4 +53,5 @@ set fish_pager_color_progress '00afff'  'cyan'
 
 
 alias vim='nvim'
+alias su='su -'
 #alias nvim-qt='nvim-qt --geometry 1800x1200'
