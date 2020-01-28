@@ -6,6 +6,8 @@ function cd
   builtin cd $argv; and ls
 end
 
+set -u fish_user_paths ~/bin $fish_user_paths
+
 if type -q brew
     set -U fish_user_paths /usr/local/sbin $fish_user_paths
 end

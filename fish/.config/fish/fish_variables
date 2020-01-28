@@ -6,7 +6,7 @@ SETUVAR __fish_init_3_x:\x1d
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_greeting:Welcome\x20to\x20fish\x2c\x20the\x20friendly\x20interactive\x20shell
 SETUVAR fish_key_bindings:fish_vi_key_bindings
-SETUVAR fish_user_paths:/usr/local/sbin\x1e/usr/local/sbin
+SETUVAR fish_user_paths:/home/jcox/bin\x1e/home/jcox/bin\x1e/home/jcox/bin\x1e/usr/local/sbin
 SETUVAR pure_begin_prompt_with_current_directory:true
 SETUVAR pure_color_command_duration:pure_color_warning
 SETUVAR pure_color_current_directory:pure_color_primary
