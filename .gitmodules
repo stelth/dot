@@ -10,3 +10,6 @@
 	path = zsh-titles
 	url = https://github.com/jreese/zsh-titles.git
 	branch = master
+[submodule "zsh-navigation-tools"]
+	path = zsh-navigation-tools
+	url = https://github.com/psprint/zsh-navigation-tools.git
