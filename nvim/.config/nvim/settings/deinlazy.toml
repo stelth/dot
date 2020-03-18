@@ -185,6 +185,8 @@ denite = '''
                 \ denite#do_map('do_action', 'edit')
 	nnoremap <silent><buffer><expr> p
 		\ denite#do_map('do_action', 'preview')
+        nnoremap <silent><buffer><expr> N
+                \ denie#do_map('do_action', 'new')
 	nnoremap <silent><buffer><expr> q
 		\ denite#do_map('quit')
 	nnoremap <silent><buffer><expr> '
@@ -210,8 +212,6 @@ repo = 'Shougo/deol.nvim'
 on_source = 'denite.nvim'
 hook_add = '''
     nnoremap <silent> [Space]s :<C-u>Deol zsh -no-start-insert<CR>
-    nnoremap <silent> N :<C-u>call deol#new(
-        \ {'command': 'zsh', 'start_insert': 0})<CR
     nnoremap <silent> [Window]D :<C-u>call deol#kill_editor()<CR>
 '''
 
@@ -350,7 +350,10 @@ on_ft = ['zsh', 'sh']
 [[plugins]]
 repo = 'raghur/fruzzy'
 on_source = ['denite.nvim']
-hook_source = 'let g:fruzzy#sortonempty = 0'
+hook_source = '''
+    let g:fruzzy#sortonempty = 0
+    let g:fruzzy#use_native = 1
+'''
 hook_post_update = 'call fruzzy#install()'
 
 [[plugins]]
