@@ -186,7 +186,7 @@ denite = '''
 	nnoremap <silent><buffer><expr> p
 		\ denite#do_map('do_action', 'preview')
         nnoremap <silent><buffer><expr> N
-                \ denie#do_map('do_action', 'new')
+                \ denite#do_map('do_action', 'new')
 	nnoremap <silent><buffer><expr> q
 		\ denite#do_map('quit')
 	nnoremap <silent><buffer><expr> '
