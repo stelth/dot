@@ -1,7 +1,7 @@
 [[plugins]]
-repo = 'arcticicestudio/nord-vim'
+repo = 'cocopon/iceberg.vim'
 hook_add = '''
-	colorscheme nord
+    colorscheme iceberg
 '''
 
 [[plugins]]
