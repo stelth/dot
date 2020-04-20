@@ -30,7 +30,11 @@ if (!has('nvim') || $DISPLAY != '') && has('clipboard')
   endif
 endif
 
-set backspace=indent,eol,start
+if has('patch-8.2.0592')
+  set backspace=indent,eol,nostop
+else
+  set backspace=indent,eol,start
+endif
 
 set matchpairs+=<:>
 
