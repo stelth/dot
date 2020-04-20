@@ -5,7 +5,7 @@
 if executable('rg')
   call denite#custom#var('file/rec', 'command',
         \ ['rg', '--files', '--glob', '!.git'])
-  call denite#custom#var('grep,line/external', 'command', {
+  call denite#custom#var('grep,line/external', {
         \ 'command': ['rg', '--threads', '1'],
         \ 'recursive_opts': [],
         \ 'final_opts': [],
@@ -31,19 +31,27 @@ call denite#custom#var('file/git', 'command',
 
 call denite#custom#alias('source', 'file/dirty', 'file/rec')
 call denite#custom#var('file/dirty', 'command',
-      \ ['git', 'lis-files', '-mo',
-      \ '--directory', '--no-empty-directory', '--exclude-standard']);
+      \ ['git', 'ls-files', '-mo',
+      \  '--directory', '--no-empty-directory', '--exclude-standard'])
 
 " call denite#custom#option('default', 'prompt', '>')
 " call denite#custom#option('default', 'short_source_names', v:true)
-call denite#custom#option('default', {
-      \ 'highlight_filter_background': 'CursorLine',
-      \ 'source_names': 'short',
-      \ 'split': 'floating',
-      \ 'filter_split_direction': 'floating',
-      \ 'vertical_preview': v:true,
-      \ 'floating_preview': v:true,
-      \ })
+if has('nvim')
+  call denite#custom#option('default', {
+        \ 'highlight_filter_background': 'CursorLine',
+        \ 'source_names': 'short',
+        \ 'split': 'floating',
+        \ 'filter_split_direction': 'floating',
+        \ 'vertical_preview': v:true,
+        \ 'floating_preview': v:true,
+        \ })
+else
+  call denite#custom#option('default', {
+        \ 'highlight_filter_background': 'CursorLine',
+        \ 'source_names': 'short',
+        \ 'vertical_preview': v:true,
+        \ })
+endif
 call denite#custom#option('search', {
       \ 'highlight_filter_background': 'CursorLine',
       \ 'source_names': 'short',
