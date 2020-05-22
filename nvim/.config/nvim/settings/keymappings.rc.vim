@@ -130,10 +130,8 @@ nnoremap <silent> # <C-^>
 
 if exists(':tnoremap')
   if has('nvim')
-    tnoremap <ESC> <C-\><C-n>
     tnoremap jj <C-\><C-n>
   else
-    tnoremap <ESC> <C-w>N
     tnoremap <ESC><ESC> <C-w>N
     tnoremap jj <C-w>N
   endif
