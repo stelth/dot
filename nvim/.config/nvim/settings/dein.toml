@@ -1,6 +1,7 @@
 [[plugins]]
 repo = 'cocopon/iceberg.vim'
 hook_add = '''
+  set background=dark
   colorscheme iceberg
 '''
 
