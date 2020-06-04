@@ -1,7 +1,7 @@
 [[plugins]]
 repo = 'cocopon/iceberg.vim'
 hook_add = '''
-    colorscheme iceberg
+  colorscheme iceberg
 '''
 
 [[plugins]]
@@ -10,7 +10,7 @@ repo = 'christoomey/vim-tmux-navigator'
 [[plugins]]
 repo = 'sheerun/vim-polyglot'
 hook_add = '''
-	let g:polyglot_disabled = ['markdown', 'tsx', 'typescript', 'csv']
+  let g:polyglot_disabled = ['markdown', 'tsx', 'typescript', 'csv']
 '''
 
 [[plugins]]
