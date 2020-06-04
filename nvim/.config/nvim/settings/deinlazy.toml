@@ -455,7 +455,6 @@ hook_add = '''
 
   let g:vimwiki_list = [wiki_md_syntax]
 
-  let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
   let g:vimwiki_global_ext = 0
 
   command! Diary VimwikiDiaryIndex
