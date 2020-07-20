@@ -479,6 +479,28 @@ require'nvim-treesitter.configs'.setup {
 '''
 
 [[plugins]]
+repo = 'deris/vim-shot-f'
+hook_add = '''
+  "disable default key mappings
+  let g:shot_f_no_default_key_mappings = 1
+
+  " key mappings
+  nmap f <Plug>(shot-f-f)
+  nmap F <Plug>(shot-f-F_
+  nmap ,t <Plug>(shot-f-t)
+  nmap ,T <Plug>(shot-f-T)
+  xmap f <Plug>(shot-f-f)
+  xmap F <Plug>(shot-f-F_
+  xmap ,t <Plug>(shot-f-t)
+  xmap ,T <Plug>(shot-f-T)
+  omap f <Plug>(shot-f-f)
+  omap F <Plug>(shot-f-F_
+  omap ,t <Plug>(shot-f-t)
+  omap ,T <Plug>(shot-f-T)
+'''
+on_map = {n = '<Plug>', x = '<Plug>', o = '<Plug>'}
+
+[[plugins]]
 repo = 'mmarchini/bpftrace.vim'
 on_ft = ['bpftrace']
 
