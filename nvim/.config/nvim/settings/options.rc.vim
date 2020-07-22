@@ -69,7 +69,7 @@ set grepprg=grep\ -inH
 
 set isfname-==
 
-set timeout timeoutlen=3000 ttimeoutlen=100
+set timeout timeoutlen=1000 ttimeoutlen=100
 
 set updatetime=100
 
