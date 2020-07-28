@@ -275,6 +275,10 @@ zmodload zsh/mathfunc
 # dtach command, dtach -A command, dtach -a session
 # adbuco -c session,abduco -c session command, abduco -a command
 
+# setup python
 if ( which zprof > /dev/null ); then
     zprof | less
+fi
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
 fi
