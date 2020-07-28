@@ -21,8 +21,6 @@ call denite#custom#source('file/old', 'matchers', [
       \ 'matcher/clap', 'matcher/project_files', 'matcher/ignore_globs',
       \ ])
 call denite#custom#source('tag', 'matchers', ['matcher/substring'])
-call denite#custom#source('file/old,ghq', 'converters',
-      \ ['converter/relative_word', 'converter/relative_abbr'])
 
 call denite#custom#alias('source', 'file/git', 'file/rec')
 call denite#custom#var('file/git', 'command',
