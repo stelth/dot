@@ -27,7 +27,7 @@ call denite#custom#var('file/git', 'command',
       \ ['git', 'ls-files', '-co', '--exclude-standard'])
 
 call denite#custom#filter('matcher/clap',
-      \ 'clap_path', '~/dotfiles/vim-clap'))
+      \ 'clap_path', expand('~/dotfiles/vim-clap'))
 call denite#custom#source('file/rec', 'matchers', [
       \ 'matcher/clap',
       \ ])
