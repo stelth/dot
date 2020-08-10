@@ -173,6 +173,7 @@ if exists('+completepopup')
 endif
 set complete=.
 set pumheight=20
+set pumwidth=10
 
 set report=0
 
