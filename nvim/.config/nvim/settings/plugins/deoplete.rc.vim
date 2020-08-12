@@ -30,11 +30,7 @@ call deoplete#custom#source('_', 'matchers',
 call deoplete#custom#source('denite', 'matchers',
       \ ['matcher_full_fuzzy', 'matcher_length'])
 
-if IsMac()
-  call deoplete#custom#var('clangx', 'clang_binary', '/usr/bin/clang')
-elseif IsLinux()
-  call deoplete#custom#var('clangx', 'clang_binary', '/usr/bin/clang-9')
-endif
+call deoplete#custom#var('clangx', 'clang_binary', '/usr/bin/clang')
 
 call deoplete#custom#option('ignore_sources', {
       \ '_': ['buffer'],
