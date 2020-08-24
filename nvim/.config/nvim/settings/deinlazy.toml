@@ -5,21 +5,22 @@ on_event = 'TextYankPost'
 on_source = ['denite.nvim']
 
 [[plugins]]
-repo = 'Shougo/neosnippet.vim'
-name = 'neosnippet'
+repo = 'Shougo/deoppet.nvim'
 depends = ['neosnippet-snippets', 'context_filetype']
-on_event = 'InsertCharPre'
-on_ft = 'snippet'
+on_event = 'InsertEnter'
+if = 'has("nvim")'
 hook_source = '''
-  imap <C-k>     <Plug>(neosnippet_jump_or_expand)
-  smap <C-k>     <Plug>(neosnippet_jump_or_expand)
-  xmap <C-k>     <Plug>(neosnippet_expand_target)
+  imap <expr> L deoppet#expandable() ?
+        \ "\<Plug>(deoppet_expand)" : ''
+  imap <C-f> <Plug>(deoppet_jump_forward)
+  imap <C-b> <Plug>(deoppet_jump_backward)
+  smap <C-f> <Plug>(deoppet_jump_forward)
+  smap <C-b> <Plug>(deoppet_jump_backward)
+  xmap <C-l> <Plug>(deoppet_select_text)
+  xmap <C-x> <Plug>(deoppet_cut_text)
+  call deoppet#initialize()
 
-  let g:neosnippet#enable_snipmate_compatibility = 1
-  let g:neosnippet#enable_completed_snippet = 1
-  let g:neosnippet#expand_word_boundary = 1
-
-  let g:neosnippet#snippets_directory = '~/.config/nvim/my-snippets'
+  call deoppet#custom#option('snippets_dirs', globpath(&runtimepath, 'neosnippets', 1, 1))
 '''
 
 [[plugins]]
