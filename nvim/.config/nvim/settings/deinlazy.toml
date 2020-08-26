@@ -5,7 +5,103 @@ on_event = 'TextYankPost'
 on_source = ['denite.nvim']
 
 [[plugins]]
+repo = 'Shougo/defx.nvim'
+name = 'defx'
+hook_add = '''
+  nnoremap <silent>   [Space]f
+  \ :<C-u>Defx -listed -resume -buffer-name=win-`win_getid()`<CR>
+'''
+hook_source = '''
+  call defx#custom#column('mark', {
+          \ 'readonly_icon': '✗',
+          \ 'selected_icon': '✓',
+          \ })
+  call defx#custom#column('icon', {
+          \ 'directory_icon': '▸',
+          \ 'opened_icon': '▾',
+          \ 'root_icon': ' ',
+          \ })
+'''
+
+[plugins.ftplugin]
+defx = '''
+  " Define mappings
+  nnoremap <silent><buffer><expr> <CR>
+  \ defx#async_action('open')
+  nnoremap <silent><buffer><expr> c
+  \ defx#do_action('copy')
+  nnoremap <silent><buffer><expr> !
+  \ defx#do_action('execute_command')
+  nnoremap <silent><buffer><expr> m
+  \ defx#do_action('move')
+  nnoremap <silent><buffer><expr> p
+  \ defx#do_action('paste')
+  nnoremap <silent><buffer><expr> l
+  \ defx#async_action('open')
+  nnoremap <silent><buffer><expr> E
+  \ defx#do_action('open', 'vsplit')
+  nnoremap <silent><buffer><expr> P
+  \ defx#do_action('preview')
+  nnoremap <silent><buffer><expr> o
+  \ defx#do_action('open_tree', ['nested', 'toggle'])
+  nnoremap <silent><buffer><expr> O
+  \ defx#do_action('open_tree', 'recursive')
+  nnoremap <silent><buffer><expr> K
+  \ defx#do_action('new_directory')
+  nnoremap <silent><buffer><expr> N
+  \ defx#do_action('new_file')
+  nnoremap <silent><buffer><expr> M
+  \ defx#do_action('new_multiple_files')
+  nnoremap <silent><buffer><expr> C
+  \ defx#do_action('toggle_columns', 'mark:filename:type:size:time')
+  nnoremap <silent><buffer><expr> S
+  \ defx#do_action('toggle_sort', 'Time')
+  nnoremap <silent><buffer><expr> se
+  \ defx#do_action('add_session')
+  nnoremap <silent><buffer><expr> sl
+  \ defx#do_action('load_session')
+  nnoremap <silent><buffer><expr> d
+  \ defx#do_action('remove_trash')
+  nnoremap <silent><buffer><expr> r
+  \ defx#do_action('rename')
+  nnoremap <silent><buffer><expr> x
+  \ defx#do_action('execute_system')
+  nnoremap <silent><buffer><expr> >
+  \ defx#do_action('toggle_ignored_files')
+  nnoremap <silent><buffer><expr> .
+  \ defx#do_action('repeat')
+  nnoremap <silent><buffer><expr> yy
+  \ defx#do_action('yank_path')
+  nnoremap <silent><buffer><expr> h
+  \ defx#async_action('cd', ['..'])
+  nnoremap <silent><buffer><expr> ~
+  \ defx#async_action('cd')
+  nnoremap <silent><buffer><expr> \
+  \ defx#do_action('cd', getcwd())
+  nnoremap <silent><buffer><expr> q
+  \ defx#do_action('quit')
+  nnoremap <silent><buffer><expr> <Space>
+  \ defx#do_action('toggle_select') . 'j'
+  nnoremap <silent><buffer><expr> *
+  \ defx#do_action('toggle_select_all')
+  nnoremap <silent><buffer><expr> j
+  \ line('.') == line('$') ? 'gg' : 'j'
+  nnoremap <silent><buffer><expr> k
+  \ line('.') == 1 ? 'G' : 'k'
+  nnoremap <silent><buffer><expr> <C-l>
+  \ defx#do_action('redraw')
+  xnoremap <silent><buffer><expr> <CR>
+  \ defx#do_action('toggle_select_visual')
+  nnoremap <silent><buffer><expr> <C-g>
+  \ defx#do_action('print')
+  nnoremap <silent><buffer><expr> <Tab> winnr('$') != 1 ?
+  \ ':<C-u>wincmd w<CR>' :
+  \ ':<C-u>Defx -buffer-name=temp -split=vertical<CR>'
+'''
+
+[[plugins]]
 repo = 'Shougo/deoppet.nvim'
+name = 'deoppet'
 depends = ['neosnippet-snippets', 'context_filetype']
 on_event = 'InsertEnter'
 if = 'has("nvim")'
@@ -67,6 +163,8 @@ hook_add = '''
   nnoremap <silent> [Window]n :<C-u>Denite dein<CR>
   nnoremap <silent> ;g :<C-u>Denite -buffer-name=search
   \ -no-empty grep<CR>
+  nnoremap <silent> <C-t> :<C-u>Denite -buffer-name=deol -split=floating
+  \ -cursor-pos=`tabpagenr()-1` deol:zsh<CR>
   nnoremap <silent> ft :<C-u>Denite filetype<CR>
   nnoremap <silent> <C-k> :<C-u>Denite change jump<CR>
   nnoremap <silent> <C-h> :<C-u>DeniteCursorWord help<CR>
@@ -109,6 +207,44 @@ denite = '''
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
 name = 'context_filetype'
+
+[[plugins]]
+repo = 'Shougo/deol.nvim'
+name = 'deol'
+depends = 'denite'
+on_source = ['defx', 'denite']
+hook_add = '''
+  nnoremap <silent> [Space]s :<C-u>Deol zsh -no-start-insert<CR>
+  nnoremap <silent> [Window]D  :<C-u>call deol#kill_editor()<CR>
+'''
+hook_source = '''
+  let g:deol#prompt_pattern = '\w*% '
+  let g:deol#shell_history_path = '~/.zsh-history'
+  let g:deol#extra_options = {
+      \ 'term_kill': 'kill',
+      \ }
+'''
+
+[plugins.ftplugin]
+deol = '''
+  nnoremap <buffer><silent> [Space]gc
+  \ :<C-u>call deol#send('git commit')<CR>
+  nnoremap <buffer><silent> [Space]gs
+  \ :<C-u>call deol#send('git status')<CR>
+  nnoremap <buffer><silent> [Space]gA
+  \ :<C-u>call deol#send('git commit --amend')<CR>
+  nmap <buffer> i <Plug>(deol_edit)
+  nmap <buffer> e <Plug>(deol_edit)
+'''
+zsh = '''
+  inoreabbrev <buffer><expr> g deol#abbrev('g', 'g', 'git')
+  inoreabbrev <buffer><expr> a deol#abbrev('git a', 'a', 'add')
+  inoreabbrev <buffer><expr> b deol#abbrev('git b', 'b', 'branch')
+  inoreabbrev <buffer><expr> c deol#abbrev('git c', 'c', 'commit')
+  inoreabbrev <buffer><expr> d deol#abbrev('git d', 'd', 'diff')
+  inoreabbrev <buffer><expr> p deol#abbrev('git p', 'p', 'push')
+  inoreabbrev <buffer><expr> s deol#abbrev('git s', 's', 'status')
+'''
 
 [[plugins]]
 repo = 'tyru/caw.vim'
