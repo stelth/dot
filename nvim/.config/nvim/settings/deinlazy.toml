@@ -10,8 +10,8 @@ depends = ['neosnippet-snippets', 'context_filetype']
 on_event = 'InsertEnter'
 if = 'has("nvim")'
 hook_source = '''
-  imap <expr> L deoppet#expandable() ?
-        \ "\<Plug>(deoppet_expand)" : ''
+  " imap <expr> L deoppet#expandable() ?
+  "      \ "\<Plug>(deoppet_expand)" : ''
   imap <C-f> <Plug>(deoppet_jump_forward)
   imap <C-b> <Plug>(deoppet_jump_backward)
   smap <C-f> <Plug>(deoppet_jump_forward)
