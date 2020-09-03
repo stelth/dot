@@ -15,6 +15,7 @@ repo = 'sheerun/vim-polyglot'
 name = 'vim-polyglot'
 hook_add = '''
   let g:polyglot_disabled = ['markdown', 'tsx', 'typescript', 'csv']
+  let g:loaded_sleuth = 1
 '''
 
 [[plugins]]
