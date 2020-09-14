@@ -37,7 +37,7 @@ defx = '''
   nnoremap <silent><buffer><expr> p
   \ defx#do_action('paste')
   nnoremap <silent><buffer><expr> l
-  \ defx#async_action('open')
+  \ defx#do_action('open')
   nnoremap <silent><buffer><expr> E
   \ defx#do_action('open', 'vsplit')
   nnoremap <silent><buffer><expr> P
@@ -73,9 +73,9 @@ defx = '''
   nnoremap <silent><buffer><expr> yy
   \ defx#do_action('yank_path')
   nnoremap <silent><buffer><expr> h
-  \ defx#async_action('cd', ['..'])
+  \ defx#do_action('cd', ['..'])
   nnoremap <silent><buffer><expr> ~
-  \ defx#async_action('cd')
+  \ defx#do_action('cd')
   nnoremap <silent><buffer><expr> \
   \ defx#do_action('cd', getcwd())
   nnoremap <silent><buffer><expr> q
@@ -244,28 +244,6 @@ zsh = '''
   inoreabbrev <buffer><expr> d deol#abbrev('git d', 'd', 'diff')
   inoreabbrev <buffer><expr> p deol#abbrev('git p', 'p', 'push')
   inoreabbrev <buffer><expr> s deol#abbrev('git s', 's', 'status')
-'''
-
-[[plugins]]
-repo = 'tyru/caw.vim'
-name = 'caw'
-on_map = {nx = '<Plug>'}
-hook_add = '''
-  function! InitCaw() abort
-    if !&l:modifiable
-      silent! nunmap <buffer> gc
-      silent! xunmap <buffer> gc
-      silent! nunmap <buffer> gcc
-      silent! xunmap <buffer> gcc
-    else
-      nmap <buffer> gc <Plug>(caw:prefix)
-      xmap <buffer> gc <Plug>(caw:prefix)
-      nmap <buffer> gcc <Plug>(caw:hatpos:toggle)
-      xmap <buffer> gcc <Plug>(caw:hatpos:toggle)
-    endif
-  endfunction
-  autocmd MyAutoCmd FileType * call InitCaw()
-  call InitCaw()
 '''
 
 [[plugins]]
