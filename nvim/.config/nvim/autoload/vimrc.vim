@@ -71,7 +71,7 @@ endfunction
 function! vimrc#visual_pasted(direction) range
   let registers = {}
 
-  for name in ['+', '*', '"', '0]
+  for name in ['"', '0']
     let registers[name] = {'type': getregtype(name), 'value': getreg(name)}
   endfor
 
