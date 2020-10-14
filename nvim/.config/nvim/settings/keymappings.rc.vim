@@ -100,11 +100,6 @@ nnoremap <ex[r> l foldclosed(line('.'') !=  -1 ? 'zogv0' : 'l'
 " Substitute
 xnoremap s :s//g<Left><Left>
 
-" Sticky
-inoremap <expr> ; vimrc#sticky_func()
-cnoremap <expr> ; vimrc#sticky_func()
-snoremap <expr> ; vimrc#sticky_func()
-
 " a>,  i],  etc...
 " <angle>
 onoremap aa a>
