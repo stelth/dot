@@ -142,9 +142,8 @@ endif
 set shortmess=aTI
 
 set noshowmode
-if has('patch-7.4.314')
-  set shortmess+=F
-endif
+set shortmess+=c
+set shortmess+=F
 
 set nowritebackup
 set nobackup

@@ -55,9 +55,7 @@ call deoplete#custom#option('keyword_patterns', {
       \ })
 
 call deoplete#custom#option({
-      \ 'auto_refresh_delay': 10,
       \ 'camel_case': v:true,
       \ 'skip_multibyte': v:true,
       \ 'auto_preview': v:true,
       \ })
-call deoplete#custom#option('num_processes', 1)

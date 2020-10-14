@@ -32,6 +32,8 @@ defx = '''
   \ defx#do_action('copy')
   nnoremap <silent><buffer><expr> !
   \ defx#do_action('execute_command')
+  nnoremap <silent><buffer><expr> &
+  \ defx#do_action('execute_command', ['', 'async'])
   nnoremap <silent><buffer><expr> m
   \ defx#do_action('move')
   nnoremap <silent><buffer><expr> p
@@ -170,9 +172,6 @@ hook_add = '''
   nnoremap <silent> ft :<C-u>Denite filetype<CR>
   nnoremap <silent> <C-k> :<C-u>Denite change jump<CR>
   nnoremap <silent> <C-h> :<C-u>DeniteCursorWord help<CR>
-
-  nnoremap <silent> ;;
-  \ :<C-u>Denite command command_history<CR>
 '''
 
 [plugins.ftplugin]
@@ -330,6 +329,24 @@ require'nvim-treesitter.configs'.setup {
     ensure_installed = 'all'
 }EOF
 '''
+
+[[plugins]]
+repo = 'hrsh7th/vim-eft'
+hook_source = '''
+    let g:eft_ignorecase = v:true
+'''
+hook_add = '''
+    nmap ;; <Plug>(eft-repeat)
+    xmap ;; <Plug>(eft-repeat)
+
+    xmap f <Plug>(eft-f)
+    xmap f <Plug>(eft-f)
+    omap f <Plug>(eft-f)
+    nmap F <Plug>(eft-F)
+    xmap F <Plug>(eft-F)
+    omap F <Plug>(eft-F)
+'''
+on_map = {n = '<Plug>', x = '<Plug>', o = '<Plug>'}
 
 [[plugins]]
 repo = 'mmarchini/bpftrace.vim'
