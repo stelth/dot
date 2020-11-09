@@ -11,14 +11,6 @@ repo = 'christoomey/vim-tmux-navigator'
 name = 'vim-tmux-navigator'
 
 [[plugins]]
-repo = 'sheerun/vim-polyglot'
-name = 'vim-polyglot'
-hook_add = '''
-  let g:polyglot_disabled = ['markdown', 'tsx', 'typescript', 'csv']
-  let g:loaded_sleuth = 1
-'''
-
-[[plugins]]
 repo = 'thinca/vim-ft-diff_fold'
 name = 'vim-ft-diff_fold'
 

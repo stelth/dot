@@ -28,6 +28,8 @@ defx = '''
   " Define mappings
   nnoremap <silent><buffer><expr> <CR>
   \ defx#async_action('open')
+  nnoremap <silent><buffer><expr> +
+  \ defx#async_action('open', 'choose')
   nnoremap <silent><buffer><expr> c
   \ defx#do_action('copy')
   nnoremap <silent><buffer><expr> !
@@ -352,3 +354,10 @@ on_map = {n = '<Plug>', x = '<Plug>', o = '<Plug>'}
 repo = 'mmarchini/bpftrace.vim'
 name = 'bpftrace'
 on_ft = ['bpftrace']
+
+[[plugins]]
+repo = 'sheerun/vim-polyglot'
+on_event = 'BufRead'
+hook_add = '''
+let g:polyglot_disabled = ['markdown', 'tsx', 'typescript', 'csv', 'autoindent']
+'''

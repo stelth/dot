@@ -127,17 +127,13 @@ let &g:statusline = "%{winnr('$')>1?'['.winnr().'/'.winnr('$')"
       \ . ".(&fenc!=''?&fenc:&enc).','.&ff.']' : ''}"
       \ . "%m%{printf('%'.(len(line('$'))+2).'d/%d',line('.'),line('$'))}"
 
+set nowrap
 set linebreak
 set showbreak=\
 set breakat=\ \|;:,!?
 
 set whichwrap+=h,l,<,>,[,],b,s,~
-if exists('+breakindent')
-  set breakindent
-  set wrap
-else
-  set nowrap
-endif
+set breakindent
 
 set shortmess=aTI
 
