@@ -1,12 +1,18 @@
 [[plugins]]
 repo = 'Shougo/neoyank.vim'
-name = 'neoyank'
 on_event = 'TextYankPost'
 on_source = ['denite.nvim']
 
 [[plugins]]
+repo = 'Shougo/echodoc.vim'
+on_event = 'CompleteDone'
+hook_source = '''
+  let g:echodoc#type = 'virtual'
+  call echodoc#enable()
+'''
+
+[[plugins]]
 repo = 'Shougo/defx.nvim'
-name = 'defx'
 hook_add = '''
   nnoremap <silent>   [Space]f
   \ :<C-u>Defx -listed -resume -buffer-name=win-`win_getid()`<CR>
@@ -22,14 +28,13 @@ hook_source = '''
           \ 'root_icon': ' ',
           \ })
 '''
-
 [plugins.ftplugin]
 defx = '''
   " Define mappings
   nnoremap <silent><buffer><expr> <CR>
   \ defx#async_action('open')
   nnoremap <silent><buffer><expr> +
-  \ defx#async_action('open', 'choose')
+  \ defx#do_action('open', 'choose')
   nnoremap <silent><buffer><expr> c
   \ defx#do_action('copy')
   nnoremap <silent><buffer><expr> !
@@ -42,8 +47,6 @@ defx = '''
   \ defx#do_action('paste')
   nnoremap <silent><buffer><expr> l
   \ defx#do_action('open')
-  nnoremap <silent><buffer><expr> +
-  \ defx#do_action('open', 'choose')
   nnoremap <silent><buffer><expr> E
   \ defx#do_action('open', 'vsplit')
   nnoremap <silent><buffer><expr> P
@@ -75,7 +78,7 @@ defx = '''
   nnoremap <silent><buffer><expr> >
   \ defx#do_action('toggle_ignored_files')
   nnoremap <silent><buffer><expr> <
-  \ defx#do_action('chage_ignored_files')
+  \ defx#do_action('change_ignored_files')
   nnoremap <silent><buffer><expr> .
   \ defx#do_action('repeat')
   nnoremap <silent><buffer><expr> yy
@@ -107,35 +110,56 @@ defx = '''
   \ ':<C-u>Defx -buffer-name=temp -split=vertical<CR>'
 '''
 
+#[[plugins]]
+#repo = 'Shougo/neosnippet.vim'
+#depends = ['neosnippet-snippets', 'context_filetype.vim']
+#on_event = 'InsertCharPre'
+#on_ft = 'snippet'
+#hook_source = '''
+#  "imap <silent>L     <Plug>(neosnippet_jump_or_expand)
+#  "smap <silent>L     <Plug>(neosnippet_jump_or_expand)
+#  "xmap <silent>L     <Plug>(neosnippet_expand_target)
+#
+#  let g:neosnippet#enable_snipmate_compatibility = 1
+#  let g:neosnippet#enable_completed_snippet = 1
+#  " let g:neosnippet#enable_complete_done = 1
+#  let g:neosnippet#expand_word_boundary = 1
+#
+#  " let g:snippets_dir = '~/.vim/snippets/,~/.vim/bundle/snipmate/snippets/'
+#  let g:neosnippet#snippets_directory = '~/.vim/my-snippets'
+#'''
+
 [[plugins]]
 repo = 'Shougo/deoppet.nvim'
-name = 'deoppet'
-depends = ['neosnippet-snippets', 'context_filetype']
+depends = ['neosnippet-snippets', 'context_filetype.vim']
 on_event = 'InsertEnter'
 if = 'has("nvim")'
 hook_source = '''
-  " imap <expr> L deoppet#expandable() ?
-  "      \ "\<Plug>(deoppet_expand)" : ''
-  imap <C-f> <Plug>(deoppet_jump_forward)
-  imap <C-b> <Plug>(deoppet_jump_backward)
-  smap <C-f> <Plug>(deoppet_jump_forward)
-  smap <C-b> <Plug>(deoppet_jump_backward)
-  xmap <C-l> <Plug>(deoppet_select_text)
-  xmap <C-x> <Plug>(deoppet_cut_text)
+  " Test
+  "imap L  <Plug>(deoppet_expand)
+  imap <expr> L  deoppet#expandable() ?
+  \ "\<Plug>(deoppet_expand)" : ''
+  imap <C-f>  <Plug>(deoppet_jump_forward)
+  imap <C-b>  <Plug>(deoppet_jump_backward)
+  smap <C-f>  <Plug>(deoppet_jump_forward)
+  smap <C-b>  <Plug>(deoppet_jump_backward)
+  xmap <C-l>  <Plug>(deoppet_select_text)
+  xmap <C-x>  <Plug>(deoppet_cut_text)
   call deoppet#initialize()
 
-  call deoppet#custom#option('snippets_dirs', globpath(&runtimepath, 'neosnippets', 1, 1))
+  call deoppet#custom#option('snippets',
+          \ [{ 'path': expand('~/.vim/my-snippets')}] +
+          \ map(globpath(&runtimepath, 'neosnippets', 1, 1),
+          \     "{ 'path': v:val }"))
 '''
 
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
-name = 'neosnippet-snippets'
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
-name = 'denite'
 on_cmd = 'Denite'
-hook_source = 'source ~/.config/nvim/settings/plugins/denite.rc.vim'
+hook_source = 'source ~/.config/nvim/rc/plugins/denite.rc.vim'
 hook_add = '''
   nnoremap <silent> ;r
         \ :<C-u>Denite -buffer-name=register
@@ -169,11 +193,13 @@ hook_add = '''
   \ ":\<C-u>pop\<CR>" : ":\<C-u>Denite jump\<CR>"
 
   nnoremap <silent> [Window]n :<C-u>Denite dein<CR>
+  nnoremap <silent> [Window]g :<C-u>Denite ghq -default-action=cd<CR>
   nnoremap <silent> ;g :<C-u>Denite -buffer-name=search
+  \ -no-empty grep<CR>
+  nnoremap <silent> ;w :<C-u>DeniteCursorWord -buffer-name=search
   \ -no-empty grep<CR>
   nnoremap <silent> <C-t> :<C-u>Denite -buffer-name=deol -split=floating
   \ -cursor-pos=`tabpagenr()-1` deol:zsh<CR>
-  nnoremap <silent> ft :<C-u>Denite filetype<CR>
   nnoremap <silent> <C-k> :<C-u>Denite change jump<CR>
   nnoremap <silent> <C-h> :<C-u>DeniteCursorWord help<CR>
 '''
@@ -211,13 +237,11 @@ denite = '''
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
-name = 'context_filetype'
 
 [[plugins]]
 repo = 'Shougo/deol.nvim'
-name = 'deol'
-depends = 'denite'
-on_source = ['defx', 'denite']
+depends = 'denite.nvim'
+on_source = ['defx.nvim', 'denite.nvim']
 hook_add = '''
   nnoremap <silent> [Space]s :<C-u>Deol zsh -no-start-insert<CR>
   nnoremap <silent> [Window]D  :<C-u>call deol#kill_editor()<CR>
@@ -229,7 +253,6 @@ hook_source = '''
       \ 'term_kill': 'kill',
       \ }
 '''
-
 [plugins.ftplugin]
 deol = '''
   nnoremap <buffer><silent> [Space]gc
@@ -252,31 +275,74 @@ zsh = '''
 '''
 
 [[plugins]]
-repo = 'lambdalisue/vim-findent'
-name = 'vim-findent'
+repo = 'Shougo/vinarise.vim'
+on_cmd = 'Vinarise'
+hook_add = '''
+  let g:vinarise_enable_auto_detect = 1
+  let g:vinarise_guifont = 'Courier\ 10\ Pitch:h14'
+'''
 
 [[plugins]]
-repo = 'deoplete-plugins/deoplete-jedi'
-name = 'deoplete-jedi'
-depends = 'deoplete'
-on_ft  =  'python'
+repo = 'rhysd/vim-operator-surround'
+depends = 'vim-operator-user'
+on_map = {n = '<Plug>'}
+hook_add = '''
+  nmap <silent>sa <Plug>(operator-surround-append)a
+  nmap <silent>sd <Plug>(operator-surround-delete)a
+  nmap <silent>sr <Plug>(operator-surround-replace)a
+  nmap <silent>sc <Plug>(operator-surround-replace)a
+'''
+
+[[plugins]]
+repo = 'kana/vim-operator-replace'
+depends = 'vim-operator-user'
+on_map = {n = '<Plug>'}
+hook_add = '''
+  map R <Plug>(operator-replace)
+'''
+
+[[plugins]]
+repo = 'lambdalisue/vim-findent'
+
+[[plugins]]
+repo = 'tweekmonster/helpful.vim'
+on_cmd = 'HelpfulVersion'
+
+[[plugins]]
+repo = 'rhysd/vim-gfm-syntax'
+on_ft = 'markdown'
+
+[[plugins]]
+repo = 'machakann/vim-vimhelplint'
+on_ft = 'help'
+[plugins.ftplugin]
+help = '''
+  nnoremap <silent><buffer> ,r  :<C-u>VimhelpLint!<CR>
+'''
 
 [[plugins]]
 repo = 'zchee/deoplete-zsh'
-name = 'deoplete-zsh'
-depends = 'deoplete'
 on_ft = ['zsh', 'sh']
 
 [[plugins]]
-repo = 'Shougo/deoplete-clangx'
-name = 'deoplete-clangx'
-depends = 'deoplete'
-on_ft  =  ['c', 'cpp']
+repo = 'Shougo/deoplete.nvim'
+depends = 'context_filetype.vim'
+on_event = 'InsertEnter'
+hook_source = '''
+  source ~/.config/nvim/rc/plugins/deoplete.rc.vim
+  call deoplete#enable()
+'''
+
+[[plugins]]
+repo = 'lambdalisue/suda.vim'
+on_event = 'BufRead'
+hook_add = '''
+  let g:suda_smart_edit = 1
+'''
 
 [[plugins]]
 repo = 'ncm2/float-preview.nvim'
-name = 'float-preview'
-on_source = 'deoplete'
+on_source = 'deoplete.nvim'
 if = 'has("nvim")'
 hook_source = '''
   let g:float_preview#docked = 0
@@ -285,18 +351,14 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo = 'Shougo/deoplete.nvim'
-name = 'deoplete'
-depends = 'context_filetype'
-on_event = 'InsertEnter'
+repo = 'dag/vim2hs'
+on_ft = 'haskell'
 hook_source = '''
-	source ~/.config/nvim/settings/plugins/deoplete.rc.vim
-	call deoplete#enable()
+  let g:haskell_conceal = 0
 '''
 
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
-name = 'nvim-treesitter'
 if = 'has("nvim")'
 on_event = 'BufRead'
 hook_source = '''
@@ -310,56 +372,103 @@ require'nvim-treesitter.configs'.setup {
         enable = true,
         disable = {},
         keymaps = {
-            init_selection = 'gnn',
-            node_incremental = 'grn',
-            scope_incremental = 'grc',
-            node_decremental = 'grm',
+          init_selection = 'gnn',
+          node_incremental = 'grn',
+          scope_incremental = 'grc',
+          node_decremental = 'grm',
         }
     },
     refactor = {
-        highlight_definitions = {
-            enable = true
-        },
-        smart_rename = {
-            enable = true,
-            smart_rename = 'grr'
-        },
-        navigation = {
-            enable = true,
-            goto_definition = 'gnd',
-            list_definitions = 'gnD'
-        }
+      highlight_defintions = {
+        enable = true
+      },
+      smart_rename = {
+        enable = true,
+        smart_rename = 'grr'
+      },
+      navigation = {
+        enable = true,
+        goto_definition = 'gnd',
+        list_definitions = 'gnD'
+      }
     },
-    ensure_installed = 'all'
-}EOF
+    ensure_installed = 'all',
+    indent = {
+        enable = true
+    }
+}
+EOF
+
+" neovim treesitter colors
+highlight! link TSAnnotation      CandyViolet
+highlight! link TSAttribute       CandySky
+highlight! link TSBoolean         Boolean
+highlight! link TSCharacter       Character
+highlight! link TSConditional     CandyCoral
+highlight! link TSConstBuiltin    CandyGreen
+highlight! link TSConstMacro      CandyViolet
+highlight! link TSConstant        Constant
+highlight! link TSConstructor     CandyEmerald
+highlight! link TSError           Error
+highlight! link TSException       Exception
+highlight! link TSField           CandyBlue
+highlight! link TSFloat           Float
+highlight! link TSFuncBuiltin     CandySky
+highlight! link TSFuncMacro       CandySky
+highlight! link TSFunction        CandyCranberry
+highlight! link TSInclude         CandyCranberry
+highlight! link TSKeyword         CandyEmerald
+highlight! link TSKeywordFunction Keyword
+highlight! link TSKeywordOperator CandyViolet
+highlight! link TSLabel           Label
+highlight! link TSLiteral         CandyYellow
+highlight! link TSMethod          CandyTurquoise
+highlight! link TSNamespace       CandyBlue
+highlight! link TSNone            Normal
+highlight! link TSNumber          Number
+highlight! link TSOperator        Operator
+highlight! link TSParameter       CandyWhite
+highlight! link TSParameterReference CandyWhite
+highlight! link TSProperty        Identifier
+highlight! link TSPunctBracket    CandyOrange
+highlight! link TSPunctDelimiter  CandyLime
+highlight! link TSPunctSpecial    Special
+highlight! link TSRepeat          Repeat
+highlight! link TSString          String
+highlight! link TSStringEscape    SpecialChar
+highlight! link TSStringRegex     String
+highlight! link TSTag             CandyBlue
+highlight! link TSTagDelimiter    CandyLime
+highlight! link TSText            TSNone
+highlight! link TSTitle           Title
+highlight! link TSType            Type
+highlight! link TSTypeBuiltin     Type
+highlight! link TSURL             Underlined
+highlight! link TSUnderline       Underlined
+highlight! link TSVariableBuiltin CandyLime
 '''
 
 [[plugins]]
 repo = 'hrsh7th/vim-eft'
 hook_source = '''
-    let g:eft_ignorecase = v:true
+let g:eft_ignorecase = v:true
 '''
 hook_add = '''
-    nmap ;; <Plug>(eft-repeat)
-    xmap ;; <Plug>(eft-repeat)
+nmap ;; <Plug>(eft-repeat)
+xmap ;; <Plug>(eft-repeat)
 
-    xmap f <Plug>(eft-f)
-    xmap f <Plug>(eft-f)
-    omap f <Plug>(eft-f)
-    nmap F <Plug>(eft-F)
-    xmap F <Plug>(eft-F)
-    omap F <Plug>(eft-F)
+nmap f <Plug>(eft-f)
+xmap f <Plug>(eft-f)
+omap f <Plug>(eft-f)
+nmap F <Plug>(eft-F)
+xmap F <Plug>(eft-F)
+omap F <Plug>(eft-F)
 '''
 on_map = {n = '<Plug>', x = '<Plug>', o = '<Plug>'}
 
 [[plugins]]
-repo = 'mmarchini/bpftrace.vim'
-name = 'bpftrace'
-on_ft = ['bpftrace']
+repo = 'mattn/vim-maketable'
+on_ft = 'markdown'
 
 [[plugins]]
-repo = 'sheerun/vim-polyglot'
-on_event = 'BufRead'
-hook_add = '''
-let g:polyglot_disabled = ['markdown', 'tsx', 'typescript', 'csv', 'autoindent']
-'''
+repo = 'Shougo/deorise.nvim'
