@@ -11,29 +11,45 @@ repo = 'christoomey/vim-tmux-navigator'
 name = 'vim-tmux-navigator'
 
 [[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
 repo = 'thinca/vim-ft-diff_fold'
-name = 'vim-ft-diff_fold'
 
 [[plugins]]
 repo = 'thinca/vim-ft-help_fold'
-name = 'vim-ft-help_fold'
 
 [[plugins]]
 repo = 'kana/vim-textobj-user'
-name = 'vim-textobj-user'
 
 [[plugins]]
 repo = 'kana/vim-operator-user'
-name = 'vim-operator-user'
+
+[[plugins]]
+repo = 'rcmdnk/vim-markdown'
+
+[[plugins]]
+repo = 'JesseKPhillips/d.vim'
+
+[[plugins]]
+repo = 'nixprime/cpsm'
+build = 'sh -c "PY3=ON ./install.sh"'
 
 [[plugins]]
 repo = 'Shirk/vim-gas'
-name = 'vim-gas'
 
 [[plugins]]
 repo = 'chrisbra/vim-zsh'
-name = 'vim-zsh'
+
+[[plugins]]
+repo = 'roxma/vim-hug-neovim-rpc'
+on_if = '!has("nvim")'
 
 [[plugins]]
 repo = 'roxma/nvim-yarp'
-name = 'nvim-yarp'
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+
+[[plugins]]
+repo = 'Vimjas/vim-python-pep8-indent'
