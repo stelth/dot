@@ -1,4 +1,6 @@
-" vimrc functions
+"---------------------------------------------------------------------------
+" vimrc functions:
+"
 
 function! vimrc#sticky_func() abort
   let sticky_table = {
@@ -17,7 +19,7 @@ function! vimrc#sticky_func() abort
   while 1
     silent! let char = nr2char(getchar())
 
-    if char =~ '\l'
+    if char =~# '\l'
       let char = toupper(char)
       break
     elseif has_key(sticky_table, char)
@@ -36,7 +38,7 @@ function! vimrc#add_numbers(num) abort
   let prev_line = getline('.')[: col('.')-1]
   let next_line = getline('.')[col('.') :]
   let prev_num = matchstr(prev_line, '\d\+$')
-  if prev_num != ''
+  if prev_num !=# ''
     let next_num = matchstr(next_line, '^\d\+')
     let new_line = prev_line[: -len(prev_num)-1] .
           \ printf('%0'.len(prev_num . next_num).'d',
@@ -55,7 +57,16 @@ function! vimrc#add_numbers(num) abort
 endfunction
 
 function! vimrc#toggle_option(option_name) abort
-  execute 'setlocal' a:option_name.'!'
+  if a:option_name ==# 'laststatus'
+    if &laststatus == 0
+      setlocal laststatus=2
+    else
+      setlocal laststatus=0
+    endif
+  else
+    execute 'setlocal' a:option_name.'!'
+  endif
+
   execute 'setlocal' a:option_name.'?'
 endfunction
 
@@ -68,7 +79,7 @@ function! vimrc#on_filetype() abort
   endif
 endfunction
 
-function! vimrc#visual_pasted(direction) range
+function! vimrc#visual_paste(direction) range abort
   let registers = {}
 
   for name in ['"', '0']
@@ -78,6 +89,6 @@ function! vimrc#visual_pasted(direction) range
   execute 'normal!' 'gv' . a:direction
 
   for [name, register] in items(registers)
-    sall setreg(name, register.value, register.type)
+    call setreg(name, register.value, register.type)
   endfor
 endfunction
