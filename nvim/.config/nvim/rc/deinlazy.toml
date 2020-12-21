@@ -148,7 +148,7 @@ hook_source = '''
   call deoppet#initialize()
 
   call deoppet#custom#option('snippets',
-          \ [{ 'path': expand('~/.vim/my-snippets')}] +
+          \ [{ 'path': expand('~/.config/nvim/my-snippets')}] +
           \ map(globpath(&runtimepath, 'neosnippets', 1, 1),
           \     "{ 'path': v:val }"))
 '''
