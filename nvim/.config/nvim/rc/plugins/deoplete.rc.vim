@@ -9,7 +9,7 @@ inoremap <silent><expr> <TAB>
       \ deoplete#manual_complete()
 function! s:check_back_space() abort
   let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 " <S-TAB>: completion back.
@@ -25,12 +25,19 @@ function! s:my_cr_function() abort
   return pumvisible() ? deoplete#close_popup()."\<CR>" : "\<CR>"
 endfunction
 
+" cpsm test
+" call deoplete#custom#source('_', 'matchers', ['matcher_cpsm'])
+" call deoplete#custom#source('_', 'sorters', [])
+
 call deoplete#custom#source('_', 'matchers',
       \ ['matcher_fuzzy', 'matcher_length'])
 call deoplete#custom#source('denite', 'matchers',
       \ ['matcher_full_fuzzy', 'matcher_length'])
-
-call deoplete#custom#var('clangx', 'clang_binary', '/usr/bin/clang')
+call deoplete#custom#source('eskk', 'matchers', [])
+" call deoplete#custom#source('buffer', 'mark', '')
+" call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
+" call deoplete#custom#source('_', 'disabled_syntaxes', ['Comment', 'String'])
+" call deoplete#custom#source('buffer', 'mark', '*')
 
 call deoplete#custom#option('ignore_sources', {
       \ '_': ['buffer'],
@@ -48,14 +55,37 @@ call deoplete#custom#source('_', 'converters', [
       \ 'converter_truncate_info',
       \ 'converter_truncate_menu',
       \ ])
+call deoplete#custom#source('eskk', 'converters', [])
+
+" call deoplete#custom#source('buffer', 'min_pattern_length', 9999)
+" call deoplete#custom#source('clang', 'input_pattern', '\.\w*|\.->\w*|\w+::\w*')
+" call deoplete#custom#source('clang', 'max_pattern_length', -1)
 
 call deoplete#custom#option('keyword_patterns', {
       \ '_': '[a-zA-Z_]\k*\(?',
       \ 'tex': '[^\w|\s][a-zA-Z_]\w*',
       \ })
 
+" inoremap <silent><expr> <C-t> deoplete#manual_complete('file')
+
 call deoplete#custom#option({
-      \ 'camel_case': v:true,
-      \ 'skip_multibyte': v:true,
       \ 'auto_preview': v:true,
+      \ 'camel_case': v:true,
+      \ 'nofile_complete_filetypes': ['denite-filter', 'zsh'],
+      \ 'num_processes': 4,
+      \ 'refresh_always': v:false,
+      \ 'refresh_backspace': v:false,
+      \ 'skip_multibyte': v:true,
       \ })
+
+" call deoplete#custom#option('profile', v:true)
+" call deoplete#enable_logging('DEBUG', 'deoplete.log')
+" call deoplete#custom#source('clang', 'debug_enabled', 1)
+
+call deoplete#custom#option('candidate_marks',
+      \ ['A', 'S', 'D', 'F', 'G'])
+inoremap <expr>A       pumvisible() ? deoplete#insert_candidate(0) : 'A'
+inoremap <expr>S       pumvisible() ? deoplete#insert_candidate(1) : 'S'
+inoremap <expr>D       pumvisible() ? deoplete#insert_candidate(2) : 'D'
+inoremap <expr>F       pumvisible() ? deoplete#insert_candidate(3) : 'F'
+inoremap <expr>G       pumvisible() ? deoplete#insert_candidate(4) : 'G'
