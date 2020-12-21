@@ -49,7 +49,17 @@ endif
 call dein#end()
 call dein#save_state()
 
-if !has('vim_starting') && dein#check_install()
+if !has('vim_starting')
   " Installation check.
-  call dein#install()
+  if dein#check_install()
+    call dein#install()
+  endif
+
+  " Update check
+  if dein#check_update()
+    call dein#update()
+  endif
+
+  call map(dein#check_clean(), "delete(v:val, 'rf')")
+  call dein#recache_runtimepath()
 endif
