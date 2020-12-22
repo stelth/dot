@@ -1,5 +1,7 @@
 " dein configurations.
 
+let g:dein#install_github_api_token = '8424ba907c6b2d5c7a240af92a1561cd14cd2cb7'
+
 let g:dein#auto_recache = v:true
 let g:dein#lazy_rplugins = v:true
 let g:dein#install_progress_type = 'title'

@@ -6,8 +6,13 @@ if has('vim_starting') && empty(argv())
   syntax off
 endif
 
-let g:python_host_prog  = '/usr/bin/python2'
-let g:python3_host_prog = '/usr/bin/python3'
+if IsMac()
+  let g:python_host_prog = '/Users/coxj/.pyenv/shims/python3'
+  let g:python3_host_prog = '/Users/coxj/.pyenv/shims/python3'
+else
+  let g:python_host_prog  = '/usr/bin/python2'
+  let g:python3_host_prog = '/usr/bin/python3'
+endif
 
 if exists('&inccommand')
   set inccommand=nosplit
