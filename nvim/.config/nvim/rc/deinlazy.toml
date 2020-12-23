@@ -137,7 +137,7 @@ if = 'has("nvim")'
 hook_source = '''
   " Test
   "imap L  <Plug>(deoppet_expand)
-  imap <expr> L  deoppet#expandable() ?
+  "imap <expr> L  deoppet#expandable() ?
   \ "\<Plug>(deoppet_expand)" : ''
   imap <C-f>  <Plug>(deoppet_jump_forward)
   imap <C-b>  <Plug>(deoppet_jump_backward)
