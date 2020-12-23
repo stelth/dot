@@ -39,6 +39,11 @@ update_apt() {
 }
 update_apt || true
 
+update_nvim() {
+    wget "https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage" -O bin/bin/nvim.appimage
+}
+update_nvim || true
+
 update_pip3_packages() {
 	(( $+commands[pip3] )) && {
 		echo "Updating pip3 packages"
