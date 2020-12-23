@@ -41,6 +41,7 @@ update_apt || true
 
 update_nvim() {
     wget "https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage" -O bin/bin/nvim.appimage
+    chmod u+x bin/bin/nvim.appimage
 }
 update_nvim || true
 
