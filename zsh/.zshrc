@@ -225,7 +225,11 @@ alias df="df -h"
 alias od='od -Ax -tx1z'
 alias hexdump='hexdump -C'
 
-alias vim='TERM=xterm-256color nvim'
+if [ "$(uname 2>/dev/null)" != "Linux" ]; then
+    alias vim='TERM=xterm-256color nvim'
+else
+    alias vim='TERM=xterm-256color ~/bin/nvim.appimage'
+fi
 
 
 #####################################################################
