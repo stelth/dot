@@ -16,7 +16,6 @@ update_brew() {
 		echo "Updating Home Brew packages"
 		brew update
 		brew upgrade
-                brew install --HEAD neovim
 		brew cleanup
 		brew cleanup -s
 		brew doctor
