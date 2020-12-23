@@ -36,3 +36,4 @@ zgen
 zsh/.zprezto
 nvim/.config/htop
 nvim/.config/znt
+bin/bin/nvim.appimage
