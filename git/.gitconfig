@@ -12,10 +12,6 @@
 [push]
 	default = simple
 	followtags = true
-
-[core]
-	editor = nvim
-
 [diff]
 	tool = nvim -d
 	renamelimit = 999999
