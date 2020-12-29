@@ -33,7 +33,6 @@ call deoplete#custom#source('_', 'matchers',
       \ ['matcher_fuzzy', 'matcher_length'])
 call deoplete#custom#source('denite', 'matchers',
       \ ['matcher_full_fuzzy', 'matcher_length'])
-call deoplete#custom#source('eskk', 'matchers', [])
 " call deoplete#custom#source('buffer', 'mark', '')
 " call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
 " call deoplete#custom#source('_', 'disabled_syntaxes', ['Comment', 'String'])
@@ -55,7 +54,6 @@ call deoplete#custom#source('_', 'converters', [
       \ 'converter_truncate_info',
       \ 'converter_truncate_menu',
       \ ])
-call deoplete#custom#source('eskk', 'converters', [])
 
 " call deoplete#custom#source('buffer', 'min_pattern_length', 9999)
 " call deoplete#custom#source('clang', 'input_pattern', '\.\w*|\.->\w*|\w+::\w*')
