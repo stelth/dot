@@ -60,3 +60,7 @@ endif
 
 " Disable the mouse.
 set mouse=
+
+" Colorscheme
+set background=dark
+colorscheme candy

@@ -1,12 +1,4 @@
 [[plugins]]
-repo = 'cocopon/iceberg.vim'
-name = 'iceberg'
-hook_add = '''
-  set background=dark
-  colorscheme iceberg
-'''
-
-[[plugins]]
 repo = 'christoomey/vim-tmux-navigator'
 name = 'vim-tmux-navigator'
 
