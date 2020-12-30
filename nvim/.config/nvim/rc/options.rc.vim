@@ -23,12 +23,6 @@ set wrapscan
 
 " Smart insert tab setting.
 set smarttab
-" Exchange tab to spaces.
-set expandtab
-" Substitute <Tab> with blanks.
-" set tabstop=8
-" Spaces instead <Tab>.
-" set softtabstop=4
 " Autoindent width.
 set shiftwidth=4
 " Round indent by shiftwidth.
@@ -41,7 +35,6 @@ function! GnuIndent()
   setlocal cinoptions=>4,n-2,{2,^-2,:2,=2,g0,h2,p5,t0,+2,(0,u0,w1,m1
   setlocal shiftwidth=2
   setlocal tabstop=8
-  setlocal noexpandtab
 endfunction
 
 " Disable modeline.
