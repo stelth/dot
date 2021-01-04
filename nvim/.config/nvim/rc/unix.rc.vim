@@ -62,5 +62,4 @@ endif
 set mouse=
 
 " Colorscheme
-set background=dark
 colorscheme candy
