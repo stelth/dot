@@ -400,8 +400,13 @@ require'nvim-treesitter.configs'.setup {
     },
     ensure_installed = 'all',
     indent = {
-        enable = true,
+<<<<<<< HEAD
+        enable = true
         disable = { 'python' },
+=======
+        enable = true,
+	disable = { 'python' },
+>>>>>>> 618a1a181a959bea2435f397c243f5356dba3e56
     }
 }
 EOF
