@@ -23,6 +23,12 @@ set wrapscan
 
 " Smart insert tab setting.
 set smarttab
+" Exchange tab to spaces.
+set expandtab
+" Substitute <Tab> with blanks.
+" set tabstop=8
+" Spaces instead of <Tab>.
+" set softtabstop=4
 " Autoindent width.
 set shiftwidth=4
 " Round indent by shiftwidth.
