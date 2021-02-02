@@ -411,6 +411,7 @@ on_event = 'BufRead'
 hook_source = '''
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
+        ensure_installed = 'all',
     highlight = {
         enable = true,
         disable = {},
