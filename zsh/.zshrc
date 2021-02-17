@@ -8,6 +8,10 @@ if [ ! -f ~/.zshrc.zwc -o ~/.zshrc -nt ~/.zshrc.zwc ]; then
     zcompile ~/.zshrc
 fi
 
+if [ -f ~/dotfiles/z/z.sh ]; then
+    source ~/dotfiles/z/z.sh
+fi
+
 source ~/.zshenv
 
 
