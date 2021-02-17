@@ -513,5 +513,8 @@ on_ft = 'markdown'
 repo = 'Shougo/deorise.nvim'
 
 [[plugins]]
+repo = 'Shougo/vinarise.vim'
+
+[[plugins]]
 repo = 'teal-language/vim-teal'
 on_ft = 'teal'
