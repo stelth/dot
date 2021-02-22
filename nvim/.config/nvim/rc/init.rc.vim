@@ -16,8 +16,7 @@ function! IsMac() abort
 endfunction
 
 " Build encodings.
-let &fileencodings = join([
-      \ 'ucs-bom', 'iso-2022-jp-3', 'utf-8', 'euc-jp', 'cp932'])
+let &fileencodings = 'ucs-bom,iso-2022-jp-3,utf-8,euc-jp,cp932'
 
 " Setting of terminal encoding.
 if !has('gui_running') && IsWindows()
@@ -45,7 +44,7 @@ nnoremap ,  <Nop>
 
 if IsWindows()
   " Exchange path separator.
-   set shellslash
+  set shellslash
 endif
 
 let $CACHE = expand('~/.cache')

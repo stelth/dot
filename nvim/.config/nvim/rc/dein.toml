@@ -9,12 +9,6 @@ repo = 'Shougo/dein.vim'
 repo = 'thinca/vim-ft-diff_fold'
 
 [[plugins]]
-repo = 'thinca/vim-ft-help_fold'
-
-[[plugins]]
-repo = 'kana/vim-textobj-user'
-
-[[plugins]]
 repo = 'kana/vim-operator-user'
 
 [[plugins]]
@@ -22,10 +16,6 @@ repo = 'rcmdnk/vim-markdown'
 
 [[plugins]]
 repo = 'JesseKPhillips/d.vim'
-
-[[plugins]]
-repo = 'nixprime/cpsm'
-build = 'sh -c "PY3=ON ./install.sh"'
 
 [[plugins]]
 repo = 'Shirk/vim-gas'
