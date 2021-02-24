@@ -544,6 +544,10 @@ omap F <Plug>(eft-F)
 on_map = {n = '<Plug>', x = '<Plug>', o = '<Plug>'}
 
 [[plugins]]
+repo = 'mattn/vim-maketable'
+on_ft = 'markdown'
+
+[[plugins]]
 repo = 'Shougo/deorise.nvim'
 
 [[plugins]]
