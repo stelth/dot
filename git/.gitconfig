@@ -1,25 +1,25 @@
 [user]
-	name = Jason Cox
-	email = Jason.P.Cox@ibm.com
+    name = Jason Cox
+    email = Jason.P.Cox@ibm.com
 
 [merge]
-	conflicttyle = diff3
-	tool = vimdiff
+    conflicttyle = diff3
+    tool = vimdiff
 
 [status]
-	showUntrackedFiles = all
+    showUntrackedFiles = all
 
 [push]
-	default = simple
-	followtags = true
+    default = simple
+    followtags = true
 [diff]
-	tool = nvim -d
-	renamelimit = 999999
+    tool = nvim -d
+    renamelimit = 999999
 
 [difftool]
-	prompt = false
+    prompt = false
 
 [mergetool "vimdiff"]
-	cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c '$wincmd J'
+    cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c '$wincmd J'
 [pull]
-	rebase = false
+    rebase = false
