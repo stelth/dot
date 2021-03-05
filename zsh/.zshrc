@@ -230,9 +230,11 @@ alias hexdump='hexdump -C'
 
 if [ "$(uname 2>/dev/null)" = "Darwin" ]; then
     alias vim='TERM=xterm-256color ~/bin/nvim-osx64/bin/nvim'
+    export PATH="$HOME/bin/mac:$PATH"
 fi
 if [ "$(uname 2>/dev/null)" = "Linux" ]; then
     alias vim='TERM=xterm-256color ~/bin/nvim.appimage'
+    export PATH="$HOME/bin/linux:$PATH"
 fi
 
 
