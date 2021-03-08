@@ -23,3 +23,6 @@
     cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c '$wincmd J'
 [pull]
     rebase = false
+
+[ghq]
+    root = ~/dev/
