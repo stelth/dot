@@ -34,6 +34,6 @@ xmonad-desktop/.xmonad/xmonad-x86_64-linux
 xmonad-desktop/.xmonad/xmonad.o
 zgen
 zsh/.zprezto
-nvim/.config/htop
-nvim/.config/znt
+nvim/.config/*
+!nvim/.config/nvim
 bin/bin/nvim*
