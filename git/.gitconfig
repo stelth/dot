@@ -25,4 +25,4 @@
     rebase = false
 
 [ghq]
-    root = ~/dev/
+    root = ~/repos/
