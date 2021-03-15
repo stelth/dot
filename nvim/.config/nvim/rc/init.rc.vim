@@ -80,6 +80,7 @@ if has('gui_running')
   set guioptions=Mc
 endif
 
+set packpath=
 let g:loaded_2html_plugin      = 1
 let g:loaded_logiPat           = 1
 let g:loaded_getscriptPlugin   = 1
