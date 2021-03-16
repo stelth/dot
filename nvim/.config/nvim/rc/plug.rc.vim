@@ -37,20 +37,14 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'thinca/vim-ft-diff_fold'
 Plug 'kana/vim-operator-user'
-Plug 'rcmdnk/vim-markdown'
-Plug 'JesseKPhillips/d.vim'
-Plug 'Shirk/vim-gas'
 Plug 'chrisbra/vim-zsh'
 Plug 'Vimjas/vim-python-pep8-indent'
-Plug 'leafOfTree/vim-vue-plugin'
 
 Plug 'Shougo/context_filetype.vim'
 Plug 'Shougo/vinarise.vim'
 
 Plug 'rhysd/vim-operator-surround'
-Plug 'lambdalisue/vim-findent'
 Plug 'mattn/vim-maketable'
-Plug 'joker1007/vim-markdown-quote-syntax'
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
