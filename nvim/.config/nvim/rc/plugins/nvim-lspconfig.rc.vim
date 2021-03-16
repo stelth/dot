@@ -1,6 +1,5 @@
 lua << EOF
 local nvim_lsp = require('lspconfig')
-local home = os.getenv("HOME")
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -53,8 +52,35 @@ local servers = { "pyright", "gopls", "clangd", "cmake", "bashls", "vimls"}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
 end
-nvim_lsp["sumneko_lua"].setup {
-  cmd = { home .. "/repos/github.com/sumneko/lua-language-server/bin/Linux/lua-language-server" },
-  on_attach = on_attach
+
+local sumneko_root_path = vim.fn.expand'~/repos/github.com/sumneko/lua-language-server'
+local sumneko_binary = sumneko_root_path .. '/bin/Linux/lua-language-server'
+
+require'lspconfig'.sumneko_lua.setup {
+  cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
+  on_attach = on_attach,
+  settings = {
+    Lua = {
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT',
+        -- Setup your lua path
+        path = vim.split(package.path, ';'),
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = {
+          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+          [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+        },
+        maxPreload = 100000,
+        preloadFileSize = 1000,
+      },
+    },
+  },
 }
 EOF
