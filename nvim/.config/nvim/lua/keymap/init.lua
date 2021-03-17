@@ -60,8 +60,6 @@ local plug_map = {
     ["n|<A-d>"] = map_cu('Lspsaga open_floaterm'):with_noremap():with_silent(),
     ["t|<A-d>"] = map_cu([[<C-\><C-n>:Lspsaga close_floaterm<CR>]]):with_noremap()
         :with_silent(),
-    ["n|<Leader>g"] = map_cu("Lspsaga open_floaterm lazygit"):with_noremap()
-        :with_silent(),
         -- Far.vim
     ["n|<Leader>fz"] = map_cr('Farf'):with_noremap():with_silent(),
     ["v|<Leader>fz"] = map_cr('Farf'):with_noremap():with_silent(),
@@ -70,7 +68,6 @@ local plug_map = {
     ["n|<Leader>fa"] = map_cu('DashboardFindWord'):with_noremap():with_silent(),
     ["n|<Leader>fb"] = map_cu('Telescope file_browser'):with_noremap()
         :with_silent(),
-    ["n|<Leader>ff"] = map_cu('DashboardFindFile'):with_noremap():with_silent(),
     ["n|<Leader>fg"] = map_cu('Telescope git_files'):with_noremap()
         :with_silent(),
     ["n|<Leader>fw"] = map_cu('Telescope grep_string'):with_noremap()
