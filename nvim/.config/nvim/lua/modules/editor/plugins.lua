@@ -10,15 +10,12 @@ editor['itchyny/vim-cursorword'] = {
 
 editor['hrsh7th/vim-eft'] = {
     opt = true,
-    config = function() vim.g.eft_ignorecase = true end
+    config = conf.vim_eft
 }
 
 editor['kana/vim-operator-replace'] = {
     keys = {{'x', 'p'}},
-    config = function()
-        vim.api.nvim_set_keymap("x", "p", "<Plug>(operator-replace)",
-                                {silent = true})
-    end,
+    config = conf.operator_replace,
     requires = 'kana/vim-operator-user'
 }
 
