@@ -11,6 +11,10 @@ completion['nvim-lua/completion-nvim'] = {
   config = conf.completion_nvim
 }
 
+completion['norcalli/snippets.nvim'] = {
+  event = 'BufReadPre',
+}
+
 completion['nvim-telescope/telescope.nvim'] =
     {
         cmd = 'Telescope',
