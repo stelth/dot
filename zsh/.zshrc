@@ -233,7 +233,7 @@ if [ "$(uname 2>/dev/null)" = "Darwin" ]; then
     export PATH="$HOME/bin/mac:/usr/local/Cellar/llvm/11.1.0/bin:$PATH"
 fi
 if [ "$(uname 2>/dev/null)" = "Linux" ]; then
-    alias vim='TERM=xterm-256color ~/bin/nvim.appimage'
+    alias vim='~/bin/nvim.appimage'
     export PATH="$HOME/bin/linux:/usr/lib/llvm-11/bin:$PATH"
 fi
 
