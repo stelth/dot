@@ -11,8 +11,12 @@ completion['nvim-lua/completion-nvim'] = {
   config = conf.completion_nvim
 }
 
-completion['norcalli/snippets.nvim'] = {
-  event = 'BufReadPre',
+completion['hrsh7th/vim-vsnip'] = {
+  event = 'InsertCharPre',
+  config = conf.vim_vsnip,
+  requires = {
+    {'hrsh7th/vim-vsnip-integ', opt = true}
+  }
 }
 
 completion['nvim-telescope/telescope.nvim'] =

@@ -1,6 +1,5 @@
 local api = vim.api
 local lspconfig = require 'lspconfig'
-local global = require 'core.global'
 local format = require('modules.completion.format')
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -31,6 +30,8 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] =
     })
 
 local enhance_attach = function(client, bufnr)
+    local completion = require('completion')
+    completion.on_attach()
     if client.resolved_capabilities.document_formatting then
         format.lsp_before_save()
     end
@@ -44,19 +45,18 @@ lspconfig.gopls.setup {
     init_options = {usePlaceholders = true, completeUnimported = true}
 }
 
-local sumneko_root_path = vim.fn
-                              .expand '~/repos/github.com/sumneko/lua-language-server'
+local sumneko_root_path = vim.fn.expand '~/repos/github.com/sumneko/lua-language-server'
 local sumneko_binary = sumneko_root_path .. '/bin/Linux/lua-language-server'
 
 lspconfig.sumneko_lua.setup {
     cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
+    on_attach = enhance_attach,
     settings = {
         Lua = {
             diagnostics = {enable = true, globals = {"vim", "packer_plugins"}},
             runtime = {version = "LuaJIT"},
             workspace = {
-                library = vim.list_extend(
-                    {[vim.fn.expand("$VIMRUNTIME/lua")] = true}, {})
+                library = vim.list_extend({[vim.fn.expand("$VIMRUNTIME/lua")] = true}, {})
             }
         }
     }
@@ -64,9 +64,13 @@ lspconfig.sumneko_lua.setup {
 
 lspconfig.clangd.setup {
     cmd = {
-        "clangd", "--background-index", "--suggest-missing-includes",
-        "--clang-tidy", "--header-insertion=iwyu"
-    }
+        "clangd",
+        "--background-index",
+        "--suggest-missing-includes",
+        "--clang-tidy",
+        "--header-insertion=iwyu"
+    },
+    on_attach = enhance_attach
 }
 
 local servers = {'pyright', 'cmake', 'bashls', 'vimls'}

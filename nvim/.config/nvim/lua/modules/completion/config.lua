@@ -4,9 +4,12 @@ local config = {}
 function config.nvim_lsp() require('modules.completion.lspconfig') end
 
 function config.completion_nvim()
-  require'completion'.on_attach()
-  vim.g.completion_enable_snippet = 'snippets.nvim'
+  vim.g.completion_enable_snippet = 'vim-vsnip'
   vim.g.completion_auto_change_source = 1
+end
+
+function config.vim_vsnip()
+  vim.g.vsnip_snippet_dir = os.getenv('HOME') .. '/.config/nvim/snippets'
 end
 
 function config.telescope()
