@@ -6,16 +6,9 @@ completion['neovim/nvim-lspconfig'] = {
     config = conf.nvim_lsp
 }
 
-completion['glepnir/lspsaga.nvim'] = {cmd = 'Lspsaga'}
-
-completion['hrsh7th/nvim-compe'] = {
-    event = 'InsertEnter',
-    config = conf.nvim_compe
-}
-
-completion['hrsh7th/vim-vsnip'] = {
-    event = 'InsertCharPre',
-    config = conf.vim_vsnip
+completion['nvim-lua/completion-nvim'] = {
+  event = 'BufReadPre',
+  config = conf.completion_nvim
 }
 
 completion['nvim-telescope/telescope.nvim'] =
