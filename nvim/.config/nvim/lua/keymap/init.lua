@@ -6,8 +6,6 @@ local map_args = bind.map_args
 require('keymap.config')
 
 local plug_map = {
-    ["i|<TAB>"] = map_cmd('v:lua.tab_complete()'):with_expr():with_silent(),
-    ["i|<S-TAB>"] = map_cmd('v:lua.s_tab_complete()'):with_silent():with_expr(),
     -- person keymap
     ["n|gb"] = map_cr("BufferLinePick"):with_noremap():with_silent(),
     -- Packer
