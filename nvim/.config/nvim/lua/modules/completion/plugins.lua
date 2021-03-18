@@ -13,10 +13,7 @@ completion['nvim-lua/completion-nvim'] = {
 
 completion['hrsh7th/vim-vsnip'] = {
   event = 'InsertCharPre',
-  config = conf.vim_vsnip,
-  requires = {
-    {'hrsh7th/vim-vsnip-integ', opt = true}
-  }
+  config = conf.vim_vsnip
 }
 
 completion['nvim-telescope/telescope.nvim'] =
