@@ -7,7 +7,12 @@ lang['nvim-treesitter/nvim-treesitter'] = {
   config = conf.nvim_treesitter
 }
 
-lang['nvim-treesitter/nvim-treesitter-textobjects'] =
-    {after = 'nvim-treesitter'}
+lang['nvim-treesitter/nvim-treesitter-textobjects'] = {
+  after = 'nvim-treesitter'
+}
+
+lang['mattn/vim-maketable'] = {
+  cmd = {'MakeTable', 'UnmakeTable', 'MakeTable'}
+}
 
 return lang
