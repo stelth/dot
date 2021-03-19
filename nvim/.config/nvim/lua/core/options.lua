@@ -119,9 +119,10 @@ local function load_options()
             paste = {["+"] = "pbpaste", ["*"] = "pbpaste"},
             cache_enabled = 0
         }
+        vim.g.python3_host_prog = '/usr/local/bin/python3'
+    else
+        vim.g.python3_host_prog = '/usr/bin/python3'
     end
-
-    vim.g.python3_host_prog = '/usr/bin/python3'
 
     for name, value in pairs(global_local) do vim.o[name] = value end
 
