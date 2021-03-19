@@ -1,5 +1,10 @@
 local config = {}
 
+function config.nvcode_color_schemes()
+  vim.g.nvcode_termcolors = 256
+  vim.cmd('colorscheme nord')
+end
+
 function config.galaxyline()
   require('modules.ui.eviline')
 end
