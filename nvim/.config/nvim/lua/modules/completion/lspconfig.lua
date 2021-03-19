@@ -73,7 +73,7 @@ lspconfig.clangd.setup {
     on_attach = enhance_attach
 }
 
-local servers = {'pyright', 'cmake', 'bashls', 'vimls'}
+local servers = {'pyright', 'bashls', 'vimls'}
 
 for _, server in ipairs(servers) do
     lspconfig[server].setup {on_attach = enhance_attach}
