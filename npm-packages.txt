@@ -1,0 +1,5 @@
+bash-language-server
+npm
+pyright
+tree-sitter-cli
+vim-language-server
