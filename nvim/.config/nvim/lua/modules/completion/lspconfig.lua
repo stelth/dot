@@ -73,6 +73,16 @@ lspconfig.clangd.setup {
     on_attach = enhance_attach
 }
 
+local texlab_root_path = vim.fn.expand '~/repos/github.com/latex-lsp/texlab'
+local texlab_binary = texlab_root_path .. '/target/release/texlab'
+
+lspconfig.texlab.setup {
+    cmd = {
+      texlab_binary
+    },
+    on_attach = enhance_attach
+}
+
 local servers = {'pyright', 'bashls', 'vimls', 'cmake'}
 
 for _, server in ipairs(servers) do
