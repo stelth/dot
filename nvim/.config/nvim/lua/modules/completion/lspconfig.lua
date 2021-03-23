@@ -1,6 +1,7 @@
 local api = vim.api
 local lspconfig = require 'lspconfig'
 local format = require('modules.completion.format')
+local global = require('core.global')
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -46,7 +47,14 @@ lspconfig.gopls.setup {
 }
 
 local sumneko_root_path = vim.fn.expand '~/repos/github.com/sumneko/lua-language-server'
-local sumneko_binary = sumneko_root_path .. '/bin/Linux/lua-language-server'
+local sumneko_binary = sumneko_root_path .. '/bin'
+if global.is_mac then
+  sumneko_binary = sumneko_binary .. '/macOS'
+else
+  sumneko_binary = sumneko_binary .. '/Linux'
+end
+
+local sumneko_binary = sumneko_binary .. '/lua-language-server'
 
 lspconfig.sumneko_lua.setup {
     cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
