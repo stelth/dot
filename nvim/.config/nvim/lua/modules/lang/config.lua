@@ -19,6 +19,9 @@ function config.nvim_treesitter()
                 }
             }
         },
+        context_commentstring = {
+            enable = true
+        },
     }
 end
 
