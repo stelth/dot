@@ -91,7 +91,7 @@ lspconfig.texlab.setup {
     on_attach = enhance_attach
 }
 
-local servers = {'pyright', 'bashls', 'vimls', 'cmake'}
+local servers = {'pyright', 'bashls', 'vimls', 'cmake', 'jdtls'}
 
 for _, server in ipairs(servers) do
     lspconfig[server].setup {on_attach = enhance_attach}

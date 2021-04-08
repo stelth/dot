@@ -235,8 +235,12 @@ fi
 if [ "$(uname 2>/dev/null)" = "Linux" ]; then
     alias vim='~/bin/nvim.appimage'
     export PATH="$HOME/bin/linux:/usr/lib/llvm-11/bin:$PATH"
+    export JAVA_HOME="/usr/lib/jvm/java-1.15.0-openjdk-amd64"
+    export JAR="$(realpath $(ghq list -p eclipse.jdt.ls)/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1*.jar)"
+    export GRADLE_HOME=$HOME/gradle
+    export JDTLS_CONFIG="$(ghq list -p eclipse.jdt.ls)/org.eclipse.jdt.ls.product/target/repository/config_linux"
+    export WORKSPACE=$HOME/workspace
 fi
-
 
 #####################################################################
 # keybinds
