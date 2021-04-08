@@ -1,0 +1,13 @@
+[merge]
+    tool = nvimdiff
+
+[mergetool "nvimdiff"]
+    prompt = false
+    cmd = ~/bin/nvim.appimage -d $LOCAL $REMOTE $MERGED
+
+[diff]
+    tool = nvimdiff
+
+[difftool "nvimdiff"]
+    prompt = false
+    cmd = ~/bin/nvim.appimage -d $LOCAL $REMOTE

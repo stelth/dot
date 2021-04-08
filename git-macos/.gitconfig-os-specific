@@ -12,12 +12,17 @@
 [push]
     default = simple
     followtags = true
+[diff]
+    tool = nvim -d
+    renamelimit = 999999
 
+[difftool]
+    prompt = false
+
+[mergetool "vimdiff"]
+    cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c '$wincmd J'
 [pull]
     rebase = false
 
 [ghq]
     root = ~/repos/
-
-[include]
-    path = ~/.gitconfig-os-specific
