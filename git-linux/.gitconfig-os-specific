@@ -1,4 +1,5 @@
 [merge]
+    renamelimit = 999999
     tool = nvimdiff
 
 [mergetool "nvimdiff"]
