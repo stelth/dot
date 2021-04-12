@@ -73,7 +73,7 @@ function config.nvim_tree()
   }
 end
 
-function config._gitsigns()
+function config.gitsigns()
   if not packer_plugins['plenary.nvim'].loaded then
     vim.cmd [[packadd plenary.nvim]]
   end
@@ -104,6 +104,56 @@ function config._gitsigns()
        ['x ih'] = ':<C-U>lua require"gitsigns".text_object()<CR>'
      },
   }
+end
+
+function config.indentLine()
+    vim.g.setColors = 0
+end
+
+function config.indent_blankline()
+    vim.g.indent_blankline_char = "|"
+    vim.g.indent_blankline_show_first_indent_level = true
+    vim.g.indent_blankline_filetype_exclude = {
+        "startify",
+        "dotooagenda",
+        "log",
+        "fugitive",
+        "gitcommit",
+        "packer",
+        "vimwiki",
+        "markdown",
+        "json",
+        "txt",
+        "vista",
+        "help",
+        "todoist",
+        "NvimTree",
+        "peekaboo",
+        "git",
+        "TelescopePrompt",
+        "undotree",
+        "flutterToolsOutline",
+        "" -- for all buffers without a file type
+    }
+
+    vim.g.indent_blankline_buftype_exclude = {"terminal", "nofile"}
+    vim.g.indent_blankline_show_trailing_blankline_indent = false
+    vim.g.indent_blankline_show_current_context = true
+    vim.g.indent_blankline_context_patters = {
+        "class",
+        "function",
+        "method",
+        "block",
+        "list_literal",
+        "selector",
+        "^if",
+        "^table",
+        "^if_statement",
+        "while",
+        "for"
+    }
+    -- becuase we lazy load indent-blankline, we need to readd this autocmd
+    vim.cmd('autocmd CursorMoved * IndentBlanklineRefresh')
 end
 
 return config
