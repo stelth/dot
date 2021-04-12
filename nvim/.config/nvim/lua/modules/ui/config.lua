@@ -106,10 +106,6 @@ function config.gitsigns()
   }
 end
 
-function config.indentLine()
-    vim.g.setColors = 0
-end
-
 function config.indent_blankline()
     vim.g.indent_blankline_char = "|"
     vim.g.indent_blankline_show_first_indent_level = true

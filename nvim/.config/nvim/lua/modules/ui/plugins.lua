@@ -15,16 +15,10 @@ ui['glepnir/galaxyline.nvim'] = {
     requires = 'kyazdani42/nvim-web-devicons'
 }
 
-ui['Yggdroot/indentLine'] = {
-    event = 'BufRead',
-    config = conf.indentLine
-}
-
 ui['lukas-reineke/indent-blankline.nvim'] = {
     event = 'BufRead',
     branch = 'lua',
-    config = conf.indent_blankline,
-    requires = 'Yggdroot/indentLine'
+    config = conf.indent_blankline
 }
 
 ui['akinsho/nvim-bufferline.lua'] = {
