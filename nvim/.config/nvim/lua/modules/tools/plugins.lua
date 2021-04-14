@@ -19,4 +19,8 @@ tools['brooth/far.vim'] = {
     config = conf.far
 }
 
+tools['s1n7ax/nvim-terminal'] = {
+    event = 'BufReadPre'
+}
+
 return tools
