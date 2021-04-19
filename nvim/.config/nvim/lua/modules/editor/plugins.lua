@@ -26,4 +26,7 @@ editor['rhysd/vim-operator-surround'] = {
 
 editor['kana/vim-niceblock'] = {opt = true}
 
+editor['kevinhwang91/nvim-hlslens'] = {
+}
+
 return editor

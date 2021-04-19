@@ -63,7 +63,14 @@ local plug_map = {
     -- Plugin nvim-terminal
     ["n|<Leader>tt"] = map_cmd("<cmd>lua require('nvim-terminal').DefaultTerminal:toggle()<CR>"):with_noremap():with_silent(),
     -- Plugin neogit
-    ["n|<Leader>ng"] = map_cmd("<cmd>lua require('neogit').open({kind = 'split'})<CR>"):with_noremap():with_silent()
+    ["n|<Leader>ng"] = map_cmd("<cmd>lua require('neogit').open({kind = 'split'})<CR>"):with_noremap():with_silent(),
+    -- Plugin nvim-hlslens
+    ["n|n"] = map_cmd("<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>"):with_noremap():with_silent(),
+    ["n|N"] = map_cmd("<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>"):with_noremap():with_silent(),
+    ["n|*"] = map_cmd("*<Cmd>lua require('hlslens').start()<CR>"):with_noremap(),
+    ["n|#"] = map_cmd("#<Cmd>lua require('hlslens').start()<CR>"):with_noremap(),
+    ["n|g*"] = map_cmd("g*<Cmd>lua require('hlslens').start()<CR>"):with_noremap(),
+    ["n|g#"] = map_cmd("g#<Cmd>lua require('hlslens').start()<CR>"):with_noremap()
 };
 
 bind.nvim_load_mapping(plug_map)

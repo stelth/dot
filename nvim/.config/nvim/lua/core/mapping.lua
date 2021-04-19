@@ -43,7 +43,8 @@ local def_map = {
     ["c|<C-e>"] = map_cmd('<End>'):with_noremap(),
     ["c|<C-d>"] = map_cmd('<Del>'):with_noremap(),
     ["c|<C-h>"] = map_cmd('<BS>'):with_noremap(),
-    ["c|<C-t>"] = map_cmd([[<C-R>=expand("%:p:h") . "/" <CR>]]):with_noremap()
+    ["c|<C-t>"] = map_cmd([[<C-R>=expand("%:p:h") . "/" <CR>]]):with_noremap(),
+    ["n|<BS>"] = map_cmd(":noh<CR>"):with_noremap():with_silent()
 }
 
 bind.nvim_load_mapping(def_map)
