@@ -11,10 +11,4 @@ function config.vim_vista()
   vim.g.vista_echo_cursor_strategy = 'floating_win'
 end
 
-function config.neogit()
-    local neogit = require('neogit')
-
-    neogit.setup {}
-end
-
 return config

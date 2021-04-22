@@ -60,10 +60,6 @@ local plug_map = {
     ["x|gI"] = map_cmd("v:lua.enhance_nice_block('gI')"):with_expr(),
     ["x|A"] = map_cmd("v:lua.enhance_nice_block('A')"):with_expr(),
     ["n|<Leader>v"] = map_cu('Vista'):with_noremap():with_silent(),
-    -- Plugin nvim-terminal
-    ["n|<Leader>tt"] = map_cmd("<cmd>lua require('nvim-terminal').DefaultTerminal:toggle()<CR>"):with_noremap():with_silent(),
-    -- Plugin neogit
-    ["n|<Leader>ng"] = map_cmd("<cmd>lua require('neogit').open({kind = 'split'})<CR>"):with_noremap():with_silent(),
     -- Plugin nvim-hlslens
     ["n|n"] = map_cmd("<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>"):with_noremap():with_silent(),
     ["n|N"] = map_cmd("<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>"):with_noremap():with_silent(),
