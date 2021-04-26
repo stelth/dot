@@ -52,6 +52,12 @@ function config.dashboard()
 end
 
 function config.nvim_tree()
+  -- On Ready Event for Lazy Loading to work
+  require('nvim-tree.events').on_nvim_tree_ready(
+    function()
+        vim.cmd("NvimTreeRefresh")
+    end
+  )
   vim.g.nvim_tree_follow = 1
   vim.g.nvim_tree_hide_dotfiles = 1
   vim.g.nvim_tree_indent_markers = 1
