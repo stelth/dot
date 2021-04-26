@@ -6,6 +6,10 @@ completion['neovim/nvim-lspconfig'] = {
     config = conf.nvim_lsp
 }
 
+completion['glepnir/lspsaga.nvim'] = {
+    cmd = 'Lspsaga'
+}
+
 completion['nvim-lua/completion-nvim'] = {
   event = 'BufReadPre',
   config = conf.completion_nvim
