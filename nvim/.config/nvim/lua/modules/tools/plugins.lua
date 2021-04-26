@@ -19,4 +19,8 @@ tools['brooth/far.vim'] = {
     config = conf.far
 }
 
+tools['numToStr/FTerm.nvim'] = {
+    config = conf.fterm
+}
+
 return tools

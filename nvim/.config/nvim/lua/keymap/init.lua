@@ -80,7 +80,10 @@ local plug_map = {
     ["n|*"] = map_cmd("*<Cmd>lua require('hlslens').start()<CR>"):with_noremap(),
     ["n|#"] = map_cmd("#<Cmd>lua require('hlslens').start()<CR>"):with_noremap(),
     ["n|g*"] = map_cmd("g*<Cmd>lua require('hlslens').start()<CR>"):with_noremap(),
-    ["n|g#"] = map_cmd("g#<Cmd>lua require('hlslens').start()<CR>"):with_noremap()
+    ["n|g#"] = map_cmd("g#<Cmd>lua require('hlslens').start()<CR>"):with_noremap(),
+    -- Plugin FTerm
+    ["n|<Leader>sh"] = map_cmd("<Cmd>lua require('FTerm').toggle()<CR>"):with_noremap():with_silent(),
+    ["t|<Leader>sh"] = map_cmd("<C-\\><C-n><Cmd>lua require('FTerm').toggle()<CR>"):with_noremap():with_silent()
 };
 
 bind.nvim_load_mapping(plug_map)
