@@ -19,24 +19,13 @@
   - [source update_utils.zsh && update_pip3_packages, Updating pip packages]
   - [source update_utils.zsh && update_npm_packages, Updating npm packages]
 
-# git config based on uname
-- link:
-    ~/.gitconfig: git/gitconfig
-- link:
-    ~/.gitconfig-os-specific:
-      if: '[ `uname` = Linux ]'
-      path: git/gitconfig-linux
-- link:
-    ~/.gitconfig-os-specific:
-      if: '[ `uname` = Darwin ]'
-      path: git/gitconfig-osx
-
 - link:
     ~/bin/ghq: bin/ghq
     ~/bin/msrsync: bin/msrsync
     ~/bin/nvim: bin/nvim
     ~/bin/tmx: bin/tmx
     ~/.config/nvim: nvim/nvim
+    ~/.gitconfig: git/gitconfig
     ~/.tmux.conf: tmux/tmux.conf
     ~/.zshrc: zsh/zshrc
     ~/.zshenv: zsh/zshenv

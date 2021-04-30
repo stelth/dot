@@ -4,7 +4,12 @@
 
 [merge]
     conflicttyle = diff3
-    tool = vimdiff
+    renamelimit = 999999
+    tool = nvimdiff
+
+[mergetool "nvimdiff"]
+    prompt = false
+    cmd = ~/bin/nvim -d $LOCAL $REMOTE $MERGED
 
 [status]
     showUntrackedFiles = all
@@ -19,5 +24,9 @@
 [ghq]
     root = ~/repos/
 
-[include]
-    path = ~/.gitconfig-os-specific
+[diff]
+    tool = nvimdiff
+
+[difftool "nvimdiff"]
+    prompt = false
+    cmd = ~/bin/nvim -d $LOCAL $REMOTE
