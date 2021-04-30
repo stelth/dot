@@ -1,4 +1,4 @@
 nvim/nvim.appimage
 nvim/nvim-macos
-bin/darwin/ghq
-bin/linux/ghq
+bin/ghq
+bin/ghq
