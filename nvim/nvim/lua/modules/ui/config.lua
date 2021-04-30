@@ -1,12 +1,16 @@
 local config = {}
 
-function config.nvcode_color_schemes()
-  vim.g.nvcode_termcolors = 256
-  vim.cmd('colorscheme nord')
+function config.tokyonight()
+    vim.g.tokyonight_style = "night"
+    vim.cmd("colorscheme tokyonight")
 end
 
-function config.galaxyline()
-  require('modules.ui.eviline')
+function config.lualine()
+    require('lualine').setup {
+        options = {
+            theme = 'tokyonight'
+        }
+    }
 end
 
 function config.nvim_bufferline()

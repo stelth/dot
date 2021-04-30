@@ -1,17 +1,16 @@
 local ui = {}
 local conf = require('modules.ui.config')
 
-ui['ChristianChiarulli/nvcode-color-schemes.vim'] = {
-  config = conf.nvcode_color_schemes
+ui['folke/tokyonight.nvim'] = {
+    config = conf.tokyonight
 }
 
 ui['glepnir/dashboard-nvim'] = {
   config = conf.dashboard
 }
 
-ui['glepnir/galaxyline.nvim'] = {
-    branch = 'main',
-    config = conf.galaxyline,
+ui['hoob3rt/lualine.nvim'] = {
+    config = conf.lualine,
     requires = 'kyazdani42/nvim-web-devicons'
 }
 
