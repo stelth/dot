@@ -1,2 +1,3 @@
 bin/ghq
-bin/nvim
+bin/nvim.appimage
+bin/nvim-osx64
