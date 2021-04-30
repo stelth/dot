@@ -41,3 +41,5 @@ nvim/nvim.appimage
 nvim/nvim
 nvim/.config/nvim/plugged
 nvim/.config/nvim/autoload/plug.vim
+bin/darwin/ghq
+bin/linux/ghq
