@@ -33,6 +33,7 @@
     ~/bin/ghq: bin/ghq
     ~/bin/msrsync: bin/msrsync
     ~/bin/tmx: bin/tmx
+    ~/.config/alacritty/alacritty.yml: alacritty/alacritty.yml
     ~/.config/nvim: nvim/nvim
     ~/.gitconfig: git/gitconfig
     ~/.tmux.conf: tmux/tmux.conf
