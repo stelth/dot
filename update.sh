@@ -44,6 +44,7 @@ update_nvim() {
     chmod u+x nvim/nvim.appimage
     wget "https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz" -O nvim/nvim-macos.tar.gz
     tar xvf nvim/nvim-macos.tar.gz --strip-components=2 -C nvim nvim-osx64/bin/nvim
+    mv nvim/nvim nvim/nvim-macos
     rm nvim/nvim-macos.tar.gz
 }
 update_nvim || true
