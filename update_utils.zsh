@@ -1,26 +1,26 @@
 #!/bin/zsh
 
 update_brew() {
-    (( $+commands[brew] )) && {
+    if (( $+commands[brew] )); then
         brew update
         brew upgrade
         brew cleanup
         brew cleanup -s
         brew doctor
         brew missing
-    }
+    fi
 }
 
 update_apt() {
     [[ "`echo $UID`" == "0" ]] && {
-        (( $+commands[apt] )) && {
-            (( $+commands[apt-get] )) && {
+        if (( $+commands[apt] )); then
+            if (( $+commands[apt-get] )); then
                 apt-get update -y --allow-unauthenticated
                 apt-get upgrade -y -f --allow-unauthenticated
                 apt-get dist-upgrade -y -f --allow-unauthenticated
                 apt autoremove -y -f
-            }
-        }
+            fi
+        fi
     }
 }
 
