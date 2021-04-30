@@ -27,7 +27,7 @@ update_brew || true
 update_apt() {
 	[[ "`echo $UID`" == "0" ]] && {
 		(( $+commands[apt] )) && {
-			(( $+commands[apt-get] )) && {
+		y	(( $+commands[apt-get] )) && {
 				echo "Updating apt packages"
 				apt-get update -y --allow-unauthenticated
 				apt-get upgrade -y -f --allow-unauthenticated
@@ -40,12 +40,22 @@ update_apt() {
 update_apt || true
 
 update_nvim() {
-    wget "https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage" -O bin/bin/nvim.appimage
-    chmod u+x bin/bin/nvim.appimage
-    wget "https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz" -O bin/bin/nvim-macos.tar.gz
-    tar xzvf bin/bin/nvim-macos.tar.gz -C bin/bin/
+    wget "https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage" -O nvim/nvim.appimage
+    chmod u+x nvim/nvim.appimage
+    wget "https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz" -O nvim/nvim-macos.tar.gz
+    tar xvf nvim/nvim-macos.tar.gz --strip-components=2 -C nvim nvim-osx64/bin/nvim
+    rm nvim/nvim-macos.tar.gz
 }
 update_nvim || true
+
+update_ghq() {
+    wget https://github.com/x-motemen/ghq/releases/latest/download/ghq_linux_amd64.zip
+    unzip -j "ghq_linux_amd64.zip" "ghq_linux_amd64/ghq" -d "bin/linux"
+    rm ghq_linux_amd64.zip
+    wget https://github.com/x-motemen/ghq/releases/latest/download/ghq_darwin_amd64.zip
+    unzip -j "ghq_darwin_amd64.zip" "ghq_darwin_amd64/ghq" -d "bin/darwin"
+    rm ghq_darwin_amd64.zip
+}
 
 update_pip3_packages() {
 	(( $+commands[pip3] )) && {
