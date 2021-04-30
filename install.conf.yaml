@@ -23,7 +23,7 @@
 - link:
     ~/bin/nvim:
       if: '[ `uname` = Linux ]'
-      path: bin/nvim
+      path: bin/nvim.appimage
 - link:
     ~/bin/nvim:
       if: '[ `uname` = Darwin ]'
