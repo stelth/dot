@@ -19,10 +19,19 @@
   - [source update_utils.zsh && update_pip3_packages, Updating pip packages]
   - [source update_utils.zsh && update_npm_packages, Updating npm packages]
 
+# neovim specific link
+- link:
+    ~/bin/nvim:
+      if: '[ `uname` = Linux ]'
+      path: bin/nvim
+- link:
+    ~/bin/nvim:
+      if: '[ `uname` = Darwin ]'
+      path: bin/nvim-osx64/bin/nvim
+
 - link:
     ~/bin/ghq: bin/ghq
     ~/bin/msrsync: bin/msrsync
-    ~/bin/nvim: bin/nvim
     ~/bin/tmx: bin/tmx
     ~/.config/nvim: nvim/nvim
     ~/.gitconfig: git/gitconfig

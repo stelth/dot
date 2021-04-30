@@ -26,14 +26,13 @@ update_apt() {
 
 update_nvim() {
     if [[ `uname` = Linux ]]; then
-        wget "https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage" -O bin/nvim
-        chmod u+x bin/nvim
+        wget "https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage" -O bin/nvim.appimage
+        chmod u+x bin/nvim.appimage
     fi
     if [[ `uname` = Darwin ]]; then
         wget "https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz"
-        tar xvf nvim-macos.tar.gz -C bin nvim-osx64/bin/nvim
-        mv bin/nvim-osx64/bin/nvim bin/nvim
-        rm -rf nvim-macos.tar.gz bin/nvim-osx64
+        tar xvf nvim-macos.tar.gz -C bin
+        rm -rf nvim-macos.tar.gz
     fi
 }
 
