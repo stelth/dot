@@ -3,7 +3,12 @@
       relink: true
       create: true
 
-- clean: ['~', '~/.config']
+- clean:
+    ~/:
+      force: true
+    ~/.config:
+      recursive: true
+      force: true
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
