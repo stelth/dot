@@ -50,3 +50,10 @@ update_ghq() {
         rm ghq_darwin_amd64.zip
     fi
 }
+
+update_pip3_packages() {
+   if (( $+commands[pip3] )); then
+       echo "Updating pip3 packages"
+       pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip3 install -U --user
+   fi
+}
