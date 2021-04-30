@@ -227,14 +227,13 @@ alias df="df -h"
 # Improve od for hexdump
 alias od='od -Ax -tx1z'
 alias hexdump='hexdump -C'
+alias vim='~/bin/nvim'
 
 if [ "$(uname 2>/dev/null)" = "Darwin" ]; then
-    alias vim='TERM=xterm-256color ~/bin/nvim-osx64/bin/nvim'
-    export PATH="$HOME/bin/mac:/usr/local/Cellar/llvm/11.1.0/bin:/Library/TeX/texbin:$PATH"
+    export PATH="/usr/local/Cellar/llvm/11.1.0/bin:/Library/TeX/texbin:$PATH"
 fi
 if [ "$(uname 2>/dev/null)" = "Linux" ]; then
-    alias vim='~/bin/nvim.appimage'
-    export PATH="$HOME/bin/linux:/usr/lib/llvm-11/bin:$PATH"
+    export PATH="/usr/lib/llvm-11/bin:$PATH"
     export JAVA_HOME="/usr/lib/jvm/java-1.15.0-openjdk-amd64"
     export JAR="$(realpath $(ghq list -p eclipse.jdt.ls)/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1*.jar)"
     export GRADLE_HOME=$HOME/gradle
