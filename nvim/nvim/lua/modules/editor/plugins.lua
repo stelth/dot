@@ -24,6 +24,10 @@ editor['rhysd/vim-operator-surround'] = {
     requires = 'kana/vim-operator-user'
 }
 
+editor['folke/which-key.nvim'] = {
+    config = conf.which_key
+}
+
 editor['kana/vim-niceblock'] = {opt = true}
 
 editor['kevinhwang91/nvim-hlslens'] = {

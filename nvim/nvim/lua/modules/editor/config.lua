@@ -18,4 +18,9 @@ function config.vim_cursorword()
     vim.api.nvim_command('augroup END')
 end
 
+function config.which_key()
+    require('which-key').setup {
+    }
+end
+
 return config
