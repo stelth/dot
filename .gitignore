@@ -38,7 +38,7 @@ nvim/.config/*
 !nvim/.config/nvim
 bin/bin/nvim*
 nvim/nvim.appimage
-nvim/nvim
+nvim/nvim-macos
 nvim/.config/nvim/plugged
 nvim/.config/nvim/autoload/plug.vim
 bin/darwin/ghq
