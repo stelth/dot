@@ -3,3 +3,4 @@ npm
 pyright
 tree-sitter-cli
 vim-language-server
+yaml-language-server
