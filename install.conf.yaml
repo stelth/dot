@@ -7,19 +7,8 @@
 
 - shell:
   - [git submodule update --init --recursive, Installing Submodules]
-  - [source update_utils.zsh && update_ghq, Updating GHQ]
-
-# neovim config stuff
-- link:
-    ~/.config/nvim: nvim/nvim
-- link:
-    ~/bin/nvim:
-      if: '[ `uname` = Linux ]'
-      path: nvim/nvim.appimage
-- link:
-    ~/bin/nvim:
-      if: '[ `uname` = Darwin ]'
-      path: nvim/nvim-macos
+  - [source update_utils.zsh && update_ghq, Updating ghq]
+  - [source update_utils.zsh && update_nvim, Updating neovim]
 
 # git config based on uname
 - link:
@@ -34,9 +23,11 @@
       path: git/gitconfig-osx
 
 - link:
-    ~/bin/msrsync: bin/msrsync
-    ~/bin/tmx: bin/tmx
     ~/bin/ghq: bin/ghq
+    ~/bin/msrsync: bin/msrsync
+    ~/bin/nvim: bin/nvim
+    ~/bin/tmx: bin/tmx
+    ~/.config/nvim: nvim/nvim
     ~/.tmux.conf: tmux/tmux.conf
     ~/.zshrc: zsh/zshrc
     ~/.zshenv: zsh/zshenv
