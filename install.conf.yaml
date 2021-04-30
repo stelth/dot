@@ -1,0 +1,50 @@
+- defaults:
+    link:
+      relink: true
+      create: true
+
+- clean: ['~', '~/.config']
+
+# neovim config stuff
+- link:
+    ~/.config/nvim: nvim/nvim
+- link:
+    ~/bin/nvim:
+      if: '[ `uname` = Linux ]'
+      path: nvim/nvim.appimage
+- link:
+    ~/bin/nvim:
+      if: '[ `uname` = Darwin ]'
+      path: nvim/nvim-macos
+
+# ghq based on uname
+- link:
+    ~/bin/ghq:
+      if: '[ `uname` = Linux ]'
+      path: bin/linux/ghq
+- link:
+    ~/bin/ghq:
+      if: '[ `uname` = Darwin ]'
+      path: bin/darwin/ghq
+
+# git config based on uname
+- link:
+    ~/.gitconfig: git/gitconfig
+- link:
+    ~/.gitconfig-os-specific:
+      if: '[ `uname` = Linux ]'
+      path: git/gitconfig-linux
+- link:
+    ~/.gitconfig-os-specific:
+      if: '[ `uname` = Darwin ]'
+      path: git/gitconfig-osx
+
+- link:
+    ~/bin/msrsync: bin/msrsync
+    ~/bin/tmx: bin/tmx
+    ~/.tmux.conf: tmux/tmux.conf
+    ~/.zshrc: zsh/zshrc
+    ~/.zshenv: zsh/zshenv
+
+- shell:
+  - [git submodule update --init --recursive, Installing Submodules]
