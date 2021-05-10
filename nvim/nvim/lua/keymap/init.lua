@@ -51,9 +51,6 @@ local plug_map = {
     ["n|<Leader>fc"] = map_cu('Telescope git_commits'):with_noremap():with_silent(),
     ["n|<Leader>ft"] = map_cu('Telescope help_tags'):with_noremap():with_silent(),
     ["n|<Leader>fd"] = map_cu('Telescope dotfiles path=' .. os.getenv("HOME") ..  '/.dotfiles'):with_noremap():with_silent(),
-    -- Plugin acceleratedjk
-    ["n|j"] = map_cmd('v:lua.enhance_jk_move("j")'):with_silent():with_expr(),
-    ["n|k"] = map_cmd('v:lua.enhance_jk_move("k")'):with_silent():with_expr(),
     -- Plugin QuickRun
     ["n|<Leader>r"] = map_cr("<cmd> lua require'internal.quickrun'.run_command()"):with_noremap():with_silent(),
     -- Plugin vim-operator-surround
