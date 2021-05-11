@@ -14,11 +14,6 @@ tools['liuchengxu/vista.vim'] = {
   config = conf.vim_vista
 }
 
-tools['brooth/far.vim'] = {
-    cmd = {'Far', 'Farp', 'Farf'},
-    config = conf.far
-}
-
 tools['numToStr/FTerm.nvim'] = {
     config = conf.fterm
 }

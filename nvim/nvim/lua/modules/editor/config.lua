@@ -1,13 +1,5 @@
 local config = {}
 
-function config.vim_eft()
-  vim.g.eft_ignorecase = true
-end
-
-function config.operator_replace()
-  vim.api.nvim_set_keymap("x", "p", "<Plug>(operator-replace)", {silent = true})
-end
-
 function config.vim_cursorword()
     vim.api.nvim_command('augroup user_plugin_cursorword')
     vim.api.nvim_command('autocmd!')

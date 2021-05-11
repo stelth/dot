@@ -1,86 +1,125 @@
-local bind = require('keymap.bind')
-local map_cr = bind.map_cr
-local map_cu = bind.map_cu
-local map_cmd = bind.map_cmd
-local map_args = bind.map_args
-require('keymap.config')
+local wk = require("which-key")
 
-local plug_map = {
-    -- person keymap
-    ["n|gb"] = map_cr("BufferLinePick"):with_noremap():with_silent(),
-    -- Packer
-    ["n|<leader>pu"] = map_cr("PackerUpdate"):with_silent():with_noremap():with_nowait(),
-    ["n|<leader>pi"] = map_cr("PackerInstall"):with_silent():with_noremap():with_nowait(),
-    ["n|<leader>pc"] = map_cr("PackerCompile"):with_silent():with_noremap():with_nowait(),
-    -- Lsp mapp work when insertenter and lsp start
-    ["n|<leader>li"] = map_cr("LspInfo"):with_noremap():with_silent():with_nowait(),
-    ["n|<leader>ll"] = map_cr("LspLog"):with_noremap():with_silent():with_nowait(),
-    ["n|<leader>lr"] = map_cr("LspRestart"):with_noremap():with_silent():with_nowait(),
-    ["n|<C-f>"] = map_cmd("<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>"):with_silent():with_noremap():with_nowait(),
-    ["n|<C-b>"] = map_cmd("<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>"):with_silent():with_noremap():with_nowait(),
-    ["n|[e"] = map_cr('Lspsaga diagnostic_jump_next'):with_noremap():with_silent(),
-    ["n|]e"] = map_cr('Lspsaga diagnostic_jump_prev'):with_noremap():with_silent(),
-    ["n|K"] = map_cr("Lspsaga hover_doc"):with_noremap():with_silent(),
-    ["n|ga"] = map_cr("Lspsaga code_action"):with_noremap():with_silent(),
-    ["v|ga"] = map_cu("Lspsaga range_code_action"):with_noremap():with_silent(),
-    ["n|gd"] = map_cr('Lspsaga preview_definition'):with_noremap():with_silent(),
-    ["n|gD"] = map_cmd("<cmd>lua vim.lsp.buf.implementation()<CR>"):with_noremap():with_silent(),
-    ["n|gs"] = map_cr('Lspsaga signature_help'):with_noremap():with_silent(),
-    ["n|gr"] = map_cr('Lspsaga rename'):with_noremap():with_silent(),
-    ["n|gh"] = map_cr('Lspsaga lsp_finder'):with_noremap():with_silent(),
-    ["n|gt"] = map_cmd("<cmd>lua vim.lsp.buf.type_definition()<CR>"):with_noremap():with_silent(),
-    ["n|<Leader>cw"] = map_cmd("<cmd>lua vim.lsp.buf.workspace_symbol()<CR>"):with_noremap():with_silent(),
-    ["n|<Leader>ce"] = map_cr('Lspsaga show_line_diagnostics'):with_noremap():with_silent(),
-    ["n|<Leader>ct"] = map_args("Template"),
-    ["n|<Leader>tf"] = map_cu('DashboardNewFile'):with_noremap():with_silent(),
-    -- Plugin nvim-tree
-    ["n|<Leader>e"] = map_cr('NvimTreeToggle'):with_noremap():with_silent(),
-    ["n|<Leader>F"] = map_cr('NvimTreeFindFile'):with_noremap():with_silent(),
-    -- Far.vim
-    ["n|<Leader>fz"] = map_cr('Farf'):with_noremap():with_silent(),
-    ["v|<Leader>fz"] = map_cr('Farf'):with_noremap():with_silent(),
-    -- Plugin Telescope
-    ["n|<Leader>bb"] = map_cu('Telescope buffers'):with_noremap():with_silent(),
-    ["n|<Leader>fa"] = map_cu('DashboardFindWord'):with_noremap():with_silent(),
-    ["n|<Leader>fb"] = map_cu('Telescope file_browser'):with_noremap():with_silent(),
-    ["n|<Leader>ff"] = map_cu('DashboardFindFile'):with_noremap():with_silent(),
-    ["n|<Leader>fg"] = map_cu('Telescope git_files'):with_noremap():with_silent(),
-    ["n|<Leader>fw"] = map_cu('Telescope grep_string'):with_noremap():with_silent(),
-    ["n|<Leader>fh"] = map_cu('DashboardFindHistory'):with_noremap():with_silent(),
-    ["n|<Leader>fl"] = map_cu('Telescope loclist'):with_noremap():with_silent(),
-    ["n|<Leader>fc"] = map_cu('Telescope git_commits'):with_noremap():with_silent(),
-    ["n|<Leader>ft"] = map_cu('Telescope help_tags'):with_noremap():with_silent(),
-    ["n|<Leader>fd"] = map_cu('Telescope dotfiles path=' .. os.getenv("HOME") ..  '/.dotfiles'):with_noremap():with_silent(),
-    -- Plugin QuickRun
-    ["n|<Leader>r"] = map_cr("<cmd> lua require'internal.quickrun'.run_command()"):with_noremap():with_silent(),
-    -- Plugin vim-operator-surround
-    ["n|sa"] = map_cmd("<Plug>(operator-surround-append)"):with_silent(),
-    ["n|sd"] = map_cmd("<Plug>(operator-surround-delete)"):with_silent(),
-    ["n|sr"] = map_cmd("<Plug>(operator-surround-replace)"):with_silent(),
-    -- Plugin hrsh7th/vim-eft
-    ["n|;"] = map_cmd("v:lua.enhance_ft_move(';')"):with_expr(),
-    ["x|;"] = map_cmd("v:lua.enhance_ft_move(';')"):with_expr(),
-    ["n|f"] = map_cmd("v:lua.enhance_ft_move('f')"):with_expr(),
-    ["x|f"] = map_cmd("v:lua.enhance_ft_move('f')"):with_expr(),
-    ["o|f"] = map_cmd("v:lua.enhance_ft_move('f')"):with_expr(),
-    ["n|F"] = map_cmd("v:lua.enhance_ft_move('F')"):with_expr(),
-    ["x|F"] = map_cmd("v:lua.enhance_ft_move('F')"):with_expr(),
-    ["o|F"] = map_cmd("v:lua.enhance_ft_move('F')"):with_expr(),
-    -- Plugin vim_niceblock
-    ["x|I"] = map_cmd("v:lua.enhance_nice_block('I')"):with_expr(),
-    ["x|gI"] = map_cmd("v:lua.enhance_nice_block('gI')"):with_expr(),
-    ["x|A"] = map_cmd("v:lua.enhance_nice_block('A')"):with_expr(),
-    ["n|<Leader>v"] = map_cu('Vista'):with_noremap():with_silent(),
-    -- Plugin nvim-hlslens
-    ["n|n"] = map_cmd("<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>"):with_noremap():with_silent(),
-    ["n|N"] = map_cmd("<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>"):with_noremap():with_silent(),
-    ["n|*"] = map_cmd("*<Cmd>lua require('hlslens').start()<CR>"):with_noremap(),
-    ["n|#"] = map_cmd("#<Cmd>lua require('hlslens').start()<CR>"):with_noremap(),
-    ["n|g*"] = map_cmd("g*<Cmd>lua require('hlslens').start()<CR>"):with_noremap(),
-    ["n|g#"] = map_cmd("g#<Cmd>lua require('hlslens').start()<CR>"):with_noremap(),
-    -- Plugin FTerm
-    ["n|<Leader>sh"] = map_cmd("<Cmd>lua require('FTerm').toggle()<CR>"):with_noremap():with_silent(),
-    ["t|<Leader>sh"] = map_cmd("<C-\\><C-n><Cmd>lua require('FTerm').toggle()<CR>"):with_noremap():with_silent()
-};
+-- Vista plugin keymap
+wk.register({
+    v = { "<cmd>Vista<CR>", "Vista" }
+}, { prefix = "<leader>" } )
 
-bind.nvim_load_mapping(plug_map)
+-- BufferLine plugin keymap
+wk.register({
+    g = {
+        name = "Buffer Line",
+        b = { "<cmd>BufferLinePick<CR>", "Pick Buffer" }
+    }
+}, { nowait = true } )
+
+-- Packer keymap
+wk.register({
+    p = {
+        name = "+Packer",
+        u = { "<cmd>PackerUpdate<CR>", "Update Plugins" },
+        i = { "<cmd>PackerInstall<CR>", "Install Plugins" },
+        c = { "<cmd>PackerCompile<CR>", "Compile Config" }
+    }
+}, { prefix = "<leader>", nowait = true } )
+
+-- lsp keymap
+wk.register({
+    l = {
+        name = "+LSP",
+        i = {"<cmd>LspInfo<CR>", "LSP Info" },
+        l = {"<cmd>LspLog<CR>", "LSP Log" },
+        r = {"<cmd>LspRestart<CR>", "LSP Restart" }
+    }
+}, { prefix = "<leader>", nowait = true } )
+
+-- Lspsaga smart scroll mappings
+wk.register({
+    [""] = { name = "+lspsaga scroll" },
+    ["<C-f>"] = { "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", "lspsaga smart scroll forward" },
+    ["<C-b>"] = { "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", "lspsaga smart scroll backwards" }
+}, { nowait = true })
+
+-- Lspsaga "goto" shortcuts
+wk.register({
+    g = {
+        name = "+Lspsaga 'goto'",
+        a = { "<cmd>Lspsaga code_action<CR>", "Code Action" },
+        d = { "<cmd>Lspsaga preview_definition<CR>", "Definition Preview" },
+        D = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Implementation" },
+        s = { "<cmd>Lspsaga signature_help<CR>", "Signature" },
+        r = { "<cmd>Lspsaga rename<CR>", "Rename" },
+        h = { "<cmd>Lspsaga lsp_finder<CR>", "Finder" },
+        t = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Type Definition" }
+    },
+    ["K"] = { "<cmd>Lspsaga hover_doc<CR>", "Show Documentation" },
+    ["[e"] = { "<cmd>Lspsaga diagnostic_jump_next<CR>", "Next Diagnostic" },
+    ["]e"] = { "<cmd>Lspsaga diagnostic_jump_next<CR>", "Prev Diagnostic" },
+    ["<leader>ce"] = { "<cmd>Lspsaga show_line_diagnostics<CR>", "Show Line Diagnostics" }
+})
+
+-- Lspsaga ranged shortcut
+wk.register({
+    g = {
+        a = { "<cmd>Lspsaga range_code_action<CR>", "Ranged Code Action" }
+    }
+}, { mode = "v" })
+
+-- Dashboard key mappings
+wk.register({
+    t = {
+        name = "+Dashboard",
+        f = { "<cmd>DashboardNewFile<CR>", "New File" }
+    }
+}, { prefix = "<leader>" })
+
+-- nvim-tree mappings
+wk.register({
+    e = { "<cmd>NvimTreeToggle<CR>", "Toggle File Explorer" },
+}, { prefix = "<leader>" })
+
+-- Telescope mappings
+wk.register({
+    f = {
+        name = "+Telescope",
+        a = { "<cmd>DashboardFindWord<CR>", "Find Word" },
+        b = { "<cmd>Telescope file_browser<CR>", "File Browser" },
+        f = { "<cmd>DashboardFindFile<CR>", "Find File" },
+        g = { "<cmd>Telescope git_files<CR>", "Find git files" },
+        w = { "<cmd>Telescope grep_string<CR>", "Grep for string" },
+        h = { "<cmd>DashboardFindHistory<CR>", "Find History" },
+        l = { "<cmd>Telescope loclist<CR>", "Location List" },
+        c = { "<cmd>Telescope git_commits<CR>", "Git Commits" },
+        t = { "<cmd>Telescope help_tags<CR>", "Help Tags" },
+        d = { "<cmd>Telescope dotfiles path=" .. os.getenv("HOME") .. "/dotfiles<CR>", "Find Dotfile" }
+    },
+    b = {
+        name = "+Telescope",
+        b = { "<cmd>Telescope buffers<CR>", "Find buffer" }
+    }
+}, { prefix = "<leader>" })
+
+-- QuickRun mappings
+wk.register({
+    r = {"<cmd>lua require('internal.quickrun').run_command()<CR>", "Run Command" }
+}, { prefix = "<leader>" })
+
+-- nvim-hlslens mapping
+wk.register({
+    ["n"] = { "<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>", "Next" },
+    ["N"] = { "<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>", "Previous" },
+    ["*"] = { "*<Cmd>lua require('hlslens').start()<CR>", "Start search forwards" },
+    ["#"] = { "#<Cmd>lua require('hlslens').start()<CR>", "Start search backwards" },
+    ["g*"] = { "g*<Cmd>lua require('hlslens').start()<CR>", "Start search global" },
+    ["g#"] = { "g#<Cmd>lua require('hlslens').start()<CR>", "Start search global" }
+})
+
+-- FTerm toggle
+wk.register({
+    ["sh"] = { "<Cmd>lua require('FTerm').toggle()<CR>", "Toggle Terminal" }
+}, { prefix = "<leader>" })
+
+-- FTerm toggle
+wk.register({
+    ["sh"] = { "<Cmd>lua require('FTerm').toggle()<CR>", "Toggle Terminal" }
+}, { prefix = "<leader>", mode = "t" })
