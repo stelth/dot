@@ -123,3 +123,30 @@ wk.register({
 wk.register({
     ["sh"] = { "<Cmd>lua require('FTerm').toggle()<CR>", "Toggle Terminal" }
 }, { prefix = "<leader>", mode = "t" })
+
+-- Gitsigns prev/next hunk
+wk.register({
+    ["]g"] = { "<cmd>lua require('gitsigns').next_hunk()<CR>", "Next hunk" },
+    ["[g"] = { "<cmd>lua require('gitsigns').prev_hunk()<CR>", "Previous hunk" }
+})
+
+-- Gitsigns actions
+wk.register({
+    h = {
+        name = "+Hunk",
+        s = { "<cmd>lua require('gitsigns').stage_hunk()<CR>", "Stage hunk" },
+        u = { "<cmd>lua require('gitsigns').undo_stage_hunk()<CR>", "Unstage hunk" },
+        r = { "<cmd>lua require('gitsigns').reset_hunk()<CR>", "Reset hunk" },
+        p = { "<cmd>lua require('gitsigns').preview_hunk()<CR>", "Preview hunk" },
+        b = { "<cmd>lua require('gitsigns').blame_line()<CR>", "Blame" }
+    }
+}, { prefix = "<leader>" })
+
+-- Gitsigns text objects
+wk.register({
+    h = { "<C-U>lua require('gitsigns').text_object()<CR>", "" }
+}, { mode = "o", prefix = "i" })
+
+wk.register({
+    h = { "<C-U>lua require('gitsigns').text_object()<CR>", "" }
+}, { mode = "x", prefix = "i" })
