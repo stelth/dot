@@ -7,9 +7,15 @@ wk.register({
 
 -- BufferLine plugin keymap
 wk.register({
-    g = {
-        name = "Buffer Line",
-        b = { "<cmd>BufferLinePick<CR>", "Pick Buffer" }
+    b = {
+        name = "+Buffer",
+        b = { "<cmd>e #<CR>", "Switch to other buffer" },
+        p = { "<cmd>BufferLineCyclePrev<CR>", "Previous Buffer" },
+        ["["] = { "<cmd>BufferLineCyclePrev<CR>", "Previous Buffer" },
+        n = { "<cmd>BufferLineCycleNext<CR>", "Next Buffer" },
+        ["]"] = { "<cmd>BufferLineCycleNext<CR>", "Next Buffer" },
+        d = { "<cmd>bd<CR>", "Delete Buffer" },
+        g = { "<cmd>BufferLinePick<CR>", "Goto Buffer" }
     }
 }, { nowait = true } )
 
@@ -92,10 +98,6 @@ wk.register({
         c = { "<cmd>Telescope git_commits<CR>", "Git Commits" },
         t = { "<cmd>Telescope help_tags<CR>", "Help Tags" },
         d = { "<cmd>Telescope dotfiles path=" .. os.getenv("HOME") .. "/dotfiles<CR>", "Find Dotfile" }
-    },
-    b = {
-        name = "+Telescope",
-        b = { "<cmd>Telescope buffers<CR>", "Find buffer" }
     }
 }, { prefix = "<leader>" })
 
