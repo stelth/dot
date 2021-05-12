@@ -147,7 +147,7 @@ local function setup_servers()
     local lspinstall = require('lspinstall')
     lspinstall.setup()
 
-    install_servers()
+    -- install_servers()
 
     local servers = lspinstall.installed_servers()
 
