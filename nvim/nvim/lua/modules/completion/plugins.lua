@@ -1,9 +1,10 @@
 local completion = {}
 local conf = require('modules.completion.config')
 
-completion['neovim/nvim-lspconfig'] = {
+completion['kabouzeid/nvim-lspinstall'] = {
     event = 'BufReadPre',
-    config = conf.nvim_lsp
+    config = conf.nvim_lspinstall,
+    requires = { 'neovim/nvim-lspconfig' }
 }
 
 completion['glepnir/lspsaga.nvim'] = {
@@ -21,14 +22,14 @@ completion['hrsh7th/vim-vsnip'] = {
 }
 
 completion['nvim-telescope/telescope.nvim'] =
-    {
-        cmd = 'Telescope',
-        config = conf.telescope,
-        requires = {
-            {'nvim-lua/popup.nvim', opt = true},
-            {'nvim-lua/plenary.nvim', opt = true},
-            {'nvim-telescope/telescope-fzy-native.nvim', opt = true}
-        }
+{
+    cmd = 'Telescope',
+    config = conf.telescope,
+    requires = {
+        {'nvim-lua/popup.nvim', opt = true},
+        {'nvim-lua/plenary.nvim', opt = true},
+        {'nvim-telescope/telescope-fzy-native.nvim', opt = true}
     }
+}
 
 return completion

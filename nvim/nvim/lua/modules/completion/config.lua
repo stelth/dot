@@ -1,6 +1,12 @@
 local config = {}
 
-function config.nvim_lsp() require('modules.completion.lspconfig') end
+function config.nvim_lsp()
+    require('modules.completion.lspconfig')
+end
+
+function config.nvim_lspinstall()
+    require('modules.completion.lspconfig')
+end
 
 function config.completion_nvim()
   vim.g.completion_enable_snippet = 'vim-vsnip'

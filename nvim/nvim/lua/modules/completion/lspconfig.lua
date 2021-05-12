@@ -1,7 +1,5 @@
 local api = vim.api
-local lspconfig = require 'lspconfig'
 local format = require('modules.completion.format')
-local global = require('core.global')
 
 if not packer_plugins['lspsaga.nvim'].loaded then
     vim.cmd [[packadd lspsaga.nvim]]
@@ -11,9 +9,6 @@ local saga = require 'lspsaga'
 saga.init_lsp_saga({
     code_action_icon = '💡'
 })
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 function _G.reload_lsp()
     vim.lsp.stop_client(vim.lsp.get_active_clients())
@@ -48,60 +43,67 @@ local enhance_attach = function(client, bufnr)
     api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 end
 
-lspconfig.gopls.setup {
-    cmd = {"gopls", "--remote=auto"},
-    on_attach = enhance_attach,
-    capabilities = capabilities,
-    init_options = {usePlaceholders = true, completeUnimported = true}
-}
-
-local sumneko_root_path = vim.fn.expand '~/repos/github.com/sumneko/lua-language-server'
-local sumneko_binary = sumneko_root_path .. '/bin'
-if global.is_mac then
-  sumneko_binary = sumneko_binary .. '/macOS'
-else
-  sumneko_binary = sumneko_binary .. '/Linux'
-end
-
-local sumneko_binary = sumneko_binary .. '/lua-language-server'
-
-lspconfig.sumneko_lua.setup {
-    cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
-    on_attach = enhance_attach,
-    settings = {
-        Lua = {
-            diagnostics = {enable = true, globals = {"vim", "packer_plugins"}},
-            runtime = {version = "LuaJIT"},
-            workspace = {
-                library = vim.list_extend({[vim.fn.expand("$VIMRUNTIME/lua")] = true}, {})
+local lua_settings = {
+    Lua  = {
+        runtime = {
+            version = 'LuaJIT',
+            path = vim.split(package.path, ';' )
+        },
+        diagnostics = {
+            globals = { 'vim' }
+        },
+        workspace = {
+            library = {
+                [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+                [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true
             }
         }
     }
 }
 
-lspconfig.clangd.setup {
-    cmd = {
-        "clangd",
-        "--background-index",
-        "--suggest-missing-includes",
-        "--clang-tidy",
-        "--header-insertion=iwyu"
-    },
-    on_attach = enhance_attach
-}
+local function make_config()
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
+    return {
+        capabilities = capabilities,
+        on_attach = enhance_attach
+    }
+end
 
-local texlab_root_path = vim.fn.expand '~/repos/github.com/latex-lsp/texlab'
-local texlab_binary = texlab_root_path .. '/target/release/texlab'
+local function install_servers()
+    local required_servers = { "bash", "cmake", "cpp", "latex", "lua", "python", "vim", "yaml" }
+    local installed_servers = require('lspinstall').installed_servers()
 
-lspconfig.texlab.setup {
-    cmd = {
-      texlab_binary
-    },
-    on_attach = enhance_attach
-}
+    for _, server in pairs( required_servers ) do
+        if not vim.tbl_contains( installed_servers, server ) then
+            require('lspinstall').install_server( server )
+        end
+    end
+end
 
-local servers = {'pyright', 'bashls', 'vimls', 'cmake', 'jdtls', 'yamlls'}
+local function setup_servers()
+    local lspinstall = require('lspinstall')
+    lspinstall.setup()
 
-for _, server in ipairs(servers) do
-    lspconfig[server].setup {on_attach = enhance_attach}
+    install_servers()
+
+    local servers = lspinstall.installed_servers()
+
+    for _, server in pairs( servers ) do
+        local config = make_config()
+
+        if server == "lua" then
+            config.settings = lua_settings
+        end
+
+        require('lspconfig')[server].setup(config)
+    end
+end
+
+setup_servers()
+
+require('lspinstall').post_install_hook = function()
+    setup_servers()
+
+    vim.cmd('bufdo e')
 end
