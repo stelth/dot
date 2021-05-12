@@ -5,10 +5,6 @@ ui['folke/tokyonight.nvim'] = {
     config = conf.tokyonight
 }
 
-ui['glepnir/dashboard-nvim'] = {
-  config = conf.dashboard
-}
-
 ui['hoob3rt/lualine.nvim'] = {
     config = conf.lualine,
     requires = 'kyazdani42/nvim-web-devicons'

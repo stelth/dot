@@ -1,155 +1,131 @@
 local wk = require("which-key")
 
--- Vista plugin keymap
-wk.register({
-    v = { "<cmd>Vista<CR>", "Vista" }
-}, { prefix = "<leader>" } )
-
--- BufferLine plugin keymap
-wk.register({
+local normal_leader = {
+    ["w"] = {
+        name = "+Windows",
+        ["w"] = { "<C-W>p", "other-window" },
+        ["d"] = { "<C-W>c", "delete-window" },
+        ["-"] = { "<C-W>s", "split-window-below" },
+        ["|"] = { "<C-W>v", "split-window-right" },
+        ["2"] = { "<C-W>v", "layout-double-columns" },
+        ["h"] = { "<C-W>h", "window-left" },
+        ["j"] = { "<C-W>j", "window-below" },
+        ["k"] = { "<C-W>k", "window-right" },
+        ["l"] = { "<C-W>l", "window-up" },
+        ["H"] = { "<C-W>5<", "expand-window-left" },
+        ["J"] = { "<cmd>resize +5<CR>", "expand-window-below" },
+        ["L"] = { "<C-W>5>", "expand-window-right" },
+        ["K"] = { "<cmd>resize -5<CR>", "expand-window-up" },
+        ["="] = { "<C-W>=", "balance-window" },
+        ["s"] = { "<C-W>s", "split-window-below" },
+        ["v"] = { "<C-W>v", "split-window-right" }
+    },
+    c = {
+        v = { "<cmd>Vista!!<CR>", "Vista" }
+    },
     b = {
         name = "+Buffer",
         b = { "<cmd>e #<CR>", "Switch to other buffer" },
         p = { "<cmd>BufferLineCyclePrev<CR>", "Previous Buffer" },
-        ["["] = { "<cmd>BufferLineCyclePrev<CR>", "Previous Buffer" },
         n = { "<cmd>BufferLineCycleNext<CR>", "Next Buffer" },
-        ["]"] = { "<cmd>BufferLineCycleNext<CR>", "Next Buffer" },
         d = { "<cmd>bd<CR>", "Delete Buffer" },
         g = { "<cmd>BufferLinePick<CR>", "Goto Buffer" }
-    }
-}, { prefix = "<leader>", nowait = true } )
-
--- Packer keymap
-wk.register({
-    p = {
-        name = "+Packer",
-        u = { "<cmd>PackerUpdate<CR>", "Update Plugins" },
-        i = { "<cmd>PackerInstall<CR>", "Install Plugins" },
-        c = { "<cmd>PackerCompile<CR>", "Compile Config" }
-    }
-}, { prefix = "<leader>", nowait = true } )
-
--- lsp keymap
-wk.register({
-    l = {
-        name = "+LSP",
-        i = {"<cmd>LspInfo<CR>", "LSP Info" },
-        l = {"<cmd>LspLog<CR>", "LSP Log" },
-        r = {"<cmd>LspRestart<CR>", "LSP Restart" }
-    }
-}, { prefix = "<leader>", nowait = true } )
-
--- Lspsaga smart scroll mappings
-wk.register({
-    [""] = { name = "+lspsaga scroll" },
-    ["<C-f>"] = { "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", "lspsaga smart scroll forward" },
-    ["<C-b>"] = { "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", "lspsaga smart scroll backwards" }
-}, { nowait = true })
-
--- Lspsaga "goto" shortcuts
-wk.register({
-    g = {
-        name = "+Lspsaga 'goto'",
-        a = { "<cmd>Lspsaga code_action<CR>", "Code Action" },
-        d = { "<cmd>Lspsaga preview_definition<CR>", "Definition Preview" },
-        D = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Implementation" },
-        s = { "<cmd>Lspsaga signature_help<CR>", "Signature" },
-        r = { "<cmd>Lspsaga rename<CR>", "Rename" },
-        h = { "<cmd>Lspsaga lsp_finder<CR>", "Finder" },
-        t = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Type Definition" }
     },
-    ["K"] = { "<cmd>Lspsaga hover_doc<CR>", "Show Documentation" },
-    ["[e"] = { "<cmd>Lspsaga diagnostic_jump_next<CR>", "Next Diagnostic" },
-    ["]e"] = { "<cmd>Lspsaga diagnostic_jump_next<CR>", "Prev Diagnostic" },
-    ["<leader>ce"] = { "<cmd>Lspsaga show_line_diagnostics<CR>", "Show Line Diagnostics" }
-})
-
--- Lspsaga ranged shortcut
-wk.register({
     g = {
-        a = { "<cmd>Lspsaga range_code_action<CR>", "Ranged Code Action" }
-    }
-}, { mode = "v" })
-
--- Dashboard key mappings
-wk.register({
-    t = {
-        name = "+Dashboard",
-        f = { "<cmd>DashboardNewFile<CR>", "New File" }
-    }
-}, { prefix = "<leader>" })
-
--- nvim-tree mappings
-wk.register({
-    e = { "<cmd>NvimTreeToggle<CR>", "Toggle File Explorer" },
-}, { prefix = "<leader>" })
-
--- Telescope mappings
-wk.register({
+        name = "+Git",
+        c = { "<cmd>Telescope git_commits<CR>", "commits" },
+        b = { "<cmd>Telescope git_branches<CR>", "branches" },
+        s = { "<cmd>Telescope git_status<CR>", "status" },
+        f = { "<cmd>Telescope git_files<CR>", "files" },
+        h = {
+            name = "+Hunk",
+            n = { "<cmd>lua require('gitsigns').next_hunk()<CR>", "Next Hunk" },
+            p = { "<cmd>lua require('gitsigns').prev_hunk()<CR>", "Previous Hunk" },
+            s = { "<cmd>lua require('gitsigns').stage_hunk()<CR>", "Stage Hunk" },
+            u = { "<cmd>lua require('gitsigns').undo_stage_hunk()<CR>", "Undo Stage Hunk" },
+            r = { "<cmd>lua require('gitsigns').reset_hunk()<CR>", "Reset Hunk" },
+            v = { "<cmd>lua require('gitsigns').preview_hunk()<CR>", "View Hunk" },
+            b = { "<cmd>lua require('gitsigns').blame_line()<CR>", "Blame" }
+        }
+    },
+    h = {
+        name = "+Help",
+        t = { "<cmd>Telescope builtin<CR>", "Telescope" },
+        c = { "<cmd>Telescope commands<CR>", "Commands" },
+        h = { "<cmd>Telescope help_tags<CR>", "Help Pages" },
+        m = { "<cmd>Telescope man_pages<CR>", "Man Pages" },
+        k = { "<cmd>Telescope keymaps<CR>", "Key Maps" },
+        s = { "<cmd>Telescope highlights<CR>", "Search Highlight Groups" },
+        l = { [[<cmd>TSHighlightCapturesUnderCursor<CR>]], "Highlight Groups at Cursor" },
+        f = { "<cmd>Telescope filetypes<CR>", "File Types" },
+        o = { "<cmd>Telescope vim_options<CR>", "Options" },
+        a = { "<cmd>Telescope autocommands<CR>", "Auto Commands" },
+        p = {
+            name = "+Packer",
+            p = { "<cmd>PackerSync<CR>", "Sync" },
+            s = { "<cmd>PackerStatus<CR>", "Status" },
+            i = { "<cmd>PackerInstall<CR>", "Install" },
+            c = { "<cmd>PackerCompile<CR>", "Compile" },
+            u = { "<cmd>PackerUpdate<CR>", "Update" }
+        }
+    },
+    s = {
+        name = "+Search",
+        g = { "<cmd>Telescope live_grep<CR>", "Grep" },
+        b = { "<cmd>Telescope current_buffer_fuzzy_find<CR>", "Buffer" },
+        s = { "<cmd>Telescope lsp_document_symbols<CR>", "Goto Symbol" },
+        h = { "<cmd>Telescope command_history<CR>", "Command History" },
+        m = { "<cmd>Telescope marks<CR>", "Jump to Mark" },
+        l = { "<cmd>Telescope loclist<CR>", "Location List" }
+    },
     f = {
-        name = "+Telescope",
-        a = { "<cmd>DashboardFindWord<CR>", "Find Word" },
-        b = { "<cmd>Telescope file_browser<CR>", "File Browser" },
-        f = { "<cmd>DashboardFindFile<CR>", "Find File" },
-        g = { "<cmd>Telescope git_files<CR>", "Find git files" },
-        w = { "<cmd>Telescope grep_string<CR>", "Grep for string" },
-        h = { "<cmd>DashboardFindHistory<CR>", "Find History" },
-        l = { "<cmd>Telescope loclist<CR>", "Location List" },
-        c = { "<cmd>Telescope git_commits<CR>", "Git Commits" },
-        t = { "<cmd>Telescope help_tags<CR>", "Help Tags" },
-        d = { "<cmd>Telescope dotfiles path=" .. os.getenv("HOME") .. "/dotfiles<CR>", "Find Dotfile" }
+        name = "+File",
+        t = { "<cmd>NvimTreeToggle<CR>", "NvimTree" },
+        f = { "<cmd>Telescope find_files<CR>", "Find File" },
+        r = { "<cmd>Telescope oldfiles<CR>", "Open Recent File" },
+        n = { "<cmd>enew<CR>", "New File" },
+        d = { "<cmd>Telescope dotfiles path=" .. os.getenv("HOME") .. "/dotfiles<CR>", "Dot Files" }
+    },
+    t = {
+        name = "+Tabs",
+        t = { "<cmd>tabnew<CR>", "New Tab" },
+        n = { "<cmd>tabnext<CR>", "Next" },
+        d = { "<cmd>tabclose<CR>", "Close" },
+        p = { "<cmd>tabprevious<CR>", "Previous" },
+        f = { "<cmd>tabfirst<CR>", "First" },
+        l = { "<cmd>tablast<CR>", "Last" }
+    },
+    ["."] = { "<cmdTelescope file_browser<CR>", "Browse Files" },
+    [","] = { "<cmd>Telescope buffers show_all_buffers=true<CR>", "Switch Buffer" },
+    ["/"] = { "<cmd>Telescope live_grep<CR>", "Search" },
+    [":"] = { "<cmd>Telescope command_history<CR>", "Command History" },
+    ["n"] = { "<cmd>execute('normal! ' . v:count1 . 'n')<CR><cmd>lua require('hlslens').start()<CR>", "Next" },
+    ["N"] = { "<cmd>execute('normal! ' . v:count1 . 'N')<CR><cmd>lua require('hlslens').start()<CR>", "Previous" },
+    ["*"] = { "*<cmd>lua require('hlslens').start()<CR>", "Start search forwards" },
+    ["#"] = { "#<cmd>lua require('hlslens').start()<CR>", "Start search backwards" },
+    ["g*"] = { "g*<cmd>lua require('hlslens').start()<CR>", "Start search global" },
+    ["g#"] = { "g#<cmd>lua require('hlslens').start()<CR>", "Start search global" },
+    [" "] = { "<cmd>lua require('FTerm').toggle()<CR>", "Toggle Terminal" },
+    x = {
+        name = "+Errors",
+        x = { "<cmd>LspTroubleToggle<CR>", "Trouble" },
+        w = { "<cmd>LspTroubleWorkspaceToggle<CR>", "Workspace Trouble" },
+        d = { "<cmd>LspTroubleDocumentToggle<CR>", "Document Trouble" },
+        l = { "<cmd>lopen<CR>", "Open Location List" },
+        q = { "<cmd>copen<CR>", "Open Quickfix List" }
     }
-}, { prefix = "<leader>" })
+}
 
--- QuickRun mappings
-wk.register({
-    r = {"<cmd>lua require('internal.quickrun').run_command()<CR>", "Run Command" }
-}, { prefix = "<leader>" })
+for i = 0, 10 do
+    normal_leader[tostring(i)] = "which_key_ignore"
+end
 
--- nvim-hlslens mapping
+wk.register( normal_leader, { prefix = "<leader>" } )
+
 wk.register({
-    ["n"] = { "<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>", "Next" },
-    ["N"] = { "<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>", "Previous" },
-    ["*"] = { "*<Cmd>lua require('hlslens').start()<CR>", "Start search forwards" },
-    ["#"] = { "#<Cmd>lua require('hlslens').start()<CR>", "Start search backwards" },
-    ["g*"] = { "g*<Cmd>lua require('hlslens').start()<CR>", "Start search global" },
-    ["g#"] = { "g#<Cmd>lua require('hlslens').start()<CR>", "Start search global" },
     ["<BS>"] = {"<cmd>noh<CR>", "No Highlight" }
 })
 
--- FTerm toggle
 wk.register({
-    ["sh"] = { "<Cmd>lua require('FTerm').toggle()<CR>", "Toggle Terminal" }
-}, { prefix = "<leader>" })
-
--- FTerm toggle
-wk.register({
-    ["sh"] = { "<Cmd>lua require('FTerm').toggle()<CR>", "Toggle Terminal" }
+    [" "] = { "<cmd>lua require('FTerm').toggle()<CR>", "Toggle Terminal" }
 }, { prefix = "<leader>", mode = "t" })
-
--- Gitsigns prev/next hunk
-wk.register({
-    ["]g"] = { "<cmd>lua require('gitsigns').next_hunk()<CR>", "Next hunk" },
-    ["[g"] = { "<cmd>lua require('gitsigns').prev_hunk()<CR>", "Previous hunk" }
-})
-
--- Gitsigns actions
-wk.register({
-    h = {
-        name = "+Hunk",
-        s = { "<cmd>lua require('gitsigns').stage_hunk()<CR>", "Stage hunk" },
-        u = { "<cmd>lua require('gitsigns').undo_stage_hunk()<CR>", "Unstage hunk" },
-        r = { "<cmd>lua require('gitsigns').reset_hunk()<CR>", "Reset hunk" },
-        p = { "<cmd>lua require('gitsigns').preview_hunk()<CR>", "Preview hunk" },
-        b = { "<cmd>lua require('gitsigns').blame_line()<CR>", "Blame" }
-    }
-}, { prefix = "<leader>" })
-
--- Gitsigns text objects
-wk.register({
-    h = { "<C-U>lua require('gitsigns').text_object()<CR>", "" }
-}, { mode = "o", prefix = "i" })
-
-wk.register({
-    h = { "<C-U>lua require('gitsigns').text_object()<CR>", "" }
-}, { mode = "x", prefix = "i" })

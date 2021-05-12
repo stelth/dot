@@ -8,6 +8,11 @@ function config.nvim_lspinstall()
     require('modules.completion.lspconfig')
 end
 
+function config.nvim_trouble()
+    require('trouble').setup {
+    }
+end
+
 function config.completion_nvim()
   vim.g.completion_enable_snippet = 'vim-vsnip'
   vim.g.completion_auto_change_source = 1

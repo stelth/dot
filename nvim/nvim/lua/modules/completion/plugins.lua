@@ -11,6 +11,12 @@ completion['glepnir/lspsaga.nvim'] = {
     cmd = 'Lspsaga'
 }
 
+completion['folke/trouble.nvim'] = {
+    cmd = { 'LspTrouble', 'LspTroubleToggle', 'LspTroubleWorkspaceToggle', 'LspTroubleDocumentToggle' },
+    config = conf.nvim_trouble,
+    requires = 'kyazdani42/nvim-web-devicons'
+}
+
 completion['nvim-lua/completion-nvim'] = {
   event = 'BufReadPre',
   config = conf.completion_nvim
