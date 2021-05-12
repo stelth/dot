@@ -53,6 +53,7 @@ update_ghq() {
 update_pip3_packages() {
    if (( $+commands[pip3] )); then
        echo "Updating pip3 packages"
+       pip3 install --user -r pip-packages.txt
        pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip3 install -U --user
    fi
 }
