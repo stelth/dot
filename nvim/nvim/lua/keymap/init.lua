@@ -120,12 +120,14 @@ for i = 0, 10 do
     normal_leader[tostring(i)] = "which_key_ignore"
 end
 
-wk.register( normal_leader, { prefix = "<leader>" } )
+local no_leader = {
+    ["<BS>"] = { "<cmd>noh<CR>", "No Highlight" }
+}
 
-wk.register({
-    ["<BS>"] = {"<cmd>noh<CR>", "No Highlight" }
-})
-
-wk.register({
+local terminal_mapping = {
     [" "] = { "<cmd>lua require('FTerm').toggle()<CR>", "Toggle Terminal" }
-}, { prefix = "<leader>", mode = "t" })
+}
+
+wk.register( normal_leader, { prefix = "<leader>" } )
+wk.register( no_leader )
+wk.register( terminal_mapping, { prefix = "<leader>", mode = "t" } )
