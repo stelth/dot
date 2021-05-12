@@ -113,7 +113,8 @@ wk.register({
     ["*"] = { "*<Cmd>lua require('hlslens').start()<CR>", "Start search forwards" },
     ["#"] = { "#<Cmd>lua require('hlslens').start()<CR>", "Start search backwards" },
     ["g*"] = { "g*<Cmd>lua require('hlslens').start()<CR>", "Start search global" },
-    ["g#"] = { "g#<Cmd>lua require('hlslens').start()<CR>", "Start search global" }
+    ["g#"] = { "g#<Cmd>lua require('hlslens').start()<CR>", "Start search global" },
+    ["<BS>"] = {"<cmd>noh<CR>", "No Highlight" }
 })
 
 -- FTerm toggle
