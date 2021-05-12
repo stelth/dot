@@ -17,7 +17,7 @@ wk.register({
         d = { "<cmd>bd<CR>", "Delete Buffer" },
         g = { "<cmd>BufferLinePick<CR>", "Goto Buffer" }
     }
-}, { nowait = true } )
+}, { prefix = "<leader>", nowait = true } )
 
 -- Packer keymap
 wk.register({
