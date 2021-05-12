@@ -229,18 +229,6 @@ alias od='od -Ax -tx1z'
 alias hexdump='hexdump -C'
 alias vim='~/bin/nvim'
 
-if [ "$(uname 2>/dev/null)" = "Darwin" ]; then
-    export PATH="/usr/local/Cellar/llvm/11.1.0/bin:/Library/TeX/texbin:$PATH"
-fi
-if [ "$(uname 2>/dev/null)" = "Linux" ]; then
-    export PATH="/usr/lib/llvm-11/bin:$PATH"
-    export JAVA_HOME="/usr/lib/jvm/java-1.15.0-openjdk-amd64"
-    export JAR="$(realpath $(ghq list -p eclipse.jdt.ls)/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1*.jar)"
-    export GRADLE_HOME=$HOME/gradle
-    export JDTLS_CONFIG="$(ghq list -p eclipse.jdt.ls)/org.eclipse.jdt.ls.product/target/repository/config_linux"
-    export WORKSPACE=$HOME/workspace
-fi
-
 #####################################################################
 # keybinds
 ######################################################################
