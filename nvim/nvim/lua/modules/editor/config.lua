@@ -12,6 +12,12 @@ end
 
 function config.which_key()
     require('which-key').setup {
+        plugins = {
+            spelling = {
+                enabled = true,
+                suggestions = 20
+            }
+        }
     }
 end
 
