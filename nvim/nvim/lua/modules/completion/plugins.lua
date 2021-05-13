@@ -23,8 +23,8 @@ completion['nvim-lua/completion-nvim'] = {
 }
 
 completion['hrsh7th/vim-vsnip'] = {
-  event = 'BufReadPre',
-  requires = { 'rafamadriz/friendly-snippets', 'hrsh7th/vim-vsnip-integ' }
+    event = 'InsertCharPre',
+    requires = { 'rafamadriz/friendly-snippets', 'hrsh7th/vim-vsnip-integ' }
 }
 
 completion['nvim-telescope/telescope.nvim'] =
