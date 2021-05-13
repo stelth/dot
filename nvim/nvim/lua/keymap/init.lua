@@ -66,7 +66,8 @@ local normal_leader = {
             s = { "<cmd>PackerStatus<CR>", "Status" },
             i = { "<cmd>PackerInstall<CR>", "Install" },
             c = { "<cmd>PackerCompile<CR>", "Compile" },
-            u = { "<cmd>PackerUpdate<CR>", "Update" }
+            u = { "<cmd>PackerUpdate<CR>", "Update" },
+            r = { "<cmd>PackerClean<CR>", "Clean" }
         }
     },
     s = {
