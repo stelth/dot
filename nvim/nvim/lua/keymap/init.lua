@@ -1,3 +1,4 @@
+require ('keymap.config')
 local wk = require("which-key")
 
 local normal_leader = {
@@ -131,3 +132,10 @@ local terminal_mapping = {
     [" "] = { "<cmd>lua require('FTerm').toggle()<CR>", "Toggle Terminal" }
 }
 wk.register( terminal_mapping, { prefix = "<leader>", mode = "t" } )
+
+local snippet_mapping = {
+    ["<TAB>"] = { "v:lua.tab_complete()", "" },
+    ["<S-TAB>"] = { "v:lua.s_tab_complete()", "" }
+}
+wk.register( snippet_mapping, { mode = "i", noremap = false, expr = true } )
+wk.register( snippet_mapping, { mode = "s", noremap = false, expr = true } )
