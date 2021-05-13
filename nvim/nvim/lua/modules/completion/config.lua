@@ -18,10 +18,6 @@ function config.completion_nvim()
   vim.g.completion_auto_change_source = 1
 end
 
-function config.vim_vsnip()
-  vim.g.vsnip_snippet_dir = os.getenv('HOME') .. '/.config/nvim/snippets'
-end
-
 function config.telescope()
     if not packer_plugins['plenary.nvim'].loaded then
         vim.cmd [[packadd plenary.nvim]]

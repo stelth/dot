@@ -23,9 +23,8 @@ completion['nvim-lua/completion-nvim'] = {
 }
 
 completion['hrsh7th/vim-vsnip'] = {
-  event = 'InsertCharPre',
-  config = conf.vim_vsnip,
-  requires = 'kitagry/vs-snippets'
+  event = 'BufReadPre',
+  requires = 'rafamadriz/friendly-snippets'
 }
 
 completion['nvim-telescope/telescope.nvim'] =
