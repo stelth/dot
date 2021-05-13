@@ -109,7 +109,8 @@ local function load_options()
         foldenable = true,
         signcolumn = "yes",
         conceallevel = 2,
-        concealcursor = "niv"
+        concealcursor = "niv",
+        spell = true
     }
 
     if global.is_mac then
@@ -124,7 +125,9 @@ local function load_options()
         vim.g.python3_host_prog = '/usr/bin/python3'
     end
 
-    for name, value in pairs(global_local) do vim.o[name] = value end
+    for name, value in pairs(global_local) do
+        vim.o[name] = value
+    end
 
     bind_option(bw_local)
 end
