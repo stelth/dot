@@ -122,7 +122,7 @@ for i = 0, 10 do
 end
 
 local no_leader = {
-    ["<BS>"] = { "<cmd>noh<CR>", "No Highlight" }
+    ["<BS>"] = { ":noh<CR>", "No Highlight" }
 }
 
 local terminal_mapping = {
