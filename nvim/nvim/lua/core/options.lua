@@ -109,8 +109,7 @@ local function load_options()
         foldenable = true,
         signcolumn = "yes",
         conceallevel = 2,
-        concealcursor = "niv",
-        spell = true
+        concealcursor = "niv"
     }
 
     if global.is_mac then
