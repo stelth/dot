@@ -13,4 +13,7 @@ editor['folke/which-key.nvim'] = {
 editor['kevinhwang91/nvim-hlslens'] = {
 }
 
+editor['mbbill/undotree'] = {
+}
+
 return editor

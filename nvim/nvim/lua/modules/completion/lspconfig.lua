@@ -46,7 +46,8 @@ local function setup_keymaps(client, bufnr)
                 i = { "<cmd>LspInfo<CR>", "LSP Info" },
                 a = { "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", "Add Folder" },
                 r = { "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", "Remove Folder" },
-                l = { "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", "List Folders" }
+                l = { "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", "List Folders" },
+                c = { "<cmd>lua require('modules.completion.lsp-capabilities')()<CR>", "List Capabilities" }
             }
         },
         x = {

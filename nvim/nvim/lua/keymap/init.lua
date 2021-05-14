@@ -71,6 +71,7 @@ local normal_leader = {
             r = { "<cmd>PackerClean<CR>", "Clean" }
         }
     },
+    u = { "<cmd>UndotreeToggle<CR>", "Undo Tree" },
     s = {
         name = "+Search",
         g = { "<cmd>Telescope live_grep<CR>", "Grep" },
