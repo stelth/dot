@@ -2,7 +2,7 @@ require ('keymap.config')
 local wk = require("which-key")
 
 local normal_leader = {
-    ["w"] = {
+    w = {
         name = "+Windows",
         ["w"] = { "<C-W>p", "other-window" },
         ["d"] = { "<C-W>c", "delete-window" },
@@ -98,7 +98,15 @@ local normal_leader = {
         f = { "<cmd>tabfirst<CR>", "First" },
         l = { "<cmd>tablast<CR>", "Last" }
     },
-    ["."] = { "<cmdTelescope file_browser<CR>", "Browse Files" },
+    x = {
+        name = "+Errors",
+        x = { "<cmd>LspTroubleToggle<CR>", "Trouble" },
+        w = { "<cmd>LspTroubleWorkspaceToggle<CR>", "Workspace Trouble" },
+        d = { "<cmd>LspTroubleDocumentToggle<CR>", "Document Trouble" },
+        l = { "<cmd>lopen<CR>", "Open Location List" },
+        q = { "<cmd>copen<CR>", "Open Quickfix List" }
+    },
+    ["."] = { "<cmd>Telescope file_browser<CR>", "Browse Files" },
     [","] = { "<cmd>Telescope buffers show_all_buffers=true<CR>", "Switch Buffer" },
     ["/"] = { "<cmd>Telescope live_grep<CR>", "Search" },
     [":"] = { "<cmd>Telescope command_history<CR>", "Command History" },
@@ -108,14 +116,6 @@ local normal_leader = {
     ["#"] = { "#<cmd>lua require('hlslens').start()<CR>", "Start search backwards" },
     ["g*"] = { "g*<cmd>lua require('hlslens').start()<CR>", "Start search global" },
     ["g#"] = { "g#<cmd>lua require('hlslens').start()<CR>", "Start search global" },
-    x = {
-        name = "+Errors",
-        x = { "<cmd>LspTroubleToggle<CR>", "Trouble" },
-        w = { "<cmd>LspTroubleWorkspaceToggle<CR>", "Workspace Trouble" },
-        d = { "<cmd>LspTroubleDocumentToggle<CR>", "Document Trouble" },
-        l = { "<cmd>lopen<CR>", "Open Location List" },
-        q = { "<cmd>copen<CR>", "Open Quickfix List" }
-    }
 }
 
 for i = 0, 10 do
