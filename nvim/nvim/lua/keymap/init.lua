@@ -108,7 +108,6 @@ local normal_leader = {
     ["#"] = { "#<cmd>lua require('hlslens').start()<CR>", "Start search backwards" },
     ["g*"] = { "g*<cmd>lua require('hlslens').start()<CR>", "Start search global" },
     ["g#"] = { "g#<cmd>lua require('hlslens').start()<CR>", "Start search global" },
-    [" "] = { "<cmd>lua require('FTerm').toggle()<CR>", "Toggle Terminal" },
     x = {
         name = "+Errors",
         x = { "<cmd>LspTroubleToggle<CR>", "Trouble" },
@@ -128,11 +127,6 @@ local no_leader = {
     ["<BS>"] = { ":noh<CR>", "No Highlight" }
 }
 wk.register( no_leader )
-
-local terminal_mapping = {
-    [" "] = { "<cmd>lua require('FTerm').toggle()<CR>", "Toggle Terminal" }
-}
-wk.register( terminal_mapping, { prefix = "<leader>", mode = "t" } )
 
 local snippet_mapping = {
     ["<TAB>"] = { "v:lua.tab_complete()", "" },

@@ -14,8 +14,8 @@ tools['liuchengxu/vista.vim'] = {
   config = conf.vim_vista
 }
 
-tools['numToStr/FTerm.nvim'] = {
-    config = conf.fterm
+tools['akinsho/nvim-toggleterm.lua'] = {
+    config = conf.toggleterm
 }
 
 return tools

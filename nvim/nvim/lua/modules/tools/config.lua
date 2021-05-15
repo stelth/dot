@@ -7,8 +7,9 @@ function config.vim_vista()
     vim.g.vista_echo_cursor_strategy = 'floating_win'
 end
 
-function config.fterm()
-    require('FTerm').setup()
+function config.toggleterm()
+    require('toggleterm').setup {
+    }
 end
 
 return config
