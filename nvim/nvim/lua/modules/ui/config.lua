@@ -116,4 +116,9 @@ function config.indent_blankline()
     vim.cmd('autocmd CursorMoved * IndentBlanklineRefresh')
 end
 
+function config.todo_comments()
+    require('todo-comments').setup {
+    }
+end
+
 return config

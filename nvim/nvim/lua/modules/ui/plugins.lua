@@ -33,4 +33,9 @@ ui['lewis6991/gitsigns.nvim'] = {
     requires = {'nvim-lua/plenary.nvim', opt = true}
 }
 
+ui['folke/todo-comments.nvim'] = {
+    event = 'BufReadPre',
+    config = conf.todo_comments
+}
+
 return ui
