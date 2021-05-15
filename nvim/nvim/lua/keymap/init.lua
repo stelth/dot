@@ -71,7 +71,11 @@ local normal_leader = {
             r = { "<cmd>PackerClean<CR>", "Clean" }
         }
     },
-    u = { "<cmd>UndotreeToggle<CR>", "Undo Tree" },
+    u = {
+        name = "+Utilities",
+        u = { "<cmd>UndotreeToggle<CR>", "Undo Tree" },
+        t = { ":<C-u>exe v:count1 . 'ToggleTerm'<CR>", "Toggle Terminal" }
+    },
     s = {
         name = "+Search",
         g = { "<cmd>Telescope live_grep<CR>", "Grep" },
