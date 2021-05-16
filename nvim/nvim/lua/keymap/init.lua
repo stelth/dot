@@ -113,14 +113,8 @@ local normal_leader = {
     ["."] = { "<cmd>Telescope file_browser<CR>", "Browse Files" },
     [","] = { "<cmd>Telescope buffers show_all_buffers=true<CR>", "Switch Buffer" },
     ["/"] = { "<cmd>Telescope live_grep<CR>", "Search" },
-    [":"] = { "<cmd>Telescope command_history<CR>", "Command History" },
-    ["n"] = { "<cmd>execute('normal! ' . v:count1 . 'n')<CR><cmd>lua require('hlslens').start()<CR>", "Next" },
-    ["N"] = { "<cmd>execute('normal! ' . v:count1 . 'N')<CR><cmd>lua require('hlslens').start()<CR>", "Previous" },
-    ["*"] = { "*<cmd>lua require('hlslens').start()<CR>", "Start search forwards" },
-    ["#"] = { "#<cmd>lua require('hlslens').start()<CR>", "Start search backwards" },
-    ["g*"] = { "g*<cmd>lua require('hlslens').start()<CR>", "Start search global" },
-    ["g#"] = { "g#<cmd>lua require('hlslens').start()<CR>", "Start search global" },
-}
+    [":"] = { "<cmd>Telescope command_history<CR>", "Command History" }
+    }
 
 for i = 0, 10 do
     normal_leader[tostring(i)] = "which_key_ignore"
@@ -128,6 +122,12 @@ end
 wk.register( normal_leader, { prefix = "<leader>" } )
 
 local no_leader = {
+    ["n"] = { "<cmd>execute('normal! ' . v:count1 . 'n')<CR><cmd>lua require('hlslens').start()<CR>", "Next" },
+    ["N"] = { "<cmd>execute('normal! ' . v:count1 . 'N')<CR><cmd>lua require('hlslens').start()<CR>", "Previous" },
+    ["*"] = { "*<cmd>lua require('hlslens').start()<CR>", "Start search forwards" },
+    ["#"] = { "#<cmd>lua require('hlslens').start()<CR>", "Start search backwards" },
+    ["g*"] = { "g*<cmd>lua require('hlslens').start()<CR>", "Start search global" },
+    ["g#"] = { "g#<cmd>lua require('hlslens').start()<CR>", "Start search global" },
     ["<BS>"] = { ":noh<CR>", "No Highlight" }
 }
 wk.register( no_leader )
