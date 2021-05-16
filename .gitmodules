@@ -13,9 +13,6 @@
 [submodule "zsh-navigation-tools"]
 	path = zsh-navigation-tools
 	url = https://github.com/psprint/zsh-navigation-tools.git
-[submodule "z"]
-	path = z
-	url = https://github.com/rupa/z.git
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot.git
