@@ -134,7 +134,7 @@ local function make_config()
 end
 
 local function install_servers()
-    local required_servers = { "bash", "cmake", "cpp", "latex", "lua", "python", "vim", "yaml" }
+    local required_servers = { "bash", "cmake", "cpp", "java", "latex", "lua", "python", "vim", "yaml" }
     local installed_servers = require('lspinstall').installed_servers()
 
     for _, server in pairs( required_servers ) do
