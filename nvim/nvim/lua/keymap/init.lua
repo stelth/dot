@@ -91,7 +91,8 @@ local normal_leader = {
         f = { "<cmd>Telescope find_files<CR>", "Find File" },
         r = { "<cmd>Telescope oldfiles<CR>", "Open Recent File" },
         n = { "<cmd>enew<CR>", "New File" },
-        d = { "<cmd>Telescope dotfiles path=" .. os.getenv("HOME") .. "/dotfiles<CR>", "Dot Files" }
+        d = { "<cmd>Telescope dotfiles path=" .. os.getenv("HOME") .. "/dotfiles<CR>", "Dot Files" },
+        z = { "<cmd>lua require('telescope').extensions.zoxide.list{}<CR>", "Zoxide" }
     },
     t = {
         name = "+Tabs",
