@@ -51,11 +51,19 @@ update_ghq() {
 }
 
 update_pip3_packages() {
-   if (( $+commands[pip3] )); then
-       echo "Updating pip3 packages"
-       pip3 install --user -r pip-packages.txt
-       pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip3 install -U --user
-   fi
+    if (( $+commands[pip3] )); then
+        echo "Updating pip3 packages"
+        pip3 install --user -r pip-packages.txt
+        if [[ `pip3 freeze --local | grep -v '^\-e'` ]]; then
+            pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip3 install -U --user
+        fi
+
+        if [[ `whoami` = 'root' ]]; then
+            if [[ `pip3 freeze | grep -v '^\-e'` ]]; then
+                pip3 freeze | grep -v '^\-e' | cut -d -f 1 | xargs -n1 pip3 install -U
+            fi
+        fi
+    fi
 }
 
 update_npm_packages() {
