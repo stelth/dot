@@ -1,8 +1,8 @@
 local ui = {}
 local conf = require('modules.ui.config')
 
-ui['folke/tokyonight.nvim'] = {
-    config = conf.tokyonight
+ui['shaunsingh/nord.nvim'] = {
+    config = conf.nord_vim
 }
 
 ui['hoob3rt/lualine.nvim'] = {
