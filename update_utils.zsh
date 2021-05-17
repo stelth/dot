@@ -68,7 +68,7 @@ update_pip3_packages() {
 
         if [[ `whoami` = 'root' ]]; then
             if [[ `pip3 freeze | grep -v '^\-e'` ]]; then
-                pip3 freeze | grep -v '^\-e' | cut -d -f 1 | xargs -n1 pip3 install -U
+                pip3 freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip3 install -U
             fi
         fi
     fi
