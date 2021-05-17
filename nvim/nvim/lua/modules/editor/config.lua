@@ -1,5 +1,10 @@
 local config = {}
 
+function config.zen_mode()
+    require('zen-mode').setup {
+    }
+end
+
 function config.vim_cursorword()
     vim.api.nvim_command('augroup user_plugin_cursorword')
     vim.api.nvim_command('autocmd!')

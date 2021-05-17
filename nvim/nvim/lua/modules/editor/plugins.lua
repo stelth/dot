@@ -16,4 +16,8 @@ editor['kevinhwang91/nvim-hlslens'] = {
 editor['mbbill/undotree'] = {
 }
 
+editor['folke/zen-mode.nvim'] = {
+    event = 'BufReadPre',
+}
+
 return editor

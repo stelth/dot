@@ -74,7 +74,8 @@ local normal_leader = {
     u = {
         name = "+Utilities",
         u = { "<cmd>UndotreeToggle<CR>", "Undo Tree" },
-        t = { ":<C-u>exe v:count1 . 'ToggleTerm'<CR>", "Toggle Terminal" }
+        t = { ":<C-u>exe v:count1 . 'ToggleTerm'<CR>", "Toggle Terminal" },
+        z = { "<cmd> lua require('zen-mode').toggle()<CR>", "Zen Mode" }
     },
     s = {
         name = "+Search",
@@ -115,7 +116,7 @@ local normal_leader = {
     [","] = { "<cmd>Telescope buffers show_all_buffers=true<CR>", "Switch Buffer" },
     ["/"] = { "<cmd>Telescope live_grep<CR>", "Search" },
     [":"] = { "<cmd>Telescope command_history<CR>", "Command History" }
-    }
+}
 
 for i = 0, 10 do
     normal_leader[tostring(i)] = "which_key_ignore"
