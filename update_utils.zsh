@@ -1,6 +1,14 @@
 #!/bin/zsh
 
 update_brew() {
+    if (( ! $+commands[brew] )); then
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+        for i in $(cat brew-packages.txt); do
+            brew install "$i"
+        done
+    fi
+
     if (( $+commands[brew] )); then
         brew update
         brew upgrade
