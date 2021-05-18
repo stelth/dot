@@ -1,15 +1,14 @@
 local config = {}
 
-function config.nord_vim()
-    vim.g.nord_contrast = true
-
-    require('nord').set()
+function config.tokyonight()
+    vim.g.tokyonight_style = "night"
+    vim.cmd("colorscheme tokyonight")
 end
 
 function config.lualine()
     require('lualine').setup {
         options = {
-            theme = 'nord'
+            theme = 'tokyonight'
         }
     }
 end
