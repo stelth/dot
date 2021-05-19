@@ -15,4 +15,7 @@ lang['mattn/vim-maketable'] = {
   cmd = {'MakeTable', 'UnmakeTable', 'MakeTable'}
 }
 
+lang['folke/lua-dev.nvim'] = {
+}
+
 return lang
