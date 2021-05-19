@@ -5,7 +5,7 @@ function config.nvim_lsp()
 end
 
 function config.nvim_lspinstall()
-    require('modules.completion.lspconfig')
+    require('modules.completion.lspconfig').setup_servers()
 end
 
 function config.nvim_trouble()
