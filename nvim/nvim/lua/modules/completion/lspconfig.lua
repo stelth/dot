@@ -71,7 +71,7 @@ local function setup_keymaps(client, bufnr)
         d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Goto Definition" },
         s = { "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>", "Signature Help" },
         I = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Goto Implementation" },
-        t = { "<cmdlua vim.lsp.buf.type_definition()<CR>", "Goto Type Definition" }
+        t = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Goto Type Definition" }
     }
 
     local keymap_no_leader = {
@@ -106,24 +106,6 @@ local enhance_attach = function(client, bufnr)
     setup_keymaps(client, bufnr)
 end
 
-local lua_settings = {
-    Lua  = {
-        runtime = {
-            version = 'LuaJIT',
-            path = vim.split(package.path, ';' )
-        },
-        diagnostics = {
-            globals = { 'vim' }
-        },
-        workspace = {
-            library = {
-                [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-                [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true
-            }
-        }
-    }
-}
-
 local function make_config()
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -144,6 +126,35 @@ local function install_servers()
     end
 end
 
+local function tableMerge(t1, t2)
+    for k,v in pairs(t2) do
+        if type(v) == "table" then
+            if type(t1[k] or false) == "table" then
+                tableMerge(t1[k] or {}, t2[k] or {})
+            else
+                t1[k] = v
+            end
+        else
+            t1[k] = v
+        end
+    end
+
+    return t1
+end
+
+local function dump(o)
+   if type(o) == 'table' then
+      local s = '{ '
+      for k,v in pairs(o) do
+         if type(k) ~= 'number' then k = '"'..k..'"' end
+         s = s .. '['..k..'] = ' .. dump(v) .. ','
+      end
+      return s .. '} '
+   else
+      return tostring(o)
+   end
+end
+
 local function setup_servers()
     local lspinstall = require('lspinstall')
     lspinstall.setup()
@@ -156,7 +167,9 @@ local function setup_servers()
         local config = make_config()
 
         if server == "lua" then
-            config.settings = lua_settings
+            local luadev = require('lua-dev').setup({})
+
+            config = tableMerge(config, luadev)
         end
 
         require('lspconfig')[server].setup(config)
