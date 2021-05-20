@@ -146,6 +146,10 @@ lspconfig.setup_servers = function()
             config = tableMerge(config, luadev)
         end
 
+        if server == "vim" then
+            config.init_options = { isNeovim = true }
+        end
+
         require('lspconfig')[server].setup(config)
     end
 end
