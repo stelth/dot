@@ -13,9 +13,7 @@ function config.nvim_trouble()
     }
 end
 
-function config.completion_nvim()
-  vim.g.completion_enable_snippet = 'vim-vsnip'
-  vim.g.completion_auto_change_source = 1
+function config.nvim_compe()
 end
 
 function config.telescope()

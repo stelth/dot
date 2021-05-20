@@ -17,9 +17,9 @@ completion['folke/trouble.nvim'] = {
     requires = 'kyazdani42/nvim-web-devicons'
 }
 
-completion['nvim-lua/completion-nvim'] = {
+completion['hrsh7th/nvim-compe'] = {
   event = 'BufReadPre',
-  config = conf.completion_nvim
+  config = conf.nvim_compe
 }
 
 completion['hrsh7th/vim-vsnip'] = {

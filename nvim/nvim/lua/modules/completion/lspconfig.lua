@@ -85,12 +85,26 @@ local function setup_keymaps(client, bufnr)
 end
 
 local enhance_attach = function(client, bufnr)
-    local completion = require('completion')
-    completion.on_attach()
     if client.resolved_capabilities.document_formatting then
         format.lsp_before_save()
     end
     api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+
+    require('compe').setup({
+        enabled = true,
+        autocomplete = true,
+        min_length = 1,
+        preselect = 'enable',
+        documentation = 'true',
+        source = {
+            path = true,
+            buffer = true,
+            calc = true,
+            nvim_lsp = true,
+            nvim_lua = true,
+            vsnip = true
+        }
+    }, bufnr)
 
     setup_keymaps(client, bufnr)
 end
