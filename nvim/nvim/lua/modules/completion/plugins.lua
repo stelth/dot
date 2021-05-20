@@ -4,7 +4,7 @@ local conf = require('modules.completion.config')
 completion['kabouzeid/nvim-lspinstall'] = {
     event = 'BufReadPre',
     config = conf.nvim_lspinstall,
-    requires = { 'neovim/nvim-lspconfig', 'ray-x/lsp_signature.nvim' }
+    requires = { 'neovim/nvim-lspconfig' }
 }
 
 completion['glepnir/lspsaga.nvim'] = {

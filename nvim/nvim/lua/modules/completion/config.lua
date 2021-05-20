@@ -1,5 +1,9 @@
 local config = {}
 
+function config.nvim_lsp()
+    require('modules.completion.lspconfig')
+end
+
 function config.nvim_lspinstall()
     require('modules.completion.lspconfig').setup_servers()
 end
