@@ -65,6 +65,10 @@ local function setup_keymaps(client, bufnr)
         ["]d"] = { "<cmd>lua require('lspsaga.diagnostic').lsp_jump_diagnostic_next()<CR>", "" }
     }
 
+    local compe_confirm = {
+        ["<CR>"] = { [[compe#confirm('<CR>')]], "Confirm Completion" }
+    }
+
     if client.resolved_capabilities.document_formatting then
         keymap.c.f = { "<cmd>lua vim.lsp.buf.formatting()<CR>", "Format Document" }
     elseif client.resolved_capabilities.document_range_formatting then
@@ -77,6 +81,7 @@ local function setup_keymaps(client, bufnr)
     wk.register( keymap_no_leader, { buffer = bufnr })
     wk.register( keymap_visual, { buffer = bufnr, prefix = "<leader>", mode = "v" })
     wk.register( keymap_goto, { buffer = bufnr, prefix = "g" })
+    wk.register( compe_confirm, { mode = "i", expr = true, noremap = true })
 end
 
 local enhance_attach = function(client, bufnr)
