@@ -92,6 +92,19 @@ local enhance_attach = function(client, bufnr)
     end
     api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
+    require('lsp_signature').on_attach({
+        bind = true,
+        doc_lines = 10,
+        hint_enable = true,
+        hint_prefix = "🐼 ",
+        hint_scheme = "String",
+        use_lspsaga = true,
+        handler_opts = {
+            border = "shadow"
+        },
+        decorator = {"`", "`"}
+    })
+
     setup_keymaps(client, bufnr)
 end
 
