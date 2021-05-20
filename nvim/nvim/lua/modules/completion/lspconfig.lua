@@ -7,11 +7,6 @@ if not packer_plugins['lspsaga.nvim'].loaded then
     vim.cmd [[packadd lspsaga.nvim]]
 end
 
-local saga = require 'lspsaga'
-saga.init_lsp_saga({
-    code_action_icon = '💡'
-})
-
 vim.lsp.handlers['textDocument/publishDiagnostics'] =
     vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
         -- Enable underline, use default values
@@ -73,7 +68,7 @@ local function setup_keymaps(client, bufnr)
     if client.resolved_capabilities.document_formatting then
         keymap.c.f = { "<cmd>lua vim.lsp.buf.formatting()<CR>", "Format Document" }
     elseif client.resolved_capabilities.document_range_formatting then
-        keymap_visual.c.f = { "<cmd>lua vim.lsp.buf.ranve_formatting()<CR>", "Format Range" }
+        keymap_visual.c.f = { "<cmd>lua vim.lsp.buf.range_formatting()<CR>", "Format Range" }
     end
 
     local wk = require('which-key')
@@ -90,6 +85,11 @@ local enhance_attach = function(client, bufnr)
     end
     api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
+    local saga = require 'lspsaga'
+    saga.init_lsp_saga({
+        code_action_icon = '💡'
+    })
+
     require('compe').setup({
         enabled = true,
         autocomplete = true,
@@ -102,9 +102,14 @@ local enhance_attach = function(client, bufnr)
             calc = true,
             nvim_lsp = true,
             nvim_lua = true,
+            treesitter = true,
             vsnip = true
         }
     }, bufnr)
+
+    require('lsp_signature').on_attach({
+        use_lspsaga = true
+    })
 
     setup_keymaps(client, bufnr)
 end
