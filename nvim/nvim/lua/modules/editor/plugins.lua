@@ -20,4 +20,7 @@ editor['folke/zen-mode.nvim'] = {
     event = 'BufReadPre',
 }
 
+editor['ahmedkhalf/lsp-rooter.nvim'] = {
+}
+
 return editor
