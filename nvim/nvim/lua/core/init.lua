@@ -22,7 +22,7 @@ local createdir = function ()
     end
 end
 
-local disable_distribution_plugins= function()
+local disable_distribution_plugins = function()
     vim.g.loaded_gzip              = 1
     vim.g.loaded_tar               = 1
     vim.g.loaded_tarPlugin         = 1
@@ -49,7 +49,7 @@ local leader_map = function()
     vim.api.nvim_set_keymap('x',' ','',{noremap = true})
 end
 
-local load_core =function()
+local load_core = function()
     local pack = require('core.pack')
     createdir()
     disable_distribution_plugins()
