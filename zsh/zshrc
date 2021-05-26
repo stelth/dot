@@ -230,7 +230,7 @@ alias od='od -Ax -tx1z'
 alias hexdump='hexdump -C'
 alias vim='~/bin/nvim'
 
-alias cd='echo "Use z"'
+alias cd='echo $fg_bold[red] "Use z"'
 
 #####################################################################
 # keybinds
