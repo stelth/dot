@@ -18,7 +18,7 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] =
         update_in_insert = false
     })
 
-local function setup_keymaps(client, bufnr)
+local function setup_lsp_keymaps(client, bufnr)
     local keymap = {
         c = {
             name = "+Code",
@@ -82,6 +82,49 @@ local function setup_keymaps(client, bufnr)
     wk.register( keymap_visual, { buffer = bufnr, prefix = "<leader>", mode = "v" })
     wk.register( keymap_goto, { buffer = bufnr, prefix = "g" })
     wk.register( compe_confirm, { mode = "i", expr = true, noremap = true })
+end
+
+local function setup_treesitter_textobjects(bufnr)
+    local wk = require('which-key')
+
+    local selection_operator_keymap = {
+        ["af"] = { "<cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@function.outer', 'o')<CR>", "Select outer function" },
+        ["if"] = { "<cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@function.inner', 'o')<CR>", "Select inner function" },
+        ["ac"] = { "<cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@class.outer', 'o')<CR>", "Select outer class" },
+        ["ic"] = { "<cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@class.inner', 'o')<CR>", "Select inner class" }
+    }
+    wk.register(selection_operator_keymap, { buffer = bufnr, mode = "o", noremap = true, silent = true })
+
+    local move_operator_keymap = {
+        ["]m"] = { "<cmd>lua require('nvim-treesitter.textobjects.move').goto_next_start('@function.outer')<CR>", "Goto next function start" },
+        ["]]"] = { "<cmd>lua require('nvim-treesitter.textobjects.move').goto_next_start('@class.outer')<CR>", "Goto next class start" },
+        ["]M"] = { "<cmd>lua require('nvim-treesitter.textobjects.move').goto_next_end('@function.outer'<CR>", "Goto next function end" },
+        ["]["] = { "<cmd>lua require('nvim-treesitter.textobjects.move').goto_next_end('@class.outer'<CR>", "Goto next class end" },
+        ["[m"] = { "<cmd>lua require('nvim-treesitter.textobjects.move').goto_previous_start('@function.outer')<CR>", "Goto previous function start" },
+        ["[["] = { "<cmd>lua require('nvim-treesitter.textobjects.move').goto_previous_start('@class.outer')<CR>", "Goto previous class start" },
+        ["[M"] = { "<cmd>lua require('nvim-treesitter.textobjects.move').goto_previous_end('@function.outer')<CR>", "Goto previous function end" },
+        ["[]"] = { "<cmd>lua require('nvim-treesitter.textobjects.move').goto_previous_end('@class.outer')<CR>", "Goto previous class end" }
+    }
+    wk.register(move_operator_keymap, { buffer = bufnr, mode = "o", noremap = true, silent = true })
+
+    local swap_operator_keymap = {
+        c = {
+            s = {
+                name = "+Swap",
+                p = {
+                    name = "+Parameter",
+                    a = { "<cmd>lua require('nvim-treesitter.textobjects.swap').swap_next('@parameter.inner')<CR>", "Swap next parameter" },
+                    A = { "<cmd>lua require('nvim-treesitter.textobjects.swap').swap_previous('@parameter.inner')<CR>", "Swap previous parameter" }
+                }
+            }
+        }
+    }
+    wk.register(swap_operator_keymap, { prefix = "<leader>", buffer = bufnr, noremap = true, silent = true})
+end
+
+local function setup_keymaps(client, bufnr)
+    setup_lsp_keymaps(client, bufnr)
+    setup_treesitter_textobjects(bufnr)
 end
 
 local enhance_attach = function(client, bufnr)

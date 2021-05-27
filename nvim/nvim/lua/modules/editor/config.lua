@@ -21,6 +21,10 @@ function config.which_key()
             spelling = {
                 enabled = true,
                 suggestions = 20
+            },
+            presets = {
+                operators = true,
+                text_objects = true
             }
         }
     }
