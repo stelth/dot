@@ -122,9 +122,21 @@ local function setup_treesitter_textobjects(bufnr)
     wk.register(swap_operator_keymap, { prefix = "<leader>", buffer = bufnr, noremap = true, silent = true})
 end
 
+local function setup_treesitter_playground_keymaps(bufnr)
+    local wk = require('which-key')
+
+    local playground_keymap = {
+        u = {
+            p = { "<cmd>TSPlaygroundToggle<CR>", "Treesitter Playground" }
+        }
+    }
+    wk.register(playground_keymap, { prefix = "<leader>", buffer = bufnr, noremap = true, silent = true})
+end
+
 local function setup_keymaps(client, bufnr)
     setup_lsp_keymaps(client, bufnr)
     setup_treesitter_textobjects(bufnr)
+    setup_treesitter_playground_keymaps(bufnr)
 end
 
 local enhance_attach = function(client, bufnr)

@@ -23,6 +23,12 @@ function config.nvim_treesitter()
         context_commentstring = {
             enable = true
         },
+        playground = {
+            enable = true,
+            disable = {},
+            updatetime = 25,
+            persist_queries = false
+        }
     }
 end
 
