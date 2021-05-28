@@ -95,6 +95,14 @@ local function setup_treesitter_textobjects(bufnr)
     }
     wk.register(selection_operator_keymap, { buffer = bufnr, mode = "o", noremap = true, silent = true })
 
+    local selection_operator_keymap_visual = {
+        ["af"] = { "<cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@function.outer', 'x')<CR>", "Select outer function" },
+        ["if"] = { "<cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@function.inner', 'x')<CR>", "Select inner function" },
+        ["ac"] = { "<cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@class.outer', 'x')<CR>", "Select outer class" },
+        ["ic"] = { "<cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@class.inner', 'x')<CR>", "Select inner class" }
+    }
+    wk.register(selection_operator_keymap_visual, { buffer = bufnr, mode = "x", noremap = true, silent = true })
+
     local move_operator_keymap = {
         ["]m"] = { "<cmd>lua require('nvim-treesitter.textobjects.move').goto_next_start('@function.outer')<CR>", "Goto next function start" },
         ["]]"] = { "<cmd>lua require('nvim-treesitter.textobjects.move').goto_next_start('@class.outer')<CR>", "Goto next class start" },
