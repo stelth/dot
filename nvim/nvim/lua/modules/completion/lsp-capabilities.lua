@@ -1,6 +1,8 @@
 local lspui = require('lspconfig/_lspui')
 
-return function ()
+local M = {}
+
+M.list_lsp_capabilities = function()
   local buf_clients = vim.lsp.buf_get_clients()
   local win_info = lspui.percentage_range_window(0.8, 0.7)
   local bufnr, win_id = win_info.bufnr, win_info.win_id
@@ -58,4 +60,6 @@ return function ()
   vim.cmd([[syntax match Title /\%(Client\):.*\zs]] .. configs_pattern .. '/')
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<esc>', '<cmd>bd<CR>', { noremap = true})
   vim.lsp.util.close_preview_autocmd({"BufHidden", "BufLeave"}, win_id)
-end;
+end
+
+return M
