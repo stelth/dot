@@ -88,18 +88,18 @@ local function setup_treesitter_textobjects(bufnr)
     local wk = require('which-key')
 
     local selection_operator_keymap = {
-        ["af"] = { "<cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@function.outer', 'o')<CR>", "Select outer function" },
-        ["if"] = { "<cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@function.inner', 'o')<CR>", "Select inner function" },
-        ["ac"] = { "<cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@class.outer', 'o')<CR>", "Select outer class" },
-        ["ic"] = { "<cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@class.inner', 'o')<CR>", "Select inner class" }
+        ["af"] = { "<cmd>lua require('nvim-treesitter.textobjects.select').select_textobject('@function.outer', 'o')<CR>", "Select outer function" },
+        ["if"] = { "<cmd>lua require('nvim-treesitter.textobjects.select').select_textobject('@function.inner', 'o')<CR>", "Select inner function" },
+        ["ac"] = { "<cmd>lua require('nvim-treesitter.textobjects.select').select_textobject('@class.outer', 'o')<CR>", "Select outer class" },
+        ["ic"] = { "<cmd>lua require('nvim-treesitter.textobjects.select').select_textobject('@class.inner', 'o')<CR>", "Select inner class" }
     }
     wk.register(selection_operator_keymap, { buffer = bufnr, mode = "o", noremap = true, silent = true })
 
     local selection_operator_keymap_visual = {
-        ["af"] = { "<cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@function.outer', 'x')<CR>", "Select outer function" },
-        ["if"] = { "<cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@function.inner', 'x')<CR>", "Select inner function" },
-        ["ac"] = { "<cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@class.outer', 'x')<CR>", "Select outer class" },
-        ["ic"] = { "<cmd>lua require'nvim-treesitter.textobjects.select'.select_textobject('@class.inner', 'x')<CR>", "Select inner class" }
+        ["af"] = { "<cmd>lua require('nvim-treesitter.textobjects.select').select_textobject('@function.outer', 'x')<CR>", "Select outer function" },
+        ["if"] = { "<cmd>lua require('nvim-treesitter.textobjects.select').select_textobject('@function.inner', 'x')<CR>", "Select inner function" },
+        ["ac"] = { "<cmd>lua require('nvim-treesitter.textobjects.select').select_textobject('@class.outer', 'x')<CR>", "Select outer class" },
+        ["ic"] = { "<cmd>lua require('nvim-treesitter.textobjects.select').select_textobject('@class.inner', 'x')<CR>", "Select inner class" }
     }
     wk.register(selection_operator_keymap_visual, { buffer = bufnr, mode = "x", noremap = true, silent = true })
 
@@ -153,7 +153,7 @@ local enhance_attach = function(client, bufnr)
     end
     api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
-    local saga = require 'lspsaga'
+    local saga = require('lspsaga')
     saga.init_lsp_saga({
         code_action_icon = '💡'
     })

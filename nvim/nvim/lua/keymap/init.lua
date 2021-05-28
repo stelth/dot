@@ -1,4 +1,4 @@
-require ('keymap.config')
+require('keymap.config')
 local wk = require("which-key")
 
 local normal_leader = {
