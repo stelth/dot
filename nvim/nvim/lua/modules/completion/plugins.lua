@@ -27,8 +27,7 @@ completion['hrsh7th/vim-vsnip'] = {
     requires = { 'rafamadriz/friendly-snippets', 'hrsh7th/vim-vsnip-integ' }
 }
 
-completion['nvim-telescope/telescope.nvim'] =
-{
+completion['nvim-telescope/telescope.nvim'] = {
     config = conf.telescope,
     requires = {
         {'nvim-lua/popup.nvim', opt = true},
