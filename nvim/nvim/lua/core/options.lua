@@ -2,32 +2,26 @@ local global = require('core.global')
 
 local function bind_option(options)
     for k, v in pairs(options) do
-        if v == true then
-            vim.cmd('set ' .. k)
-        elseif v == false then
-            vim.cmd('set no' .. k)
-        else
-            vim.cmd('set ' .. k .. '=' .. v)
-        end
+        vim.opt[k] = v
     end
 end
 
 local function load_options()
-    local global_local = {
+    local options = {
         termguicolors = true,
         mouse = "nv",
         errorbells = true,
         visualbell = true,
         hidden = true,
-        fileformats = "unix,mac,dos",
+        fileformats = {"unix", "mac", "dos"},
         magic = true,
         virtualedit = "block",
         encoding = "utf-8",
-        viewoptions = "folds,cursor,curdir,slash,unix",
-        sessionoptions = "curdir,help,tabpages,winsize",
+        viewoptions = {"folds", "cursor", "curdir", "slash", "unix"},
+        sessionoptions = {"curdir", "help", "tabpages", "winsize"},
         clipboard = "unnamedplus",
         wildignorecase = true,
-        wildignore = ".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**",
+        wildignore = {".git", ".hg", ".svn", "*.pyc", "*.o", "*.out", "*.jpg", "*.jpeg", "*.png", "*.gif", "*.zip", "**/tmp/**", "*.DS_Store", "**/node_modules/**", "**/bower_modules/**"},
         backup = false,
         writebackup = false,
         swapfile = false,
@@ -37,8 +31,8 @@ local function load_options()
         viewdir = global.cache_dir .. "view/",
         spellfile = global.cache_dir .. "spell/en.utf-8.add",
         history = 2000,
-        shada = "!,'300,<50,@100,s10,h",
-        backupskip = "/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*,/private/var/*,.vault.vim",
+        shada = {"!", "'300", "<50", "@100", "s10", "h"},
+        backupskip = {"/tmp/*", "$TMPDIR/*", "$TMP/*", "$TEMP/*", "*/shm/*", "/private/var/*", ".vault.vim"},
         smarttab = true,
         shiftround = true,
         timeout = true,
@@ -52,7 +46,7 @@ local function load_options()
         infercase = true,
         incsearch = true,
         wrapscan = true,
-        complete = ".,w,b,k",
+        complete = {".", "w", "b", "k"},
         inccommand = "nosplit",
         grepformat = "%f:%l:%c:%m",
         grepprg = 'rg --hidden --vimgrep --smart-case --',
@@ -62,9 +56,9 @@ local function load_options()
         splitbelow = true,
         splitright = true,
         switchbuf = "useopen",
-        backspace = "indent,eol,start",
-        diffopt = "filler,iwhite,internal,algorithm:patience",
-        completeopt = "menuone,noselect,noinsert",
+        backspace = {"indent", "eol", "start"},
+        diffopt = {"filler", "iwhite", "internal", "algorithm:patience"},
+        completeopt = {"menuone", "noselect", "noinsert"},
         jumpoptions = "stack",
         showmode = false,
         shortmess = "aoOTIcF",
@@ -85,13 +79,16 @@ local function load_options()
         equalalways = false,
         laststatus = 2,
         display = "lastline",
+        listchars = {
+            tab = "»·",
+            nbsp = "+",
+            trail = "·",
+            extends = "→",
+            precedes = "←"
+        },
         showbreak = "↳  ",
-        listchars = "tab:»·,nbsp:+,trail:·,extends:→,precedes:←",
         pumblend = 10,
-        winblend = 10
-    }
-
-    local bw_local = {
+        winblend = 10,
         undofile = true;
         synmaxcol = 2500,
         formatoptions = "1jcroql",
@@ -101,7 +98,10 @@ local function load_options()
         tabstop = 4,
         shiftwidth = 4,
         softtabstop = -1,
-        breakindentopt = "shift:4,min:20",
+        breakindentopt = {
+            shift = 4,
+            min = 20
+        },
         wrap = false,
         linebreak = true,
         number = true,
@@ -111,6 +111,7 @@ local function load_options()
         conceallevel = 2,
         concealcursor = "niv"
     }
+    bind_option(options)
 
     if global.is_mac then
         vim.g.clipboard = {
@@ -123,12 +124,6 @@ local function load_options()
     else
         vim.g.python3_host_prog = '/usr/bin/python3'
     end
-
-    for name, value in pairs(global_local) do
-        vim.o[name] = value
-    end
-
-    bind_option(bw_local)
 end
 
 load_options()
