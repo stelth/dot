@@ -14,4 +14,16 @@ function config.toggleterm()
     vim.api.nvim_command('autocmd TermEnter term://*toggleterm#* tnoremap <silent><leader>ut <C-\\><C-n>:exe v:count1 "ToggleTerm"<CR>')
 end
 
+function config.kommentary_setup()
+    vim.g.kommentary_create_default_mappings = false
+end
+
+function config.kommentary_config()
+    require('kommentary.config').configure_language("default", {
+        prefer_single_line_comments = true,
+        use_consistent_indentation = true,
+        ignore_whitespace = true
+    })
+end
+
 return config

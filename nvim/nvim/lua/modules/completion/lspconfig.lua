@@ -141,10 +141,42 @@ local function setup_treesitter_playground_keymaps(bufnr)
     wk.register(playground_keymap, { prefix = "<leader>", buffer = bufnr, noremap = true, silent = true})
 end
 
+local function setup_kommentary_keymaps(bufnr)
+    local wk = require('which-key')
+
+    local kommentary_normal_keymap = {
+        c = {
+            c = {
+                name = "+Comment",
+                c = { "<Plug>kommentary_motion_default", "Comment (Motion)" },
+                cc = { "<Plug>kommentary_line_default", "Comment (Line)" },
+                ic = { "<Plug>kommentary_line_increase", "Increase Comment Level (Line)"},
+                i = { "<Plug>kommentary_motion_increase", "Increase Comment Level (Motion)"},
+                dc = { "<Plug>kommentary_line_decrease", "Decrease Comment Level (Line)"},
+                d = { "<Plug>kommentary_motion_default", "Decrease Comment Level (Motion)"}
+            }
+        }
+    }
+    wk.register(kommentary_normal_keymap, {prefix = "<leader>", buffer = bufnr, noremap = true, silent = true})
+
+    local kommentary_visual_keymap = {
+        c = {
+            c = {
+                name = "+Comment",
+                c = { "<Plug>kommentary_visual_default", "Comment (Visual Selection)"},
+                i = { "<Plug>kommentary_visual_increase", "Increase (Visual Selection)"},
+                d = { "<Plug>kommentary_visual_decrease", "Decrease (Visual Selection)"}
+            }
+        }
+    }
+    wk.register(kommentary_visual_keymap, {prefix = "<leader>", buffer = bufnr, noremap = true, silent = true, mode = "v"})
+end
+
 local function setup_keymaps(client, bufnr)
     setup_lsp_keymaps(client, bufnr)
     setup_treesitter_textobjects(bufnr)
     setup_treesitter_playground_keymaps(bufnr)
+    setup_kommentary_keymaps(bufnr)
 end
 
 local enhance_attach = function(client, bufnr)

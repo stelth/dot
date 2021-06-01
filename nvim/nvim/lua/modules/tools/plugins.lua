@@ -5,8 +5,10 @@ tools['JoosepAlviste/nvim-ts-context-commentstring'] = {
     event = 'BufReadPre'
 }
 
-tools['tpope/vim-commentary'] = {
-    event = 'BufReadPre'
+tools['b3nj5m1n/kommentary'] = {
+    event = 'BufReadPre',
+    setup = conf.kommentary_setup,
+    config = conf.kommentary_config
 }
 
 tools['liuchengxu/vista.vim'] = {
