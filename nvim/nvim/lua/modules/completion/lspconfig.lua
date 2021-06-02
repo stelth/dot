@@ -208,7 +208,9 @@ local enhance_attach = function(client, bufnr)
     }, bufnr)
 
     require('lsp_signature').on_attach({
-        use_lspsaga = true
+        bind = true,
+        use_lspsaga = true,
+        hi_parameter = "Search"
     })
 
     setup_keymaps(client, bufnr)
