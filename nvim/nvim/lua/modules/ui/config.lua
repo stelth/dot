@@ -5,12 +5,8 @@ function config.tokyonight()
     vim.cmd("colorscheme tokyonight")
 end
 
-function config.lualine()
-    require('lualine').setup {
-        options = {
-            theme = 'tokyonight'
-        }
-    }
+function config.galaxyline()
+    require('modules.ui.eviline')
 end
 
 function config.nvim_bufferline()

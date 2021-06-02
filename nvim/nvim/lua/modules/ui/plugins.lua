@@ -5,9 +5,9 @@ ui['folke/tokyonight.nvim'] = {
     config = conf.tokyonight
 }
 
-ui['hoob3rt/lualine.nvim'] = {
-    config = conf.lualine,
-    requires = 'kyazdani42/nvim-web-devicons'
+ui['glepnir/galaxyline.nvim'] = {
+    branch = 'main',
+    config = conf.galaxyline
 }
 
 ui['lukas-reineke/indent-blankline.nvim'] = {
