@@ -21,8 +21,6 @@
     stderr: true
 
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
-  - [git submodule update --remote --merge, Updating submodules]
   - [source update_utils.zsh && update_brew, Updating homebrew]
   - [source update_utils.zsh && update_ghq, Updating ghq]
   - [source update_utils.zsh && update_nvim, Updating neovim]
