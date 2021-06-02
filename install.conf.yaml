@@ -13,6 +13,13 @@
 - brew:
   - jesseduffield/lazygit/lazygit
 
+- pip:
+    file: pip-packages.txt
+    binary: pip3
+    user: true
+    stdout: false
+    stderr: true
+
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
   - [git submodule update --remote --merge, Updating submodules]
