@@ -107,7 +107,6 @@ local normal_leader = {
     x = {
         name = "+Errors",
         x = { "<cmd>LspTroubleToggle<CR>", "Trouble" },
-        w = { "<cmd>LspTroubleWorkspaceToggle<CR>", "Workspace Trouble" },
         d = { "<cmd>LspTroubleDocumentToggle<CR>", "Document Trouble" },
         l = { "<cmd>lopen<CR>", "Open Location List" },
         q = { "<cmd>copen<CR>", "Open Quickfix List" }
@@ -117,10 +116,6 @@ local normal_leader = {
     ["/"] = { "<cmd>Telescope live_grep<CR>", "Search" },
     [":"] = { "<cmd>Telescope command_history<CR>", "Command History" }
 }
-
-for i = 0, 10 do
-    normal_leader[tostring(i)] = "which_key_ignore"
-end
 wk.register( normal_leader, { prefix = "<leader>" } )
 
 local no_leader = {

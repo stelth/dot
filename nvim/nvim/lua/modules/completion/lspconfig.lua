@@ -117,6 +117,7 @@ local function setup_treesitter_textobjects(bufnr)
 
     local swap_operator_keymap = {
         c = {
+            name = "+Code",
             s = {
                 name = "+Swap",
                 p = {
@@ -146,6 +147,7 @@ local function setup_kommentary_keymaps(bufnr)
 
     local kommentary_normal_keymap = {
         c = {
+            name = "+Code",
             c = {
                 name = "+Comment",
                 c = { "<Plug>kommentary_motion_default", "Comment (Motion)" },
@@ -161,6 +163,7 @@ local function setup_kommentary_keymaps(bufnr)
 
     local kommentary_visual_keymap = {
         c = {
+            name = "+Code",
             c = {
                 name = "+Comment",
                 c = { "<Plug>kommentary_visual_default", "Comment (Visual Selection)"},

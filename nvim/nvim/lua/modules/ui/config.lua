@@ -18,8 +18,9 @@ function config.nvim_bufferline()
     options = {
       modified_icon = '✥',
       buffer_close_icon = '',
-      mappings = true,
-      always_show_bufferline = false,
+      mappings = false,
+      always_show_bufferline = true,
+      diagnostics = 'nvim_lsp'
     }
   }
 end
