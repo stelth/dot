@@ -16,6 +16,7 @@
   - luarocks
   - shellcheck
   - shfmt
+  - go
 
 - pip:
   - pynvim
