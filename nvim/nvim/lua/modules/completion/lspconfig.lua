@@ -419,7 +419,14 @@ local efm_config = {
                     lintFormats = {"%f:%l %m", "%f:%l:%c %m", "%f: %l: %m"}
                 }
             },
-            yaml = {{lintCommand = "yamllint -f parsable -", lintStdin = true}}
+            yaml = {{lintCommand = "yamllint -f parsable -", lintStdin = true}},
+            python = {
+                {
+                    lintCommand = "flake8 --stdin-display-name ${INPUT} -",
+                    lintStdin = true,
+                    lintFormats = {"%f:%l:%c: %m"}
+                }, {formatCommand = "autopep8 -", formatStdin = true}
+            }
         }
     }
 }
