@@ -411,6 +411,13 @@ local efm_config = {
                         "%f:%l:%c: %tote: %m"
                     }
                 }, {formatCommand = "shfmt -ci -s -bn", formatStdin = true}
+            },
+            markdown = {
+                {
+                    lintCommand = "markdownlint -s",
+                    lintStdin = true,
+                    lintFormats = {"%f:%l %m", "%f:%l:%c %m", "%f: %l: %m"}
+                }
             }
         }
     }
