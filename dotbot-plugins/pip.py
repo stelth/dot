@@ -4,15 +4,15 @@ import dotbot
 
 
 class Pip(dotbot.Plugin):
+    _directive = "pip"
     _pipInstallCommand = "pip3 install --user"
     _pipIsInstalledCommand = "pip3 list --user | grep %s"
-    _pipDirective = "pip"
 
     def can_handle(self, directive):
-        return directive == "pip"
+        return directive == self._directive
 
     def handle(self, directive, data):
-        if directive == self._pipDirective:
+        if directive == self._directive:
             return self._process_data(data)
         raise ValueError('Pip cannot handle directive %s' % directive)
 
