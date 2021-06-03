@@ -13,6 +13,8 @@
 - brew:
   - jesseduffield/lazygit/lazygit
   - luarocks
+  - shellcheck
+  - shfmt
 
 - pip:
     file: pip-packages.txt
