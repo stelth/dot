@@ -17,11 +17,10 @@
   - shfmt
 
 - pip:
-    file: pip-packages.txt
-    binary: pip3
-    user: true
-    stdout: false
-    stderr: true
+  - pynvim
+  - yamllint
+  - flake8
+  - autopep8
 
 - shell:
   - [source update_utils.zsh && update_brew, Updating homebrew]

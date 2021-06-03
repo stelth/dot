@@ -1,4 +1,7 @@
-import os, subprocess, dotbot
+import os
+import subprocess
+import dotbot
+
 
 class Npm(dotbot.Plugin):
     _pipInstallCommand = "pip3 install --user"
@@ -6,6 +9,7 @@ class Npm(dotbot.Plugin):
     _pipDirective = "pip"
 
     def can_handle(self, directive):
+        return False
         return directive in (self._pipDirective)
 
     def handle(self, directive, data):
@@ -28,7 +32,8 @@ class Npm(dotbot.Plugin):
             stdin = stdout = stderr = devnull
             for package in packages_list:
                 cmd = self._pipIsInstalledCommand % package
-                isInstalled = subprocess.call(cmd, shell=True, stdin=stdin, stdout=stdout, stderr=stderr, cwd=cwd)
+                isInstalled = subprocess.call(
+                    cmd, shell=True, stdin=stdin, stdout=stdout, stderr=stderr, cwd=cwd)
                 if isInstalled != 0:
                     log.info("Installing %s" % package)
                     cmd = "%s %s" % (self._pipInstallCommand, package)
