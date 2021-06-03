@@ -20,25 +20,24 @@ local golines_format = function()
     }, function(code, signal) -- on exit
     end)
 
-    uv.read_start(stdout, vim.schedule_wrap(
-                      function(err, data)
-            assert(not err, err)
-            if data then
-                local content = {}
-                local index = 1
-                for s in data:gmatch("[^\n]+") do
-                    table.insert(content, s)
-                    if s == '}' or s == ')' or s:match('^import') or index == 1 then
-                        table.insert(content, '')
-                    end
-                    index = index + 1
+    uv.read_start(stdout, vim.schedule_wrap(function(err, data)
+        assert(not err, err)
+        if data then
+            local content = {}
+            local index = 1
+            for s in data:gmatch("[^\n]+") do
+                table.insert(content, s)
+                if s == '}' or s == ')' or s:match('^import') or index == 1 then
+                    table.insert(content, '')
                 end
-                if not check_same(old_lines, content) then
-                    api.nvim_buf_set_lines(0, 0, #old_lines, false, content)
-                    api.nvim_command('write')
-                end
+                index = index + 1
             end
-        end))
+            if not check_same(old_lines, content) then
+                api.nvim_buf_set_lines(0, 0, #old_lines, false, content)
+                api.nvim_command('write')
+            end
+        end
+    end))
 
     uv.read_start(stderr, function(err, data)
         assert(not err, err)

@@ -6,21 +6,14 @@ editor['itchyny/vim-cursorword'] = {
     config = conf.vim_cursorword
 }
 
-editor['folke/which-key.nvim'] = {
-    config = conf.which_key
-}
+editor['folke/which-key.nvim'] = {config = conf.which_key}
 
-editor['kevinhwang91/nvim-hlslens'] = {
-}
+editor['kevinhwang91/nvim-hlslens'] = {}
 
-editor['mbbill/undotree'] = {
-}
+editor['mbbill/undotree'] = {}
 
-editor['folke/zen-mode.nvim'] = {
-    event = 'BufReadPre',
-}
+editor['folke/zen-mode.nvim'] = {event = 'BufReadPre'}
 
-editor['ahmedkhalf/lsp-rooter.nvim'] = {
-}
+editor['ahmedkhalf/lsp-rooter.nvim'] = {}
 
 return editor

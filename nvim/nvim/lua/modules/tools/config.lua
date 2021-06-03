@@ -8,10 +8,9 @@ function config.vim_vista()
 end
 
 function config.toggleterm()
-    require('toggleterm').setup {
-        direction = 'float'
-    }
-    vim.api.nvim_command('autocmd TermEnter term://*toggleterm#* tnoremap <silent><leader>ut <C-\\><C-n>:exe v:count1 "ToggleTerm"<CR>')
+    require('toggleterm').setup {direction = 'float'}
+    vim.api.nvim_command(
+        'autocmd TermEnter term://*toggleterm#* tnoremap <silent><leader>ut <C-\\><C-n>:exe v:count1 "ToggleTerm"<CR>')
 end
 
 function config.kommentary_setup()

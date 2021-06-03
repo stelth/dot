@@ -1,20 +1,14 @@
 local config = {}
 
-function config.nvim_lsp()
-    require('modules.completion.lspconfig')
-end
+function config.nvim_lsp() require('modules.completion.lspconfig') end
 
 function config.nvim_lspinstall()
     require('modules.completion.lspconfig').setup_servers()
 end
 
-function config.nvim_trouble()
-    require('trouble').setup {
-    }
-end
+function config.nvim_trouble() require('trouble').setup {} end
 
-function config.nvim_compe()
-end
+function config.nvim_compe() end
 
 function config.telescope()
     if not packer_plugins['plenary.nvim'].loaded then
@@ -31,8 +25,10 @@ function config.telescope()
             sorting_strategy = 'ascending',
             results_width = 0.6,
             file_previewer = require('telescope.previewers').vim_buffer_cat.new,
-            grep_previewer = require('telescope.previewers').vim_buffer_vimgrep.new,
-            qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new
+            grep_previewer = require('telescope.previewers').vim_buffer_vimgrep
+                .new,
+            qflist_previewer = require('telescope.previewers').vim_buffer_qflist
+                .new
         },
         extensions = {
             fzy_native = {

@@ -1,14 +1,9 @@
 local ui = {}
 local conf = require('modules.ui.config')
 
-ui['folke/tokyonight.nvim'] = {
-    config = conf.tokyonight
-}
+ui['folke/tokyonight.nvim'] = {config = conf.tokyonight}
 
-ui['glepnir/galaxyline.nvim'] = {
-    branch = 'main',
-    config = conf.galaxyline
-}
+ui['glepnir/galaxyline.nvim'] = {branch = 'main', config = conf.galaxyline}
 
 ui['lukas-reineke/indent-blankline.nvim'] = {
     event = 'BufRead',

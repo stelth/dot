@@ -4,12 +4,10 @@ local conf = require('modules.completion.config')
 completion['kabouzeid/nvim-lspinstall'] = {
     event = 'BufReadPre',
     config = conf.nvim_lspinstall,
-    requires = { 'neovim/nvim-lspconfig', 'ray-x/lsp_signature.nvim' }
+    requires = {'neovim/nvim-lspconfig', 'ray-x/lsp_signature.nvim'}
 }
 
-completion['glepnir/lspsaga.nvim'] = {
-    cmd = 'Lspsaga'
-}
+completion['glepnir/lspsaga.nvim'] = {cmd = 'Lspsaga'}
 
 completion['folke/trouble.nvim'] = {
     event = 'BufReadPre',
@@ -18,13 +16,13 @@ completion['folke/trouble.nvim'] = {
 }
 
 completion['hrsh7th/nvim-compe'] = {
-  event = 'BufReadPre',
-  config = conf.nvim_compe
+    event = 'BufReadPre',
+    config = conf.nvim_compe
 }
 
 completion['hrsh7th/vim-vsnip'] = {
     event = 'InsertCharPre',
-    requires = { 'rafamadriz/friendly-snippets', 'hrsh7th/vim-vsnip-integ' }
+    requires = {'rafamadriz/friendly-snippets', 'hrsh7th/vim-vsnip-integ'}
 }
 
 completion['nvim-telescope/telescope.nvim'] = {
