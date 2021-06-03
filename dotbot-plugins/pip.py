@@ -5,8 +5,8 @@ import dotbot
 
 class Pip(dotbot.Plugin):
     _directive = "pip"
-    _pipInstallCommand = "pip3 install --user"
-    _pipIsInstalledCommand = "pip3 list --user | grep %s"
+    _installCommand = "pip3 install --user"
+    _isInstalledCommand = "pip3 list --user | grep"
 
     def can_handle(self, directive):
         return directive == self._directive
@@ -30,12 +30,12 @@ class Pip(dotbot.Plugin):
         with open(os.devnull, 'w') as devnull:
             stdin = stdout = stderr = devnull
             for package in packages_list:
-                cmd = self._pipIsInstalledCommand % package
+                cmd = "%s %s" % (self._isInstalledCommand, package)
                 isInstalled = subprocess.call(
                     cmd, shell=True, stdin=stdin, stdout=stdout, stderr=stderr, cwd=cwd)
                 if isInstalled != 0:
                     log.info("Installing %s" % package)
-                    cmd = "%s %s" % (self._pipInstallCommand, package)
+                    cmd = "%s %s" % (self._installCommand, package)
                     result = subprocess.call(cmd, shell=True, cwd=cwd)
                     if result != 0:
                         log.warning('Failed to install [%s]' % package)
