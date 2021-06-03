@@ -70,12 +70,3 @@ update_npm_packages() {
         fi
     fi
 }
-
-update_lua_packages() {
-    echo "PATH: ${PATH}"
-    if (( $+commands[luarocks] )); then
-        for pkg in `cat lua-packages.txt`; do
-            luarocks install --server=https://luarocks.org/dev "${pkg}"
-        done
-    fi
-}

@@ -28,13 +28,15 @@
   - treesitter-cli
   - markdownlinter-cli
 
+- lua:
+  - luaformatter
+
 - shell:
   - [source update_utils.zsh && update_brew, Updating homebrew]
   - [source update_utils.zsh && update_ghq, Updating ghq]
   - [source update_utils.zsh && update_nvim, Updating neovim]
   - [source update_utils.zsh && update_pip3_packages, Updating pip packages]
   - [source update_utils.zsh && update_npm_packages, Updating npm packages]
-  - [source update_utils.zsh && update_lua_packages, Updating lua packages]
   - [source update_utils.zsh && update_apt, Updating apt packages]
 
 # neovim specific link
