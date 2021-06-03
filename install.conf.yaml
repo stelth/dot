@@ -23,6 +23,11 @@
   - flake8
   - autopep8
 
+- npm:
+  - npm
+  - treesitter-cli
+  - markdownlinter-cli
+
 - shell:
   - [source update_utils.zsh && update_brew, Updating homebrew]
   - [source update_utils.zsh && update_ghq, Updating ghq]

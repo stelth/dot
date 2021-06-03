@@ -1,19 +1,19 @@
 import os
+import platform
 import subprocess
 import dotbot
 
 
 class Npm(dotbot.Plugin):
-    _pipInstallCommand = "pip3 install --user"
-    _pipIsInstalledCommand = "pip3 list --user | grep "
-    _pipDirective = "pip"
+    _installCommand = "npm install -g"
+    _isInstalledCommand = "npm list -g | grep"
+    _directive = "npm"
 
     def can_handle(self, directive):
-        return False
-        return directive in (self._pipDirective)
+        return directive == self._directive
 
     def handle(self, directive, data):
-        if directive == self._pipDirective:
+        if directive == self._directive:
             return self._process_data(data)
         raise ValueError('Pip cannot handle directive %s' % directive)
 
@@ -26,17 +26,23 @@ class Npm(dotbot.Plugin):
         return success
 
     def _install(self, packages_list):
+        if platform.system() != "Darwin" and platform.system() != "Linux":
+            return True
+
+        if platform.system() == "Linux" and os.getuid() != 0:
+            return True
+
         cwd = self._context.base_directory()
         log = self._log
         with open(os.devnull, 'w') as devnull:
             stdin = stdout = stderr = devnull
             for package in packages_list:
-                cmd = self._pipIsInstalledCommand % package
+                cmd = "%s %s" % (self._isInstalledCommand, package)
                 isInstalled = subprocess.call(
                     cmd, shell=True, stdin=stdin, stdout=stdout, stderr=stderr, cwd=cwd)
                 if isInstalled != 0:
                     log.info("Installing %s" % package)
-                    cmd = "%s %s" % (self._pipInstallCommand, package)
+                    cmd = "%s %s" % (self._installCommand, package)
                     result = subprocess.call(cmd, shell=True, cwd=cwd)
                     if result != 0:
                         log.warning('Failed to install [%s]' % package)

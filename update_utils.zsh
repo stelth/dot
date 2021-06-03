@@ -66,7 +66,6 @@ update_pip3_packages() {
 update_npm_packages() {
     if [[ ( `uname` = Linux && `whoami` = root ) || `uname` = Darwin ]]; then
         if (( $+commands[npm] )); then
-            cat npm-packages.txt | xargs npm install -g
             npm update -g
         fi
     fi
