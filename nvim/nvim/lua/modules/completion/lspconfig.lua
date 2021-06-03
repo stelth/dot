@@ -401,7 +401,17 @@ local efm_config = {
     settings = {
         rootMarkers = {".git/"},
         languages = {
-            lua = {{formatCommand = "lua-format -i", formatStdin = true}}
+            lua = {{formatCommand = "lua-format -i", formatStdin = true}},
+            sh = {
+                {
+                    lintCommand = "shellcheck -f gcc -x",
+                    lintSource = "shellcheck",
+                    lintFormats = {
+                        "%f:%l:%c: %trror: %m", "%f:%l:%c: %tarning: %m",
+                        "%f:%l:%c: %tote: %m"
+                    }
+                }, {formatCommand = "shfmt -ci -s -bn", formatStdin = true}
+            }
         }
     }
 }
