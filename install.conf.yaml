@@ -25,7 +25,7 @@
 
 - npm:
   - npm
-  - treesitter-cli
+  - tree-sitter-cli
   - markdownlinter-cli
 
 - lua:
