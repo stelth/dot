@@ -418,7 +418,8 @@ local efm_config = {
                     lintStdin = true,
                     lintFormats = {"%f:%l %m", "%f:%l:%c %m", "%f: %l: %m"}
                 }
-            }
+            },
+            yaml = {{lintCommand = "yamllint -f parsable -", lintStdin = true}}
         }
     }
 }
