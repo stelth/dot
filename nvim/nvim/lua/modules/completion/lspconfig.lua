@@ -327,6 +327,9 @@ local function setup_keymaps(client, bufnr)
 end
 
 local enhance_attach = function(client, bufnr)
+    if client.name == "cpp" then
+        client.resolved_capabilities.document_formatting = false
+    end
     if client.resolved_capabilities.document_formatting then
         format.lsp_before_save()
     end
@@ -433,7 +436,8 @@ local efm_config = {
                     lintStdin = true,
                     lintFormats = {"%f:%l:%c: %m"}
                 }
-            }
+            },
+            cpp = {{formatCommand = "clang-format", formatStdin = true}}
         }
     }
 }
