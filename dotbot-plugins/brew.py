@@ -49,6 +49,11 @@ class Brew(dotbot.Plugin):
             return True
 
     def _process_data(self, install_cmd, data):
+        if platform.system() == "Linux" and os.getuid() == 0:
+            self._log.info(
+                '[brew] Skipping: brew not supported by root on Linux')
+            return True
+
         success = self._install(install_cmd, data)
         if success:
             self._log.info('[brew] All packages have been installed')
