@@ -1,3 +1,5 @@
+local wk = require('which-key')
+
 M = {}
 
 local function setup_lsp_keymaps(client, bufnr)
@@ -104,8 +106,6 @@ local function setup_lsp_keymaps(client, bufnr)
         }
     end
 
-    local wk = require('which-key')
-
     wk.register(keymap, {buffer = bufnr, prefix = "<leader>"})
     wk.register(keymap_no_leader, {buffer = bufnr})
     wk.register(keymap_visual, {buffer = bufnr, prefix = "<leader>", mode = "v"})
@@ -114,8 +114,6 @@ local function setup_lsp_keymaps(client, bufnr)
 end
 
 local function setup_treesitter_textobjects(bufnr)
-    local wk = require('which-key')
-
     local selection_operator_keymap = {
         ["af"] = {
             "<cmd>lua require('nvim-treesitter.textobjects.select').select_textobject('@function.outer', 'o')<CR>",
@@ -223,8 +221,6 @@ local function setup_treesitter_textobjects(bufnr)
 end
 
 local function setup_treesitter_playground_keymaps(bufnr)
-    local wk = require('which-key')
-
     local playground_keymap = {
         u = {p = {"<cmd>TSPlaygroundToggle<CR>", "Treesitter Playground"}}
     }
@@ -237,8 +233,6 @@ local function setup_treesitter_playground_keymaps(bufnr)
 end
 
 local function setup_kommentary_keymaps(bufnr)
-    local wk = require('which-key')
-
     local kommentary_normal_keymap = {
         c = {
             name = "+Code",
