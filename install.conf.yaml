@@ -23,6 +23,7 @@
   - yamllint
   - flake8
   - autopep8
+  - vim-vint
 
 - npm:
   - npm

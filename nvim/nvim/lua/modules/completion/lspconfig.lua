@@ -426,6 +426,13 @@ local efm_config = {
                     lintStdin = true,
                     lintFormats = {"%f:%l:%c: %m"}
                 }, {formatCommand = "autopep8 -", formatStdin = true}
+            },
+            vim = {
+                {
+                    lintCommand = "vint -",
+                    lintStdin = true,
+                    lintFormats = {"%f:%l:%c: %m"}
+                }
             }
         }
     }
