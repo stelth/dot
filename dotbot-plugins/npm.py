@@ -20,9 +20,9 @@ class Npm(dotbot.Plugin):
     def _process_data(self, data):
         success = self._install(data)
         if success:
-            self._log.info('All packages have been installed')
+            self._log.info('[npm] All packages have been installed')
         else:
-            self._log.error('Some packages were not installed')
+            self._log.error('[npm] Some packages were not installed')
         return success
 
     def _install(self, packages_list):
@@ -41,10 +41,10 @@ class Npm(dotbot.Plugin):
                 isInstalled = subprocess.call(
                     cmd, shell=True, stdin=stdin, stdout=stdout, stderr=stderr, cwd=cwd)
                 if isInstalled != 0:
-                    log.info("Installing %s" % package)
+                    log.info("[npm] Installing %s" % package)
                     cmd = "%s %s" % (self._installCommand, package)
                     result = subprocess.call(cmd, shell=True, cwd=cwd)
                     if result != 0:
-                        log.warning('Failed to install [%s]' % package)
+                        log.warning('[npm] Failed to install [%s]' % package)
                         return False
             return True

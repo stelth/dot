@@ -1,4 +1,9 @@
-import os, platform, subprocess, dotbot, sys
+import os
+import platform
+import subprocess
+import dotbot
+import sys
+
 
 class Brew(dotbot.Plugin):
     _brewDirective = "brew"
@@ -34,21 +39,21 @@ class Brew(dotbot.Plugin):
         with open(os.devnull, 'w') as devnull:
             stdin = stdout = stderr = devnull
             for tap in tap_list:
-                log.info("Tapping %s" % tap)
+                log.info("[brew] Tapping %s" % tap)
                 cmd = "brew tap %s" % (tap)
                 result = subprocess.call(cmd, shell=True, cwd=cwd)
 
                 if result != 0:
-                    log.warning('Failed to tap [%s]' % tap)
+                    log.warning('[brew] Failed to tap [%s]' % tap)
                     return False
             return True
 
     def _process_data(self, install_cmd, data):
         success = self._install(install_cmd, data)
         if success:
-            self._log.info('All packages have been installed')
+            self._log.info('[brew] All packages have been installed')
         else:
-            self._log.error('Some packages were not installed')
+            self._log.error('[brew] Some packages were not installed')
         return success
 
     def _install(self, install_cmd, packages_list):
@@ -61,13 +66,14 @@ class Brew(dotbot.Plugin):
                     cmd = "brew ls --versions %s" % package
                 else:
                     cmd = "brew cask ls --versions %s" % package
-                isInstalled = subprocess.call(cmd, shell=True, stdin=stdin, stdout=stdout, stderr=stderr, cwd=cwd)
+                isInstalled = subprocess.call(
+                    cmd, shell=True, stdin=stdin, stdout=stdout, stderr=stderr, cwd=cwd)
                 if isInstalled != 0:
-                    log.info("Installing %s" % package)
+                    log.info("[brew] Installing %s" % package)
                     cmd = "%s %s" % (install_cmd, package)
                     result = subprocess.call(cmd, shell=True, cwd=cwd)
                     if result != 0:
-                        log.warning('Failed to install [%s]' % package)
+                        log.warning('[brew] Failed to install [%s]' % package)
                         return False
             return True
 
@@ -77,12 +83,12 @@ class Brew(dotbot.Plugin):
         with open(os.devnull, 'w') as devnull:
             stdin = stdout = stderr = devnull
             for f in brew_files:
-                log.info("Installing from file %s" % f)
+                log.info("[brew] Installing from file %s" % f)
                 cmd = "brew bundle --file=%s" % f
                 result = subprocess.call(cmd, shell=True, cwd=cwd)
 
                 if result != 0:
-                    log.warning('Failed to install file [%s]' % f)
+                    log.warning('[brew] Failed to install file [%s]' % f)
                     return False
             return True
 
