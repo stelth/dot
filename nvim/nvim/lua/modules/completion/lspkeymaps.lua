@@ -34,16 +34,39 @@ local function setup_lsp_keymaps(client, bufnr)
                     "<cmd>lua require('modules.completion.lsp-capabilities').list_lsp_capabilities()<CR>",
                     "List Capabilities"
                 }
-            }
-        },
-        x = {
-            s = {
-                "<cmd>Telescope lsp_document_diagnostics<CR>",
-                "Search Document Diagnostics"
             },
-            w = {
-                "<cmd>Telescope lsp_workspace_diagnostics<CR>",
-                "Workspace Diagnostics"
+            g = {
+                name = "+Goto",
+                r = {"<cmd>Telescope lsp_references<CR>", "References"},
+                R = {"<cmd>LspTrouble lsp_references<CR>", "Trouble References"},
+                D = {
+                    "<cmd>lua require('lspsaga.provider').preview_definition()<CR>",
+                    "Peek Definition"
+                },
+                d = {"<cmd>lua vim.lsp.buf.definition()<CR>", "Goto Definition"},
+                s = {
+                    "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>",
+                    "Signature Help"
+                },
+                I = {
+                    "<cmd>lua vim.lsp.buf.implementation()<CR>",
+                    "Goto Implementation"
+                },
+                t = {
+                    "<cmd>lua vim.lsp.buf.type_definition()<CR>",
+                    "Goto Type Definition"
+                }
+            },
+            x = {
+                name = "+Diagnostics",
+                s = {
+                    "<cmd>Telescope lsp_document_diagnostics<CR>",
+                    "Search Document Diagnostics"
+                },
+                w = {
+                    "<cmd>Telescope lsp_workspace_diagnostics<CR>",
+                    "Workspace Diagnostics"
+                }
             }
         }
     }
@@ -55,25 +78,6 @@ local function setup_lsp_keymaps(client, bufnr)
                 "<cmd><C-U>lua require('lspsaga.codeaction').range_code_action()<CR>",
                 "Code Action"
             }
-        }
-    }
-
-    local keymap_goto = {
-        name = "+Goto",
-        r = {"<cmd>Telescope lsp_references<CR>", "References"},
-        R = {"<cmd>LspTrouble lsp_references<CR>", "Trouble References"},
-        D = {
-            "<cmd>lua require('lspsaga.provider').preview_definition()<CR>",
-            "Peek Definition"
-        },
-        d = {"<cmd>lua vim.lsp.buf.definition()<CR>", "Goto Definition"},
-        s = {
-            "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>",
-            "Signature Help"
-        },
-        I = {"<cmd>lua vim.lsp.buf.implementation()<CR>", "Goto Implementation"},
-        t = {
-            "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Goto Type Definition"
         }
     }
 
@@ -109,7 +113,6 @@ local function setup_lsp_keymaps(client, bufnr)
     wk.register(keymap, {buffer = bufnr, prefix = "<leader>"})
     wk.register(keymap_no_leader, {buffer = bufnr})
     wk.register(keymap_visual, {buffer = bufnr, prefix = "<leader>", mode = "v"})
-    wk.register(keymap_goto, {buffer = bufnr, prefix = "g"})
     wk.register(compe_confirm, {mode = "i", expr = true, noremap = true})
 end
 
