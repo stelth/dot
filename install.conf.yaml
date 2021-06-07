@@ -15,34 +15,34 @@
       force: true
 
 - brew:
-  - jesseduffield/lazygit/lazygit
-  - luarocks
-  - shellcheck
-  - shfmt
-  - go
+    - jesseduffield/lazygit/lazygit
+    - luarocks
+    - shellcheck
+    - shfmt
+    - go
 
 - pip:
-  - pynvim
-  - yamllint
-  - flake8
-  - autopep8
-  - vim-vint
+    - pynvim
+    - yamllint
+    - flake8
+    - autopep8
+    - vim-vint
 
 - npm:
-  - npm
-  - tree-sitter-cli
-  - markdownlint-cli
+    - npm
+    - tree-sitter-cli
+    - markdownlint-cli
 
 - lua:
-  - luaformatter
+    - luaformatter
 
 - shell:
-  - [source update_utils.zsh && update_brew, Updating homebrew]
-  - [source update_utils.zsh && update_ghq, Updating ghq]
-  - [source update_utils.zsh && update_nvim, Updating neovim]
-  - [source update_utils.zsh && update_pip3_packages, Updating pip packages]
-  - [source update_utils.zsh && update_npm_packages, Updating npm packages]
-  - [source update_utils.zsh && update_apt, Updating apt packages]
+    - [source update_utils.zsh && update_brew, Updating homebrew]
+    - [source update_utils.zsh && update_ghq, Updating ghq]
+    - [source update_utils.zsh && update_nvim, Updating neovim]
+    - [source update_utils.zsh && update_pip3_packages, Updating pip packages]
+    - [source update_utils.zsh && update_npm_packages, Updating npm packages]
+    - [source update_utils.zsh && update_apt, Updating apt packages]
 
 # neovim specific link
 - link:
