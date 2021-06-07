@@ -52,9 +52,9 @@
       path: nvim_bin/nvim-osx64/bin/nvim
 
 - link:
-    ~/bin/ghq: bin/ghq
-    ~/bin/msrsync: bin/msrsync
-    ~/bin/tmx: bin/tmx
+    ~/bin:
+      path: bin/*
+      glob: true
     ~/.config/nvim: nvim/nvim
     ~/.clang-format: clang/clang-format
     ~/.gitconfig: git/gitconfig
