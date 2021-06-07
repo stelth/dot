@@ -45,11 +45,11 @@
 - link:
     ~/bin/nvim:
       if: '[ `uname` = Linux ]'
-      path: bin/nvim.appimage
+      path: nvim_bin/nvim.appimage
 - link:
     ~/bin/nvim:
       if: '[ `uname` = Darwin ]'
-      path: bin/nvim-osx64/bin/nvim
+      path: nvim_bin/nvim-osx64/bin/nvim
 
 - link:
     ~/bin/ghq: bin/ghq

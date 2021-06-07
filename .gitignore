@@ -1,6 +1,5 @@
 bin/ghq
-bin/nvim.appimage
-bin/nvim-osx64
+nvim_bin
 __pycache__/
 *.py[cod]
 *$py.class
