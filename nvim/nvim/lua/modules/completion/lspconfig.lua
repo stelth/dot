@@ -22,9 +22,6 @@ local enhance_attach = function(client, bufnr)
     if client.name == "cpp" then
         client.resolved_capabilities.document_formatting = false
     end
-    if client.resolved_capabilities.document_formatting then
-        format.lsp_before_save()
-    end
     api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
     local saga = require('lspsaga')
