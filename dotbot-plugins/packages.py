@@ -13,44 +13,47 @@ class Packages(dotbot.Plugin):
         if directive != self._directive:
             raise ValueError('Packages cannot handle directive %s' % directive)
 
-        defaults = self._context._defaults.get('packages', {})
-        for packageManager, options in data.items():
+        log = self._log
+        defaults = self._context._defaults.get('package', {})
+        for package_manager, options in data.items():
             install = defaults.get('install', True)
             install_cmd = defaults.get('installCmd', '')
             list_cmd = defaults.get('listCmd', '')
             update = defaults.get('update', False)
-            update_cmd = defaults.get('updateCmd', '')
+            update_cmds = defaults.get('updateCmds', [])
             clean = defaults.get('clean', False)
             clean_cmd = defaults.get('cleanCmd', '')
+
             if isinstance(options, dict):
                 install = options.get('install', install)
                 install_cmd = options.get('installCmd', install_cmd)
                 list_cmd = options.get('listCmd', list_cmd)
                 update = options.get('update', update)
-                update_cmd = options.get('updateCmd', update_cmd)
+                update_cmds = options.get('updateCmds', update_cmds)
                 clean = options.get('clean', clean)
                 clean_cmd = options.get('cleanCmd', clean_cmd)
 
             packages = options['packages']
-            if install != '':
+            if install:
                 if not self._install(install_cmd, list_cmd, packages):
-                    self._log.error(
-                        '[%s] Some packages were not installed' % packageManager)
+                    log.error(
+                        '[%s] Some packages were not installed' % package_manager)
                     return False
 
             if update:
-                if not self._update(update_cmd):
-                    self._log.error(
-                        '[%s] Some packages were not updated' % packageManager)
+                if not self._update(update_cmds):
+                    log.error(
+                        '[%s] Some packages were not updated' % package_manager)
                     return False
 
             if clean:
                 if not self._clean(clean_cmd):
-                    self._log.error(
-                        '[%s] Some packages couldn\'t be cleaned' % packageManager)
+                    log.error(
+                        '[%s] Some packages couldn\'t be cleaned' % package_manager)
                     return False
 
-        self._log.info('All packages processed')
+            log.info('All packages processed for %s' % package_manager)
+
         return True
 
     def _install(self, install_cmd, list_cmd, packages_list):
@@ -72,13 +75,17 @@ class Packages(dotbot.Plugin):
                         return False
             return True
 
-    def _update(self, update_cmd):
+    def _update(self, update_cmds):
         cwd = self._context.base_directory()
+        log = self._log
         with open(os.devnull, 'w') as devnull:
             stdin = stdout = stderr = devnull
-            update_succeeded = subprocess.call(
-                update_cmd, shell=True, stdin=stdin, stdout=stdout, stderr=stderr, cwd=cwd)
-            return update_succeeded == 0
+            for cmd in update_cmds:
+                success = subprocess.call(
+                    cmd, shell=True, stdin=stdin, stdout=stdout, stderr=stderr, cwd=cwd)
+                if success != 0:
+                    log.error('Command [%s] failed to run' % cmd)
+                    return False
 
         return True
 
