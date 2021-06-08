@@ -20,6 +20,7 @@
     - shellcheck
     - shfmt
     - go
+    - ghq
 
 - pip:
     - pynvim

@@ -45,20 +45,6 @@ update_nvim() {
     fi
 }
 
-update_ghq() {
-    if [[ `uname` = Linux ]]; then
-        wget https://github.com/x-motemen/ghq/releases/latest/download/ghq_linux_amd64.zip
-        unzip -o -j "ghq_linux_amd64.zip" "ghq_linux_amd64/ghq" -d "bin"
-        rm ghq_linux_amd64.zip
-    fi
-
-    if [[ `uname` = Darwin ]]; then
-        wget https://github.com/x-motemen/ghq/releases/latest/download/ghq_darwin_amd64.zip
-        unzip -o -j "ghq_darwin_amd64.zip" "ghq_darwin_amd64/ghq" -d "bin"
-        rm ghq_darwin_amd64.zip
-    fi
-}
-
 update_pip3_packages() {
     if (( $+commands[pip3] )); then
         echo "Updating pip3 packages"
