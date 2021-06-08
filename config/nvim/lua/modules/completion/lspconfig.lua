@@ -1,5 +1,4 @@
 local api = vim.api
-local format = require('modules.completion.format')
 
 local lspconfig = {}
 
