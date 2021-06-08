@@ -44,20 +44,3 @@ update_nvim() {
         rm -rf nvim-macos.tar.gz
     fi
 }
-
-update_pip3_packages() {
-    if (( $+commands[pip3] )); then
-        echo "Updating pip3 packages"
-        if [[ `pip3 freeze --local | grep -v '^\-e'` ]]; then
-            pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip3 install -U --user
-        fi
-    fi
-}
-
-update_npm_packages() {
-    if [[ ( `uname` = Linux && `whoami` = root ) || `uname` = Darwin ]]; then
-        if (( $+commands[npm] )); then
-            npm update -g
-        fi
-    fi
-}

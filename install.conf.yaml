@@ -3,6 +3,10 @@
     link:
       relink: true
       create: true
+    package:
+      install: true
+      update: true
+      clean: false
 
 - clean:
     ~/:
@@ -22,26 +26,35 @@
     - go
     - ghq
 
-- pip:
-    - pynvim
-    - yamllint
-    - flake8
-    - autopep8
-    - vim-vint
-
-- npm:
-    - npm
-    - tree-sitter-cli
-    - markdownlint-cli
-
-- lua:
-    - luaformatter
+- package:
+    pip:
+      installCmd: pip3 install --user
+      listCmd: pip3 list --user
+      updateCmd: pip3 freeze --local | grep -v '^-e' | cut -d = -f 1 | xargs -n1 pip3 install -U --user
+      packages:
+        - pynvim
+        - yamllint
+        - flake8
+        - autopep8
+        - vim-vint
+    npm:
+      installCmd: npm install --prefix node
+      listCmd: npm list --prefix node
+      updateCmd: npm update --prefix node
+      packages:
+        - npm
+        - tree-sitter-cli
+        - markdownlint-cli
+    lua:
+      installCmd: luarocks install --server=https://luarocks.org/dev
+      listCmd: luarocks list
+      update: false
+      packages:
+        - luaformatter
 
 - shell:
     - [source update_utils.zsh && update_brew, Updating homebrew]
     - [source update_utils.zsh && update_nvim, Updating neovim]
-    - [source update_utils.zsh && update_pip3_packages, Updating pip packages]
-    - [source update_utils.zsh && update_npm_packages, Updating npm packages]
     - [source update_utils.zsh && update_apt, Updating apt packages]
 
 # neovim specific link
