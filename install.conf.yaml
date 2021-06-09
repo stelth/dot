@@ -37,10 +37,10 @@
     lua:
       installCmd: luarocks install --server=https://luarocks.org/dev
       listCmd: luarocks list
-      update: false
       packages:
         - luaformatter
     brew:
+      if: '[ `whoami` != "root" ]'
       installCmd: brew install
       listCmd: brew ls
       updateCmds:

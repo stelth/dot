@@ -1,20 +1,5 @@
 #!/bin/zsh
 
-update_brew() {
-    if [[ `whoami` = root ]]; then
-        exit 0
-    fi
-
-    if (( $+commands[brew] )); then
-        brew update
-        brew upgrade
-        brew cleanup
-        brew cleanup -s
-        brew doctor
-        brew missing
-    fi
-}
-
 update_apt() {
     if [[ "`echo $UID`" == "0" ]]; then
         if (( $+commands[apt] )); then
