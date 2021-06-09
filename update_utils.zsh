@@ -1,18 +1,5 @@
 #!/bin/zsh
 
-update_apt() {
-    if [[ "`echo $UID`" == "0" ]]; then
-        if (( $+commands[apt] )); then
-            if (( $+commands[apt-get] )); then
-                apt-get update -y --allow-unauthenticated
-                apt-get upgrade -y -f --allow-unauthenticated
-                apt-get dist-upgrade -y -f --allow-unauthenticated
-                apt autoremove -y -f
-            fi
-        fi
-    fi
-}
-
 update_nvim() {
     if [[ ! -d 'nvim_bin' ]]; then
         mkdir nvim_bin

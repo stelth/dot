@@ -14,6 +14,16 @@
     ~/.bin:
 
 - package:
+    apt:
+      if: '[ "$(uname)" = "Linux" ] && [ "$(whoami)" = "root" ]'
+      installCmd: apt-get install
+      listCmd: apt list
+      updateCmds:
+        - apt-get update -y --allow-unauthenticated
+        - apt-get upgrade -y --allow-unauthenticated
+        - apt-get dist-upgrade -y -f --allow-unauthenticated
+        - apt autoremove -y -f
+      packages:
     pip:
       installCmd: pip3 install --user
       listCmd: pip3 list --user
@@ -40,7 +50,7 @@
       packages:
         - luaformatter
     brew:
-      if: '[ `whoami` != "root" ]'
+      if: '[ "$(whoami)" != "root" ]'
       installCmd: brew install
       listCmd: brew ls
       updateCmds:
@@ -58,9 +68,7 @@
         - ghq
 
 - shell:
-    - [source update_utils.zsh && update_brew, Updating homebrew]
     - [source update_utils.zsh && update_nvim, Updating neovim]
-    - [source update_utils.zsh && update_apt, Updating apt packages]
 
 # neovim specific link
 - link:
