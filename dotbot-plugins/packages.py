@@ -21,6 +21,7 @@ class Packages(dotbot.Plugin):
             update_cmds = defaults.get('updateCmds', [])
             clean_cmd = defaults.get('cleanCmd', '')
             test = defaults.get('if', '')
+            packages = defaults.get('packages', [])
 
             if isinstance(options, dict):
                 install_cmd = options.get('installCmd', install_cmd)
@@ -28,12 +29,12 @@ class Packages(dotbot.Plugin):
                 update_cmds = options.get('updateCmds', update_cmds)
                 clean_cmd = options.get('cleanCmd', clean_cmd)
                 test = options.get('if', test)
+                packages = options.get('packages', packages)
 
             if test and not self._test_success(test):
                 log.lowinfo('Skipping %s' % package_manager)
                 continue
 
-            packages = options['packages']
             if install_cmd:
                 if not self._install(install_cmd, list_cmd, packages):
                     log.error(

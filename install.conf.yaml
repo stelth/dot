@@ -14,6 +14,17 @@
     ~/.bin:
 
 - package:
+    nvim_linux:
+      if: '[ "$(uname)" = "Linux" ]'
+      updateCmds:
+        - curl -L https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage --create-dirs -o nvim_bin/nvim.appimage
+        - chmod u+x nvim_bin/nvim.appimage
+    nvim_darwin:
+      if: '[ "$(uname)" = "Darwin" ]'
+      updateCmds:
+        - curl -L https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz --create-dirs -o nvim_bin/nvim-macos.tar.gz
+        - tar nvim_bin/nvim-macos.tar.gz -C nvim_bin
+        - rm -rf nvim_bin/nvim-macos.tar.gz
     apt:
       if: '[ "$(uname)" = "Linux" ] && [ "$(whoami)" = "root" ]'
       installCmd: apt-get install
@@ -66,9 +77,6 @@
         - shfmt
         - go
         - ghq
-
-- shell:
-    - [source update_utils.zsh && update_nvim, Updating neovim]
 
 # neovim specific link
 - link:
