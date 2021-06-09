@@ -60,10 +60,10 @@
 
 - package:
     npm:
-      installCmd: npm install --prefix node
-      listCmd: npm list --prefix node
+      installCmd: npm install --prefix ~/.node
+      listCmd: npm list --prefix ~/.node
       updateCmds:
-        - npm update --prefix node
+        - npm update --prefix ~/.node
       packages:
         - npm
         - tree-sitter-cli
@@ -107,14 +107,8 @@
       path: nvim_bin/nvim-osx64/bin/nvim
 
 - link:
-    ~/bin:
-      path: bin/*
     ~/:
       path: home/*
       prefix: '.'
     ~/.config:
       path: config/*
-
-- link:
-    ~/bin:
-      path: node/node_modules/.bin/*
