@@ -35,6 +35,12 @@
         - apt-get dist-upgrade -y -f --allow-unauthenticated
         - apt autoremove -y -f
       packages:
+        - build-essential
+        - clang-format
+        - cmake
+        - curl
+        - tmux
+        - zsh
     pip:
       installCmd: pip3 install --user
       listCmd: pip3 list --user
@@ -77,6 +83,7 @@
         - shfmt
         - go
         - ghq
+        - zoxide
 
 # neovim specific link
 - link:
