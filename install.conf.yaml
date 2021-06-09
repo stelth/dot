@@ -7,6 +7,8 @@
     clean:
       force: true
       recursive: true
+    ghq:
+      flags: [--update, --silent]
 
 - clean:
     ~/:
@@ -16,13 +18,9 @@
 
 - ghq:
     - repo: zsh-users/zsh-syntax-highlighting.git
-      flags: [--update, --silent]
     - repo: zsh-users/zsh-autosuggestions
-      flags: [--update, --silent]
     - repo: jreese/zsh-titles
-      flags: [--update, --silent]
     - repo: psprint/zsh-navigation-tools.git
-      flags: [--update, --silent]
 
 - package:
     nvim_linux:

@@ -22,6 +22,8 @@ class GHQ(dotbot.Plugin):
 
     def handle(self, directive, data):
         try:
+            defaults = self._context._defaults.get('ghq', {})
+            self._default_flags = defaults.get('flags', ['--silent'])
             for entry in data:
                 self._directives[directive](entry)
             return True
