@@ -54,6 +54,10 @@
         - curl
         - tmux
         - zsh
+        - latexmk
+        - texlive-science
+        - texlive-bibtex-extra
+        - texlive-latex-extra
 
 - package:
     pip:
