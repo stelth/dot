@@ -7,16 +7,15 @@
       install: true
       update: true
       clean: false
+    clean:
+      force: true
+      recursive: true
 
 - clean:
     ~/:
-      force: true
+      recursive: false
     ~/.config:
-      recursive: true
-      force: true
     ~/.bin:
-      recursive: true
-      force: true
 
 - package:
     pip:
