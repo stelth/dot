@@ -105,11 +105,11 @@
 # neovim specific link
 - link:
     ~/bin/nvim:
-      if: '[ `uname` = Linux ]'
+      if: '[ "$(uname)" = Linux ]'
       path: nvim_bin/nvim.appimage
 - link:
     ~/bin/nvim:
-      if: '[ `uname` = Darwin ]'
+      if: '[ "$(uname)" = Darwin ]'
       path: nvim_bin/nvim-osx64/bin/nvim
 
 - link:
