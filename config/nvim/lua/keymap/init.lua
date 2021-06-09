@@ -36,6 +36,7 @@ local normal_leader = {
         b = {"<cmd>Telescope git_branches<CR>", "branches"},
         s = {"<cmd>Telescope git_status<CR>", "status"},
         f = {"<cmd>Telescope git_files<CR>", "files"},
+        l = {"<cmd>LazyGit<CR>", "LazyGit"},
         h = {
             name = "+Hunk",
             n = {"<cmd>lua require('gitsigns').next_hunk()<CR>", "Next Hunk"},

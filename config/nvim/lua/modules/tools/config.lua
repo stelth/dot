@@ -25,4 +25,9 @@ function config.kommentary_config()
     })
 end
 
+function config.lazygit_setup()
+    vim.g.lazygit_floating_window_use_plenary = 1
+    vim.g.lazygit_use_neovim_remote = 0
+end
+
 return config
