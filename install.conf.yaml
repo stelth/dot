@@ -3,6 +3,7 @@
     link:
       relink: true
       create: true
+      glob: true
     clean:
       force: true
       recursive: true
@@ -98,11 +99,12 @@
 - link:
     ~/bin:
       path: bin/*
-      glob: true
     ~/:
       path: home/*
-      glob: true
       prefix: '.'
     ~/.config:
       path: config/*
-      glob: true
+
+- link:
+    ~/bin:
+      path: node/node_modules/.bin/*

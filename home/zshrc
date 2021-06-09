@@ -4,17 +4,17 @@
 
 # zmodload zsh/zprof && zprof
 
+source ~/.zshenv
+
 if [ ! -f ~/.zshrc.zwc -o ~/.zshrc -nt ~/.zshrc.zwc ]; then
     zcompile ~/.zshrc
 fi
-
-eval "$(zoxide init zsh)"
 
 if [ -d /home/linuxbrew ]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
-source ~/.zshenv
+eval "$(zoxide init zsh)"
 
 #####################################################################
 # environment
