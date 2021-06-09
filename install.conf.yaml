@@ -24,7 +24,7 @@
       if: '[ "$(uname)" = "Darwin" ]'
       updateCmds:
         - curl -L https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz --create-dirs -o nvim_bin/nvim-macos.tar.gz
-        - tar nvim_bin/nvim-macos.tar.gz -C nvim_bin
+        - tar xvf nvim_bin/nvim-macos.tar.gz -C nvim_bin
         - rm -rf nvim_bin/nvim-macos.tar.gz
     apt:
       if: '[ "$(uname)" = "Linux" ] && [ "$(whoami)" = "root" ]'
