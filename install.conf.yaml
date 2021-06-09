@@ -15,10 +15,14 @@
     ~/.bin:
 
 - ghq:
-    - zsh-users/zsh-syntax-highlighting.git
-    - zsh-users/zsh-autosuggestions
-    - jreese/zsh-titles
-    - psprint/zsh-navigation-tools.git
+    - repo: zsh-users/zsh-syntax-highlighting.git
+      flags: [--update]
+    - repo: zsh-users/zsh-autosuggestions
+      flags: [--update]
+    - repo: jreese/zsh-titles
+      flags: [--update]
+    - repo: psprint/zsh-navigation-tools.git
+      flags: [--update]
 
 - package:
     nvim_linux:
