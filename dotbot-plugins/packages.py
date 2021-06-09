@@ -16,12 +16,9 @@ class Packages(dotbot.Plugin):
         log = self._log
         defaults = self._context._defaults.get('package', {})
         for package_manager, options in data.items():
-            install = defaults.get('install', True)
             install_cmd = defaults.get('installCmd', '')
             list_cmd = defaults.get('listCmd', '')
-            update = defaults.get('update', False)
             update_cmds = defaults.get('updateCmds', [])
-            clean = defaults.get('clean', False)
             clean_cmd = defaults.get('cleanCmd', '')
 
             if isinstance(options, dict):
@@ -34,19 +31,19 @@ class Packages(dotbot.Plugin):
                 clean_cmd = options.get('cleanCmd', clean_cmd)
 
             packages = options['packages']
-            if install:
+            if install_cmd:
                 if not self._install(install_cmd, list_cmd, packages):
                     log.error(
                         '[%s] Some packages were not installed' % package_manager)
                     return False
 
-            if update:
+            if update_cmds:
                 if not self._update(update_cmds):
                     log.error(
                         '[%s] Some packages were not updated' % package_manager)
                     return False
 
-            if clean:
+            if clean_cmd:
                 if not self._clean(clean_cmd):
                     log.error(
                         '[%s] Some packages couldn\'t be cleaned' % package_manager)

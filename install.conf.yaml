@@ -3,10 +3,6 @@
     link:
       relink: true
       create: true
-    package:
-      install: true
-      update: true
-      clean: false
     clean:
       force: true
       recursive: true
