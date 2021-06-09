@@ -24,8 +24,10 @@
       if: '[ "$(uname)" = "Darwin" ]'
       updateCmds:
         - curl -L https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz --create-dirs -o nvim_bin/nvim-macos.tar.gz
-        - tar nvim_bin/nvim-macos.tar.gz -C nvim_bin
+        - tar xvf nvim_bin/nvim-macos.tar.gz -C nvim_bin
         - rm -rf nvim_bin/nvim-macos.tar.gz
+
+- package:
     apt:
       if: '[ "$(uname)" = "Linux" ] && [ "$(whoami)" = "root" ]'
       installCmd: apt-get install
@@ -42,6 +44,8 @@
         - curl
         - tmux
         - zsh
+
+- package:
     pip:
       installCmd: pip3 install --user
       listCmd: pip3 list --user
@@ -53,6 +57,8 @@
         - flake8
         - autopep8
         - vim-vint
+
+- package:
     npm:
       installCmd: npm install --prefix node
       listCmd: npm list --prefix node
@@ -62,11 +68,15 @@
         - npm
         - tree-sitter-cli
         - markdownlint-cli
+
+- package:
     lua:
       installCmd: luarocks install --server=https://luarocks.org/dev
       listCmd: luarocks list
       packages:
         - luaformatter
+
+- package:
     brew:
       if: '[ "$(whoami)" != "root" ]'
       installCmd: brew install
