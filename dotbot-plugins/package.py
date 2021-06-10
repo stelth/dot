@@ -2,7 +2,7 @@ import os
 import subprocess
 
 
-class HandlerMixin(object):
+class PackageHandler(object):
     def can_handle(self, directive):
         return directive == self._directive
 
@@ -19,7 +19,7 @@ class HandlerMixin(object):
                     '[%s] Some packages were not installed' % self._directive)
                 return False
 
-        if hasattr(self, '_update_cmds'):
+        if hasattr(self, 'update'):
             if not self.update(data):
                 log.error(
                     '[%s] Some packages were not updated' % self._directive)
@@ -48,7 +48,7 @@ class HandlerMixin(object):
         return ret == 0
 
 
-class InstallMixin(object):
+def installable(cls):
     def install(self, data):
         log = self._log
         for package_name, options in data.items():
@@ -107,8 +107,13 @@ class InstallMixin(object):
 
         return True
 
+    setattr(cls, 'install', install)
+    setattr(cls, 'is_installed', is_installed)
+    setattr(cls, 'do_installation', do_installation)
+    return cls
 
-class UpdateMixin(object):
+
+def updateable(cls):
     def update(self, data):
         log = self._log
 
@@ -136,18 +141,32 @@ class UpdateMixin(object):
             log.lowinfo('Updated %s' % package_name)
 
         # process global update cmd
-        update_cmds = self._update_cmds
-        for cmd in update_cmds:
-            cmd = "%s %s" % (cmd, " ".join(flags))
-            if self._shell_command(cmd) != 0:
-                log.error('Command [%s] failed to run' % cmd)
-                return False
+        if hasattr(self, '_update_cmds'):
+            flags = self._defaults.get('flags', '')
+            test = self._defaults.get('if', '')
+            update_cmds = self._update_cmds
 
-        log.lowinfo('Updated %s' % self._directive)
+            if test and not self._test_success(test):
+                log.lowinfo('Skipping global update of %s' % self._directive)
+                return True
+
+            for cmd in update_cmds:
+                cmd = "%s %s" % (cmd, " ".join(flags))
+                if self._shell_command(cmd) != 0:
+                    log.error('Command [%s] failed to run' % cmd)
+                    return False
+
+        log.lowinfo('Globally updated %s' % self._directive)
 
         return True
 
+    setattr(cls, 'update', update)
+    return cls
 
-class CleanMixin(object):
-    def _clean(self):
+
+def cleanable(cls):
+    def clean(self, data):
         return True
+
+    setattr(cls, 'clean', clean)
+    return cls

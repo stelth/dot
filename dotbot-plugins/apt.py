@@ -6,8 +6,9 @@ path = "%s/package.py" % pathlib.Path(__file__).parent.absolute()
 
 package = imp.load_source('package', path)
 
-
-class Apt(package.HandlerMixin, package.InstallMixin, package.UpdateMixin, dotbot.Plugin):
+@package.installable
+@package.updateable
+class Apt(package.PackageHandler, dotbot.Plugin):
     def __init__(self, context):
         self._directive = 'apt'
         self._install_cmds = ['apt-get install']

@@ -7,7 +7,9 @@ path = "%s/package.py" % pathlib.Path(__file__).parent.absolute()
 package = imp.load_source('package', path)
 
 
-class Npm(package.HandlerMixin, package.InstallMixin, package.UpdateMixin, dotbot.Plugin):
+@package.installable
+@package.updateable
+class Npm(package.PackageHandler, dotbot.Plugin):
     def __init__(self, context):
         self._directive = 'npm'
         self._install_cmds = ['npm install']

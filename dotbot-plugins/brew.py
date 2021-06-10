@@ -6,8 +6,9 @@ path = "%s/package.py" % pathlib.Path(__file__).parent.absolute()
 
 package = imp.load_source('package', path)
 
-
-class Brew(package.HandlerMixin, package.InstallMixin, package.UpdateMixin, dotbot.Plugin):
+@package.installable
+@package.updateable
+class Brew(package.PackageHandler, dotbot.Plugin):
     def __init__(self, context):
         self._directive = 'brew'
         self._install_cmds = ['brew install']

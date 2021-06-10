@@ -7,7 +7,9 @@ path = "%s/package.py" % pathlib.Path(__file__).parent.absolute()
 package = imp.load_source('package', path)
 
 
-class Pip(package.HandlerMixin, package.InstallMixin, package.UpdateMixin, dotbot.Plugin):
+@package.installable
+@package.updateable
+class Pip(package.PackageHandler, dotbot.Plugin):
     def __init__(self, context):
         self._directive = 'pip'
         self._install_cmds = ['pip3 install']
