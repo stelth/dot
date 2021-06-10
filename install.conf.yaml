@@ -8,13 +8,20 @@
       force: true
       recursive: true
     ghq:
-      flags: [--update, --silent]
+      flags: ['--update', '--silent']
+    pip:
+      flags: ['--user']
+    brew:
+      if: '[ "$(whoami)" != "root" ]'
+    npm:
+      flags: ['--prefix ~/.node']
+    apt:
+      if: '[ "$(uname)" = "Linux" ] && [ "$(whoami)" = "root" ]'
 
 - clean:
     ~/:
       recursive: false
     ~/.config:
-    ~/.bin:
 
 - ghq:
     - repo: zsh-users/zsh-syntax-highlighting.git
@@ -22,7 +29,7 @@
     - repo: jreese/zsh-titles
     - repo: psprint/zsh-navigation-tools.git
 
-- package:
+- neovim:
     nvim_linux:
       if: '[ "$(uname)" = "Linux" ]'
       updateCmds:
@@ -35,78 +42,41 @@
         - tar xvf nvim_bin/nvim-macos.tar.gz -C nvim_bin
         - rm -rf nvim_bin/nvim-macos.tar.gz
 
-- package:
-    apt:
-      if: '[ "$(uname)" = "Linux" ] && [ "$(whoami)" = "root" ]'
-      installCmd: apt-get install
-      listCmd: apt list
-      updateCmds:
-        - apt-get update -y --allow-unauthenticated
-        - apt-get upgrade -y --allow-unauthenticated
-        - apt-get dist-upgrade -y -f --allow-unauthenticated
-        - apt autoremove -y -f
-      packages:
-        - build-essential
-        - clang-format
-        - cmake
-        - curl
-        - tmux
-        - zsh
-        - latexmk
-        - texlive-science
-        - texlive-bibtex-extra
-        - texlive-latex-extra
+- apt:
+    build-essential:
+    clang-format:
+    cmake:
+    curl:
+    tmux:
+    zsh:
+    latexmk:
+    texlive-science:
+    texlive-bibtex-extra:
+    texlive-latex-extra:
 
-- package:
-    pip:
-      installCmd: pip3 install --user
-      listCmd: pip3 list --user
-      updateCmds:
-        - pip3 freeze --local | grep -v '^-e' | cut -d = -f 1 | xargs -n1 pip3 install -U --user
-      packages:
-        - pynvim
-        - yamllint
-        - flake8
-        - autopep8
-        - vim-vint
+- pip:
+    pynvim:
+    yamllint:
+    flake8:
+    autopep8:
+    vim-vint:
 
-- package:
+- npm:
     npm:
-      installCmd: npm install --prefix ~/.node
-      listCmd: npm list --prefix ~/.node
-      updateCmds:
-        - npm update --prefix ~/.node
-      packages:
-        - npm
-        - tree-sitter-cli
-        - markdownlint-cli
+    tree-sitter-cli:
+    markdownlint-cli:
 
-- package:
-    lua:
-      installCmd: luarocks install --server=https://luarocks.org/dev
-      listCmd: luarocks list
-      packages:
-        - luaformatter
+- luarocks:
+    luaformatter:
 
-- package:
-    brew:
-      if: '[ "$(whoami)" != "root" ]'
-      installCmd: brew install
-      listCmd: brew ls
-      updateCmds:
-        - brew update
-        - brew upgrade
-        - brew cleanup
-        - brew cleanup -s
-        - brew missing
-      packages:
-        - lazygit
-        - luarocks
-        - shellcheck
-        - shfmt
-        - go
-        - ghq
-        - zoxide
+- brew:
+    lazygit:
+    luarocks:
+    shellcheck:
+    shfmt:
+    go:
+    ghq:
+    zoxide:
 
 # neovim specific link
 - link:
