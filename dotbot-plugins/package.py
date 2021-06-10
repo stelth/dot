@@ -13,7 +13,7 @@ class PackageHandler(object):
         log = self._log
         self._defaults = self._context._defaults.get(self._directive, {})
 
-        if hasattr(self, '_install_cmds'):
+        if hasattr(self, 'install'):
             if not self.install(data):
                 log.error(
                     '[%s] Some packages were not installed' % self._directive)
@@ -25,8 +25,8 @@ class PackageHandler(object):
                     '[%s] Some packages were not updated' % self._directive)
                 return False
 
-        if hasattr(self, '_clean_cmd'):
-            if not self._clean():
+        if hasattr(self, 'clean'):
+            if not self.clean():
                 log.error(
                     '[%s] Some packages couldn\'t be cleaned' % self._directive)
                 return False
