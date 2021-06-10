@@ -10,7 +10,7 @@ package = imp.load_source('package', path)
 class Apt(package.HandlerMixin, package.InstallMixin, package.UpdateMixin, dotbot.Plugin):
     def __init__(self, context):
         self._directive = 'apt'
-        self._install_cmd = 'apt-get install'
+        self._install_cmds = ['apt-get install']
         self._list_cmd = 'apt list'
         self._update_cmds = [
                     'apt-get update -y --allow-unauthenticated',

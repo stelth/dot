@@ -10,7 +10,7 @@ package = imp.load_source('package', path)
 class Brew(package.HandlerMixin, package.InstallMixin, package.UpdateMixin, dotbot.Plugin):
     def __init__(self, context):
         self._directive = 'brew'
-        self._install_cmd = 'brew install'
+        self._install_cmds = ['brew install']
         self._list_cmd = 'brew ls'
         self._update_cmds = [
             'brew update',
