@@ -111,7 +111,10 @@ local efm_config = {
                     lintFormats = {"%f:%l %m", "%f:%l:%c %m", "%f: %l: %m"}
                 }
             },
-            yaml = {{lintCommand = "yamllint -f parsable -", lintStdin = true}},
+            yaml = {
+                {lintCommand = "yamllint -f parsable -", lintStdin = true},
+                {formatCommand = "prettier --parser yaml", formatStdin = true}
+            },
             python = {
                 {
                     lintCommand = "flake8 --stdin-display-name ${INPUT} -",

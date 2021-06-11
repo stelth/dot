@@ -8,13 +8,13 @@
       force: true
       recursive: true
     ghq:
-      flags: ['--update', '--silent']
+      flags: ["--update", "--silent"]
     pip:
-      flags: ['--user']
+      flags: ["--user"]
     brew:
       if: '[ "$(whoami)" != "root" ]'
     npm:
-      flags: ['--prefix ~/.node']
+      flags: ["--prefix ~/.node"]
     apt:
       if: '[ "$(uname)" = "Linux" ] && [ "$(whoami)" = "root" ]'
 
@@ -93,6 +93,6 @@
 - link:
     ~/:
       path: home/*
-      prefix: '.'
+      prefix: "."
     ~/.config:
       path: config/*
