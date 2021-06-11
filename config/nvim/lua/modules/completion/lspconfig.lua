@@ -18,7 +18,7 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] =
     })
 
 local enhance_attach = function(client, bufnr)
-    if client.name == "cpp" then
+    if client.name == "cpp" or client.name == "json" then
         client.resolved_capabilities.document_formatting = false
     end
     api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
@@ -60,7 +60,8 @@ end
 
 lspconfig.install_servers = function()
     local required_servers = {
-        "bash", "cmake", "cpp", "efm", "json", "latex", "lua", "python", "vim", "yaml"
+        "bash", "cmake", "cpp", "efm", "json", "latex", "lua", "python", "vim",
+        "yaml"
     }
     local installed_servers = require('lspinstall').installed_servers()
 
@@ -125,7 +126,11 @@ local efm_config = {
                     lintFormats = {"%f:%l:%c: %m"}
                 }
             },
-            cpp = {{formatCommand = "clang-format", formatStdin = true}}
+            cpp = {{formatCommand = "clang-format", formatStdin = true}},
+            json = {
+                {lintCommand = "jq ."},
+                {formatCommand = "prettier --parser json"}
+            }
         }
     }
 }

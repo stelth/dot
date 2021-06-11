@@ -65,6 +65,7 @@
     npm:
     tree-sitter-cli:
     markdownlint-cli:
+    prettier:
 
 - luarocks:
     luaformatter:
