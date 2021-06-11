@@ -129,7 +129,7 @@ local efm_config = {
             cpp = {{formatCommand = "clang-format", formatStdin = true}},
             json = {
                 {lintCommand = "jq ."},
-                {formatCommand = "prettier --parser json"}
+                {formatCommand = "prettier --parser json", formatStdin = true}
             }
         }
     }

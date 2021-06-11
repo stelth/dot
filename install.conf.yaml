@@ -78,6 +78,7 @@
     go:
     ghq:
     zoxide:
+    jq:
 
 # neovim specific link
 - link:
