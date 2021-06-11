@@ -72,24 +72,11 @@ lspconfig.install_servers = function()
     end
 end
 
-local function tableMerge(t1, t2)
-    for k, v in pairs(t2) do
-        if type(v) == "table" then
-            if type(t1[k] or false) == "table" then
-                tableMerge(t1[k] or {}, t2[k] or {})
-            else
-                t1[k] = v
-            end
-        else
-            t1[k] = v
-        end
-    end
-
-    return t1
-end
-
 local efm_config = {
     init_options = {documentFormatting = true},
+    filetypes = {
+        'lua', 'sh', 'markdown', 'yaml', 'python', 'vim', 'cpp', 'c', 'json'
+    },
     settings = {
         rootMarkers = {".git/"},
         languages = {
@@ -150,13 +137,14 @@ lspconfig.setup_servers = function()
 
         if server == "lua" then
             local luadev = require('lua-dev').setup({})
-
-            config = tableMerge(config, luadev)
+            config = vim.tbl_deep_extend("force", config, luadev)
         end
 
         if server == "vim" then config.init_options = {isNeovim = true} end
 
-        if server == "efm" then config = tableMerge(config, efm_config) end
+        if server == "efm" then
+            config = vim.tbl_deep_extend("force", config, efm_config)
+        end
 
         require('lspconfig')[server].setup(config)
     end
