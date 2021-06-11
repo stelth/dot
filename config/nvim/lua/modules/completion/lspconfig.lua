@@ -60,7 +60,7 @@ end
 
 lspconfig.install_servers = function()
     local required_servers = {
-        "bash", "cmake", "cpp", "efm", "latex", "lua", "python", "vim", "yaml"
+        "bash", "cmake", "cpp", "efm", "json", "latex", "lua", "python", "vim", "yaml"
     }
     local installed_servers = require('lspinstall').installed_servers()
 
