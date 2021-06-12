@@ -232,7 +232,7 @@ alias df="df -h"
 # Improve od for hexdump
 alias od='od -Ax -tx1z'
 alias hexdump='hexdump -C'
-alias vim='~/bin/nvim'
+alias vim='nvim'
 
 alias cd='echo $fg_bold[red] "Use z"'
 

@@ -29,18 +29,8 @@
     - repo: jreese/zsh-titles
     - repo: psprint/zsh-navigation-tools.git
 
-- neovim:
-    nvim_linux:
-      if: '[ "$(uname)" = "Linux" ]'
-      updateCmds:
-        - curl -L https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage --create-dirs -o nvim_bin/nvim.appimage
-        - chmod u+x nvim_bin/nvim.appimage
-    nvim_darwin:
-      if: '[ "$(uname)" = "Darwin" ]'
-      updateCmds:
-        - curl -L https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz --create-dirs -o nvim_bin/nvim-macos.tar.gz
-        - tar xvf nvim_bin/nvim-macos.tar.gz -C nvim_bin
-        - rm -rf nvim_bin/nvim-macos.tar.gz
+- neva:
+    nightly:
 
 - apt:
     build-essential:
@@ -79,16 +69,7 @@
     ghq:
     zoxide:
     jq:
-
-# neovim specific link
-- link:
-    ~/bin/nvim:
-      if: '[ "$(uname)" = Linux ]'
-      path: nvim_bin/nvim.appimage
-- link:
-    ~/bin/nvim:
-      if: '[ "$(uname)" = Darwin ]'
-      path: nvim_bin/nvim-osx64/bin/nvim
+    gojq:
 
 - link:
     ~/:
