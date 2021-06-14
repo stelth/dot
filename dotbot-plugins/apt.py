@@ -11,8 +11,8 @@ package = imp.load_source('package', path)
 class Apt(package.PackageHandler, dotbot.Plugin):
     def __init__(self, context):
         self._directive = 'apt'
-        self._install_cmds = ['apt-get install']
-        self._list_cmd = 'apt list'
+        self._install_cmds = ['apt-get install [flags] [package]']
+        self._list_cmd = 'apt list --installed [package] | grep [package]'
         self._update_cmds = [
                     'apt-get update -y --allow-unauthenticated',
                     'apt-get upgrade -y --allow-unauthenticated',

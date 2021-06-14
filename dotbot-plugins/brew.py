@@ -11,8 +11,8 @@ package = imp.load_source('package', path)
 class Brew(package.PackageHandler, dotbot.Plugin):
     def __init__(self, context):
         self._directive = 'brew'
-        self._install_cmds = ['brew install']
-        self._list_cmd = 'brew ls'
+        self._install_cmds = ['brew install [flags] [package]']
+        self._list_cmd = 'brew ls [flags] [package]'
         self._update_cmds = [
             'brew update',
             'brew upgrade',

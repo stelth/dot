@@ -17,6 +17,8 @@
       flags: ["--prefix ~/.node"]
     apt:
       if: '[ "$(uname)" = "Linux" ] && [ "$(whoami)" = "root" ]'
+    neva:
+      flags: ['--force']
 
 - clean:
     ~/:

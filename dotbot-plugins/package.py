@@ -47,6 +47,12 @@ class PackageHandler(object):
 
         return ret == 0
 
+    def _construct_command(self, base_command, flags, package_name):
+        cmd = base_command.replace('[flags]', ' '.join(flags))
+        cmd = cmd.replace('[package]', package_name)
+
+        return cmd
+
 
 def installable(cls):
     def install(self, data):
@@ -91,7 +97,7 @@ def installable(cls):
 
         package_name = package_options['package_name']
         flags = package_options['flags']
-        is_installed_cmd = '%s %s | grep %s' % (self._list_cmd, " ".join(flags), package_name)
+        is_installed_cmd = self._construct_command(self._list_cmd, flags, package_name)
         return self._shell_command(is_installed_cmd) == 0
 
     def do_installation(self, package_options):
@@ -100,7 +106,7 @@ def installable(cls):
         install_cmds = package_options['install_cmds']
 
         for cmd in install_cmds:
-            cmd = "%s %s %s" % (cmd, " ".join(flags), package_name)
+            cmd = self._construct_command(cmd, flags, package_name)
             result = self._shell_command(cmd)
             if result != 0:
                 return False
@@ -119,11 +125,12 @@ def updateable(cls):
 
         for package_name, options in data.items():
             test = self._defaults.get('if', '')
+            flags = self._defaults.get('flags', [])
             update_cmds = []
 
             if isinstance(options, dict):
-                flags = options.get('flags', '')
-                test = options.get('if', '')
+                flags = options.get('flags', flags)
+                test = options.get('if', test)
                 update_cmds = options.get('updateCmds', update_cmds)
 
             if test and not self._test_success(test):
@@ -134,6 +141,7 @@ def updateable(cls):
                 continue
 
             for cmd in update_cmds:
+                cmd = self._construct_command(cmd, flags, package_name)
                 if self._shell_command(cmd) != 0:
                     log.error('Command [%s] failed to run' % cmd)
                     return False
@@ -142,7 +150,7 @@ def updateable(cls):
 
         # process global update cmd
         if hasattr(self, '_update_cmds'):
-            flags = self._defaults.get('flags', '')
+            flags = self._defaults.get('flags', [])
             test = self._defaults.get('if', '')
             update_cmds = self._update_cmds
 
@@ -151,6 +159,7 @@ def updateable(cls):
                 return True
 
             for cmd in update_cmds:
+                cmd = self._construct_command(cmd, flags, '')
                 cmd = "%s %s" % (cmd, " ".join(flags))
                 if self._shell_command(cmd) != 0:
                     log.error('Command [%s] failed to run' % cmd)
