@@ -76,18 +76,18 @@ def installable(cls):
                     }
 
             if test and not self._test_success(test):
-                log.lowinfo('Skipping install of %s' % package_name)
+                log.debug('Skipping install of %s' % package_name)
                 continue
 
             if self.is_installed(package_options):
-                log.lowinfo('%s already installed' % package_name)
+                log.debug('%s already installed' % package_name)
                 continue
 
             if not self.do_installation(package_options):
                 log.error('Failed to install %s' % package_name)
                 return False
 
-            log.lowinfo('Installed %s' % package_name)
+            log.debug('Installed %s' % package_name)
 
         return True
 
@@ -134,7 +134,7 @@ def updateable(cls):
                 update_cmds = options.get('updateCmds', update_cmds)
 
             if test and not self._test_success(test):
-                log.lowinfo('Skipping update of %s' % package_name)
+                log.debug('Skipping update of %s' % package_name)
                 continue
 
             if not update_cmds:
@@ -146,7 +146,7 @@ def updateable(cls):
                     log.error('Command [%s] failed to run' % cmd)
                     return False
 
-            log.lowinfo('Updated %s' % package_name)
+            log.debug('Updated %s' % package_name)
 
         # process global update cmd
         if hasattr(self, '_update_cmds'):
@@ -155,7 +155,7 @@ def updateable(cls):
             update_cmds = self._update_cmds
 
             if test and not self._test_success(test):
-                log.lowinfo('Skipping global update of %s' % self._directive)
+                log.debug('Skipping global update of %s' % self._directive)
                 return True
 
             for cmd in update_cmds:
@@ -165,7 +165,7 @@ def updateable(cls):
                     log.error('Command [%s] failed to run' % cmd)
                     return False
 
-        log.lowinfo('Globally updated %s' % self._directive)
+        log.debug('Globally updated %s' % self._directive)
 
         return True
 
