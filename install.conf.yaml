@@ -52,6 +52,7 @@
     flake8:
     autopep8:
     vim-vint:
+    debugpy:
 
 - npm:
     npm:
