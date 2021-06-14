@@ -1,86 +1,15 @@
-import os
-import subprocess
-
 import dotbot
 
+import imp
+import pathlib
+path = "%s/package.py" % pathlib.Path(__file__).parent.absolute()
 
-class GHQ(dotbot.Plugin):
-    """
-    Clone remote git repositories using 'ghq get'
-    """
+package = imp.load_source('package', path)
 
-    _default_flags = ["--silent"]
 
+@package.installable
+class Ghq(package.PackageHandler, dotbot.Plugin):
     def __init__(self, context):
-        super(GHQ, self).__init__(context)
-        self._directives = {"ghq": self._get, "ghqfile": self._import}
-
-    # Dotbot methods
-
-    def can_handle(self, directive):
-        return directive in self._directives
-
-    def handle(self, directive, data):
-        try:
-            defaults = self._context._defaults.get('ghq', {})
-            self._default_flags = defaults.get('flags', ['--silent'])
-            for entry in data:
-                self._directives[directive](entry)
-            return True
-        except ValueError as e:
-            self._log.error(e)
-            return False
-
-    # Utility
-
-    @property
-    def cwd(self):
-        return self._context.base_directory()
-
-    # Inner methods
-
-    def _get(self, data):
-        repo, flags = self._parse(data, "repo")
-
-        self._run(
-            "ghq get {} {}".format(flags, repo),
-            "Cloning {}".format(repo),
-            "Failed to clone {}".format(repo),
-        )
-
-    def _import(self, data):
-        filename, flags = self._parse(data, "file")
-
-        if not os.path.isfile(filename):
-            raise ValueError("Repo file not found: {}".format(filename))
-
-        self._run(
-            "ghq get {} < {}".format(flags, filename),
-            "Importing {}".format(filename),
-            "Failed to import {}".format(filename),
-        )
-
-    def _parse(self, data, key):
-        if type(data) is dict:
-            if key not in data:
-                raise ValueError("Key '{}' not found in {}".format(key, data))
-
-            value = data[key]
-            flags = data.get("flags", self._default_flags)
-        else:
-            value = data
-            flags = self._default_flags
-
-        return value, " ".join(flags)
-
-    def _run(self, command, message=None, error_message=None):
-        if message is not None:
-            self._log.lowinfo(message)
-
-        result = subprocess.call(command, cwd=self.cwd, shell=True)
-
-        if result != 0:
-            if error_message is None:
-                error_message = "Command failed: {}".format(command)
-
-            raise ValueError(error_message)
+        self._directive = 'ghq'
+        self._install_cmds = ['ghq get [flags] [package]']
+        super(Ghq, self).__init__(context)

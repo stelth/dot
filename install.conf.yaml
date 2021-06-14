@@ -18,7 +18,7 @@
     apt:
       if: '[ "$(uname)" = "Linux" ] && [ "$(whoami)" = "root" ]'
     neva:
-      flags: ['--force']
+      flags: ["--force"]
 
 - clean:
     ~/:
@@ -26,10 +26,10 @@
     ~/.config:
 
 - ghq:
-    - repo: zsh-users/zsh-syntax-highlighting.git
-    - repo: zsh-users/zsh-autosuggestions
-    - repo: jreese/zsh-titles
-    - repo: psprint/zsh-navigation-tools.git
+    zsh-users/zsh-syntax-highlighting.git:
+    zsh-users/zsh-autosuggestions:
+    jreese/zsh-titles:
+    psprint/zsh-navigation-tools.git:
 
 - neva:
     nightly:
