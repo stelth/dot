@@ -11,10 +11,6 @@ local function setup_lsp_keymaps(client, bufnr)
                 "<cmd>lua require('lspsaga.codeaction').code_action()<CR>",
                 "Code Action"
             },
-            d = {
-                "<cmd>lua require('lspsaga.diagnostic').show_line_diagnostics()<CR>",
-                "Line Diagnostics"
-            },
             l = {
                 name = "+LSP",
                 i = {"<cmd>LspInfo<CR>", "LSP Info"},

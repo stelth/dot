@@ -16,6 +16,7 @@ function config.telescope()
         vim.cmd [[packadd popup.nvim]]
         vim.cmd [[packadd telescope-fzy-native.nvim]]
         vim.cmd [[packadd telescope-zoxide]]
+        vim.cmd [[packadd telescope-dap.nvim]]
     end
     require('telescope').setup {
         defaults = {
@@ -40,6 +41,7 @@ function config.telescope()
     require('telescope').load_extension('fzy_native')
     require('telescope').load_extension('dotfiles')
     require('telescope').load_extension('zoxide')
+    require('telescope').load_extension('dap')
 end
 
 return config
