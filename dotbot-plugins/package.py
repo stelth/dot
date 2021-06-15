@@ -161,7 +161,6 @@ def updateable(cls):
 
             for cmd in update_cmds:
                 cmd = self._construct_command(cmd, flags, '')
-                cmd = "%s %s" % (cmd, " ".join(flags))
                 if self._shell_command(cmd) != 0:
                     log.error('Command [%s] failed to run' % cmd)
                     return False
