@@ -14,5 +14,5 @@ class Npm(package.PackageHandler, dotbot.Plugin):
         self._directive = 'npm'
         self._install_cmds = ['npm install [flags] [package]']
         self._list_cmd = 'npm list [flags] [package]'
-        self._update_cmds = ['npm update']
+        self._update_cmds = ['npm update [flags]']
         super(Npm, self).__init__(context)
