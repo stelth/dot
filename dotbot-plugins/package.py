@@ -36,6 +36,7 @@ class PackageHandler(object):
         return True
 
     def _shell_command(self, command):
+        self._log.debug('Running command: %s' % command)
         with open(os.devnull, 'w') as devnull:
             stdin = stdout = stderr = devnull
             return subprocess.call(command, shell=True, stdin=stdin, stdout=stdout, stderr=stderr, cwd=self._context.base_directory())
