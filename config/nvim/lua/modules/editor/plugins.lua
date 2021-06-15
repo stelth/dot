@@ -16,4 +16,6 @@ editor['folke/zen-mode.nvim'] = {event = 'BufReadPre'}
 
 editor['ahmedkhalf/lsp-rooter.nvim'] = {}
 
+editor['ggandor/lightspeed.nvim'] = {config = conf.lightspeed}
+
 return editor
