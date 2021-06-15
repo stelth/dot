@@ -62,6 +62,7 @@
 
 - luarocks:
     luaformatter:
+      flags: ["--server=https://luarocks.org/dev"]
 
 - brew:
     lazygit:
@@ -76,7 +77,7 @@
     llvm:
     mactex-no-gui:
       if: '[ "$(uname)" == "Darwin" ]'
-      flags: [ "--cask" ]
+      flags: ["--cask"]
 
 - link:
     ~/:
