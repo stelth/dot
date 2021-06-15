@@ -73,6 +73,7 @@
     zoxide:
     jq:
     gojq:
+    llvm:
 
 - link:
     ~/:
