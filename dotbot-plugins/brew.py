@@ -19,6 +19,8 @@ class Brew(package.PackageHandler, dotbot.Plugin):
             'brew cleanup',
             'brew cleanup -s',
             'brew missing',
-            'brew autoremove'
+            'brew bundle dump',
+            'brew bundle --force cleanup',
+            'rm Brewfile'
         ]
         super(Brew, self).__init__(context)
