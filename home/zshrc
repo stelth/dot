@@ -14,6 +14,8 @@ if [ ! -f ~/.zshrc.zwc -o ~/.zshrc -nt ~/.zshrc.zwc ]; then
     zcompile ~/.zshrc
 fi
 
+export PATH="$(brew --prefix llvm)/bin:$PATH"
+
 eval "$(zoxide init zsh)"
 
 #####################################################################
