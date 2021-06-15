@@ -74,6 +74,9 @@
     jq:
     gojq:
     llvm:
+    mactex-no-gui:
+      if: '[ "$(uname)" == "Darwin" ]'
+      flags: [ "--cask" ]
 
 - link:
     ~/:
