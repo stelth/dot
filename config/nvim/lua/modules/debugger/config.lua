@@ -26,6 +26,14 @@ function config.nvim_dap()
 
     dap.configurations.c = dap.configurations.cpp
 
+    dap.listeners.after['event_initialized']['me'] = function()
+        vim.g.dap_virtual_text = true
+    end
+
+    dap.listeners.after['event_terminated']['me'] = function()
+        vim.g.dap_virtual_text = false
+    end
+
     require('modules.debugger.dapkeymaps').setup_keymaps()
 end
 
