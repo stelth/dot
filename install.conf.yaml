@@ -20,7 +20,7 @@
     neva:
       flags: ["--force"]
     luarocks:
-      flags: ["--local"]
+      flags: ["--tree ~/.luarocks"]
 
 - clean:
     ~/:
@@ -64,7 +64,7 @@
 
 - luarocks:
     luaformatter:
-      flags: ["--server=https://luarocks.org/dev", "--local"]
+      flags: ["--server=https://luarocks.org/dev", "--tree ~/.luarocks"]
 
 - brew:
     lazygit:
