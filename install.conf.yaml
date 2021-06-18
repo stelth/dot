@@ -19,6 +19,8 @@
       if: '[ "$(uname)" = "Linux" ] && [ "$(whoami)" = "root" ]'
     neva:
       flags: ["--force"]
+    luarocks:
+      flags: ["--local"]
 
 - clean:
     ~/:
@@ -62,7 +64,7 @@
 
 - luarocks:
     luaformatter:
-      flags: ["--server=https://luarocks.org/dev"]
+      flags: ["--server=https://luarocks.org/dev", "--local"]
 
 - brew:
     lazygit:

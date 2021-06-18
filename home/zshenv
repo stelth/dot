@@ -6,7 +6,7 @@ export LESS='-RQM'
 export GZIP='-v9N'
 export BROWSER='firefox'
 export SHELL=zsh
-export PATH=$HOME/.node/node_modules/.bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/local/sbin:~/.local/bin:$PATH
+export PATH=$HOME/.node/node_modules/.bin:$HOME/.luarocks/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/local/sbin:~/.local/bin:$PATH
 
 #---- SVN -----------------#
 export SVN_EDITOR="vim"
