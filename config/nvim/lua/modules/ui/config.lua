@@ -45,22 +45,6 @@ function config.nvim_tree()
     }
 end
 
-function config.gitsigns()
-    if not packer_plugins['plenary.nvim'].loaded then
-        vim.cmd [[packadd plenary.nvim]]
-    end
-    require('gitsigns').setup {
-        signs = {
-            add = {hl = 'GitGutterAdd', text = '▋'},
-            change = {hl = 'GitGutterChange', text = '▋'},
-            delete = {hl = 'GitGutterDelete', text = '▋'},
-            topdelete = {hl = 'GitGutterDeleteChange', text = '▔'},
-            changedelete = {hl = 'GitGutterChange', text = '▎'}
-        },
-        keymaps = {}
-    }
-end
-
 function config.indent_blankline()
     vim.g.indent_blankline_char = "|"
     vim.g.indent_blankline_space_char = "."
