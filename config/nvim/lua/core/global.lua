@@ -11,6 +11,7 @@ function global:load_variables()
     self.cache_dir = home .. path_sep .. '.cache' .. path_sep .. 'nvim' ..
                          path_sep
     self.modules_dir = self.vim_path .. path_sep .. 'modules'
+    self.modules = {'ui', 'completion', 'debugger', 'editor', 'lang', 'tools'}
     self.path_sep = path_sep
     self.home = home
     self.data_dir = string.format('%s/site/', vim.fn.stdpath('data'))
