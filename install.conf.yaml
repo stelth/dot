@@ -19,8 +19,6 @@
       if: '[ "$(uname)" = "Linux" ] && [ "$(whoami)" = "root" ]'
     neva:
       flags: ["--force"]
-    luarocks:
-      flags: ["--tree ~/.luarocks"]
 
 - clean:
     ~/:
@@ -61,14 +59,10 @@
     tree-sitter-cli:
     markdownlint-cli:
     prettier:
-
-- luarocks:
-    luaformatter:
-      flags: ["--server=https://luarocks.org/dev", "--tree ~/.luarocks"]
+    yarn:
 
 - brew:
     lazygit:
-    luarocks:
     shellcheck:
     shfmt:
     go:
@@ -80,6 +74,12 @@
     mactex-no-gui:
       if: '[ "$(uname)" == "Darwin" ]'
       flags: ["--cask"]
+    glow:
+
+- cargo:
+    cargo-update:
+    selene:
+    stylua:
 
 - link:
     ~/:
