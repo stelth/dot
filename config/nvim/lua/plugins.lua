@@ -1,4 +1,10 @@
+local global = require("global")
+
 local config = {
+	compile_path = global.data_dir .. "/plugin/packer_compiled.vim",
+	display = {
+		open_fn = require("packer.util").float,
+	},
 	profile = {
 		enable = true,
 		threshold = 1,
