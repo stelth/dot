@@ -338,6 +338,13 @@ return require("packer").startup({
 		})
 
 		use({
+			"aserowy/tmux.nvim",
+			config = function()
+				require("config.tmux")
+			end,
+		})
+
+		use({
 			"wellle/targets.vim",
 		})
 
