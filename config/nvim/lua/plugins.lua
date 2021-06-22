@@ -157,6 +157,7 @@ return require("packer").startup({
 				"trouble.nvim",
 				"telescope-symbols.nvim",
 				"telescope-dap.nvim",
+				"telescope-zoxide",
 			},
 			requires = {
 				"nvim-telescope/telescope-z.nvim",
@@ -166,6 +167,7 @@ return require("packer").startup({
 				"nvim-telescope/telescope-symbols.nvim",
 				"nvim-telescope/telescope-fzy-native.nvim",
 				"nvim-telescope/telescope-dap.nvim",
+				"jvgrootveld/telescope-zoxide",
 			},
 		})
 

@@ -157,7 +157,7 @@ local leader = {
 		f = { "<cmd>Telescope find_files<cr>", "Find File" },
 		r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
 		n = { "<cmd>enew<cr>", "New File" },
-		z = "Zoxide",
+		z = { "<cmd>Telescope zoxide list<CR>", "Zoxide" },
 		d = "Dot Files",
 	},
 	o = {
