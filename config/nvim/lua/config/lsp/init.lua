@@ -69,8 +69,7 @@ local function setup_servers()
 		local config = make_config()
 
 		if server == "lua" then
-			local luadev = require("lua-dev").setup({})
-			config = vim.tbl_deep_extend("force", config, luadev)
+			config = require("lua-dev").setup({ lspconfig = config })
 		end
 
 		if server == "vim" then
