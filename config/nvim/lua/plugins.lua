@@ -273,6 +273,10 @@ return require("packer").startup({
 		})
 
 		use({
+			"kevinhwang91/nvim-hlslens",
+		})
+
+		use({
 			"folke/lsp-colors.nvim",
 		})
 

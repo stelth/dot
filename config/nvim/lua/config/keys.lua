@@ -39,13 +39,13 @@ util.map("", "<esc>", ":noh<cr>")
 util.nnoremap("gw", "*N")
 util.xnoremap("gw", "*N")
 
--- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
-util.nnoremap("n", "'Nn'[v:searchforward]", { expr = true })
-util.xnoremap("n", "'Nn'[v:searchforward]", { expr = true })
-util.onoremap("n", "'Nn'[v:searchforward]", { expr = true })
-util.nnoremap("N", "'nN'[v:searchforward]", { expr = true })
-util.xnoremap("N", "'nN'[v:searchforward]", { expr = true })
-util.onoremap("N", "'nN'[v:searchforward]", { expr = true })
+util.nnoremap("n", "<cmd>execute('normal!' . v:count1 . 'n')<CR><cmd>lua require('hlslens').start()<CR>")
+util.nnoremap("N", "<cmd>execute('normal!' . v:count1 . 'N')<CR><cmd>lua require('hlslens').start()<CR>")
+util.nnoremap("*", "*<cmd>lua require('hlslens').start()<CR>")
+util.nnoremap("#", "#<cmd>lua require('hlslens').start()<CR>")
+util.nnoremap("g*", "g*<cmd>lua require('hlslens).start()<CR>")
+util.nnoremap("g#", "g#<cmd>lua require('hlslens').start()<CR>")
+util.nnoremap("<BS>", ":noh<CR>")
 
 -- telescope <ctrl-r> in command line
 vim.cmd([[cmap <C-R> <Plug>(TelescopeFuzzyCommandSearch)]])
