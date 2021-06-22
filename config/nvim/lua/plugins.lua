@@ -241,6 +241,16 @@ return require("packer").startup({
 		})
 
 		use({
+			"plasticboy/vim-markdown",
+			opt = true,
+			requires = "godlygeek/tabular",
+			ft = "markdown",
+			config = function()
+				require("config.markdown")
+			end,
+		})
+
+		use({
 			"ggandor/lightspeed.nvim",
 			keys = { "s", "S", "f", "F", "t", "T" },
 			config = function()
