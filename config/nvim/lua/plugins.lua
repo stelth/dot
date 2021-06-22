@@ -342,6 +342,10 @@ return require("packer").startup({
 		})
 
 		use({
+			"DanilaMihailov/vim-tips-wiki",
+		})
+
+		use({
 			"tpope/vim-unimpaired",
 		})
 	end,
