@@ -14,7 +14,7 @@ function global:load_variables()
 	self.path_sep = path_sep
 	self.home = home
 	self.data_dir = string.format("%s/site/", vim.fn.stdpath("data"))
-	self.sessions_dir = self.data_dir .. "/sessions/"
+	self.sessions_dir = self.cache_dir .. "/session/"
 end
 
 global:load_variables()

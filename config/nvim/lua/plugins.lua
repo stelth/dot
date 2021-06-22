@@ -1,3 +1,5 @@
+local vim = vim
+
 local config = {
 	profile = {
 		enable = true,
@@ -146,6 +148,7 @@ return require("packer").startup({
 		use({
 			"lukas-reineke/indent-blankline.nvim",
 			event = "BufReadPre",
+			branch = "lua",
 			config = function()
 				require("config.blankline")
 			end,

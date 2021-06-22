@@ -1,11 +1,14 @@
 local wk = require("which-key")
 local util = require("util")
 
-vim.o.timeoutlen = 0
-
 local presets = require("which-key.plugins.presets")
 presets.objects["a("] = nil
-wk.setup({ show_help = true, triggers = "auto", plugins = { spelling = true } })
+wk.setup({
+	plugins = {
+		spelling = { enabled = true, suggestions = 20 },
+		presets = { operators = true, text_objects = true },
+	},
+})
 
 -- Move to window using the <ctrl> movement keys
 util.nmap("<left>", "<C-w>h")
