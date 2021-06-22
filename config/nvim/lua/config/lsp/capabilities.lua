@@ -7,8 +7,6 @@ function M.list_lsp_capabilities()
 	local win_info = lspui.percentage_range_window(0.8, 0.7)
 	local bufnr, win_id = win_info.bufnr, win_info.win_id
 
-	local buf_lines = {}
-
 	local buf_client_names = {}
 	for _, client in ipairs(buf_clients) do
 		table.insert(buf_client_names, client.name)
@@ -44,11 +42,16 @@ function M.list_lsp_capabilities()
 	end
 
 	local function make_client_info(client)
-		return {
-			"Client: " .. client.name .. " (id " .. tostring(client.id) .. ")",
-			"\t" .. table.concat(available_capabilities(client.resolved_capabilities or {}), ", "),
-		}
+		local client_lines = {}
+		vim.list_extend(client_lines, { "Client: " .. client.name .. " (id " .. tostring(client.id) .. ")" })
+		for _, capability in ipairs(available_capabilities(client.resolved_capabilities)) do
+			vim.list_extend(client_lines, { "\t" .. capability })
+		end
+
+		return client_lines
 	end
+
+	local buf_lines = {}
 
 	for _, client in ipairs(buf_clients) do
 		vim.list_extend(buf_lines, make_client_info(client))
