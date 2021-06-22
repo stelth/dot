@@ -76,6 +76,7 @@
       flags: ["--cask"]
     glow:
     hub:
+    starship:
 
 - cargo:
     cargo-update:

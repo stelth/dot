@@ -104,27 +104,7 @@ zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
 zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
 
-PROMPT='%{[33m%}[%35<..<%~]%{[m%}${vcs_info_msg_0_}
-%{[$[31+$RANDOM % 7]m%}%U%B%#'"%b%{[m%}%u "
-
-if [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] ; then
-    PROMPT="%{[37m%}${HOST%%.*} ${PROMPT}"
-fi
-
-if [ $UID = "0" ]; then
-    PROMPT="%B%{[31m%}%/#%{%}%b "
-    PROMPT2="%B%{[31m%}%_#%{%}%b "
-fi
-
-# Multi line prompt
-PROMPT2="%_%% "
-# Spell miss prompt
-SPROMPT="correct> %R -> %r [n,y,a,e]? "
-
-# source ~/dotfiles/zsh-titles/titles.plugin.zsh
-# source ~/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# source ~/dotfiles/zsh-autosuggestions/zsh-autosuggestions.zsh
-# source ~/dotfiles/zsh-navigation-tools/zsh-navigation-tools.plugin.zsh
+source <(starship init zsh --print-full-init)
 
 source "$(ghq list -p zsh-titles)/titles.plugin.zsh"
 source "$(ghq list -p zsh-syntax-highlighting)/zsh-syntax-highlighting.zsh"
