@@ -2,31 +2,36 @@
     name = Jason Cox
     email = Jason.P.Cox@ibm.com
 
-[merge]
-    conflicttyle = diff3
-    renamelimit = 999999
-    tool = nvimdiff
+[color]
+    ui = true
 
-[mergetool "nvimdiff"]
-    prompt = false
-    cmd = ~/bin/nvim -d $LOCAL $REMOTE $MERGED
-
-[status]
-    showUntrackedFiles = all
-
-[push]
-    default = simple
-    followtags = true
+[core]
+    pager = delta
 
 [pull]
-    rebase = false
+    ff = only
+
+[github]
+    user = JasonCoxIBM
+
+[delta]
+    side-by-side = false
+    line-numbers = true
+
+[init]
+    defaultBranch = main
+
+[diff]
+    tool = vimdiff3
+
+[difftool "vimdiff3"]
+    path = nvim
+
+[merge]
+    tool = vimdiff3
+
+[mergetool "vimdiff3"]
+    path = nvim
 
 [ghq]
     root = ~/repos/
-
-[diff]
-    tool = nvimdiff
-
-[difftool "nvimdiff"]
-    prompt = false
-    cmd = ~/bin/nvim -d $LOCAL $REMOTE
