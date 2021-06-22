@@ -23,13 +23,14 @@ return require("packer").startup({
 			"neovim/nvim-lspconfig",
 			opt = true,
 			event = "BufReadPre",
-			wants = { "null-ls.nvim", "nvim-lspinstall" },
+			wants = { "null-ls.nvim", "nvim-lspinstall", "lsp_signature.nvim" },
 			config = function()
 				require("config.lsp")
 			end,
 			requires = {
 				"kabouzeid/nvim-lspinstall",
 				"jose-elias-alvarez/null-ls.nvim",
+				"ray-x/lsp_signature.nvim",
 			},
 		})
 
