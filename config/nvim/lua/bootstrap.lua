@@ -10,6 +10,10 @@ local install_packer = function()
 	end
 
 	vim.cmd([[packadd packer.nvim]])
+
+	require("packer").init({
+		compile_path = global.data_dir .. "/plugin/packer_compiled.vim",
+	})
 end
 
 local createdir = function()
