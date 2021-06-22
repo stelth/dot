@@ -1,5 +1,4 @@
 local execute = vim.api.nvim_command
-local vim = vim
 local global = require("global")
 
 local install_packer = function()

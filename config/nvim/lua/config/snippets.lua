@@ -1,5 +1,4 @@
 local util = require("util")
-local vim = vim
 
 local function on_tab()
 	if vim.fn.call("vsnip#available", { 1 }) == 1 then

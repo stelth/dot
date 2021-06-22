@@ -1,5 +1,3 @@
-local vim = vim
-
 local config = {
 	profile = {
 		enable = true,
@@ -24,6 +22,21 @@ return require("packer").startup({
 			requires = {
 				"kabouzeid/nvim-lspinstall",
 				"jose-elias-alvarez/null-ls.nvim",
+			},
+		})
+
+		-- DAP
+		use({
+			"mfussenegger/nvim-dap",
+			opt = true,
+			event = "BufReadPre",
+			wants = { "nvim-dap-python" },
+			config = function()
+				require("config.dap")
+			end,
+			requires = {
+				"mfussenegger/nvim-dap-python",
+				"theHamsta/nvim-dap-virtual-text",
 			},
 		})
 
@@ -134,6 +147,7 @@ return require("packer").startup({
 				"telescope-project.nvim",
 				"trouble.nvim",
 				"telescope-symbols.nvim",
+				"telescope-dap.nvim",
 			},
 			requires = {
 				"nvim-telescope/telescope-z.nvim",
@@ -142,6 +156,7 @@ return require("packer").startup({
 				"nvim-lua/plenary.nvim",
 				"nvim-telescope/telescope-symbols.nvim",
 				"nvim-telescope/telescope-fzy-native.nvim",
+				"nvim-telescope/telescope-dap.nvim",
 			},
 		})
 
@@ -168,7 +183,6 @@ return require("packer").startup({
 		use({
 			"akinsho/nvim-toggleterm.lua",
 			keys = "<M-`>",
-			module = "folke.util",
 			config = function()
 				require("config.terminal")
 			end,

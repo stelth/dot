@@ -1,5 +1,4 @@
 local global = require("global")
-local vim = vim
 
 vim.g.prosession_on_startup = 1
 vim.g.auto_session_pre_save_cmds = { "tabdo NvimTreeClose" }

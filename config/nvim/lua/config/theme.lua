@@ -1,5 +1,3 @@
-local vim = vim
-
 vim.g.material_style = "pale_night"
 vim.g.material_italic_comments = 1
 vim.g.material_italic_keywords = 1

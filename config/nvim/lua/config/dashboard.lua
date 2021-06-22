@@ -1,5 +1,3 @@
-local vim = vim
-
 vim.g.dashboard_default_executive = "telescope"
 vim.g.dashboard_preview_pipeline = "lolcat"
 vim.g.dashboard_enable_session = 0

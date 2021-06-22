@@ -1,5 +1,4 @@
 local global = require("global")
-local vim = vim
 
 local function bind_option(options)
 	for k, v in pairs(options) do

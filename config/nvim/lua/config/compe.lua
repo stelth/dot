@@ -1,5 +1,4 @@
 local util = require("util")
-local vim = vim
 
 vim.opt.completeopt = "menuone,noselect"
 
