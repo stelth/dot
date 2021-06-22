@@ -225,11 +225,14 @@ return require("packer").startup({
 			end,
 		})
 
+		-- Status line
 		use({
-			"glepnir/galaxyline.nvim",
+			"hoob3rt/lualine.nvim",
+			event = "VimEnter",
 			config = function()
-				require("config.galaxyline")
+				require("config.lualine")
 			end,
+			requires = { "kyazdani42/nvim-web-devicons", opt = true },
 		})
 
 		use({
