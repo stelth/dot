@@ -233,6 +233,14 @@ return require("packer").startup({
 		})
 
 		use({
+			"ggandor/lightspeed.nvim",
+			keys = { "s", "S", "f", "F", "t", "T" },
+			config = function()
+				require("config.lightspeed")
+			end,
+		})
+
+		use({
 			"folke/trouble.nvim",
 			event = "BufReadPre",
 			requires = "kyazdani42/nvim-web-devicons",
