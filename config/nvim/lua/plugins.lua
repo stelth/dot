@@ -172,6 +172,19 @@ return require("packer").startup({
 		})
 
 		use({
+			"Shatur/neovim-cmake",
+			opt = true,
+			cmd = { "CMake" },
+			wants = { "telescope.nvim", "asyncrun.vim", "nvim-dap" },
+			requires = {
+				"skywind3000/asyncrun.vim",
+			},
+			config = function()
+				require("config.neovim-cmake")
+			end,
+		})
+
+		use({
 			"lukas-reineke/indent-blankline.nvim",
 			event = "BufReadPre",
 			branch = "lua",
