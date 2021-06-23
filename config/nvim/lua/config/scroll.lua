@@ -12,3 +12,5 @@ map["zz"] = { "zz", { "150" } }
 map["zb"] = { "zb", { "150" } }
 
 require("neoscroll.config").set_mappings(map)
+
+vim.cmd([[autocmd BufWinEnter quickfix setlocal scrolloff=0]])
