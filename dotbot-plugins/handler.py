@@ -63,18 +63,21 @@ def installable(cls):
             test = self._defaults.get('if', '')
             install_cmds = self._defaults.get(
                 'installCmds', self._install_cmds)
+            list_cmd = self._defaults.get('listCmd', self._list_cmd)
 
             if isinstance(options, dict):
                 flags = options.get('flags', flags)
                 test = options.get('if', test)
                 install_cmds = options.get('installCmds', install_cmds)
+                list_cmd = options.get('listCmd', list_cmd)
 
             package_options = {
-                    'package_name': package_name,
-                    'flags': flags,
-                    'test': test,
-                    'install_cmds': install_cmds
-                    }
+                'package_name': package_name,
+                'flags': flags,
+                'test': test,
+                'install_cmds': install_cmds,
+                'list_cmd': list_cmd
+            }
 
             if test and not self._test_success(test):
                 log.debug('Skipping install of %s' % package_name)
@@ -98,7 +101,9 @@ def installable(cls):
 
         package_name = package_options['package_name']
         flags = package_options['flags']
-        is_installed_cmd = self._construct_command(self._list_cmd, flags, package_name)
+        list_cmd = package_options['list_cmd']
+        is_installed_cmd = self._construct_command(
+            list_cmd, flags, package_name)
         return self._shell_command(is_installed_cmd) == 0
 
     def do_installation(self, package_options):
