@@ -2,7 +2,7 @@ import dotbot
 
 import imp
 import pathlib
-path = "%s/package.py" % pathlib.Path(__file__).parent.absolute()
+path = "%s/handler.py" % pathlib.Path(__file__).parent.absolute()
 
 package = imp.load_source('package', path)
 
