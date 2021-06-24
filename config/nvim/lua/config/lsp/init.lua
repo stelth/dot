@@ -59,30 +59,29 @@ local function make_config()
 	return { capabilities = capabilities, on_attach = on_attach }
 end
 
+local servers = {
+	bashls = {},
+	cmake = {},
+	clangd = {},
+	efm = require("config.lsp.efm").config,
+	jsonls = { cmd = { "vscode-json-languageserver", "--stdio" } },
+	texlab = {},
+	pyright = {},
+	sumneko_lua = require("lua-dev").setup({
+		lspconfig = { cmd = { "lua-language-server" } },
+	}),
+	vimls = {},
+	yamlls = {},
+}
+
 local function setup_servers()
-	local lspinstall = require("lspinstall")
-	lspinstall.setup()
-
-	local servers = lspinstall.installed_servers()
-
-	for _, server in pairs(servers) do
-		local config = make_config()
-
-		if server == "lua" then
-			config = require("lua-dev").setup({ lspconfig = config })
+	local lspconfig = require("lspconfig")
+	for server, config in pairs(servers) do
+		lspconfig[server].setup(vim.tbl_deep_extend("force", make_config(), config))
+		local cfg = lspconfig[server]
+		if not (cfg and cfg.cmd and vim.fn.executable(cfg.cmd[1]) == 1) then
+			vim.notify(server .. ": cmd not found: " .. vim.inspect(cfg.cmd))
 		end
-
-		if server == "vim" then
-			config.init_options = {
-				isNeovim = true,
-			}
-		end
-
-		if server == "efm" then
-			config = vim.tbl_deep_extend("force", config, require("config.lsp.efm").config)
-		end
-
-		require("lspconfig")[server].setup(config)
 	end
 
 	require("null-ls").setup(make_config())
