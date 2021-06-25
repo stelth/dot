@@ -133,11 +133,14 @@
     mactex-no-gui:
       if: '[ "$(uname)" = "Darwin" ]'
       flags: ["--cask"]
+    hammerspoon:
+      if: '[ "$(Uname)" = "Darwin" ]'
     glow:
     hub:
     starship:
     efm-langserver:
     texlab:
+    git-delta:
 
 - cargo:
     cargo-update:
