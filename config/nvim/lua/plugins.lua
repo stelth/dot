@@ -127,6 +127,13 @@ return require("packer").startup({
 		})
 
 		use({
+			"norcalli/nvim-terminal.lua",
+			config = function()
+				require("terminal").setup()
+			end,
+		})
+
+		use({
 			"nvim-lua/plenary.nvim",
 			"nvim-lua/popup.nvim",
 		})
