@@ -165,6 +165,7 @@ return require("packer").startup({
         "telescope-symbols.nvim",
         "telescope-dap.nvim",
         "telescope-zoxide",
+        "neovim-cmake",
       },
       requires = {
         "nvim-telescope/telescope-z.nvim",
@@ -175,20 +176,18 @@ return require("packer").startup({
         "nvim-telescope/telescope-fzy-native.nvim",
         "nvim-telescope/telescope-dap.nvim",
         "jvgrootveld/telescope-zoxide",
+        {
+          "Shatur/neovim-cmake",
+          wants = { "asyncrun.vim", "nvim-dap" },
+          cmd = { "CMake" },
+          requires = {
+            "skywind3000/asyncrun.vim",
+          },
+          config = function()
+            require("config.cmake")
+          end,
+        },
       },
-    })
-
-    use({
-      "Shatur/neovim-cmake",
-      opt = true,
-      cmd = { "CMake" },
-      wants = { "telescope.nvim", "asyncrun.vim", "nvim-dap" },
-      requires = {
-        "skywind3000/asyncrun.vim",
-      },
-      config = function()
-        require("config.cmake")
-      end,
     })
 
     use({
