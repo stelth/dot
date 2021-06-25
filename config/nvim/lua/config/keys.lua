@@ -4,10 +4,10 @@ local util = require("util")
 local presets = require("which-key.plugins.presets")
 presets.objects["a("] = nil
 wk.setup({
-	plugins = {
-		spelling = { enabled = true, suggestions = 20 },
-		presets = { operators = true, text_objects = true },
-	},
+	show_help = false,
+	triggers = "auto",
+	plugins = { spelling = true, presets = { operators = true, text_objects = true } },
+	key_labels = { ["<leader>"] = "SPC" },
 })
 
 -- Move to window using the <ctrl> movement keys

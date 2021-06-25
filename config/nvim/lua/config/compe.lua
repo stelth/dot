@@ -22,7 +22,7 @@ require("compe").setup({
 		calc = true,
 		nvim_lsp = true,
 		nvim_lua = false,
-		vsnip = true,
+		luasnip = true,
 		treesitter = false,
 		emoji = true,
 		spell = true,

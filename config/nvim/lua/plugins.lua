@@ -55,15 +55,15 @@ return require("packer").startup({
 			config = function()
 				require("config.compe")
 			end,
-			wants = { "vim-vsnip", "vim-vsnip-integ", "friendly-snippets" },
+			wants = { "LuaSnip" },
 			requires = {
 				{
-					"hrsh7th/vim-vsnip",
+					"L3MON4D3/LuaSnip",
+					wants = "friendly-snippets",
 					config = function()
 						require("config.snippets")
 					end,
 				},
-				"hrsh7th/vim-vsnip-integ",
 				"rafamadriz/friendly-snippets",
 				{
 					"windwp/nvim-autopairs",
