@@ -6,12 +6,13 @@ import subprocess
 
 class PackageHandler(dotbot.Plugin):
     def __init__(self, context):
-        self._directives = ['package']
+        self._directives = {'package'}
         super(PackageHandler, self).__init__(context)
 
     def can_handle(self, directive):
         defaults = self._context._defaults.get('packageHandler', {})
-        self._directives.extend(defaults.get('managers', []))
+        self._directives = self._directives | {
+            x for x in defaults.get('managers', [])}
 
         return directive in self._directives
 
