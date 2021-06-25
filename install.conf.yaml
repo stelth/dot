@@ -7,18 +7,68 @@
     clean:
       force: true
       recursive: true
+    packageHandler:
+      managers:
+        - apt
+        - brew
+        - cargo
+        - ghq
+        - luarocks
+        - neva
+        - npm
+        - pip
     ghq:
+      installCmds: ["ghq get [flags] [package]"]
       flags: ["--update", "--silent"]
     pip:
+      installCmds: ["pip3 install [flags] [package]"]
+      listCmd: "pip3 list [flags] | grep [package]"
+      updateCmds:
+        [
+          "pip3 freeze --local [flags] | grep -v '^-e' | cut -d = -f 1 | xargs -n1 pip3 install -U [flags]",
+        ]
       flags: ["--user"]
     brew:
+      installCmds: ["brew install [flags] [package]"]
+      listCmd: "brew ls [flags] [package]"
+      updateCmds:
+        [
+          "brew update",
+          "brew upgrade",
+          "brew cleanup",
+          "brew cleanup -s",
+          "brew missing",
+          "brew bundle dump",
+          "brew bundle --force cleanup",
+          "rm Brewfile",
+        ]
       if: '[ "$(whoami)" != "root" ]'
     npm:
+      installCmds: ["npm install [flags] [package]"]
+      listCmd: "npm list [flags] [package]"
+      updateCmds: ["npm update [flags]"]
       flags: ["--prefix ~/.node"]
     apt:
+      installCmds: ["apt-get install [flags] [package]"]
+      listCmd: "apt list --installed [package] | grep [package]"
+      updateCmds:
+        [
+          "apt-get update -y --allow-unauthenticated",
+          "apt-get upgrade -y --allow-unauthenticated",
+          "apt-get dist-upgrade -y -f --allow-unauthenticated",
+          "apt autoremove -y -f",
+        ]
       if: '[ "$(uname)" = "Linux" ] && [ "$(whoami)" = "root" ]'
     neva:
+      installCmds: ["~/dotfiles/dotbot-plugins/neva install [package] [flags]"]
       flags: ["--force"]
+    cargo:
+      installCmds: ["cargo install [flags] [package]"]
+      listCmd: "cargo install [flags] --list | grep [package]"
+      updateCmds: ["cargo install-update -a"]
+    luarocks:
+      installCmds: ["luarocks install [flags] [package]"]
+      listCmd: "luarocks list [flags] | grep [package]"
 
 - clean:
     ~/:
@@ -94,10 +144,8 @@
 - package:
     lua-language-server:
       installCmds: ["~/dotfiles/dotbot-plugins/scripts/sumneko_lua.sh"]
-      listCmd: "return 1"
     jdtls:
       installCmds: ["~/dotfiles/dotbot-plugins/scripts/jdtls.sh"]
-      listCmd: "return 1"
 
 - link:
     ~/:
