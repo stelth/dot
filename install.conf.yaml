@@ -93,7 +93,10 @@
 
 - package:
     lua-language-server:
-      installCmds: ["./dotbot-plugins/scripts/sumneko_lua.sh"]
+      installCmds: ["~/dotfiles/dotbot-plugins/scripts/sumneko_lua.sh"]
+      listCmd: "return 1"
+    jdtls:
+      installCmds: ["~/dotfiles/dotbot-plugins/scripts/jdtls.sh"]
       listCmd: "return 1"
 
 - link:
