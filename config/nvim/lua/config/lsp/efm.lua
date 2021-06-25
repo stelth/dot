@@ -56,6 +56,13 @@ local clangformat = {
   formatStdin = true,
 }
 
+local eslint = {
+  lintCommand = "eslint_d -f visualstudio --stdin --stdin-filename ${INPU}",
+  lintIgnoreExitCode = true,
+  lintStdin = true,
+  lintFormats = { "%f(%l,%c): %tarning %m", "%f(%l,%c): %trror %m" },
+}
+
 M.config = {
   init_options = {
     documentFormatting = true,
@@ -66,6 +73,12 @@ M.config = {
     },
     languages = {
       lua = { stylua, selene },
+      typescript = { prettier },
+      javascript = { eslint, prettier },
+      typescriptreact = { eslint, prettier },
+      javascriptreact = { eslint, prettier },
+      ["typescript.tsx"] = { eslint, prettier },
+      ["javascript.tsx"] = { eslint, prettier },
       yaml = { prettier },
       json = { prettier },
       markdown = { prettier, markdownlint },

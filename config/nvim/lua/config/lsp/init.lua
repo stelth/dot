@@ -47,6 +47,10 @@ local function on_attach(client, bufnr)
   require("config.lsp.completion").setup(client, bufnr)
   require("config.lsp.highlighting").setup(client)
   require("config.lsp.signature").setup()
+
+  if client.name == "typescript" or client.name == "tsserver" then
+    require("config.lsp.ts-utils").setup(client)
+  end
 end
 
 local function make_config()
@@ -71,6 +75,7 @@ local servers = {
   sumneko_lua = require("lua-dev").setup({
     lspconfig = { cmd = { "lua-language-server" } },
   }),
+  tsserver = {},
   vimls = {},
   yamlls = {},
 }

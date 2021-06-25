@@ -116,6 +116,8 @@
     pyright:
     vim-language-server:
     yaml-language-server:
+    eslint_d:
+    typescript-language-server:
 
 - brew:
     lazygit:
