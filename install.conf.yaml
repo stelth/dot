@@ -97,6 +97,7 @@
     texlive-latex-extra:
 
 - pip:
+    pip:
     pynvim:
     yamllint:
     flake8:
