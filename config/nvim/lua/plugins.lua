@@ -187,7 +187,7 @@ return require("packer").startup({
         "skywind3000/asyncrun.vim",
       },
       config = function()
-        require("config.neovim-cmake")
+        require("config.cmake")
       end,
     })
 
