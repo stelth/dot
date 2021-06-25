@@ -90,7 +90,7 @@ local function setup_servers()
     end
   end
 
-  require("null-ls").setup(make_config())
+  require("null-ls").setup()
 end
 
 setup_servers()
