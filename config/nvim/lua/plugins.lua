@@ -29,7 +29,7 @@ return require("packer").startup({
       end,
       requires = {
         "jose-elias-alvarez/nvim-lsp-ts-utils",
-        "jose-elias-alvarez/null-ls.nvim",
+        { "folke/null-ls.nvim", branch = "lspconfig" },
         "ray-x/lsp_signature.nvim",
       },
     })
