@@ -21,13 +21,16 @@ end
 
 function M.setup(client, buf)
   local ft = vim.api.nvim_buf_get_option(buf, "filetype")
-  local nls = require("config.lsp.null-ls")
+  local efm_formatted = require("config.lsp.efm").formatted_languages
+  local null_formatted = {}
 
   local enable = false
-  if nls.has_formatter(ft) then
+  if efm_formatted[ft] then
+    enable = client.name == "efm"
+  elseif null_formatted[ft] then
     enable = client.name == "null-ls"
   else
-    enable = client.name ~= "null-ls"
+    enable = not (client.name == "efm" or client.name == "null-ls")
   end
 
   client.resolved_capabilities.document_formatting = enable
