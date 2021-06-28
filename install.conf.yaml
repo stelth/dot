@@ -141,6 +141,9 @@
     efm-langserver:
     texlab:
     git-delta:
+    exa:
+    tmuxinator:
+    fish:
 
 - cargo:
     cargo-update:
