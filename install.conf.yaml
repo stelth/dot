@@ -75,12 +75,6 @@
       recursive: false
     ~/.config:
 
-- ghq:
-    zsh-users/zsh-syntax-highlighting.git:
-    zsh-users/zsh-autosuggestions:
-    jreese/zsh-titles:
-    psprint/zsh-navigation-tools.git:
-
 - neva:
     nightly:
 
