@@ -1,67 +1,6 @@
 local M = {}
 
-local stylua = {
-  formatCommand = "stylua -",
-  formatStdin = true,
-}
-
-local selene = {
-  lintCommand = "selene --display-style quiet -",
-  lintIgnoreExitCode = true,
-  lintStdin = true,
-  lintFormats = { "%f:%l:%c: %tarning%m", "%f:%l:%c: %tarning%m" },
-}
-
-local prettier = {
-  formatCommand = "prettier --stdin --stdin-filepath ${INPUT}",
-  formatStdin = true,
-}
-
-local markdownlint = {
-  lintCommand = "markdownlint -s",
-  lintStdin = true,
-  lintFormats = { "%f:%l:%c %m" },
-}
-
-local shellcheck = {
-  lintCommand = "shellcheck -f gcc -x -",
-  lintStdin = true,
-  lintFormats = { "%f=%l:%c: %trror: %m", "%f=%l:%c: %tarning: %m", "%f=%l:%c: %tote: %m" },
-}
-
-local shfmt = {
-  formatCommand = "shfmt -ci -s -bn",
-  formatStdin = true,
-}
-
-local flake8 = {
-  lintCommand = "flake8 --stdin-display-name ${INPUT} -",
-  lintStdin = true,
-  lintFormats = { "%f:%l:%c: %m" },
-}
-
-local autopep8 = {
-  formatCommand = "autopep8 -",
-  formatStdin = true,
-}
-
-local vint = {
-  lintCommand = "vint -",
-  lintStdin = true,
-  lintFormats = { "%f:%l:%c: %m" },
-}
-
-local clangformat = {
-  formatCommand = "clang-format",
-  formatStdin = true,
-}
-
-local eslint = {
-  lintCommand = "eslint_d -f visualstudio --stdin --stdin-filename ${INPU}",
-  lintIgnoreExitCode = true,
-  lintStdin = true,
-  lintFormats = { "%f(%l,%c): %tarning %m", "%f(%l,%c): %trror %m" },
-}
+local fish = { formatCommand = "fish_indent", formatStdin = true }
 
 M.config = {
   init_options = {
@@ -72,21 +11,7 @@ M.config = {
       ".git",
     },
     languages = {
-      lua = { stylua, selene },
-      typescript = { prettier },
-      javascript = { eslint, prettier },
-      typescriptreact = { eslint, prettier },
-      javascriptreact = { eslint, prettier },
-      ["typescript.tsx"] = { eslint, prettier },
-      ["javascript.tsx"] = { eslint, prettier },
-      yaml = { prettier },
-      json = { prettier },
-      markdown = { prettier, markdownlint },
-      sh = { shellcheck, shfmt },
-      python = { flake8, autopep8 },
-      vim = { vint },
-      cpp = { clangformat },
-      c = { clangformat },
+      fish = { fish },
     },
   },
 }

@@ -29,7 +29,7 @@ return require("packer").startup({
       end,
       requires = {
         "jose-elias-alvarez/nvim-lsp-ts-utils",
-        "jose-elias-alvarez/null-ls.nvim",
+        "folke/null-ls.nvim",
         "ray-x/lsp_signature.nvim",
       },
     })
@@ -145,6 +145,10 @@ return require("packer").startup({
       config = function()
         require("config.tree")
       end,
+    })
+
+    use({
+      "dag/vim-fish"
     })
 
     use({
