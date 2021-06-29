@@ -147,6 +147,10 @@ return packer.startup({
     -- Theme: Color schemes
     use({
       "folke/tokyonight.nvim",
+      event = "VimEnter",
+      config = function()
+        require("config.theme")
+      end,
     })
 
     -- Theme: icons
@@ -239,6 +243,7 @@ return packer.startup({
       "lukas-reineke/indent-blankline.nvim",
       event = "BufReadPre",
       branch = "lua",
+      wants = "tokyonight.nvim",
       config = function()
         require("config.blankline")
       end,
