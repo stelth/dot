@@ -11,7 +11,7 @@ local config = {
   },
   profile = {
     enable = true,
-    threshold = 1,
+    threshold = 0,
   },
 }
 
@@ -187,11 +187,6 @@ return packer.startup({
     })
 
     use({
-      "dag/vim-fish",
-      ft = "fish",
-    })
-
-    use({
       "nvim-telescope/telescope.nvim",
       opt = true,
       config = function()
@@ -310,9 +305,6 @@ return packer.startup({
       opt = true,
       requires = "godlygeek/tabular",
       ft = "markdown",
-      config = function()
-        require("config.markdown")
-      end,
     })
 
     use({
@@ -348,17 +340,8 @@ return packer.startup({
     })
 
     use({
-      "mg979/vim-visual-multi",
-      keys = { "<C-n>" },
-    })
-
-    use({
       "mjlbach/babelfish.nvim",
       module = "babelfish",
-    })
-
-    use({
-      "folke/lsp-colors.nvim",
     })
 
     use({
@@ -396,7 +379,7 @@ return packer.startup({
 
     use({
       "RRethy/vim-illuminate",
-      event = "BufReadPre",
+      event = "CursorHold",
       config = function()
         vim.g.illuminate_delay = 1000
       end,
