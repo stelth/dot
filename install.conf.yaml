@@ -119,6 +119,7 @@
     yaml-language-server:
     eslint_d:
     typescript-language-server:
+    devmoji:
 
 - brew:
     lazygit:
@@ -144,6 +145,7 @@
     exa:
     tmuxinator:
     fish:
+    grc:
 
 - cargo:
     cargo-update:
