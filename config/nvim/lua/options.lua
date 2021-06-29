@@ -1,160 +1,109 @@
+local cmd = vim.cmd
 local indent = 2
-local global = require("global")
 
-local function bind_option(options)
-  for k, v in pairs(options) do
-    vim.opt[k] = v
-  end
-end
+vim.g.mapleader = " "
+vim.g.maplocalleader = ","
+vim.g.node_host_prog = "/Users/folke/.pnpm-global/4/node_modules/neovim/bin/cli.js"
+vim.opt.autowrite = true -- enable auto write
+vim.opt.clipboard = "unnamedplus" -- sync with system clipboard
+vim.opt.conceallevel = 2 -- Hide * markup for bold and italic
+vim.opt.confirm = true -- confirm to save changes before exiting modified buffer
+vim.opt.cursorline = true -- Enable highlighting of the current line
+vim.opt.expandtab = true -- Use spaces instead of tabs
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()" -- TreeSitter folding
+vim.opt.foldlevel = 6
+vim.opt.foldmethod = "expr" -- TreeSitter folding
+vim.opt.guifont = "FiraCode Nerd Font:h12"
+vim.opt.grepprg = "rg --vimgrep"
+vim.opt.grepformat = "%f:%l:%c:%m"
+vim.opt.hidden = true -- Enable modified buffers in background
+vim.opt.ignorecase = true -- Ignore case
+vim.opt.inccommand = "split" -- preview incremental substitute
+vim.opt.joinspaces = false -- No double spaces with join after a dot
+vim.opt.list = true -- Show some invisible characters (tabs...
+vim.opt.mouse = "a" -- enable mouse mode
+vim.opt.number = true -- Print line number
+vim.opt.pumblend = 10 -- Popup blend
+vim.opt.pumheight = 10 -- Maximum number of entries in a popup
+vim.opt.relativenumber = true -- Relative line numbers
+vim.opt.scrolloff = 4 -- Lines of context
+vim.opt.shiftround = true -- Round indent
+vim.opt.shiftwidth = indent -- Size of an indent
+vim.opt.showmode = false -- dont show mode since we have a statusline
+vim.opt.sidescrolloff = 8 -- Columns of context
+vim.opt.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift the text each time
+vim.opt.smartcase = true -- Don't ignore case with capitals
+vim.opt.smartindent = true -- Insert indents automatically
+vim.opt.splitbelow = true -- Put new windows below current
+vim.opt.splitright = true -- Put new windows right of current
+vim.opt.tabstop = indent -- Number of spaces tabs count for
+vim.opt.termguicolors = true -- True color support
+vim.opt.undofile = true
+vim.opt.undolevels = 10000
+vim.opt.updatetime = 200 -- save swap file and trigger CursorHold
+vim.opt.wildmode = "longest:full,full" -- Command-line completion mode
+vim.opt.wrap = false -- Disable line wrap
+vim.opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
 
-local function load_options()
-  local options = {
-    autoindent = true,
-    backspace = { "indent", "eol", "start" },
-    backupdir = global.cache_dir .. "backup/",
-    backup = false,
-    backupskip = { "/tmp/*", "$TMPDIR/*", "$TMP/*", "$TEMP/*", "*/shm/*", "/private/var/*", ".vault.vim" },
-    breakat = [[\ \	;:,!?]],
-    breakindentopt = { shift = 4, min = 20 },
-    clipboard = "unnamedplus",
-    cmdheight = 2,
-    cmdwinheight = 5,
-    colorcolumn = "80",
-    completeopt = { "menuone", "noselect", "noinsert" },
-    complete = { ".", "w", "b", "k" },
-    concealcursor = "niv",
-    conceallevel = 2,
-    confirm = true,
-    cursorline = true,
-    diffopt = { "filler", "iwhite", "internal", "algorithm:patience" },
-    directory = global.cache_dir .. "swap/",
-    display = "lastline",
-    encoding = "utf-8",
-    equalalways = false,
-    errorbells = true,
-    expandtab = true,
-    fileformats = { "unix", "mac", "dos" },
-    foldenable = true,
-    foldexpr = "nvim_treesitter#foldexpr()",
-    foldlevel = 6,
-    foldlevelstart = 99,
-    formatoptions = "1jcroql",
-    grepformat = "%f:%l:%c:%m",
-    grepprg = "rg --hidden --vimgrep --smart-case --",
-    helpheight = 12,
-    hidden = true,
-    history = 2000,
-    ignorecase = true,
-    inccommand = "split",
-    incsearch = true,
-    infercase = true,
-    joinspaces = false,
-    jumpoptions = "stack",
-    laststatus = 2,
-    linebreak = true,
-    listchars = { tab = "»·", nbsp = "+", trail = "·", extends = "→", precedes = "←" },
-    list = true,
-    magic = true,
-    mouse = "a",
-    number = true,
-    previewheight = 12,
-    pumblend = 10,
-    pumheight = 10,
-    redrawtime = 1500,
-    relativenumber = true,
-    ruler = false,
-    scrolloff = 4,
-    sessionoptions = { "buffers", "curdir", "help", "tabpages", "winsize" },
-    shada = { "!", "'300", "<50", "@100", "s10", "h" },
-    shiftround = true,
-    shiftwidth = indent,
-    shortmess = "aoOTIcF",
-    showbreak = "↳  ",
-    showcmd = false,
-    showmode = false,
-    showtabline = 2,
-    sidescrolloff = 8,
-    signcolumn = "yes",
-    smartcase = true,
-    smartindent = true,
-    smarttab = true,
-    softtabstop = -1,
-    spellfile = global.cache_dir .. "spell/en.utf-8.add",
-    splitbelow = true,
-    splitright = true,
-    startofline = false,
-    swapfile = false,
-    switchbuf = "useopen",
-    synmaxcol = 2500,
-    tabstop = indent,
-    termguicolors = true,
-    textwidth = 80,
-    timeoutlen = 100,
-    timeout = true,
-    ttimeoutlen = 10,
-    ttimeout = true,
-    undodir = global.cache_dir .. "undo/",
-    undofile = true,
-    undolevels = 10000,
-    updatetime = 200,
-    viewdir = global.cache_dir .. "view/",
-    viewoptions = { "folds", "cursor", "curdir", "slash", "unix" },
-    virtualedit = "block",
-    visualbell = true,
-    whichwrap = "h,l,<,>,[,],~",
-    wildignorecase = true,
-    wildignore = {
-      ".git",
-      ".hg",
-      ".svn",
-      "*.pyc",
-      "*.o",
-      "*.out",
-      "*.jpg",
-      "*.jpeg",
-      "*.png",
-      "*.gif",
-      "*.zip",
-      "**/tmp/**",
-      "*.DS_Store",
-      "**/node_modules/**",
-      "**/bower_modules/**",
-    },
-    wildmode = "longest:full,full",
-    winblend = 10,
-    winminwidth = 10,
-    winwidth = 30,
-    wrap = false,
-    wrapscan = true,
-    writebackup = false,
-  }
-  bind_option(options)
+-- don't load the plugins below
+vim.g.loaded_gzip = 1
+vim.g.loaded_tar = 1
+vim.g.loaded_tarPlugin = 1
+vim.g.loaded_zipPlugin = 1
+vim.g.loaded_2html_plugin = 1
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_matchit = 1
+vim.g.loaded_matchparen = 1
 
-  if global.is_mac then
-    vim.g.clipboard = {
-      name = "macOS-clipboard",
-      copy = { ["+"] = "pbcopy", ["*"] = "pbcopy" },
-      paste = { ["+"] = "pbpaste", ["*"] = "pbpaste" },
-      cache_enabled = 0,
-    }
-    vim.g.python3_host_prog = "/usr/local/bin/python3"
-  else
-    vim.g.python3_host_prog = "/usr/bin/python3"
-  end
+-- Use proper syntax highlighting in code blocks
+local fences = {
+  "lua",
+  -- "vim",
+  "json",
+  "typescript",
+  "javascript",
+  "js=javascript",
+  "ts=typescript",
+  "shell=sh",
+  "python",
+  "sh",
+  "console=sh",
+}
+vim.g.markdown_fenced_languages = fences
 
-  -- show cursor line only in active window
-  vim.cmd([[
-    autocmd InsertLeave,WinEnter * set cursorline
-    autocmd InsertEnter,WinLeave * set nocursorline
-  ]])
+-- plasticboy/vim-markdown
+vim.g.vim_markdown_folding_level = 10
+vim.g.vim_markdown_fenced_languages = fences
+vim.g.vim_markdown_folding_style_pythonic = 1
+vim.g.vim_markdown_conceal_code_blocks = 0
+vim.g.vim_markdown_frontmatter = 1
+vim.g.vim_markdown_strikethrough = 1
 
-  -- go to last location when opening a buffer
-  vim.cmd([[
-    autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g`\"" | endif
-  ]])
+vim.cmd([[autocmd FileType markdown nnoremap gO <cmd>Toc<cr>]])
+vim.cmd([[autocmd FileType markdown setlocal spell]])
 
-  -- Highlight on yank
-  vim.cmd("au TextYankPost * lua vim.highlight.on_yank {}")
-end
+-- Check if we need to reload the file when it changed
+cmd("au FocusGained * :checktime")
 
-load_options()
+-- show cursor line only in active window
+cmd([[
+  autocmd InsertLeave,WinEnter * set cursorline
+  autocmd InsertEnter,WinLeave * set nocursorline
+]])
+
+-- go to last loc when opening a buffer
+cmd([[
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g`\"" | endif
+]])
+
+-- Highlight on yank
+cmd("au TextYankPost * lua vim.highlight.on_yank {}")
+
+-- ftdetect
+cmd([[autocmd BufRead,BufNewFile *.fish setfiletype fish]])
+cmd([[autocmd BufRead,BufNewFile *.nix setfiletype nix]])
+
+-- windows to close with "q"
+vim.cmd([[autocmd FileType help,startuptime,qf,lspinfo nnoremap <buffer><silent> q :close<CR>]])
+vim.cmd([[autocmd FileType man nnoremap <buffer><silent> q :quit<CR>]])
