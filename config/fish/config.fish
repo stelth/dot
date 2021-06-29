@@ -1,6 +1,12 @@
-set -l fish_config_mtime (/usr/bin/stat -c %Y $__fish_config_dir/config.fish)
+switch (uname)
+    case Linux
+        set -l fish_config_mtime (/usr/bin/stat -c %Y $__fish_config_dir/config.fish)
+    case Darwin
+        set -l fish_config_mtime (/usr/bin/stat -f %m $__fish_config_dir/config.fish)
+end
 
 set -gx EDITOR nvim
+
 if test "$fish_config_changed" = "$fish_config_mtime"
     exit
 else
@@ -15,6 +21,7 @@ fish_add_path ~/.cargo/bin
 fish_add_path ~/.node/node_modules/.bin
 
 if test -d /home/linuxbrew
+    fish_add_path /home/linuxbrew/.linuxbrew/bin
     eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 end
 
