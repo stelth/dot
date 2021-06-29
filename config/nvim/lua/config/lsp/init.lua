@@ -70,6 +70,7 @@ local servers = {
   efm = require("config.lsp.efm").config,
   jdtls = { cmd = { "jdtls.sh", "~/.local/share/eclipse" } },
   jsonls = { cmd = { "vscode-json-languageserver", "--stdio" } },
+  ["null-ls"] = {},
   texlab = {},
   pyright = {},
   sumneko_lua = require("lua-dev").setup({
@@ -81,6 +82,8 @@ local servers = {
 }
 
 local function setup_servers()
+  require("config.lsp.null-ls").setup()
+
   local lspconfig = require("lspconfig")
   for server, config in pairs(servers) do
     lspconfig[server].setup(vim.tbl_deep_extend("force", make_config(), config))
@@ -89,8 +92,6 @@ local function setup_servers()
       vim.notify(server .. ": cmd not found: " .. vim.inspect(cfg.cmd))
     end
   end
-
-  require("null-ls").setup()
 end
 
 setup_servers()
