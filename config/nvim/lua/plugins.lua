@@ -180,7 +180,12 @@ return packer.startup({
 
     use({
       "nvim-lua/plenary.nvim",
+      module = "plenary",
+    })
+
+    use({
       "nvim-lua/popup.nvim",
+      module = "popup",
     })
 
     use({
@@ -406,7 +411,8 @@ return packer.startup({
     })
 
     use({
-      "tpope/vim-unimpaired",
+      "andymass/vim-matchup",
+      event = "CursorMoved",
     })
   end,
   config = config,
