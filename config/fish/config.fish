@@ -8,6 +8,8 @@ end
 set -gx EDITOR nvim
 
 if test "$fish_config_changed" = "$fish_config_mtime"
+    exit
+else
     set -U fish_config_changed $fish_config_mtime
 end
 
