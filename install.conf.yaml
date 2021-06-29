@@ -140,6 +140,7 @@
     tmuxinator:
     fish:
     grc:
+    ncdu:
 
 - cargo:
     cargo-update:
