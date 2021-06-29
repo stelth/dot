@@ -1,17 +1,4 @@
-switch (uname)
-    case Linux
-        set -l fish_config_mtime (/usr/bin/stat -c %Y $__fish_config_dir/config.fish)
-    case Darwin
-        set -l fish_config_mtime (/usr/bin/stat -f %m $__fish_config_dir/config.fish)
-end
-
 set -gx EDITOR nvim
-
-if test "$fish_config_changed" = "$fish_config_mtime"
-    exit
-else
-    set -U fish_config_changed $fish_config_mtime
-end
 
 set -Ux fish_user_paths
 
@@ -72,6 +59,7 @@ abbr push 'hub push'
 abbr pull 'hub pull'
 
 # Other
+abbr su 'su -'
 abbr df 'grc /bin/df -h'
 abbr rga 'rg -uu'
 abbr grep rg
