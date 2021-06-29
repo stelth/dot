@@ -1,7 +1,26 @@
 local ts_configs = require("nvim-treesitter.configs")
 
 ts_configs.setup({
-  ensure_installed = "all",
+  ensure_installed = {
+    "bash",
+    "c",
+    "comment",
+    "cpp",
+    "css",
+    "fish",
+    "go",
+    "graphql",
+    "html",
+    "javascript",
+    "jsonc",
+    "latex",
+    "lua",
+    "python",
+    "regex",
+    "rust",
+    "toml",
+    "yaml"
+  },
   highlight = { enable = true, use_languagetree = true },
   indent = { enable = false },
   context_commentstring = { enable = true },
@@ -40,6 +59,7 @@ ts_configs.setup({
   textobjects = {
     select = {
       enable = true,
+      lookahead = true,
       keymaps = {
         -- You can use the capture groups defined in textobjects.scm
         ["af"] = "@function.outer",
