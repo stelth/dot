@@ -15,15 +15,11 @@ local config = {
   },
 }
 
-local locals = { ["nvim-compe"] = "folke", ["null-ls.nvim"] = "folke" }
+local locals = { ["null-ls.nvim"] = "folke" }
 
 local function get_name(pkg)
   local parts = vim.split(pkg, "/")
   return parts[#parts]
-end
-
-local function has_local(name)
-  return vim.loop.fs_stat(vim.fn.expand("~/projects/" .. name)) ~= nil
 end
 
 local function process(spec)
