@@ -19,7 +19,7 @@ ts_configs.setup({
     "regex",
     "rust",
     "toml",
-    "yaml"
+    "yaml",
   },
   highlight = { enable = true, use_languagetree = true },
   indent = { enable = false },

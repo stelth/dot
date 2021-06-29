@@ -73,6 +73,7 @@ return packer.startup({
       requires = {
         "jose-elias-alvarez/nvim-lsp-ts-utils",
         { "jose-elias-alvarez/null-ls.nvim", branch = "lspconfig" },
+        "folke/lua-dev.nvim",
       },
     })
 
@@ -383,7 +384,7 @@ return packer.startup({
 
     use({
       "RRethy/vim-illuminate",
-      event = "CursorHold",
+      event = "BufreadPre",
       config = function()
         vim.g.illuminate_delay = 1000
       end,

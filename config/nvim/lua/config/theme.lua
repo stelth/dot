@@ -44,4 +44,4 @@ vim.g.tokyonight_dark_sidebar = true
 vim.g.tokyonight_dark_float = true
 vim.g.tokyonight_color = {}
 
-require('tokyonight').colorscheme()
+require("tokyonight").colorscheme()

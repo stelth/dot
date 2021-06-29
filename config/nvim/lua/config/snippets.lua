@@ -14,7 +14,7 @@ local function on_tab()
 end
 
 local function on_s_tab()
-  return luasnip.jump(-1) and "" or util.t("<S-Tab")
+  return luasnip.jump(-1) and "" or util.t("<S-Tab>")
 end
 
 util.imap("<Tab>", on_tab, { expr = true })
