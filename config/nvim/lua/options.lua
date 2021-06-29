@@ -64,7 +64,7 @@ local function load_options()
     relativenumber = true,
     ruler = false,
     scrolloff = 4,
-    sessionoptions = { "curdir", "help", "tabpages", "winsize" },
+    sessionoptions = { "buffers", "curdir", "help", "tabpages", "winsize" },
     shada = { "!", "'300", "<50", "@100", "s10", "h" },
     shiftround = true,
     shiftwidth = indent,
