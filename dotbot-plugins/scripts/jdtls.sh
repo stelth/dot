@@ -26,13 +26,13 @@ die () {
 }
 case $(uname) in
   Linux)
-    CONFIG="\$(pwd)/jdtls/config_linux"
+    CONFIG="\$HOME/.local/bin/jdtls/config_linux"
     ;;
   Darwin)
-    CONFIG="\$(pwd)/jdtls/config_mac"
+    CONFIG="\$HOME/.local/bin/jdtls/config_mac"
     ;;
 esac
-JAR="\$(pwd)/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"
+JAR="\$HOME/.local/bin/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"
 # Determine the Java command to use to start the JVM.
 if [ -n "\$JAVA_HOME" ] ; then
     if [ -x "\$JAVA_HOME/jre/sh/java" ] ; then
@@ -60,8 +60,8 @@ fi
   -Dlog.level=ALL \\
   -Xms1g \\
   -Xmx2G \\
-  -javaagent:\$(pwd)/jdtls/lombok.jar \\
-  -Xbootclasspath/a:\$(pwd)/jdtls/lombok.jar \\
+  -javaagent:\$HOME/.local/bin/jdtls/lombok.jar \\
+  -Xbootclasspath/a:\$HOME/.local/bin/jdtls/lombok.jar \\
   -jar \$(echo "\$JAR") \\
   -configuration "\$CONFIG" \\
   -data "\$WORKSPACE" \\
