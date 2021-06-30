@@ -66,6 +66,7 @@ local servers = {
   bashls = {},
   cmake = {},
   clangd = {},
+  dockerls = {},
   efm = require("config.lsp.efm").config,
   jdtls = { cmd = { "jdtls.sh", "~/.local/share/eclipse" } },
   jsonls = { cmd = { "vscode-json-languageserver", "--stdio" } },

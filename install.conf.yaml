@@ -114,6 +114,7 @@
     eslint_d:
     typescript-language-server:
     devmoji:
+    dockerfile-language-server-nodejs:
 
 - brew:
     lazygit:
