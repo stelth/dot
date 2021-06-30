@@ -148,6 +148,9 @@
     selene:
     stylua:
 
+- luarocks:
+    fzy:
+
 - package:
     lua-language-server:
       installCmds: ["~/dotfiles/dotbot-plugins/scripts/sumneko_lua.sh"]

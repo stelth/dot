@@ -135,6 +135,7 @@ return packer.startup({
       run = ":TSUpdate",
       opt = true,
       event = "BufRead",
+      module = "nvim-treesitter.fold",
       requires = {
         { "nvim-treesitter/playground", cmd = "TSHighlightCapturesUnderCursor" },
         "nvim-treesitter/nvim-treesitter-textobjects",
@@ -414,6 +415,11 @@ return packer.startup({
     use({
       "andymass/vim-matchup",
       event = "CursorMoved",
+    })
+
+    use({
+      "camspiers/snap",
+      module = "snap",
     })
   end,
   config = config,
