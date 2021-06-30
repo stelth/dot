@@ -147,7 +147,6 @@ return packer.startup({
     -- Theme: Color schemes
     use({
       "folke/tokyonight.nvim",
-      event = "VimEnter",
       config = function()
         require("config.theme")
       end,
@@ -390,7 +389,8 @@ return packer.startup({
 
     use({
       "RRethy/vim-illuminate",
-      event = "BufreadPre",
+      event = "CursorHold",
+      module = "illuminate",
       config = function()
         vim.g.illuminate_delay = 1000
       end,
