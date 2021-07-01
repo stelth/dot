@@ -143,6 +143,7 @@
     grc:
     ncdu:
     node:
+    tree:
 
 - cargo:
     cargo-update:
