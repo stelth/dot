@@ -142,6 +142,7 @@
     fish:
     grc:
     ncdu:
+    node:
 
 - cargo:
     cargo-update:
