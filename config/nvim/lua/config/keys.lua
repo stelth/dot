@@ -110,7 +110,6 @@ local leader = {
   },
   g = {
     name = "+git",
-    g = { "<cmd>Neogit<CR>", "NeoGit" },
     l = {
       function()
         require("util").float_terminal("lazygit")
@@ -164,7 +163,6 @@ local leader = {
   },
   o = {
     name = "+open",
-    p = { "<cmd>MarkdownPreview<cr>", "Markdown Preview" },
     g = { "<cmd>Glow<cr>", "Markdown Glow" },
   },
   p = {
