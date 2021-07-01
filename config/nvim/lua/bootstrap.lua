@@ -52,17 +52,10 @@ local disable_distribution_plugins = function()
   vim.g.loaded_netrwFileHandlers = 1
 end
 
-local leader_map = function()
-  vim.g.mapleader = " "
-  vim.api.nvim_set_keymap("n", " ", "", { noremap = true })
-  vim.api.nvim_set_keymap("x", " ", "", { noremap = true })
-end
-
 local load_core = function()
   createdir()
   install_packer()
   disable_distribution_plugins()
-  leader_map()
 end
 
 load_core()
