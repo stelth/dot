@@ -2,6 +2,7 @@ local wk = require("which-key")
 local util = require("util")
 
 vim.opt.timeoutlen = 300
+
 local presets = require("which-key.plugins.presets")
 presets.objects["a("] = nil
 wk.setup({
@@ -155,12 +156,10 @@ local leader = {
   },
   f = {
     name = "+file",
-    t = { "<cmd>NvimTreeToggle<cr>", "NvimTree" },
     f = { "<cmd>Telescope find_files<cr>", "Find File" },
     r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
     n = { "<cmd>enew<cr>", "New File" },
     z = { "<cmd>Telescope zoxide list<CR>", "Zoxide" },
-    d = "Dot Files",
   },
   o = {
     name = "+open",
