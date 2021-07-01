@@ -46,7 +46,6 @@ local config = {
     lualine_y = {},
     lualine_z = {},
   },
-  extensions = { "nvim-tree" },
 }
 
 local M = {}

@@ -189,14 +189,6 @@ return packer.startup({
     })
 
     use({
-      "kyazdani42/nvim-tree.lua",
-      cmd = { "NvimTreeToggle", "NvimTreeOpen" },
-      config = function()
-        require("config.tree")
-      end,
-    })
-
-    use({
       "nvim-telescope/telescope.nvim",
       opt = true,
       config = function()
