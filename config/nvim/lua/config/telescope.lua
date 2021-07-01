@@ -10,7 +10,9 @@ telescope.setup({
     prompt_prefix = " ",
     selection_caret = " ",
     winblend = 10,
-    width = 0.7,
+    layout_config = {
+      width = 0.7,
+    },
   },
 })
 
