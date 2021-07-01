@@ -9,10 +9,10 @@ local monocle = require("monocle")
 local quake = require("quake")
 
 local hyper = require("hyper")
-hyper.bindApp({}, "b", "Brave Browser")
-hyper.bindApp({ "cmd" }, "b", function()
+hyper.bindApp({}, "c", "Google Chrome")
+hyper.bindApp({ "cmd" }, "c", function()
   hs.osascript.javascript([[
-        Application("Brave").Window().make()
+        Application("Google Chrome").Window().make()
     ]])
 end)
 hyper.bindApp({}, "k", "kitty")
