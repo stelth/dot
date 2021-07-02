@@ -112,7 +112,6 @@
     vim-language-server:
     yaml-language-server:
     eslint_d:
-    typescript-language-server:
     devmoji:
     dockerfile-language-server-nodejs:
 
