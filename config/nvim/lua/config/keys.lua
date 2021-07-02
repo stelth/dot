@@ -160,6 +160,7 @@ local leader = {
     r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
     n = { "<cmd>enew<cr>", "New File" },
     z = { "<cmd>Telescope zoxide list<CR>", "Zoxide" },
+    d = "Dot Files",
   },
   o = {
     name = "+open",

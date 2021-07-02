@@ -42,7 +42,7 @@ local map = function(mode, key, cmd, opts, defaults)
     if opts.expr then
       cmd = ([[luaeval('require("util").execute(%d)')]]):format(#M.functions)
     else
-      cmd = ("<cmd>lua require('util').execute(%d)'<CR>"):format(#M.functions)
+      cmd = ("<cmd>lua require('util').execute(%d)<CR>"):format(#M.functions)
     end
   end
 

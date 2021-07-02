@@ -195,7 +195,7 @@ return packer.startup({
         require("config.telescope")
       end,
       cmd = { "Telescope" },
-      keys = { "<leader><space>", "<leader>fz", "<leader>pp" },
+      keys = { "<leader><space>", "<leader>fz", "<leader>pp", "<leader>fd" },
       wants = {
         "plenary.nvim",
         "popup.nvim",
