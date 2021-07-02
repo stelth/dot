@@ -88,8 +88,8 @@ local servers = {
   sumneko_lua = require("lua-dev").setup({
     lspconfig = { cmd = { "lua-language-server" } },
   }),
-  tsserver = {},
   vimls = {},
+  tsserver = {},
   yamlls = {},
 }
 

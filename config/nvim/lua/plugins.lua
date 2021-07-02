@@ -67,7 +67,6 @@ return packer.startup({
         require("config.lsp")
       end,
       requires = {
-        "jose-elias-alvarez/nvim-lsp-ts-utils",
         { "jose-elias-alvarez/null-ls.nvim", branch = "lspconfig" },
         "folke/lua-dev.nvim",
       },
@@ -162,14 +161,6 @@ return packer.startup({
       end,
     })
 
-    -- Dashboard
-    use({
-      "glepnir/dashboard-nvim",
-      config = function()
-        require("config.dashboard")
-      end,
-    })
-
     use({
       "norcalli/nvim-terminal.lua",
       ft = "terminal",
@@ -260,23 +251,6 @@ return packer.startup({
       end,
     })
 
-    -- Smooth scrolling
-    use({
-      "karb94/neoscroll.nvim",
-      keys = { "<C-u>", "<C-d>", "gg", "G" },
-      config = function()
-        require("config.scroll")
-      end,
-    })
-
-    use({
-      "edluffy/specs.nvim",
-      after = "neoscroll.nvim",
-      config = function()
-        require("config.specs")
-      end,
-    })
-
     -- Git gutter
     use({
       "lewis6991/gitsigns.nvim",
@@ -343,11 +317,6 @@ return packer.startup({
     })
 
     use({
-      "mjlbach/babelfish.nvim",
-      module = "babelfish",
-    })
-
-    use({
       "folke/zen-mode.nvim",
       cmd = "ZenMode",
       config = function()
@@ -398,21 +367,8 @@ return packer.startup({
     })
 
     use({
-      "wellle/targets.vim",
-    })
-
-    use({
-      "DanilaMihailov/vim-tips-wiki",
-    })
-
-    use({
       "andymass/vim-matchup",
       event = "CursorMoved",
-    })
-
-    use({
-      "camspiers/snap",
-      module = "snap",
     })
   end,
   config = config,
