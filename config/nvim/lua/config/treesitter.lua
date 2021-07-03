@@ -15,6 +15,7 @@ ts_configs.setup({
     "jsonc",
     "latex",
     "lua",
+    "nix",
     "python",
     "regex",
     "rust",
