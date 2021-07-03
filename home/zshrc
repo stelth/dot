@@ -106,11 +106,6 @@ zstyle ':vcs_info:*' actionformats '[%b|%a]'
 
 source <(starship init zsh --print-full-init)
 
-source "$(ghq list -p zsh-titles)/titles.plugin.zsh"
-source "$(ghq list -p zsh-syntax-highlighting)/zsh-syntax-highlighting.zsh"
-source "$(ghq list -p zsh-autosuggestions)/zsh-autosuggestions.zsh"
-source "$(ghq list -p zsh-navigation-tools)/zsh-navigation-tools.plugin.zsh"
-
 #####################################################################
 # options
 ######################################################################
