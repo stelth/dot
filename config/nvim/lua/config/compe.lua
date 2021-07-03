@@ -27,7 +27,7 @@ require("compe").setup({
     luasnip = true,
     treesitter = false,
     emoji = true,
-    spell = true,
+    spell = false,
   },
 })
 
