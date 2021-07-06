@@ -3,3 +3,4 @@ __pycache__/
 *$py.class
 fish_variables
 state.yml
+packer_compiled.lua
