@@ -16,6 +16,7 @@ let
   kmonad = (import ./kmonad.nix) pkgs;
 
   linuxPackages = with pkgs; [
+    fish
     kmonad
   ];
 in
