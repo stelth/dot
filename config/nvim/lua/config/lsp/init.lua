@@ -89,12 +89,13 @@ local servers = {
 local function setup_servers()
   require("config.lsp.null-ls").setup()
 
+  local util = require("util")
   local lspconfig = require("lspconfig")
   for server, config in pairs(servers) do
     lspconfig[server].setup(vim.tbl_deep_extend("force", make_config(), config))
     local cfg = lspconfig[server]
     if not (cfg and cfg.cmd and vim.fn.executable(cfg.cmd[1]) == 1) then
-      vim.notify(server .. ": cmd not found: " .. vim.inspect(cfg.cmd))
+      util.error(server .. ": cmd not found: " .. vim.inspect(cfg.cmd))
     end
   end
 end
