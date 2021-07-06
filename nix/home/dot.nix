@@ -5,13 +5,10 @@ let
 
   extraHome = if pkgs.stdenv.isDarwin then {
     "./Library/Application Support/lazygit/config.yml".source = util.link "config/lazygit/config.yml";
-    ".hammerspoon".source = util.link "hammerspoon";
-    ".gnupg/gpg-agent.conf".text =
-      "pinentry-program ${pkgs.pinentry_mac}/Applications/pinentry-mac.app/Contents/MacOS/pinentry-mac";
-  } else {
-    ".gnupg/gpg-agent.conf".text =
-      "pinentry-program ${pkgs.pinentry.gnome3}/bin/pinentry";
-  };
+    ".hammerspoon".source = util.link "config/hammerspoon";
+    ".config/karabiner".source = util.link "config/karabiner";
+    ".config/kitty".source = util.link "config/kitty";
+  } else {};
 in
 {
   xdg.configFile = util.link-all "config" ".";
@@ -21,8 +18,11 @@ in
     {
       ".bashrc".text = "source <(starship init bash --print-full-init)";
       ".zshrc".text = "source <(starship init zsh --print-full-init)";
-      ".hushlogin".text = "";
-      ".gitconfig".source = util.link "config/.gitconfig";
+      ".gitconfig".source = util.link "config/gitconfig";
+      ".terminfo".source = util.link "config/terminfo";
+      ".clang-format".source = util.link "config/clang-format";
+      ".tmux.conf".source = util.link "config/tmux.conf";
+      ".starship.toml".source = util.link "config/starship.toml";
       /* "dot".source = util.link ""; */
     } // extraHome // {
       ".npmrc".text = ''

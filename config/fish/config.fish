@@ -13,16 +13,6 @@ end
 
 set -Ux fish_user_paths
 
-# Path
-fish_add_path ~/.local/bin
-fish_add_path ~/.cargo/bin
-fish_add_path ~/.node/node_modules/.bin
-
-if test -d /home/linuxbrew
-    fish_add_path /home/linuxbrew/.linuxbrew/bin
-    eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-end
-
 fish_vi_key_bindings
 
 # Fish
