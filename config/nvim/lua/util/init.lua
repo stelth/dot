@@ -28,9 +28,8 @@ M.functions = {}
 function M.execute(id)
   local func = M.functions[id]
   if not func then
-    error("Function does not exist: " .. id)
+    error("Function doest not exist: " .. id)
   end
-
   return func()
 end
 
@@ -42,10 +41,9 @@ local map = function(mode, key, cmd, opts, defaults)
     if opts.expr then
       cmd = ([[luaeval('require("util").execute(%d)')]]):format(#M.functions)
     else
-      cmd = ("<cmd>lua require('util').execute(%d)<CR>"):format(#M.functions)
+      cmd = ("<cmd>lua require('util').execute(%d)<cr>"):format(#M.functions)
     end
   end
-
   if opts.buffer ~= nil then
     local buffer = opts.buffer
     opts.buffer = nil
@@ -62,23 +60,18 @@ end
 function M.nmap(key, cmd, opts)
   return map("n", key, cmd, opts)
 end
-
 function M.vmap(key, cmd, opts)
   return map("v", key, cmd, opts)
 end
-
 function M.xmap(key, cmd, opts)
   return map("x", key, cmd, opts)
 end
-
 function M.imap(key, cmd, opts)
   return map("i", key, cmd, opts)
 end
-
 function M.omap(key, cmd, opts)
   return map("o", key, cmd, opts)
 end
-
 function M.smap(key, cmd, opts)
   return map("s", key, cmd, opts)
 end
@@ -86,23 +79,18 @@ end
 function M.nnoremap(key, cmd, opts)
   return map("n", key, cmd, opts, { noremap = true })
 end
-
 function M.vnoremap(key, cmd, opts)
   return map("v", key, cmd, opts, { noremap = true })
 end
-
 function M.xnoremap(key, cmd, opts)
   return map("x", key, cmd, opts, { noremap = true })
 end
-
 function M.inoremap(key, cmd, opts)
   return map("i", key, cmd, opts, { noremap = true })
 end
-
 function M.onoremap(key, cmd, opts)
   return map("o", key, cmd, opts, { noremap = true })
 end
-
 function M.snoremap(key, cmd, opts)
   return map("s", key, cmd, opts, { noremap = true })
 end
@@ -112,7 +100,8 @@ function M.t(str)
 end
 
 function M.log(msg, hl, name)
-  name = name or "NeoVim"
+  name = name or "Neovim"
+  hl = hl or "Todo"
   vim.api.nvim_echo({ { name .. ": ", hl }, { msg } }, true, {})
 end
 
@@ -134,12 +123,11 @@ function M.toggle(option, silent)
   local scope = scopes[info.scope]
   local options = vim[scope]
   options[option] = not options[option]
-
   if silent ~= true then
     if options[option] then
-      M.info("Enabled vim." .. scope .. "." .. option, "Toggle")
+      M.info("enabled vim." .. scope .. "." .. option, "Toggle")
     else
-      M.warn("Disabled vim." .. scope .. "." .. option, "Toggle")
+      M.warn("disabled vim." .. scope .. "." .. option, "Toggle")
     end
   end
 end
@@ -158,7 +146,6 @@ function M.float_terminal(cmd)
     border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
   })
   vim.fn.termopen(cmd)
-
   local autocmd = {
     "autocmd! TermClose <buffer> lua",
     string.format("vim.api.nvim_win_close(%d, {force = true});", win),

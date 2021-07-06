@@ -66,18 +66,10 @@ local function make_config()
   }
 end
 
-local clangd_cmd = {}
-
-if require("global").is_mac then
-  clangd_cmd = { "clangd" }
-elseif require("global").is_linux then
-  clangd_cmd = { "clangd-12" }
-end
-
 local servers = {
   bashls = {},
   cmake = {},
-  clangd = { cmd = clangd_cmd },
+  clangd = {},
   dockerls = {},
   efm = require("config.lsp.efm").config,
   jdtls = { cmd = { "jdtls.sh", "~/.local/share/eclipse" } },
