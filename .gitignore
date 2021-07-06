@@ -2,4 +2,4 @@ __pycache__/
 *.py[cod]
 *$py.class
 fish_variables
-config/lazygit/state.yml
+state.yml
