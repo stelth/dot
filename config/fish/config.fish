@@ -1,7 +1,8 @@
+set -l fish_config_mtime
 if test "(uname)" = Darwin
-    set -l fish_config_mtime (/usr/bin/stat -f %m $__fish_config_dir/config.fish)
+    set fish_config_mtime (/usr/bin/stat -f %m $__fish_config_dir/config.fish)
 else if test "(uname)" = Linux
-    set -l fish_config_mtime (/usr/bin/stat -c %Y $__fish_config_dir/config.fish)
+    set fish_config_mtime (/usr/bin/stat -c %Y $__fish_config_dir/config.fish)
 end
 
 set -gx EDITOR nvim
