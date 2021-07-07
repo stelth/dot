@@ -24,6 +24,7 @@
         config = { allowUnfree = true; };
         overlays = [
           inputs.neovim-nightly-overlay.overlay
+          (import ./pkgs)
           (import ./home/overlays.nix)
         ];
       };

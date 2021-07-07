@@ -22,6 +22,7 @@
     python39Packages.debugpy
     python39Packages.flake8
     rnix-lsp
+    selene
     stylua
     sumneko-lua-language-server
     texlab

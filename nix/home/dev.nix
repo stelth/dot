@@ -23,6 +23,7 @@ in
     nodejs
     nodePackages.pnpm
     nodePackages.yarn
+    rustc
+    cargo
   ] ++ (if isDarwin then darwinPackages else linuxPackages);
-
 }
