@@ -24,29 +24,30 @@ in
   home.packages = with pkgs; [
     as-tree
     aspell
-    bat
     bandwhich
+    bat
     bottom
     broot
     delta
+    direnv
     du-dust
     exa
     fd
-    direnv
-    nix-direnv
     fzf
     fzy
-    grc
+    ghq
     glow
     gnused
+    grc
     htop
     hyperfine
     jq
     lazygit
     manix
     mdcat
-    nix-index
     ncdu
+    nix-direnv
+    nix-index
     nixUnstable
     pfetch
     procs
