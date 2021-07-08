@@ -5,9 +5,7 @@ let
 
   extraHome = if pkgs.stdenv.isDarwin then {
     "./Library/Application Support/lazygit/config.yml".source = util.link "config/lazygit/config.yml";
-    ".hammerspoon".source = util.link "config/hammerspoon";
-    ".config/karabiner".source = util.link "config/karabiner";
-    ".config/kitty".source = util.link "config/kitty";
+    ".hammerspoon".source = util.link "hammerspoon";
   } else {};
 in
 {
@@ -18,11 +16,7 @@ in
     {
       ".bashrc".text = "source <(starship init bash --print-full-init)";
       ".zshrc".text = "source <(starship init zsh --print-full-init)";
-      ".gitconfig".source = util.link "config/gitconfig";
-      ".terminfo".source = util.link "config/terminfo";
-      ".clang-format".source = util.link "config/clang-format";
-      ".tmux.conf".source = util.link "config/tmux.conf";
-      ".starship.toml".source = util.link "config/starship.toml";
+      ".gitconfig".source = util.link "config/.gitconfig";
       /* "dot".source = util.link ""; */
     } // extraHome // {
       ".npmrc".text = ''
