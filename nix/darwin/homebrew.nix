@@ -29,6 +29,7 @@
       "github"
       "google-chrome"
       "hammerspoon"
+      "mactex-no-gui"
       "slack"
       "spotify"
       "twitch"
