@@ -29,6 +29,8 @@
       "github"
       "google-chrome"
       "hammerspoon"
+      "karabiner-elements"
+      "lastpass"
       "mactex-no-gui"
       "slack"
       "spotify"
