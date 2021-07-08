@@ -5,13 +5,22 @@ rustPlatform.buildRustPackage rec {
   version = "0.13.0";
   stdenv = pkgs.clangStdenv;
 
+  isDarwin = pkgs.stdenv.isDarwin;
+
+  darwinPackages = with pkgs.darwin.apple_sdk.frameworks; [
+    Security
+    CoreFoundation
+    CoreServices
+  ];
+
+  linuxPackages = with pkgs; [];
+
   buildInputs = [
     pkgs.rustc
     pkgs.cargo
-    pkgs.darwin.apple_sdk.frameworks.Security
-    pkgs.darwin.apple_sdk.frameworks.CoreFoundation
-    pkgs.darwin.apple_sdk.frameworks.CoreServices
-  ];
+  ] ++ (
+    if isDarwin then darwinPackages else linuxPackages
+  );
 
   src = fetchFromGitHub {
     owner = "Kampfkarren";
