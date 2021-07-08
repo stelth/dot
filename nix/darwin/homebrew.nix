@@ -33,6 +33,7 @@
       "slack"
       "spotify"
       "twitch"
+      "ubersicht"
     ];
   };
 }
