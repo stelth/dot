@@ -17,6 +17,7 @@ in
       ".bashrc".text = "source <(starship init bash --print-full-init)";
       ".zshrc".text = "source <(starship init zsh --print-full-init)";
       ".gitconfig".source = util.link "config/.gitconfig";
+      ".ssh".source = util.link "ssh";
       /* "dot".source = util.link ""; */
     } // extraHome // {
       ".npmrc".text = ''
