@@ -20,10 +20,6 @@ function M.get_name(pkg)
   return parts[#parts]
 end
 
-function M.has_local(name)
-  return vim.loop.fs_stat(vim.fn.expand("~/projects/" .. name)) ~= nil
-end
-
 -- This method replaces any plugins with the local clone under ~/projects
 function M.process_local_plugins(spec)
   if type(spec) == "string" then
