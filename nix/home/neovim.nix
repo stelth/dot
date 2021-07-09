@@ -26,6 +26,7 @@
     stylua
     sumneko-lua-language-server
     texlab
+    tree-sitter
     vim-vint
     yamllint
   ];
