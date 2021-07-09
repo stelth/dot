@@ -1,12 +1,3 @@
-Host dev.shared
-	CheckHostIP no
-	StrictHostKeyChecking no
-	UserKnownHostsFile /dev/null
-	LogLevel QUIET
-	IdentityFile ~/.ssh/id_rsa
-	User jcox
-	ServerAliveInterval 50
-
 Host 10.* 172.18.30.* 172.19.* 192.168.*
 	CheckHostIP no
 	StrictHostKeyChecking no
