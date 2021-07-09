@@ -52,6 +52,7 @@ in
     pfetch
     procs
     ripgrep
+    rpmextract
     shellcheck
     shfmt
     starship
