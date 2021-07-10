@@ -223,8 +223,8 @@ local leader = {
   x = {
     name = "+errors",
     x = { "<cmd>TroubleToggle<cr>", "Trouble" },
-    w = { "<cmd>TroubleWorkspaceToggle<cr>", "Workspace Trouble" },
-    d = { "<cmd>TroubleDocumentToggle<cr>", "Document Trouble" },
+    w = { "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>", "Workspace Trouble" },
+    d = { "<cmd>TroubleToggle lsp_document_diagnostics<cr>", "Document Trouble" },
     l = { "<cmd>lopen<cr>", "Open Location List" },
     q = { "<cmd>copen<cr>", "Open Quickfix List" },
   },
