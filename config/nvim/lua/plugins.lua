@@ -265,6 +265,15 @@ local function plugins(use)
   })
 
   use({
+    "folke/persistence.nvim",
+    event = "BufReadPre",
+    module = "persistence",
+    config = function()
+      require("persistence").start()
+    end,
+  })
+
+  use({
     "tweekmonster/startuptime.vim",
     cmd = "StartupTime",
   })
