@@ -266,10 +266,10 @@ local function plugins(use)
 
   use({
     "folke/persistence.nvim",
-    event = "BufReadPre",
+    event = "VimEnter",
     module = "persistence",
     config = function()
-      require("persistence").start()
+      require("persistence").setup()
     end,
   })
 
