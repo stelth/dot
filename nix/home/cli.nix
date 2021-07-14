@@ -28,6 +28,7 @@ in
     bat
     bottom
     broot
+    cmake
     delta
     direnv
     du-dust
