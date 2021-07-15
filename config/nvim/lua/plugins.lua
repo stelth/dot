@@ -10,9 +10,7 @@ local config = {
     enable = true,
     threshold = 0,
   },
-  local_plugins = {
-    ["null-ls.nvim"] = "folke",
-  },
+  local_plugins = {},
 }
 
 local function plugins(use)
