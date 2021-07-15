@@ -52,19 +52,11 @@ local function on_attach(client, bufnr)
   end
 end
 
-local function make_config()
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities.textDocument.completion.completionItem.snippetSupport = true
-  capabilities.textDocument.completion.completionItem.resolveSupport = {
-    properties = { "documentation", "detail", "additionalTextEdits" },
-  }
-
-  return {
-    capabilities = capabilities,
-    on_attach = on_attach,
-    flags = { debounce_text_changes = 150 },
-  }
-end
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = { "documentation", "detail", "additionalTextEdits" },
+}
 
 local servers = {
   bashls = {},
@@ -85,18 +77,20 @@ local servers = {
   yamlls = {},
 }
 
-local function setup_servers()
-  require("config.lsp.null-ls").setup()
+require("config.lsp.null-ls").setup()
 
-  local util = require("util")
-  local lspconfig = require("lspconfig")
-  for server, config in pairs(servers) do
-    lspconfig[server].setup(vim.tbl_deep_extend("force", make_config(), config))
-    local cfg = lspconfig[server]
-    if not (cfg and cfg.cmd and vim.fn.executable(cfg.cmd[1]) == 1) then
-      util.error(server .. ": cmd not found: " .. vim.inspect(cfg.cmd))
-    end
+local util = require("util")
+local lspconfig = require("lspconfig")
+for server, config in pairs(servers) do
+  lspconfig[server].setup(vim.tbl_deep_extend("force", {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    flags = {
+      debounce_text_changes = 150,
+    },
+  }, config))
+  local cfg = lspconfig[server]
+  if not (cfg and cfg.cmd and vim.fn.executable(cfg.cmd[1]) == 1) then
+    util.error(server .. ": cmd not found: " .. vim.inspect(cfg.cmd))
   end
 end
-
-setup_servers()
