@@ -9,9 +9,9 @@
     nodePackages.dockerfile-language-server-nodejs
     nodePackages.eslint_d
     nodePackages.markdownlint-cli
-    nodePackages.prettier
-    nodePackages.pyright
     nodePackages.stylelint
+    nodePackages.prettierd
+    nodePackages.pyright
     nodePackages.typescript-language-server
     nodePackages.vim-language-server
     nodePackages.vscode-css-languageserver-bin
