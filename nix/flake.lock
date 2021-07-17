@@ -103,11 +103,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1626509501,
-        "narHash": "sha256-FvHt9vRA9eOFTdZoSh5GJvgjtCLZhhSzoKUdwlEZOP8=",
+        "lastModified": 1626423163,
+        "narHash": "sha256-/iHYwdEiq1mbdaPe1uqWze4TO5WtN2e6tPL0JQEFlkM=",
         "owner": "nix-community",
         "repo": "neovim-nightly-overlay",
-        "rev": "06b3b49102106bc2cf9e01ecfbb7e24c7fb47ca9",
+        "rev": "694db7d5bfa2036f510a1dc58a6403850fa86239",
         "type": "github"
       },
       "original": {
