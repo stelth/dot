@@ -9,22 +9,15 @@ in
     ./defaults.nix
   ];
 
-  environment.shells = with pkgs; [ bashInteractive fish zsh dash ];
+  environment.shells = with pkgs; [ bashInteractive zsh dash ];
 
   environment.systemPackages = with pkgs;
     [
-      fish
     ];
 
   programs.bash = {
     enable = true;
     enableCompletion = true;
-  };
-
-  programs.fish = {
-    enable = true;
-    useBabelfish = true;
-    babelfishPackage = pkgs.babelfish;
   };
 
   # Auto upgrade nix package and the daemon service.
