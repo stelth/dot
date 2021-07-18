@@ -31,9 +31,10 @@
       homeManagerCommon = with inputs; {
         imports = [
           ./home
-          ./modules/terminal/tmux.nix
           ./modules/terminal/fish.nix
+          ./modules/terminal/kitty.nix
           ./modules/terminal/starship.nix
+          ./modules/terminal/tmux.nix
         ];
       };
     in

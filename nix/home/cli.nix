@@ -8,7 +8,6 @@ let
     curl
     wget
     fontconfig
-    kitty
     less
     rsync
   ];
