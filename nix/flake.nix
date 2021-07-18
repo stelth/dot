@@ -31,6 +31,7 @@
       homeManagerCommon = with inputs; {
         imports = [
           ./home
+          ./modules/terminal/tmux.nix
         ];
       };
     in
