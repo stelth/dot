@@ -31,6 +31,8 @@
       homeManagerCommon = with inputs; {
         imports = [
           ./home
+          ./modules/dev/git.nix
+          ./modules/terminal/bat.nix
           ./modules/terminal/fish.nix
           ./modules/terminal/kitty.nix
           ./modules/terminal/starship.nix

@@ -23,7 +23,6 @@ in
     as-tree
     aspell
     bandwhich
-    bat
     bottom
     broot
     cmake

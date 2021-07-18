@@ -10,7 +10,6 @@ in
   ];
 
   environment.shells = with pkgs; [ bashInteractive fish zsh dash ];
-  environment.variables.EDITOR = "nvim";
 
   environment.systemPackages = with pkgs;
     [

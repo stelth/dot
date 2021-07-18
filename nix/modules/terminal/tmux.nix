@@ -4,6 +4,7 @@
     enable = true;
     prefix = "C-a";
     baseIndex = 1;
+    terminal = "xterm-kitty";
     keyMode = "vi";
     plugins = with pkgs; [
       {

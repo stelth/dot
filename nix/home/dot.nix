@@ -3,14 +3,17 @@ let
   util = (import ./util.nix) { config = config; };
   isDarwin = pkgs.stdenv.isDarwin;
 
-  extraHome = if pkgs.stdenv.isDarwin then {
-  } else {};
+  extraHome = if pkgs.stdenv.isDarwin then {} else {};
 in
 {
-    home.sessionVariables = {
+  home.sessionVariables = {
     TERMINFO_DIRS = "${pkgs.kitty.terminfo.outPath}/share/terminfo";
     SHELL = "${pkgs.fish}/bin/fish";
     NIX_GCC = "${pkgs.gcc}/bin/gcc";
+    EDITOR = "nvim";
+    VISUAL = "nvim";
+    MANPAGER = "nvim +Man!";
+    MANROFFOPT = "-c";
   };
 
   programs.bash = {
