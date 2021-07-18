@@ -16,7 +16,6 @@ let
   kmonad = (import ./kmonad.nix) pkgs;
 
   linuxPackages = with pkgs; [
-    fish
     kmonad
   ];
 in
@@ -56,9 +55,7 @@ in
     rpmextract
     shellcheck
     shfmt
-    starship
     tealdeer
-    tmux
     tmuxinator
     tokei
     zoxide

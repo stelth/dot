@@ -10,6 +10,7 @@ in
   ];
 
   environment.shells = with pkgs; [ bashInteractive fish zsh dash ];
+  environment.variables.EDITOR = "nvim";
 
   environment.systemPackages = with pkgs;
     [
@@ -19,12 +20,6 @@ in
   programs.bash = {
     enable = true;
     enableCompletion = true;
-  };
-
-  programs.fish = {
-    enable = true;
-    useBabelfish = true;
-    babelfishPackage = pkgs.babelfish;
   };
 
   # Auto upgrade nix package and the daemon service.

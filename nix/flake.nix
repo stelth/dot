@@ -32,6 +32,8 @@
         imports = [
           ./home
           ./modules/terminal/tmux.nix
+          ./modules/terminal/fish.nix
+          ./modules/terminal/starship.nix
         ];
       };
     in
