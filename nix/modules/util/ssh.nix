@@ -7,6 +7,7 @@
       "10.* 172.18.30.* 172.19.* 192.168.*" = {
         user = "root";
         identityFile = "~/dot/config/ssh/id_rsa.cleversafelabs";
+        serverAliveInterval = 50;
       };
       "github.com" = lib.hm.dag.entryBefore [ "10.* 172.18.30.* 172.19.* 192.168.*" ] {
         user = "stelth";
