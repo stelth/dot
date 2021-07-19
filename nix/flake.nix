@@ -31,6 +31,7 @@
       homeManagerCommon = [
         ./home
         ./modules/dev/git.nix
+        ./modules/dev/lazygit.nix
         ./modules/terminal/bat.nix
         ./modules/terminal/fish.nix
         ./modules/terminal/kitty.nix
@@ -40,6 +41,9 @@
       darwinSpecificConfig = with inputs; {
         imports = [
           ./modules/darwin/karabiner.nix
+          ./modules/darwin/skhd.nix
+          ./modules/darwin/ubersicht.nix
+          ./modules/darwin/yabai.nix
         ] ++ homeManagerCommon;
       };
       linuxSpecificConfig = with inputs; {

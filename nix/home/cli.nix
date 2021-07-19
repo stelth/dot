@@ -40,7 +40,6 @@ in
     htop
     hyperfine
     jq
-    lazygit
     manix
     mdcat
     ncdu
