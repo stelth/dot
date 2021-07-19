@@ -1,8 +1,8 @@
 local packer = require("util.packer")
-local global = require('util.global')
+local global = require("util.global")
 
 local config = {
-  compile_path = global.data_dir .. 'packer_compiled.lua',
+  compile_path = global.data_dir .. "packer_compiled.lua",
   display = {
     open_fn = function()
       return require("packer.util").float({ border = "single" })
@@ -148,6 +148,7 @@ local function plugins(use)
       require("config.telescope")
     end,
     cmd = { "Telescope" },
+    module = "telescope",
     keys = { "<leader><space>", "<leader>fz", "<leader>pp", "<leader>fd" },
     wants = {
       "plenary.nvim",
