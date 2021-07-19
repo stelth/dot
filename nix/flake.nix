@@ -41,6 +41,7 @@
       ];
       darwinSpecificConfig = with inputs; {
         imports = [
+          ./modules/darwin/hammerspoon.nix
           ./modules/darwin/karabiner.nix
           ./modules/darwin/skhd.nix
           ./modules/darwin/ubersicht.nix
