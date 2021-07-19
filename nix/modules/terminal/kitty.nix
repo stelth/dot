@@ -32,6 +32,7 @@
       macos_option_as_alt yes
       macos_thicken_font 0.3
       macos_traditional_fullscreen yes
+      window_padding_width 5
 
       background #24283a
       foreground #c0caf5
