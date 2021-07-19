@@ -2,22 +2,22 @@ local cmd = vim.cmd
 local indent = 2
 
 local createdir = function()
-  local global = require('util.global')
+  local global = require("util.global")
   local data_dir = {
-    global.cache_dir .. 'backup',
-    global.cache_dir .. 'session',
-    global.cache_dir .. 'swap',
-    global.cache_dir .. 'tags',
-    global.cache_dir .. 'undo',
+    global.cache_dir .. "backup",
+    global.cache_dir .. "session",
+    global.cache_dir .. "swap",
+    global.cache_dir .. "tags",
+    global.cache_dir .. "undo",
   }
 
   if vim.fn.isdirectory(global.cache_dir) == 0 then
-    os.execute('mkdir -p ' .. global.cache_dir)
+    os.execute("mkdir -p " .. global.cache_dir)
   end
 
   for _, v in pairs(data_dir) do
     if vim.fn.isdirectory(v) == 0 then
-      os.execute('mkdir -p ' .. v)
+      os.execute("mkdir -p " .. v)
     end
   end
 end
@@ -63,6 +63,7 @@ vim.opt.updatetime = 200 -- save swap file and trigger CursorHold
 vim.opt.wildmode = "longest:full,full" -- Command-line completion mode
 vim.opt.wrap = false -- Disable line wrap
 vim.opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
+vim.opt.shortmess = "IToOlxfitn"
 
 -- don't load the plugins below
 vim.g.loaded_gzip = 1
