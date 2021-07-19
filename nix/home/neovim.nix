@@ -1,6 +1,7 @@
 { config, pkgs, home-manager, ... }:
 
 {
+  xdg.configFile."nvim".source = ../../config/nvim;
   home.packages = with pkgs; [
     clang-tools # clangd
     cmake-language-server
