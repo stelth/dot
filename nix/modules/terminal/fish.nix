@@ -40,7 +40,7 @@
       hide = "cursor tput civis";
     };
     functions = {
-      yabai_fix = "pgrep yabai | tail -n +2 | head -n1 | xargs kill";
+      yabai_fix = "pgrep yabai | xargs kill";
     };
     plugins = [
       {
