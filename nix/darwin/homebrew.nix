@@ -14,7 +14,6 @@
       "homebrew/bundle"
       "homebrew/cask"
       "homebrew/cask-versions"
-      "nextdns/homebrew-tap"
     ];
 
     brews = [
