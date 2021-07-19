@@ -37,6 +37,7 @@
         ./modules/terminal/kitty.nix
         ./modules/terminal/starship.nix
         ./modules/terminal/tmux.nix
+        ./modules/util/ssh.nix
       ];
       darwinSpecificConfig = with inputs; {
         imports = [
