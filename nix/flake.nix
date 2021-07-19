@@ -28,16 +28,22 @@
           (import ./home/overlays.nix)
         ];
       };
-      homeManagerCommon = with inputs; {
+      homeManagerCommon = [
+        ./home
+        ./modules/dev/git.nix
+        ./modules/terminal/bat.nix
+        ./modules/terminal/fish.nix
+        ./modules/terminal/kitty.nix
+        ./modules/terminal/starship.nix
+        ./modules/terminal/tmux.nix
+      ];
+      darwinSpecificConfig = with inputs; {
         imports = [
-          ./home
-          ./modules/dev/git.nix
-          ./modules/terminal/bat.nix
-          ./modules/terminal/fish.nix
-          ./modules/terminal/kitty.nix
-          ./modules/terminal/starship.nix
-          ./modules/terminal/tmux.nix
-        ];
+          ./modules/darwin/karabiner.nix
+        ] ++ homeManagerCommon;
+      };
+      linuxSpecificConfig = with inputs; {
+        imports = [] // homeManagerCommon;
       };
     in
       {
@@ -56,7 +62,7 @@
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.backupFileExtension = "orig";
-                home-manager.users.${username} = homeManagerCommon;
+                home-manager.users.${username} = darwinSpecificConfig;
               }
             ];
           };
@@ -66,7 +72,7 @@
             system = "x86_64-linux";
             homeDirectory = "/home/${username}";
             username = username;
-            configuration = homeManagerCommon // {
+            configuration = linuxSpecificConfig // {
               nixpkgs = nixpkgsConfig;
             };
           };
