@@ -13,6 +13,10 @@
         user = "stelth";
         identityFile = "~/dot/config/ssh/id_ed25519_github";
       };
+      "github.ibm.com" = lib.hm.dag.entryBefore [ "github.com" ] {
+        user = "Jason.P.Cox@ibm.com";
+        identityFile = "~/dot/config/ssh/id_ed25519_ibm";
+      };
     };
   };
 }
