@@ -188,7 +188,6 @@ local function plugins(use)
   use({
     "lukas-reineke/indent-blankline.nvim",
     event = "BufReadPre",
-    branch = "lua",
     wants = "tokyonight.nvim",
     config = function()
       require("config.blankline")
