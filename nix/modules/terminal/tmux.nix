@@ -6,6 +6,7 @@
     baseIndex = 1;
     terminal = "xterm-kitty";
     keyMode = "vi";
+    escapeTime = 0;
     plugins = with pkgs; [
       {
         plugin = tmuxPlugins.resurrect;
