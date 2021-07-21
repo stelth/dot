@@ -334,6 +334,13 @@ local function plugins(use)
   })
 
   use({
+    "aserowy/tmux.nvim",
+    config = function()
+      require("config.tmux")
+    end,
+  })
+
+  use({
     "andymass/vim-matchup",
     event = "CursorMoved",
   })
