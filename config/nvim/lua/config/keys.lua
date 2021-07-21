@@ -1,7 +1,7 @@
 local wk = require("which-key")
 local util = require("util")
 
-vim.opt.timeoutlen = 300
+vim.opt.timeoutlen = 100
 
 local presets = require("which-key.plugins.presets")
 presets.objects["a("] = nil
