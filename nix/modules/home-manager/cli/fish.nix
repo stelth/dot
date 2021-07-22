@@ -33,8 +33,8 @@ in
       df = "grc /bin/df -h";
       rga = "rg -uu";
       grep = "rg";
-      show = "cursor tput cnorm";
-      hide = "cursor tput civis";
+      show-cursor = "tput cnorm";
+      hide-cursor = "tput civis";
     };
     functions = {
       yabai_fix = "pgrep yabai | xargs kill";
