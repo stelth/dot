@@ -1,5 +1,13 @@
 { config, pkgs, ... }:
 {
+
+  home.file = {
+    hammerspoon = {
+      source = ./hammerspoon;
+      target = ".hammerspoon";
+      recursive = true;
+    };
+  };
   xdg.enable = true;
   xdg.configFile = {
     "nixpkgs/config.nix" = {
