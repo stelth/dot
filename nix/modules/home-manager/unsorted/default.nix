@@ -1,0 +1,39 @@
+{ config, pkgs, lib, ... }:
+{
+  home.packages = with pkgs; [
+    fontconfig
+    as-tree
+    aspell
+    bandwhich
+    bottom
+    broot
+    delta
+    direnv
+    du-dust
+    exa
+    fd
+    fzy
+    ghq
+    gcc
+    glow
+    gnused
+    grc
+    htop
+    hyperfine
+    manix
+    mdcat
+    ncdu
+    nix-direnv
+    nix-index
+    nixUnstable
+    pfetch
+    procs
+    rpmextract
+    shellcheck
+    shfmt
+    tealdeer
+    tmuxinator
+    tokei
+    zoxide
+  ];
+}
