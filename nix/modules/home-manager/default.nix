@@ -10,7 +10,6 @@ in
     ./git.nix
     ./kitty
     ./nvim
-    ./unsorted
   ];
 
   programs.home-manager = {
@@ -35,11 +34,33 @@ in
         };
 
         packages = with pkgs; [
+          as-tree
+          aspell
+          bandwhich
+          bottom
+          broot
           coreutils-full
           curl
+          du-dust
+          fzy
+          ghq
+          glow
           gnused
+          grc
+          hyperfine
           less
+          manix
+          mdcat
+          ncdu
+          nix-index
+          nixUnstable
+          pfetch
+          procs
+          ripgrep-all
+          rpmextract
           rsync
+          tealdeer
+          tokei
         ];
       };
 }
