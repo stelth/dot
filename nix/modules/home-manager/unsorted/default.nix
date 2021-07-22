@@ -7,14 +7,9 @@
     bandwhich
     bottom
     broot
-    delta
-    direnv
     du-dust
-    exa
-    fd
     fzy
     ghq
-    gcc
     glow
     gnused
     grc
@@ -29,10 +24,7 @@
     pfetch
     procs
     rpmextract
-    shellcheck
-    shfmt
     tealdeer
-    tmuxinator
     tokei
     zoxide
   ];

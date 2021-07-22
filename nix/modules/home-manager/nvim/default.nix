@@ -25,6 +25,8 @@ in
     python39Packages.flake8
     rnix-lsp
     selene
+    shellcheck
+    shfmt
     stylua
     sumneko-lua-language-server
     texlab

@@ -10,6 +10,7 @@ in
     terminal = "xterm-kitty";
     keyMode = "vi";
     escapeTime = 0;
+    tmuxinator.enable = true;
     plugins = with pkgs; [
       {
         plugin = tmuxPlugins.resurrect;
