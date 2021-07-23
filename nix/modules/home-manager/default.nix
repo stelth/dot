@@ -55,6 +55,7 @@ in
           nix-index
           nixUnstable
           pfetch
+          pre-commit
           procs
           ripgrep-all
           rpmextract
