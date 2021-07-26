@@ -2,6 +2,7 @@
 {
   homebrew = {
     casks = [
+      "1password"
       "avibrazil-rdm"
       "discord"
       "github"
