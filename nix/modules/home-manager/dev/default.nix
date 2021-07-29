@@ -21,12 +21,15 @@
     enable = true;
 
     matchBlocks = {
-      "10.* 172.18.30.* 172.19.* 192.168.*" = {
+      "10.137.* 172.18.30.* 172.19.* 192.168.*" = {
         user = "root";
         identityFile = "~/dot/nix/modules/home-manager/dotfiles/ssh/id_rsa.cleversafelabs";
         serverAliveInterval = 50;
+        extraOptions = {
+          "StrictHostKeyChecking" = "no";
+        };
       };
-      "github.com" = lib.hm.dag.entryBefore [ "10.* 172.18.30.* 172.19.* 192.168.*" ] {
+      "github.com" = lib.hm.dag.entryBefore [ "10.137.* 172.18.30.* 172.19.* 192.168.*" ] {
         user = "stelth";
         identityFile = "~/dot/nix/modules/home-manager/dotfiles/ssh/id_ed25519_github";
       };
