@@ -64,7 +64,7 @@
           (import ./pkgs)
           (import ./modules/overlays.nix)
         ];
-        lib = nixpkgs.lib.extend (final: prev: (import ./lib final) // home-manager.lib);
+        lib = nixpkgs.lib.extend (final: prev: home-manager.lib);
 
         inherit (darwin.lib) darwinSystem;
         inherit (nixpkgs.lib) nixosSystem;
