@@ -46,10 +46,6 @@ local function on_attach(client, bufnr)
   require("config.lsp.keys").setup(client, bufnr)
   require("config.lsp.completion").setup(client, bufnr)
   require("config.lsp.highlighting").setup(client)
-
-  if client.name == "typescript" or client.name == "tsserver" then
-    require("config.lsp.ts-utils").setup(client)
-  end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
