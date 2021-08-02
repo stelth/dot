@@ -2,7 +2,6 @@ local packer = require("util.packer")
 local global = require("util.global")
 
 local config = {
-	compile_path = global.data_dir .. "packer_compiled.lua",
 	display = {
 		open_fn = function()
 			return require("packer.util").float({ border = "single" })
