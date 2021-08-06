@@ -8,7 +8,7 @@ let
   sysDoNixos =
     "[[ -d /etc/nixos ]] && cd /etc/nixos && ${pyEnv}/bin/python bin/do.py $@";
   sysDoDarwin =
-    "[[ -d ${homeDir}/.nixpkgs ]] && cd ${homeDir}/.nixpkgs && ${pyEnv}/bin/python bin/do.py $@";
+    "[[ -d ${homeDir}/dot ]] && cd ${homeDir}/dot && ${pyEnv}/bin/python bin/do.py $@";
   sysdo = (
     pkgs.writeShellScriptBin "sysdo" ''
       (${sysDoNixos}) || (${sysDoDarwin})
@@ -27,7 +27,7 @@ in
 
   programs.home-manager = {
     enable = true;
-    path = "${config.home.homeDirectory}/.nixpkgs/modules/home-manager";
+    path = "${config.home.homeDirectory}/dot/modules/home-manager";
   };
 
   home =
