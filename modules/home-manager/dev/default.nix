@@ -37,6 +37,10 @@
         identityFile = "~/dot/modules/home-manager/dotfiles/ssh/id_ed25519_ibm";
         user = "Jason.P.Cox@ibm.com";
       };
+      "9.55.36.195" = lib.hm.dag.entryBefore [ "github.com" ] {
+        identityFile = "~/dot/modules/home-manager/dotfiles/ssh/id_ed25519_logserver";
+        user = "Jason.P.Cox";
+      };
     };
   };
 }
