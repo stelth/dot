@@ -12,9 +12,6 @@
       "mactex-no-gui"
       "slack"
     ];
-    brews = [
-      "efm-langserver"
-    ];
     masApps = {
       "Amphetamine" = 937984704;
     };

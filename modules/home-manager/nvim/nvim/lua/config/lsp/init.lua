@@ -59,7 +59,6 @@ local servers = {
   cmake = {},
   clangd = {},
   dockerls = {},
-  efm = require("config.lsp.efm").config,
   jsonls = { cmd = { "vscode-json-languageserver", "--stdio" } },
   ["null-ls"] = {},
   texlab = {},

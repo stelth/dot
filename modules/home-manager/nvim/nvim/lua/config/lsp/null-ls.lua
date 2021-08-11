@@ -10,6 +10,7 @@ function M.setup()
       nls.builtins.formatting.clang_format,
       nls.builtins.formatting.cmake_format,
       nls.builtins.formatting.eslint_d,
+      nls.builtins.formatting.fish_indent,
       nls.builtins.formatting.prettierd,
       nls.builtins.formatting.shfmt,
       nls.builtins.formatting.stylua,

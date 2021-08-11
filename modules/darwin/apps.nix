@@ -14,9 +14,6 @@
       "spotify"
       "twitch"
     ];
-    brews = [
-      "efm-langserver"
-    ];
     masApps = {
       "Amphetamine" = 937984704;
     };
