@@ -17,6 +17,7 @@ function M.setup()
       nls.builtins.diagnostics.selene,
       nls.builtins.diagnostics.vint,
       nls.builtins.code_actions.gitsigns,
+      nls.builtins.diagnostics.write_good,
     },
   })
 end

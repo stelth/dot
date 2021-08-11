@@ -24,6 +24,7 @@ in
     nodePackages.vscode-css-languageserver-bin
     nodePackages.vscode-html-languageserver-bin
     nodePackages.vscode-json-languageserver
+    nodePackages.write-good
     nodePackages.yaml-language-server
     python39Packages.autopep8
     python39Packages.debugpy
