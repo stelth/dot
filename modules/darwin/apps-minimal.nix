@@ -1,5 +1,4 @@
-{ config, lib, pkgs, ... }:
-{
+{ config, lib, pkgs, ... }: {
   homebrew = {
     casks = [
       "1password"
@@ -12,8 +11,6 @@
       "mactex-no-gui"
       "slack"
     ];
-    masApps = {
-      "Amphetamine" = 937984704;
-    };
+    masApps = { "Amphetamine" = 937984704; };
   };
 }

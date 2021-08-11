@@ -1,14 +1,10 @@
 { inputs, config, pkgs, ... }:
-let
-  prefix = "/run/current-system/sw/bin";
-in
-{
+let prefix = "/run/current-system/sw/bin";
+in {
   environment = {
     loginShell = pkgs.fish;
     pathsToLink = [ "/Applications" ];
-    etc = {
-      darwin.source = "${inputs.darwin}";
-    };
+    etc = { darwin.source = "${inputs.darwin}"; };
   };
 
   fonts.enableFontDir = true;

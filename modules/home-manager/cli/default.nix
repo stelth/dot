@@ -1,24 +1,19 @@
 { config, pkgs, lib, ... }:
 let
-  fuzz =
-    let
-      fd = "${pkgs.fd}/bin/fd";
-    in
-      rec {
-        defaultCommand = "${fd} -H --type f";
-        defaultOptions = [ "--height 50%" "--border" ];
-        fileWidgetCommand = "${defaultCommand}";
-        fileWidgetOptions = [ "--preview '${pkgs.tree}/bin/tree -C {} | head -200'" ];
-        changeDirWidgetCommand = "${fd} --type d";
-        changeDirWidgetOptions = [ "--preview '${pkgs.tree}/bin/tree -C {} | head -200'" ];
-      };
-  aliases = {};
-in
-{
-  imports = [
-    ./fish.nix
-    ./tmux.nix
-  ];
+  fuzz = let fd = "${pkgs.fd}/bin/fd";
+  in rec {
+    defaultCommand = "${fd} -H --type f";
+    defaultOptions = [ "--height 50%" "--border" ];
+    fileWidgetCommand = "${defaultCommand}";
+    fileWidgetOptions =
+      [ "--preview '${pkgs.tree}/bin/tree -C {} | head -200'" ];
+    changeDirWidgetCommand = "${fd} --type d";
+    changeDirWidgetOptions =
+      [ "--preview '${pkgs.tree}/bin/tree -C {} | head -200'" ];
+  };
+  aliases = { };
+in {
+  imports = [ ./fish.nix ./tmux.nix ];
 
   home.packages = with pkgs; [ tree ];
   programs = {
@@ -46,11 +41,10 @@ in
     gpg.enable = true;
     git = {
       enable = true;
-      lfs = {
-        enable = true;
-      };
+      lfs = { enable = true; };
       aliases = {
-        ignore = "!gi() { curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;}; gi";
+        ignore =
+          "!gi() { curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;}; gi";
       };
     };
     exa = {
@@ -68,9 +62,7 @@ in
       settings = {
         add_newline = true;
 
-        aws = {
-          symbol = " ";
-        };
+        aws = { symbol = " "; };
 
         battery = {
           full_symbol = "";
@@ -78,89 +70,47 @@ in
           discharging_symbol = "";
         };
 
-        conda = {
-          symbol = " ";
-        };
+        conda = { symbol = " "; };
 
-        dart = {
-          symbol = " ";
-        };
+        dart = { symbol = " "; };
 
-        docker_context = {
-          symbol = " ";
-        };
+        docker_context = { symbol = " "; };
 
-        elixir = {
-          symbol = " ";
-        };
+        elixir = { symbol = " "; };
 
-        elm = {
-          symbol = " ";
-        };
+        elm = { symbol = " "; };
 
-        git_branch = {
-          symbol = " ";
-        };
+        git_branch = { symbol = " "; };
 
-        golang = {
-          symbol = " ";
-        };
+        golang = { symbol = " "; };
 
-        hg_branch = {
-          symbol = " ";
-        };
+        hg_branch = { symbol = " "; };
 
-        java = {
-          symbol = " ";
-        };
+        java = { symbol = " "; };
 
-        julia = {
-          symbol = " ";
-        };
+        julia = { symbol = " "; };
 
-        memory_usage = {
-          symbol = " ";
-        };
+        memory_usage = { symbol = " "; };
 
-        nim = {
-          symbol = " ";
-        };
+        nim = { symbol = " "; };
 
-        nix_shell = {
-          symbol = " ";
-        };
+        nix_shell = { symbol = " "; };
 
-        nodejs = {
-          symbol = " ";
-        };
+        nodejs = { symbol = " "; };
 
-        package = {
-          symbol = " ";
-        };
+        package = { symbol = " "; };
 
-        perl = {
-          symbol = " ";
-        };
+        perl = { symbol = " "; };
 
-        php = {
-          symbol = " ";
-        };
+        php = { symbol = " "; };
 
-        python = {
-          symbol = " ";
-        };
+        python = { symbol = " "; };
 
-        ruby = {
-          symbol = " ";
-        };
+        ruby = { symbol = " "; };
 
-        rust = {
-          symbol = " ";
-        };
+        rust = { symbol = " "; };
 
-        swift = {
-          symbol = "ﯣ ";
-        };
+        swift = { symbol = "ﯣ "; };
       };
     };
   };

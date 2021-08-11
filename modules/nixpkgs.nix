@@ -1,8 +1,7 @@
-{ inputs, config, lib, pkgs, ... }:
-{
+{ inputs, config, lib, pkgs, ... }: {
   nixpkgs = {
     config = import ./config.nix;
-    overlays = [];
+    overlays = [ ];
   };
 
   nix = {
@@ -10,7 +9,8 @@
     extraOptions = ''
       keep-outputs = true
       keep-derivations = true
-      ${lib.optionalString (config.nix.package == pkgs.nixFlakes) "experimental-features = nix-command flakes"}
+      ${lib.optionalString (config.nix.package == pkgs.nixFlakes)
+      "experimental-features = nix-command flakes"}
     '';
     trustedUsers = [ "${config.user.name}" ];
     gc = {
@@ -24,9 +24,7 @@
       "nixpkgs=/etc/${config.environment.etc.nixpkgs.target}"
       "home-manager=/etc/${config.environment.etc.home-manager.target}"
     ];
-    binaryCaches = [
-      "https://nix-community.cachix.org/"
-    ];
+    binaryCaches = [ "https://nix-community.cachix.org/" ];
     binaryCachePublicKeys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];

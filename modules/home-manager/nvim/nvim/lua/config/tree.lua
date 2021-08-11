@@ -11,5 +11,5 @@ vim.g.nvim_tree_lsp_diagnostics = 1
 vim.g.nvim_tree_hijack_netrw = 1
 
 require("nvim-tree.events").on_nvim_tree_ready(function()
-	vim.cmd("NvimTreeRefresh")
+  vim.cmd("NvimTreeRefresh")
 end)

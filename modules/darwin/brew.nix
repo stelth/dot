@@ -1,12 +1,10 @@
 { inputs, config, pkgs, ... }:
 let
   checkBrew = "command -v brew > /dev/null";
-  installBrew = ''${pkgs.bash}/bin/bash -c "$(${pkgs.curl}/bin/curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"'';
-in
-{
-  environment = {
-    extraInit = ''${checkBrew} || ${installBrew}'';
-  };
+  installBrew = ''
+    ${pkgs.bash}/bin/bash -c "$(${pkgs.curl}/bin/curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"'';
+in {
+  environment = { extraInit = "${checkBrew} || ${installBrew}"; };
 
   homebrew = {
     enable = true;
@@ -25,9 +23,6 @@ in
       "homebrew/services"
     ];
 
-    brews = [
-      "beeftornado/rmtree/brew-rmtree"
-      "mas"
-    ];
+    brews = [ "beeftornado/rmtree/brew-rmtree" "mas" ];
   };
 }

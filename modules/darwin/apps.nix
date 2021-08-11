@@ -1,5 +1,4 @@
-{ config, lib, pkgs, ... }:
-{
+{ config, lib, pkgs, ... }: {
   homebrew = {
     casks = [
       "1password"
@@ -14,8 +13,6 @@
       "spotify"
       "twitch"
     ];
-    masApps = {
-      "Amphetamine" = 937984704;
-    };
+    masApps = { "Amphetamine" = 937984704; };
   };
 }

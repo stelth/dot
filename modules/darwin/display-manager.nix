@@ -1,5 +1,4 @@
-{ config, pkgs, ... }:
-{
+{ config, pkgs, ... }: {
   services.yabai = {
     enable = true;
     package = pkgs.yabai;
@@ -17,7 +16,7 @@
       normal_window_border_color = "0xff555555";
       active_window_opacity = 1.0;
       normal_window_opacity = 0.95;
-      split_ratio = 0.50;
+      split_ratio = 0.5;
       auto_balance = " off ";
       mouse_modifier = " fn ";
       mouse_action1 = " move ";

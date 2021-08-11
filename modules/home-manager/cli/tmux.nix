@@ -1,8 +1,6 @@
 { pkgs, ... }:
-let
-  vimTmuxNavigator = builtins.readFile ./vim-tmux-navigator.tmux;
-in
-{
+let vimTmuxNavigator = builtins.readFile ./vim-tmux-navigator.tmux;
+in {
   programs.tmux = {
     enable = true;
     prefix = "C-a";

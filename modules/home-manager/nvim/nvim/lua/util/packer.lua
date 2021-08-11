@@ -27,7 +27,7 @@ function M.process_local_plugins(spec)
     if M.local_plugins[name] then
       return M.local_plugins[name] .. "/" .. name
     end
-    else
+  else
     for i, s in ipairs(spec) do
       spec[i] = M.process_local_plugins(s)
     end

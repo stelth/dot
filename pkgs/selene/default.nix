@@ -13,14 +13,10 @@ rustPlatform.buildRustPackage rec {
     CoreServices
   ];
 
-  linuxPackages = with pkgs; [];
+  linuxPackages = with pkgs; [ ];
 
-  buildInputs = [
-    pkgs.rustc
-    pkgs.cargo
-  ] ++ (
-    if isDarwin then darwinPackages else linuxPackages
-  );
+  buildInputs = [ pkgs.rustc pkgs.cargo ]
+    ++ (if isDarwin then darwinPackages else linuxPackages);
 
   src = fetchFromGitHub {
     owner = "Kampfkarren";
@@ -31,11 +27,10 @@ rustPlatform.buildRustPackage rec {
 
   cargoSha256 = "sha256-Daz4SMznW6TS9EvpGjMTHYZLSLCrsZWSykLhpJsYphE=";
 
-  meta = with lib;
-    {
-      description = "";
-      homepage = "";
-      license = licenses.mpl20;
-      maintainers = [ maintainers.tailhook ];
-    };
+  meta = with lib; {
+    description = "";
+    homepage = "";
+    license = licenses.mpl20;
+    maintainers = [ maintainers.tailhook ];
+  };
 }

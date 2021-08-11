@@ -1,13 +1,9 @@
 { config, pkgs, ... }:
-let
-  theme = builtins.readFile ./kitty_tokyonight_night.conf;
-in
-{
+let theme = builtins.readFile ./kitty_tokyonight_night.conf;
+in {
   programs.kitty = {
     enable = true;
-    font = {
-      name = "FiraCode Nerd Font";
-    };
+    font = { name = "FiraCode Nerd Font"; };
     settings = {
       bold_font = "FiraCode Nerd Font Bold";
       italic_font = "VictorMono Nerd Font Light Italic";
