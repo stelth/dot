@@ -7,17 +7,18 @@ function M.setup()
     debounce = 150,
     save_after_format = false,
     sources = {
-      nls.builtins.formatting.prettierd,
-      nls.builtins.formatting.stylua,
+      nls.builtins.formatting.clang_format,
+      nls.builtins.formatting.cmake_format,
       nls.builtins.formatting.eslint_d,
-      nls.builtins.formatting.clangformat,
+      nls.builtins.formatting.prettierd,
       nls.builtins.formatting.shfmt,
-      nls.builtins.diagnostics.shellcheck,
+      nls.builtins.formatting.stylua,
       nls.builtins.diagnostics.markdownlint,
       nls.builtins.diagnostics.selene,
+      nls.builtins.diagnostics.shellcheck,
       nls.builtins.diagnostics.vint,
-      nls.builtins.code_actions.gitsigns,
       nls.builtins.diagnostics.write_good,
+      nls.builtins.code_actions.gitsigns,
     },
   })
 end

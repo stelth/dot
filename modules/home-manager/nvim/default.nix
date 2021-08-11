@@ -1,6 +1,4 @@
 { config, pkgs, lib, ... }:
-let
-in
 {
   xdg.configFile = {
     "nvim" = {
@@ -16,9 +14,9 @@ in
     nodePackages.dockerfile-language-server-nodejs
     nodePackages.eslint_d
     nodePackages.markdownlint-cli
-    nodePackages.stylelint
     nodePackages.prettierd
     nodePackages.pyright
+    nodePackages.stylelint
     nodePackages.typescript-language-server
     nodePackages.vim-language-server
     nodePackages.vscode-css-languageserver-bin
