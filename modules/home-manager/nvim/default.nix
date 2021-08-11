@@ -1,5 +1,4 @@
-{ config, pkgs, lib, ... }:
-{
+{ config, pkgs, lib, ... }: {
   xdg.configFile = {
     "nvim" = {
       source = ./nvim;
@@ -9,6 +8,7 @@
   home.packages = with pkgs; [
     clang-tools # clangd
     cmake-language-server
+    hadolint
     neovim-nightly
     nixfmt
     nodePackages.bash-language-server

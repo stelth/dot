@@ -19,6 +19,7 @@ function M.setup()
         filetypes = { "*" },
       }),
       nls.builtins.formatting.uncrustify,
+      nls.builtins.diagnostics.hadolint,
       nls.builtins.diagnostics.markdownlint,
       nls.builtins.diagnostics.selene,
       nls.builtins.diagnostics.shellcheck,
