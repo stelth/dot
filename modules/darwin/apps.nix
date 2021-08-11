@@ -4,6 +4,7 @@
       "1password"
       "avibrazil-rdm"
       "discord"
+      "firefox"
       "github"
       "google-chrome"
       "hammerspoon"

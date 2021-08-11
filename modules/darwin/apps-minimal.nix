@@ -3,6 +3,7 @@
     casks = [
       "1password"
       "avibrazil-rdm"
+      "firefox"
       "github"
       "google-chrome"
       "hammerspoon"
