@@ -10,6 +10,7 @@
     clang-tools # clangd
     cmake-language-server
     neovim-nightly
+    nixfmt
     nodePackages.bash-language-server
     nodePackages.dockerfile-language-server-nodejs
     nodePackages.eslint_d
@@ -35,6 +36,7 @@
     sumneko-lua-language-server
     texlab
     tree-sitter
+    uncrustify
     vim-vint
     yamllint
   ];
