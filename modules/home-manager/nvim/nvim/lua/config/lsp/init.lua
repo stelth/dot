@@ -64,7 +64,6 @@ local luadev = require("lua-dev").setup({
         diagnostics = {
           globals = {
             "vim",
-            "packer_plugins",
           },
         },
       },
