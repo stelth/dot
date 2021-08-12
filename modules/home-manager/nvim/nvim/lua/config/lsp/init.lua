@@ -54,6 +54,24 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
   properties = { "documentation", "detail", "additionalTextEdits" },
 }
 
+local luadev = require("lua-dev").setup({
+  lspconfig = {
+    cmd = {
+      "lua-language-server",
+    },
+    settings = {
+      Lua = {
+        diagnostics = {
+          globals = {
+            "vim",
+            "packer_plugins",
+          },
+        },
+      },
+    },
+  },
+})
+
 local servers = {
   bashls = {},
   cmake = {},
@@ -64,14 +82,13 @@ local servers = {
   texlab = {},
   pyright = {},
   rnix = {},
-  sumneko_lua = { cmd = { "lua-language-server" } },
+  sumneko_lua = luadev,
   vimls = {},
   tsserver = {},
   yamlls = {},
 }
 
 require("config.lsp.null-ls").setup()
-require("lua-dev").setup()
 
 local util = require("util")
 local lspconfig = require("lspconfig")
