@@ -19,6 +19,7 @@ self: super: {
       postBuild = "";
       nativeBuildInputs = [ super.makeWrapper ];
 
+      dontPatch = true;
       installPhase = ''
         mkdir -p $out
         cp -r extension $out/extras
