@@ -32,6 +32,14 @@ local function plugins(use)
     },
   })
 
+  use({
+    "ahmedkhalf/project.nvim",
+    event = "BufReadPre",
+    config = function()
+      require("project_nvim").setup({})
+    end,
+  })
+
   -- DAP
   use({
     "mfussenegger/nvim-dap",
