@@ -27,7 +27,7 @@ local function plugins(use)
       require("config.lsp")
     end,
     requires = {
-      { "jose-elias-alvarez/null-ls.nvim" },
+      "jose-elias-alvarez/null-ls.nvim",
       "folke/lua-dev.nvim",
     },
   })
