@@ -1,7 +1,14 @@
 local cmp = require("cmp")
 local luasnip = require("luasnip")
+local lspkind = require("lspkind")
 
 cmp.setup({
+  formatting = {
+    format = function(_, vim_item)
+      vim_item.kind = lspkind.presets.default[vim_item.kind] .. " " .. vim_item.kind
+      return vim_item
+    end,
+  },
   snippet = {
     expand = function(args)
       require("luasnip").lsp_expand(args.body)
