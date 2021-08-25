@@ -56,29 +56,41 @@ local function plugins(use)
   })
 
   use({
-    "hrsh7th/nvim-compe",
-    event = "InsertEnter",
-    opt = true,
+    "hrsh7th/nvim-cmp",
     config = function()
-      require("config.compe")
+      require("config.cmp")
     end,
-    wants = { "LuaSnip" },
     requires = {
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
       {
-        "L3MON4D3/LuaSnip",
-        wants = "friendly-snippets",
-        config = function()
-          require("config.snippets")
-        end,
+        "saadparwaiz1/cmp_luasnip",
+        requires = {
+          {
+            "L3MON4D3/LuaSnip",
+            config = function()
+              require("config.snippets")
+            end,
+            requires = {
+              "rafamadriz/friendly-snippets",
+            },
+          },
+        },
       },
-      "rafamadriz/friendly-snippets",
-      {
-        "windwp/nvim-autopairs",
-        config = function()
-          require("config.autopairs")
-        end,
-      },
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-calc",
+      "kdheepak/cmp-latex-symbols",
+      "hrsh7th/cmp-emoji",
     },
+  })
+
+  use({
+    "windwp/nvim-autopairs",
+    opt = true,
+    event = "InsertEnter",
+    config = function()
+      require("config.autopairs")
+    end,
   })
 
   use({
