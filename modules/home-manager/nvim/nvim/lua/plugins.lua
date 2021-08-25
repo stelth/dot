@@ -87,6 +87,7 @@ local function plugins(use)
   use({
     "windwp/nvim-autopairs",
     opt = true,
+    after = "nvim-cmp",
     event = "InsertEnter",
     config = function()
       require("config.autopairs")
