@@ -53,6 +53,11 @@ util.nnoremap("g*", "g*<cmd>lua require('hlslens).start()<CR>")
 util.nnoremap("g#", "g#<cmd>lua require('hlslens').start()<CR>")
 util.nnoremap("<BS>", ":noh<CR>")
 
+-- Add undo break-points
+util.inoremap(",", ",<c-g>u")
+util.inoremap(".", ".<c-g>u")
+util.inoremap(";", ";<c-g>u")
+
 -- telescope <ctrl-r> in command line
 vim.cmd([[cmap <C-R> <Plug>(TelescopeFuzzyCommandSearch)]])
 
