@@ -57,7 +57,6 @@ local function plugins(use)
 
   use({
     "hrsh7th/nvim-cmp",
-    after = "lspkind-nvim",
     config = function()
       require("config.cmp")
     end,
@@ -83,13 +82,6 @@ local function plugins(use)
       "kdheepak/cmp-latex-symbols",
       "hrsh7th/cmp-emoji",
     },
-  })
-
-  use({
-    "onsails/lspkind-nvim",
-    config = function()
-      require("lspkind").init({})
-    end,
   })
 
   use({

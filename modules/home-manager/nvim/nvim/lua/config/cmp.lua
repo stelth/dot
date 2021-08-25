@@ -1,11 +1,34 @@
 local cmp = require("cmp")
 local luasnip = require("luasnip")
-local lspkind = require("lspkind")
+
+local cmp_kinds = {
+  Class = " ",
+  Color = " ",
+  Constant = " ",
+  Constructor = " ",
+  Enum = "了 ",
+  EnumMember = " ",
+  Field = " ",
+  File = " ",
+  Folder = " ",
+  Function = " ",
+  Interface = "ﰮ ",
+  Keyword = " ",
+  Method = "ƒ ",
+  Module = " ",
+  Property = " ",
+  Snippet = "﬌ ",
+  Struct = " ",
+  Text = " ",
+  Unit = " ",
+  Value = " ",
+  Variable = " ",
+}
 
 cmp.setup({
   formatting = {
     format = function(_, vim_item)
-      vim_item.kind = lspkind.presets.default[vim_item.kind] .. " " .. vim_item.kind
+      vim_item.kind = (cmp_kinds[vim_item.kind] or "") .. vim_item.kind
       return vim_item
     end,
   },
