@@ -2,7 +2,7 @@
 
 rustPlatform.buildRustPackage rec {
   pname = "selene";
-  version = "0.13.0";
+  version = "0.14.0";
   stdenv = pkgs.clangStdenv;
 
   isDarwin = pkgs.stdenv.isDarwin;
@@ -22,10 +22,9 @@ rustPlatform.buildRustPackage rec {
     owner = "Kampfkarren";
     repo = pname;
     rev = version;
-    sha256 = "150sgbjb2d4cdn4vi1ygyk1wpd62nzqpaa1gjyzjcq3f8wd24780";
+    sha256 = "0c228aakwf679wyxir0jwry3khv7phlaf77w675gn1wr4fxdg5gr";
   };
-
-  cargoSha256 = "sha256-Daz4SMznW6TS9EvpGjMTHYZLSLCrsZWSykLhpJsYphE=";
+  cargoSha256 = "sha256-5GODuqjVo3b1SzRgXVBIKec2tSS335EAUAmRlcpbClE=";
 
   meta = with lib; {
     description = "";
