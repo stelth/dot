@@ -41,21 +41,6 @@ local function plugins(use)
     end,
   })
 
-  -- DAP
-  use({
-    "mfussenegger/nvim-dap",
-    opt = true,
-    event = "BufReadPre",
-    wants = { "nvim-dap-python" },
-    config = function()
-      require("config.dap")
-    end,
-    requires = {
-      "mfussenegger/nvim-dap-python",
-      "theHamsta/nvim-dap-virtual-text",
-    },
-  })
-
   use({
     "hrsh7th/nvim-cmp",
     event = "BufReadPre",
@@ -179,7 +164,6 @@ local function plugins(use)
       "telescope-project.nvim",
       "trouble.nvim",
       "telescope-symbols.nvim",
-      "telescope-dap.nvim",
       "telescope-zoxide",
       "neovim-cmake",
     },
@@ -190,11 +174,10 @@ local function plugins(use)
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope-symbols.nvim",
       "nvim-telescope/telescope-fzy-native.nvim",
-      "nvim-telescope/telescope-dap.nvim",
       "jvgrootveld/telescope-zoxide",
       {
         "Shatur/neovim-cmake",
-        wants = { "asyncrun.vim", "nvim-dap" },
+        wants = { "asyncrun.vim" },
         cmd = { "CMake" },
         requires = {
           "skywind3000/asyncrun.vim",
