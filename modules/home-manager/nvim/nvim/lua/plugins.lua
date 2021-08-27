@@ -66,6 +66,7 @@ local function plugins(use)
     requires = {
       {
         "L3MON4D3/LuaSnip",
+        event = "BufReadPre",
         wants = "friendly-snippets",
         config = function()
           require("config.snippets")
@@ -74,6 +75,7 @@ local function plugins(use)
       "rafamadriz/friendly-snippets",
       {
         "windwp/nvim-autopairs",
+        event = "BufReadPre",
         after = "nvim-cmp",
         config = function()
           require("config.autopairs")
