@@ -91,11 +91,6 @@ local function plugins(use)
   use({ "hrsh7th/cmp-emoji", after = "nvim-cmp" })
 
   use({
-    "simrat39/symbols-outline.nvim",
-    cmd = { "SymbolsOutline" },
-  })
-
-  use({
     "b3nj5m1n/kommentary",
     opt = true,
     wants = "nvim-ts-context-commentstring",
