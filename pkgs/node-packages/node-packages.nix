@@ -61,12 +61,12 @@ in {
   "prettierd" = nodeEnv.buildNodePackage {
     name = "_at_fsouza_slash_prettierd";
     packageName = "@fsouza/prettierd";
-    version = "0.14.3";
+    version = "0.15.0";
     src = fetchurl {
       url =
-        "https://registry.npmjs.org/@fsouza/prettierd/-/prettierd-0.14.3.tgz";
+        "https://registry.npmjs.org/@fsouza/prettierd/-/prettierd-0.15.0.tgz";
       sha512 =
-        "wptGHIEP7DYGsraCEMi+oqyvrdksYW2ch2OfRS9i6egTFwiTPKPw6i2k/8MW8q0T8fUgeXTopqssSLm7oUOtxQ==";
+        "ZsWTJqBtkw2mYuUDlpOFlYR2fOPX4AO1taTdq77/gXp4EyVheG8wLAPbIWS57It2R3nI6m4IOi03V4bX+AQMPQ==";
     };
     dependencies = [
       sources."core_d-3.2.0"
@@ -76,8 +76,8 @@ in {
       sources."supports-color-8.1.1"
     ];
     buildInputs = globalBuildInputs;
+    description = "prettier, as a daemon";
     meta = {
-      description = "prettier, as a daemon";
       homepage = "https://github.com/fsouza/prettierd#readme";
       license = "ISC";
     };
