@@ -22,6 +22,7 @@ local function plugins(use)
     "neovim/nvim-lspconfig",
     opt = true,
     event = "BufReadPre",
+    after = "cmp-nvim-lsp",
     wants = { "null-ls.nvim", "lua-dev.nvim" },
     config = function()
       require("config.lsp")
@@ -57,42 +58,37 @@ local function plugins(use)
 
   use({
     "hrsh7th/nvim-cmp",
+    event = "BufReadPre",
     config = function()
       require("config.cmp")
     end,
+    wants = "LuaSnip",
     requires = {
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
       {
-        "saadparwaiz1/cmp_luasnip",
-        requires = {
-          {
-            "L3MON4D3/LuaSnip",
-            config = function()
-              require("config.snippets")
-            end,
-            requires = {
-              "rafamadriz/friendly-snippets",
-            },
-          },
-        },
+        "L3MON4D3/LuaSnip",
+        wants = "friendly-snippets",
+        config = function()
+          require("config.snippets")
+        end,
       },
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-calc",
-      "kdheepak/cmp-latex-symbols",
-      "hrsh7th/cmp-emoji",
+      "rafamadriz/friendly-snippets",
+      {
+        "windwp/nvim-autopairs",
+        after = "nvim-cmp",
+        config = function()
+          require("config.autopairs")
+        end,
+      },
     },
   })
 
-  use({
-    "windwp/nvim-autopairs",
-    opt = true,
-    after = "nvim-cmp",
-    event = "InsertEnter",
-    config = function()
-      require("config.autopairs")
-    end,
-  })
+  use({ "hrsh7th/cmp-buffer", after = "nvim-cmp" })
+  use({ "hrsh7th/cmp-path", after = "nvim-cmp" })
+  use({ "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" })
+  use({ "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" })
+  use({ "hrsh7th/cmp-calc", after = "nvim-cmp" })
+  use({ "kdheepak/cmp-latex-symbols", after = "nvim-cmp" })
+  use({ "hrsh7th/cmp-emoji", after = "nvim-cmp" })
 
   use({
     "simrat39/symbols-outline.nvim",
