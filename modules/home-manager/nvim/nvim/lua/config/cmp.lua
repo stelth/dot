@@ -1,5 +1,6 @@
 local cmp = require("cmp")
 local luasnip = require("luasnip")
+local util = require("util")
 
 require("cmp_buffer")
 require("cmp_path")
@@ -8,10 +9,6 @@ require("cmp_nvim_lsp")
 require("cmp_calc")
 require("cmp_latex_symbols")
 require("cmp_emoji")
-
-local t = function(str)
-  return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
 
 cmp.setup({
   formatting = {
@@ -45,9 +42,9 @@ cmp.setup({
     ["<C-e>"] = cmp.mapping.close(),
     ["<Tab>"] = cmp.mapping(function(fallback)
       if vim.fn.pumvisible() == 1 then
-        vim.fn.feedkeys(t("<C-n>"), "n")
+        vim.fn.feedkeys(util.t("<C-n>"), "n")
       elseif luasnip.expand_or_jumpable() then
-        vim.fn.feedkeys(t("<Plug>luasnip-expand-or-jump"), "")
+        vim.fn.feedkeys(util.t("<Plug>luasnip-expand-or-jump"), "")
       else
         fallback()
       end
@@ -57,9 +54,9 @@ cmp.setup({
     }),
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if vim.fn.pumvisible() == 1 then
-        vim.fn.feedkeys(t("<C-p>"), "n")
+        vim.fn.feedkeys(util.t("<C-p>"), "n")
       elseif luasnip.jumpable(-1) then
-        vim.fn.feedkeys(t("<Plug>luasnip-jump-prev"), "")
+        vim.fn.feedkeys(util.t("<Plug>luasnip-jump-prev"), "")
       else
         fallback()
       end
