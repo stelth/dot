@@ -68,6 +68,9 @@ cmp.setup({
       "s",
     }),
   },
+  documentation = {
+    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+  },
   sources = {
     { name = "buffer" },
     { name = "path" },
