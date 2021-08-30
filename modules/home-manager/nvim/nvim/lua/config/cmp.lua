@@ -1,34 +1,33 @@
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 
-local cmp_kinds = {
-  Class = " ",
-  Color = " ",
-  Constant = " ",
-  Constructor = " ",
-  Enum = "了 ",
-  EnumMember = " ",
-  Field = " ",
-  File = " ",
-  Folder = " ",
-  Function = " ",
-  Interface = "ﰮ ",
-  Keyword = " ",
-  Method = "ƒ ",
-  Module = " ",
-  Property = " ",
-  Snippet = "﬌ ",
-  Struct = " ",
-  Text = " ",
-  Unit = " ",
-  Value = " ",
-  Variable = " ",
-}
+require("cmp_buffer")
+require("cmp_path")
+require("cmp_luasnip")
+require("cmp_nvim_lsp")
+require("cmp_calc")
+require("cmp_latex_symbols")
+require("cmp_emoji")
+
+local t = function(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
 
 cmp.setup({
   formatting = {
-    format = function(_, vim_item)
-      vim_item.kind = (cmp_kinds[vim_item.kind] or "") .. vim_item.kind
+    format = function(entry, vim_item)
+      vim_item.kind = require("lspkind").presets.default[vim_item.kind] .. " " .. vim_item.kind
+
+      vim_item.menu = ({
+        buffer = "[Buffer]",
+        path = "[Path]",
+        luasnip = "[Luasnip]",
+        nvim_lsp = "[LSP]",
+        calc = "[Calc]",
+        latex_symbols = "[Latex]",
+        emoji = "[Emoji]",
+      })[entry.source.name]
+
       return vim_item
     end,
   },
@@ -44,24 +43,30 @@ cmp.setup({
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.close(),
-    ["<Tab>"] = function(fallback)
+    ["<Tab>"] = cmp.mapping(function(fallback)
       if vim.fn.pumvisible() == 1 then
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-n>", true, true, true), "n")
+        vim.fn.feedkeys(t("<C-n>"), "n")
       elseif luasnip.expand_or_jumpable() then
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
+        vim.fn.feedkeys(t("<Plug>luasnip-expand-or-jump"), "")
       else
         fallback()
       end
-    end,
-    ["<S-Tab>"] = function(fallback)
+    end, {
+      "i",
+      "s",
+    }),
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
       if vim.fn.pumvisible() == 1 then
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-p>", true, true, true), "n")
+        vim.fn.feedkeys(t("<C-p>"), "n")
       elseif luasnip.jumpable(-1) then
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
+        vim.fn.feedkeys(t("<Plug>luasnip-jump-prev"), "")
       else
         fallback()
       end
-    end,
+    end, {
+      "i",
+      "s",
+    }),
   },
   sources = {
     { name = "buffer" },

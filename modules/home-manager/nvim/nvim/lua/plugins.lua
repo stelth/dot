@@ -43,7 +43,7 @@ local function plugins(use)
 
   use({
     "hrsh7th/nvim-cmp",
-    event = "BufReadPre",
+    module = "cmp",
     config = function()
       require("config.cmp")
     end,
@@ -66,16 +66,16 @@ local function plugins(use)
           require("config.autopairs")
         end,
       },
+      { "onsails/lspkind-nvim", module = "lspkind" },
+      { "hrsh7th/cmp-buffer", module = "cmp_buffer" },
+      { "hrsh7th/cmp-path", module = "cmp_path" },
+      { "saadparwaiz1/cmp_luasnip", module = "cmp_luasnip" },
+      { "hrsh7th/cmp-nvim-lsp", module = "cmp_nvim_lsp" },
+      { "hrsh7th/cmp-calc", module = "cmp_calc" },
+      { "kdheepak/cmp-latex-symbols", module = "cmp_latex_symbols" },
+      { "hrsh7th/cmp-emoji", module = "cmp_emoji" },
     },
   })
-
-  use({ "hrsh7th/cmp-buffer", after = "nvim-cmp" })
-  use({ "hrsh7th/cmp-path", after = "nvim-cmp" })
-  use({ "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" })
-  use({ "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp", module = "cmp_nvim_lsp" })
-  use({ "hrsh7th/cmp-calc", after = "nvim-cmp" })
-  use({ "kdheepak/cmp-latex-symbols", after = "nvim-cmp" })
-  use({ "hrsh7th/cmp-emoji", after = "nvim-cmp" })
 
   use({
     "b3nj5m1n/kommentary",
