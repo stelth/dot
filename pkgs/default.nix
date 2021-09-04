@@ -1,4 +1,4 @@
 self: super: {
-  nodePackages = super.nodePackages // super.callPackage ./node-packages { };
+  nodePackages = super.nodePackages // super.callPackage ./prettierd { };
   selene = super.callPackage ./selene { };
 }
