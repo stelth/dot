@@ -34,6 +34,14 @@ local function plugins(use)
   })
 
   use({
+    "mfussenegger/nvim-jdtls",
+    ft = "java",
+    config = function()
+      require("config.lsp.jdtls")
+    end,
+  })
+
+  use({
     "ahmedkhalf/project.nvim",
     event = "BufReadPre",
     config = function()

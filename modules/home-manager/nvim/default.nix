@@ -9,6 +9,7 @@
     clang-tools # clangd
     cmake-language-server
     hadolint
+    jdt-language-server
     neovim-nightly
     nixfmt
     nodePackages.bash-language-server
