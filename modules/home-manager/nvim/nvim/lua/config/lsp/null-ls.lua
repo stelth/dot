@@ -7,7 +7,9 @@ function M.setup()
     debounce = 150,
     save_after_format = false,
     sources = {
-      nls.builtins.formatting.clang_format,
+      nls.builtins.formatting.clang_format.with({
+        filetypes = { "c", "cpp" },
+      }),
       nls.builtins.formatting.cmake_format,
       nls.builtins.formatting.eslint_d,
       nls.builtins.formatting.fish_indent,
@@ -18,7 +20,9 @@ function M.setup()
       nls.builtins.formatting.trim_whitespace.with({
         filetypes = { "*" },
       }),
-      nls.builtins.formatting.uncrustify,
+      nls.builtins.formatting.uncrustify.with({
+        filetypes = { "c", "cpp" },
+      }),
       nls.builtins.diagnostics.hadolint,
       nls.builtins.diagnostics.markdownlint,
       nls.builtins.diagnostics.selene,
