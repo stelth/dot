@@ -1,5 +1,5 @@
 { pkgs, lib, stdenv, fetchurl, makeWrapper, ... }:
-let jdk15 = pkgs.jdk;
+let jdk = pkgs.jdk;
 in stdenv.mkDerivation rec {
   pname = "jdt-language-server";
   version = "1.3.0";
@@ -13,7 +13,7 @@ in stdenv.mkDerivation rec {
 
   sourceRoot = ".";
 
-  buildInputs = [ jdk15 ];
+  buildInputs = [ jdk ];
 
   nativeBuildInputs = [ makeWrapper ];
 
@@ -62,7 +62,7 @@ in stdenv.mkDerivation rec {
     #     This can be overidden by specifying -configuration to the wrapper.
     #
     # Java options, such as -Xms and Xmx can be specified by setting JAVA_OPTS.
-    makeWrapper ${jdk15}/bin/java $out/bin/jdt-language-server \
+    makeWrapper ${jdk}/bin/java $out/bin/jdt-language-server \
       --run "mkdir -p ${runtimePath}" \
       --run "install -Dm 1777 -t ${runtimePath}/config $out/share/config/*" \
       --add-flags "-Declipse.application=org.eclipse.jdt.ls.core.id1" \
