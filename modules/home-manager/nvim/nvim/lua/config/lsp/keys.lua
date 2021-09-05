@@ -15,7 +15,6 @@ M.setup = function(client, bufnr)
       l = {
         name = "+lsp",
         i = { "<cmd>LspInfo<cr>", "Lsp Info" },
-        c = { "<cmd>lua require('config.lsp.capabilities').list_lsp_capabilities()<CR>", "Capabilities" },
         a = { "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", "Add Folder" },
         r = { "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", "Remove Folder" },
         l = {
