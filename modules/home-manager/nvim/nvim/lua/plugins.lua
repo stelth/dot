@@ -357,6 +357,14 @@ local function plugins(use)
     "andymass/vim-matchup",
     event = "CursorMoved",
   })
+
+  use({
+    "kristijanhusak/orgmode.nvim",
+    ft = "org",
+    config = function()
+      require("orgmode").setup({})
+    end,
+  })
 end
 
 return packer.setup(config, plugins)

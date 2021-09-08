@@ -1,5 +1,5 @@
-local cmp = require("cmp")
 local luasnip = require("luasnip")
+local cmp = require("cmp")
 local util = require("util")
 
 require("cmp_buffer")
@@ -75,5 +75,6 @@ cmp.setup({
     { name = "calc" },
     { name = "latex_symbols" },
     { name = "emoji" },
+    { name = "orgmode" },
   },
 })
