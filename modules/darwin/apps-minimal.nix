@@ -5,6 +5,7 @@
       "avibrazil-rdm"
       "firefox"
       "github"
+      "google-chrome"
       "hammerspoon"
       "karabiner-elements"
       "keepingyouawake"
