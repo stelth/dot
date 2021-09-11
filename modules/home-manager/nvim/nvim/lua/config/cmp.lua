@@ -75,6 +75,5 @@ cmp.setup({
     { name = "calc" },
     { name = "latex_symbols" },
     { name = "emoji" },
-    { name = "orgmode" },
   },
 })
