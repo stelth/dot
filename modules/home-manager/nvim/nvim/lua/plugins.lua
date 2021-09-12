@@ -17,10 +17,6 @@ local function plugins(use)
   -- Packer can manage itself as an optional plugin
   use({ "wbthomason/packer.nvim", opt = true })
 
-  use({
-    "lewis6991/impatient.nvim",
-  })
-
   -- LSP
   use({
     "neovim/nvim-lspconfig",
