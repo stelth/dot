@@ -82,6 +82,8 @@ local function plugins(use)
       { "hrsh7th/cmp-calc", module = "cmp_calc" },
       { "kdheepak/cmp-latex-symbols", module = "cmp_latex_symbols" },
       { "hrsh7th/cmp-emoji", module = "cmp_emoji" },
+      { "f3fora/cmp-spell", module = "cmp-spell" },
+      { "ray-x/cmp-treesitter", module = "cmp_treesitter" },
     },
   })
 

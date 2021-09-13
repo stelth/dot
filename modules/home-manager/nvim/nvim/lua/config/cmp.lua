@@ -8,6 +8,8 @@ require("cmp_luasnip")
 require("cmp_calc")
 require("cmp_latex_symbols")
 require("cmp_emoji")
+require("cmp-spell")
+require("cmp_treesitter")
 
 cmp.setup({
   formatting = {
@@ -75,5 +77,7 @@ cmp.setup({
     { name = "calc" },
     { name = "latex_symbols" },
     { name = "emoji" },
+    { name = "spell" },
+    { name = "treesitter" },
   },
 })
