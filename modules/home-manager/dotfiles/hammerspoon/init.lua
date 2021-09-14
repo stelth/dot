@@ -9,8 +9,8 @@ local monocle = require("monocle")
 local quake = require("quake")
 
 local hyper = require("hyper")
+hyper.bindApp({}, "f", "Firefox")
 hyper.bindApp({ "cmd" }, "f", function()
-  hyper.bindApp({}, "f", "Firefox")
   hs.osascript.javascript([[
         Application("Firefox").Window().make()
     ]])
