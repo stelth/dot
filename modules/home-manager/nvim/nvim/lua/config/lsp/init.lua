@@ -28,7 +28,7 @@ local luadev = require("lua-dev").setup({
 
 local servers = {
   bashls = {},
-  cmake = {},
+  -- cmake = {},
   clangd = {},
   dockerls = {},
   jsonls = { cmd = { "vscode-json-languageserver", "--stdio" } },

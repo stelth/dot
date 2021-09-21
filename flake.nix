@@ -54,6 +54,7 @@
         inputs.neovim-nightly-overlay.overlay
         (import ./pkgs)
         (import ./modules/overlays.nix)
+        (import ./modules/python.nix)
       ];
 
       isDarwin = system: (builtins.elem system lib.platforms.darwin);
@@ -68,7 +69,7 @@
         ./modules/darwin
       ], extraModules ? [ ] }:
         darwinSystem {
-          # system = "x86_64-darwin";
+          system = "x86_64-darwin";
           modules = baseModules ++ extraModules
             ++ [{ nixpkgs.overlays = overlays; }];
           specialArgs = { inherit inputs lib; };
