@@ -56,7 +56,7 @@ in {
       pre-commit
       procs
       ripgrep-all
-      # rpmextract
+      pkgs.stable.rpmextract
       rsync
       tealdeer
       sysdo
