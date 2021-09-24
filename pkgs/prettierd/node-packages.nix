@@ -35,14 +35,14 @@ let
           "GyQkE8M32pULhQk7Sko5raoIbPalAk90ICG+An4fq6fCsFHsP6fB2K46WGXVdoJpy4SGMnZ/EKbo123fZJomWg==";
       };
     };
-    "prettier-2.3.2" = {
+    "prettier-2.4.1" = {
       name = "prettier";
       packageName = "prettier";
-      version = "2.3.2";
+      version = "2.4.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/prettier/-/prettier-2.3.2.tgz";
+        url = "https://registry.npmjs.org/prettier/-/prettier-2.4.1.tgz";
         sha512 =
-          "lnJzDfJ66zkMy58OL5/NY5zp70S7Nz6KqcKkXYzn2tMVrNxvbqaBpg7H3qHaLxCJ5lNMsGuM8+ohS7cZrthdLQ==";
+          "9fbDAXSBcc6Bs1mZrDYb3XKzDLm4EXXL9sC1LqKP5rZkT6KRr/rf9amVUcODVXgguK/isJz0d0hP72WeaKWsvA==";
       };
     };
     "supports-color-8.1.1" = {
@@ -61,23 +61,23 @@ in {
   "prettierd" = nodeEnv.buildNodePackage {
     name = "_at_fsouza_slash_prettierd";
     packageName = "@fsouza/prettierd";
-    version = "0.15.0";
+    version = "0.17.0";
     src = fetchurl {
       url =
-        "https://registry.npmjs.org/@fsouza/prettierd/-/prettierd-0.15.0.tgz";
+        "https://registry.npmjs.org/@fsouza/prettierd/-/prettierd-0.17.0.tgz";
       sha512 =
-        "ZsWTJqBtkw2mYuUDlpOFlYR2fOPX4AO1taTdq77/gXp4EyVheG8wLAPbIWS57It2R3nI6m4IOi03V4bX+AQMPQ==";
+        "C+N3+m10btFYIyzfdLXgHaqa/EF88VYrpbJ7xFrjzYfMYr16qJHRIBKVXZzdeej/3cKs6rK6BKRhJC5NksoIOw==";
     };
     dependencies = [
       sources."core_d-3.2.0"
       sources."has-flag-4.0.0"
       sources."nanolru-1.0.0"
-      sources."prettier-2.3.2"
+      sources."prettier-2.4.1"
       sources."supports-color-8.1.1"
     ];
     buildInputs = globalBuildInputs;
-    description = "prettier, as a daemon";
     meta = {
+      description = "prettier, as a daemon";
       homepage = "https://github.com/fsouza/prettierd#readme";
       license = "ISC";
     };
