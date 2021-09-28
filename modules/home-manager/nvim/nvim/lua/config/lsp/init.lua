@@ -45,7 +45,6 @@ local servers = {
 
 require("config.lsp.null-ls").setup()
 
-local util = require("util")
 local lspconfig = require("lspconfig")
 for server, config in pairs(servers) do
   lspconfig[server].setup(vim.tbl_deep_extend("force", {
@@ -55,8 +54,4 @@ for server, config in pairs(servers) do
       debounce_text_changes = 150,
     },
   }, config))
-  local cfg = lspconfig[server]
-  if not (cfg and cfg.cmd and vim.fn.executable(cfg.cmd[1]) == 1) then
-    util.error(server .. ": cmd not found: " .. vim.inspect(cfg.cmd))
-  end
 end
