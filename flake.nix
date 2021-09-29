@@ -123,11 +123,16 @@
       };
     } // eachSystem supportedSystems (system:
       let
-        pkgs = import inputs.nixos-stable {
+        pkgs = import nixpkgs {
           inherit system;
-          overlays = [ devshell.overlay ];
+          overlays = [
+            devshell.overlay
+            (final: prev: {
+              stable = import inputs.nix-stable { system = prev.system; };
+            })
+          ];
         };
-        pyEnv = (pkgs.python3.withPackages
+        pyEnv = (pkgs.stable.python3.withPackages
           (ps: with ps; [ black pylint typer colrama shellingham ]));
         nixBin = pkgs.writeShellScriptBin "nix" ''
           ${pkgs.nixFlakes}/bin/nix --option experimental-features "nix-command flakes" "$@"
