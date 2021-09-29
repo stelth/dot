@@ -18,14 +18,13 @@ in {
     path = "${config.home.homeDirectory}/dot/modules/home-manager";
   };
 
-  home = let java = pkgs.adoptopenjdk-bin;
-  in {
+  home = {
     stateVersion = "21.05";
     sessionVariables = {
       TERMINFO_DIRS = "${pkgs.kitty.terminfo.outPath}/share/terminfo";
       EDITOR = "nvim";
       VISUAL = "nvim";
-      JAVA_HOME = "${java}";
+      JAVA_HOME = "${pkgs.openjdk.home}";
       MANPAGER = "nvim +Man!";
       MANROFFOPT = "-c";
       NIX_GCC = "${pkgs.gcc}/bin/gcc";

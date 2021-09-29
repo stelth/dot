@@ -3,7 +3,6 @@
     python39
     python39Packages.pip
     python39Packages.pipx
-    adoptopenjdk-bin
     cmake
     gh
     go
@@ -12,6 +11,7 @@
     nodejs
     nodePackages.pnpm
     nodePackages.yarn
+    openjdk
     rustc
     cargo
   ];
