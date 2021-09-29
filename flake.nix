@@ -138,7 +138,7 @@
           ${pkgs.nixFlakes}/bin/nix --option experimental-features "nix-command flakes" "$@"
         '';
         sysdo = pkgs.writeShellScriptBin "sysdo" ''
-          cd $DEVSHELL_ROOT && ${pyEnv}/bin/python3 bin/do.py $@
+          cd $PRJ_ROOT && ${pyEnv}/bin/python3 bin/do.py $@
         '';
       in {
         devShell = pkgs.devshell.mkShell {
