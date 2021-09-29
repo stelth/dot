@@ -1,5 +1,5 @@
 { inputs, config, lib, pkgs, ... }: {
-  imports = [ ./primary.nix ./nixpkgs.nix ];
+  imports = [ ./primary.nix ./nixpkgs.nix ./overlays.nix ];
 
   user = {
     description = "Jason Cox";

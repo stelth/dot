@@ -7,7 +7,7 @@
   };
   home.packages = with pkgs; [
     clang-tools # clangd
-    pkgs.stable.cmake-language-server
+    stable.cmake-language-server
     hadolint
     jdt-language-server
     neovim-nightly
