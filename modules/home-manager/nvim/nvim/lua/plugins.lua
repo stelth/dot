@@ -80,6 +80,11 @@ local function plugins(use)
   })
 
   use({
+    "weilbith/nvim-code-action-menu",
+    cmd = "CodeActionMenu",
+  })
+
+  use({
     "b3nj5m1n/kommentary",
     opt = true,
     wants = "nvim-ts-context-commentstring",
