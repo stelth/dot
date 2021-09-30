@@ -19,17 +19,7 @@
   };
 
   environment = {
-    systemPackages = with pkgs; [
-      coreutils
-      curl
-      wget
-      git
-      jq
-
-      bat
-      fzf
-      ripgrep
-    ];
+    systemPackages = with pkgs; [ coreutils curl wget git jq bat fzf ripgrep ];
     etc = {
       home-manager.source = "${inputs.home-manager}";
       nixpkgs.source = "${inputs.nixpkgs}";
