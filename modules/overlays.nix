@@ -3,7 +3,6 @@
     (final: prev: { stable = import stable { system = prev.system; }; })
     inputs.neovim-nightly-overlay.overlay
     (import ../pkgs)
-    (import ./python.nix)
     (final: prev: rec {
       sumneko-lua-language-server =
         prev.sumneko-lua-language-server.overrideAttrs (o: rec {
@@ -61,5 +60,18 @@
         '';
       });
     })
+    (final: prev:
+      let lib = prev.lib;
+      in rec {
+        python39 = prev.python39.override {
+          packageOverrides = final: prev: {
+            beautifulsoup4 = prev.beautifulsoup4.overrideAttrs (old: {
+              propagatedBuildInputs =
+                lib.remove prev.lxml old.propagatedBuildInputs;
+            });
+          };
+        };
+        python39Packages = python39.pkgs;
+      })
   ];
 }
