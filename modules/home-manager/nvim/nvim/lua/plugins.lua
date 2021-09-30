@@ -147,14 +147,6 @@ local function plugins(use)
   })
 
   use({
-    "kyazdani42/nvim-tree.lua",
-    cmd = { "NvimTreeToggle", "NvimTreeClose" },
-    config = function()
-      require("config.tree")
-    end,
-  })
-
-  use({
     "nvim-telescope/telescope.nvim",
     opt = true,
     config = function()
