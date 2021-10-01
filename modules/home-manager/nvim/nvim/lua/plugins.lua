@@ -235,14 +235,12 @@ local function plugins(use)
     end,
   })
 
-  -- Status line
   use({
-    "hoob3rt/lualine.nvim",
+    "windwp/windline.nvim",
     event = "VimEnter",
     config = function()
-      require("config.lualine")
+      require("config.windline")
     end,
-    wants = "nvim-web-devicons",
   })
 
   use({
