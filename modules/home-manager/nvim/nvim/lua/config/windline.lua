@@ -1,2 +1,2 @@
-require("wlsample.evil_line")
+require("wlsample.airline")
 require("wlfloatline").setup()
