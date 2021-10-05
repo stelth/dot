@@ -8,6 +8,7 @@
     go
     hub
     lua
+    maven
     nodejs
     nodePackages.pnpm
     nodePackages.yarn

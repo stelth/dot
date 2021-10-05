@@ -1,11 +1,5 @@
 require("config.lsp.diagnostics")
 
-local function on_attach(client, bufnr)
-  require("config.lsp.formatting").setup(client, bufnr)
-  require("config.lsp.keys").setup(client, bufnr)
-  require("config.lsp.highlighting").setup(client)
-end
-
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
@@ -31,7 +25,6 @@ local servers = {
   cmake = {},
   clangd = {},
   dockerls = {},
-  jdtls = { cmd = { "jdt-language-server" } },
   jsonls = { cmd = { "vscode-json-languageserver", "--stdio" } },
   ["null-ls"] = {},
   texlab = {},
@@ -48,7 +41,7 @@ require("config.lsp.null-ls").setup()
 local lspconfig = require("lspconfig")
 for server, config in pairs(servers) do
   lspconfig[server].setup(vim.tbl_deep_extend("force", {
-    on_attach = on_attach,
+    on_attach = require('config.lsp.util').on_attach,
     capabilities = capabilities,
     flags = {
       debounce_text_changes = 150,
