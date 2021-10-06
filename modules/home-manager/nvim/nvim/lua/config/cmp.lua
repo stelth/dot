@@ -13,21 +13,7 @@ require("cmp_treesitter")
 
 cmp.setup({
   formatting = {
-    format = function(entry, vim_item)
-      vim_item.kind = require("lspkind").presets.default[vim_item.kind] .. " " .. vim_item.kind
-
-      vim_item.menu = ({
-        buffer = "[Buffer]",
-        path = "[Path]",
-        luasnip = "[Luasnip]",
-        nvim_lsp = "[LSP]",
-        calc = "[Calc]",
-        latex_symbols = "[Latex]",
-        emoji = "[Emoji]",
-      })[entry.source.name]
-
-      return vim_item
-    end,
+    format = require("lspkind").cmp_format(),
   },
   snippet = {
     expand = function(args)
