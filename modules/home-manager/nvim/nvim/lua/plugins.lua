@@ -176,8 +176,8 @@ local function plugins(use)
   })
 
   use({
-    "nvim-telescope/telescope.nvim",
     opt = true,
+    "nvim-telescope/telescope.nvim",
     config = function()
       require("config.telescope")
     end,
@@ -202,6 +202,7 @@ local function plugins(use)
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope-symbols.nvim",
       "nvim-telescope/telescope-fzy-native.nvim",
+      "nvim-telescope/telescope-dap.nvim",
       "jvgrootveld/telescope-zoxide",
       {
         "Shatur/neovim-cmake",

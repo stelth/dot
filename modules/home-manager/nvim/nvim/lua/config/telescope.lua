@@ -1,5 +1,5 @@
--- local actions = require("telescope.actions")
 local trouble = require("trouble.providers.telescope")
+-- local actions = require("telescope.actions")
 
 local telescope = require("telescope")
 
@@ -20,6 +20,7 @@ telescope.load_extension("fzy_native")
 telescope.load_extension("z")
 telescope.load_extension("zoxide")
 telescope.load_extension("cmake")
+telescope.load_extension("dap")
 
 local M = {}
 
