@@ -1,8 +1,15 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, lib, ... }:
+let
+  globalPythonPkgs = python-packages:
+    with python-packages; [
+      debugpy
+      autopep8
+      flake8
+    ];
+  globalPython = pkgs.python39.withPackages globalPythonPkgs;
+in {
   home.packages = with pkgs; [
-    python39
-    python39Packages.pip
-    python39Packages.pipx
+    globalPython
     cmake
     gh
     go

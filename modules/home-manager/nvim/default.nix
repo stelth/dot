@@ -26,9 +26,6 @@
     nodePackages.vscode-json-languageserver
     nodePackages.write-good
     nodePackages.yaml-language-server
-    python39Packages.autopep8
-    python39Packages.debugpy
-    python39Packages.flake8
     rnix-lsp
     selene
     shellcheck
