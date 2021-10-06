@@ -107,6 +107,7 @@ local function plugins(use)
         end,
         requires = {
           "mfussenegger/nvim-dap-python",
+          "jbyuki/one-small-step-for-vimkind",
         },
       },
     },
