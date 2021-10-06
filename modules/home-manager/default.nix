@@ -49,7 +49,6 @@ in {
       manix
       mdcat
       ncdu
-      nix-index
       nixUnstable
       pfetch
       pre-commit
