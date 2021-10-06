@@ -117,8 +117,7 @@
           extraModules = [ ./profiles/personal.nix ./modules/darwin/apps.nix ];
         };
         work = mkDarwinConfig {
-          extraModules =
-            [ ./profiles/work.nix ./modules/darwin/apps-minimal.nix ];
+          extraModules = [ ./profiles/work.nix ./modules/darwin/apps.nix ];
         };
       };
     } // eachSystem supportedSystems (system:
