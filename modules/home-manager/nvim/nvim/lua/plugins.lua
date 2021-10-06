@@ -93,13 +93,22 @@ local function plugins(use)
   })
 
   use({
-    "mfussenegger/nvim-dap",
+    "rcarriga/nvim-dap-ui",
     event = "BufReadPre",
     config = function()
-      require("config.dap")
+      require("config.dap.ui")
     end,
     requires = {
-      "mfussenegger/nvim-dap-python",
+      {
+        "mfussenegger/nvim-dap",
+        event = "BufReadPre",
+        config = function()
+          require("config.dap")
+        end,
+        requires = {
+          "mfussenegger/nvim-dap-python",
+        },
+      },
     },
   })
 
