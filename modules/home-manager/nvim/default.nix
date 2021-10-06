@@ -10,6 +10,7 @@
     stable.cmake-language-server
     hadolint
     jdt-language-server
+    lldb
     neovim-nightly
     nixfmt
     nodePackages.bash-language-server

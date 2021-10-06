@@ -37,7 +37,7 @@ local function plugins(use)
     "mfussenegger/nvim-jdtls",
     ft = "java",
     config = function()
-      require('config.lsp.jdtls')
+      require("config.lsp.jdtls")
     end,
   })
 
@@ -90,6 +90,17 @@ local function plugins(use)
   use({
     "weilbith/nvim-code-action-menu",
     cmd = "CodeActionMenu",
+  })
+
+  use({
+    "mfussenegger/nvim-dap",
+    event = "BufReadPre",
+    config = function()
+      require("config.dap")
+    end,
+    requires = {
+      "mfussenegger/nvim-dap-python",
+    },
   })
 
   use({
