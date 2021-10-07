@@ -202,7 +202,6 @@ local function plugins(use)
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope-symbols.nvim",
       "nvim-telescope/telescope-fzy-native.nvim",
-      "nvim-telescope/telescope-dap.nvim",
       "jvgrootveld/telescope-zoxide",
       {
         "Shatur/neovim-cmake",
