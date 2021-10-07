@@ -1,4 +1,5 @@
 { config, lib, pkgs, ... }: {
+
   programs.git = {
     userEmail = "steel300@gmail.com";
     userName = "Jason Cox";
@@ -6,5 +7,6 @@
       key = "steel300@gmail.com";
       signByDefault = false;
     };
+    extraConfig = { github = { user = "stelth"; }; };
   };
 }

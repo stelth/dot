@@ -9,7 +9,6 @@
         ff = "only";
         rebase = false;
       };
-      github = { user = "JasonCoxIBM"; };
       delta = {
         side-by-side = false;
         line-numbers = true;
