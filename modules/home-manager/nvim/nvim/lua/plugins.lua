@@ -114,7 +114,7 @@ local function plugins(use)
   })
 
   use({
-    "b3nj5m1n/kommentary",
+    "numToStr/Comment.nvim",
     opt = true,
     wants = "nvim-ts-context-commentstring",
     keys = { "gc", "gcc" },
