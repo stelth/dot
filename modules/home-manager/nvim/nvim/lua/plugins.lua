@@ -94,14 +94,14 @@ local function plugins(use)
 
   use({
     "rcarriga/nvim-dap-ui",
-    module = "dapui",
+    event = "BufReadPre",
     config = function()
       require("config.dap.ui")
     end,
     requires = {
       {
         "mfussenegger/nvim-dap",
-        module = "dap",
+        event = "BufReadPre",
         config = function()
           require("config.dap")
         end,

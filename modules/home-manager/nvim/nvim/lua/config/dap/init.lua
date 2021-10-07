@@ -47,3 +47,5 @@ dap.configurations.lua = {
 }
 
 require("dap-python").setup(capture("which python"))
+
+require("config.dap.keys").setup()
