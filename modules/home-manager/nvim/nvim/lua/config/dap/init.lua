@@ -1,6 +1,6 @@
 local dap = require("dap")
 
-local function capture(cmd, raw)
+local function outputOf(cmd, raw)
   local f = assert(io.popen(cmd, "r"))
   local s = assert(f:read("*a"))
   f:close()
@@ -16,7 +16,7 @@ end
 
 dap.adapters.lldb = {
   type = "executable",
-  command = capture("which lldb-vscode"),
+  command = outputOf("which lldb-vscode"),
   name = "lldb",
 }
 
@@ -46,6 +46,6 @@ dap.configurations.lua = {
   },
 }
 
-require("dap-python").setup(capture("which python"))
+require("dap-python").setup(outputOf("which python"))
 
 require("config.dap.keys").setup()
