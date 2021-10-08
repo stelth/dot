@@ -13,7 +13,7 @@
         side-by-side = false;
         line-numbers = true;
       };
-      init = { default-branch = "main"; };
+      init = { defaultBranch = "main"; };
       diff = { tool = "vimdiff3"; };
       "difftool \"vimdiff3\"" = { path = "nvim"; };
       merge = { tool = "vimdiff3"; };
