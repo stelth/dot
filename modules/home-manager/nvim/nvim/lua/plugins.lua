@@ -95,9 +95,6 @@ local function plugins(use)
   use({
     "rcarriga/nvim-dap-ui",
     event = "BufReadPre",
-    config = function()
-      require("config.dap.ui")
-    end,
     requires = {
       {
         "mfussenegger/nvim-dap",
