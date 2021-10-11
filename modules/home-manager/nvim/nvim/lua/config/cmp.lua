@@ -13,7 +13,20 @@ require("cmp_treesitter")
 
 cmp.setup({
   formatting = {
-    format = require("lspkind").cmp_format(),
+    format = require("lspkind").cmp_format({
+      with_text = true,
+      menu = {
+        buffer = "[Buffer]",
+        path = "[Path]",
+        luansip = "[Luasnip]",
+        nvim_lsp = "[LSP]",
+        calc = "[Calc]",
+        latex_symbols = "[Latex]",
+        emoji = "[Emoji]",
+        spell = "[Spell]",
+        treesitter = "[Treesitter]",
+      },
+    }),
   },
   snippet = {
     expand = function(args)
@@ -28,8 +41,8 @@ cmp.setup({
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.close(),
     ["<Tab>"] = cmp.mapping(function(fallback)
-      if vim.fn.pumvisible() == 1 then
-        vim.fn.feedkeys(util.t("<C-n>"), "n")
+      if cmp.visible() then
+        cmp.select_next_item()
       elseif luasnip.expand_or_jumpable() then
         vim.fn.feedkeys(util.t("<Plug>luasnip-expand-or-jump"), "")
       else
@@ -40,8 +53,8 @@ cmp.setup({
       "s",
     }),
     ["<S-Tab>"] = cmp.mapping(function(fallback)
-      if vim.fn.pumvisible() == 1 then
-        vim.fn.feedkeys(util.t("<C-p>"), "n")
+      if cmp.visible() then
+        cmp.select_prev_item()
       elseif luasnip.jumpable(-1) then
         vim.fn.feedkeys(util.t("<Plug>luasnip-jump-prev"), "")
       else
