@@ -29,6 +29,7 @@
       commit = { verbose = true; };
     };
     delta.enable = true;
+    lfs.enable = true;
   };
 
   programs.lazygit = {
