@@ -102,7 +102,6 @@ local function plugins(use)
       {
         "rcarriga/nvim-dap-ui",
         "mfussenegger/nvim-dap-python",
-        "jbyuki/one-small-step-for-vimkind",
       },
     },
   })
