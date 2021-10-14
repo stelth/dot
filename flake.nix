@@ -44,7 +44,9 @@
       inherit (flake-utils.lib) eachDefaultSystem eachSystem;
       inherit (builtins) listToAttrs map;
 
-      mkLib = nixpkgs: nixpkgs.lib.extend (final: prev: home-manager.lib);
+      mkLib = nixpkgs:
+        import (inputs.home-manager + "/modules/lib/stdlib-extended.nix")
+        nixpkgs.lib;
       lib = (mkLib nixpkgs);
 
       isDarwin = system: (builtins.elem system lib.platforms.darwin);
