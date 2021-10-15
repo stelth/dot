@@ -1,5 +1,5 @@
 require("Comment").setup({
   mappings = {
-    extra = true,
+    extended = true,
   },
 })
