@@ -2,6 +2,8 @@ local status, impatient = pcall(require, "impatient")
 if status then
   impatient.enable_profile()
 end
+
+pcall(require, "packer_compiled")
 require("util")
 require("options")
 

@@ -1,6 +1,7 @@
 local packer = require("util.packer")
 
 local config = {
+  compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
   display = {
     open_fn = function()
       return require("packer.util").float({ border = "single" })
@@ -10,12 +11,13 @@ local config = {
     enable = true,
     threshold = 0,
   },
-  local_plugins = {},
 }
 
 local function plugins(use)
   -- Packer can manage itself as an optional plugin
   use({ "wbthomason/packer.nvim", opt = true })
+
+  use({ "lewis6991/impatient.nvim" })
 
   -- LSP
   use({
