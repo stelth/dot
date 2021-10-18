@@ -3,6 +3,7 @@
     casks = [
       "1password-beta"
       "avibrazil-rdm"
+      "cyberduck"
       "discord"
       "firefox"
       "github"
