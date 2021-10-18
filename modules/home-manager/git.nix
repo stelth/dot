@@ -14,10 +14,14 @@
         line-numbers = true;
       };
       init = { defaultBranch = "main"; };
-      diff = { tool = "vimdiff3"; };
-      "difftool \"vimdiff3\"" = { path = "nvim"; };
-      merge = { tool = "vimdiff3"; };
-      "mergetool \"vimdiff3\"" = { path = "nvim"; };
+      diff = { tool = "nvimdiff"; };
+      "difftool \"nvimdiff\"" = { cmd = ''nvim -d "$LOCAL" "$REMOTE"''; };
+      merge = { tool = "nvimdiff"; };
+      mergetool = { keepBackup = false; };
+      "mergetool \"nvimdiff\"" = {
+        cmd =
+          ''nvim "$LOCAL" "$REMOTE" "$MERGED" -c "$wincmd w" -c "$wincmd J"'';
+      };
       ghq = { root = "~/dev/repos"; };
       credentials = {
         helper = if pkgs.stdenvNoCC.isDarwin then
