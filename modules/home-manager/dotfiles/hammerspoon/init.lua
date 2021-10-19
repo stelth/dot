@@ -27,6 +27,7 @@ hyper.bindApp({}, "n", "HCL Notes")
 hyper.bindApp({}, "s", "Slack")
 hyper.bindApp({}, "d", "Discord")
 hyper.bindApp({}, "t", "Twitch")
+hyper.bindApp({}, "w", "Cyberduck")
 
 hs.hotkey.bind({ "alt" }, "z", "Zoom", function(event)
   print(hs.inspect(event))
