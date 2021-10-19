@@ -16,11 +16,14 @@
       init = { defaultBranch = "main"; };
       diff = { tool = "nvimdiff"; };
       "difftool \"nvimdiff\"" = { cmd = ''nvim -d "$LOCAL" "$REMOTE"''; };
-      merge = { tool = "nvimdiff"; };
-      mergetool = { keepBackup = false; };
-      "mergetool \"nvimdiff\"" = {
+      merge = {
+        tool = "nvim_mergetool";
+        conflictstyle = "diff3";
+      };
+      "mergetool \"nvim_mergetool\"" = {
         cmd =
-          ''nvim "$LOCAL" "$REMOTE" "$MERGED" -c "$wincmd w" -c "$wincmd J"'';
+          ''nvim -f -c "MergetoolStart" "$MERGED" "$BASE" "$LOCAL" "$REMOTE"'';
+        trustExitCode = true;
       };
       ghq = { root = "~/dev/repos"; };
       credentials = {
