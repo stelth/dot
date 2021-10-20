@@ -31,7 +31,6 @@ in {
     };
 
     packages = with pkgs; [
-      (python3.withPackages (ps: with ps; [ black ]))
       as-tree
       aspell
       bandwhich

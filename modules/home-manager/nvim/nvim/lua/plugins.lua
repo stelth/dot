@@ -132,6 +132,15 @@ local function plugins(use)
     end,
   })
 
+  use({
+    "kristijanhusak/orgmode.nvim",
+    branch = "tree-sitter",
+    requires = "nvim-treesitter/nvim-treesitter",
+    config = function()
+      require("config.orgmode")
+    end,
+  })
+
   -- Theme: Color schemes
   use({
     "folke/tokyonight.nvim",

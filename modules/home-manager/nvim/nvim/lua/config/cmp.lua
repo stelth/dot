@@ -78,5 +78,6 @@ cmp.setup({
     { name = "emoji" },
     { name = "spell" },
     { name = "treesitter" },
+    { name = "orgmode" },
   },
 })
