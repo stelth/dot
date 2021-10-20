@@ -49,6 +49,8 @@ in {
       manix
       mdcat
       ncdu
+      nixfmt
+      nixpkgs-fmt
       nixUnstable
       pfetch
       pre-commit
@@ -56,8 +58,9 @@ in {
       ripgrep-all
       rpmextract
       rsync
-      tealdeer
       sysdo
+      tealdeer
+      treefmt
       tokei
     ];
   };

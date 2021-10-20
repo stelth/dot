@@ -1,0 +1,19 @@
+# One CLI to format the code tree
+
+[formatter.nix]
+command = "nixfmt"
+options = []
+includes = [ "*.nix" ]
+excludes = []
+
+[formatter.python]
+command = "black"
+options = []
+includes = [ "*.py" ]
+excludes = []
+
+[formatter.lua]
+command = "stylua"
+options = []
+includes = [ "*.lua" ]
+excludes = []
