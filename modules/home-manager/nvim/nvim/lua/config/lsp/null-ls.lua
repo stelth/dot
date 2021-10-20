@@ -23,6 +23,7 @@ function M.setup()
       nls.builtins.formatting.uncrustify.with({
         filetypes = { "c", "cpp" },
       }),
+      nls.builtins.diagnostics.cppcheck,
       nls.builtins.diagnostics.hadolint,
       nls.builtins.diagnostics.markdownlint,
       nls.builtins.diagnostics.selene,

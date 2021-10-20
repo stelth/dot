@@ -8,6 +8,7 @@
   home.packages = with pkgs; [
     clang-tools # clangd
     stable.cmake-language-server
+    cppcheck
     hadolint
     jdt-language-server
     lldb
