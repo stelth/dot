@@ -41,7 +41,7 @@ require("config.lsp.null-ls").setup()
 local lspconfig = require("lspconfig")
 for server, config in pairs(servers) do
   lspconfig[server].setup(vim.tbl_deep_extend("force", {
-    on_attach = require('config.lsp.util').on_attach,
+    on_attach = require("config.lsp.util").on_attach,
     capabilities = capabilities,
     flags = {
       debounce_text_changes = 150,
