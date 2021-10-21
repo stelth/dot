@@ -16,4 +16,4 @@ excludes = []
 command = "stylua"
 options = []
 includes = [ "*.lua" ]
-excludes = []
+excludes = [ "modules/home-manager/dotfiles/hammerspoon/hs/*", "modules/home-manager/dotfiles/hammerspoon/Spoons/*" ]
