@@ -34,6 +34,7 @@ in {
       as-tree
       aspell
       bandwhich
+      python3Packages.black
       bottom
       broot
       coreutils-full
