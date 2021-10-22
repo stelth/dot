@@ -106,6 +106,11 @@ local function plugins(use)
   })
 
   use({
+    "kevinhwang91/nvim-bqf",
+    ft = "qf",
+  })
+
+  use({
     "numToStr/Comment.nvim",
     opt = true,
     wants = "nvim-ts-context-commentstring",
