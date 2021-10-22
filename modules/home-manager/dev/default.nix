@@ -6,7 +6,7 @@ let
       autopep8
       flake8
     ];
-  globalPython = pkgs.python39.withPackages globalPythonPkgs;
+  globalPython = pkgs.python3.withPackages globalPythonPkgs;
 in {
   home.packages = with pkgs; [
     globalPython
