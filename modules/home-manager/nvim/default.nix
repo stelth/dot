@@ -10,8 +10,10 @@
     stable.cmake-language-server
     cppcheck
     hadolint
+    python3Packages.isort
     jdt-language-server
     lldb
+    lua53Packages.luacheck
     neovim-nightly
     nixfmt
     nodePackages.bash-language-server
@@ -28,9 +30,12 @@
     nodePackages.vscode-json-languageserver
     nodePackages.write-good
     nodePackages.yaml-language-server
+    proselint
+    python3Packages.pylint
     rnix-lsp
     selene
     shellcheck
+    shellharden
     shfmt
     stylua
     sumneko-lua-language-server
