@@ -32,7 +32,7 @@ function M.setup()
       nls.builtins.diagnostics.hadolint,
       nls.builtins.diagnostics.luacheck,
       nls.builtins.diagnostics.markdownlint,
-      nls.builtins.diagnostics.proselint,
+      -- nls.builtins.diagnostics.proselint,
       nls.builtins.diagnostics.pylint,
       nls.builtins.diagnostics.selene,
       nls.builtins.diagnostics.shellcheck,
@@ -40,7 +40,7 @@ function M.setup()
       nls.builtins.diagnostics.write_good,
 
       nls.builtins.code_actions.gitsigns,
-      nls.builtins.code_actions.proselint,
+      -- nls.builtins.code_actions.proselint,
 
       nls.builtins.hover.dictionary,
     },
