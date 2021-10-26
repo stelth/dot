@@ -7,7 +7,8 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
 })
 
 local function lspSymbol(name, icon)
-  vim.fn.sign_define("DiagnosticsSign" .. name, { text = icon, numhl = "DiagnosticDefault" .. name })
+  local hl = "DiagnosticSign" .. name
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 
 lspSymbol("Error", " ")
