@@ -40,7 +40,7 @@ function M.setup()
       nls.builtins.diagnostics.write_good,
 
       nls.builtins.code_actions.gitsigns,
-      -- nls.builtins.code_actions.proselint,
+      nls.builtins.code_actions.proselint,
 
       nls.builtins.hover.dictionary,
     },
