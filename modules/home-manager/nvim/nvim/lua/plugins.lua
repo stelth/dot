@@ -68,7 +68,6 @@ local function plugins(use)
       {
         "windwp/nvim-autopairs",
         event = "BufReadPre",
-        after = "nvim-cmp",
         config = function()
           require("config.autopairs")
         end,

@@ -1,4 +1,5 @@
 local luasnip = require("luasnip")
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 local cmp = require("cmp")
 local util = require("util")
 
@@ -64,6 +65,7 @@ cmp.setup({
       "i",
       "s",
     }),
+    ["<CR>"] = cmp.mapping.confirm({ select = true }),
   },
   documentation = {
     border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
@@ -81,3 +83,5 @@ cmp.setup({
     { name = "orgmode" },
   },
 })
+
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
