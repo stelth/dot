@@ -21,7 +21,6 @@ local function plugins(use)
     "neovim/nvim-lspconfig",
     opt = true,
     event = "BufReadPre",
-    after = "cmp-nvim-lsp",
     wants = { "null-ls.nvim", "lua-dev.nvim" },
     config = function()
       require("config.lsp")
@@ -54,7 +53,7 @@ local function plugins(use)
     config = function()
       require("config.cmp")
     end,
-    wants = "LuaSnip",
+    wants = { "LuaSnip", "nvim-autopairs" },
     requires = {
       {
         "L3MON4D3/LuaSnip",
