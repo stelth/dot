@@ -90,20 +90,6 @@ local function plugins(use)
   })
 
   use({
-    "mfussenegger/nvim-dap",
-    event = "BufReadPre",
-    config = function()
-      require("config.dap")
-    end,
-    requires = {
-      {
-        "rcarriga/nvim-dap-ui",
-        "mfussenegger/nvim-dap-python",
-      },
-    },
-  })
-
-  use({
     "kevinhwang91/nvim-bqf",
     ft = "qf",
   })
@@ -138,6 +124,7 @@ local function plugins(use)
   use({
     "kristijanhusak/orgmode.nvim",
     branch = "tree-sitter",
+    ft = "org",
     requires = "nvim-treesitter/nvim-treesitter",
     config = function()
       require("config.orgmode")
@@ -207,17 +194,6 @@ local function plugins(use)
       "nvim-telescope/telescope-symbols.nvim",
       "nvim-telescope/telescope-fzy-native.nvim",
       "jvgrootveld/telescope-zoxide",
-      {
-        "Shatur/neovim-cmake",
-        wants = { "asyncrun.vim" },
-        cmd = { "CMake" },
-        requires = {
-          "skywind3000/asyncrun.vim",
-        },
-        config = function()
-          require("config.cmake")
-        end,
-      },
     },
   })
 
@@ -313,11 +289,6 @@ local function plugins(use)
     config = function()
       require("persistence").setup()
     end,
-  })
-
-  use({
-    "tweekmonster/startuptime.vim",
-    cmd = "StartupTime",
   })
 
   use({
