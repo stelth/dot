@@ -134,7 +134,7 @@ local function plugins(use)
   -- Theme: Color schemes
   use({
     "folke/tokyonight.nvim",
-    event = "BufReadPre",
+    event = "VimEnter",
     config = function()
       require("config.theme")
     end,
@@ -325,7 +325,7 @@ local function plugins(use)
 
   use({
     "folke/which-key.nvim",
-    event = "BufReadPre",
+    event = "VimEnter",
     config = function()
       require("config.keys")
     end,
