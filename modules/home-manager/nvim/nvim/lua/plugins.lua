@@ -191,7 +191,6 @@ local function plugins(use)
       "trouble.nvim",
       "telescope-symbols.nvim",
       "telescope-zoxide",
-      "neovim-cmake",
     },
     requires = {
       "nvim-telescope/telescope-z.nvim",
