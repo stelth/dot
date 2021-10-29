@@ -53,8 +53,14 @@ local function plugins(use)
     config = function()
       require("config.cmp")
     end,
-    wants = { "LuaSnip", "nvim-autopairs" },
+    wants = { "LuaSnip", "nvim-autopairs", "copilot.vim" },
     requires = {
+      {
+        "github/copilot.vim",
+        config = function()
+          require("config.copilot")
+        end,
+      },
       {
         "L3MON4D3/LuaSnip",
         event = "BufReadPre",
