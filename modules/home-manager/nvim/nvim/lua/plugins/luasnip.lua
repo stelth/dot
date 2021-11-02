@@ -15,7 +15,6 @@ end
 function M.use(use)
   use({
     "L3MON4D3/LuaSnip",
-    event = "BufReadPre",
     module = "luasnip",
     requires = "rafamadriz/friendly-snippets",
     config = setup,

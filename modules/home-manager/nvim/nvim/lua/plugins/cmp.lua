@@ -3,7 +3,7 @@ local M = {}
 local setup = function()
   local luasnip = require("luasnip")
   local cmp = require("cmp")
-  local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+  local cmp_autopairs = require("nvim-autopairs").completion.cmp
   local util = require("util")
 
   require("cmp_buffer")
@@ -100,9 +100,6 @@ function M.use(use)
     config = setup,
     after = { "LuaSnip", "nvim-autopairs", "copilot.vim" },
     requires = {
-      "L3MON4D3/LuaSnip",
-      "windwp/nvim-autopairs",
-      "github/copilot.vim",
       { "onsails/lspkind-nvim", module = "lspkind" },
       { "hrsh7th/cmp-buffer", module = "cmp_buffer" },
       { "hrsh7th/cmp-path", module = "cmp_path" },
