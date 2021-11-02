@@ -42,16 +42,7 @@ local function plugins(use)
   require("plugins.glow").use(use)
   require("plugins/vim-markdown").use(use)
   require("plugins.lightspeed").use(use)
-
-  use({
-    "folke/trouble.nvim",
-    event = "BufReadPre",
-    wants = "nvim-web-devicons",
-    cmd = { "TroubleToggle", "Trouble" },
-    config = function()
-      require("trouble").setup({ auto_open = false })
-    end,
-  })
+  require("plugins.trouble").use(use)
 
   use({
     "folke/persistence.nvim",
