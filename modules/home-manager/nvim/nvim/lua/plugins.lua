@@ -15,27 +15,16 @@ local config = {
 local function plugins(use)
   require("plugins.packer").use(use)
   require("plugins.filetype").use(use)
+  require("plugins.lspconfig").use(use)
+  require("plugins.null-ls").use(use)
+  require("plugins.lua-dev").use(use)
 
   -- LSP
-  use({
-    "neovim/nvim-lspconfig",
-    opt = true,
-    event = "BufReadPre",
-    wants = { "null-ls.nvim", "lua-dev.nvim" },
-    config = function()
-      require("config.lsp")
-    end,
-    requires = {
-      "jose-elias-alvarez/null-ls.nvim",
-      "folke/lua-dev.nvim",
-    },
-  })
-
   use({
     "mfussenegger/nvim-jdtls",
     ft = "java",
     config = function()
-      require("config.lsp.jdtls")
+      require("lsp.jdtls")
     end,
   })
 

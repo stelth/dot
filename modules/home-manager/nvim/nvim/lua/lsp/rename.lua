@@ -19,7 +19,7 @@ M.rename = function()
   local cword = vim.fn.expand("<cword>")
   local buf = vim.api.nvim_create_buf(false, true)
   local win = vim.api.nvim_open_win(buf, true, opts)
-  local fmt = "<cmd>lua require('config.lsp.rename').dorename(%d)<CR>"
+  local fmt = "<cmd>lua require('lsp.rename').dorename(%d)<CR>"
 
   vim.api.nvim_buf_set_lines(buf, 0, -1, false, { cword })
   vim.api.nvim_buf_set_keymap(buf, "i", "<CR>", string.format(fmt, win), { silent = true })
