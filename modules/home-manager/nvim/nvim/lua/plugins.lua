@@ -41,14 +41,7 @@ local function plugins(use)
   require("plugins.windline").use(use)
   require("plugins.glow").use(use)
   require("plugins/vim-markdown").use(use)
-
-  use({
-    "ggandor/lightspeed.nvim",
-    event = "BufReadPost",
-    config = function()
-      require("config.lightspeed")
-    end,
-  })
+  require("plugins.lightspeed").use(use)
 
   use({
     "folke/trouble.nvim",
