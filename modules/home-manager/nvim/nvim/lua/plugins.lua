@@ -30,11 +30,7 @@ local function plugins(use)
   require("plugins.tokyonight").use(use)
   require("plugins.nvim-web-devicons").use(use)
   require("plugins.nvim-terminal").use(use)
-
-  use({
-    "nvim-lua/plenary.nvim",
-    module = "plenary",
-  })
+  require("plugins.plenary").use(use)
 
   use({
     "nvim-lua/popup.nvim",
