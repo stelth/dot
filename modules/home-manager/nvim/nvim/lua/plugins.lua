@@ -38,14 +38,7 @@ local function plugins(use)
   require("plugins/nvim-toggleterm").use(use)
   require("plugins.gitsigns").use(use)
   require("plugins.neogit").use(use)
-
-  use({
-    "windwp/windline.nvim",
-    event = "VimEnter",
-    config = function()
-      require("config.windline")
-    end,
-  })
+  require("plugins.windline").use(use)
 
   use({
     "npxbr/glow.nvim",
