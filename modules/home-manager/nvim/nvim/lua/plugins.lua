@@ -19,14 +19,7 @@ local function plugins(use)
   require("plugins.null-ls").use(use)
   require("plugins.lua-dev").use(use)
   require("plugins.jdtls").use(use)
-
-  use({
-    "ahmedkhalf/project.nvim",
-    event = "BufReadPre",
-    config = function()
-      require("project_nvim").setup({})
-    end,
-  })
+  require("plugins.project").use(use)
 
   use({
     "hrsh7th/nvim-cmp",
