@@ -47,13 +47,10 @@ local setup = function()
       ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
+        elseif luasnip.jumpable(1) then
+          vim.fn.feedkeys(util.t("<Plug>luasnip-jump-next"), "")
         else
-          local copilot_keys = vim.fn["copilot#Accept"]()
-          if copilot_keys ~= "" then
-            vim.api.nvim_feedkeys(copilot_keys, "i", true)
-          else
-            fallback()
-          end
+          fallback()
         end
       end, {
         "i",
@@ -98,7 +95,7 @@ function M.use(use)
     "hrsh7th/nvim-cmp",
     module = "cmp",
     config = setup,
-    after = { "LuaSnip", "nvim-autopairs", "copilot.vim" },
+    after = { "LuaSnip", "nvim-autopairs" },
     requires = {
       { "onsails/lspkind-nvim", module = "lspkind" },
       { "hrsh7th/cmp-buffer", module = "cmp_buffer" },
