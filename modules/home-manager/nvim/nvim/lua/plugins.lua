@@ -20,6 +20,7 @@ local function plugins(use)
   require("plugins.lua-dev").use(use)
   require("plugins.jdtls").use(use)
   require("plugins.project").use(use)
+  require("plugins.luasnip").use(use)
 
   use({
     "hrsh7th/nvim-cmp",
@@ -29,21 +30,13 @@ local function plugins(use)
     end,
     wants = { "LuaSnip", "nvim-autopairs", "copilot.vim" },
     requires = {
+      "L3MON4D3/LuaSnip",
       {
         "github/copilot.vim",
         config = function()
           require("config.copilot")
         end,
       },
-      {
-        "L3MON4D3/LuaSnip",
-        event = "BufReadPre",
-        wants = "friendly-snippets",
-        config = function()
-          require("config.snippets")
-        end,
-      },
-      "rafamadriz/friendly-snippets",
       {
         "windwp/nvim-autopairs",
         event = "BufReadPre",
