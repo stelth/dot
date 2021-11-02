@@ -39,11 +39,7 @@ local function plugins(use)
   require("plugins.gitsigns").use(use)
   require("plugins.neogit").use(use)
   require("plugins.windline").use(use)
-
-  use({
-    "npxbr/glow.nvim",
-    cmd = "Glow",
-  })
+  require("plugins.glow").use(use)
 
   use({
     "plasticboy/vim-markdown",
