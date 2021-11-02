@@ -18,15 +18,7 @@ local function plugins(use)
   require("plugins.lspconfig").use(use)
   require("plugins.null-ls").use(use)
   require("plugins.lua-dev").use(use)
-
-  -- LSP
-  use({
-    "mfussenegger/nvim-jdtls",
-    ft = "java",
-    config = function()
-      require("lsp.jdtls")
-    end,
-  })
+  require("plugins.jdtls").use(use)
 
   use({
     "ahmedkhalf/project.nvim",
