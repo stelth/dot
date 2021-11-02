@@ -24,11 +24,7 @@ local function plugins(use)
   require("plugins.autopairs").use(use)
   require("plugins.copilot").use(use)
   require("plugins.cmp").use(use)
-
-  use({
-    "weilbith/nvim-code-action-menu",
-    cmd = "CodeActionMenu",
-  })
+  require("plugins.nvim-code-action-menu").use(use)
 
   use({
     "kevinhwang91/nvim-bqf",
