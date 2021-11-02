@@ -14,8 +14,7 @@ local config = {
 
 local function plugins(use)
   require("plugins.packer").use(use)
-
-  use({ "nathom/filetype.nvim" })
+  require("plugins.filetype").use(use)
 
   -- LSP
   use({
