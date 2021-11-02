@@ -23,30 +23,7 @@ local function plugins(use)
   require("plugins.luasnip").use(use)
   require("plugins.autopairs").use(use)
   require("plugins.copilot").use(use)
-
-  use({
-    "hrsh7th/nvim-cmp",
-    module = "cmp",
-    config = function()
-      require("config.cmp")
-    end,
-    after = { "LuaSnip", "nvim-autopairs", "copilot.vim" },
-    requires = {
-      "L3MON4D3/LuaSnip",
-      "windwp/nvim-autopairs",
-      "github/copilot.vim",
-      { "onsails/lspkind-nvim", module = "lspkind" },
-      { "hrsh7th/cmp-buffer", module = "cmp_buffer" },
-      { "hrsh7th/cmp-path", module = "cmp_path" },
-      { "saadparwaiz1/cmp_luasnip", module = "cmp_luasnip" },
-      { "hrsh7th/cmp-nvim-lsp", module = "cmp_nvim_lsp" },
-      { "hrsh7th/cmp-calc", module = "cmp_calc" },
-      { "kdheepak/cmp-latex-symbols", module = "cmp_latex_symbols" },
-      { "hrsh7th/cmp-emoji", module = "cmp_emoji" },
-      { "f3fora/cmp-spell", module = "cmp-spell" },
-      { "ray-x/cmp-treesitter", module = "cmp_treesitter" },
-    },
-  })
+  require("plugins.cmp").use(use)
 
   use({
     "weilbith/nvim-code-action-menu",
