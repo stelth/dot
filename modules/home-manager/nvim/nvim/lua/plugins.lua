@@ -36,18 +36,7 @@ local function plugins(use)
   require("plugins.indent-blankline").use(use)
   require("plugins.nvim-bufferline").use(use)
   require("plugins/nvim-toggleterm").use(use)
-
-  -- Terminal
-  -- Git gutter
-  use({
-    "lewis6991/gitsigns.nvim",
-    event = "BufReadPre",
-    wants = "plenary.nvim",
-    requires = { "nvim-lua/plenary.nvim" },
-    config = function()
-      require("config.gitsigns")
-    end,
-  })
+  require("plugins.gitsigns").use(use)
 
   use({
     "TimUntersberger/neogit",
