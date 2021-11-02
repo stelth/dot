@@ -29,16 +29,6 @@ local function plugins(use)
   require("plugins.comment").use(use)
   require("plugins.treesitter").use(use)
 
-  use({
-    "kristijanhusak/orgmode.nvim",
-    branch = "tree-sitter",
-    ft = "org",
-    requires = "nvim-treesitter/nvim-treesitter",
-    config = function()
-      require("config.orgmode")
-    end,
-  })
-
   -- Theme: Color schemes
   use({
     "folke/tokyonight.nvim",
