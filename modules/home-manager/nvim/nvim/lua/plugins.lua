@@ -34,16 +34,7 @@ local function plugins(use)
   require("plugins.popup").use(use)
   require("plugins.telescope").use(use)
   require("plugins.indent-blankline").use(use)
-
-  -- Tabs
-  use({
-    "akinsho/nvim-bufferline.lua",
-    event = "BufReadPre",
-    wants = "nvim-web-devicons",
-    config = function()
-      require("config.bufferline")
-    end,
-  })
+  require("plugins.nvim-bufferline").use(use)
 
   -- Terminal
   use({
