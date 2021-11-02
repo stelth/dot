@@ -27,22 +27,7 @@ local function plugins(use)
   require("plugins.nvim-code-action-menu").use(use)
   require("plugins.nvim-bqf").use(use)
   require("plugins.comment").use(use)
-
-  use({
-    "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
-    opt = true,
-    event = "BufRead",
-    module = "nvim-treesitter.fold",
-    requires = {
-      { "nvim-treesitter/playground", cmd = "TSHighlightCapturesUnderCursor" },
-      "nvim-treesitter/nvim-treesitter-textobjects",
-      "RRethy/nvim-treesitter-textsubjects",
-    },
-    config = function()
-      require("config.treesitter")
-    end,
-  })
+  require("plugins.treesitter").use(use)
 
   use({
     "kristijanhusak/orgmode.nvim",
