@@ -33,15 +33,7 @@ local function plugins(use)
   require("plugins.plenary").use(use)
   require("plugins.popup").use(use)
   require("plugins.telescope").use(use)
-
-  use({
-    "lukas-reineke/indent-blankline.nvim",
-    event = "BufReadPre",
-    wants = "tokyonight.nvim",
-    config = function()
-      require("config.blankline")
-    end,
-  })
+  require("plugins.indent-blankline").use(use)
 
   -- Tabs
   use({
