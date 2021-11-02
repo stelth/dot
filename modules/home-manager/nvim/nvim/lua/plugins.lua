@@ -25,11 +25,7 @@ local function plugins(use)
   require("plugins.copilot").use(use)
   require("plugins.cmp").use(use)
   require("plugins.nvim-code-action-menu").use(use)
-
-  use({
-    "kevinhwang91/nvim-bqf",
-    ft = "qf",
-  })
+  require("plugins.nvim-bqf").use(use)
 
   use({
     "numToStr/Comment.nvim",
