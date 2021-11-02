@@ -13,8 +13,7 @@ local config = {
 }
 
 local function plugins(use)
-  -- Packer can manage itself as an optional plugin
-  use({ "wbthomason/packer.nvim", opt = true })
+  require("plugins.packer").use(use)
 
   use({ "nathom/filetype.nvim" })
 
