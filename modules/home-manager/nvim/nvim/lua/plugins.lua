@@ -35,16 +35,9 @@ local function plugins(use)
   require("plugins.telescope").use(use)
   require("plugins.indent-blankline").use(use)
   require("plugins.nvim-bufferline").use(use)
+  require("plugins/nvim-toggleterm").use(use)
 
   -- Terminal
-  use({
-    "akinsho/nvim-toggleterm.lua",
-    keys = "<M-`>",
-    config = function()
-      require("config.terminal")
-    end,
-  })
-
   -- Git gutter
   use({
     "lewis6991/gitsigns.nvim",
