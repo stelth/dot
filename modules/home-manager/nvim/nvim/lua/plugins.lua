@@ -28,16 +28,7 @@ local function plugins(use)
   require("plugins.comment").use(use)
   require("plugins.treesitter").use(use)
   require("plugins.tokyonight").use(use)
-
-  -- Theme: Color schemes
-  -- Theme: icons
-  use({
-    "kyazdani42/nvim-web-devicons",
-    module = "nvim-web-devicons",
-    config = function()
-      require("nvim-web-devicons").setup({ default = true })
-    end,
-  })
+  require("plugins.nvim-web-devicons").use(use)
 
   use({
     "norcalli/nvim-terminal.lua",
