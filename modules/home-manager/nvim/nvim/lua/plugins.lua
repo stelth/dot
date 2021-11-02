@@ -40,13 +40,7 @@ local function plugins(use)
   require("plugins.neogit").use(use)
   require("plugins.windline").use(use)
   require("plugins.glow").use(use)
-
-  use({
-    "plasticboy/vim-markdown",
-    opt = true,
-    requires = "godlygeek/tabular",
-    ft = "markdown",
-  })
+  require("plugins/vim-markdown").use(use)
 
   use({
     "ggandor/lightspeed.nvim",
