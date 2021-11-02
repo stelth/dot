@@ -173,16 +173,10 @@ local leader = {
     r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
     n = { "<cmd>enew<cr>", "New File" },
     z = { "<cmd>Telescope zoxide list<CR>", "Zoxide" },
-    d = "Dot Files",
   },
   o = {
     name = "+open",
     g = { "<cmd>Glow<cr>", "Markdown Glow" },
-  },
-  p = {
-    name = "+project",
-    p = "Open Project",
-    b = { ":Telescope file_browser cwd=~/projects<CR>", "Browse ~/projects" },
   },
   t = {
     name = "toggle",
@@ -223,7 +217,6 @@ local leader = {
     l = { "<cmd>tablast<CR>", "Last" },
   },
   ["`"] = { "<cmd>:e #<cr>", "Switch to Other Buffer" },
-  [" "] = "Find File",
   ["."] = { ":Telescope file_browser<CR>", "Browse Files" },
   [","] = { "<cmd>Telescope buffers show_all_buffers=true<cr>", "Switch Buffer" },
   ["/"] = { "<cmd>Telescope live_grep<cr>", "Search" },

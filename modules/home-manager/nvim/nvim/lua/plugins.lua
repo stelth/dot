@@ -31,41 +31,8 @@ local function plugins(use)
   require("plugins.nvim-web-devicons").use(use)
   require("plugins.nvim-terminal").use(use)
   require("plugins.plenary").use(use)
-
-  use({
-    "nvim-lua/popup.nvim",
-    module = "popup",
-  })
-
-  use({
-    opt = true,
-    "nvim-telescope/telescope.nvim",
-    config = function()
-      require("config.telescope")
-    end,
-    cmd = { "Telescope" },
-    module = "telescope",
-    keys = { "<leader><space>", "<leader>fz", "<leader>pp", "<leader>fd" },
-    wants = {
-      "plenary.nvim",
-      "popup.nvim",
-      "telescope-z.nvim",
-      "telescope-fzy-native.nvim",
-      "telescope-project.nvim",
-      "trouble.nvim",
-      "telescope-symbols.nvim",
-      "telescope-zoxide",
-    },
-    requires = {
-      "nvim-telescope/telescope-z.nvim",
-      "nvim-telescope/telescope-project.nvim",
-      "nvim-lua/popup.nvim",
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope-symbols.nvim",
-      "nvim-telescope/telescope-fzy-native.nvim",
-      "jvgrootveld/telescope-zoxide",
-    },
-  })
+  require("plugins.popup").use(use)
+  require("plugins.telescope").use(use)
 
   use({
     "lukas-reineke/indent-blankline.nvim",
