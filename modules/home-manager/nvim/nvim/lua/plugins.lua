@@ -27,16 +27,9 @@ local function plugins(use)
   require("plugins.nvim-bqf").use(use)
   require("plugins.comment").use(use)
   require("plugins.treesitter").use(use)
+  require("plugins.tokyonight").use(use)
 
   -- Theme: Color schemes
-  use({
-    "folke/tokyonight.nvim",
-    event = "VimEnter",
-    config = function()
-      require("config.theme")
-    end,
-  })
-
   -- Theme: icons
   use({
     "kyazdani42/nvim-web-devicons",
