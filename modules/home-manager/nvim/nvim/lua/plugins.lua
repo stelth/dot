@@ -22,6 +22,7 @@ local function plugins(use)
   require("plugins.project").use(use)
   require("plugins.luasnip").use(use)
   require("plugins.autopairs").use(use)
+  require("plugins.copilot").use(use)
 
   use({
     "hrsh7th/nvim-cmp",
@@ -32,12 +33,7 @@ local function plugins(use)
     requires = {
       "L3MON4D3/LuaSnip",
       "windwp/nvim-autopairs",
-      {
-        "github/copilot.vim",
-        config = function()
-          require("config.copilot")
-        end,
-      },
+      "github/copilot.vim",
       { "onsails/lspkind-nvim", module = "lspkind" },
       { "hrsh7th/cmp-buffer", module = "cmp_buffer" },
       { "hrsh7th/cmp-path", module = "cmp_path" },
