@@ -30,6 +30,7 @@ local function plugins(use)
     config = function()
       require("config.cmp")
     end,
+    after = { "LuaSnip", "nvim-autopairs", "copilot.vim" },
     requires = {
       "L3MON4D3/LuaSnip",
       "windwp/nvim-autopairs",
