@@ -26,17 +26,7 @@ local function plugins(use)
   require("plugins.cmp").use(use)
   require("plugins.nvim-code-action-menu").use(use)
   require("plugins.nvim-bqf").use(use)
-
-  use({
-    "numToStr/Comment.nvim",
-    opt = true,
-    wants = "nvim-ts-context-commentstring",
-    keys = { "gc", "gcc" },
-    config = function()
-      require("config.comments")
-    end,
-    requires = "JoosepAlviste/nvim-ts-context-commentstring",
-  })
+  require("plugins.comment").use(use)
 
   use({
     "nvim-treesitter/nvim-treesitter",
