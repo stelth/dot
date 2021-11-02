@@ -29,14 +29,7 @@ local function plugins(use)
   require("plugins.treesitter").use(use)
   require("plugins.tokyonight").use(use)
   require("plugins.nvim-web-devicons").use(use)
-
-  use({
-    "norcalli/nvim-terminal.lua",
-    ft = "terminal",
-    config = function()
-      require("terminal").setup()
-    end,
-  })
+  require("plugins.nvim-terminal").use(use)
 
   use({
     "nvim-lua/plenary.nvim",
