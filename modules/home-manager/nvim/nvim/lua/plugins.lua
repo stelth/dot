@@ -49,20 +49,13 @@ local function plugins(use)
   require("plugins.zen-mode").use(use)
   require("plugins.todo-comments").use(use)
   require("plugins.diffview").use(use)
+  require("plugins.vim-mergetool").use(use)
 
   use({
     "folke/which-key.nvim",
     event = "VimEnter",
     config = function()
       require("config.keys")
-    end,
-  })
-
-  use({
-    "samoshkin/vim-mergetool",
-    cmd = "MergetoolStart",
-    config = function()
-      require("config.mergetool")
     end,
   })
 
