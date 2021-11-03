@@ -1,5 +1,8 @@
 local M = {}
 
+local util = require("util")
+util.nnoremap("<leader>hl", ":TSHighlightCapturesUnderCursor<CR>")
+
 local setup = function()
   local gcc = vim.fn.getenv("NIX_GCC")
 

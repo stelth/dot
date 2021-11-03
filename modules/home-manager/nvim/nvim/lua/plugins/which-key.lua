@@ -25,12 +25,10 @@ local setup = function()
     },
     ["h"] = {
       name = "+help",
-      l = { [[<cmd>TSHighlightCapturesUnderCursor<cr>]], "Highlight Groups at cursor" },
       p = {
         name = "+packer",
       },
     },
-    u = { "<cmd>UndotreeToggle<CR>", "Undo Tree" },
     s = {
       name = "+search",
     },
