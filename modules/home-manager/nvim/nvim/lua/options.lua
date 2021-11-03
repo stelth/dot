@@ -53,9 +53,6 @@ vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_matchit = 1
 vim.g.loaded_matchparen = 1
 
--- Check if we need to reload the file when it changed
-cmd("au FocusGained * :checktime")
-
 -- go to last loc when opening a buffer
 cmd([[
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g`\"" | endif
@@ -63,11 +60,3 @@ cmd([[
 
 -- Highlight on yank
 cmd("au TextYankPost * lua vim.highlight.on_yank {}")
-
--- ftdetect
-cmd([[autocmd BufRead,BufNewFile *.fish setfiletype fish]])
-cmd([[autocmd BufRead,BufNewFile *.nix setfiletype nix]])
-
--- windows to close with "q"
-vim.cmd([[autocmd FileType help,startuptime,qf,lspinfo nnoremap <buffer><silent> q :close<CR>]])
-vim.cmd([[autocmd FileType man nnoremap <buffer><silent> q :quit<CR>]])
