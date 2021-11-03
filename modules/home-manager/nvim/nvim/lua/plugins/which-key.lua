@@ -21,30 +21,12 @@ local setup = function()
     },
     g = {
       name = "+git",
-      l = {
-        function()
-          require("util").float_terminal("lazygit")
-        end,
-        "LazyGit",
-      },
-      c = { "<Cmd>Telescope git_commits<CR>", "commits" },
-      b = { "<Cmd>Telescope git_branches<CR>", "branches" },
-      s = { "<Cmd>Telescope git_status<CR>", "status" },
       d = { "<cmd>DiffviewOpen<cr>", "DiffView" },
       h = { name = "+hunk" },
     },
     ["h"] = {
       name = "+help",
-      t = { "<cmd>:Telescope builtin<cr>", "Telescope" },
-      c = { "<cmd>:Telescope commands<cr>", "Commands" },
-      h = { "<cmd>:Telescope help_tags<cr>", "Help Pages" },
-      m = { "<cmd>:Telescope man_pages<cr>", "Man Pages" },
-      k = { "<cmd>:Telescope keymaps<cr>", "Key Maps" },
-      s = { "<cmd>:Telescope highlights<cr>", "Search Highlight Groups" },
       l = { [[<cmd>TSHighlightCapturesUnderCursor<cr>]], "Highlight Groups at cursor" },
-      f = { "<cmd>:Telescope filetypes<cr>", "File Types" },
-      o = { "<cmd>:Telescope vim_options<cr>", "Options" },
-      a = { "<cmd>:Telescope autocommands<cr>", "Auto Commands" },
       p = {
         name = "+packer",
         p = { "<cmd>PackerSync<cr>", "Sync" },
@@ -56,26 +38,9 @@ local setup = function()
     u = { "<cmd>UndotreeToggle<CR>", "Undo Tree" },
     s = {
       name = "+search",
-      g = { "<cmd>Telescope live_grep<cr>", "Grep" },
-      b = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Buffer" },
-      s = {
-        function()
-          require("telescope.builtin").lsp_document_symbols({
-            symbols = { "Class", "Function", "Method", "Constructor", "Interface", "Module" },
-          })
-        end,
-        "Goto Symbol",
-      },
-      h = { "<cmd>Telescope command_history<cr>", "Command History" },
-      m = { "<cmd>Telescope marks<cr>", "Jump to Mark" },
     },
     f = {
       name = "+file",
-      t = { "<cmd>NvimTreeToggle<CR>", "NvimTree" },
-      f = { "<cmd>Telescope find_files<cr>", "Find File" },
-      r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
-      n = { "<cmd>enew<cr>", "New File" },
-      z = { "<cmd>Telescope zoxide list<CR>", "Zoxide" },
     },
     o = {
       name = "+open",
@@ -120,10 +85,6 @@ local setup = function()
       l = { "<cmd>tablast<CR>", "Last" },
     },
     ["`"] = { "<cmd>:e #<cr>", "Switch to Other Buffer" },
-    ["."] = { ":Telescope file_browser<CR>", "Browse Files" },
-    [","] = { "<cmd>Telescope buffers show_all_buffers=true<cr>", "Switch Buffer" },
-    ["/"] = { "<cmd>Telescope live_grep<cr>", "Search" },
-    [":"] = { "<cmd>Telescope command_history<cr>", "Command History" },
     q = {
       name = "+quit/session",
       q = { "<cmd>:qa<cr>", "Quit" },

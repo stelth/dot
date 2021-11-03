@@ -78,6 +78,9 @@ util.inoremap(";", ";<c-g>u")
 util.vnoremap("<", "<gv")
 util.vnoremap(">", ">gv")
 
+-- New file
+util.nnoremap("<leader>fn", ":enew<CR>")
+
 -- makes * and # work on visual mode too.
 vim.api.nvim_exec(
   [[
