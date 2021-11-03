@@ -12,7 +12,7 @@ local config = {
   },
 }
 
-local function plugins(use)
+local plugins = function(use)
   require("plugins.packer").use(use)
   require("plugins.filetype").use(use)
   require("plugins.lspconfig").use(use)
@@ -51,6 +51,7 @@ local function plugins(use)
   require("plugins.diffview").use(use)
   require("plugins.vim-mergetool").use(use)
   require("plugins.vim-illuminate").use(use)
+  require("plugins.vim-matchup").use(use)
 
   use({
     "folke/which-key.nvim",
@@ -58,11 +59,6 @@ local function plugins(use)
     config = function()
       require("config.keys")
     end,
-  })
-
-  use({
-    "andymass/vim-matchup",
-    event = "CursorMoved",
   })
 end
 
