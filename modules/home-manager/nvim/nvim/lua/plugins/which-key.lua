@@ -21,7 +21,6 @@ local setup = function()
     },
     g = {
       name = "+git",
-      d = { "<cmd>DiffviewOpen<cr>", "DiffView" },
       h = { name = "+hunk" },
     },
     ["h"] = {
