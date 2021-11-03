@@ -46,19 +46,7 @@ local function plugins(use)
   require("plugins.persistence").use(use)
   require("plugins.undotree").use(use)
   require("plugins.nvim-hlslens").use(use)
-
-  use({
-    "folke/zen-mode.nvim",
-    cmd = "ZenMode",
-    opt = true,
-    wants = "twilight.nvim",
-    requires = { "folke/twilight.nvim" },
-    config = function()
-      require("zen-mode").setup({
-        plugins = { gitsigns = true, tmux = true, kitty = { enabled = false, font = "+2" } },
-      })
-    end,
-  })
+  require("plugins.zen-mode").use(use)
 
   use({
     "folke/todo-comments.nvim",
