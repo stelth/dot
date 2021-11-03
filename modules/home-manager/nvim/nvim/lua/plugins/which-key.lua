@@ -21,7 +21,6 @@ local setup = function()
     },
     g = {
       name = "+git",
-      g = { "<cmd>Neogit<CR>", "NeoGit" },
       l = {
         function()
           require("util").float_terminal("lazygit")

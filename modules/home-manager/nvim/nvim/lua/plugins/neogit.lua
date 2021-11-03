@@ -1,5 +1,8 @@
 local M = {}
 
+local util = require("util")
+util.nnoremap("<leader>gg", ":Neogit<CR>")
+
 local setup = function()
   require("neogit").setup({
     signs = {
