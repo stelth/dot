@@ -1,8 +1,9 @@
 local util = require("util")
 
-local cmd = vim.cmd
+-- ----------------------------------
+-- General Seeettings
+-- ----------------------------------
 local indent = 2
-
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 vim.opt.autowrite = true -- enable auto write
@@ -55,6 +56,7 @@ vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_matchit = 1
 vim.g.loaded_matchparen = 1
 
+local cmd = vim.cmd
 -- go to last loc when opening a buffer
 cmd([[
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g`\"" | endif
@@ -62,6 +64,35 @@ cmd([[
 
 -- Highlight on yank
 cmd("au TextYankPost * lua vim.highlight.on_yank {}")
+
+-- ----------------------------------
+-- Key maps
+-- ----------------------------------
+
+-- Add undo break-points
+util.inoremap(",", ",<c-g>u")
+util.inoremap(".", ".<c-g>u")
+util.inoremap(";", ";<c-g>u")
+
+-- better indenting
+util.vnoremap("<", "<gv")
+util.vnoremap(">", ">gv")
+
+-- makes * and # work on visual mode too.
+vim.api.nvim_exec(
+  [[
+  function! g:VSetSearch(cmdtype)
+    let temp = @s
+    norm! gv"sy
+    let @/ = '\V' . substitute(escape(@s, a:cmdtype.'\'), '\n', '\\n', 'g')
+    let @s = temp
+  endfunction
+
+  xnoremap * :<C-u>call g:VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
+  xnoremap # :<C-u>call g:VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
+]],
+  false
+)
 
 local packer = require("util.packer")
 
