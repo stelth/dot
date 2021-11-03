@@ -18,21 +18,14 @@ local setup = function()
     },
   })
 
-  local wk = require("which-key")
-  local map = {
-    b = {
-      name = "+buffer",
-      ["b"] = { "<cmd>:e #<cr>", "Switch to Other Buffer" },
-      ["p"] = { "<cmd>:BufferLineCyclePrev<CR>", "Previous Buffer" },
-      ["["] = { "<cmd>:BufferLineCyclePrev<CR>", "Previous Buffer" },
-      ["n"] = { "<cmd>:BufferLineCycleNext<CR>", "Next Buffer" },
-      ["]"] = { "<cmd>:BufferLineCycleNext<CR>", "Next Buffer" },
-      ["d"] = { "<cmd>:bd<CR>", "Delete Buffer" },
-      ["g"] = { "<cmd>:BufferLinePick<CR>", "Goto Buffer" },
-    },
-  }
-
-  wk.register(map, { prefix = "<leader>" })
+  local util = require("util")
+  util.nnoremap("<leader>bb", ":e #<CR>")
+  util.nnoremap("<leader>bp", ":BufferLineCyclePrev<CR>")
+  util.nnoremap("<leader>b[", ":BufferLineCyclePrev<CR>")
+  util.nnoremap("<leader>bn", ":BufferLineCycleNext<CR>")
+  util.nnoremap("<leader>b]", ":BufferLineCycleNext<CR>")
+  util.nnoremap("<leader>bd", ":bd<CR>")
+  util.nnoremap("<leader>bg", ":BufferLinePick<CR>")
 end
 
 function M.use(use)
@@ -42,7 +35,6 @@ function M.use(use)
     config = setup,
     requires = {
       "kyazdani42/nvim-web-devicons",
-      "folke/which-key.nvim",
     },
   })
 end

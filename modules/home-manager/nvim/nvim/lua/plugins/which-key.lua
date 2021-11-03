@@ -16,6 +16,9 @@ local setup = function()
   local util = require("util")
 
   local leader = {
+    b = {
+      name = "+buffer",
+    },
     g = {
       name = "+git",
       g = { "<cmd>Neogit<CR>", "NeoGit" },
