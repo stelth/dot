@@ -32,7 +32,7 @@ end
 M.use = function(use)
   use({
     "akinsho/nvim-bufferline.lua",
-    event = "BufNew",
+    event = "VimEnter",
     config = setup,
     requires = {
       "kyazdani42/nvim-web-devicons",
