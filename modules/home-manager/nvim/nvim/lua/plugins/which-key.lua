@@ -44,7 +44,6 @@ local setup = function()
     ["<tab>"] = {
       name = "workspace",
       ["<tab>"] = { "<cmd>tabnew<CR>", "New Tab" },
-
       n = { "<cmd>tabnext<CR>", "Next" },
       d = { "<cmd>tabclose<CR>", "Close" },
       p = { "<cmd>tabprevious<CR>", "Previous" },
@@ -53,14 +52,8 @@ local setup = function()
       f = { "<cmd>tabfirst<CR>", "First" },
       l = { "<cmd>tablast<CR>", "Last" },
     },
-    ["`"] = { "<cmd>:e #<cr>", "Switch to Other Buffer" },
     q = {
       name = "+quit/session",
-      q = { "<cmd>:qa<cr>", "Quit" },
-      ["!"] = { "<cmd>:qa!<cr>", "Quit without saving" },
-      s = { "<cmd>lua require('persistence').load()<cr>", "Restore Session" },
-      l = { "<cmd>lua require('persistence').load({last = true})<CR>", "Restore Last Session" },
-      d = { "<cmd>lua require('persistence').stop()<CR>", "Stop Current Session" },
     },
     x = {
       name = "+errors",
@@ -72,8 +65,6 @@ local setup = function()
       l = { "<cmd>lopen<cr>", "Open Location List" },
       q = { "<cmd>copen<cr>", "Open Quickfix List" },
     },
-    Z = { [[<cmd>lua require("zen-mode").reset()<cr>]], "Zen Mode" },
-    z = { [[<cmd>ZenMode<cr>]], "Zen Mode" },
     T = { [[<Plug>PlenaryTestFile]], "Plenary Test" },
   }
 

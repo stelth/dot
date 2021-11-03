@@ -19,6 +19,7 @@ local setup = function()
   })
 
   local util = require("util")
+  util.nnoremap("<leader>`", ":e #<CR>")
   util.nnoremap("<leader>bb", ":e #<CR>")
   util.nnoremap("<leader>bp", ":BufferLineCyclePrev<CR>")
   util.nnoremap("<leader>b[", ":BufferLineCyclePrev<CR>")

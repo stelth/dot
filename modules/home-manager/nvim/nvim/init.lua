@@ -69,6 +69,10 @@ cmd("au TextYankPost * lua vim.highlight.on_yank {}")
 -- Key maps
 -- ----------------------------------
 
+-- Quit shortcuts
+util.nnoremap("<leader>qq", ":qa<CR>")
+util.nnoremap("<leader>q!", ":qa!<CR>")
+
 -- Add undo break-points
 util.inoremap(",", ",<c-g>u")
 util.inoremap(".", ".<c-g>u")
