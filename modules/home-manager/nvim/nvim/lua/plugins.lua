@@ -50,21 +50,13 @@ local function plugins(use)
   require("plugins.todo-comments").use(use)
   require("plugins.diffview").use(use)
   require("plugins.vim-mergetool").use(use)
+  require("plugins.vim-illuminate").use(use)
 
   use({
     "folke/which-key.nvim",
     event = "VimEnter",
     config = function()
       require("config.keys")
-    end,
-  })
-
-  use({
-    "RRethy/vim-illuminate",
-    event = "CursorHold",
-    module = "illuminate",
-    config = function()
-      vim.g.illuminate_delay = 1000
     end,
   })
 
