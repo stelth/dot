@@ -43,19 +43,6 @@ local setup = function()
   util.nnoremap("[p", ":pu!<CR>")
   util.nnoremap("]p", ":pu<CR>")
 
-  -- Clear search with <esc>
-  util.map("", "<esc>", ":noh<cr>")
-  util.nnoremap("gw", "*N")
-  util.xnoremap("gw", "*N")
-
-  util.nnoremap("n", "<cmd>execute('normal!' . v:count1 . 'n')<CR><cmd>lua require('hlslens').start()<CR>")
-  util.nnoremap("N", "<cmd>execute('normal!' . v:count1 . 'N')<CR><cmd>lua require('hlslens').start()<CR>")
-  util.nnoremap("*", "*<cmd>lua require('hlslens').start()<CR>")
-  util.nnoremap("#", "#<cmd>lua require('hlslens').start()<CR>")
-  util.nnoremap("g*", "g*<cmd>lua require('hlslens).start()<CR>")
-  util.nnoremap("g#", "g#<cmd>lua require('hlslens').start()<CR>")
-  util.nnoremap("<BS>", ":noh<CR>")
-
   -- Add undo break-points
   util.inoremap(",", ",<c-g>u")
   util.inoremap(".", ".<c-g>u")
