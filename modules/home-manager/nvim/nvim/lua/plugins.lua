@@ -47,15 +47,7 @@ local function plugins(use)
   require("plugins.undotree").use(use)
   require("plugins.nvim-hlslens").use(use)
   require("plugins.zen-mode").use(use)
-
-  use({
-    "folke/todo-comments.nvim",
-    cmd = { "TodoTrouble", "TodoTelescope" },
-    event = "BufReadPost",
-    config = function()
-      require("config.todo")
-    end,
-  })
+  require("plugins.todo-comments").use(use)
 
   use({
     "folke/which-key.nvim",
