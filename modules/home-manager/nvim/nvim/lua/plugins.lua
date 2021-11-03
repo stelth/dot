@@ -44,15 +44,8 @@ local function plugins(use)
   require("plugins.lightspeed").use(use)
   require("plugins.trouble").use(use)
   require("plugins.persistence").use(use)
-
-  use({
-    "mbbill/undotree",
-    cmd = "UndotreeToggle",
-  })
-
-  use({
-    "kevinhwang91/nvim-hlslens",
-  })
+  require("plugins.undotree").use(use)
+  require("plugins.nvim-hlslens").use(use)
 
   use({
     "folke/zen-mode.nvim",
