@@ -17,15 +17,32 @@ local setup = function()
       end,
     },
   })
+
+  local wk = require("which-key")
+  local map = {
+    b = {
+      name = "+buffer",
+      ["b"] = { "<cmd>:e #<cr>", "Switch to Other Buffer" },
+      ["p"] = { "<cmd>:BufferLineCyclePrev<CR>", "Previous Buffer" },
+      ["["] = { "<cmd>:BufferLineCyclePrev<CR>", "Previous Buffer" },
+      ["n"] = { "<cmd>:BufferLineCycleNext<CR>", "Next Buffer" },
+      ["]"] = { "<cmd>:BufferLineCycleNext<CR>", "Next Buffer" },
+      ["d"] = { "<cmd>:bd<CR>", "Delete Buffer" },
+      ["g"] = { "<cmd>:BufferLinePick<CR>", "Goto Buffer" },
+    },
+  }
+
+  wk.register(map, { prefix = "<leader>" })
 end
 
 function M.use(use)
   use({
     "akinsho/nvim-bufferline.lua",
-    event = "BufReadPre",
+    event = "BufNew",
     config = setup,
     requires = {
       "kyazdani42/nvim-web-devicons",
+      "folke/which-key.nvim",
     },
   })
 end
