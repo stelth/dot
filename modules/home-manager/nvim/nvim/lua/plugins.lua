@@ -43,15 +43,7 @@ local function plugins(use)
   require("plugins/vim-markdown").use(use)
   require("plugins.lightspeed").use(use)
   require("plugins.trouble").use(use)
-
-  use({
-    "folke/persistence.nvim",
-    event = "BufReadPre",
-    module = "persistence",
-    config = function()
-      require("persistence").setup()
-    end,
-  })
+  require("plugins.persistence").use(use)
 
   use({
     "mbbill/undotree",
