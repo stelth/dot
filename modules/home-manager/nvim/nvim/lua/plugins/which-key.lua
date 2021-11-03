@@ -15,44 +15,10 @@ local setup = function()
 
   local util = require("util")
 
-  -- Move to window using the <ctrl> movement keys
-  util.nmap("<left>", "<C-w>h")
-  util.nmap("<down>", "<C-w>j")
-  util.nmap("<up>", "<C-w>k")
-  util.nmap("<right>", "<C-w>l")
-
-  -- Resize window using <ctrl> arrow keys
-  util.nnoremap("<S-Up>", ":resize +2<CR>")
-  util.nnoremap("<S-Down>", ":resize -2<CR>")
-  util.nnoremap("<S-Left>", ":vertical resize -2<CR>")
-  util.nnoremap("<S-Right>", ":vertical resize +2<CR>")
-
-  -- Move Lines
-  util.nnoremap("<A-j>", ":m .+1<CR>==")
-  util.vnoremap("<A-j>", ":m '>+1<CR>gv=gv")
-  util.inoremap("<A-j>", "<Esc>:m .+1<CR>==gi")
-  util.nnoremap("<A-k>", ":m .-2<CR>==")
-  util.vnoremap("<A-k>", ":m '<-2<CR>gv=gv")
-  util.inoremap("<A-k>", "<Esc>:m .-2<CR>==gi")
-
-  -- Switch buffers with tab
-  util.nnoremap("<C-Left>", ":bnext<cr>")
-  util.nnoremap("<C-Right>", ":bprevious<cr>")
-
-  -- Easier pasting
-  util.nnoremap("[p", ":pu!<CR>")
-  util.nnoremap("]p", ":pu<CR>")
-
   -- Add undo break-points
   util.inoremap(",", ",<c-g>u")
   util.inoremap(".", ".<c-g>u")
   util.inoremap(";", ";<c-g>u")
-
-  -- telescope <ctrl-r> in command line
-  -- vim.cmd([[cmap <C-R> <Plug>(TelescopeFuzzyCommandSearch)]])
-
-  -- markdown
-  util.nnoremap("=t", "<cmd>TableFormat<cr>")
 
   -- better indenting
   util.vnoremap("<", "<gv")
