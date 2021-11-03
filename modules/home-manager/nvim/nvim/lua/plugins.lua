@@ -52,14 +52,7 @@ local plugins = function(use)
   require("plugins.vim-mergetool").use(use)
   require("plugins.vim-illuminate").use(use)
   require("plugins.vim-matchup").use(use)
-
-  use({
-    "folke/which-key.nvim",
-    event = "VimEnter",
-    config = function()
-      require("config.keys")
-    end,
-  })
+  require("plugins.which-key").use(use)
 end
 
-return packer.setup(config, plugins)
+packer.setup(config, plugins)
