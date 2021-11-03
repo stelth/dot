@@ -8,7 +8,6 @@ vim.opt.clipboard = "unnamedplus" -- sync with system clipboard
 vim.opt.conceallevel = 2 -- Hide * markup for bold and italic
 vim.opt.concealcursor = "n" -- Hide * markup for bold and italic
 vim.opt.confirm = true -- confirm to save changes before exiting modified buffer
-vim.opt.cursorline = true -- Enable highlighting of the current line
 vim.opt.expandtab = true -- Use spaces instead of tabs
 vim.opt.guifont = "FiraCode Nerd Font:h12"
 vim.opt.grepprg = "rg --vimgrep"
@@ -56,12 +55,6 @@ vim.g.loaded_matchparen = 1
 
 -- Check if we need to reload the file when it changed
 cmd("au FocusGained * :checktime")
-
--- show cursor line only in active window
-cmd([[
-  autocmd InsertLeave,WinEnter * set cursorline
-  autocmd InsertEnter,WinLeave * set nocursorline
-]])
 
 -- go to last loc when opening a buffer
 cmd([[
