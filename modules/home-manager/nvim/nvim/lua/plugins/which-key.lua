@@ -29,10 +29,6 @@ local setup = function()
       l = { [[<cmd>TSHighlightCapturesUnderCursor<cr>]], "Highlight Groups at cursor" },
       p = {
         name = "+packer",
-        p = { "<cmd>PackerSync<cr>", "Sync" },
-        s = { "<cmd>PackerStatus<cr>", "Status" },
-        i = { "<cmd>PackerInstall<cr>", "Install" },
-        c = { "<cmd>PackerCompile<cr>", "Compile" },
       },
     },
     u = { "<cmd>UndotreeToggle<CR>", "Undo Tree" },
