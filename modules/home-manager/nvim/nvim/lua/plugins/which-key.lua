@@ -54,7 +54,7 @@ local setup = function()
   wk.register(leader, { prefix = "<leader>" })
 end
 
-function M.use(use)
+M.use = function(use)
   use({
     "folke/which-key.nvim",
     event = "VimEnter",

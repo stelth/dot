@@ -4,7 +4,7 @@ local setup = function()
   vim.g.illuminate_delay = 1000
 end
 
-function M.use(use)
+M.use = function(use)
   use({
     "RRethy/vim-illuminate",
     event = "CursorHold",

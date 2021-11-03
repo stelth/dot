@@ -48,7 +48,7 @@ local setup = function()
   })
 end
 
-function M.use(use)
+M.use = function(use)
   use({
     "lewis6991/gitsigns.nvim",
     event = "BufReadPre",

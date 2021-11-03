@@ -7,7 +7,7 @@ local setup = function()
   require("diffview").setup({})
 end
 
-function M.use(use)
+M.use = function(use)
   use({
     "sindrets/diffview.nvim",
     cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles" },

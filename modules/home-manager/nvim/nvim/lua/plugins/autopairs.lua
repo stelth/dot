@@ -4,7 +4,7 @@ local setup = function()
   require("nvim-autopairs").setup({})
 end
 
-function M.use(use)
+M.use = function(use)
   use({
     "windwp/nvim-autopairs",
     event = "BufReadPre",

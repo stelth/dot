@@ -3,10 +3,13 @@ local M = {}
 local util = require("util")
 util.nnoremap("<leader>og", ":Glow<CR>")
 
-function M.use(use)
+local setup = function() end
+
+M.use = function(use)
   use({
     "npxbr/glow.nvim",
     cmd = "Glow",
+    config = setup,
   })
 end
 

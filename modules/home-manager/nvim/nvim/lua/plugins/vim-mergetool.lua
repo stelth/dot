@@ -5,7 +5,7 @@ local setup = function()
   vim.g.mergetool_prefer_revision = "local"
 end
 
-function M.use(use)
+M.use = function(use)
   use({
     "samoshkin/vim-mergetool",
     cmd = "MergetoolStart",

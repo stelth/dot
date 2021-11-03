@@ -5,7 +5,7 @@ local setup = function()
   require("wlfloatline").setup()
 end
 
-function M.use(use)
+M.use = function(use)
   use({
     "windwp/windline.nvim",
     event = "VimEnter",

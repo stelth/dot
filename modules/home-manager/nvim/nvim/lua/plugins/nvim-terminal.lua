@@ -4,7 +4,7 @@ local setup = function()
   require("terminal").setup()
 end
 
-function M.use(use)
+M.use = function(use)
   use({
     "norcalli/nvim-terminal.lua",
     ft = "terminal",

@@ -17,7 +17,7 @@ local setup = function()
   vim.cmd([[tnoremap <esc><esc> <C-\><C-N>]])
 end
 
-function M.use(use)
+M.use = function(use)
   use({
     "akinsho/nvim-toggleterm.lua",
     keys = "<M-`>",

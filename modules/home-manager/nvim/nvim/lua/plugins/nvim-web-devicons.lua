@@ -4,7 +4,7 @@ local setup = function()
   require("nvim-web-devicons").setup({ default = true })
 end
 
-function M.use(use)
+M.use = function(use)
   use({
     "kyazdani42/nvim-web-devicons",
     module = "nvim-web-devicons",

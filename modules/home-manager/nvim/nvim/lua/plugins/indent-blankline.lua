@@ -41,7 +41,7 @@ local setup = function()
   vim.wo.colorcolumn = "99999"
 end
 
-function M.use(use)
+M.use = function(use)
   use({
     "lukas-reineke/indent-blankline.nvim",
     event = "BufReadPre",

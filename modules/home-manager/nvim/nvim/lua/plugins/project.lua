@@ -4,7 +4,7 @@ local setup = function()
   require("project_nvim").setup({})
 end
 
-function M.use(use)
+M.use = function(use)
   use({
     "ahmedkhalf/project.nvim",
     event = "BufReadPre",

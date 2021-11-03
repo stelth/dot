@@ -9,7 +9,7 @@ local setup = function()
   require("persistence").setup()
 end
 
-function M.use(use)
+M.use = function(use)
   use({
     "folke/persistence.nvim",
     event = "BufReadPre",

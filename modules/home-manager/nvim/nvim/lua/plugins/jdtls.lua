@@ -4,7 +4,7 @@ local setup = function()
   require("lsp.jdtls")
 end
 
-function M.use(use)
+M.use = function(use)
   use({
     "mfussenegger/nvim-jdtls",
     ft = "java",

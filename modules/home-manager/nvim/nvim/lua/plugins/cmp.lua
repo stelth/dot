@@ -90,7 +90,7 @@ local setup = function()
   cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 end
 
-function M.use(use)
+M.use = function(use)
   use({
     "hrsh7th/nvim-cmp",
     module = "cmp",

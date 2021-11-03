@@ -2,10 +2,11 @@ local M = {}
 
 local setup = function() end
 
-function M.use(use)
+M.use = function(use)
   use({
     "kevinhwang91/nvim-bqf",
     ft = "qf",
+    config = setup,
   })
 end
 

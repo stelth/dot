@@ -12,7 +12,7 @@ local setup = function()
   require("luasnip/loaders/from_vscode").load()
 end
 
-function M.use(use)
+M.use = function(use)
   use({
     "L3MON4D3/LuaSnip",
     module = "luasnip",

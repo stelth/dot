@@ -14,7 +14,7 @@ local setup = function()
   })
 end
 
-function M.use(use)
+M.use = function(use)
   use({
     "TimUntersberger/neogit",
     cmd = "Neogit",

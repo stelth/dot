@@ -15,7 +15,7 @@ local setup = function()
   util.nnoremap("<BS>", ":noh<CR>")
 end
 
-function M.use(use)
+M.use = function(use)
   use({
     "kevinhwang91/nvim-hlslens",
     event = "VimEnter",

@@ -9,7 +9,7 @@ local setup = function()
   require("trouble").setup({ auto_open = false })
 end
 
-function M.use(use)
+M.use = function(use)
   use({
     "folke/trouble.nvim",
     event = "BufReadPre",

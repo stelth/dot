@@ -10,7 +10,7 @@ local setup = function()
   })
 end
 
-function M.use(use)
+M.use = function(use)
   use({
     "folke/zen-mode.nvim",
     cmd = "ZenMode",

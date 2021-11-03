@@ -8,7 +8,7 @@ local setup = function()
   })
 end
 
-function M.use(use)
+M.use = function(use)
   use({
     "numToStr/Comment.nvim",
     opt = true,

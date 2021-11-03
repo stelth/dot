@@ -50,7 +50,7 @@ local setup = function()
   require("tokyonight").colorscheme()
 end
 
-function M.use(use)
+M.use = function(use)
   use({
     "folke/tokyonight.nvim",
     event = "VimEnter",

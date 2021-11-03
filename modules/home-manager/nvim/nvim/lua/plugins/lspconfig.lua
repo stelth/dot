@@ -4,7 +4,7 @@ local setup = function()
   require("lsp")
 end
 
-function M.use(use)
+M.use = function(use)
   use({
     "neovim/nvim-lspconfig",
     opt = true,

@@ -29,7 +29,7 @@ local setup = function()
   util.nnoremap("<leader>bg", ":BufferLinePick<CR>")
 end
 
-function M.use(use)
+M.use = function(use)
   use({
     "akinsho/nvim-bufferline.lua",
     event = "BufNew",

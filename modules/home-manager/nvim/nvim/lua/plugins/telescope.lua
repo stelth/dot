@@ -55,7 +55,7 @@ local setup = function()
   telescope.load_extension("zoxide")
 end
 
-function M.use(use)
+M.use = function(use)
   use({
     "nvim-telescope/telescope.nvim",
     config = setup,

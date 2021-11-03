@@ -6,8 +6,10 @@ util.nnoremap("<leader>hps", ":PackerStatus<CR>")
 util.nnoremap("<leader>hpi", ":PackerInstall<CR>")
 util.nnoremap("<leader>hpc", ":PackerCompile<CR>")
 
-function M.use(use)
-  use({ "wbthomason/packer.nvim", opt = true })
+local setup = function() end
+
+M.use = function(use)
+  use({ "wbthomason/packer.nvim", opt = true, config = setup })
 end
 
 return M
