@@ -48,20 +48,13 @@ local function plugins(use)
   require("plugins.nvim-hlslens").use(use)
   require("plugins.zen-mode").use(use)
   require("plugins.todo-comments").use(use)
+  require("plugins.diffview").use(use)
 
   use({
     "folke/which-key.nvim",
     event = "VimEnter",
     config = function()
       require("config.keys")
-    end,
-  })
-
-  use({
-    "sindrets/diffview.nvim",
-    cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles" },
-    config = function()
-      require("config.diffview")
     end,
   })
 
