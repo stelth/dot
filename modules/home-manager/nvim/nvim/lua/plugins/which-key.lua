@@ -37,33 +37,9 @@ local setup = function()
     },
     o = {
       name = "+open",
-      g = { "<cmd>Glow<cr>", "Markdown Glow" },
     },
     t = {
       name = "toggle",
-      f = {
-        require("lsp.formatting").toggle,
-        "Format on Save",
-      },
-      s = {
-        function()
-          util.toggle("spell")
-        end,
-        "Spelling",
-      },
-      w = {
-        function()
-          util.toggle("wrap")
-        end,
-        "Word Wrap",
-      },
-      n = {
-        function()
-          util.toggle("relativenumber", true)
-          util.toggle("number")
-        end,
-        "Line Numbers",
-      },
     },
     ["<tab>"] = {
       name = "workspace",

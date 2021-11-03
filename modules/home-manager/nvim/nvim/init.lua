@@ -81,6 +81,11 @@ util.vnoremap(">", ">gv")
 -- New file
 util.nnoremap("<leader>fn", ":enew<CR>")
 
+-- Toggle
+util.nnoremap("<leader>ts", ":lua require('util').toggle('spell')<CR>")
+util.nnoremap("<leader>tw", ":lua require('util').toggle('wrap')<CR>")
+util.nnoremap("<leader>tn", ":lua require('util').toggle('relativenumber', true); require('util').toggle('number')<CR>")
+
 -- makes * and # work on visual mode too.
 vim.api.nvim_exec(
   [[

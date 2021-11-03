@@ -23,6 +23,12 @@ M.setup = function(client, bufnr)
         },
       },
     },
+    t = {
+      f = {
+        require("lsp.formatting").toggle,
+        "Format on Save",
+      },
+    },
     x = {
       s = { "<cmd>Telescope lsp_document_diagnostics<cr>", "Search Document Diagnostics" },
       w = { "<cmd>Telescope lsp_workspace_diagnostics<cr>", "Workspace Diagnostics" },
