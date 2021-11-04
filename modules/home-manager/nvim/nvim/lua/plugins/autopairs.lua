@@ -1,7 +1,9 @@
 local M = {}
 
 local setup = function()
-  require("nvim-autopairs").setup({})
+  require("nvim-autopairs").setup({
+    map_bs = false,
+  })
 end
 
 M.use = function(use)
