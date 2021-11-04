@@ -1,10 +1,26 @@
 local M = {}
 
-local util = require("util")
-util.nnoremap("<leader>hpp", ":PackerSync<CR>")
-util.nnoremap("<leader>hps", ":PackerStatus<CR>")
-util.nnoremap("<leader>hpi", ":PackerInstall<CR>")
-util.nnoremap("<leader>hpc", ":PackerCompile<CR>")
+local do_keymaps = function()
+  local map = {
+    h = {
+      p = {
+        p = { "<cmd>PackerSync<CR>", "Sync" },
+        s = { "<cmd>PackerStatus<CR>", "Status" },
+        i = { "<cmd>PackerInstall<CR>", "Install" },
+        c = { "<cmd>PackerCompile<CR>", "Compile" },
+      },
+    },
+  }
+
+  require("which-key").register(map, { prefix = "<leader>" })
+end
+
+require("au").group("PackerKeys", function(grp)
+  grp.User = {
+    "MapKeys",
+    do_keymaps,
+  }
+end)
 
 local setup = function() end
 

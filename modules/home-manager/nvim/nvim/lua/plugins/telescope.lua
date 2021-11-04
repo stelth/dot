@@ -1,37 +1,47 @@
 local M = {}
 
-local util = require("util")
--- Git mappings
-util.nnoremap("<leader>gc", ":Telescope git_commits<CR>")
-util.nnoremap("<leader>gb", ":Telescope git_branches<CR>")
-util.nnoremap("<leader>gs", ":Telescope git_status<CR>")
+local do_keymaps = function()
+  local map = {
+    g = {
+      c = { "<cmd>Telescope git_commits<CR>", "Commits" },
+      b = { "<cmd>Telescope git_branches<CR>", "Branches" },
+      s = { "<cmd>Telescope git_status<CR>", "Status" },
+    },
+    h = {
+      t = { "<cmd>Telescope builtin<CR>", "Builtins" },
+      h = { "<cmd>Telescope help_tags<CR>", "Help" },
+      m = { "<cmd>Telescope man_pages<CR>", "Man Pages" },
+      k = { "<cmd>Telescope keymaps<CR>", "Keymaps" },
+      s = { "<cmd>Telescope highlights<CR>", "Highlights" },
+      f = { "<cmd>Telescope filetypes<CR>", "Filetypes" },
+      o = { "<cmd>Telescope vim_options<CR>", "Vim Options" },
+      a = { "<cmd>Telescope autocommands<CR>", "Autocommands" },
+    },
+    s = {
+      g = { "<cmd>Telescope live_grep<CR>", "Grep" },
+      b = { "<cmd>Telescope current_buffer_fuzzy_find<CR>", "Current Buffer" },
+      h = { "<cmd>Telescope command_history<CR>", "Command History" },
+      m = { "<cmd>Telescope marks<CR>", "Marks" },
+    },
+    f = {
+      f = { "<cmd>Telescope find_files<CR>", "Find File" },
+      r = { "<cmd>Telescope oldfiles<CR>", "Recently Used" },
+      z = { "<cmd>Telescope zoxide list<CR>", "Zoxide" },
+    },
+    ["."] = { "<cmd>Telescope file_browser<CR>", "File Browser" },
+    [","] = { "<cmd>Telescope buffers show_all_buffers=true<CR>", "Find Buffer" },
+    ["/"] = { "<cmd>Telescope live_grep<CR>", "Grep" },
+    [":"] = { "<cmd>Telescope command_history<CR>", "Command History" },
+  }
+  require("which-key").register(map, { prefix = "<leader>" })
+end
 
--- Help mappings
-util.nnoremap("<leader>ht", ":Telescope builtin<CR>")
-util.nnoremap("<leader>hh", ":Telescope help_tags<CR>")
-util.nnoremap("<leader>hm", ":Telescope man_pages<CR>")
-util.nnoremap("<leader>hk", ":Telescope keymaps<CR>")
-util.nnoremap("<leader>hs", ":Telescope highlights<CR>")
-util.nnoremap("<leader>hf", ":Telescope filetypes<CR>")
-util.nnoremap("<leader>ho", ":Telescope vim_options<CR>")
-util.nnoremap("<leader>ha", ":Telescope autocommands<CR>")
-
--- Search mappings
-util.nnoremap("<leader>sg", ":Telescope live_grep<CR>")
-util.nnoremap("<leader>sb", ":Telescope current_buffer_fuzzy_find<CR>")
-util.nnoremap("<leader>sh", ":Telescope command_history<CR>")
-util.nnoremap("<leader>sm", ":Telescope marks<CR>")
-
--- Find file mappings
-util.nnoremap("<leader>ff", ":Telescope find_files<CR>")
-util.nnoremap("<leader>fr", ":Telescope oldfiles<CR>")
-util.nnoremap("<leader>fz", ":Telescope zoxide list<CR>")
-
--- General mappings
-util.nnoremap("<leader>.", ":Telescope file_browser<CR>")
-util.nnoremap("<leader>,", ":Telescope buffers show_all_buffers=true<CR>")
-util.nnoremap("<leader>/", ":Telescope live_grep<CR>")
-util.nnoremap("<leader>:", ":Telescope command_history<CR>")
+require("au").group("TelescopeKeyMaps", function(grp)
+  grp.User = {
+    "MapKeys",
+    do_keymaps,
+  }
+end)
 
 local setup = function()
   local trouble = require("trouble.providers.telescope")

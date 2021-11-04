@@ -1,5 +1,29 @@
 local M = {}
 
+local do_keymaps = function()
+  local map = {
+    ["`"] = { "<cmd>e #<CR>", "Other Buffer" },
+    b = {
+      b = { "<cmd>e #<CR>", "Other Buffer" },
+      p = { "<cmd>BufferLineCyclePrev<CR>", "Previous Buffer" },
+      ["["] = { "<cmd>BufferLineCyclePrev<CR>", "Previous Buffer" },
+      n = { "<cmd>BufferLineCycleNext<CR>", "Next Buffer" },
+      ["]"] = { "<cmd>BufferLineCycleNext<CR>", "Next Buffer" },
+      d = { "<cmd>bd<CR>", "Delete Buffer" },
+      g = { "<cmd>BufferLinePick<CR>", "Pick Buffer" },
+    },
+  }
+
+  require("which-key").register(map, { prefix = "<leader>" })
+end
+
+require("au").group("MapBufferLineKeys", function(grp)
+  grp.User = {
+    "MapKeys",
+    do_keymaps,
+  }
+end)
+
 local setup = function()
   require("bufferline").setup({
     options = {
@@ -17,16 +41,6 @@ local setup = function()
       end,
     },
   })
-
-  local util = require("util")
-  util.nnoremap("<leader>`", ":e #<CR>")
-  util.nnoremap("<leader>bb", ":e #<CR>")
-  util.nnoremap("<leader>bp", ":BufferLineCyclePrev<CR>")
-  util.nnoremap("<leader>b[", ":BufferLineCyclePrev<CR>")
-  util.nnoremap("<leader>bn", ":BufferLineCycleNext<CR>")
-  util.nnoremap("<leader>b]", ":BufferLineCycleNext<CR>")
-  util.nnoremap("<leader>bd", ":bd<CR>")
-  util.nnoremap("<leader>bg", ":BufferLinePick<CR>")
 end
 
 M.use = function(use)

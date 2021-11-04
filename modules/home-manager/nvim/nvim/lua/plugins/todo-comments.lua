@@ -1,8 +1,22 @@
 local M = {}
 
-local util = require("util")
-util.nnoremap("<leader>xt", ":TodoTrouble<CR>")
-util.nnoremap("<leader>xT", ":TodoTelescope<CR>")
+local do_keymaps = function()
+  local map = {
+    x = {
+      t = { "<cmd>TodoTrouble<CR>", "Todo Trouble" },
+      T = { "<cmd>TodoTelescope<CR>", "Todo Telescope" },
+    },
+  }
+
+  require("which-key").register(map, { prefix = "<leader>" })
+end
+
+require("au").group("TodoKeyMaps", function(grp)
+  grp.User = {
+    "MapKeys",
+    do_keymaps,
+  }
+end)
 
 local setup = function()
   require("todo-comments").setup({

@@ -1,7 +1,21 @@
 local M = {}
 
-local util = require("util")
-util.nnoremap("<leader>gg", ":Neogit<CR>")
+local do_keymaps = function()
+  local map = {
+    g = {
+      g = { "<cmd>Neogit<CR>", "Neogit" },
+    },
+  }
+
+  require("which-key").register(map, { prefix = "<leader>" })
+end
+
+require("au").group("NeogitKeymaps", function(grp)
+  grp.User = {
+    "MapKeys",
+    do_keymaps,
+  }
+end)
 
 local setup = function()
   require("neogit").setup({

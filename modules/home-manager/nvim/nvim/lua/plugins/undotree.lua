@@ -1,7 +1,19 @@
 local M = {}
 
-local util = require("util")
-util.nnoremap("<leader>u", ":UndotreeToggle<CR>")
+local do_keymaps = function()
+  local map = {
+    u = { "<cmd>UndotreeToggle<CR>", "Undotree" },
+  }
+
+  require("which-key").register(map, { prefix = "<leaer>" })
+end
+
+require("au").group("UndoTreeKeys", function(grp)
+  grp.User = {
+    "MapKeys",
+    do_keymaps,
+  }
+end)
 
 local setup = function() end
 

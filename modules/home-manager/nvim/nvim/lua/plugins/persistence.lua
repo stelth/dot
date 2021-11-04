@@ -1,9 +1,23 @@
 local M = {}
 
-local util = require("util")
-util.nnoremap("<leader>qs", ":lua require('persistence').load()<CR>")
-util.nnoremap("<leader>ql", ":lua require('persistence').load({last = true})<CR>")
-util.nnoremap("<leader>qd", ":lua require('persistence').stop()<CR>")
+local do_keymaps = function()
+  local map = {
+    q = {
+      s = { "<cmd>lua require('persistence').load()<CR>", "Load Session" },
+      l = { "<cmd>lua require('persistence').load({last = true})<CR>", "Load Last Session" },
+      d = { "<cmd>lua require('persistence').stop()<CR>", "End Session" },
+    },
+  }
+
+  require("which-key").register(map, { prefix = "<leader>" })
+end
+
+require("au").group("PersistenceKeys", function(grp)
+  grp.User = {
+    "MapKeys",
+    do_keymaps,
+  }
+end)
 
 local setup = function()
   require("persistence").setup()

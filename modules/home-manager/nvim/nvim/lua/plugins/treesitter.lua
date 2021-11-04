@@ -1,7 +1,21 @@
 local M = {}
 
-local util = require("util")
-util.nnoremap("<leader>hl", ":TSHighlightCapturesUnderCursor<CR>")
+local do_keymaps = function()
+  local map = {
+    h = {
+      l = { "<cmd>TSHighlightCapturesUnderCursor<CR>", "Show highlight" },
+    },
+  }
+
+  require("which-key").register(map, { prefix = "<leader>" })
+end
+
+require("au").group("TSKeyMaps", function(grp)
+  grp.User = {
+    "MapKeys",
+    do_keymaps,
+  }
+end)
 
 local setup = function()
   local gcc = vim.fn.getenv("NIX_GCC")

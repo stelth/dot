@@ -52,6 +52,8 @@ local setup = function()
   end
 
   wk.register(leader, { prefix = "<leader>" })
+
+  vim.cmd([[doautocmd User MapKeys]])
 end
 
 M.use = function(use)

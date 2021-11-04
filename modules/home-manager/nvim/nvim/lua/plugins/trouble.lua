@@ -1,9 +1,23 @@
 local M = {}
 
-local util = require("util")
-util.nnoremap("<leader>xx", ":TroubleToggle<CR>")
-util.nnoremap("<leader>xw", ":TroubleToggle lsp_workspace_diagnostics<CR>")
-util.nnoremap("<leader>xd", ":TroubleToggle lsp_document_diagnostics<CR>")
+local do_keymaps = function()
+  local map = {
+    x = {
+      x = { "<cmd>TroubleToggle<CR>", "Trouble" },
+      w = { "<cmd>TroubleToggle lsp_workspace_diagnostics<CR>", "Workspace Diagnostics" },
+      d = { "<cmd>TroubleToggle lsp_document_diagnostics<CR>", "Document Diagnostics" },
+    },
+  }
+
+  require("which-key").register(map, { prefix = "<leader>" })
+end
+
+require("au").group("TroubleKeyMaps", function(grp)
+  grp.User = {
+    "MapKeys",
+    do_keymaps,
+  }
+end)
 
 local setup = function()
   require("trouble").setup({ auto_open = false })

@@ -1,7 +1,21 @@
 local M = {}
 
-local util = require("util")
-util.nnoremap("<leader>og", ":Glow<CR>")
+local do_keymaps = function()
+  local map = {
+    o = {
+      g = { "<cmd>Glow<CR>", "Glow" },
+    },
+  }
+
+  require("which-key").register(map, { prefix = "<leader>" })
+end
+
+require("au").group("GlowKeys", function(grp)
+  grp.User = {
+    "MapKeys",
+    do_keymaps,
+  }
+end)
 
 local setup = function() end
 
