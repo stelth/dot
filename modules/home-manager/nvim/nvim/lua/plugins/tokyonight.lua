@@ -53,7 +53,6 @@ end
 M.use = function(use)
   use({
     "folke/tokyonight.nvim",
-    event = "VimEnter",
     config = setup,
   })
 end

@@ -26,8 +26,6 @@ M.use = function(use)
   use({
     "folke/zen-mode.nvim",
     cmd = "ZenMode",
-    opt = true,
-    wants = "twilight.nvim",
     requires = { "folke/twilight.nvim" },
     config = setup,
   })

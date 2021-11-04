@@ -52,7 +52,6 @@ M.use = function(use)
   use({
     "lewis6991/gitsigns.nvim",
     event = "BufReadPre",
-    wants = "plenary.nvim",
     requires = { "nvim-lua/plenary.nvim" },
     config = setup,
   })
