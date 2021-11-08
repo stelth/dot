@@ -10,6 +10,10 @@ M.use = function(use)
     opt = true,
     event = "BufReadPre",
     config = setup,
+    requires = {
+      { "jose-elias-alvarez/null-ls.nvim", module = "null-ls", },
+      { "folke/lua-dev.nvim", module = "lua-dev", },
+    },
   })
 end
 
