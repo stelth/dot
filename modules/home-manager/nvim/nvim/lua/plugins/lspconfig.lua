@@ -11,8 +11,8 @@ M.use = function(use)
     event = "BufReadPre",
     config = setup,
     requires = {
-      { "jose-elias-alvarez/null-ls.nvim", module = "null-ls", },
-      { "folke/lua-dev.nvim", module = "lua-dev", },
+      { "jose-elias-alvarez/null-ls.nvim", module = "null-ls" },
+      { "folke/lua-dev.nvim", module = "lua-dev" },
     },
   })
 end
