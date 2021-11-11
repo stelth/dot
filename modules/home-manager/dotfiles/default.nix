@@ -18,9 +18,5 @@
       source = ./skhd;
       recursive = true;
     };
-    ssh = {
-      source = ./ssh;
-      recursive = true;
-    };
   };
 }
