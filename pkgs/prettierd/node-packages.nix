@@ -61,12 +61,12 @@ in {
   "prettierd" = nodeEnv.buildNodePackage {
     name = "_at_fsouza_slash_prettierd";
     packageName = "@fsouza/prettierd";
-    version = "0.17.0";
+    version = "0.18.0";
     src = fetchurl {
       url =
-        "https://registry.npmjs.org/@fsouza/prettierd/-/prettierd-0.17.0.tgz";
+        "https://registry.npmjs.org/@fsouza/prettierd/-/prettierd-0.18.0.tgz";
       sha512 =
-        "C+N3+m10btFYIyzfdLXgHaqa/EF88VYrpbJ7xFrjzYfMYr16qJHRIBKVXZzdeej/3cKs6rK6BKRhJC5NksoIOw==";
+        "pWfdKFP6Ssuc0RChatvf0VXyJFFnFwor3c2HZmLSb7+xNGuGb1j5VpB+gqhaotVIXyySciLJ695RLGBTw0XQEw==";
     };
     dependencies = [
       sources."core_d-3.2.0"
