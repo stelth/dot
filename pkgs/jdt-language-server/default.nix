@@ -2,13 +2,13 @@
 let jdk = pkgs.jdk;
 in stdenv.mkDerivation rec {
   pname = "jdt-language-server";
-  version = "1.4.0";
-  timestamp = "202109161824";
+  version = "1.5.0";
+  timestamp = "202110191539";
 
   src = fetchurl {
     url =
       "https://download.eclipse.org/jdtls/milestones/${version}/jdt-language-server-${version}-${timestamp}.tar.gz";
-    sha256 = "f3f39fe92e30852d79111cd9723cde5cb338685d830801e9d4aff723121fd6c8";
+    sha256 = "fd4a2ce127c2d8a53360809213ced3c07883c743751e72781abc0e9bff614c09";
   };
 
   sourceRoot = ".";
