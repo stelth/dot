@@ -21,8 +21,9 @@ in {
       "homebrew/cask-versions"
       "homebrew/core"
       "homebrew/services"
+      "koekeishiya/formulae"
     ];
 
-    brews = [ "beeftornado/rmtree/brew-rmtree" "mas" ];
+    brews = [ "yabai" "skhd" ];
   };
 }
