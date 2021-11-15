@@ -112,7 +112,7 @@ def bootstrap(
 def build(
     host: str = typer.Argument(None, help="the hostname of the configuration to build"),
     pull: bool = typer.Option(
-        default=false, help="whetherto fetch current changes from remote"
+        default=False, help="whether to fetch current changes from remote"
     ),
     nixos: bool = False,
     darwin: bool = False,
