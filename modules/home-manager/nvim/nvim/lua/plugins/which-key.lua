@@ -15,35 +15,35 @@ local setup = function()
 
   local leader = {
     b = {
-      name = "+buffer",
+      name = "buffer",
     },
     g = {
-      name = "+git",
-      h = { name = "+hunk" },
+      name = "git",
+      h = { name = "hunk" },
     },
     ["h"] = {
-      name = "+help",
+      name = "help",
       p = {
-        name = "+packer",
+        name = "packer",
       },
     },
     s = {
-      name = "+search",
+      name = "search",
     },
     f = {
-      name = "+file",
+      name = "file",
     },
     o = {
-      name = "+open",
+      name = "open",
     },
     t = {
       name = "toggle",
     },
     q = {
-      name = "+quit/session",
+      name = "quit/session",
     },
     x = {
-      name = "+errors",
+      name = "errors",
     },
   }
 

@@ -8,12 +8,12 @@ M.setup = function(client, bufnr)
 
   local keymap = {
     c = {
-      name = "+code",
+      name = "code",
       r = { "<cmd>lua require('renamer').rename()<CR>", "Rename" },
       a = { "<cmd>CodeActionMenu<CR>", "Code Action Menu" },
       e = { "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", "Line Errors" },
       l = {
-        name = "+lsp",
+        name = "lsp",
         i = { "<cmd>LspInfo<cr>", "Lsp Info" },
         a = { "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", "Add Folder" },
         r = { "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", "Remove Folder" },
@@ -37,13 +37,13 @@ M.setup = function(client, bufnr)
 
   local keymap_visual = {
     c = {
-      name = "+code",
+      name = "code",
       a = { ":<C-U>lua vim.lsp.buf.range_code_action()<CR>", "Code Action" },
     },
   }
 
   local keymap_goto = {
-    name = "+goto",
+    name = "goto",
     r = { "<cmd>Telescope lsp_references<cr>", "References" },
     R = { "<cmd>Trouble lsp_references<cr>", "Trouble References" },
     d = { "<Cmd>lua vim.lsp.buf.definition()<CR>", "Goto Definition" },
