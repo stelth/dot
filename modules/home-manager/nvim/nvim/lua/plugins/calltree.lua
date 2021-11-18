@@ -14,6 +14,7 @@ local do_keymaps = function()
         f = { "<cmd>CTFocus<CR>", "Focus" },
         h = { "<cmd>CTHover<CR>", "Hover" },
         j = { "<cmd>CTJump<CR>", "Jump" },
+        s = { "<cmd>CTSwitch<CR>", "Switch Directions" },
       },
     },
   }
