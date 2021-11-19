@@ -19,7 +19,7 @@ in {
   };
 
   home = {
-    stateVersion = "21.05";
+    stateVersion = "21.11";
     sessionVariables = {
       TERMINFO_DIRS = "${pkgs.kitty.terminfo.outPath}/share/terminfo";
       EDITOR = "nvim";
