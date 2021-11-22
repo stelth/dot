@@ -48,10 +48,10 @@ function M.setup()
 end
 
 function M.has_formatter(ft)
-  local generators = require("null-ls.generators")
-  local formatters = generators.get_available(ft, "NULL_LS_FORMATTING")
+  local sources = require("null-ls.sources")
+  local available = sources.get_available(ft, "NULL_LS_FORMATTING")
 
-  return formatters ~= {}
+  return #available > 0
 end
 
 return M
