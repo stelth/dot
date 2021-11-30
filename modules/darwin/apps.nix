@@ -15,9 +15,6 @@
       "spotify"
       "twitch"
     ];
-    masApps = {
-      "Amphetamine" = 937984704;
-      "BetterSnapTool" = 417375580;
-    };
+    masApps = { "Amphetamine" = 937984704; };
   };
 }
