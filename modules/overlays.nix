@@ -42,6 +42,31 @@
           meta.platforms = prev.lib.platforms.all;
         });
     })
+    (final: prev: rec {
+      # fix yabai for monterey
+      # thanks to https://github.com/DieracDelta/flakes/blob/flakes/flake.nix#L382
+      yabai = let
+        buildSymlinks = prev.runCommand "build-symlinks" { } ''
+          mkdir -p $out/bin
+          ln -s /usr/bin/xcrun /usr/bin/xcodebuild /usr/bin/tiffutil /usr/bin/qlmanage $out/bin
+        '';
+      in prev.yabai.overrideAttrs (old: {
+        src = prev.fetchFromGitHub {
+          owner = "koekeishiya";
+          repo = "yabai";
+          rev = "5317b16d06e916f0e3844d3fe33d190e86c96ba9";
+          sha256 = "sha256-yl5a6ESA8X4dTapXGd0D0db1rhwhuOWrjFAT1NDuygo=";
+        };
+        buildInputs = with prev.darwin.apple_sdk.frameworks; [
+          Carbon
+          Cocoa
+          ScriptingBridge
+          prev.xxd
+          SkyLight
+        ];
+        nativeBuildInputs = [ buildSymlinks ];
+      });
+    })
     (final: prev:
       let lib = prev.lib;
       in rec {

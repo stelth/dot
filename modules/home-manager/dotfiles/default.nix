@@ -14,9 +14,5 @@
       source = ./karabiner;
       recursive = true;
     };
-    skhd = {
-      source = ./skhd;
-      recursive = true;
-    };
   };
 }
