@@ -103,6 +103,13 @@ util.nnoremap("<leader>tn", ":lua require('util').toggle('relativenumber', true)
 util.nnoremap("<leader>xl", ":lopen<CR>")
 util.nnoremap("<leader>xq", ":copen<CR>")
 
+util.nnoremap("<leader>cu", function()
+  local number = math.random(math.pow(2, 127) + 1, math.pow(2, 128))
+  return "i" .. string.format("%.0f", number)
+end, {
+  expr = true,
+})
+
 -- makes * and # work on visual mode too.
 vim.api.nvim_exec(
   [[
