@@ -79,6 +79,12 @@ local setup = function()
     },
     documentation = {
       border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+      winhighlight = "NormalFloat:NormalFloat,FloatBorder:TelescopeBorder",
+    },
+    experimental = {
+      ghost_text = {
+        hl_group = "LineNr",
+      },
     },
     sources = {
       { name = "buffer" },
