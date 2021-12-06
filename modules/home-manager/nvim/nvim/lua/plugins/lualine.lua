@@ -23,7 +23,14 @@ local setup = function()
     return table.concat(status, " | ") .. " " .. spinners[frame + 1]
   end
 
-  vim.cmd([[autocmd User LspProgressUpdate let &ro = &ro]])
+  require("au").group("LspProgress", function(grp)
+    grp.User = {
+      "LspProgressUpdate",
+      function()
+        vim.o.readonly = vim.o.readonly
+      end,
+    }
+  end)
 
   local config = {
     options = {

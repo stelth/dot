@@ -25,8 +25,15 @@ local setup = function()
   vim.g.vim_markdown_frontmatter = 1
   vim.g.vim_markdown_strikethrough = 1
 
-  vim.cmd([[autocmd FileType markdown nnoremap gO <cmd>Toc<cr>]])
-  vim.cmd([[autocmd FileType markdown setlocal spell]])
+  require("au").group("md", function(grp)
+    grp.FileType = {
+      "markdown",
+      function()
+        require("util").nnoremap("gO", "<cmd>Toc<CR>")
+        vim.o.spell = true
+      end,
+    }
+  end)
 end
 
 M.use = function(use)

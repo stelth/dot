@@ -66,13 +66,22 @@ vim.g.loaded_netrwSettings = 1
 vim.g.loaded_netrwFileHandlers = 1
 
 local cmd = vim.cmd
+local au = require("au")
+
 -- go to last loc when opening a buffer
-cmd([[
-  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g`\"" | endif
-]])
+au.BufReadPost = {
+  "*",
+  function()
+    if vim.fn.line("'\"") > 1 and vim.fn.line("'\"") <= vim.fn.line("$") then
+      vim.fn.execute('normal! g`"')
+    end
+  end,
+}
 
 -- Highlight on yank
-cmd("au TextYankPost * lua vim.highlight.on_yank {}")
+au.TextYankPost = function()
+  vim.highlight.on_yank({ higroup = "Visual", timeout = 120 })
+end
 
 -- ----------------------------------
 -- Key maps
