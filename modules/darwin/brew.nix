@@ -24,6 +24,6 @@ in {
       "koekeishiya/formulae"
     ];
 
-    brews = [ ];
+    brews = [ "boost" ];
   };
 }
