@@ -36,7 +36,7 @@ local do_keymaps = function()
   require("which-key").register(map, { prefix = "<leader>" })
 end
 
-require("au").group("TelescopeKeyMaps", function(grp)
+require("util.au").group("TelescopeKeyMaps", function(grp)
   grp.User = {
     "MapKeys",
     do_keymaps,

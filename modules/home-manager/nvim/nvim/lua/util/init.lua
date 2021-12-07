@@ -146,7 +146,7 @@ function M.float_terminal(cmd)
     border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
   })
   vim.fn.termopen(cmd)
-  require("au").TermClose = {
+  require("util.au").TermClose = {
     "<buffer>",
     function()
       vim.api.nvim_win_close(win, { force = true })

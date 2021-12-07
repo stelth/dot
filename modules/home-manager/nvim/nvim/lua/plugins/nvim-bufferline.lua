@@ -17,7 +17,7 @@ local do_keymaps = function()
   require("which-key").register(map, { prefix = "<leader>" })
 end
 
-require("au").group("MapBufferLineKeys", function(grp)
+require("util.au").group("MapBufferLineKeys", function(grp)
   grp.User = {
     "MapKeys",
     do_keymaps,

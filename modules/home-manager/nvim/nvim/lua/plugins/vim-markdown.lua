@@ -25,7 +25,7 @@ local setup = function()
   vim.g.vim_markdown_frontmatter = 1
   vim.g.vim_markdown_strikethrough = 1
 
-  require("au").group("md", function(grp)
+  require("util.au").group("md", function(grp)
     grp.FileType = {
       "markdown",
       function()

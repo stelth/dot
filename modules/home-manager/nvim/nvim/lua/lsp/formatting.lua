@@ -33,7 +33,7 @@ function M.setup(client, buf)
   client.resolved_capabilities.document_formatting = enable
   -- format on save
   if client.resolved_capabilities.document_formatting then
-    require("au").group("LspFormat", {
+    require("util.au").group("LspFormat", {
       { "BufWritePre", "<buffer>", "lua require('lsp.formatting').format()" },
     })
   end

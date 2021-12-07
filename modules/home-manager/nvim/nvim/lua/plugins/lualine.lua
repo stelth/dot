@@ -23,7 +23,7 @@ local setup = function()
     return table.concat(status, " | ") .. " " .. spinners[frame + 1]
   end
 
-  require("au").group("LspProgress", function(grp)
+  require("util.au").group("LspProgress", function(grp)
     grp.User = {
       "LspProgressUpdate",
       function()

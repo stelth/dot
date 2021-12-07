@@ -66,7 +66,7 @@ vim.g.loaded_netrwSettings = 1
 vim.g.loaded_netrwFileHandlers = 1
 
 local cmd = vim.cmd
-local au = require("au")
+local au = require("util.au")
 
 -- go to last loc when opening a buffer
 au.BufReadPost = {

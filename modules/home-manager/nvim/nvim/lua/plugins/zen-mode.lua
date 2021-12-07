@@ -9,7 +9,7 @@ local do_keymaps = function()
   require("which-key").register(map, { prefix = "<leadere>" })
 end
 
-require("au").group("ZenModeKeys", function(grp)
+require("util.au").group("ZenModeKeys", function(grp)
   grp.User = {
     "MapKeys",
     do_keymaps,

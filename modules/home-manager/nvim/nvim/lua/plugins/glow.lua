@@ -10,7 +10,7 @@ local do_keymaps = function()
   require("which-key").register(map, { prefix = "<leader>" })
 end
 
-require("au").group("GlowKeys", function(grp)
+require("util.au").group("GlowKeys", function(grp)
   grp.User = {
     "MapKeys",
     do_keymaps,

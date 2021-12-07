@@ -8,7 +8,7 @@ local do_keymaps = function()
   require("which-key").register(map, { prefix = "<leaer>" })
 end
 
-require("au").group("UndoTreeKeys", function(grp)
+require("util.au").group("UndoTreeKeys", function(grp)
   grp.User = {
     "MapKeys",
     do_keymaps,
