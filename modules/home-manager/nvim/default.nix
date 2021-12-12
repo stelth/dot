@@ -39,7 +39,6 @@
     shfmt
     stylua
     sumneko-lua-language-server
-    texlab
     tree-sitter
     uncrustify
     vim-vint

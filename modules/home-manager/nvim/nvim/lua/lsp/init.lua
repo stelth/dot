@@ -27,7 +27,6 @@ local servers = {
   dockerls = {},
   jsonls = { cmd = { "vscode-json-languageserver", "--stdio" } },
   ["null-ls"] = {},
-  texlab = {},
   pyright = {},
   rnix = {},
   sumneko_lua = luadev,
