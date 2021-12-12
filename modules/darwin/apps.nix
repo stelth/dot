@@ -10,7 +10,6 @@
       "google-chrome"
       "hammerspoon"
       "karabiner-elements"
-      "mactex-no-gui"
       "slack"
       "spotify"
       "twitch"
