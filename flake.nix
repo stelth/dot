@@ -129,12 +129,12 @@
           overlays = [
             devshell.overlay
             (final: prev: {
-              stable = import inputs.nix-stable { system = prev.system; };
+              stable = import inputs.nixos-stable { system = prev.system; };
             })
           ];
         };
         pyEnv = (pkgs.stable.python3.withPackages
-          (ps: with ps; [ black pylint typer colrama shellingham ]));
+          (ps: with ps; [ black pylint typer colorama shellingham ]));
         nixBin = pkgs.writeShellScriptBin "nix" ''
           ${pkgs.nixFlakes}/bin/nix --option experimental-features "nix-command flakes" "$@"
         '';
