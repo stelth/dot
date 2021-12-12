@@ -48,7 +48,6 @@ in {
       hyperfine
       less
       manix
-      mdcat
       ncdu
       nixfmt
       nixpkgs-fmt
