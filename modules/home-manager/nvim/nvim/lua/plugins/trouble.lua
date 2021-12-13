@@ -20,7 +20,10 @@ require("util.au").group("TroubleKeyMaps", function(grp)
 end)
 
 local setup = function()
-  require("trouble").setup({ auto_open = false })
+  require("trouble").setup({
+    auto_open = false,
+    use_diagnostic_signs = true,
+  })
 end
 
 M.use = function(use)
