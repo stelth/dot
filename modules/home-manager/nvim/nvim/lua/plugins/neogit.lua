@@ -3,7 +3,7 @@ local M = {}
 local do_keymaps = function()
   local map = {
     g = {
-      g = { "<cmd>Neogit<CR>", "Neogit" },
+      g = { "<cmd>Neogit kind=split<CR>", "Neogit" },
     },
   }
 
@@ -19,12 +19,14 @@ end)
 
 local setup = function()
   require("neogit").setup({
+    kind = "split",
     signs = {
       -- { CLOSED, OPENED }
       section = { "", "" },
       item = { "", "" },
       hunk = { "", "" },
     },
+    integrations = { diffview = true },
   })
 end
 

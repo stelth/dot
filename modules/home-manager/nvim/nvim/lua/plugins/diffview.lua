@@ -25,6 +25,7 @@ M.use = function(use)
   use({
     "sindrets/diffview.nvim",
     cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles" },
+    module = "diffview",
     config = setup,
   })
 end
