@@ -11,7 +11,7 @@ M.setup = function(client, bufnr)
       name = "code",
       r = { "<cmd>lua require('renamer').rename()<CR>", "Rename" },
       a = { "<cmd>CodeActionMenu<CR>", "Code Action Menu" },
-      e = { "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", "Line Errors" },
+      d = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Line Diagnostics" },
       l = {
         name = "lsp",
         i = { "<cmd>LspInfo<cr>", "Lsp Info" },
@@ -30,8 +30,8 @@ M.setup = function(client, bufnr)
       },
     },
     x = {
-      s = { "<cmd>Telescope lsp_document_diagnostics<cr>", "Search Document Diagnostics" },
-      w = { "<cmd>Telescope lsp_workspace_diagnostics<cr>", "Workspace Diagnostics" },
+      s = { "<cmd>Telescope document_diagnostics<cr>", "Search Document Diagnostics" },
+      w = { "<cmd>Telescope sp_workspace_diagnostics<cr>", "Workspace Diagnostics" },
     },
   }
 
@@ -59,6 +59,22 @@ M.setup = function(client, bufnr)
   util.nnoremap("]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
   util.nnoremap("[e", "<cmd> lua vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.ERROR})<CR>", opts)
   util.nnoremap("]e", "<cmd> lua vim.diagnostic.goto_next({severity = vim.diagnostic.severity.ERROR})<CR>", opts)
+
+  local trigger_chars = client.resolved_capabilities.signature_help_trigger_characters
+  trigger_chars = { "," }
+  for _, c in ipairs(trigger_chars) do
+    util.inoremap(c, function()
+      vim.defer_fn(function()
+        pcall(vim.lsp.buf.signature_help)
+      end, 0)
+      return c
+    end, {
+      noremap = true,
+      silent = true,
+      buffer = bufnr,
+      expr = true,
+    })
+  end
 
   -- Set some keybinds conditional on server capabilities
   if client.resolved_capabilities.document_formatting then
