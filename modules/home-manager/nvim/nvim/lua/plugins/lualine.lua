@@ -7,7 +7,7 @@ local setup = function()
 
   local lsp_progress = function(_, is_active)
     if not is_active then
-      return ""
+      return
     end
     local messages = vim.lsp.util.get_progress_messages()
     if #messages == 0 then
@@ -32,6 +32,8 @@ local setup = function()
     }
   end)
 
+  local gps = require("nvim-gps")
+
   local config = {
     options = {
       theme = "tokyonight",
@@ -44,7 +46,11 @@ local setup = function()
     sections = {
       lualine_a = { "mode" },
       lualine_b = { "branch" },
-      lualine_c = { { "diagnostics", sources = { "nvim_diagnostic" } }, "filename" },
+      lualine_c = {
+        { "diagnostics", sources = { "nvim_diagnostic" } },
+        "filename",
+        { gps.get_location, cond = gps.is_available },
+      },
       lualine_x = { "filetype", lsp_progress },
       lualine_y = { "progress" },
       lualine_z = { clock },

@@ -121,7 +121,7 @@ M.use = function(use)
     run = ":TSUpdate",
     opt = true,
     event = "BufRead",
-    module = "nvim-treesitter.fold",
+    module = { "nvim-treesitter.fold", "nvim-treesitter.ts_utils" },
     requires = {
       { "nvim-treesitter/playground", cmd = "TSHighlightCapturesUnderCursor" },
       "nvim-treesitter/nvim-treesitter-textobjects",

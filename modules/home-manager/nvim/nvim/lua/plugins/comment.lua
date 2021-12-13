@@ -26,9 +26,6 @@ M.use = function(use)
     opt = true,
     keys = { "gc", "gcc", "gbc" },
     config = setup,
-    requires = {
-      { "JoosepAlviste/nvim-ts-context-commentstring", module = "ts_context_commentstring" },
-    },
   })
 end
 
