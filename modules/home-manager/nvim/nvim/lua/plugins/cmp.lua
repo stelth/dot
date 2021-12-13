@@ -54,8 +54,6 @@ local setup = function()
     },
     sorting = {
       comparators = {
-        cmp.config.compare.offset,
-        cmp.config.compare.exact,
         cmp.config.compare.score,
         cmp.config.compare.order,
       },
