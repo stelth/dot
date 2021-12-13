@@ -3,7 +3,7 @@ local nls = require("null-ls")
 local M = {}
 
 function M.setup()
-  nls.config({
+  nls.setup({
     debounce = 150,
     save_after_format = false,
     sources = {
@@ -43,6 +43,7 @@ function M.setup()
 
       nls.builtins.hover.dictionary,
     },
+    on_attach = require('lsp.util').on_attach,
   })
 end
 
