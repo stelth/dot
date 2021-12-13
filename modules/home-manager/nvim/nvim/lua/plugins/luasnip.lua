@@ -4,7 +4,7 @@ local setup = function()
   local luasnip = require("luasnip")
 
   luasnip.config.set_config({
-    history = true,
+    history = false,
     -- Update more often
     updateEvents = "TextChanged,TextChangedI",
   })
