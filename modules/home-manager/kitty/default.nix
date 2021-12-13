@@ -5,9 +5,9 @@ in {
     enable = true;
     font = { name = "FiraCode Nerd Font"; };
     settings = {
-      bold_font = "FiraCode Nerd Font Bold";
-      italic_font = "VictorMono Nerd Font Light Italic";
-      bold_italic_font = "VictorMono Nerd Font Bold Italic";
+      bold_font = "Fira Code Bold Nerd Font Complete";
+      italic_font = "Victor Mono Medium Italic Nerd Font Complete";
+      bold_italic_font = "Victor Mono Bold Italic Nerd Font Complete";
       font_size = 11;
       enable_audio_bell = false;
       macos_option_as_alt = true;
