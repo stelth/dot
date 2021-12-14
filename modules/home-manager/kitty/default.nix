@@ -1,5 +1,5 @@
 { config, pkgs, ... }:
-let theme = builtins.readFile ./kitty_nord.conf;
+let theme = builtins.readFile ./kitty_tokyonight_night.conf;
 in {
   programs.kitty = {
     enable = true;
