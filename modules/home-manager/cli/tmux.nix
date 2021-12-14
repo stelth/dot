@@ -1,5 +1,5 @@
 { pkgs, ... }:
-let tmux_tokyonight = builtins.readFile ./tmux_tokyonight_night.tmux;
+let tmux_nord = builtins.readFile ./tmux_nord.tmux;
 in {
   programs.tmux = {
     enable = true;
@@ -24,7 +24,7 @@ in {
       set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'
       set -as terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'  # underscore colours - needs tmux-3.0
 
-      ${tmux_tokyonight}
+      ${tmux_nord}
     '';
   };
 }
