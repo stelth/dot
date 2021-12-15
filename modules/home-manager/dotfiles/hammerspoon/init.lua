@@ -2,7 +2,6 @@ hs.window.animationDuration = 0
 
 local running = require("running")
 require("spaces")
-require("border")
 require("wm")
 
 local monocle = require("monocle")
