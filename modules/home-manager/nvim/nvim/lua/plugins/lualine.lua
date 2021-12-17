@@ -15,12 +15,18 @@ local setup = function()
     end
     local status = {}
     for _, msg in pairs(messages) do
-      table.insert(status, (msg.percentage or 0) .. "%% " .. (msg.title or ""))
+      local title = ""
+
+      if msg.title then
+        title = msg.title
+      end
+
+      table.insert(status, (msg.percentage or 0) .. "%%" .. title)
     end
     local spinners = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
     local ms = vim.loop.hrtime() / 1000000
     local frame = math.floor(ms / 120) % #spinners
-    return table.concat(status, " | ") .. " " .. spinners[frame + 1]
+    return table.concat(status, "  ") .. " " .. spinners[frame + 1]
   end
 
   require("util.au").group("LspProgress", function(grp)
