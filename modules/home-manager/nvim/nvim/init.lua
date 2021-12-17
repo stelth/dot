@@ -46,6 +46,7 @@ vim.opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
 
 -- don't load the plugins below
 vim.g.loaded_gzip = 1
+vim.g.loaded_fzf = 1
 vim.g.loaded_tar = 1
 vim.g.loaded_tarPlugin = 1
 vim.g.loaded_zip = 1
