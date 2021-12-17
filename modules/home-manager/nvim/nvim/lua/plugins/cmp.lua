@@ -108,7 +108,6 @@ M.use = function(use)
     "hrsh7th/nvim-cmp",
     module = "cmp",
     config = setup,
-    after = { "LuaSnip", "nvim-autopairs" },
     requires = {
       { "onsails/lspkind-nvim", module = "lspkind" },
       { "hrsh7th/cmp-buffer", module = "cmp_buffer" },
