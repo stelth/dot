@@ -7,7 +7,7 @@ end
 M.use = function(use)
   use({
     "ggandor/lightspeed.nvim",
-    event = "BufReadPost",
+    keys = { "s", "S", "f", "F", "t", "T" },
     config = setup,
   })
 end
