@@ -43,7 +43,8 @@ function M.setup()
 
       nls.builtins.hover.dictionary,
     },
-    on_attach = require('lsp.util').on_attach,
+    on_attach = require("lsp.util").on_attach,
+    root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".nvim.settings.json", ".git"),
   })
 end
 
