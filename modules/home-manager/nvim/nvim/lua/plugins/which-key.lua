@@ -45,6 +45,12 @@ local setup = function()
     x = {
       name = "errors",
     },
+    ["]"] = {
+      name = "next",
+    },
+    ["["] = {
+      name = "previous",
+    },
   }
 
   for i = 0, 10 do

@@ -35,6 +35,15 @@ M.setup = function(client, bufnr)
     },
   }
 
+  local keymap_no_leader = {
+    ["]"] = {
+      r = { "<cmd>lua require('illuminate').next_reference({wrap = true})<CR>", "Next Reference" },
+    },
+    ["["] = {
+      r = { "<cmd>lua require('illuminate').next_reference({reverese = true, wrap = true})<CR>", "Previous Reference" },
+    },
+  }
+
   local keymap_visual = {
     c = {
       name = "code",
@@ -57,8 +66,8 @@ M.setup = function(client, bufnr)
   util.nnoremap("K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
   util.nnoremap("[d", "<cmd lua vim.diagnostic.goto_prev()<CR>", opts)
   util.nnoremap("]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
-  util.nnoremap("[e", "<cmd> lua vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.ERROR})<CR>", opts)
-  util.nnoremap("]e", "<cmd> lua vim.diagnostic.goto_next({severity = vim.diagnostic.severity.ERROR})<CR>", opts)
+  util.nnoremap("[e", "<cmd>lua vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.ERROR})<CR>", opts)
+  util.nnoremap("]e", "<cmd>lua vim.diagnostic.goto_next({severity = vim.diagnostic.severity.ERROR})<CR>", opts)
 
   local trigger_chars = client.resolved_capabilities.signature_help_trigger_characters
   trigger_chars = { "," }
@@ -84,6 +93,7 @@ M.setup = function(client, bufnr)
   end
 
   wk.register(keymap, { buffer = bufnr, prefix = "<leader>" })
+  wk.register(keymap_no_leader, { buffer = bufnr })
   wk.register(keymap_visual, { buffer = bufnr, prefix = "<leader>", mode = "v" })
   wk.register(keymap_goto, { buffer = bufnr, prefix = "g" })
 end
