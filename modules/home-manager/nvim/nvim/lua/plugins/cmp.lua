@@ -91,6 +91,8 @@ local setup = function()
     },
     sorting = {
       comparators = {
+        cmp.config.compare.sort_text,
+        cmp.config.compare.offset,
         cmp.config.compare.score,
         cmp.config.compare.order,
       },
