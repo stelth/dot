@@ -46,7 +46,7 @@ local setup = function()
       show_close_icon = true,
       diagnostics = "nvim_lsp",
       always_show_bufferline = false,
-      separator_style = "slant",
+      separator_style = "thick",
       diagnostics_indicator = function(_, _, diag)
         local s = {}
         for _, severity in ipairs(severities) do
