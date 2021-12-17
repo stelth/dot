@@ -2,7 +2,7 @@ local M = {}
 
 local setup = function()
   require("nvim-gps").setup({
-    separator = "  ",
+    separator = " ",
   })
 end
 
