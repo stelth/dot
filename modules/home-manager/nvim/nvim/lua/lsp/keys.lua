@@ -40,7 +40,10 @@ M.setup = function(client, bufnr)
       r = { "<cmd>lua require('illuminate').next_reference({wrap = true})<CR>", "Next Reference" },
     },
     ["["] = {
-      r = { "<cmd>lua require('illuminate').next_reference({reverese = true, wrap = true})<CR>", "Previous Reference" },
+      r = {
+        "<cmd>lua require('illuminate').next_reference({reverese = true, wrap = true})<CR>",
+        "Previous Reference",
+      },
     },
   }
 

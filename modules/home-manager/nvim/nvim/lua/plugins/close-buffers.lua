@@ -17,8 +17,7 @@ require("util.au").group("MapCloseBufferKeys", function(grp)
   }
 end)
 
-local setup = function()
-end
+local setup = function() end
 
 M.use = function(use)
   use({
