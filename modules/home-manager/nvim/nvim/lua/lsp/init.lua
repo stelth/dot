@@ -3,6 +3,18 @@ require("lsp.diagnostics").setup()
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
+local luadev = require("lua-dev").setup({
+  LspConfig = {
+    settings = {
+      Lua = {
+        diagnostics = {
+          globals = "vim",
+        },
+      },
+    },
+  },
+})
+
 local servers = {
   bashls = {},
   cmake = {},
@@ -11,13 +23,11 @@ local servers = {
   jsonls = { cmd = { "vscode-json-languageserver", "--stdio" } },
   pyright = {},
   rnix = {},
-  sumneko_lua = {},
+  sumneko_lua = luadev,
   vimls = {},
   tsserver = {},
   yamlls = {},
 }
-
-require("lua-dev").setup()
 
 local lspconfig = require("lspconfig")
 for server, config in pairs(servers) do
