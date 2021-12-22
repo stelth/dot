@@ -52,6 +52,7 @@ in {
       nixfmt
       nixpkgs-fmt
       nixUnstable
+      parallel
       pfetch
       pre-commit
       procs
