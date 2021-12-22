@@ -5,7 +5,7 @@ local do_keymaps = function()
     u = { "<cmd>UndotreeToggle<CR>", "Undotree" },
   }
 
-  require("which-key").register(map, { prefix = "<leaer>" })
+  require("which-key").register(map, { prefix = "<leader>" })
 end
 
 require("util.au").group("UndoTreeKeys", function(grp)
