@@ -15,6 +15,7 @@ local config = {
 local plugins = function(use)
   require("plugins.packer").use(use)
   require("plugins.filetype").use(use)
+  require("plugins.fine-cmdline").use(use)
   require("plugins.lspconfig").use(use)
   require("plugins.jdtls").use(use)
   require("plugins.project").use(use)
