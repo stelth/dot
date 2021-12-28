@@ -164,4 +164,8 @@ function M.lsp_config()
   dump(ret)
 end
 
+function M.get_python_path()
+  return io.popen("readlink -f /etc/profiles/per-user/coxj/bin/python"):read()
+end
+
 return M
