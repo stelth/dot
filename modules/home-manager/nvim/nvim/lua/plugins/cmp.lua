@@ -96,8 +96,6 @@ end
 M.use = function(use)
   use({
     "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
-    opt = true,
     config = setup,
     requires = {
       { "onsails/lspkind-nvim", module = "lspkind" },
