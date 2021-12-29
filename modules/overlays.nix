@@ -6,12 +6,12 @@
     (final: prev: rec {
       sumneko-lua-language-server =
         prev.sumneko-lua-language-server.overrideAttrs (o: rec {
-          version = "2.5.1";
+          version = "2.5.6";
 
           src = builtins.fetchurl {
             url =
-              "https://github.com/sumneko/vscode-lua/releases/download/v${version}/lua-${version}.vsix";
-            sha256 = "0a48jg8pa3v7m956nz2dd7pzcpvxcbqlf3diqg1qax7f0p3blnm7";
+              "https://github.com/sumneko/vscode-lua/releases/download/v${version}/vscode-lua-v${version}-darwin-x64.vsix";
+            sha256 = "0xyma867h4ssngnpa95n4qv6103qc81yj6ylhrir8n3cbs5izz9w";
           };
 
           unpackPhase = ''
@@ -19,8 +19,6 @@
           '';
 
           postPatch = "";
-
-          platform = if prev.stdenv.isDarwin then "macOS" else "Linux";
 
           preBuild = "";
           postBuild = "";
@@ -31,8 +29,8 @@
           installPhase = ''
             mkdir -p $out
             cp -r extension $out/extras
-            chmod a+x $out/extras/server/bin/$platform/lua-language-server
-            makeWrapper $out/extras/server/bin/$platform/lua-language-server \
+            chmod a+x $out/extras/server/bin/lua-language-server
+            makeWrapper $out/extras/server/bin/lua-language-server \
             $out/bin/lua-language-server \
             --add-flags "-E -e LANG=en $out/extras/server/main.lua \
             --logpath='~/.cache/sumneko_lua/log' \
