@@ -12,10 +12,10 @@
   };
 
   inputs = {
-    darwin-stable = { url = "github:nixos/nixpkgs/nixpkgs-21.11-darwin"; };
+    darwin-stable = { url = "github:nixos/nixpkgs/nixpkgs-21.05-darwin"; };
     devshell = { url = "github:numtide/devshell"; };
     flake-utils = { url = "github:numtide/flake-utils"; };
-    nixos-stable = { url = "github:nixos/nixpkgs/nixos-21.11"; };
+    nixos-stable = { url = "github:nixos/nixpkgs/nixos-21.05"; };
     nixos-unstable = { url = "github:nixos/nixpkgs/nixos-unstable"; };
     flake-compat = {
       url = "github:edolstra/flake-compat";
@@ -23,15 +23,15 @@
     };
     darwin = {
       url = "github:lnl7/nix-darwin";
-      inputs.nixpkgs.follows = "nixos-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
       url = "github:nix-community/home-manager/master";
-      inputs.nixpkgs.follows = "nixos-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
-      inputs = { nixpkgs = { follows = "nixos-unstable"; }; };
+      inputs = { nixpkgs = { follows = "nixpkgs"; }; };
     };
   };
 
@@ -56,7 +56,7 @@
 
       # generate a base darwin configuration with the
       # specified hostname, overlays, and any extraModules applied
-      mkDarwinConfig = { system ? "x86_64-darwin", nixpkgs ? inputs.nixos-unstable
+      mkDarwinConfig = { system ? "x86_64-darwin", nixpkgs ? inputs.nixpkgs
         , stable ? inputs.darwin-stable, lib ? (mkLib nixpkgs), baseModules ? [
           home-manager.darwinModules.home-manager
           ./modules/darwin
@@ -84,7 +84,7 @@
       # generate a home-manager configuration usable on any unix system
       # with overlays and any extraModules applied
       mkHomeConfig = { username, system ? "x86_64-linux"
-        , nixpkgs ? inputs.nixos-unstable, stable ? inputs.nixos-stable
+        , nixpkgs ? inputs.nixpkgs, stable ? inputs.nixos-stable
         , lib ? (mkLib nixpkgs), baseModules ? [ ./modules/home-manager ]
         , extraModules ? [ ] }:
         homeManagerConfiguration rec {
