@@ -1,6 +1,6 @@
 require("dapui").setup({
   sidebar = {
-    size = 55,
+    size = 40,
     position = "left",
   },
   tray = {
