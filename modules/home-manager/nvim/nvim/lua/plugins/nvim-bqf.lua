@@ -1,6 +1,10 @@
 local M = {}
 
-local setup = function() end
+local setup = function()
+  require("bqf").setup({
+    auto_resize_height = false,
+  })
+end
 
 M.use = function(use)
   use({

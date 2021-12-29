@@ -16,6 +16,7 @@ in {
     hub
     lua
     maven
+    ninja
     nodejs
     nodePackages.pnpm
     nodePackages.yarn
