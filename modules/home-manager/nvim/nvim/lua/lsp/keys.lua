@@ -25,7 +25,7 @@ M.setup = function(client, bufnr)
     },
     t = {
       f = {
-        "<cmd>lua require('lsp.formatting').toggle()",
+        "<cmd>lua require('lsp.formatting').toggle()<CR>",
         "Format on Save",
       },
     },

@@ -63,18 +63,12 @@
         nativeBuildInputs = [ buildSymlinks ];
       });
     })
-    (final: prev:
-      let lib = prev.lib;
-      in rec {
-        python3 = prev.python3.override {
-          packageOverrides = final: prev: {
-            beautifulsoup4 = prev.beautifulsoup4.overrideAttrs (old: {
-              propagatedBuildInputs =
-                lib.remove prev.lxml old.propagatedBuildInputs;
-            });
-          };
-        };
-        python3Packages = python3.pkgs;
+    (final: prev: rec {
+        lldb = prev.lldb.overrideAttrs (old: {
+            patches = (old.patches or []) ++ [
+              ./patches/lldb-fix-cpu-subtype-not-found.patch
+            ];
+          });
       })
   ];
 }

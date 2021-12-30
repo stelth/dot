@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-RELEASE="nix-2.5pre20211026_5667822"
+RELEASE="nix-2.6.0pre20211223_af553b2"
 URL="https://github.com/numtide/nix-unstable-installer/releases/download/$RELEASE/install"
 
 # install using workaround for darwin systems

@@ -7,10 +7,8 @@
   };
   home.packages = with pkgs; [
     clang-tools # clangd
-    stable.cmake-language-server
     cppcheck
     hadolint
-    python3Packages.isort
     jdt-language-server
     lldb
     lua53Packages.luacheck
@@ -20,7 +18,7 @@
     nodePackages.dockerfile-language-server-nodejs
     nodePackages.eslint_d
     nodePackages.markdownlint-cli
-    nodePackages.prettierd
+    # nodePackages.prettierd
     nodePackages.pyright
     nodePackages.stylelint
     nodePackages.typescript-language-server
@@ -31,12 +29,14 @@
     nodePackages.write-good
     nodePackages.yaml-language-server
     proselint
+    python3Packages.isort
     python3Packages.pylint
     rnix-lsp
     selene
     shellcheck
     shellharden
     shfmt
+    stable.cmake-language-server
     stylua
     sumneko-lua-language-server
     tree-sitter
