@@ -120,11 +120,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1640770819,
-        "narHash": "sha256-dVw74s7rT+nt4HkxYxvB50lFxpe2gNWScH9T3vrNk3s=",
+        "lastModified": 1640943848,
+        "narHash": "sha256-AXmbspe5EXTr2WsGdtBhFgKtGvzMmPBgqOanFvQq974=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "cc3b979893887f729c7ab5f5d3b7c65febfe1a9d",
+        "rev": "89bdef7994a20b5285454bf42c7d2b53b98d5754",
         "type": "github"
       },
       "original": {
@@ -137,18 +137,15 @@
     "neovim-flake": {
       "inputs": {
         "flake-utils": "flake-utils_2",
-        "nixpkgs": [
-          "neovim-nightly-overlay",
-          "nixpkgs"
-        ]
+        "nixpkgs": "nixpkgs"
       },
       "locked": {
         "dir": "contrib",
-        "lastModified": 1640731457,
-        "narHash": "sha256-LbS/hubtWlTbc6cMrgoteWNwQ9BzYmMdeKuC03KLl4A=",
+        "lastModified": 1640899210,
+        "narHash": "sha256-11x2xVOrT0kUkTOfrkeWJGMJJ9EHVpSFsw4whoima4Y=",
         "owner": "neovim",
         "repo": "neovim",
-        "rev": "c46f7caad0bef587d189de2310435f48f9bd9ad8",
+        "rev": "991e872d800dbd983d57e4768734cefb13503ee7",
         "type": "github"
       },
       "original": {
@@ -167,11 +164,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1640765666,
-        "narHash": "sha256-/ex+YJ560sxBiuxF5ZwOb1ebB4PNo5Kmn1FGAsRLnas=",
+        "lastModified": 1640938477,
+        "narHash": "sha256-Tkmz+NxJG0YnnQdrjh6H+f53zkeqbkIcIxGy6ceCSv4=",
         "owner": "nix-community",
         "repo": "neovim-nightly-overlay",
-        "rev": "31310cfbf49cefeff2b7a3c7b2889a74e6068a4a",
+        "rev": "3e216b2bd5f93eb58c1a4f4a4638c6994d4412cd",
         "type": "github"
       },
       "original": {
@@ -212,6 +209,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1640871638,
+        "narHash": "sha256-ty6sGnJUQEkCd43At5U3DRQZD7rPARz5VginSW6hZ3k=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "5b091d4fbe3b7b7493c3b46fe0842e4b30ea24b3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "darwin": "darwin",
@@ -222,7 +235,7 @@
         "home-manager": "home-manager",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixos-stable": "nixos-stable",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs_2"
       }
     }
   },

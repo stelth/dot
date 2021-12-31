@@ -1,6 +1,7 @@
 local packer = require("util.packer")
 
 local config = {
+  max_jobs = 4,
   display = {
     open_fn = function()
       return require("packer.util").float({ border = "single" })
