@@ -17,6 +17,7 @@ local do_keymaps = function()
         },
       },
       c = { "<cmd>lua require('dap').continue()<CR>", "Continue" },
+      d = { "<cmd>lua require('dapconfig.debug').lldb(vim.fn.input('Exeutable: '))<CR>", "Debug Application" },
       e = { "<cmd>lua require('dapui').eval()<CR>", "Eval" },
       p = { "<cmd>lua require('dap').pause()<CR>", "Pause" },
       q = {
