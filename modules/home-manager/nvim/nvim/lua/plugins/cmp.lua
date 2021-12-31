@@ -58,12 +58,12 @@ local setup = function()
     },
     sources = {
       { name = "buffer" },
-      { name = "path" },
+      { name = "calc" },
+      { name = "emoji" },
+      { name = "latex_symbols" },
       { name = "luasnip" },
       { name = "nvim_lsp" },
-      { name = "calc" },
-      { name = "latex_symbols" },
-      { name = "emoji" },
+      { name = "path" },
       { name = "spell" },
       { name = "treesitter" },
     },
@@ -89,6 +89,12 @@ local setup = function()
     },
   })
 
+  require("cmp").setup.cmdline(":", {
+    sources = {
+      { name = "cmdline" },
+    },
+  })
+
   local cmp_autopairs = require("nvim-autopairs.completion.cmp")
   cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
 end
@@ -109,6 +115,7 @@ M.use = function(use)
       { "hrsh7th/cmp-emoji" },
       { "f3fora/cmp-spell" },
       { "ray-x/cmp-treesitter" },
+      { "hrsh7th/cmp-cmdline" },
     },
   })
 end
