@@ -17,7 +17,7 @@ in {
     lua
     maven
     ninja
-    nodejs
+    nodejs_latest
     nodePackages.pnpm
     nodePackages.yarn
     openjdk
