@@ -59,8 +59,6 @@ local setup = function()
     sources = {
       { name = "buffer" },
       { name = "calc" },
-      { name = "emoji" },
-      { name = "latex_symbols" },
       { name = "luasnip" },
       { name = "nvim_lsp" },
       { name = "path" },
@@ -111,8 +109,6 @@ M.use = function(use)
       { "saadparwaiz1/cmp_luasnip" },
       { "hrsh7th/cmp-nvim-lsp" },
       { "hrsh7th/cmp-calc" },
-      { "kdheepak/cmp-latex-symbols" },
-      { "hrsh7th/cmp-emoji" },
       { "f3fora/cmp-spell" },
       { "ray-x/cmp-treesitter" },
       { "hrsh7th/cmp-cmdline" },

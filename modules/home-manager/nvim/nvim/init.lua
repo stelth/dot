@@ -1,3 +1,4 @@
+pcall(require, "packer_compiled")
 local util = require("util")
 
 -- ----------------------------------

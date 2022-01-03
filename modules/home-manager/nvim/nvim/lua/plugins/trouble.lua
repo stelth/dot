@@ -31,7 +31,6 @@ M.use = function(use)
     "folke/trouble.nvim",
     event = "BufReadPre",
     requires = { "kyazdani42/nvim-web-devicons" },
-    cmd = { "TroubleToggle", "Trouble" },
     config = setup,
   })
 end

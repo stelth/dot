@@ -10,7 +10,6 @@ M.use = function(use)
   use({
     "SmiteshP/nvim-gps",
     requires = "nvim-treesitter/nvim-treesitter",
-    module = "nvim-gps",
     config = setup,
   })
 end

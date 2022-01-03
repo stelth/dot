@@ -7,6 +7,7 @@ local config = {
       return require("packer.util").float({ border = "single" })
     end,
   },
+  compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
   profile = {
     enable = true,
     threshold = 0,
@@ -14,6 +15,7 @@ local config = {
 }
 
 local plugins = function(use)
+  require("plugins.impatient").use(use)
   require("plugins.packer").use(use)
   require("plugins.filetype").use(use)
   require("plugins.lspconfig").use(use)

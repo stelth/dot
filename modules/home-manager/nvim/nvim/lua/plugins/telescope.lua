@@ -69,8 +69,7 @@ M.use = function(use)
   use({
     "nvim-telescope/telescope.nvim",
     config = setup,
-    cmd = { "Telescope" },
-    module = "telescope",
+    event = "BufReadPre",
     requires = {
       "nvim-telescope/telescope-z.nvim",
       "nvim-telescope/telescope-project.nvim",
@@ -79,6 +78,7 @@ M.use = function(use)
       "nvim-telescope/telescope-symbols.nvim",
       "nvim-telescope/telescope-fzy-native.nvim",
       "jvgrootveld/telescope-zoxide",
+      "folke/trouble.nvim",
     },
   })
 end
