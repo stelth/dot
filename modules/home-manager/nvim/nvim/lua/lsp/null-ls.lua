@@ -16,7 +16,7 @@ function M.setup()
       nls.builtins.formatting.fish_indent,
       nls.builtins.formatting.isort,
       nls.builtins.formatting.nixfmt,
-      nls.builtins.formatting.prettierd,
+      nls.builtins.formatting.prettier,
       nls.builtins.formatting.shellharden,
       nls.builtins.formatting.shfmt,
       nls.builtins.formatting.stylua,
