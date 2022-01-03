@@ -78,6 +78,7 @@ M.use = function(use)
   use({
     "nvim-lualine/lualine.nvim",
     config = setup,
+    event = "VimEnter",
     requires = { "kyazdani42/nvim-web-devicons" },
   })
 end
