@@ -19,13 +19,11 @@ local servers = {
   bashls = {},
   cmake = {},
   clangd = {},
-  dockerls = {},
   jsonls = { cmd = { "vscode-json-languageserver", "--stdio" } },
   pyright = {},
   rnix = {},
   sumneko_lua = luadev,
   vimls = {},
-  tsserver = {},
   yamlls = {},
 }
 

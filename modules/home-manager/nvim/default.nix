@@ -15,13 +15,11 @@
     neovim-nightly
     nixfmt
     nodePackages.bash-language-server
-    nodePackages.dockerfile-language-server-nodejs
     nodePackages.eslint_d
     nodePackages.markdownlint-cli
     # nodePackages.prettierd
     nodePackages.pyright
     nodePackages.stylelint
-    nodePackages.typescript-language-server
     nodePackages.vim-language-server
     nodePackages.vscode-css-languageserver-bin
     nodePackages.vscode-html-languageserver-bin
