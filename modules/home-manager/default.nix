@@ -52,7 +52,6 @@ in {
       nixfmt
       nixpkgs-fmt
       nixUnstable
-      openssl
       parallel
       pfetch
       pre-commit

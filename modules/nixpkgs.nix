@@ -1,21 +1,17 @@
 { inputs, config, lib, pkgs, nixpkgs, stable, ... }: {
-  nixpkgs = {
-    config = import ./config.nix;
-    overlays = [ ];
-  };
+  nixpkgs = { config = import ./config.nix; };
 
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = ''
       keep-outputs = true
       keep-derivations = true
-      ${lib.optionalString (config.nix.package == pkgs.nixFlakes)
-      "experimental-features = nix-command flakes"}
+      experimental-features = nix-command flakes
     '';
     trustedUsers = [ "${config.user.name}" ];
     gc = {
       automatic = true;
-      options = "--delete-older-than 30d";
+      options = "--delete-older-than 14";
       user = "${config.user.name}";
     };
     maxJobs = 8;
