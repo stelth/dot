@@ -44,8 +44,6 @@ end
 M.use = function(use)
   use({
     "lukas-reineke/indent-blankline.nvim",
-    event = "BufReadPre",
-    requires = { "folke/tokyonight.nvim" },
     config = setup,
   })
 end

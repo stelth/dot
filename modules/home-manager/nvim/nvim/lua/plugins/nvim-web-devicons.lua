@@ -7,7 +7,6 @@ end
 M.use = function(use)
   use({
     "kyazdani42/nvim-web-devicons",
-    module = "nvim-web-devicons",
     config = setup,
   })
 end

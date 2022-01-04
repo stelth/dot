@@ -14,7 +14,6 @@ end
 M.use = function(use)
   use({
     "kevinhwang91/nvim-hlslens",
-    event = "VimEnter",
     config = setup,
   })
 end

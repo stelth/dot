@@ -7,8 +7,6 @@ end
 M.use = function(use)
   use({
     "windwp/nvim-autopairs",
-    module = "nvim-autopairs",
-    module_pattern = { "nvim-autopairs.*", "nvim-autopairs.*.*" },
     config = setup,
   })
 end

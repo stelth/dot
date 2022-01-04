@@ -1,6 +1,8 @@
 local M = {}
 
-local do_keymaps = function()
+local setup = function()
+  require("dapconfig")
+
   local map = {
     d = {
       name = "+debug",
@@ -37,22 +39,9 @@ local do_keymaps = function()
   require("which-key").register(map, { prefix = "<leader>" })
 end
 
-require("util.au").group("DapKeyMaps", function(grp)
-  grp.User = {
-    "MapKeys",
-    do_keymaps,
-  }
-end)
-
-local setup = function()
-  require("dapconfig")
-end
-
 M.use = function(use)
   use({
     "mfussenegger/nvim-dap",
-    module = "dap",
-    config = setup,
     requires = {
       "theHamsta/nvim-dap-virtual-text",
       "mfussenegger/nvim-dap-python",

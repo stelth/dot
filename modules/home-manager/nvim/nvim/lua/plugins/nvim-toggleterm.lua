@@ -20,7 +20,6 @@ end
 M.use = function(use)
   use({
     "akinsho/nvim-toggleterm.lua",
-    keys = "<M-`>",
     config = setup,
   })
 end

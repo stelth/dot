@@ -102,8 +102,7 @@ M.use = function(use)
     "hrsh7th/nvim-cmp",
     config = setup,
     requires = {
-      { "onsails/lspkind-nvim", module = "lspkind" },
-      { "L3MON4D3/LuaSnip" },
+      { "onsails/lspkind-nvim" },
       { "hrsh7th/cmp-buffer" },
       { "hrsh7th/cmp-path" },
       { "saadparwaiz1/cmp_luasnip" },

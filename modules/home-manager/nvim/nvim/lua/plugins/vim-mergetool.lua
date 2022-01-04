@@ -8,7 +8,6 @@ end
 M.use = function(use)
   use({
     "samoshkin/vim-mergetool",
-    cmd = "MergetoolStart",
     config = setup,
   })
 end

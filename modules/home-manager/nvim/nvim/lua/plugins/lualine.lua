@@ -78,8 +78,10 @@ M.use = function(use)
   use({
     "nvim-lualine/lualine.nvim",
     config = setup,
-    event = "VimEnter",
-    requires = { "kyazdani42/nvim-web-devicons" },
+    requires = {
+      "kyazdani42/nvim-web-devicons",
+      "Smitesh/nvim-gps",
+    },
   })
 end
 

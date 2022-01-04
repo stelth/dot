@@ -1,29 +1,5 @@
 local M = {}
 
-local do_keymaps = function()
-  local map = {
-    ["`"] = { "<cmd>e #<CR>", "Other Buffer" },
-    b = {
-      b = { "<cmd>e #<CR>", "Other Buffer" },
-      p = { "<cmd>BufferLineCyclePrev<CR>", "Previous Buffer" },
-      ["["] = { "<cmd>BufferLineCyclePrev<CR>", "Previous Buffer" },
-      n = { "<cmd>BufferLineCycleNext<CR>", "Next Buffer" },
-      ["]"] = { "<cmd>BufferLineCycleNext<CR>", "Next Buffer" },
-      d = { "<cmd>:BDelete this<CR>", "Delete Buffer" },
-      g = { "<cmd>BufferLinePick<CR>", "Pick Buffer" },
-    },
-  }
-
-  require("which-key").register(map, { prefix = "<leader>" })
-end
-
-require("util.au").group("MapBufferLineKeys", function(grp)
-  grp.User = {
-    "MapKeys",
-    do_keymaps,
-  }
-end)
-
 local setup = function()
   local signs = require("lsp.diagnostics").signs
 
@@ -37,8 +13,6 @@ local setup = function()
   local severities = {
     "error",
     "warning",
-    -- "info",
-    -- "hint",
   }
 
   require("bufferline").setup({
@@ -58,12 +32,26 @@ local setup = function()
       end,
     },
   })
+
+  local map = {
+    ["`"] = { "<cmd>e #<CR>", "Other Buffer" },
+    b = {
+      b = { "<cmd>e #<CR>", "Other Buffer" },
+      p = { "<cmd>BufferLineCyclePrev<CR>", "Previous Buffer" },
+      ["["] = { "<cmd>BufferLineCyclePrev<CR>", "Previous Buffer" },
+      n = { "<cmd>BufferLineCycleNext<CR>", "Next Buffer" },
+      ["]"] = { "<cmd>BufferLineCycleNext<CR>", "Next Buffer" },
+      d = { "<cmd>:BDelete this<CR>", "Delete Buffer" },
+      g = { "<cmd>BufferLinePick<CR>", "Pick Buffer" },
+    },
+  }
+
+  require("which-key").register(map, { prefix = "<leader>" })
 end
 
 M.use = function(use)
   use({
     "akinsho/nvim-bufferline.lua",
-    event = "VimEnter",
     config = setup,
     requires = {
       "kyazdani42/nvim-web-devicons",

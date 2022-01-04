@@ -7,7 +7,6 @@ end
 M.use = function(use)
   use({
     "mfussenegger/nvim-jdtls",
-    ft = "java",
     config = setup,
   })
 end

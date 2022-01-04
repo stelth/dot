@@ -1,22 +1,5 @@
 local M = {}
 
-local do_keymaps = function()
-  local map = {
-    h = {
-      l = { "<cmd>TSHighlightCapturesUnderCursor<CR>", "Show highlight" },
-    },
-  }
-
-  require("which-key").register(map, { prefix = "<leader>" })
-end
-
-require("util.au").group("TSKeyMaps", function(grp)
-  grp.User = {
-    "MapKeys",
-    do_keymaps,
-  }
-end)
-
 local setup = function()
   local gcc = vim.fn.getenv("NIX_GCC")
 
@@ -106,19 +89,25 @@ local setup = function()
 
   local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
   parser_config.jsonc.used_by = "json"
+
+  local map = {
+    h = {
+      l = { "<cmd>TSHighlightCapturesUnderCursor<CR>", "Show highlight" },
+    },
+  }
+
+  require("which-key").register(map, { prefix = "<leader>" })
 end
 
 M.use = function(use)
   use({
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
-    opt = true,
-    event = "BufRead",
-    module = { "nvim-treesitter.fold", "nvim-treesitter.ts_utils" },
     requires = {
-      { "nvim-treesitter/playground", cmd = "TSHighlightCapturesUnderCursor" },
+      "nvim-treesitter/playground",
       "nvim-treesitter/nvim-treesitter-textobjects",
       "RRethy/nvim-treesitter-textsubjects",
+      "JoosepAlviste/nvim-ts-context-commentstring",
     },
     config = setup,
   })

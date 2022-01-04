@@ -1,6 +1,8 @@
 local M = {}
 
-local do_keymaps = function()
+local setup = function()
+  require("persistence").setup()
+
   local map = {
     q = {
       s = { "<cmd>lua require('persistence').load()<CR>", "Load Session" },
@@ -12,22 +14,9 @@ local do_keymaps = function()
   require("which-key").register(map, { prefix = "<leader>" })
 end
 
-require("util.au").group("PersistenceKeys", function(grp)
-  grp.User = {
-    "MapKeys",
-    do_keymaps,
-  }
-end)
-
-local setup = function()
-  require("persistence").setup()
-end
-
 M.use = function(use)
   use({
     "folke/persistence.nvim",
-    event = "BufReadPre",
-    module = "persistence",
     config = setup,
   })
 end

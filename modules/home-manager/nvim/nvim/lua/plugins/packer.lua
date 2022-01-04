@@ -1,6 +1,6 @@
 local M = {}
 
-local do_keymaps = function()
+local setup = function()
   local map = {
     h = {
       p = {
@@ -15,17 +15,11 @@ local do_keymaps = function()
   require("which-key").register(map, { prefix = "<leader>" })
 end
 
-require("util.au").group("PackerKeys", function(grp)
-  grp.User = {
-    "MapKeys",
-    do_keymaps,
-  }
-end)
-
-local setup = function() end
-
 M.use = function(use)
-  use({ "wbthomason/packer.nvim", opt = true, config = setup })
+  use({
+    "wbthomason/packer.nvim",
+    config = setup,
+  })
 end
 
 return M

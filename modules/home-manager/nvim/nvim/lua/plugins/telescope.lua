@@ -1,6 +1,26 @@
 local M = {}
 
-local do_keymaps = function()
+local setup = function()
+  local trouble = require("trouble.providers.telescope")
+  local telescope = require("telescope")
+
+  telescope.setup({
+    extensions = { fzy_native = { override_generic_sorter = false, override_file_sorter = true } },
+    defaults = {
+      mappings = { i = { ["<c-t>"] = trouble.open_with_trouble } },
+      prompt_prefix = " ",
+      selection_caret = " ",
+      winblend = 10,
+      layout_config = {
+        width = 0.7,
+      },
+    },
+  })
+
+  telescope.load_extension("fzy_native")
+  telescope.load_extension("z")
+  telescope.load_extension("zoxide")
+
   local map = {
     g = {
       c = { "<cmd>Telescope git_commits<CR>", "Commits" },
@@ -36,40 +56,10 @@ local do_keymaps = function()
   require("which-key").register(map, { prefix = "<leader>" })
 end
 
-require("util.au").group("TelescopeKeyMaps", function(grp)
-  grp.User = {
-    "MapKeys",
-    do_keymaps,
-  }
-end)
-
-local setup = function()
-  local trouble = require("trouble.providers.telescope")
-  local telescope = require("telescope")
-
-  telescope.setup({
-    extensions = { fzy_native = { override_generic_sorter = false, override_file_sorter = true } },
-    defaults = {
-      mappings = { i = { ["<c-t>"] = trouble.open_with_trouble } },
-      prompt_prefix = " ",
-      selection_caret = " ",
-      winblend = 10,
-      layout_config = {
-        width = 0.7,
-      },
-    },
-  })
-
-  telescope.load_extension("fzy_native")
-  telescope.load_extension("z")
-  telescope.load_extension("zoxide")
-end
-
 M.use = function(use)
   use({
     "nvim-telescope/telescope.nvim",
     config = setup,
-    event = "BufReadPre",
     requires = {
       "nvim-telescope/telescope-z.nvim",
       "nvim-telescope/telescope-project.nvim",
@@ -78,7 +68,6 @@ M.use = function(use)
       "nvim-telescope/telescope-symbols.nvim",
       "nvim-telescope/telescope-fzy-native.nvim",
       "jvgrootveld/telescope-zoxide",
-      "folke/trouble.nvim",
     },
   })
 end

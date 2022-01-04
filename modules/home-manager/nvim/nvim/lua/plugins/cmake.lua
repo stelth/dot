@@ -1,6 +1,13 @@
 local M = {}
 
-local do_keymaps = function()
+local setup = function()
+  require("cmake").setup({
+    configure_args = { "-D", "CMAKE_EXPORT_COMPILE_COMMANDS=1", "-G", "Ninja" },
+    dap_open_command = require("dapui").open,
+  })
+
+  require("telescope").load_extension("cmake")
+
   local map = {
     c = {
       b = {
@@ -24,27 +31,10 @@ local do_keymaps = function()
   require("which-key").register(map, { prefix = "<leader>" })
 end
 
-require("util.au").group("CMakeKeyMaps", function(grp)
-  grp.User = {
-    "MapKeys",
-    do_keymaps,
-  }
-end)
-
-local setup = function()
-  require("cmake").setup({
-    configure_args = { "-D", "CMAKE_EXPORT_COMPILE_COMMANDS=1", "-G", "Ninja" },
-    dap_open_command = require("dapui").open,
-  })
-
-  require("telescope").load_extension("cmake")
-end
-
 M.use = function(use)
   use({
     "Shatur/neovim-cmake",
     config = setup,
-    cmd = "CMake",
     requires = {
       "nvim-telescope/telescope.nvim",
       "mfussenegger/nvim-dap",

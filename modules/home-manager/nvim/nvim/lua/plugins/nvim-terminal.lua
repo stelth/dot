@@ -7,7 +7,6 @@ end
 M.use = function(use)
   use({
     "norcalli/nvim-terminal.lua",
-    ft = "terminal",
     config = setup,
   })
 end

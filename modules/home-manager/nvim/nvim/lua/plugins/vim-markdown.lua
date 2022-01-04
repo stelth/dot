@@ -39,9 +39,7 @@ end
 M.use = function(use)
   use({
     "plasticboy/vim-markdown",
-    opt = true,
     requires = "godlygeek/tabular",
-    ft = "markdown",
     config = setup,
   })
 end

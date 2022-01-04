@@ -1,6 +1,14 @@
 local M = {}
 
-local do_keymaps = function()
+local setup = function()
+  require("todo-comments").setup({
+    keywords = {
+      TODO = {
+        alt = { "WIP" },
+      },
+    },
+  })
+
   local map = {
     x = {
       t = { "<cmd>TodoTrouble<CR>", "Todo Trouble" },
@@ -11,28 +19,12 @@ local do_keymaps = function()
   require("which-key").register(map, { prefix = "<leader>" })
 end
 
-require("util.au").group("TodoKeyMaps", function(grp)
-  grp.User = {
-    "MapKeys",
-    do_keymaps,
-  }
-end)
-
-local setup = function()
-  require("todo-comments").setup({
-    keywords = {
-      TODO = {
-        alt = { "WIP" },
-      },
-    },
-  })
-end
-
 M.use = function(use)
   use({
     "folke/todo-comments.nvim",
-    cmd = { "TodoTrouble", "TodoTelescope" },
-    event = "BufReadPost",
+    requires = {
+      "nvim-lua/plenary.nvim",
+    },
     config = setup,
   })
 end

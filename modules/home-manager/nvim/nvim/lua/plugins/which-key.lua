@@ -58,14 +58,11 @@ local setup = function()
   end
 
   wk.register(leader, { prefix = "<leader>" })
-
-  vim.cmd([[doautocmd User MapKeys]])
 end
 
 M.use = function(use)
   use({
     "folke/which-key.nvim",
-    event = "VimEnter",
     config = setup,
   })
 end

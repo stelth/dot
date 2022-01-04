@@ -7,7 +7,6 @@ end
 M.use = function(use)
   use({
     "ahmedkhalf/project.nvim",
-    event = "BufReadPre",
     config = setup,
   })
 end

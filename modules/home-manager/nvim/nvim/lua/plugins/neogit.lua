@@ -1,22 +1,5 @@
 local M = {}
 
-local do_keymaps = function()
-  local map = {
-    g = {
-      g = { "<cmd>Neogit kind=split<CR>", "Neogit" },
-    },
-  }
-
-  require("which-key").register(map, { prefix = "<leader>" })
-end
-
-require("util.au").group("NeogitKeymaps", function(grp)
-  grp.User = {
-    "MapKeys",
-    do_keymaps,
-  }
-end)
-
 local setup = function()
   require("neogit").setup({
     kind = "split",
@@ -28,12 +11,22 @@ local setup = function()
     },
     integrations = { diffview = true },
   })
+
+  local map = {
+    g = {
+      g = { "<cmd>Neogit kind=split<CR>", "Neogit" },
+    },
+  }
+
+  require("which-key").register(map, { prefix = "<leader>" })
 end
 
 M.use = function(use)
   use({
     "TimUntersberger/neogit",
-    cmd = "Neogit",
+    requires = {
+      "nvim-lua/plenary.nvim",
+    },
     config = setup,
   })
 end

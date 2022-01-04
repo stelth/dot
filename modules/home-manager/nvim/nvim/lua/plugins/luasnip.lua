@@ -15,8 +15,9 @@ end
 M.use = function(use)
   use({
     "L3MON4D3/LuaSnip",
-    module = "luasnip",
-    requires = "rafamadriz/friendly-snippets",
+    requires = {
+      "rafamadriz/friendly-snippets",
+    },
     config = setup,
   })
 end

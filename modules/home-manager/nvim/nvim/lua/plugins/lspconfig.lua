@@ -7,12 +7,10 @@ end
 M.use = function(use)
   use({
     "neovim/nvim-lspconfig",
-    opt = true,
-    event = "BufReadPre",
     config = setup,
     requires = {
-      { "jose-elias-alvarez/null-ls.nvim", module = "null-ls" },
-      { "folke/lua-dev.nvim", module = "lua-dev" },
+      { "jose-elias-alvarez/null-ls.nvim"},
+      { "folke/lua-dev.nvim"},
     },
   })
 end

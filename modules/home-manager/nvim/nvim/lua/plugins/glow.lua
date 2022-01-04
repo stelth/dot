@@ -1,6 +1,6 @@
 local M = {}
 
-local do_keymaps = function()
+local setup = function()
   local map = {
     o = {
       g = { "<cmd>Glow<CR>", "Glow" },
@@ -10,19 +10,9 @@ local do_keymaps = function()
   require("which-key").register(map, { prefix = "<leader>" })
 end
 
-require("util.au").group("GlowKeys", function(grp)
-  grp.User = {
-    "MapKeys",
-    do_keymaps,
-  }
-end)
-
-local setup = function() end
-
 M.use = function(use)
   use({
     "npxbr/glow.nvim",
-    cmd = "Glow",
     config = setup,
   })
 end

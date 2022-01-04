@@ -7,8 +7,6 @@ end
 M.use = function(use)
   use({
     "RRethy/vim-illuminate",
-    event = "CursorHold",
-    module = "illuminate",
     config = setup,
   })
 end
