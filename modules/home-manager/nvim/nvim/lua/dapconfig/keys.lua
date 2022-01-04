@@ -1,6 +1,3 @@
-local M = {}
-
-M.setup = function()
 local map = {
   d = {
     name = "+debug",
@@ -35,6 +32,3 @@ local map = {
 }
 
 require("which-key").register(map, { prefix = "<leader>" })
-end
-
-return M

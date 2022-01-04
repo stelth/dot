@@ -1,20 +1,14 @@
-local M = {}
+local dap = require("dap")
 
-M.setup = function()
-  local dap = require("dap")
-
-  dap.adapters.cpp = {
-    type = "executable",
-    attach = {
-      pidProperty = "pid",
-      pidSelect = "ask",
-    },
-    command = "lldb-vscode",
-    env = {
-      LLDB_LAUNCH_FLAG_LAUNCH_IN_TTY = "YES",
-    },
-    name = "lldb",
-  }
-end
-
-return M
+dap.adapters.cpp = {
+  type = "executable",
+  attach = {
+    pidProperty = "pid",
+    pidSelect = "ask",
+  },
+  command = "lldb-vscode",
+  env = {
+    LLDB_LAUNCH_FLAG_LAUNCH_IN_TTY = "YES",
+  },
+  name = "lldb",
+}
