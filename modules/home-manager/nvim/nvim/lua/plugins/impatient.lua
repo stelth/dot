@@ -1,7 +1,7 @@
 local M = {}
 
 local setup = function()
-  require('impatient').enable_profile()
+  require("impatient").enable_profile()
 end
 
 M.use = function(use)
