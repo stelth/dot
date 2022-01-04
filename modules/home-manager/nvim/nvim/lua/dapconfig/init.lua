@@ -18,6 +18,7 @@ vim.fn.sign_define("DapLogPoint", { text = "", texthl = "DiagnosticInfo" })
 vim.fn.sign_define("DapStopped", { text = "", texthl = "Constant" })
 vim.fn.sign_define("DapBreakpointRejected", { text = "" })
 
+require('dapconfig.keys').setup()
 require("dapconfig.python")
 require("dapconfig.cpp")
 
