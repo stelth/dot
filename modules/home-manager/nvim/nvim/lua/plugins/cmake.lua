@@ -22,7 +22,7 @@ local setup = function()
         k = { "<cmd>CMake cancel<CR>", "Cancel Build" },
         r = { "<cmd>CMake run<CR>", "Run" },
         ["sa"] = { "<cmd>CMake set_target_args<CR>", "Set arguments" },
-        ["sb"] = { "<cmd>CMake select_build_type<CR>", "Select Build Type" },
+        ["sb"] = { "<cmd>Telescope cmake select_build_type<CR>", "Select Build Type" },
         ["st"] = { "<cmd>Telescope cmake select_target<CR>", "Select Target" },
       },
     },
