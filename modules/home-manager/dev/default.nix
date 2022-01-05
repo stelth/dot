@@ -37,10 +37,10 @@ in {
       };
       "github.com" = lib.hm.dag.entryBefore [ "10.* 172.* 192.*" ] {
         user = "stelth";
-        identityFile = "~/.ssh/keys/id_ed25519_github";
+        identityFile = "~/.ssh/keys/github_personal_private_key";
       };
       "github.ibm.com" = lib.hm.dag.entryBefore [ "github.com" ] {
-        identityFile = "~/.ssh/keys/id_ed25519_ibm";
+        identityFile = "~/.ssh/keys/github_ibm_private_key";
         user = "Jason.P.Cox@ibm.com";
       };
       "9.55.36.195" = lib.hm.dag.entryBefore [ "github.com" ] {
