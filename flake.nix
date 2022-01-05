@@ -13,7 +13,8 @@
 
   inputs = {
     devshell = { url = "github:numtide/devshell"; };
-    stable = { url = "github:nixos/nixpkgs/nixos-21.11"; };
+    nixos-stable = { url = "github:nixos/nixpkgs/nixos-21.11"; };
+    darwin-stable = { url = "github:nixos/nixpkgs/nixpkgs-21.11-darwin"; };
     nixos-unstable = { url = "github:nixos/nixpkgs/nixos-unstable"; };
     nixpkgs = { url = "github:nixos/nixpkgs/nixos-unstable"; };
     flake-utils = { url = "github:numtide/flake-utils"; };
@@ -35,8 +36,7 @@
     };
   };
 
-  outputs =
-    inputs@{ self, nixpkgs, darwin, home-manager, flake-utils, ... }:
+  outputs = inputs@{ self, nixpkgs, darwin, home-manager, flake-utils, ... }:
     let
       inherit (darwin.lib) darwinSystem;
       inherit (nixpkgs.lib) nixosSystem;
@@ -57,7 +57,7 @@
       # generate a base darwin configuration with the
       # specified hostname, overlays, and any extraModules applied
       mkDarwinConfig = { system, nixpkgs ? inputs.nixpkgs
-        , stable ? inputs.stable, lib ? (mkLib nixpkgs), baseModules ? [
+        , stable ? inputs.darwin-stable, lib ? (mkLib nixpkgs), baseModules ? [
           home-manager.darwinModules.home-manager
           ./modules/darwin
         ], extraModules ? [ ] }:
@@ -84,7 +84,7 @@
       # generate a home-manager configuration usable on any unix system
       # with overlays and any extraModules applied
       mkHomeConfig = { username, system ? "x86_64-linux"
-        , nixpkgs ? inputs.nixpkgs, stable ? inputs.stable
+        , nixpkgs ? inputs.nixpkgs, stable ? inputs.nixos-stable
         , lib ? (mkLib nixpkgs), baseModules ? [ ./modules/home-manager ]
         , extraModules ? [ ] }:
         homeManagerConfiguration rec {
