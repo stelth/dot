@@ -1,5 +1,3 @@
-require("dap-python").setup(require("util").get_python_path(), { include_configs = false })
-
 local dap = require("dap")
 
 dap.configurations.python = {
@@ -10,14 +8,12 @@ dap.configurations.python = {
     justMyCode = false,
     program = "${file}",
     console = "internalConsole",
-    pythonPath = require("util").get_python_path(),
   },
   {
     type = "python",
     request = "attach",
     name = "Attach remote",
     justMyCode = false,
-    pythonPath = require("util").get_python_path(),
     host = function()
       local value = vim.fn.input("Host [127.0.0.1]: ")
       if value ~= "" then
