@@ -1,10 +1,10 @@
 require("dapui").setup({
   sidebar = {
-    size = 40,
+    size = 80,
     position = "left",
   },
   tray = {
-    size = 15,
+    size = 30,
   },
   floating = {
     max_width = 0.9,
