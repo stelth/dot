@@ -12,13 +12,7 @@ local setup = function()
     integrations = { diffview = true },
   })
 
-  local map = {
-    g = {
-      g = { "<cmd>Neogit kind=split<CR>", "Neogit" },
-    },
-  }
-
-  require("which-key").register(map, { prefix = "<leader>" })
+  vim.api.nvim_set_keymap("n", "<leader>gg", ":Neogit kind=split<CR>", { desc = "Neogit" })
 end
 
 M.use = function(use)

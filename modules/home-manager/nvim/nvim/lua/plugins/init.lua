@@ -60,7 +60,6 @@ local plugins = function(use)
   require("plugins.vim-markdown").use(use)
   require("plugins.vim-matchup").use(use)
   require("plugins.vim-mergetool").use(use)
-  require("plugins.which-key").use(use)
   require("plugins.zen-mode").use(use)
 end
 

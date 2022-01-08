@@ -8,11 +8,10 @@ local setup = function()
     require("notify").notify(msg, log_level, opts)
   end
 
-  local map = {
-    n = { "<cmd>lua require('telescope').extensions.notify.notify()<CR>", "Notifications" },
-  }
-
-  require("which-key").register(map, { prefix = "<leader>" })
+  vim.api.nvim_set_keymap("n", "<leader>n", "", {
+    callback = require("telescope").extensions.notify.notify,
+    desc = "Notifications",
+  })
 end
 
 M.use = function(use)

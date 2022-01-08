@@ -1,4 +1,3 @@
-pcall(require, "packer_compiled")
 local util = require("util")
 
 -- ----------------------------------
@@ -68,6 +67,8 @@ vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_netrwSettings = 1
 vim.g.loaded_netrwFileHandlers = 1
 
+pcall(require, "packer_compiled")
+
 local cmd = vim.cmd
 local au = require("util.au")
 
@@ -90,35 +91,46 @@ end
 -- Key maps
 -- ----------------------------------
 
--- Quit shortcuts
-util.nnoremap("<leader>qq", ":qa<CR>")
-util.nnoremap("<leader>q!", ":qa!<CR>")
-
 -- Add undo break-points
-util.inoremap(",", ",<c-g>u")
-util.inoremap(".", ".<c-g>u")
-util.inoremap(";", ";<c-g>u")
+vim.api.nvim_set_keymap("i", ",", ",<c-g>u", {})
+vim.api.nvim_set_keymap("i", ".", ".<c-g>u", {})
+vim.api.nvim_set_keymap("i", ";", ";<c-g>u", {})
 
 -- better indenting
-util.vnoremap("<", "<gv")
-util.vnoremap(">", ">gv")
-
--- New file
-util.nnoremap("<leader>fn", ":enew<CR>")
+vim.api.nvim_set_keymap("v", "<", "<gv", {})
+vim.api.nvim_set_keymap("v", ">", ">gv", {})
 
 -- Toggle
-util.nnoremap("<leader>ts", ":lua require('util').toggle('spell')<CR>")
-util.nnoremap("<leader>tw", ":lua require('util').toggle('wrap')<CR>")
-util.nnoremap("<leader>tn", ":lua require('util').toggle('relativenumber', true); require('util').toggle('number')<CR>")
+vim.api.nvim_set_keymap("n", "<leader>ts", "", {
+  callback = function()
+    require("util").toggle("spell")
+  end,
+  desc = "Toggle Spell",
+})
+vim.api.nvim_set_keymap("n", "<ldeader>tw", "", {
+  callback = function()
+    require("util").toggle("wrap")
+  end,
+  desc = "Toggle Wrap",
+})
+vim.api.nvim_set_keymap("n", "<ldeader>tn", "", {
+  callback = function()
+    require("util").toggle("relativenumber", true)
+    require("util").toggle("number")
+  end,
+  desc = "Toggle Wrap",
+})
 
 -- Quickfix and Location List mappings
-util.nnoremap("<leader>xl", ":lopen<CR>")
-util.nnoremap("<leader>xq", ":copen<CR>")
+vim.api.nvim_set_keymap("n", "<leader>xl", ":lopen<CR>", { desc = "Open Location List" })
+vim.api.nvim_set_keymap("n", "<leader>xq", ":copen<CR>", { desc = "Open Quickfix List" })
 
-util.nnoremap("<leader>cu", function()
-  local number = math.random(math.pow(2, 127) + 1, math.pow(2, 128))
-  return "i" .. string.format("%.0f", number)
-end, {
+vim.api.nvim_set_keymap("n", "<leader>cu", "", {
+  callback = function()
+    local number = math.random(math.pow(2, 127) + 1, math.pow(2, 128))
+    return "i" .. string.format("%.0f", number)
+  end,
+  desc = "",
   expr = true,
 })
 

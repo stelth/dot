@@ -1,13 +1,7 @@
 local M = {}
 
 local setup = function()
-  local map = {
-    b = {
-      d = { "<cmd>:BDelete this<CR>", "Delete Buffer" },
-    },
-  }
-
-  require("which-key").register(map, { prefix = "<leader>" })
+  vim.api.nvim_set_keymap("n", "<leader>bd", ":BDelete this<CR>", { desc = "Delete Buffer" })
 end
 
 M.use = function(use)

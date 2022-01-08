@@ -90,13 +90,7 @@ local setup = function()
   local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
   parser_config.jsonc.used_by = "json"
 
-  local map = {
-    h = {
-      l = { "<cmd>TSHighlightCapturesUnderCursor<CR>", "Show highlight" },
-    },
-  }
-
-  require("which-key").register(map, { prefix = "<leader>" })
+  vim.api.nvim_set_keymap("n", "<leader>hl", ":TSHighlightCapturesUnderCursor<CR>", { desc = "Show highlight" })
 end
 
 M.use = function(use)

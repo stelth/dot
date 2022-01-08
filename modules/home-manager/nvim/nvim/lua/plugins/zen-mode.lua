@@ -5,12 +5,11 @@ local setup = function()
     plugins = { gitsigns = true, tmux = true, kitty = { enabled = false, font = "+2" } },
   })
 
-  local map = {
-    Z = { "<cmd>lua require('zen-mode').reset()<CR>", "Reset Zen Mode" },
-    z = { "<cmd>ZenMode<CR>", "Zen Mode" },
-  }
-
-  require("which-key").register(map, { prefix = "<leadere>" })
+  vim.api.nvim_set_keymap("n", "<leader>Z", "", {
+    callback = require("zen-mode").reset,
+    desc = "Reset zen mode",
+  })
+  vim.api.nvim_set_keymap("n", "<leader>z", ":ZenMode<CR>", { desc = "Zen Mode" })
 end
 
 M.use = function(use)

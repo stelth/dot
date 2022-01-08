@@ -1,4 +1,3 @@
-local wk = require("which-key")
 local util = require("util")
 
 local M = {}
@@ -6,99 +5,135 @@ local M = {}
 M.setup = function(client, bufnr)
   local opts = { noremap = true, silent = true, buffer = bufnr }
 
-  local keymap = {
-    c = {
-      name = "code",
-      r = { "<cmd>lua require('renamer').rename()<CR>", "Rename" },
-      a = { "<cmd>CodeActionMenu<CR>", "Code Action Menu" },
-      d = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Line Diagnostics" },
-      l = {
-        name = "lsp",
-        i = { "<cmd>LspInfo<cr>", "Lsp Info" },
-        a = { "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", "Add Folder" },
-        r = { "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", "Remove Folder" },
-        l = {
-          "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>",
-          "List Folders",
-        },
-      },
-    },
-    t = {
-      f = {
-        "<cmd>lua require('lsp.formatting').toggle()<CR>",
-        "Format on Save",
-      },
-    },
-    x = {
-      s = { "<cmd>Telescope document_diagnostics<cr>", "Search Document Diagnostics" },
-      w = { "<cmd>Telescope sp_workspace_diagnostics<cr>", "Workspace Diagnostics" },
-    },
-  }
+  vim.api.nvim_set_keymap("n", "<leader>cr", "", {
+    callback = require("renamer").rename,
+    desc = "Rename",
+  })
+  vim.api.nvim_set_keymap("n", "<leader>ca", ":CodeActionMenu<CR>", { desc = "Code Action Menu" })
+  vim.api.nvim_set_keymap("v", "<leader>ca", ":CodeActionMenu<CR>", { desc = "Code Action Menu" })
+  vim.api.nvim_set_keymap("n", "<leader>cd", "", {
+    callback = vim.diagnostic.open_float,
+    desc = "Line Diagnostics",
+  })
+  vim.api.nvim_set_keymap("n", "<leader>cli", ":LspInfo<CR>", { desc = "Lsp Info" })
+  vim.api.nvim_set_keymap("n", "<leader>cla", "", {
+    callback = vim.lsp.buf.add_workspace_folder,
+    desc = "Add folder to workspace",
+  })
+  vim.api.nvim_set_keymap("n", "<leader>clr", "", {
+    callback = vim.lsp.buf.remove_workspace_folder,
+    desc = "Remove folder from workspace",
+  })
+  vim.api.nvim_set_keymap("n", "<leader>cll", "", {
+    callback = function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end,
+    desc = "List workspace folders",
+  })
+  vim.api.nvim_set_keymap("n", "<leader>tf", "", {
+    callback = require("lsp.formatting").toggle,
+    desc = "Toggle format on save",
+  })
+  vim.api.nvim_set_keymap("n", "<leader>xs", ":Telescope document_diagnostics", { desc = "Document Diagnostics" })
+  vim.api.nvim_set_keymap("n", "<leader>xw", ":Telescope lsp_workspace_diagnostics", { desc = "Workspace Diagnostics" })
 
-  local keymap_no_leader = {
-    ["]"] = {
-      r = { "<cmd>lua require('illuminate').next_reference({wrap = true})<CR>", "Next Reference" },
-    },
-    ["["] = {
-      r = {
-        "<cmd>lua require('illuminate').next_reference({reverese = true, wrap = true})<CR>",
-        "Previous Reference",
-      },
-    },
-  }
+  vim.api.nvim_set_keymap("n", "]r", "", {
+    callback = function()
+      require("illuminate").next_reference({ wrap = true })
+    end,
+    desc = "Next Reference",
+  })
+  vim.api.nvim_set_keymap("n", "[r", "", {
+    callback = function()
+      require("illuminate").next_reference({ reverse = true, wrap = true })
+    end,
+    desc = "Previous Reference",
+  })
 
-  local keymap_visual = {
-    c = {
-      name = "code",
-      a = { ":<C-U>lua vim.lsp.buf.range_code_action()<CR>", "Code Action" },
-    },
-  }
-
-  local keymap_goto = {
-    name = "goto",
-    r = { "<cmd>Telescope lsp_references<cr>", "References" },
-    R = { "<cmd>Trouble lsp_references<cr>", "Trouble References" },
-    d = { "<Cmd>lua vim.lsp.buf.definition()<CR>", "Goto Definition" },
-    dv = { "<Cmd>vsplit | lua vim.lsp.buf.definition()<CR>", "Goto Definition" },
-    ds = { "<Cmd>split | lua vim.lsp.buf.definition()<CR>", "Goto Definition" },
-    s = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help" },
-    I = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Goto Implementation" },
-    t = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Goto Type Definition" },
-  }
-
-  util.nnoremap("K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-  util.nnoremap("[d", "<cmd lua vim.diagnostic.goto_prev()<CR>", opts)
-  util.nnoremap("]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
-  util.nnoremap("[e", "<cmd>lua vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.ERROR})<CR>", opts)
-  util.nnoremap("]e", "<cmd>lua vim.diagnostic.goto_next({severity = vim.diagnostic.severity.ERROR})<CR>", opts)
+  vim.api.nvim_set_keymap("n", "gr", ":Telescope lsp_references<CR>", { desc = "References" })
+  vim.api.nvim_set_keymap("n", "gR", ":Trouble lsp_references<CR>", { desc = "Trouble references" })
+  vim.api.nvim_set_keymap("n", "gd", "", {
+    callback = vim.lsp.buf.definition,
+    desc = "Goto definition",
+  })
+  vim.api.nvim_set_keymap(
+    "n",
+    "gdv",
+    ":vsplit | lua vim.lsp.buf.definition()<CR>",
+    { desc = "Goto definition in vsplit" }
+  )
+  vim.api.nvim_set_keymap(
+    "n",
+    "gds",
+    ":split | lua vim.lsp.buf.definition()<CR>",
+    { desc = "Goto definition in split" }
+  )
+  vim.api.nvim_set_keymap("n", "gs", "", {
+    callback = vim.lsp.buf.signature_help,
+    desc = "Goto signature help",
+  })
+  vim.api.nvim_set_keymap("n", "gI", "", {
+    callback = vim.lsp.buf.implementation,
+    desc = "Goto implementation",
+  })
+  vim.api.nvim_set_keymap("n", "gt", "", {
+    callback = vim.lsp.buf.type_definition,
+    desc = "Goto type definition",
+  })
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "", {
+    callback = vim.lsp.buf.hover,
+    desc = "Hover",
+  })
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", "", {
+    callback = vim.diagnostic.goto_prev,
+    desc = "Goto previous diagnostic",
+  })
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", "", {
+    callback = vim.diagnostic.goto_next,
+    desc = "Goto next diagnostic",
+  })
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "[e", "", {
+    callback = function()
+      vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })
+    end,
+    desc = "Goto previous error",
+  })
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "]e", "", {
+    callback = function()
+      vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
+    end,
+    desc = "Goto next error",
+  })
 
   local trigger_chars = client.resolved_capabilities.signature_help_trigger_characters
   trigger_chars = { "," }
   for _, c in ipairs(trigger_chars) do
-    util.inoremap(c, function()
-      vim.defer_fn(function()
-        pcall(vim.lsp.buf.signature_help)
-      end, 0)
-      return c
-    end, {
+    vim.api.nvim_buf_set_keymap(bufnr, "n", c, "", {
+      callback = function()
+        vim.defer_fn(function()
+          pcall(vim.lsp.buf.signature_help)
+        end, 0)
+        return c
+      end,
+      desc = "Auto signature help",
       noremap = true,
       silent = true,
-      buffer = bufnr,
       expr = true,
     })
   end
 
   -- Set some keybinds conditional on server capabilities
   if client.resolved_capabilities.document_formatting then
-    keymap.c.f = { "<cmd>lua vim.lsp.buf.formatting()<CR>", "Format Document" }
+    vim.api.nvim_set_keymap("n", "<leader>cf", "", {
+      callback = vim.lsp.buf.formatting,
+      desc = "Format document",
+    })
   elseif client.resolved_capabilities.document_range_formatting then
-    keymap_visual.c.f = { "<cmd>lua vim.lsp.buf.range_formatting()<CR>", "Format Range" }
+    vim.api.nvim_set_keymap("v", "<leader>cf", "", {
+      callback = vim.lsp.buf.range_formatting,
+      desc = "Format range",
+    })
   end
-
-  wk.register(keymap, { buffer = bufnr, prefix = "<leader>" })
-  wk.register(keymap_no_leader, { buffer = bufnr })
-  wk.register(keymap_visual, { buffer = bufnr, prefix = "<leader>", mode = "v" })
-  wk.register(keymap_goto, { buffer = bufnr, prefix = "g" })
 end
 
 return M

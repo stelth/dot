@@ -1,13 +1,7 @@
 local M = {}
 
 local setup = function()
-  local map = {
-    o = {
-      g = { "<cmd>Glow<CR>", "Glow" },
-    },
-  }
-
-  require("which-key").register(map, { prefix = "<leader>" })
+  vim.api.nvim_set_keymap("n", "<leader>og", ":Glow<CR>", { desc = "Glow" })
 end
 
 M.use = function(use)

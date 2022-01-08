@@ -6,15 +6,19 @@ local setup = function()
     use_diagnostic_signs = true,
   })
 
-  local map = {
-    x = {
-      x = { "<cmd>TroubleToggle<CR>", "Trouble" },
-      w = { "<cmd>TroubleToggle lsp_workspace_diagnostics<CR>", "Workspace Diagnostics" },
-      d = { "<cmd>TroubleToggle lsp_document_diagnostics<CR>", "Document Diagnostics" },
-    },
-  }
-
-  require("which-key").register(map, { prefix = "<leader>" })
+  vim.api.nvim_set_keymap("n", "<leader>xx", ":TroubleToggle<CR>", { desc = "Trouble" })
+  vim.api.nvim_set_keymap(
+    "n",
+    "<leader>xw",
+    ":TroubleToggle lsp_workspace_diagnostics<CR>",
+    { desc = "Workspace diagnostics" }
+  )
+  vim.api.nvim_set_keymap(
+    "n",
+    "<leader>xd",
+    ":TroubleToggle lsp_document_diagnostics<CR>",
+    { desc = "Document Diagnostics" }
+  )
 end
 
 M.use = function(use)

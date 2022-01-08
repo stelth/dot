@@ -3,15 +3,20 @@ local M = {}
 local setup = function()
   require("persistence").setup()
 
-  local map = {
-    q = {
-      s = { "<cmd>lua require('persistence').load()<CR>", "Load Session" },
-      l = { "<cmd>lua require('persistence').load({last = true})<CR>", "Load Last Session" },
-      d = { "<cmd>lua require('persistence').stop()<CR>", "End Session" },
-    },
-  }
-
-  require("which-key").register(map, { prefix = "<leader>" })
+  vim.api.nvim_set_keymap("n", "<leader>qs", "", {
+    callback = require("persistence").load,
+    desc = "Load session",
+  })
+  vim.api.nvim_set_keymap("n", "<leader>ql", "", {
+    callback = function()
+      require("persistence").load({ last = true })
+    end,
+    desc = "Load last session",
+  })
+  vim.api.nvim_set_keymap("n", "<leader>qd", "", {
+    callback = require("persistence").stop,
+    desc = "End session",
+  })
 end
 
 M.use = function(use)

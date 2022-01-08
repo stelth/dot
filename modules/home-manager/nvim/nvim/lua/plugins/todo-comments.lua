@@ -9,14 +9,8 @@ local setup = function()
     },
   })
 
-  local map = {
-    x = {
-      t = { "<cmd>TodoTrouble<CR>", "Todo Trouble" },
-      T = { "<cmd>TodoTelescope<CR>", "Todo Telescope" },
-    },
-  }
-
-  require("which-key").register(map, { prefix = "<leader>" })
+  vim.api.nvim_set_keymap("n", "<leader>xt", ":TodoTrouble<CR>", { desc = "Todo Trouble" })
+  vim.api.nvim_set_keymap("n", "<leader>xT", ":TodoTelescope<CR>", { desc = "Todo Telescope" })
 end
 
 M.use = function(use)

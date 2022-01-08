@@ -3,13 +3,7 @@ local M = {}
 local setup = function()
   require("diffview").setup({})
 
-  local map = {
-    g = {
-      d = { "<cmd>DiffviewOpen<CR>", "Diff View" },
-    },
-  }
-
-  require("which-key").register(map, { prefix = "<leader>" })
+  vim.api.nvim_set_keymap("n", "<leader>gd", ":DiffviewOpen<CR>", { desc = "Diff View" })
 end
 
 M.use = function(use)

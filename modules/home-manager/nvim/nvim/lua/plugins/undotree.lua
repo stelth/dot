@@ -1,11 +1,7 @@
 local M = {}
 
 local setup = function()
-  local map = {
-    u = { "<cmd>UndotreeToggle<CR>", "Undotree" },
-  }
-
-  require("which-key").register(map, { prefix = "<leader>" })
+  vim.api.nvim_set_keymap("n", "<leader>u", ":UndotreeToggle<CR>", { desc = "Undotree" })
 end
 
 M.use = function(use)
