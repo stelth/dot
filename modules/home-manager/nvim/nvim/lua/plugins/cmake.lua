@@ -18,8 +18,8 @@ local setup = function()
   vim.api.nvim_set_keymap("n", "<leader>cbk", ":CMake cancel<CR>", { desc = "Cancel build" })
   vim.api.nvim_set_keymap("n", "<leader>cbr", ":CMake run<CR>", { desc = "Run target" })
   vim.api.nvim_set_keymap("n", "<leader>cbsa", ":CMake set_target_args<CR>", { desc = "Set arguments" })
-  vim.api.nvim_set_keymap("n", "<leader>cbsb", ":CMake select_build_type<CR>", { desc = "Select build type" })
-  vim.api.nvim_set_keymap("n", "<leader>cbst", ":CMake select_target<CR>", { desc = "Select target" })
+  vim.api.nvim_set_keymap("n", "<leader>cbsb", ":Telescope cmake select_build_type<CR>", { desc = "Select build type" })
+  vim.api.nvim_set_keymap("n", "<leader>cbst", ":Telescope cmake select_target<CR>", { desc = "Select target" })
 end
 
 M.use = function(use)
