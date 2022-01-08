@@ -64,11 +64,10 @@
       });
     })
     (final: prev: rec {
-        lldb = prev.lldb.overrideAttrs (old: {
-            patches = (old.patches or []) ++ [
-              ./patches/lldb-fix-cpu-subtype-not-found.patch
-            ];
-          });
-      })
+      lldb = prev.lldb.overrideAttrs (old: {
+        patches = (old.patches or [ ])
+          ++ [ ./patches/lldb-fix-cpu-subtype-not-found.patch ];
+      });
+    })
   ];
 }

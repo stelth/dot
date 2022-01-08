@@ -39,7 +39,7 @@ local setup = function()
   vim.api.nvim_set_keymap("n", "<leader>b[", ":BufferLineCyclePrev<CR>", { desc = "Previoius buffer" })
   vim.api.nvim_set_keymap("n", "<leader>bn", ":BufferLineCycleNext<CR>", { desc = "Next Buffer" })
   vim.api.nvim_set_keymap("n", "<leader>b]", ":BufferLineCycleNext<CR>", { desc = "Next Buffer" })
-  vim.api.nvim_set_keymap('n', '<leader>bg', ':BufferLinePick<CR>', {desc = "Pick Buffer"})
+  vim.api.nvim_set_keymap("n", "<leader>bg", ":BufferLinePick<CR>", { desc = "Pick Buffer" })
 end
 
 M.use = function(use)

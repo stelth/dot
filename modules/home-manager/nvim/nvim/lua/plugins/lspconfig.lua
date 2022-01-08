@@ -9,8 +9,8 @@ M.use = function(use)
     "neovim/nvim-lspconfig",
     config = setup,
     requires = {
-      { "jose-elias-alvarez/null-ls.nvim"},
-      { "folke/lua-dev.nvim"},
+      { "jose-elias-alvarez/null-ls.nvim" },
+      { "folke/lua-dev.nvim" },
     },
   })
 end

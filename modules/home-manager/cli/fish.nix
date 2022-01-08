@@ -36,9 +36,9 @@ in {
     };
     functions = { yabai_fix = "pgrep yabai | xargs kill"; };
     interactiveShellInit = ''
-    set -x LLDB_DEBUGSERVER_PATH /Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Versions/A/Resources/debugserver
-      ${theme}
-    eval (direnv hook fish)
+      set -x LLDB_DEBUGSERVER_PATH /Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Versions/A/Resources/debugserver
+        ${theme}
+      eval (direnv hook fish)
     '';
   };
 }
