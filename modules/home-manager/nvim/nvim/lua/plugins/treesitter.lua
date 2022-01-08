@@ -13,8 +13,6 @@ local setup = function()
     ensure_installed = "all",
     highlight = {
       enable = true,
-      disable = { "org" },
-      additional_vim_regex_highlighting = { "org" },
       use_languagetree = true,
     },
     indent = { enable = false },
