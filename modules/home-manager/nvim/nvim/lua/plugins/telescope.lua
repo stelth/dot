@@ -46,7 +46,6 @@ local setup = function()
   vim.api.nvim_set_keymap("n", "<leader>fr", ":Telescope oldfiles<CR>", { desc = "Recently used" })
   vim.api.nvim_set_keymap("n", "<leader>fz", ":Telescope zoxide list<CR>", { desc = "Zoxide" })
 
-  vim.api.nvim_set_keymap("n", "<leader>.", ":Telescope file_browser<CR>", { desc = "File browser" })
   vim.api.nvim_set_keymap("n", "<leader>,", ":Telescope buffers show_all_buffers=true<CR>", { desc = "Find buffer" })
   vim.api.nvim_set_keymap("n", "<leader>/", ":Telescope live_grep<CR>", { desc = "Grep" })
   vim.api.nvim_set_keymap("n", "<leader>:", ":Telescope command_history<CR>", { desc = "Command history" })
