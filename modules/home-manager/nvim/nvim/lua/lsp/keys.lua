@@ -51,7 +51,6 @@ M.setup = function(client, bufnr)
   })
 
   vim.api.nvim_set_keymap("n", "gr", ":Telescope lsp_references<CR>", { desc = "References" })
-  vim.api.nvim_set_keymap("n", "gR", ":Trouble lsp_references<CR>", { desc = "Trouble references" })
   vim.api.nvim_set_keymap("n", "gd", "", {
     callback = vim.lsp.buf.definition,
     desc = "Goto definition",

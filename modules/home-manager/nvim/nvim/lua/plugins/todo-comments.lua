@@ -9,8 +9,7 @@ local setup = function()
     },
   })
 
-  vim.api.nvim_set_keymap("n", "<leader>xt", ":TodoTrouble<CR>", { desc = "Todo Trouble" })
-  vim.api.nvim_set_keymap("n", "<leader>xT", ":TodoTelescope<CR>", { desc = "Todo Telescope" })
+  vim.api.nvim_set_keymap("n", "<leader>xt", ":TodoTelescope<CR>", { desc = "Todo Telescope" })
 end
 
 M.use = function(use)
