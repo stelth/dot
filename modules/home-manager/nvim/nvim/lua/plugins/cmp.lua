@@ -62,7 +62,6 @@ local setup = function()
       { name = "luasnip" },
       { name = "nvim_lsp" },
       { name = "path" },
-      { name = "spell" },
       { name = "treesitter" },
     },
     formatting = {
@@ -108,7 +107,6 @@ M.use = function(use)
       { "saadparwaiz1/cmp_luasnip" },
       { "hrsh7th/cmp-nvim-lsp" },
       { "hrsh7th/cmp-calc" },
-      { "f3fora/cmp-spell" },
       { "ray-x/cmp-treesitter" },
       { "hrsh7th/cmp-cmdline" },
     },
