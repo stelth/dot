@@ -20,6 +20,7 @@ local servers = {
   cmake = {},
   clangd = {},
   dockerls = {},
+  jdtls = { cmd = { "jdt-language-server" } },
   jsonls = { cmd = { "vscode-json-languageserver", "--stdio" } },
   pyright = {},
   rnix = {},
