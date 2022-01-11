@@ -69,7 +69,6 @@ vim.g.loaded_netrwFileHandlers = 1
 
 pcall(require, "packer_compiled")
 
-local cmd = vim.cmd
 local au = require("util.au")
 
 -- go to last loc when opening a buffer

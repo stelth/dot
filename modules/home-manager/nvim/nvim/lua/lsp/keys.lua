@@ -3,14 +3,6 @@ local util = require("util")
 local M = {}
 
 M.setup = function(client, bufnr)
-  local opts = { noremap = true, silent = true, buffer = bufnr }
-
-  vim.api.nvim_set_keymap("n", "<leader>cr", "", {
-    callback = require("renamer").rename,
-    desc = "Rename",
-  })
-  vim.api.nvim_set_keymap("n", "<leader>ca", ":CodeActionMenu<CR>", { desc = "Code Action Menu" })
-  vim.api.nvim_set_keymap("v", "<leader>ca", ":CodeActionMenu<CR>", { desc = "Code Action Menu" })
   vim.api.nvim_set_keymap("n", "<leader>cd", "", {
     callback = vim.diagnostic.open_float,
     desc = "Line Diagnostics",
