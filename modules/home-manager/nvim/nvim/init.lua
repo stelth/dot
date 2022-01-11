@@ -1,5 +1,3 @@
-local util = require("util")
-
 -- ----------------------------------
 -- General Seeettings
 -- ----------------------------------
@@ -106,13 +104,13 @@ vim.api.nvim_set_keymap("n", "<leader>ts", "", {
   end,
   desc = "Toggle Spell",
 })
-vim.api.nvim_set_keymap("n", "<ldeader>tw", "", {
+vim.api.nvim_set_keymap("n", "<leader>tw", "", {
   callback = function()
     require("util").toggle("wrap")
   end,
   desc = "Toggle Wrap",
 })
-vim.api.nvim_set_keymap("n", "<ldeader>tn", "", {
+vim.api.nvim_set_keymap("n", "<leader>tn", "", {
   callback = function()
     require("util").toggle("relativenumber", true)
     require("util").toggle("number")
