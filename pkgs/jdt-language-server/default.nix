@@ -1,6 +1,6 @@
-{ pkgs, lib, stdenv, fetchurl, makeWrapper, ... }:
-let jdk = pkgs.jdk;
-in stdenv.mkDerivation rec {
+{ lib, stdenv, fetchurl, makeWrapper, jdk }:
+
+stdenv.mkDerivation rec {
   pname = "jdt-language-server";
   version = "1.7.0";
   timestamp = "202112161541";
@@ -8,12 +8,10 @@ in stdenv.mkDerivation rec {
   src = fetchurl {
     url =
       "https://download.eclipse.org/jdtls/milestones/${version}/jdt-language-server-${version}-${timestamp}.tar.gz";
-    sha256 = "2f0c28dfec317a268ec44904420657181b43a7ba2a32f0bf788ea388dacb8552";
+    sha256 = "Lwwo3+wxeiaOxEkEQgZXGBtDp7oqMvC/eI6jiNrLhVI=";
   };
 
   sourceRoot = ".";
-
-  buildInputs = [ jdk ];
 
   nativeBuildInputs = [ makeWrapper ];
 
@@ -86,3 +84,4 @@ in stdenv.mkDerivation rec {
     maintainers = with maintainers; [ matt-snider ];
   };
 }
+
