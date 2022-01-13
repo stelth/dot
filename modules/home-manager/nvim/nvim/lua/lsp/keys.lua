@@ -7,6 +7,10 @@ M.setup = function(client, bufnr)
     callback = vim.diagnostic.open_float,
     desc = "Line Diagnostics",
   })
+  vim.api.nvim_set_keymap("n", "<leader>cr", "", {
+    callback = vim.lsp.buf.rename,
+    desc = "Rename",
+  })
   vim.api.nvim_set_keymap("n", "<leader>cli", ":LspInfo<CR>", { desc = "Lsp Info" })
   vim.api.nvim_set_keymap("n", "<leader>cla", "", {
     callback = vim.lsp.buf.add_workspace_folder,
