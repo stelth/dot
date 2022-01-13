@@ -39,6 +39,7 @@ in {
       set -x LLDB_DEBUGSERVER_PATH /Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Versions/A/Resources/debugserver
         ${theme}
       eval (direnv hook fish)
+      status --is-interactive; and source (jenv init -|psub)
     '';
   };
 }
