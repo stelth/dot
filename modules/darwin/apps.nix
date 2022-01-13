@@ -6,7 +6,6 @@
       "cyberduck"
       "discord"
       "firefox"
-      "github"
       "google-chrome"
       "hammerspoon"
       "karabiner-elements"
