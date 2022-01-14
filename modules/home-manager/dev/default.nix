@@ -12,14 +12,11 @@ in {
     globalPython
     cmake
     gh
-    go
     hub
     lua
     maven
     ninja
     nodejs_latest
-    nodePackages.pnpm
-    nodePackages.yarn
     openjdk
     rustc
     cargo

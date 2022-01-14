@@ -11,8 +11,6 @@
       "karabiner-elements"
       "slack"
       "spotify"
-      "temurin8"
-      "temurin11"
       "twitch"
     ];
     masApps = { "Amphetamine" = 937984704; };
