@@ -30,7 +30,6 @@ function M.setup()
       nls.builtins.diagnostics.cppcheck,
       nls.builtins.diagnostics.flake8,
       nls.builtins.diagnostics.hadolint,
-      nls.builtins.diagnostics.luacheck,
       nls.builtins.diagnostics.markdownlint,
       nls.builtins.diagnostics.proselint,
       nls.builtins.diagnostics.pylint,

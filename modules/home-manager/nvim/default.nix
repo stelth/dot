@@ -11,7 +11,6 @@
     hadolint
     jdt-language-server
     lldb
-    lua53Packages.luacheck
     neovim-nightly
     nixfmt
     nodePackages.bash-language-server
