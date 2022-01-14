@@ -16,8 +16,6 @@ local setup = function()
   })
 
   telescope.load_extension("fzy_native")
-  telescope.load_extension("z")
-  telescope.load_extension("zoxide")
 
   vim.api.nvim_set_keymap("n", "<leader>gc", ":Telescope git_commits<CR>", { desc = "Git commits" })
   vim.api.nvim_set_keymap("n", "<leader>gb", ":Telescope git_branches<CR>", { desc = "Git branches" })
@@ -56,13 +54,10 @@ M.use = function(use)
     "nvim-telescope/telescope.nvim",
     config = setup,
     requires = {
-      "nvim-telescope/telescope-z.nvim",
       "nvim-telescope/telescope-project.nvim",
       "nvim-lua/popup.nvim",
       "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope-symbols.nvim",
       "nvim-telescope/telescope-fzy-native.nvim",
-      "jvgrootveld/telescope-zoxide",
     },
   })
 end
