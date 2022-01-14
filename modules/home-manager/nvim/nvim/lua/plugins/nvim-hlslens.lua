@@ -1,7 +1,6 @@
 local M = {}
 
 local setup = function()
-  local util = require("util")
   vim.api.nvim_set_keymap(
     "n",
     "n",
