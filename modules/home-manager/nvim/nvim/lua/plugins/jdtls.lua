@@ -1,7 +1,14 @@
 local M = {}
 
 local setup = function()
-  require("lsp.jdtls")
+  require("util.au").group("md", function(grp)
+    grp.FileType = {
+      "java",
+      function()
+        require("lsp.jdtls")
+      end,
+    }
+  end)
 end
 
 M.use = function(use)
