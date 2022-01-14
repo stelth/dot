@@ -1,11 +1,7 @@
 hs.window.animationDuration = 0
 
 local running = require("running")
-require("spaces")
-require("wm")
-
 local monocle = require("monocle")
-local quake = require("quake")
 
 local hyper = require("hyper")
 hyper.bindApp({}, "f", "Firefox")
@@ -35,9 +31,6 @@ hs.hotkey.bind({ "alt" }, "z", "Zoom", function(event)
     monocle.toggle(win)
   end
 end)
-
-hs.hotkey.bind({ "cmd" }, "escape", "Scratchpad", quake.toggle)
-hyper.bindApp({}, "return", quake.toggle)
 
 local tap = hs.eventtap.new({ hs.eventtap.event.types.keyDown }, function(event)
   -- print(hs.inspect(event))
