@@ -1,7 +1,7 @@
 local M = {}
 
 local setup = function()
-  require("util.au").group("md", function(grp)
+  require("util.au").group("java", function(grp)
     grp.FileType = {
       "java",
       function()
