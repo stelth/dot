@@ -18,7 +18,7 @@ hyper.bindApp({ "cmd" }, "c", function()
 end)
 
 hyper.bindApp({}, "k", "kitty")
-hyper.bindApp({}, "n", "HCL Notes")
+hyper.bindApp({}, "o", "Microsoft Outlook")
 hyper.bindApp({}, "s", "Slack")
 hyper.bindApp({}, "d", "Discord")
 hyper.bindApp({}, "t", "Twitch")
