@@ -42,7 +42,7 @@ local setup = function()
 
   local config = {
     options = {
-      theme = "tokyonight",
+      theme = "onedark-nvim",
       section_separators = { left = "", right = "" },
       component_separators = { left = "", right = "" },
       -- section_separators = { "", "" },

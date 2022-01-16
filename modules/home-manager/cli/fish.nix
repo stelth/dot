@@ -1,5 +1,5 @@
 { config, pkgs, lib, ... }:
-let theme = builtins.readFile ./fish_tokyonight_night.fish;
+let theme = builtins.readFile ./fish_onedark.fish;
 in {
   programs.fish = {
     enable = true;
