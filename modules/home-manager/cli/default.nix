@@ -20,7 +20,6 @@ in {
     direnv = {
       enable = true;
       nix-direnv = { enable = true; };
-      enableFishIntegration = true;
     };
     fzf = {
       enable = true;
