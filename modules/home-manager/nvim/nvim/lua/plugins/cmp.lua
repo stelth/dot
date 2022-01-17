@@ -51,10 +51,7 @@ local setup = function()
         "i",
         "s",
       }),
-      ["<CR>"] = cmp.mapping.confirm({
-        behavior = cmp.ConfirmBehavior.Replace,
-        select = false,
-      }),
+      ["<CR>"] = cmp.mapping.confirm({}),
     },
     sources = {
       { name = "buffer" },
@@ -93,7 +90,7 @@ local setup = function()
   })
 
   local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-  cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
+  cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({}))
 end
 
 M.use = function(use)
