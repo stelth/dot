@@ -4,11 +4,6 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
 local luadev = require("lua-dev").setup({
-  library = {
-    vimruntime = true,
-    types = true,
-    plugins = false,
-  },
   LspConfig = {
     settings = {
       Lua = {
