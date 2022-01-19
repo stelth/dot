@@ -4,7 +4,9 @@ local setup = function()
   local telescope = require("telescope")
 
   telescope.setup({
-    extensions = { fzy_native = { override_generic_sorter = false, override_file_sorter = true } },
+    extensions = {
+      fzy_native = { override_generic_sorter = false, override_file_sorter = true },
+    },
     defaults = {
       prompt_prefix = " ",
       selection_caret = " ",
@@ -16,6 +18,7 @@ local setup = function()
   })
 
   telescope.load_extension("fzy_native")
+  telescope.load_extension("file_browser")
 
   vim.api.nvim_set_keymap("n", "<leader>gc", ":Telescope git_commits<CR>", { desc = "Git commits" })
   vim.api.nvim_set_keymap("n", "<leader>gb", ":Telescope git_branches<CR>", { desc = "Git branches" })
@@ -40,6 +43,7 @@ local setup = function()
   vim.api.nvim_set_keymap("n", "<leader>sh", ":Telescope command_history<CR>", { desc = "Command history" })
   vim.api.nvim_set_keymap("n", "<leader>sm", ":Telescope marks<CR>", { desc = "Marks" })
 
+  vim.api.nvim_set_keymap("n", "<leader>fb", ":Telescope file_browser<CR>", { desc = "File Browser" })
   vim.api.nvim_set_keymap("n", "<leader>ff", ":Telescope find_files<CR>", { desc = "Find file" })
   vim.api.nvim_set_keymap("n", "<leader>fr", ":Telescope oldfiles<CR>", { desc = "Recently used" })
   vim.api.nvim_set_keymap("n", "<leader>fz", ":Telescope zoxide list<CR>", { desc = "Zoxide" })
@@ -58,6 +62,7 @@ M.use = function(use)
       "nvim-lua/popup.nvim",
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope-fzy-native.nvim",
+      "nvim-telescope/telescope-file-browser.nvim",
     },
   })
 end
