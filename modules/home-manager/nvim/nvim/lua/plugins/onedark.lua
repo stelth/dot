@@ -6,9 +6,6 @@ local setup = function()
     dark_sidebar = false,
     highlight_linenumber = true,
     hide_inactive_statusline = true,
-
-    comment_style = "italic",
-    keyword_style = "italic",
   })
 end
 
