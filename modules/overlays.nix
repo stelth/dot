@@ -50,8 +50,8 @@
         src = prev.fetchFromGitHub {
           owner = "koekeishiya";
           repo = "yabai";
-          rev = "b884717b2d5731f5b4ac164e7c0260076698b08c";
-          sha256 = "sha256-kMPf+g+7nMZyu2bkazhjuaZJVUiEoJrgxmxXhL/jC8M=";
+          rev = "297156c02854f21a811f5593504226a040a60414";
+          sha256 = "7utBcPcCZ6dRnTwUMLFqiNULmJH2pAJy07WCdKjCmDI=";
         };
         buildInputs = with prev.darwin.apple_sdk.frameworks; [
           Carbon
