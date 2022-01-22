@@ -22,11 +22,11 @@
     },
     "darwin-stable": {
       "locked": {
-        "lastModified": 1642739857,
-        "narHash": "sha256-WU8S7OtVt07HRXBcGA1296Vno69g012zLQe1SR58g1g=",
+        "lastModified": 1642779757,
+        "narHash": "sha256-r4xUJoRYWEX5YABVExwD3GG6V0+sMLNpLjhffW5xsfg=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "2c9afd35b57f22dc69803972df147b7a331ee596",
+        "rev": "ea9fd65474307fb740c96d840231b79dd47bd6b4",
         "type": "github"
       },
       "original": {
