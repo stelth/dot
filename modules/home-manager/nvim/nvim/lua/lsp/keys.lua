@@ -5,6 +5,10 @@ M.setup = function(client, bufnr)
     callback = vim.diagnostic.open_float,
     desc = "Line Diagnostics",
   })
+  vim.api.nvim_set_keymap("n", "<leader>ca", "", {
+    callback = vim.lsp.buf.code_action,
+    desc = "Code Action",
+  })
   vim.api.nvim_set_keymap("n", "<leader>cr", "", {
     callback = vim.lsp.buf.rename,
     desc = "Rename",
