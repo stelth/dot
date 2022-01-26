@@ -11,7 +11,8 @@
     hadolint
     jdt-language-server
     lldb
-    neovim-nightly
+    # neovim-nightly
+	(wrapNeovim (neovim-unwrapped.overrideAttrs (oa: { NIX_LDFLAGS = []; })) { })
     nixfmt
     nodePackages.bash-language-server
     nodePackages.dockerfile-language-server-nodejs
