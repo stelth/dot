@@ -3,7 +3,7 @@ local M = {}
 local setup = function()
   require("fidget").setup({
     text = {
-      spinner = "arc",
+      spinner = "dots_pulse",
     },
   })
 end
