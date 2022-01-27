@@ -9,7 +9,7 @@
     clang-tools # clangd
     cppcheck
     hadolint
-    jdt-language-server
+    java-language-server
     lldb
     # neovim-nightly
     (wrapNeovim (neovim-unwrapped.overrideAttrs (oa: { NIX_LDFLAGS = [ ]; }))
