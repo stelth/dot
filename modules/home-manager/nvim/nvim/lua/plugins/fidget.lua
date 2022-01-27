@@ -1,7 +1,11 @@
 local M = {}
 
 local setup = function()
-  require("fidget").setup({})
+  require("fidget").setup({
+    text = {
+      spinner = "arc",
+    },
+  })
 end
 
 M.use = function(use)
