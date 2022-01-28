@@ -51,7 +51,7 @@ in {
       ncdu
       nixfmt
       nixpkgs-fmt
-      nixUnstable
+      nix
       parallel
       pfetch
       pre-commit
