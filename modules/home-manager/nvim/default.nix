@@ -9,6 +9,7 @@
     clang-tools # clangd
     cppcheck
     hadolint
+    haskell-language-server
     jdt-language-server
     lldb
     # neovim-nightly

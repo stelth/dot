@@ -12,6 +12,7 @@ in {
     globalPython
     cmake
     gh
+    ghc
     hub
     lua
     maven

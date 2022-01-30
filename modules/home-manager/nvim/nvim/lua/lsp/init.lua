@@ -27,6 +27,7 @@ local servers = {
     },
   },
   dockerls = {},
+  hls = {},
   jsonls = { cmd = { "vscode-json-languageserver", "--stdio" } },
   pyright = {},
   rnix = {},
