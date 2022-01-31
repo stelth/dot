@@ -10,6 +10,9 @@
     cppcheck
     hadolint
     haskell-language-server
+    haskellPackages.brittany
+    haskellPackages.Cabal_3_6_2_0
+    haskellPackages.cabal-fmt
     jdt-language-server
     lldb
     # neovim-nightly

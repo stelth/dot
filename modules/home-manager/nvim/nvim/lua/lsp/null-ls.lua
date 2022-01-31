@@ -8,6 +8,7 @@ function M.setup()
     save_after_format = false,
     sources = {
       nls.builtins.formatting.black,
+      nls.builtins.formatting.brittany,
       nls.builtins.formatting.clang_format.with({
         filetypes = { "c", "cpp" },
       }),
