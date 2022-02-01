@@ -10,7 +10,6 @@ M.use = function(use)
     config = setup,
     requires = {
       "theHamsta/nvim-dap-virtual-text",
-      "mfussenegger/nvim-dap-python",
       "rcarriga/nvim-dap-ui",
     },
   })

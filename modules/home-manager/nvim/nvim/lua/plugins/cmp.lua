@@ -61,9 +61,6 @@ local setup = function()
       { name = "path" },
       { name = "treesitter" },
     },
-    formatting = {
-      format = require("lspkind").cmp_format(),
-    },
     documentation = {
       border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
       winhighlight = "NormalFloat:NormalFloat,FloatBorder:TelescopeBorder",
@@ -89,7 +86,6 @@ M.use = function(use)
     "hrsh7th/nvim-cmp",
     config = setup,
     requires = {
-      { "onsails/lspkind-nvim" },
       { "hrsh7th/cmp-buffer" },
       { "hrsh7th/cmp-path" },
       { "saadparwaiz1/cmp_luasnip" },

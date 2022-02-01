@@ -19,7 +19,6 @@ vim.fn.sign_define("DapStopped", { text = "", texthl = "Constant" })
 vim.fn.sign_define("DapBreakpointRejected", { text = "" })
 
 require("dapconfig.keys")
-require("dapconfig.python")
 require("dapconfig.cpp")
 
 require("nvim-dap-virtual-text").setup()
