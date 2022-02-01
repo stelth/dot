@@ -10,6 +10,7 @@ let
 in {
   home.packages = with pkgs; [
     globalPython
+    haskellPackages.cabal-install
     cmake
     gh
     ghc
