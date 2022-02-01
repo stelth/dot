@@ -18,7 +18,6 @@ local setup = function()
   })
 
   telescope.load_extension("fzy_native")
-  telescope.load_extension("file_browser")
 
   vim.keymap.set("n", "<leader>gc", ":Telescope git_commits<CR>", { desc = "Git commits" })
   vim.keymap.set("n", "<leader>gb", ":Telescope git_branches<CR>", { desc = "Git branches" })
@@ -34,12 +33,7 @@ local setup = function()
   vim.keymap.set("n", "<leader>ha", ":Telescope autocommands<CR>", { desc = "Autocommands" })
 
   vim.keymap.set("n", "<leader>sg", ":Telescope live_grep<CR>", { desc = "Grep" })
-  vim.keymap.set(
-    "n",
-    "<leader>sb",
-    ":Telescope current_buffer_fuzzy_find<CR>",
-    { desc = "Search current buffer" }
-  )
+  vim.keymap.set("n", "<leader>sb", ":Telescope current_buffer_fuzzy_find<CR>", { desc = "Search current buffer" })
   vim.keymap.set("n", "<leader>sh", ":Telescope command_history<CR>", { desc = "Command history" })
   vim.keymap.set("n", "<leader>sm", ":Telescope marks<CR>", { desc = "Marks" })
 
@@ -62,7 +56,6 @@ M.use = function(use)
       "nvim-lua/popup.nvim",
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope-fzy-native.nvim",
-      "nvim-telescope/telescope-file-browser.nvim",
     },
   })
 end
