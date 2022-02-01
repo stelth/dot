@@ -8,7 +8,7 @@ local setup = function()
     require("notify").notify(msg, log_level, opts)
   end
 
-  vim.api.nvim_set_keymap("n", "<leader>n", "", {
+  vim.keymap.set("n", "<leader>n", "", {
     callback = require("telescope").extensions.notify.notify,
     desc = "Notifications",
   })

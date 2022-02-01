@@ -1,7 +1,7 @@
 local M = {}
 
 local setup = function()
-  vim.api.nvim_set_keymap("n", "<leader>u", ":UndotreeToggle<CR>", { desc = "Undotree" })
+  vim.keymap.set("n", "<leader>u", ":UndotreeToggle<CR>", { desc = "Undotree" })
 end
 
 M.use = function(use)

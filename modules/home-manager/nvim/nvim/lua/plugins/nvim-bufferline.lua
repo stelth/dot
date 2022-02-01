@@ -33,13 +33,13 @@ local setup = function()
     },
   })
 
-  vim.api.nvim_set_keymap("n", "<leader>`", ":e #<CR>", { desc = "Switch to other buffeer" })
-  vim.api.nvim_set_keymap("n", "<leader>bb", ":e #<CR>", { desc = "Switch to other buffer" })
-  vim.api.nvim_set_keymap("n", "<leader>bp", ":BufferLineCyclePrev<CR>", { desc = "Previous buffer" })
-  vim.api.nvim_set_keymap("n", "<leader>b[", ":BufferLineCyclePrev<CR>", { desc = "Previoius buffer" })
-  vim.api.nvim_set_keymap("n", "<leader>bn", ":BufferLineCycleNext<CR>", { desc = "Next Buffer" })
-  vim.api.nvim_set_keymap("n", "<leader>b]", ":BufferLineCycleNext<CR>", { desc = "Next Buffer" })
-  vim.api.nvim_set_keymap("n", "<leader>bg", ":BufferLinePick<CR>", { desc = "Pick Buffer" })
+  vim.keymap.set("n", "<leader>`", ":e #<CR>", { desc = "Switch to other buffeer" })
+  vim.keymap.set("n", "<leader>bb", ":e #<CR>", { desc = "Switch to other buffer" })
+  vim.keymap.set("n", "<leader>bp", ":BufferLineCyclePrev<CR>", { desc = "Previous buffer" })
+  vim.keymap.set("n", "<leader>b[", ":BufferLineCyclePrev<CR>", { desc = "Previoius buffer" })
+  vim.keymap.set("n", "<leader>bn", ":BufferLineCycleNext<CR>", { desc = "Next Buffer" })
+  vim.keymap.set("n", "<leader>b]", ":BufferLineCycleNext<CR>", { desc = "Next Buffer" })
+  vim.keymap.set("n", "<leader>bg", ":BufferLinePick<CR>", { desc = "Pick Buffer" })
 end
 
 M.use = function(use)

@@ -29,7 +29,7 @@ local setup = function()
     grp.FileType = {
       "markdown",
       function()
-        vim.api.nvim_set_keymap("n", "gO", "<cmd>Toc<CR>", { desc = "Generate ToC" })
+        vim.keymap.set("n", "gO", "<cmd>Toc<CR>", { desc = "Generate ToC" })
         vim.o.spell = true
       end,
     }

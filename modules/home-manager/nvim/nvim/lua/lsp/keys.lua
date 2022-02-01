@@ -1,79 +1,79 @@
 local M = {}
 
 M.setup = function(client, bufnr)
-  vim.api.nvim_set_keymap("n", "<leader>cd", "", {
+  vim.keymap.set("n", "<leader>cd", "", {
     callback = vim.diagnostic.open_float,
     desc = "Line Diagnostics",
   })
-  vim.api.nvim_set_keymap("n", "<leader>ca", "", {
+  vim.keymap.set("n", "<leader>ca", "", {
     callback = vim.lsp.buf.code_action,
     desc = "Code Action",
   })
-  vim.api.nvim_set_keymap("n", "<leader>cr", "", {
+  vim.keymap.set("n", "<leader>cr", "", {
     callback = vim.lsp.buf.rename,
     desc = "Rename",
   })
-  vim.api.nvim_set_keymap("n", "<leader>cli", ":LspInfo<CR>", { desc = "Lsp Info" })
-  vim.api.nvim_set_keymap("n", "<leader>cla", "", {
+  vim.keymap.set("n", "<leader>cli", ":LspInfo<CR>", { desc = "Lsp Info" })
+  vim.keymap.set("n", "<leader>cla", "", {
     callback = vim.lsp.buf.add_workspace_folder,
     desc = "Add folder to workspace",
   })
-  vim.api.nvim_set_keymap("n", "<leader>clr", "", {
+  vim.keymap.set("n", "<leader>clr", "", {
     callback = vim.lsp.buf.remove_workspace_folder,
     desc = "Remove folder from workspace",
   })
-  vim.api.nvim_set_keymap("n", "<leader>cll", "", {
+  vim.keymap.set("n", "<leader>cll", "", {
     callback = function()
       print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end,
     desc = "List workspace folders",
   })
-  vim.api.nvim_set_keymap("n", "<leader>tf", "", {
+  vim.keymap.set("n", "<leader>tf", "", {
     callback = require("lsp.formatting").toggle,
     desc = "Toggle format on save",
   })
-  vim.api.nvim_set_keymap("n", "<leader>xs", ":Telescope document_diagnostics", { desc = "Document Diagnostics" })
-  vim.api.nvim_set_keymap("n", "<leader>xw", ":Telescope lsp_workspace_diagnostics", { desc = "Workspace Diagnostics" })
+  vim.keymap.set("n", "<leader>xs", ":Telescope document_diagnostics", { desc = "Document Diagnostics" })
+  vim.keymap.set("n", "<leader>xw", ":Telescope lsp_workspace_diagnostics", { desc = "Workspace Diagnostics" })
 
-  vim.api.nvim_set_keymap("n", "]r", "", {
+  vim.keymap.set("n", "]r", "", {
     callback = function()
       require("illuminate").next_reference({ wrap = true })
     end,
     desc = "Next Reference",
   })
-  vim.api.nvim_set_keymap("n", "[r", "", {
+  vim.keymap.set("n", "[r", "", {
     callback = function()
       require("illuminate").next_reference({ reverse = true, wrap = true })
     end,
     desc = "Previous Reference",
   })
 
-  vim.api.nvim_set_keymap("n", "gr", ":Telescope lsp_references<CR>", { desc = "References" })
-  vim.api.nvim_set_keymap("n", "gd", "", {
+  vim.keymap.set("n", "gr", ":Telescope lsp_references<CR>", { desc = "References" })
+  vim.keymap.set("n", "gd", "", {
     callback = vim.lsp.buf.definition,
     desc = "Goto definition",
   })
-  vim.api.nvim_set_keymap(
+  vim.keymap.set(
     "n",
     "gdv",
     ":vsplit | lua vim.lsp.buf.definition()<CR>",
     { desc = "Goto definition in vsplit" }
   )
-  vim.api.nvim_set_keymap(
+  vim.keymap.set(
     "n",
     "gds",
     ":split | lua vim.lsp.buf.definition()<CR>",
     { desc = "Goto definition in split" }
   )
-  vim.api.nvim_set_keymap("n", "gs", "", {
+  vim.keymap.set("n", "gs", "", {
     callback = vim.lsp.buf.signature_help,
     desc = "Goto signature help",
   })
-  vim.api.nvim_set_keymap("n", "gI", "", {
+  vim.keymap.set("n", "gI", "", {
     callback = vim.lsp.buf.implementation,
     desc = "Goto implementation",
   })
-  vim.api.nvim_set_keymap("n", "gt", "", {
+  vim.keymap.set("n", "gt", "", {
     callback = vim.lsp.buf.type_definition,
     desc = "Goto type definition",
   })
@@ -121,12 +121,12 @@ M.setup = function(client, bufnr)
 
   -- Set some keybinds conditional on server capabilities
   if client.resolved_capabilities.document_formatting then
-    vim.api.nvim_set_keymap("n", "<leader>cf", "", {
+    vim.keymap.set("n", "<leader>cf", "", {
       callback = vim.lsp.buf.formatting,
       desc = "Format document",
     })
   elseif client.resolved_capabilities.document_range_formatting then
-    vim.api.nvim_set_keymap("v", "<leader>cf", "", {
+    vim.keymap.set("v", "<leader>cf", "", {
       callback = vim.lsp.buf.range_formatting,
       desc = "Format range",
     })

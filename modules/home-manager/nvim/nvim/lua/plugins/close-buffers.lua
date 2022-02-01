@@ -1,7 +1,7 @@
 local M = {}
 
 local setup = function()
-  vim.api.nvim_set_keymap("n", "<leader>bd", ":BDelete this<CR>", { desc = "Delete Buffer" })
+  vim.keymap.set("n", "<leader>bd", ":BDelete this<CR>", { desc = "Delete Buffer" })
 end
 
 M.use = function(use)
