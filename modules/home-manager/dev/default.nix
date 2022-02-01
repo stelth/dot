@@ -13,6 +13,7 @@ in {
     cmake
     gh
     ghc
+    haskellPackages.cabal-install
     hub
     lua
     maven
