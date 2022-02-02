@@ -15,6 +15,7 @@ local config = {
 }
 
 local plugins = function(use)
+  require("plugins.autopairs").use(use)
   require("plugins.cmake").use(use)
   require("plugins.cmp").use(use)
   require("plugins.comment").use(use)
