@@ -38,6 +38,7 @@ local plugins = function(use)
   require("plugins.tokyonight").use(use)
   require("plugins.treesitter").use(use)
   require("plugins.vim-mergetool").use(use)
+  require("plugins.yabs").use(use)
 end
 
 packer.setup(config, plugins)
