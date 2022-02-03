@@ -44,7 +44,7 @@ in {
       };
       "9.47.32.9" = lib.hm.dag.entryBefore [ "github.com" ] {
         identityFile = "~/.ssh/keys/id_ed25519_logserver";
-        user = "Jason.P.Cox";
+        user = "jcox";
       };
     };
   };
