@@ -3,9 +3,9 @@
     casks = [
       "1password-beta"
       "avibrazil-rdm"
-      "brave-browser"
       "firefox"
       "github"
+      "google-chrome"
       "hammerspoon"
       "karabiner-elements"
       "keepingyouawake"

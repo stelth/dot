@@ -3,10 +3,10 @@
     casks = [
       "1password-beta"
       "avibrazil-rdm"
-      "brave-browser"
       "cyberduck"
       "discord"
       "firefox"
+      "google-chrome"
       "hammerspoon"
       "karabiner-elements"
       "slack"
