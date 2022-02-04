@@ -124,16 +124,11 @@
           extraModules = [ ./profiles/work.nix ./modules/darwin/apps.nix ];
         };
       };
-    } // eachSystem supportedSystems (system:
+    } // eachDefaultSystem (system:
       let
         pkgs = import nixpkgs {
           inherit system;
-          overlays = [
-            inputs.devshell.overlay
-            (final: prev: {
-              stable = import inputs.stable { system = prev.system; };
-            })
-          ];
+          overlays = [ inputs.devshell.overlay ];
         };
         pyEnv = (pkgs.python3.withPackages
           (ps: with ps; [ black pylint typer colorama shellingham ]));
