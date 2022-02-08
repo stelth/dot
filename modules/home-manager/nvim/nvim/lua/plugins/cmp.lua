@@ -63,6 +63,25 @@ local setup = function()
         hl_group = "LspCodeLens",
       },
     },
+    formatting = {
+      format = function(entry, vim_item)
+        local alias = {
+          buffer = "Buffer",
+          calc = "Calc",
+          luasnip = "Snippet",
+          nvim_lsp = "LSP",
+          path = "Path",
+          treesitter = "treesitter",
+        }
+
+        if entry.source.name == "nvim_lsp" then
+          vim_item.menu = entry.source.source.client.name
+        else
+          vim_item.menu = alias[entry.source.name] or entry.source.name
+        end
+        return vim_item
+      end,
+    },
     sorting = {
       comparators = {
         cmp.config.compare.sort_text,
