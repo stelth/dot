@@ -3,8 +3,7 @@ local nls = require("null-ls")
 local M = {}
 
 function M.setup()
-  nls.setup({
-    debounce = 150,
+  nls.setup(require("lsp.util").setup({
     save_after_format = false,
     sources = {
       nls.builtins.formatting.black,
@@ -43,9 +42,8 @@ function M.setup()
 
       nls.builtins.hover.dictionary,
     },
-    on_attach = require("lsp.util").on_attach,
     root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".nvim.settings.json", ".git"),
-  })
+  }))
 end
 
 function M.has_formatter(ft)
