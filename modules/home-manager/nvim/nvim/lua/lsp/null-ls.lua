@@ -3,7 +3,7 @@ local nls = require("null-ls")
 local M = {}
 
 function M.setup()
-  nls.setup(require("lsp.util").setup({
+  nls.setup(require("lsp.util").make_config({
     save_after_format = false,
     sources = {
       nls.builtins.formatting.black,

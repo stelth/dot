@@ -1,6 +1,6 @@
 local M = {}
 
-M.setup = function(config)
+M.make_config = function(config)
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
@@ -9,13 +9,15 @@ M.setup = function(config)
     require("lsp.keys").setup(client, bufnr)
   end
 
-  local new_config = vim.tbl_deep_extend("force", {
+  local default_config = {
     on_attach = on_attach,
     capabilities = capabilities,
     flags = {
       debounce_text_changes = 150,
     },
-  }, config)
+  }
+
+  local new_config = vim.tbl_deep_extend("force", default_config, config)
 
   return new_config
 end

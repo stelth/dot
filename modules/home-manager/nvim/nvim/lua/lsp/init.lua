@@ -28,7 +28,7 @@ local servers = {
 
 local lspconfig = require("lspconfig")
 for server, config in pairs(servers) do
-  lspconfig[server].setup(require("lsp.util").setup(config))
+  lspconfig[server].setup(require("lsp.util").make_config(config))
 end
 
 require("lsp.null-ls").setup()
