@@ -37,10 +37,8 @@ local setup = function()
   vim.keymap.set("n", "<leader>sh", ":Telescope command_history<CR>", { desc = "Command history" })
   vim.keymap.set("n", "<leader>sm", ":Telescope marks<CR>", { desc = "Marks" })
 
-  vim.keymap.set("n", "<leader>fb", ":Telescope file_browser<CR>", { desc = "File Browser" })
   vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>", { desc = "Find file" })
   vim.keymap.set("n", "<leader>fr", ":Telescope oldfiles<CR>", { desc = "Recently used" })
-  vim.keymap.set("n", "<leader>fz", ":Telescope zoxide list<CR>", { desc = "Zoxide" })
 
   vim.keymap.set("n", "<leader>,", ":Telescope buffers show_all_buffers=true<CR>", { desc = "Find buffer" })
   vim.keymap.set("n", "<leader>/", ":Telescope live_grep<CR>", { desc = "Grep" })
