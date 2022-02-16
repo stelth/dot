@@ -98,5 +98,10 @@
         };
         python3Packages = python3.pkgs;
       })
+    (final: prev: {
+      haskell-language-server = prev.haskell-language-server.override {
+        supportedGhcVersions = [ "8107" "921" ];
+      };
+    })
   ];
 }
