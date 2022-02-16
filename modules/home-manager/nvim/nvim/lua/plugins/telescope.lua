@@ -23,7 +23,7 @@ local setup = function()
   vim.keymap.set("n", "<leader>gb", ":Telescope git_branches<CR>", { desc = "Git branches" })
   vim.keymap.set("n", "<leader>gs", ":Telescope git_status<CR>", { desc = "Git status" })
 
-  vim.keymap.set("n", "<leader>ht", ":Telescope builtins<CR>", { desc = "Builtins" })
+  vim.keymap.set("n", "<leader>ht", ":Telescope builtin<CR>", { desc = "Builtins" })
   vim.keymap.set("n", "<leader>hh", ":Telescope help_tags<CR>", { desc = "Help" })
   vim.keymap.set("n", "<leader>hm", ":Telescope man_pages<CR>", { desc = "Man pages" })
   vim.keymap.set("n", "<leader>hk", ":Telescope keymaps<CR>", { desc = "Keymaps" })
