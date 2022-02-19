@@ -34,18 +34,12 @@ in {
         serverAliveInterval = 50;
         extraOptions = { "StrictHostKeyChecking" = "no"; };
       };
-      "github.com" = lib.hm.dag.entryBefore [ "10.* 172.* 192.*" ] {
-        user = "stelth";
-        identityFile = "~/.ssh/keys/github_personal_private_key";
-      };
+      "github.com" =
+        lib.hm.dag.entryBefore [ "10.* 172.* 192.*" ] { user = "stelth"; };
       "github.ibm.com" = lib.hm.dag.entryBefore [ "github.com" ] {
-        identityFile = "~/.ssh/keys/github_ibm_private_key";
         user = "Jason.P.Cox@ibm.com";
       };
-      "9.47.32.9" = lib.hm.dag.entryBefore [ "github.com" ] {
-        identityFile = "~/.ssh/keys/id_ed25519_logserver";
-        user = "jcox";
-      };
+      "9.47.32.9" = lib.hm.dag.entryBefore [ "github.com" ] { user = "jcox"; };
     };
   };
 }
