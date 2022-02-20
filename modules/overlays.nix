@@ -1,6 +1,6 @@
 { inputs, nixpkgs, stable, ... }: {
   nixpkgs.overlays = [
-    (final: prev: { stable = import stable { system = prev.system; }; })
+    (final: prev: { stable = import stable { inherit (prev) system; }; })
     inputs.neovim-nightly-overlay.overlay
     (import ../pkgs)
     (final: prev: rec {
@@ -80,7 +80,7 @@
       });
     })
     (final: prev:
-      let lib = prev.lib;
+      let inherit (prev) lib;
       in rec {
         python3 = prev.python3.override {
           packageOverrides = final: prev: {

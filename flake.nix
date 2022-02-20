@@ -47,7 +47,7 @@
       mkLib = nixpkgs:
         import (inputs.home-manager + "/modules/lib/stdlib-extended.nix")
         nixpkgs.lib;
-      lib = (mkLib nixpkgs);
+      lib = mkLib nixpkgs;
 
       isDarwin = system: (builtins.elem system lib.platforms.darwin);
       homePrefix = system: if isDarwin system then "/Users" else "/home";
@@ -130,8 +130,8 @@
           inherit system;
           overlays = [ inputs.devshell.overlay ];
         };
-        pyEnv = (pkgs.python3.withPackages
-          (ps: with ps; [ black pylint typer colorama shellingham ]));
+        pyEnv = pkgs.python3.withPackages
+          (ps: with ps; [ black pylint typer colorama shellingham ]);
         nixBin = pkgs.writeShellScriptBin "nix" ''
           ${pkgs.nixFlakes}/bin/nix --option experimental-features "nix-command flakes" $@
         '';

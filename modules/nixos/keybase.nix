@@ -3,7 +3,6 @@
   services.keybase.enable = true;
   services.kbfs = {
     enable = true;
-    # FIXME /keybase needs to be owned by user
     mountPoint = "/keybase";
     extraFlags = [ "-label kbfs" ];
   };

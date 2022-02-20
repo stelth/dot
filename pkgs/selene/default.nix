@@ -5,7 +5,7 @@ rustPlatform.buildRustPackage rec {
   version = "0.16.0";
   stdenv = pkgs.clangStdenv;
 
-  isDarwin = pkgs.stdenv.isDarwin;
+  inherit (pkgs.stdenv) isDarwin;
 
   darwinPackages = with pkgs.darwin.apple_sdk.frameworks; [
     Security

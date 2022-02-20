@@ -1,15 +1,15 @@
 { inputs, config, pkgs, ... }:
 let
   homeDir = config.home.homeDirectory;
-  pyEnv = (pkgs.python3.withPackages
-    (ps: with ps; [ black pylint typer colorama shellingham ]));
+  pyEnv = pkgs.python3.withPackages
+    (ps: with ps; [ black pylint typer colorama shellingham ]);
   sysDoNixos =
     "[[ -d /etc/nixos ]] && cd /etc/nixos && ${pyEnv}/bin/python bin/do.py $@";
   sysDoDarwin =
     "[[ -d ${homeDir}/dot ]] && cd ${homeDir}/dot && ${pyEnv}/bin/python bin/do.py $@";
-  sysdo = (pkgs.writeShellScriptBin "sysdo" ''
+  sysdo = pkgs.writeShellScriptBin "sysdo" ''
     (${sysDoNixos}) || (${sysDoDarwin})
-  '');
+  '';
 in {
   imports = [ ./cli ./dev ./dotfiles ./git.nix ./kitty ./nvim ];
 
