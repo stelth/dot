@@ -74,7 +74,8 @@ def select(nixos: bool, darwin: bool, home_manager: bool):
     hidden=PLATFORM == FlakeOutputs.NIXOS,
 )
 def bootstrap(
-    host: str = typer.Argument(None, help="the hostname of the configuration to build"),
+    host: str = typer.Argument(
+        None, help="the hostname of the configuration to build"),
     nixos: bool = False,
     darwin: bool = False,
     home_manager: bool = False,
@@ -110,9 +111,10 @@ def bootstrap(
     no_args_is_help=True,
 )
 def build(
-    host: str = typer.Argument(None, help="the hostname of the configuration to build"),
+    host: str = typer.Argument(
+        None, help="the hostname of the configuration to build"),
     pull: bool = typer.Option(
-        default=False, help="whether to fetch current changes from remote"
+        default=False, help="whether to fetch current changes from the remote"
     ),
     nixos: bool = False,
     darwin: bool = False,
@@ -161,16 +163,11 @@ def diskSetup():
         return
 
     if not test_cmd("grep -q '^run\\b' /etc/synthetic.conf 2>/dev/null"):
+        APFS_UTIL = "/System/Library/Filesystems/apfs.fs/Contents/Resources/apfs.util"
         typer.secho("setting up /etc/synthetic.conf", fg=Colors.INFO.value)
-        run_cmd(
-            'echo -e "run\\tprivate/var/run" | sudo tee -a /etc/synthetic.conf >/dev/null'
-        )
-        run_cmd(
-            "/System/Library/Filesystems/apfs.fs/Contents/Resources/apfs.util -B 2>/dev/null || true"
-        )
-        run_cmd(
-            "/System/Library/Filesystems/apfs.fs/Contents/Resources/apfs.util -t 2>/dev/null || true"
-        )
+        run_cmd("echo 'run\tprivate/var/run' | sudo tee -a /etc/synthetic.conf")
+        run_cmd(f"{APFS_UTIL} -B || true")
+        run_cmd(f"{APFS_UTIL} -t || true")
     if not test_cmd("test -L /run"):
         typer.secho("linking /run directory", fg=Colors.INFO.value)
         run_cmd("sudo ln -sfn private/var/run /run")
@@ -179,7 +176,7 @@ def diskSetup():
 
 @app.command(help="run formatter on all files")
 def fmt():
-    run_cmd("treefmt")
+    run_cmd("fmt")
 
 
 @app.command(
@@ -194,7 +191,8 @@ def gc(
         metavar="[AGE]",
         help="specify minimum age for deleting store paths",
     ),
-    dry_run: bool = typer.Option(False, help="test the result of garbage collection"),
+    dry_run: bool = typer.Option(
+        False, help="test the result of garbage collection"),
 ):
     cmd = f"nix-collect-garbage --delete-older-than {delete_older_than} {'--dry-run' if dry_run else ''}"
     run_cmd(cmd)
@@ -254,7 +252,8 @@ def switch(
     home_manager: bool = False,
 ):
     if not host:
-        typer.secho("Error: host configuration not specified.", fg=Colors.ERROR.value)
+        typer.secho("Error: host configuration not specified.",
+                    fg=Colors.ERROR.value)
         raise typer.Abort()
 
     cfg = select(nixos=nixos, darwin=darwin, home_manager=home_manager)

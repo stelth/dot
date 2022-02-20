@@ -5,48 +5,62 @@
       recursive = true;
     };
   };
-  home.packages = with pkgs; [
-    clang-tools # clangd
-    cppcheck
-    hadolint
-    haskell-language-server
-    haskellPackages.brittany
-    haskellPackages.Cabal_3_6_2_0
-    haskellPackages.cabal-fmt
-    jdt-language-server
-    lldb
-    # neovim-nightly
-    (wrapNeovim (neovim-unwrapped.overrideAttrs (oa: { NIX_LDFLAGS = [ ]; }))
-      { })
-    nixfmt
-    nodePackages.bash-language-server
-    nodePackages.dockerfile-language-server-nodejs
-    nodePackages.eslint_d
-    nodePackages.markdownlint-cli
-    nodePackages.prettier
-    nodePackages.pyright
-    nodePackages.stylelint
-    nodePackages.typescript-language-server
-    nodePackages.vim-language-server
-    nodePackages.vscode-css-languageserver-bin
-    nodePackages.vscode-html-languageserver-bin
-    nodePackages.vscode-json-languageserver
-    nodePackages.write-good
-    nodePackages.yaml-language-server
-    proselint
-    python3Packages.isort
-    python3Packages.pylint
-    rnix-lsp
-    selene
-    shellcheck
-    shellharden
-    shfmt
-    stable.cmake-language-server
-    stylua
-    sumneko-lua-language-server
-    tree-sitter
-    uncrustify
-    vim-vint
-    yamllint
-  ];
+  programs.neovim = {
+    enable = true;
+    package = pkgs.neovim-unwrapped;
+    vimAlias = true;
+    withNodeJs = false;
+    withPython3 = false;
+    withRuby = false;
+
+    extraConfig = builtins.concatStringsSep "\n" [''
+      luafile ${builtins.toString ~/.config/nvim/init_lua.lua}
+    ''];
+
+    extraPackages = with pkgs; [
+      # Essentials
+      tree-sitter
+      fd
+      fzy
+
+      # C/C++
+      clang-tools
+      cppcheck
+
+      # Haskell
+      haskell-language-server
+      haskellPackages.brittany
+      haskellPackages.cabal-fmt
+
+      # Java
+      jdt-language-server
+
+      #nix
+      nixfmt
+      rnix-lsp
+      statix
+
+      # python
+      (python3.withPackages (ps: with ps; [ autopep8 flake8 isort yamllint ]))
+      nodePackages.pyright
+
+      # Lua
+      selene
+      stylua
+      sumneko-lua-language-server
+
+      # Shell scripting
+      nodePackages.bash-language-server
+      shellcheck
+      shellharden
+      shfmt
+
+      # Additional
+      stable.cmake-language-server
+      nodePackages.markdownlint-cli
+      nodePackages.prettier
+      nodePackages.vscode-json-languageserver
+      nodePackages.yaml-language-server
+    ];
+  };
 }

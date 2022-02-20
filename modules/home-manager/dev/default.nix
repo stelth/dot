@@ -1,20 +1,11 @@
-{ config, pkgs, lib, ... }:
-let
-  globalPythonPkgs = python-packages:
-    with python-packages; [
-      debugpy
-      autopep8
-      flake8
-    ];
-  globalPython = pkgs.python3.withPackages globalPythonPkgs;
-in {
+{ config, pkgs, lib, ... }: {
   home.packages = with pkgs; [
-    globalPython
     cmake
     gh
     ghc
     haskellPackages.cabal-install
     hub
+    lldb
     lua
     maven
     ninja

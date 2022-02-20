@@ -33,35 +33,23 @@ in {
     packages = with pkgs; [
       as-tree
       aspell
-      bandwhich
-      python3Packages.black
       bottom
-      broot
       coreutils-full
       curl
       du-dust
-      fzy
       ghq
-      glow
       gnused
       grc
-      hyperfine
       less
       manix
       ncdu
-      nixfmt
-      nixpkgs-fmt
       nix
       parallel
       pfetch
-      pre-commit
       procs
       ripgrep-all
-      rpmextract
       rsync
       sysdo
-      tealdeer
-      treefmt
       tokei
     ];
   };

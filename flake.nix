@@ -140,7 +140,14 @@
         '';
       in {
         devShell = pkgs.devshell.mkShell {
-          packages = [ nixBin pyEnv pkgs.treefmt pkgs.nixfmt pkgs.stylua ];
+          packages = [
+            nixBin
+            pyEnv
+            pkgs.treefmt
+            pkgs.nixfmt
+            pkgs.stylua
+            pkgs.python3.black
+          ];
           commands = [{
             name = "sysdo";
             package = sysdo;

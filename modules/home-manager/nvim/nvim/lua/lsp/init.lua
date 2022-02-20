@@ -15,14 +15,11 @@ local luadev = require("lua-dev").setup({
 local servers = {
   bashls = {},
   cmake = {},
-  dockerls = {},
   hls = {},
   jsonls = { cmd = { "vscode-json-languageserver", "--stdio" } },
   pyright = {},
   rnix = {},
   sumneko_lua = luadev,
-  vimls = {},
-  tsserver = {},
   yamlls = {},
 }
 
