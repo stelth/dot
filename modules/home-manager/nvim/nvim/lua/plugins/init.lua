@@ -1,5 +1,10 @@
 local packer = require("util.packer")
 
+vim.keymap.set("n", "<leader>hpp", ":PackerSync<CR>", { desc = "Packer sync" })
+vim.keymap.set("n", "<leader>hps", ":PackerStatus<CR>", { desc = "Packer status" })
+vim.keymap.set("n", "<leader>hpi", ":PackerInstall<CR>", { desc = "Packer install" })
+vim.keymap.set("n", "<leader>hpc", ":PackerCompile<CR>", { desc = "Packer compile" })
+
 local config = {
   max_jobs = 4,
   display = {
@@ -34,7 +39,6 @@ local plugins = function(use)
   require("plugins.nvim-terminal").use(use)
   require("plugins.nvim-toggleterm").use(use)
   require("plugins.nvim-web-devicons").use(use)
-  require("plugins.packer").use(use)
   require("plugins.telescope").use(use)
   require("plugins.tokyonight").use(use)
   require("plugins.treesitter").use(use)

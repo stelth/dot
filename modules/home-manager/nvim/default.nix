@@ -17,6 +17,8 @@
       luafile ${builtins.toString ~/.config/nvim/init_lua.lua}
     ''];
 
+    plugins = with pkgs.vimPlugins; [ packer-nvim ];
+
     extraPackages = with pkgs; [
       # Essentials
       tree-sitter
