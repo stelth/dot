@@ -74,35 +74,6 @@
       starship = prev.starship.overrideAttrs
         (old: { buildInputs = old.buildInputs ++ [ Foundation ]; });
     })
-    (final: prev: rec {
-      remarshal = prev.remarshal.overrideAttrs (old: {
-        postPatch = ''
-                substituteInPlace pyproject.toml \
-          --replace "poetry.masonry.api" "poetry.core.masonry.api" \
-          --replace 'PyYAML = "^5.3"' 'PyYAML = "*"' \
-          --replace 'tomlkit = "^0.7"' 'tomlkit = "*"'
-        '';
-      });
-    })
-    (final: prev:
-      let inherit (prev) lib;
-      in rec {
-        python3 = prev.python3.override {
-          packageOverrides = final: prev: {
-            ipython = prev.ipython.overrideAttrs (old: {
-              preCheck = old.preCheck
-                + lib.optionalString prev.stdenv.isDarwin ''
-                  # Fake the impure dependencies pbpaste and pbcopy
-                  echo "#!${prev.stdenv.shell}" > pbcopy
-                  echo "#!${prev.stdenv.shell}" > pbpaste
-                  chmod a+x pbcopy pbpaste
-                  export PATH=$(pwd):$PATH
-                '';
-            });
-          };
-        };
-        python3Packages = python3.pkgs;
-      })
     (final: prev: {
       haskell-language-server = prev.haskell-language-server.override {
         supportedGhcVersions = [ "8107" "921" ];
