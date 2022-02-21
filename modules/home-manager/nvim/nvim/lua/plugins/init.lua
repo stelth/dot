@@ -21,7 +21,6 @@ local config = {
 
 local plugins = function(use)
   require("plugins.autopairs").use(use)
-  require("plugins.cmake").use(use)
   require("plugins.cmp").use(use)
   require("plugins.comment").use(use)
   require("plugins.dap").use(use)
@@ -44,7 +43,6 @@ local plugins = function(use)
   require("plugins.vim-markdown").use(use)
   require("plugins.vim-matchup").use(use)
   require("plugins.vim-mergetool").use(use)
-  require("plugins.yabs").use(use)
 end
 
 packer.setup(config, plugins)
