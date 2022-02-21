@@ -69,11 +69,6 @@
           ++ [ ./patches/lldb-fix-cpu-subtype-not-found.patch ];
       });
     })
-    # (final: prev: rec {
-    #   inherit (prev.darwin.apple_sdk.frameworks) Security Foundation;
-    #   starship = prev.starship.overrideAttrs
-    #     (old: { buildInputs = old.buildInputs ++ [ Foundation ]; });
-    # })
     (final: prev: {
       haskell-language-server = prev.haskell-language-server.override {
         supportedGhcVersions = [ "8107" "921" ];
