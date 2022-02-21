@@ -14,7 +14,7 @@ local setup = function()
   })
 
   -- Esc twice to get to normal mode
-  vim.keymap.set("t", "<esc><esc>", "<C-\\'><C-N>", { desc = "Normal mode" })
+  vim.keymap.set("t", "<esc><esc>", "<C-\\><C-N>", { desc = "Normal mode" })
 end
 
 M.use = function(use)
