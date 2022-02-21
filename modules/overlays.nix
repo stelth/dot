@@ -70,6 +70,11 @@
       });
     })
     (final: prev: rec {
+      inherit (prev.darwin.apple_sdk.frameworks) Security Foundation;
+      starship = prev.starship.overrideAttrs
+        (old: { buildInputs = old.buildInputs ++ [ Foundation ]; });
+    })
+    (final: prev: rec {
       remarshal = prev.remarshal.overrideAttrs (old: {
         postPatch = ''
                 substituteInPlace pyproject.toml \
