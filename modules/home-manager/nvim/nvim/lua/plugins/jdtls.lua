@@ -1,6 +1,6 @@
 local M = {}
 
-local setup = function()
+M.setup = function()
   require("util.au").group("java", function(grp)
     grp.FileType = {
       "java",
@@ -9,13 +9,6 @@ local setup = function()
       end,
     }
   end)
-end
-
-M.use = function(use)
-  use({
-    "mfussenegger/nvim-jdtls",
-    config = setup,
-  })
 end
 
 return M

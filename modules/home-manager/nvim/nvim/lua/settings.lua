@@ -68,8 +68,6 @@ vim.g.did_load_filetypes = 0
 
 vim.g.do_filetype_lua = 1
 
-pcall(require, "packer_compiled")
-
 local au = require("util.au")
 
 -- go to last loc when opening a buffer
@@ -151,3 +149,5 @@ vim.api.nvim_exec(
 )
 
 require("plugins")
+require("lsp")
+require("dapconfig")

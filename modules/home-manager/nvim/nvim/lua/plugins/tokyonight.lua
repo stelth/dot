@@ -1,6 +1,6 @@
 local M = {}
 
-local setup = function()
+M.setup = function()
   vim.o.background = "dark"
 
   vim.g.tokyonight_style = "night"
@@ -8,7 +8,6 @@ local setup = function()
     "qf",
     "vista_kind",
     "terminal",
-    "packer",
     "spectre_panel",
     "NeogitStatus",
     "help",
@@ -26,13 +25,6 @@ local setup = function()
   vim.g.tokyonight_color = {}
 
   require("tokyonight").colorscheme()
-end
-
-M.use = function(use)
-  use({
-    "folke/tokyonight.nvim",
-    config = setup,
-  })
 end
 
 return M

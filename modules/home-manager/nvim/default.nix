@@ -14,12 +14,54 @@
     withRuby = false;
 
     extraConfig = builtins.concatStringsSep "\n" [''
-    lua << EOF
-    require('settings')
-    EOF
+      lua << EOF
+      require('settings')
+      EOF
     ''];
 
-    plugins = with pkgs.vimPlugins; [ packer-nvim ];
+    plugins = with pkgs.vimPlugins; [
+      comment-nvim
+      luasnip
+      cmp-buffer
+      cmp-calc
+      cmp-nvim-lsp
+      cmp-path
+      cmp-treesitter
+      cmp_luasnip
+      diffview-nvim
+      dressing-nvim
+      friendly-snippets
+      impatient-nvim
+      indent-blankline-nvim
+      lightspeed-nvim
+      lua-dev-nvim
+      null-ls-nvim
+      nvim-autopairs
+      bufferline-nvim
+      nvim-cmp
+      nvim-dap
+      nvim-dap-ui
+      nvim-dap-virtual-text
+      nvim-hlslens
+      nvim-jdtls
+      nvim-lspconfig
+      nvim-terminal-lua
+      toggleterm-nvim
+      nvim-treesitter
+      nvim-treesitter-textobjects
+      nvim-ts-context-commentstring
+      nvim-web-devicons
+      plenary-nvim
+      popup-nvim
+      tabular
+      telescope-fzy-native-nvim
+      telescope-project-nvim
+      telescope-nvim
+      tokyonight-nvim
+      vim-markdown
+      vim-matchup
+      vim-mergetool
+    ];
 
     extraPackages = with pkgs; [
       # Essentials

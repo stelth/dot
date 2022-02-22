@@ -1,6 +1,6 @@
 local M = {}
 
-local setup = function()
+M.setup = function()
   require("toggleterm").setup({
     size = 20,
     hide_numbers = true,
@@ -15,13 +15,6 @@ local setup = function()
 
   -- Esc twice to get to normal mode
   vim.keymap.set("t", "<esc><esc>", "<C-\\><C-N>", { desc = "Normal mode" })
-end
-
-M.use = function(use)
-  use({
-    "akinsho/nvim-toggleterm.lua",
-    config = setup,
-  })
 end
 
 return M

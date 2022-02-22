@@ -1,6 +1,6 @@
 local M = {}
 
-local setup = function()
+M.setup = function()
   local signs = require("lsp.diagnostics").signs
 
   signs = {
@@ -40,16 +40,6 @@ local setup = function()
   vim.keymap.set("n", "<leader>bn", ":BufferLineCycleNext<CR>", { desc = "Next Buffer" })
   vim.keymap.set("n", "<leader>b]", ":BufferLineCycleNext<CR>", { desc = "Next Buffer" })
   vim.keymap.set("n", "<leader>bg", ":BufferLinePick<CR>", { desc = "Pick Buffer" })
-end
-
-M.use = function(use)
-  use({
-    "akinsho/nvim-bufferline.lua",
-    config = setup,
-    requires = {
-      "kyazdani42/nvim-web-devicons",
-    },
-  })
 end
 
 return M

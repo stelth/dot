@@ -1,6 +1,6 @@
 local M = {}
 
-local setup = function()
+M.setup = function()
   local luasnip = require("luasnip")
 
   luasnip.config.set_config({
@@ -10,16 +10,6 @@ local setup = function()
   })
 
   require("luasnip/loaders/from_vscode").load()
-end
-
-M.use = function(use)
-  use({
-    "L3MON4D3/LuaSnip",
-    requires = {
-      "rafamadriz/friendly-snippets",
-    },
-    config = setup,
-  })
 end
 
 return M

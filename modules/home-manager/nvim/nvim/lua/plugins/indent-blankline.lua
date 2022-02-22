@@ -1,12 +1,11 @@
 local M = {}
 
-local setup = function()
+M.setup = function()
   vim.g.indent_blankline_buftype_exclude = { "terminal", "nofile" }
   vim.g.indent_blankline_filetype_exclude = {
     "help",
     "startify",
     "dashboard",
-    "packer",
     "neogitstatus",
     "NvimTree",
   }
@@ -38,13 +37,6 @@ local setup = function()
   }
   -- HACK: work-around for https://github.com/lukas-reineke/indent-blankline.nvim/issues/59
   vim.wo.colorcolumn = "99999"
-end
-
-M.use = function(use)
-  use({
-    "lukas-reineke/indent-blankline.nvim",
-    config = setup,
-  })
 end
 
 return M

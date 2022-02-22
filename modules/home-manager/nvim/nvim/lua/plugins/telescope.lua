@@ -1,6 +1,6 @@
 local M = {}
 
-local setup = function()
+M.setup = function()
   local telescope = require("telescope")
 
   telescope.setup({
@@ -43,19 +43,6 @@ local setup = function()
   vim.keymap.set("n", "<leader>,", ":Telescope buffers show_all_buffers=true<CR>", { desc = "Find buffer" })
   vim.keymap.set("n", "<leader>/", ":Telescope live_grep<CR>", { desc = "Grep" })
   vim.keymap.set("n", "<leader>:", ":Telescope command_history<CR>", { desc = "Command history" })
-end
-
-M.use = function(use)
-  use({
-    "nvim-telescope/telescope.nvim",
-    config = setup,
-    requires = {
-      "nvim-telescope/telescope-project.nvim",
-      "nvim-lua/popup.nvim",
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope-fzy-native.nvim",
-    },
-  })
 end
 
 return M

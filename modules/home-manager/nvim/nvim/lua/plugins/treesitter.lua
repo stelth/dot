@@ -1,6 +1,6 @@
 local M = {}
 
-local setup = function()
+M.setup = function()
   local gcc = vim.fn.getenv("NIX_GCC")
 
   if gcc and gcc ~= vim.NIL then
@@ -64,18 +64,6 @@ local setup = function()
   parser_config.jsonc.filetype_to_parsername = "json"
 
   vim.keymap.set("n", "<leader>hl", ":TSHighlightCapturesUnderCursor<CR>", { desc = "Show highlight" })
-end
-
-M.use = function(use)
-  use({
-    "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
-    requires = {
-      "nvim-treesitter/nvim-treesitter-textobjects",
-      "JoosepAlviste/nvim-ts-context-commentstring",
-    },
-    config = setup,
-  })
 end
 
 return M
