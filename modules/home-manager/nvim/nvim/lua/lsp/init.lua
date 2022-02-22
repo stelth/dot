@@ -14,6 +14,14 @@ local luadev = require("lua-dev").setup({
 
 local servers = {
   bashls = {},
+  clangd = {
+    cmd = {
+      "clangd",
+      "--background-index",
+      "--clang-tidy",
+      "--header-insertion=iwyu",
+    },
+  },
   cmake = {},
   hls = {},
   jsonls = { cmd = { "vscode-json-languageserver", "--stdio" } },
@@ -29,4 +37,3 @@ for server, config in pairs(servers) do
 end
 
 require("lsp.null-ls").setup()
-require("lsp.clangd_extensions").setup()

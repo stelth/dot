@@ -14,7 +14,9 @@
     withRuby = false;
 
     extraConfig = builtins.concatStringsSep "\n" [''
-      luafile ${builtins.toString ~/.config/nvim/init_lua.lua}
+    lua << EOF
+    require('settings')
+    EOF
     ''];
 
     plugins = with pkgs.vimPlugins; [ packer-nvim ];

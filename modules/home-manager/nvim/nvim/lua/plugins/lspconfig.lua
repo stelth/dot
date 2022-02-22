@@ -11,7 +11,6 @@ M.use = function(use)
     requires = {
       { "jose-elias-alvarez/null-ls.nvim" },
       { "folke/lua-dev.nvim" },
-      { "p00f/clangd_extensions.nvim" },
     },
   })
 end
