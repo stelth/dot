@@ -47,7 +47,7 @@
       nvim-lspconfig
       nvim-terminal-lua
       toggleterm-nvim
-      nvim-treesitter
+      (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
       nvim-treesitter-textobjects
       nvim-ts-context-commentstring
       nvim-web-devicons
