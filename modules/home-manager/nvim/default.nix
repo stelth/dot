@@ -1,4 +1,17 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, lib, ... }:
+let
+  impatient = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "impatient";
+    version = "2022-02-24";
+    src = pkgs.fetchFromGitHub {
+      owner = "lewis6991";
+      repo = "impatient.nvim";
+      rev = "7abfc924714d3b7f19f3674cca0231cf6ef2050f";
+      sha256 = "sha256-f+08N88A5XkUR28HXYEc537iSUHAqdVQFSpSGb1GABM=";
+    };
+    meta.homepage = "https://github.com/lewis6991/impatient.nvim/";
+  };
+in {
   xdg.configFile = {
     "nvim" = {
       source = ./nvim;
@@ -31,7 +44,7 @@
       diffview-nvim
       dressing-nvim
       friendly-snippets
-      impatient-nvim
+      impatient
       indent-blankline-nvim
       lightspeed-nvim
       lua-dev-nvim
