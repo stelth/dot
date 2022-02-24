@@ -33,14 +33,15 @@ in {
     ''];
 
     plugins = with pkgs.vimPlugins; [
-      comment-nvim
-      luasnip
+      (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
+      bufferline-nvim
       cmp-buffer
       cmp-calc
       cmp-nvim-lsp
       cmp-path
       cmp-treesitter
       cmp_luasnip
+      comment-nvim
       diffview-nvim
       dressing-nvim
       friendly-snippets
@@ -48,9 +49,9 @@ in {
       indent-blankline-nvim
       lightspeed-nvim
       lua-dev-nvim
+      luasnip
       null-ls-nvim
       nvim-autopairs
-      bufferline-nvim
       nvim-cmp
       nvim-dap
       nvim-dap-ui
@@ -59,8 +60,6 @@ in {
       nvim-jdtls
       nvim-lspconfig
       nvim-terminal-lua
-      toggleterm-nvim
-      (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
       nvim-treesitter-textobjects
       nvim-ts-context-commentstring
       nvim-web-devicons
@@ -68,8 +67,9 @@ in {
       popup-nvim
       tabular
       telescope-fzy-native-nvim
-      telescope-project-nvim
       telescope-nvim
+      telescope-project-nvim
+      toggleterm-nvim
       tokyonight-nvim
       vim-markdown
       vim-matchup
