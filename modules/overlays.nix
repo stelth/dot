@@ -6,12 +6,12 @@
     (final: prev: rec {
       sumneko-lua-language-server =
         prev.sumneko-lua-language-server.overrideAttrs (o: rec {
-          version = "2.6.5";
+          version = "2.6.6";
 
           src = builtins.fetchurl {
             url =
               "https://github.com/sumneko/vscode-lua/releases/download/v${version}/vscode-lua-v${version}-darwin-x64.vsix";
-            sha256 = "19vybpfs3gzg2madib4i015yk89jzi185c0s8pq9akwqlb87dd8c";
+            sha256 = "0hb4qy67hwxzhfnk69iqmnyzp3695l166zwf0f622j3zarfzk605";
           };
 
           unpackPhase = ''
