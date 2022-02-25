@@ -70,16 +70,6 @@ vim.g.do_filetype_lua = 1
 
 local au = require("util.au")
 
--- go to last loc when opening a buffer
-au.BufReadPost = {
-  "*",
-  function()
-    if vim.fn.line("'\"") > 1 and vim.fn.line("'\"") <= vim.fn.line("$") then
-      vim.fn.execute('normal! g`"')
-    end
-  end,
-}
-
 -- Highlight on yank
 au.TextYankPost = function()
   vim.highlight.on_yank({ higroup = "Visual", timeout = 120 })
