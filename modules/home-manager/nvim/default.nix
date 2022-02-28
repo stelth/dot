@@ -66,6 +66,7 @@ in {
       plenary-nvim
       popup-nvim
       tabular
+      telescope-frecency-nvim
       telescope-fzy-native-nvim
       telescope-nvim
       telescope-project-nvim

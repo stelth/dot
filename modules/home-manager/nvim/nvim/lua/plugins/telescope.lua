@@ -5,19 +5,55 @@ M.setup = function()
 
   telescope.setup({
     extensions = {
-      fzy_native = { override_generic_sorter = false, override_file_sorter = true },
+      fzy_native = { override_generic_sorter = true, override_file_sorter = true },
     },
     defaults = {
-      prompt_prefix = " ",
-      selection_caret = " ",
-      winblend = 10,
+      prompt_prefix = "> ",
+      selection_caret = "> ",
+      entry_prefix = "  ",
+      multi_icon = "<>",
+
+      winblend = 0,
+
+      layout_strategy = "horizontal",
       layout_config = {
-        width = 0.7,
+        width = 0.95,
+        height = 0.85,
+        -- preview_cutoff = 120,
+        prompt_position = "top",
+
+        horizontal = {
+          preview_width = function(_, cols, _)
+            if cols > 200 then
+              return math.floor(cols * 0.4)
+            else
+              return math.floor(cols * 0.6)
+            end
+          end,
+        },
+
+        vertical = {
+          width = 0.9,
+          height = 0.95,
+          preview_height = 0.5,
+        },
+
+        flex = {
+          horizontal = {
+            preview_width = 0.9,
+          },
+        },
       },
+
+      selection_strategy = "reset",
+      sorting_strategy = "descending",
+      scroll_strategy = "cycle",
+      color_devicons = true,
     },
   })
 
   telescope.load_extension("fzy_native")
+  telescope.load_extension("frecency")
 
   vim.keymap.set("n", "<leader>gc", ":Telescope git_commits<CR>", { desc = "Git commits" })
   vim.keymap.set("n", "<leader>gb", ":Telescope git_branches<CR>", { desc = "Git branches" })
