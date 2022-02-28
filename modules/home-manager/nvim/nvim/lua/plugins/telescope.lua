@@ -12,7 +12,6 @@ M.setup = function()
       selection_caret = "> ",
       entry_prefix = "  ",
       multi_icon = "<>",
-
       winblend = 0,
 
       layout_strategy = "horizontal",

@@ -1,14 +1,13 @@
 local M = {}
 
 M.setup = function()
-  require("util.au").group("java", function(grp)
-    grp.FileType = {
-      "java",
-      function()
-        require("lsp.jdtls")
-      end,
-    }
-  end)
+  vim.api.nvim_create_autocmd({
+    event = "FileType",
+    pattern = "java",
+    callback = function()
+      require("lsp.jdtls")
+    end,
+  })
 end
 
 return M

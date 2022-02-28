@@ -69,12 +69,15 @@ vim.g.did_load_filetypes = 0
 
 vim.g.do_filetype_lua = 1
 
-local au = require("util.au")
-
--- Highlight on yank
-au.TextYankPost = function()
-  vim.highlight.on_yank({ higroup = "Visual", timeout = 120 })
-end
+vim.api.nvim_create_autocmd({
+  event = "TextYankPost",
+  callback = function()
+    vim.highlight.on_yank({
+      higroup = "Visual",
+      timeout = "120",
+    })
+  end,
+})
 
 -- ----------------------------------
 -- Key maps
