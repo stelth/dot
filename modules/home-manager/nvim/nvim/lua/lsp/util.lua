@@ -7,6 +7,7 @@ M.make_config = function(config)
   local on_attach = function(client, bufnr)
     require("lsp.formatting").setup(client, bufnr)
     require("lsp.keys").setup(client, bufnr)
+    require("illuminate").on_attach(client)
   end
 
   local default_config = {

@@ -72,6 +72,7 @@ in {
       telescope-project-nvim
       toggleterm-nvim
       tokyonight-nvim
+      vim-illuminate
       vim-markdown
       vim-matchup
       vim-mergetool
