@@ -36,9 +36,7 @@ function M.setup(client, buf)
     vim.api.nvim_create_autocmd({
       event = "BufWritePre",
       pattern = "<buffer>",
-      callback = function()
-        require("lsp.formatting").format()
-      end,
+      callback = require("lsp.formatting").format,
     })
   end
 end
