@@ -33,8 +33,7 @@ function M.setup(client, buf)
   client.resolved_capabilities.document_formatting = enable
   -- format on save
   if client.resolved_capabilities.document_formatting then
-    vim.api.nvim_create_autocmd({
-      event = "BufWritePre",
+    vim.api.nvim_create_autocmd("BufWritePre", {
       pattern = "<buffer>",
       callback = require("lsp.formatting").format,
     })
