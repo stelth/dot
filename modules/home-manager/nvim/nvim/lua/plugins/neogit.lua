@@ -13,7 +13,9 @@ M.setup = function()
   })
 
   vim.keymap.set("n", "<leader>g", "", {
-    callback = require("neogit").open,
+    callback = function()
+      require("neogit").open({ kind = "split" })
+    end,
     desc = "NeoGit",
   })
 end
