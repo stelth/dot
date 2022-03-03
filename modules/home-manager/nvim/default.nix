@@ -38,6 +38,7 @@
       lightspeed-nvim
       lua-dev-nvim
       luasnip
+      neogit
       null-ls-nvim
       nvim-autopairs
       nvim-cmp
