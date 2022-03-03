@@ -31,13 +31,21 @@ M.setup = function()
     },
   })
 
-  vim.keymap.set("n", "]c", "&diff ? ']c' : '<CMD>lua require('gitsigns').next_hunk()<CR>", {
-    expr = true,
-    desc = "Next git change",
+  vim.keymap.set("n", "]c", "", {
+    callback = function()
+      if not vim.api.nvim_win_get_option(0, "diff") then
+        require("gitsigns").next_hunk()
+      end
+    end,
+    desc = "Next change",
   })
-  vim.keymap.set("n", "[c", "&diff ? [c' : <cmd>lua require('gitsigns').prev_hunk()<CR>", {
-    expr = true,
-    desc = "Prev git change",
+  vim.keymap.set("n", "]c", "", {
+    callback = function()
+      if not vim.api.nvim_win_get_option(0, "diff") then
+        require("gitsigns").next_hunk()
+      end
+    end,
+    desc = "Next change",
   })
   vim.keymap.set("n", "<leader>ghs", "", {
     callback = require("gitsigns").stage_hunk,

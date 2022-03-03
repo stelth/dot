@@ -83,28 +83,28 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- ----------------------------------
 
 -- Add undo break-points
-vim.api.nvim_set_keymap("i", ",", ",<c-g>u", {})
-vim.api.nvim_set_keymap("i", ".", ".<c-g>u", {})
-vim.api.nvim_set_keymap("i", ";", ";<c-g>u", {})
+vim.keymap.set("i", ",", ",<c-g>u", {})
+vim.keymap.set("i", ".", ".<c-g>u", {})
+vim.keymap.set("i", ";", ";<c-g>u", {})
 
 -- better indenting
-vim.api.nvim_set_keymap("v", "<", "<gv", {})
-vim.api.nvim_set_keymap("v", ">", ">gv", {})
+vim.keymap.set("v", "<", "<gv", {})
+vim.keymap.set("v", ">", ">gv", {})
 
 -- Toggle
-vim.api.nvim_set_keymap("n", "<leader>ts", "", {
+vim.keymap.set("n", "<leader>ts", "", {
   callback = function()
     require("util").toggle("spell")
   end,
   desc = "Toggle Spell",
 })
-vim.api.nvim_set_keymap("n", "<leader>tw", "", {
+vim.keymap.set("n", "<leader>tw", "", {
   callback = function()
     require("util").toggle("wrap")
   end,
   desc = "Toggle Wrap",
 })
-vim.api.nvim_set_keymap("n", "<leader>tn", "", {
+vim.keymap.set("n", "<leader>tn", "", {
   callback = function()
     require("util").toggle("relativenumber", true)
     require("util").toggle("number")
@@ -113,10 +113,10 @@ vim.api.nvim_set_keymap("n", "<leader>tn", "", {
 })
 
 -- Quickfix and Location List mappings
-vim.api.nvim_set_keymap("n", "<leader>xl", ":lopen<CR>", { desc = "Open Location List" })
-vim.api.nvim_set_keymap("n", "<leader>xq", ":copen<CR>", { desc = "Open Quickfix List" })
+vim.keymap.set("n", "<leader>xl", ":lopen<CR>", { desc = "Open Location List" })
+vim.keymap.set("n", "<leader>xq", ":copen<CR>", { desc = "Open Quickfix List" })
 
-vim.api.nvim_set_keymap("n", "<leader>cu", "", {
+vim.keymap.set("n", "<leader>cu", "", {
   callback = function()
     local number = math.random(math.pow(2, 127) + 1, math.pow(2, 128))
     return "i" .. string.format("%.0f", number)
