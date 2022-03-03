@@ -60,6 +60,7 @@
       telescope-project-nvim
       toggleterm-nvim
       tokyonight-nvim
+      undotree
       vim-illuminate
       vim-markdown
       vim-matchup
