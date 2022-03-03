@@ -70,29 +70,34 @@ M.setup = function(client, bufnr)
     desc = "Goto type definition",
   })
 
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "", {
+  vim.keymap.set("n", "K", "", {
+    buffer = bufnr,
     callback = vim.lsp.buf.hover,
     desc = "Hover",
   })
 
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", "", {
+  vim.keymap.set("n", "[d", "", {
+    buffer = bufnr,
     callback = vim.diagnostic.goto_prev,
     desc = "Goto previous diagnostic",
   })
 
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", "", {
+  vim.keymap.set("n", "]d", "", {
+    buffer = bufnr,
     callback = vim.diagnostic.goto_next,
     desc = "Goto next diagnostic",
   })
 
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "[e", "", {
+  vim.keymap.set("n", "[e", "", {
+    buffer = bufnr,
     callback = function()
       vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })
     end,
     desc = "Goto previous error",
   })
 
-  vim.api.nvim_buf_set_keymap(bufnr, "n", "]e", "", {
+  vim.keymap.set("n", "]e", "", {
+    buffer = bufnr,
     callback = function()
       vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
     end,
@@ -102,7 +107,8 @@ M.setup = function(client, bufnr)
   local trigger_chars = client.resolved_capabilities.signature_help_trigger_characters
   trigger_chars = { "," }
   for _, c in ipairs(trigger_chars) do
-    vim.api.nvim_buf_set_keymap(bufnr, "n", c, "", {
+    vim.keymap.set("n", c, "", {
+      buffer = bufnr,
       callback = function()
         vim.defer_fn(function()
           pcall(vim.lsp.buf.signature_help)
