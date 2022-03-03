@@ -51,7 +51,7 @@ M.setup = function()
     callback = require("gitsigns").stage_hunk,
     desc = "Stage hunk",
   })
-  vim.keymap.set("n", "<ledaer>ghs", "", {
+  vim.keymap.set("n", "<ledaer>ghu", "", {
     callback = require("gitsigns").undo_stage_hunk,
     desc = "Unstage hunk",
   })
