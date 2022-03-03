@@ -32,6 +32,7 @@
       diffview-nvim
       dressing-nvim
       friendly-snippets
+      gitsigns-nvim
       impatient-nvim
       indent-blankline-nvim
       lightspeed-nvim
