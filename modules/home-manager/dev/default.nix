@@ -21,6 +21,7 @@
     matchBlocks = {
       "10.* 172.* 192.*" = {
         user = "root";
+        identitiesOnly = true;
         identityFile = "~/.ssh/keys/id_rsa.cleversafelabs";
         serverAliveInterval = 50;
         extraOptions = { "StrictHostKeyChecking" = "no"; };
