@@ -54,11 +54,11 @@
       nvim-web-devicons
       plenary-nvim
       popup-nvim
+      project-nvim
       tabular
       telescope-frecency-nvim
       telescope-fzy-native-nvim
       telescope-nvim
-      telescope-project-nvim
       toggleterm-nvim
       tokyonight-nvim
       undotree
