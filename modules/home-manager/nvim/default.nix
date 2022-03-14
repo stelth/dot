@@ -24,6 +24,7 @@
       bufferline-nvim
       cmp-buffer
       cmp-calc
+      cmp-cmdline
       cmp-nvim-lsp
       cmp-path
       cmp-treesitter

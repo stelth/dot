@@ -94,6 +94,18 @@ M.setup = function()
 
   local cmp_autopairs = require("nvim-autopairs.completion.cmp")
   cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({}))
+
+  require("cmp").setup.cmdline(":", {
+    sources = {
+      { name = "cmdline" },
+    },
+  })
+
+  require("cmp").setup.cmdline("/", {
+    sources = {
+      { name = "buffer" },
+    },
+  })
 end
 
 return M
