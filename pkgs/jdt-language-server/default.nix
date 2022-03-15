@@ -2,13 +2,13 @@
 
 stdenv.mkDerivation rec {
   pname = "jdt-language-server";
-  version = "1.8.0";
-  timestamp = "202201261434";
+  version = "1.9.0";
+  timestamp = "202203031534";
 
   src = fetchurl {
     url =
       "https://download.eclipse.org/jdtls/milestones/${version}/jdt-language-server-${version}-${timestamp}.tar.gz";
-    sha256 = "aDeFmcyhWPeqtNVHgu/NqSWO+YOJundXxo1ZKE7WlnI=";
+    sha256 = "sha256-uK8ZJcs7gX/RBh4ApF/7xqynaBnYsvWTliYAnr9DL8c=";
   };
 
   sourceRoot = ".";
