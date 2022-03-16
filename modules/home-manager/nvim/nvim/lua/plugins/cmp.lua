@@ -5,6 +5,14 @@ M.setup = function()
   local luasnip = require("luasnip")
 
   cmp.setup({
+    window = {
+      comletion = {
+        border = "single",
+      },
+      documentation = {
+        border = "single",
+      },
+    },
     completion = {
       completeopt = "menu,menuone,noinsert",
     },
@@ -46,18 +54,14 @@ M.setup = function()
       }),
       ["<CR>"] = cmp.mapping.confirm({}),
     },
-    sources = {
+    sources = cmp.config.sources({
       { name = "buffer" },
       { name = "calc" },
       { name = "luasnip" },
       { name = "nvim_lsp" },
       { name = "path" },
       { name = "treesitter" },
-    },
-    documentation = {
-      border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-      winhighlight = "NormalFloat:NormalFloat,FloatBorder:TelescopeBorder",
-    },
+    }),
     experimental = {
       ghost_text = {
         hl_group = "LspCodeLens",
