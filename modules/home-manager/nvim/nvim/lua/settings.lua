@@ -4,21 +4,23 @@
 local indent = 2
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
+
 vim.opt.autowrite = true -- enable auto write
 vim.opt.clipboard = "unnamedplus" -- sync with system clipboard
-vim.opt.conceallevel = 2 -- Hide * markup for bold and italic
 vim.opt.concealcursor = "n" -- Hide * markup for bold and italic
+vim.opt.conceallevel = 2 -- Hide * markup for bold and italic
 vim.opt.confirm = true -- confirm to save changes before exiting modified buffer
 vim.opt.expandtab = true -- Use spaces instead of tabs
-vim.opt.foldmethod = "expr" -- Use expression to deteermine folding
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.guifont = "FiraCode Nerd Font:h12"
-vim.opt.grepprg = "rg --vimgrep"
+vim.opt.foldmethod = "expr" -- Use expression to deteermine folding
 vim.opt.grepformat = "%f:%l:%c:%m"
+vim.opt.grepprg = "rg --vimgrep"
+vim.opt.guifont = "FiraCode Nerd Font:h12"
 vim.opt.hidden = true -- Enable modified buffers in background
 vim.opt.ignorecase = true -- Ignore case
 vim.opt.inccommand = "split" -- preview incremental substitute
 vim.opt.joinspaces = false -- No double spaces with join after a dot
+vim.opt.laststatus = 3 -- Global statusline
 vim.opt.list = true -- Show some invisible characters (tabs...
 vim.opt.mouse = "a" -- enable mouse mode
 vim.opt.number = true -- Print line number
@@ -46,26 +48,26 @@ vim.opt.wildmode = "longest:full,full" -- Command-line completion mode
 vim.opt.wrap = false -- Disable line wrap
 
 -- don't load the plugins below
-vim.g.loaded_gzip = 1
+vim.g.did_load_filetypes = 0
+vim.g.loaded_2html_plugin = 1
 vim.g.loaded_fzf = 1
-vim.g.loaded_tar = 1
-vim.g.loaded_tarPlugin = 1
-vim.g.loaded_zip = 1
-vim.g.loaded_zipPlugin = 1
 vim.g.loaded_getscript = 1
 vim.g.loaded_getscriptPlugin = 1
-vim.g.loaded_vimball = 1
-vim.g.loaded_vimballPlugin = 1
+vim.g.loaded_gzip = 1
+vim.g.loaded_logiPat = 1
 vim.g.loaded_matchit = 1
 vim.g.loaded_matchparen = 1
-vim.g.loaded_2html_plugin = 1
-vim.g.loaded_logiPat = 1
-vim.g.loaded_rrhelper = 1
 vim.g.loaded_netrw = 1
+vim.g.loaded_netrwFileHandlers = 1
 vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_netrwSettings = 1
-vim.g.loaded_netrwFileHandlers = 1
-vim.g.did_load_filetypes = 0
+vim.g.loaded_rrhelper = 1
+vim.g.loaded_tar = 1
+vim.g.loaded_tarPlugin = 1
+vim.g.loaded_vimball = 1
+vim.g.loaded_vimballPlugin = 1
+vim.g.loaded_zip = 1
+vim.g.loaded_zipPlugin = 1
 
 vim.g.do_filetype_lua = 1
 
