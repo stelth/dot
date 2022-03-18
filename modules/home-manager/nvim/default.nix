@@ -1,4 +1,17 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, lib, ... }:
+let
+  refactoring = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "refactoring";
+    version = "2022-03-18";
+    src = pkgs.fetchFromGitHub {
+      owner = "ThePrimeagen";
+      repo = "refactoring.nvim";
+      rev = "79c0bc1797f80e4a260e08a0aee18c9a2e1b437b";
+      sha256 = "sha256-zSinqDb10AvS7FdCDUS9PgPHThRaSNe8rQAm2gCzx2M=";
+    };
+    meta.homepage = "https://github.com/ThePrimeagen/refactoring.nvim";
+  };
+in {
   xdg.configFile = {
     "nvim" = {
       source = ./nvim;
@@ -56,6 +69,7 @@
       plenary-nvim
       popup-nvim
       project-nvim
+      refactoring
       tabular
       telescope-frecency-nvim
       telescope-fzy-native-nvim
