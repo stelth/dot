@@ -79,11 +79,6 @@
       clang-tools
       cppcheck
 
-      # Haskell
-      haskell-language-server
-      haskellPackages.brittany
-      haskellPackages.cabal-fmt
-
       # Java
       jdt-language-server
 

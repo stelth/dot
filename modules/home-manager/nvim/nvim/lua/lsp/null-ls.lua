@@ -37,10 +37,6 @@ function M.setup()
       nls.builtins.diagnostics.statix,
       nls.builtins.code_actions.statix,
 
-      -- Haskell
-      nls.builtins.formatting.brittany,
-      nls.builtins.formatting.cmake_format,
-
       -- Additional
       nls.builtins.formatting.trim_whitespace.with({
         filetypes = { "*" },

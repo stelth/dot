@@ -2,8 +2,6 @@
   home.packages = with pkgs; [
     cmake
     gh
-    ghc
-    haskellPackages.cabal-install
     hub
     lldb
     lua

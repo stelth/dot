@@ -23,7 +23,6 @@ local servers = {
     },
   },
   cmake = {},
-  hls = {},
   jsonls = { cmd = { "vscode-json-languageserver", "--stdio" } },
   pyright = {},
   rnix = {},
