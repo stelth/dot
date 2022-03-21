@@ -74,5 +74,10 @@
         supportedGhcVersions = [ "8107" "921" ];
       };
     })
+    (final: prev: rec {
+      kitty = prev.kitty.overrideAttrs (old: {
+        patches = (old.patches or [ ]) ++ [ ./patches/kitty-fix-ldflags.patch ];
+      });
+    })
   ];
 }
