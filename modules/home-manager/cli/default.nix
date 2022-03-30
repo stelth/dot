@@ -44,15 +44,10 @@ in {
           "!gi() { curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;}; gi";
       };
     };
-    exa = {
-      enable = true;
-      enableAliases = true;
-    };
     bash = {
       enable = true;
       shellAliases = aliases;
     };
-    nix-index.enable = true;
     zoxide.enable = true;
     starship = {
       enable = true;

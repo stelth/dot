@@ -19,10 +19,20 @@
   };
 
   environment = {
-    systemPackages = with pkgs; [ coreutils curl wget git jq bat fzf ripgrep ];
+    systemPackages = with pkgs; [
+      coreutils-full
+      curl
+      wget
+      git
+      jq
+      bat
+      fzf
+      ripgrep
+    ];
     etc = {
       home-manager.source = "${inputs.home-manager}";
-      nixpkgs.source = "${inputs.nixpkgs}";
+      nixpkgs.source = "${pkgs.path}";
+      stable.source = "${inputs.stable}";
     };
     shells = with pkgs; [ bash zsh fish ];
   };

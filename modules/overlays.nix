@@ -1,6 +1,6 @@
-{ inputs, nixpkgs, stable, ... }: {
+{ inputs, lib, ... }: {
   nixpkgs.overlays = [
-    (final: prev: { stable = import stable { inherit (prev) system; }; })
+    (final: prev: { stable = import inputs.stable { system = prev.system; }; })
     inputs.neovim-nightly-overlay.overlay
     (import ../pkgs)
     (final: prev: rec {
@@ -62,6 +62,7 @@
         ];
         nativeBuildInputs = [ buildSymlinks ];
       });
+
     })
     (final: prev: rec {
       lldb = prev.lldb.overrideAttrs (old: {
