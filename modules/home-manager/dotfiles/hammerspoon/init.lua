@@ -1,8 +1,5 @@
 hs.window.animationDuration = 0
 
-local running = require("running")
-local monocle = require("monocle")
-
 local hyper = require("hyper")
 hyper.bindApp({}, "f", "Firefox")
 hyper.bindApp({ "cmd" }, "f", function()
@@ -23,14 +20,6 @@ hyper.bindApp({}, "s", "Slack")
 hyper.bindApp({}, "d", "Discord")
 hyper.bindApp({}, "t", "Twitch")
 hyper.bindApp({}, "c", "Cyberduck")
-
-hs.hotkey.bind({ "alt" }, "z", "Zoom", function(event)
-  print(hs.inspect(event))
-  local win = hs.window.focusedWindow()
-  if win then
-    monocle.toggle(win)
-  end
-end)
 
 local tap = hs.eventtap.new({ hs.eventtap.event.types.keyDown }, function(event)
   -- print(hs.inspect(event))
@@ -57,9 +46,5 @@ spoon.SpoonInstall:andUse("AClock", {
     end)
   end,
 })
-
-hs.hotkey.bind("alt", "tab", "Switch Window", function()
-  running.switcher()
-end)
 
 hs.alert.show("Hammerspoon Loaded!")
