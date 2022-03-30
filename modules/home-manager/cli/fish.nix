@@ -34,7 +34,6 @@ in {
       show-cursor = "tput cnorm";
       hide-cursor = "tput civis";
     };
-    functions = { yabai_fix = "pgrep yabai | xargs kill"; };
     interactiveShellInit = ''
       set -x SSH_AUTH_SOCK ~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
       set -x LLDB_DEBUGSERVER_PATH /Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Versions/A/Resources/debugserver

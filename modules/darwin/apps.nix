@@ -1,18 +1,7 @@
 { config, lib, pkgs, ... }: {
+  imports = [ ./apps-minimal.nix ];
   homebrew = {
-    casks = [
-      "1password-beta"
-      "avibrazil-rdm"
-      "cyberduck"
-      "discord"
-      "firefox"
-      "google-chrome"
-      "hammerspoon"
-      "karabiner-elements"
-      "slack"
-      "spotify"
-      "twitch"
-    ];
-    masApps = { "Amphetamine" = 937984704; };
+    casks = [ "cyberduck" "discord" "firefox" "slack" "spotify" "twitch" ];
+    masApps = { };
   };
 }

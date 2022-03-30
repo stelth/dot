@@ -3,14 +3,12 @@
     casks = [
       "1password-beta"
       "avibrazil-rdm"
-      "firefox"
-      "github"
       "google-chrome"
       "hammerspoon"
       "karabiner-elements"
       "keepingyouawake"
-      "slack"
+      "rectangle"
     ];
-    masApps = { "Amphetamine" = 937984704; };
+    masApps = { };
   };
 }
