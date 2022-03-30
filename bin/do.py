@@ -174,11 +174,6 @@ def diskSetup():
     typer.secho("disk setup complete", fg=Colors.SUCCESS.value)
 
 
-@app.command(help="run formatter on all files")
-def fmt():
-    run_cmd("fmt")
-
-
 @app.command(
     help="run garbage collection on unused nix store paths",
     no_args_is_help=True,
