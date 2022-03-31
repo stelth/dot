@@ -22,8 +22,6 @@ in {
       v = "nvim";
       git = "hub";
       g = "hub";
-      lg = "lazygit";
-      gl = "hub l --color | devmoji --log --color | less -rXF";
       st = "hub st";
       push = "hub push";
       pull = "hub pull";
