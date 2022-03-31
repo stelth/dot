@@ -18,7 +18,6 @@ hyper.bindApp({}, "k", "kitty")
 hyper.bindApp({}, "o", "Microsoft Outlook")
 hyper.bindApp({}, "s", "Slack")
 hyper.bindApp({}, "d", "Discord")
-hyper.bindApp({}, "t", "Twitch")
 hyper.bindApp({}, "c", "Cyberduck")
 
 local tap = hs.eventtap.new({ hs.eventtap.event.types.keyDown }, function(event)
