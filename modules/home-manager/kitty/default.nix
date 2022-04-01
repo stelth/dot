@@ -19,6 +19,7 @@ in {
       kitty_mod = "cmd+shift";
       listen_on = "unix:/tmp/kitty";
       macos_option_as_alt = true;
+      macos_thicken_font = "0.3";
       macos_traditional_fullscreen = true;
       scrollback_lines = 10000;
       shell_integration = "no-cursor";
