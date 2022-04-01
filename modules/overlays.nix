@@ -9,11 +9,6 @@
           ++ [ ./patches/lldb-fix-cpu-subtype-not-found.patch ];
       });
     })
-    (final: prev: {
-      haskell-language-server = prev.haskell-language-server.override {
-        supportedGhcVersions = [ "8107" "921" ];
-      };
-    })
     (final: prev: rec {
       kitty = prev.kitty.overrideAttrs (old: {
         patches = (old.patches or [ ]) ++ [ ./patches/kitty-fix-ldflags.patch ];
