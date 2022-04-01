@@ -37,17 +37,5 @@
     shells = with pkgs; [ bash zsh fish ];
   };
 
-  fonts.fonts = with pkgs; [
-    (nerdfonts.override {
-      fonts = [
-        "FiraCode"
-        "DejaVuSansMono"
-        "JetBrainsMono"
-        "FantasqueSansMono"
-        "VictorMono"
-        "SourceCodePro"
-      ];
-    })
-    ibm-plex
-  ];
+  fonts.fonts = with pkgs; [ nerdfonts ibm-plex ];
 }
