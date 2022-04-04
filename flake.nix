@@ -138,7 +138,7 @@
         '';
       in {
         devShell = pkgs.devshell.mkShell {
-          packages = [ pyEnv pkgs.treefmt pkgs.nixfmt pkgs.stylua pkgs.black ];
+          packages = with pkgs; [ pyEnv treefmt nixfmt stylua black ];
           commands = [{
             name = "sysdo";
             package = sysdo;
