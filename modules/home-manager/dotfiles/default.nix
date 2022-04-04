@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, lib, ... }: {
 
   home.file = {
     hammerspoon = {
@@ -12,6 +12,10 @@
     "nixpkgs/config.nix" = { source = ../../config.nix; };
     karabiner = {
       source = ./karabiner;
+      recursive = true;
+    };
+    yabai = lib.mkIf pkgs.stdenvNoCC.isDarwin {
+      source = ./yabai;
       recursive = true;
     };
   };

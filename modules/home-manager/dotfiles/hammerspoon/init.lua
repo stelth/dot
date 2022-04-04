@@ -49,4 +49,6 @@ spoon.SpoonInstall:andUse("Caffeine", {
   start = true,
 })
 
+yabai = require("yabai")
+
 hs.alert.show("Hammerspoon Loaded!")

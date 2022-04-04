@@ -23,6 +23,9 @@ in {
       "homebrew/services"
       "koekeishiya/formulae"
     ];
+    extraConfig = ''
+      brew "yabai", restart_service: true
+    '';
 
     brews = [ ];
   };
