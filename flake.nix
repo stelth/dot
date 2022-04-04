@@ -104,7 +104,7 @@
           };
         };
     in {
-      checks = listToAttrs (
+      checks = listToAttrs
         # darwin checks
         (map (system: {
           name = system;
@@ -112,13 +112,7 @@
             darwin =
               self.darwinConfigurations.personal.config.system.build.toplevel;
           };
-        }) lib.platforms.darwin) ++ # linux checks
-        (map (system: {
-          name = system;
-          value = {
-            server = self.homeConfigurations.server.activationPackage;
-          };
-        }) lib.platforms.linux));
+        }) lib.platforms.darwin);
 
       darwinConfigurations = {
         personal = mkDarwinConfig {
@@ -130,6 +124,7 @@
           extraModules = [ ./profiles/work.nix ./modules/darwin/apps.nix ];
         };
       };
+      homeConfigurations = { server = { }; };
     } // eachDefaultSystem (system:
       let
         pkgs = import inputs.stable {
@@ -143,8 +138,7 @@
         '';
       in {
         devShell = pkgs.devshell.mkShell {
-          packages =
-            [ pyEnv pkgs.treefmt pkgs.nixfmt pkgs.stylua pkgs.python3.black ];
+          packages = [ pyEnv pkgs.treefmt pkgs.nixfmt pkgs.stylua pkgs.black ];
           commands = [{
             name = "sysdo";
             package = sysdo;
