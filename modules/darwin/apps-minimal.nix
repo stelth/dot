@@ -6,7 +6,6 @@
       "google-chrome"
       "hammerspoon"
       "karabiner-elements"
-      "keepingyouawake"
       "rectangle"
     ];
     masApps = { };

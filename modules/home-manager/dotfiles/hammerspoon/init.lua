@@ -45,5 +45,8 @@ spoon.SpoonInstall:andUse("AClock", {
     end)
   end,
 })
+spoon.SpoonInstall:andUse("Caffeine", {
+  start = true,
+})
 
 hs.alert.show("Hammerspoon Loaded!")
