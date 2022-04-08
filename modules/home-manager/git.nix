@@ -9,9 +9,17 @@
         ff = "only";
         rebase = false;
       };
+      aliases = {
+        fix = "commit --amend --no-edit";
+        oops = "reset HEAD~1";
+        sub = "submodule update --init --recursive";
+      };
       delta = {
-        side-by-side = false;
-        line-numbers = true;
+        enable = true;
+        options = {
+          side-by-side = false;
+          line-numbers = true;
+        };
       };
       init = { defaultBranch = "main"; };
       diff = { tool = "nvimdiff"; };
@@ -35,7 +43,6 @@
       http = { sslVerify = true; };
       commit = { verbose = true; };
     };
-    delta.enable = true;
     lfs.enable = true;
   };
 }
