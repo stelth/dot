@@ -48,6 +48,7 @@ in {
       enable = true;
       shellAliases = aliases;
     };
+    nix-index.enable = true;
     zoxide.enable = true;
     starship = {
       enable = true;
