@@ -13,12 +13,6 @@
     withPython3 = false;
     withRuby = false;
 
-    extraConfig = builtins.concatStringsSep "\n" [''
-      lua << EOF
-      require('settings')
-      EOF
-    ''];
-
     plugins = with pkgs.vimPlugins; [
       (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
       bufferline-nvim

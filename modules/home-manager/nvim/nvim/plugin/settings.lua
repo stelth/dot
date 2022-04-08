@@ -1,5 +1,5 @@
 -- ----------------------------------
--- General Seeettings
+-- General Settings
 -- ----------------------------------
 local indent = 2
 vim.g.mapleader = " "
@@ -143,6 +143,5 @@ vim.api.nvim_exec(
   false
 )
 
-require("plugins")
-require("lsp")
-require("dapconfig")
+require('lsp')
+require('dapconfig')
