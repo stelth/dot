@@ -34,6 +34,7 @@ in {
       as-tree
       aspell
       bottom
+      comma
       coreutils-full
       curl
       du-dust
