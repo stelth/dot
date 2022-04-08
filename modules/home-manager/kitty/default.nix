@@ -1,9 +1,8 @@
-{ config, pkgs, ... }:
-let theme = builtins.readFile ./kitty_tokyonight_night.conf;
-in {
+{ config, pkgs, ... }: {
   programs.kitty = {
     enable = true;
     font = { name = "FiraCode Nerd Font"; };
+    theme = "Tokyo Night";
     settings = {
       allow_remote_control = "socket-only";
       bold_font = "FiraCode Nerd Font Mono Bold";
@@ -25,12 +24,10 @@ in {
       shell_integration = "no-cursor";
       tab_bar_style = "powerline";
       tab_separator = "";
+      term = "xterm-256color";
       update_check_interval = 0;
       window_border_width = "1.0";
       window_padding_width = 5;
     };
-    extraConfig = ''
-      ${theme}
-    '';
   };
 }
