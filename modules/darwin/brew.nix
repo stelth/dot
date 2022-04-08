@@ -24,7 +24,7 @@ in {
       "koekeishiya/formulae"
     ];
     extraConfig = ''
-      brew "yabai", restart_service: true
+      brew "yabai", restart_service: "changed"
     '';
 
     brews = [ ];
