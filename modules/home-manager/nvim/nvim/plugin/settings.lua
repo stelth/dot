@@ -142,6 +142,3 @@ vim.api.nvim_exec(
 ]],
   false
 )
-
-require('lsp')
-require('dapconfig')
