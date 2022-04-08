@@ -5,7 +5,7 @@ in {
     enable = true;
     prefix = "C-a";
     baseIndex = 1;
-    terminal = "xterm-kitty";
+    terminal = "xterm-256color";
     keyMode = "vi";
     clock24 = true;
     customPaneNavigationAndResize = true;
