@@ -241,7 +241,24 @@
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixos-unstable": "nixos-unstable",
         "nixpkgs": "nixpkgs_2",
+        "small": "small",
         "stable": "stable"
+      }
+    },
+    "small": {
+      "locked": {
+        "lastModified": 1649660258,
+        "narHash": "sha256-XwF5sdeh7Qm3HMwWPlcxti6snvLxBnM6BGD1FLSwRhg=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "1693e55bd218f2d055d82f4485f67d99521cf70a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable-small",
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "stable": {
