@@ -26,6 +26,13 @@
       };
       "github.com" =
         lib.hm.dag.entryBefore [ "10.* 172.* 192.*" ] { user = "stelth"; };
+      "10.137.25.4 10.137.26.4" = lib.hm.dag.entryBefore [ "github.com" ] {
+        user = "root";
+        identitiesOnly = true;
+        identityFile = "~/.ssh/keys/id_rsa.build_node";
+        serverAliveInterval = 50;
+        extraOptions = { "StrictHostKeyChecking" = "no"; };
+      };
       "github.ibm.com" = lib.hm.dag.entryBefore [ "github.com" ] {
         user = "Jason.P.Cox@ibm.com";
       };
