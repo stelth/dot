@@ -3,7 +3,7 @@ local luasnip = require("luasnip")
 
 cmp.setup({
   window = {
-    comletion = {
+    completion = {
       border = "single",
     },
     documentation = {
