@@ -10,6 +10,8 @@ Install:andUse("Caffeine", {
   start = true,
 })
 
+spoon.Caffeine:setState(true)
+
 require("shortcuts")
 require("yabai")
 
