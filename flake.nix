@@ -146,7 +146,7 @@
       };
     } // eachDefaultSystem (system:
       let
-        pkgs = import inputs.stable {
+        pkgs = import nixpkgs {
           inherit system;
           overlays = [ inputs.devshell.overlay ];
         };
