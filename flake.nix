@@ -86,20 +86,32 @@
           extraSpecialArgs = { inherit inputs lib nixpkgs stable; };
           configuration = {
             imports = baseModules ++ extraModules ++ [
-              (import ./modules/overlays.nix { inherit inputs nixpkgs stable; })
+              (import ./modules/overlays.nix {
+                inherit inputs lib nixpkgs stable;
+              })
             ];
           };
         };
     in {
-      checks = listToAttrs
+      checks = listToAttrs (
         # darwin checks
         (map (system: {
           name = system;
           value = {
-            darwin =
+            personal =
               self.darwinConfigurations.personal.config.system.build.toplevel;
+            work = self.darwinConfigurations.work.config.system.build.toplevel;
+            darwinServer =
+              self.homeConfigurations.darwinServer.activationPackage;
           };
-        }) lib.platforms.darwin);
+        }) lib.platforms.darwin) ++
+        # linux checks
+        (map (system: {
+          name = system;
+          value = {
+            server = self.homeConfigurations.server.activationPackage;
+          };
+        }) lib.platforms.linux));
 
       darwinConfigurations = {
         personal = mkDarwinConfig {
@@ -130,10 +142,6 @@
         workServer = mkHomeConfig {
           username = "coxj";
           extraModules = [ ./profiles/home-manager/work.nix ];
-        };
-        vagrant = mkHomeConfig {
-          username = "coxj";
-          extraModules = [ ./profiles/home-manager/personal.nix ];
         };
       };
     } // eachDefaultSystem (system:
