@@ -74,7 +74,8 @@ def select(nixos: bool, darwin: bool, home_manager: bool):
     hidden=PLATFORM == FlakeOutputs.NIXOS,
 )
 def bootstrap(
-    host: str = typer.Argument(None, help="the hostname of the configuration to build"),
+    host: str = typer.Argument(
+        None, help="the hostname of the configuration to build"),
     nixos: bool = False,
     darwin: bool = False,
     home_manager: bool = False,
@@ -110,7 +111,8 @@ def bootstrap(
     no_args_is_help=True,
 )
 def build(
-    host: str = typer.Argument(None, help="the hostname of the configuration to build"),
+    host: str = typer.Argument(
+        None, help="the hostname of the configuration to build"),
     pull: bool = typer.Option(
         default=False, help="whether to fetch current changes from the remote"
     ),
@@ -184,7 +186,8 @@ def gc(
         metavar="[AGE]",
         help="specify minimum age for deleting store paths",
     ),
-    dry_run: bool = typer.Option(False, help="test the result of garbage collection"),
+    dry_run: bool = typer.Option(
+        False, help="test the result of garbage collection"),
 ):
     cmd = f"nix-collect-garbage --delete-older-than {delete_older_than} {'--dry-run' if dry_run else ''}"
     run_cmd(cmd)
@@ -249,7 +252,8 @@ def switch(
     home_manager: bool = False,
 ):
     if not host:
-        typer.secho("Error: host configuration not specified.", fg=Colors.ERROR.value)
+        typer.secho("Error: host configuration not specified.",
+                    fg=Colors.ERROR.value)
         raise typer.Abort()
 
     cfg = select(nixos=nixos, darwin=darwin, home_manager=home_manager)
@@ -273,7 +277,7 @@ def switch(
 
 
 @app.command(help="cache the output environment of flake.nix")
-def cache(cache_name: str = "coxj"):
+def cache(cache_name: str = "stelth"):
     cmd = f"nix flake archive --json | jq -r '.path,(.inputs|to_entries[].value.path)' | cachix push {cache_name}"
     run_cmd(cmd)
 
