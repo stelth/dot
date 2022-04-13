@@ -67,20 +67,6 @@
           specialArgs = { inherit inputs lib nixpkgs stable; };
         };
 
-      # generate a base nixos configuration with the
-      # specified overlays, hardware modules, and any extraModules applied
-      mkNixosConfig = { system ? "x86_64-linux", nixpkgs ? inputs.nixos-unstable
-        , stable ? inputs.s-stable, lib ? (mkLib inputs.nixos-unstable)
-        , hardwareModules, baseModules ? [
-          home-manager.nixosModules.home-manager
-          ./modules/nixos
-        ], extraModules ? [ ] }:
-        nixosSystem {
-          inherit system;
-          modules = baseModules ++ hardwareModules ++ extraModules;
-          specialArgs = { inherit inputs lib nixpkgs stable; };
-        };
-
       # generate a home-manager configuration usable on any unix system
       # with overlays and any extraModules applied
       mkHomeConfig = { username, system ? "x86_64-linux"
@@ -124,29 +110,32 @@
           system = "x86_64-darwin";
           extraModules = [ ./profiles/work.nix ./modules/darwin/apps.nix ];
         };
+      };
 
-        homeConfigurations = {
-          server = mkHomeConfig {
-            username = "coxj";
-            extraModules = [ ./profiles/home-manager/personal.nix ];
-          };
-          darwinServer = mkHomeConfig {
-            username = "coxj";
-            system = "x86_64-darwin";
-            extraModules = [ ./profiles/home-manager/personal.nix ];
-          };
-          darwinServerM1 = mkHomeConfig {
-            username = "coxj";
-            system = "aarch64-darwin";
-            extraModules = [ ./profiles/home-manager/personal.nix ];
-          };
-          workServer = mkHomeConfig {
-            username = "coxj";
-            extraModules = [ ./profiles/home-manager/work.nix ];
-          };
+      homeConfigurations = {
+        server = mkHomeConfig {
+          username = "coxj";
+          extraModules = [ ./profiles/home-manager/personal.nix ];
+        };
+        darwinServer = mkHomeConfig {
+          username = "coxj";
+          system = "x86_64-darwin";
+          extraModules = [ ./profiles/home-manager/personal.nix ];
+        };
+        darwinServerM1 = mkHomeConfig {
+          username = "coxj";
+          system = "aarch64-darwin";
+          extraModules = [ ./profiles/home-manager/personal.nix ];
+        };
+        workServer = mkHomeConfig {
+          username = "coxj";
+          extraModules = [ ./profiles/home-manager/work.nix ];
+        };
+        vagrant = mkHomeConfig {
+          username = "coxj";
+          extraModules = [ ./profiles/home-manager/personal.nix ];
         };
       };
-      homeConfigurations = { server = { }; };
     } // eachDefaultSystem (system:
       let
         pkgs = import inputs.stable {
