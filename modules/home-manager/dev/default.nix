@@ -3,7 +3,6 @@
     cmake
     gh
     hub
-    lldb
     lua
     maven
     ninja

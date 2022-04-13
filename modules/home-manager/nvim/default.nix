@@ -71,6 +71,7 @@
       # C/C++
       clang-tools
       cppcheck
+      lldb
 
       # Java
       jdt-language-server
