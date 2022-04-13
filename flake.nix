@@ -124,6 +124,27 @@
           system = "x86_64-darwin";
           extraModules = [ ./profiles/work.nix ./modules/darwin/apps.nix ];
         };
+
+        homeConfigurations = {
+          server = mkHomeConfig {
+            username = "coxj";
+            extraModules = [ ./profiles/home-manager/personal.nix ];
+          };
+          darwinServer = mkHomeConfig {
+            username = "coxj";
+            system = "x86_64-darwin";
+            extraModules = [ ./profiles/home-manager/personal.nix ];
+          };
+          darwinServerM1 = mkHomeConfig {
+            username = "coxj";
+            system = "aarch64-darwin";
+            extraModules = [ ./profiles/home-manager/personal.nix ];
+          };
+          workServer = mkHomeConfig {
+            username = "coxj";
+            extraModules = [ ./profiles/home-manager/work.nix ];
+          };
+        };
       };
       homeConfigurations = { server = { }; };
     } // eachDefaultSystem (system:
