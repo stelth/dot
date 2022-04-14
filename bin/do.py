@@ -276,11 +276,5 @@ def switch(
     run_cmd(f"{cmd} {flake} {flags}")
 
 
-@app.command(help="cache the output environment of flake.nix")
-def cache(cache_name: str = "stelth"):
-    cmd = f"nix flake archive --json | jq -r '.path,(.inputs|to_entries[].value.path)' | cachix push {cache_name}"
-    run_cmd(cmd)
-
-
 if __name__ == "__main__":
     app()

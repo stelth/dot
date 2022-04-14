@@ -33,7 +33,6 @@ in {
       as-tree
       aspell
       bottom
-      cachix
       comma
       coreutils-full
       curl
