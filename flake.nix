@@ -45,8 +45,9 @@
       inherit (builtins) listToAttrs map;
 
       mkLib = nixpkgs:
-        import (inputs.home-manager + "/modules/lib/stdlib-extended.nix")
-        nixpkgs.lib;
+        nixpkgs.lib.extend
+        (final: prev: (import ./lib final) // home-manager.lib);
+
       lib = mkLib nixpkgs;
 
       isDarwin = system: (builtins.elem system lib.platforms.darwin);
