@@ -13,6 +13,187 @@ for type, icon in pairs(signs) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 
+local has_formatter = function(ft)
+  local sources = require("null-ls.sources")
+  local available = sources.get_available(ft, "NULL_LS_FORMATTING")
+
+  return #available > 0
+end
+
+local autoformat = true
+
+local toggle = function()
+  autoformat = not autoformat
+  if autoformat then
+    require("util").info("enabled format on save", "Formatting")
+  else
+    require("util").warn("disabled format on save", "Formatting")
+  end
+end
+
+local format = function()
+  if autoformat then
+    vim.lsp.buf.formatting_sync(nil, 2000)
+  end
+end
+
+local format_callback = function(client, buf)
+  local ft = vim.api.nvim_buf_get_option(buf, "filetype")
+
+  local enable = false
+  if has_formatter(ft) then
+    enable = client.name == "null-ls"
+  else
+    enable = not (client.name == "null-ls")
+  end
+
+  client.server_capabilities.document_formatting = enable
+  -- format on save
+  if client.server_capabilities.document_formatting then
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      pattern = "<buffer>",
+      callback = format,
+    })
+  end
+end
+
+local keymap_callback = function(client, bufnr)
+  vim.keymap.set("n", "<leader>cd", "", {
+    callback = vim.diagnostic.open_float,
+    desc = "Line Diagnostics",
+  })
+
+  vim.keymap.set("n", "<leader>ca", "", {
+    callback = vim.lsp.buf.code_action,
+    desc = "Code Action",
+  })
+
+  vim.keymap.set("n", "<leader>cr", "", {
+    callback = vim.lsp.buf.rename,
+    desc = "Rename",
+  })
+
+  vim.keymap.set("n", "<leader>cli", ":LspInfo<CR>", { desc = "Lsp Info" })
+
+  vim.keymap.set("n", "<leader>cla", "", {
+    callback = vim.lsp.buf.add_workspace_folder,
+    desc = "Add folder to workspace",
+  })
+
+  vim.keymap.set("n", "<leader>clr", "", {
+    callback = vim.lsp.buf.remove_workspace_folder,
+    desc = "Remove folder from workspace",
+  })
+
+  vim.keymap.set("n", "<leader>cll", "", {
+    callback = function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end,
+    desc = "List workspace folders",
+  })
+
+  vim.keymap.set("n", "<leader>tf", "", {
+    callback = toggle,
+    desc = "Toggle format on save",
+  })
+
+  vim.keymap.set("n", "gr", ":Telescope lsp_references<CR>", { desc = "References" })
+
+  vim.keymap.set("n", "gd", "", {
+    callback = vim.lsp.buf.definition,
+    desc = "Goto definition",
+  })
+
+  vim.keymap.set("n", "gdv", ":vsplit | lua vim.lsp.buf.definition()<CR>", { desc = "Goto definition in vsplit" })
+
+  vim.keymap.set("n", "gds", ":split | lua vim.lsp.buf.definition()<CR>", { desc = "Goto definition in split" })
+
+  vim.keymap.set("n", "gs", "", {
+    callback = vim.lsp.buf.signature_help,
+    desc = "Goto signature help",
+  })
+
+  vim.keymap.set("n", "gI", "", {
+    callback = vim.lsp.buf.implementation,
+    desc = "Goto implementation",
+  })
+
+  vim.keymap.set("n", "gt", "", {
+    callback = vim.lsp.buf.type_definition,
+    desc = "Goto type definition",
+  })
+
+  vim.keymap.set("n", "K", "", {
+    buffer = bufnr,
+    callback = vim.lsp.buf.hover,
+    desc = "Hover",
+  })
+
+  vim.keymap.set("n", "[d", "", {
+    buffer = bufnr,
+    callback = vim.diagnostic.goto_prev,
+    desc = "Goto previous diagnostic",
+  })
+
+  vim.keymap.set("n", "]d", "", {
+    buffer = bufnr,
+    callback = vim.diagnostic.goto_next,
+    desc = "Goto next diagnostic",
+  })
+
+  vim.keymap.set("n", "[e", "", {
+    buffer = bufnr,
+    callback = function()
+      vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })
+    end,
+    desc = "Goto previous error",
+  })
+
+  vim.keymap.set("n", "]e", "", {
+    buffer = bufnr,
+    callback = function()
+      vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
+    end,
+    desc = "Goto next error",
+  })
+
+  -- Set some keybinds conditional on server capabilities
+  if client.server_capabilities.document_formatting then
+    vim.keymap.set("n", "<leader>cf", "", {
+      callback = vim.lsp.buf.formatting,
+      desc = "Format document",
+    })
+  elseif client.server_capabilities.document_range_formatting then
+    vim.keymap.set("v", "<leader>cf", "", {
+      callback = vim.lsp.buf.range_formatting,
+      desc = "Format range",
+    })
+  end
+end
+
+local make_config = function(config)
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+
+  local on_attach = function(client, bufnr)
+    format_callback(client, bufnr)
+    keymap_callback(client, bufnr)
+    require("illuminate").on_attach(client)
+  end
+
+  local default_config = {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    flags = {
+      debounce_text_changes = 150,
+    },
+  }
+
+  local new_config = vim.tbl_deep_extend("force", default_config, config)
+
+  return new_config
+end
+
 local luadev = require("lua-dev").setup({
   LspConfig = {
     settings = {
@@ -45,7 +226,48 @@ local servers = {
 
 local lspconfig = require("lspconfig")
 for server, config in pairs(servers) do
-  lspconfig[server].setup(require("lsp.util").make_config(config))
+  lspconfig[server].setup(make_config(config))
 end
 
-require("lsp.null-ls").setup()
+local nls = require("null-ls")
+nls.setup(make_config({
+  save_after_format = false,
+  sources = {
+    -- Python
+    nls.builtins.formatting.autopep8,
+    nls.builtins.formatting.isort,
+    nls.builtins.diagnostics.flake8,
+
+    -- Shell
+    nls.builtins.formatting.shfmt,
+    nls.builtins.formatting.shellharden,
+    nls.builtins.diagnostics.shellcheck,
+    nls.builtins.code_actions.shellcheck,
+
+    -- yaml, markdown
+    nls.builtins.formatting.prettier,
+    nls.builtins.diagnostics.yamllint,
+    nls.builtins.diagnostics.markdownlint,
+
+    -- C/C++
+    nls.builtins.formatting.clang_format.with({
+      filetypes = { "c", "cpp" },
+    }),
+    nls.builtins.diagnostics.cppcheck,
+
+    -- Lua
+    nls.builtins.diagnostics.selene,
+    nls.builtins.formatting.stylua,
+
+    -- Nix
+    nls.builtins.formatting.nixfmt,
+    nls.builtins.diagnostics.statix,
+    nls.builtins.code_actions.statix,
+
+    -- Additional
+    nls.builtins.formatting.trim_whitespace.with({
+      filetypes = { "*" },
+    }),
+  },
+  root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".nvim.settings.json", ".git"),
+}))
