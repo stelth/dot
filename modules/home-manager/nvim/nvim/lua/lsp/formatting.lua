@@ -30,9 +30,9 @@ function M.setup(client, buf)
     enable = not (client.name == "null-ls")
   end
 
-  client.resolved_capabilities.document_formatting = enable
+  client.server_capabilities.document_formatting = enable
   -- format on save
-  if client.resolved_capabilities.document_formatting then
+  if client.server_capabilities.document_formatting then
     vim.api.nvim_create_autocmd("BufWritePre", {
       pattern = "<buffer>",
       callback = require("lsp.formatting").format,

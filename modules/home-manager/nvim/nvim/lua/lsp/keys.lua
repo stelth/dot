@@ -104,31 +104,13 @@ M.setup = function(client, bufnr)
     desc = "Goto next error",
   })
 
-  local trigger_chars = client.resolved_capabilities.signature_help_trigger_characters
-  trigger_chars = { "," }
-  for _, c in ipairs(trigger_chars) do
-    vim.keymap.set("n", c, "", {
-      buffer = bufnr,
-      callback = function()
-        vim.defer_fn(function()
-          pcall(vim.lsp.buf.signature_help)
-        end, 0)
-        return c
-      end,
-      desc = "Auto signature help",
-      noremap = true,
-      silent = true,
-      expr = true,
-    })
-  end
-
   -- Set some keybinds conditional on server capabilities
-  if client.resolved_capabilities.document_formatting then
+  if client.server_capabilities.document_formatting then
     vim.keymap.set("n", "<leader>cf", "", {
       callback = vim.lsp.buf.formatting,
       desc = "Format document",
     })
-  elseif client.resolved_capabilities.document_range_formatting then
+  elseif client.server_capabilities.document_range_formatting then
     vim.keymap.set("v", "<leader>cf", "", {
       callback = vim.lsp.buf.range_formatting,
       desc = "Format range",
