@@ -1,11 +1,4 @@
-local signs = require("lsp.diagnostics").signs
-
-signs = {
-  error = signs.Error,
-  warning = signs.Warn,
-  info = signs.Info,
-  hint = signs.Hint,
-}
+local signs = { error = " ", warning = " ", hint = " ", info = " " }
 
 local severities = {
   "error",
