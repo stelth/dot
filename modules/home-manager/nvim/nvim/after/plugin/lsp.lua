@@ -22,12 +22,20 @@ end
 
 local autoformat = true
 
+local warn = function(msg, name)
+  vim.notify(msg, vim.log.levels.WARN, { title = name })
+end
+
+local info = function(msg, name)
+  vim.notify(msg, vim.log.levels.INFO, { title = name })
+end
+
 local toggle = function()
   autoformat = not autoformat
   if autoformat then
-    require("util").info("enabled format on save", "Formatting")
+    info("enabled format on save", "Formatting")
   else
-    require("util").warn("disabled format on save", "Formatting")
+    warn("disabled format on save", "Formatting")
   end
 end
 
@@ -229,6 +237,17 @@ for server, config in pairs(servers) do
   lspconfig[server].setup(make_config(config))
 end
 
+local jdtls_setup = function()
+  require("jdtls").start_or_attach({
+    cmd = { "jdt-language-server" },
+    on_attach = require("lsp.util").on_attach,
+  })
+end
+
+vim.api.nvim_create_autocmd("Filetype", {
+  pattern = "java",
+  callback = jdtls_setup,
+})
 local nls = require("null-ls")
 nls.setup(make_config({
   save_after_format = false,
