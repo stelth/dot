@@ -40,10 +40,6 @@ M.setup = function(client, bufnr)
     desc = "Toggle format on save",
   })
 
-  vim.keymap.set("n", "<leader>xs", ":Telescope document_diagnostics", { desc = "Document Diagnostics" })
-
-  vim.keymap.set("n", "<leader>xw", ":Telescope lsp_workspace_diagnostics", { desc = "Workspace Diagnostics" })
-
   vim.keymap.set("n", "gr", ":Telescope lsp_references<CR>", { desc = "References" })
 
   vim.keymap.set("n", "gd", "", {
