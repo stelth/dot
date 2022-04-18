@@ -80,6 +80,29 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
+local warn = function(msg, name)
+  vim.notify(msg, vim.log.levels.WARN, { title = name })
+end
+
+local info = function(msg, name)
+  vim.notify(msg, vim.log.levels.INFO, { title = name })
+end
+
+local toggle = function(option, silent)
+  local option_info = vim.api.nvim_get_option_info(option)
+  local scopes = { buf = "bo", win = "wo", global = "o" }
+  local scope = scopes[option_info.scope]
+  local options = vim[scope]
+  options[option] = not options[option]
+  if silent ~= true then
+    if options[option] then
+      info("enabled vim." .. scope .. "." .. option, "Toggle")
+    else
+      warn("disabled vim." .. scope .. "." .. option, "Toggle")
+    end
+  end
+end
+
 -- ----------------------------------
 -- Key maps
 -- ----------------------------------
@@ -96,22 +119,22 @@ vim.keymap.set("v", ">", ">gv", {})
 -- Toggle
 vim.keymap.set("n", "<leader>ts", "", {
   callback = function()
-    require("util").toggle("spell")
+    toggle("spell")
   end,
   desc = "Toggle Spell",
 })
 vim.keymap.set("n", "<leader>tw", "", {
   callback = function()
-    require("util").toggle("wrap")
+    toggle("wrap")
   end,
   desc = "Toggle Wrap",
 })
 vim.keymap.set("n", "<leader>tn", "", {
   callback = function()
-    require("util").toggle("relativenumber", true)
-    require("util").toggle("number")
+    toggle("relativenumber", true)
+    toggle("number")
   end,
-  desc = "Toggle Wrap",
+  desc = "Toggle Line Numbers",
 })
 
 -- Quickfix and Location List mappings
