@@ -38,11 +38,10 @@ local format = function()
   end
 end
 
-local format_callback = function(_, buf)
+local format_callback = function(_, _)
   vim.api.nvim_create_autocmd("BufWritePre", {
     pattern = "<buffer>",
     callback = format,
-    buffer = buf,
   })
 end
 
