@@ -248,6 +248,7 @@ vim.api.nvim_create_autocmd("Filetype", {
   pattern = "java",
   callback = jdtls_setup,
 })
+
 local nls = require("null-ls")
 nls.setup(make_config({
   save_after_format = false,
