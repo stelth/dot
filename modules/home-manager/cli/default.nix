@@ -52,7 +52,6 @@ in {
     zoxide.enable = true;
     starship = {
       enable = true;
-      package = pkgs.stable.starship;
       enableFishIntegration = true;
       settings = {
         add_newline = true;
