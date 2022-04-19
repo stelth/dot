@@ -1,4 +1,4 @@
-{ inputs, config, lib, pkgs, ... }: {
+{ inputs, config, pkgs, ... }: {
   imports = [ ./primary.nix ./nixpkgs.nix ./overlays.nix ];
 
   user = {
@@ -12,7 +12,7 @@
   hm = import ./home-manager;
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs lib; };
+    extraSpecialArgs = { inherit inputs; };
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "orig";
