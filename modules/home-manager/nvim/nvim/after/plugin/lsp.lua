@@ -13,13 +13,6 @@ for type, icon in pairs(signs) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 
-local has_formatter = function(ft)
-  local sources = require("null-ls.sources")
-  local available = sources.get_available(ft, "NULL_LS_FORMATTING")
-
-  return #available > 0
-end
-
 local autoformat = true
 
 local warn = function(msg, name)
@@ -41,28 +34,16 @@ end
 
 local format = function()
   if autoformat then
-    vim.lsp.buf.formatting_sync(nil, 2000)
+    vim.lsp.buf.formatting_seq_sync()
   end
 end
 
-local format_callback = function(client, buf)
-  local ft = vim.api.nvim_buf_get_option(buf, "filetype")
-
-  local enable = false
-  if has_formatter(ft) then
-    enable = client.name == "null-ls"
-  else
-    enable = not (client.name == "null-ls")
-  end
-
-  client.server_capabilities.document_formatting = enable
-  -- format on save
-  if client.server_capabilities.document_formatting then
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      pattern = "<buffer>",
-      callback = format,
-    })
-  end
+local format_callback = function(_, buf)
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "<buffer>",
+    callback = format,
+    buffer = buf,
+  })
 end
 
 local keymap_callback = function(client, bufnr)
