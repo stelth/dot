@@ -1,4 +1,4 @@
-{ inputs, lib, ... }: {
+{ inputs, ... }: {
   nixpkgs.overlays = [
     (final: prev: {
       stable = import inputs.stable { inherit (prev) system; };
