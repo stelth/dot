@@ -33,7 +33,6 @@ in {
       hide-cursor = "tput civis";
     };
     interactiveShellInit = ''
-      set -x SSH_AUTH_SOCK ~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
       set -x LLDB_DEBUGSERVER_PATH /Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Versions/A/Resources/debugserver
         ${theme}
       eval (direnv hook fish)

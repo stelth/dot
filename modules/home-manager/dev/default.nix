@@ -14,6 +14,7 @@
 
   programs.ssh = {
     enable = true;
+    includes = [ "~/.1password/ssh_config" ];
 
     matchBlocks = {
       "10.* 172.* 192.*" = {
