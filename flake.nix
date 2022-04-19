@@ -126,11 +126,6 @@
           system = "x86_64-darwin";
           extraModules = [ ./profiles/home-manager/personal.nix ];
         };
-        darwinServerM1 = mkHomeConfig {
-          username = "coxj";
-          system = "aarch64-darwin";
-          extraModules = [ ./profiles/home-manager/personal.nix ];
-        };
         workServer = mkHomeConfig {
           username = "coxj";
           extraModules = [ ./profiles/home-manager/work.nix ];
