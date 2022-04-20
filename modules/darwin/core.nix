@@ -7,7 +7,7 @@ in {
     etc = { darwin.source = "${inputs.darwin}"; };
   };
 
-  fonts.enableFontDir = true;
+  fonts.fontDir.enable = true;
   nix.nixPath = [ "darwin=/etc/${config.environment.etc.darwin.target}" ];
 
   users.nix.configureBuildUsers = true;
