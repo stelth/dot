@@ -119,7 +119,6 @@
       homeConfigurations = {
         server = mkHomeConfig {
           username = "coxj";
-          system = "x86_64-linux";
           extraModules = [ ./profiles/home-manager/personal.nix ];
         };
         darwinServer = mkHomeConfig {
