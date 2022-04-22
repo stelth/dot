@@ -83,23 +83,14 @@
           };
         };
     in {
-      checks = listToAttrs (
-        # darwin checks
-        (map (system: {
-          name = system;
-          value = {
-            personal =
-              self.darwinConfigurations.personal.config.system.build.toplevel;
-            work = self.darwinConfigurations.work.config.system.build.toplevel;
-          };
-        }) nixpkgs.lib.platforms.darwin) ++
-        # linux checks
-        (map (system: {
-          name = system;
-          value = {
-            server = self.homeConfigurations.server.activationPackage;
-          };
-        }) nixpkgs.lib.platforms.linux));
+      checks = listToAttrs (map (system: {
+        name = system;
+        value = {
+          personal =
+            self.darwinConfigurations.personal.config.system.build.toplevel;
+          work = self.darwinConfigurations.work.config.system.build.toplevel;
+        };
+      }) nixpkgs.lib.platforms.darwin);
 
       darwinConfigurations = {
         personal = mkDarwinConfig {
@@ -109,22 +100,6 @@
         work = mkDarwinConfig {
           system = "x86_64-darwin";
           extraModules = [ ./profiles/work.nix ./modules/darwin/apps.nix ];
-        };
-      };
-
-      homeConfigurations = {
-        server = mkHomeConfig {
-          username = "coxj";
-          extraModules = [ ./profiles/home-manager/personal.nix ];
-        };
-        darwinServer = mkHomeConfig {
-          username = "coxj";
-          system = "x86_64-darwin";
-          extraModules = [ ./profiles/home-manager/personal.nix ];
-        };
-        workServer = mkHomeConfig {
-          username = "coxj";
-          extraModules = [ ./profiles/home-manager/work.nix ];
         };
       };
     } // eachDefaultSystem (system:
