@@ -24,6 +24,9 @@ jobs:
           extra_nix_config: |
             experimental-features = nix-command flakes
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+      - uses: cachix/cachix-action@v10
+        with:
+          extraPullNames: nix-community
       - name: Run Flake Checks
         run: |
           nix flake check -v --show-trace
