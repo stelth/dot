@@ -47,8 +47,6 @@
       isDarwin = system: (builtins.elem system nixpkgs.lib.platforms.darwin);
       homePrefix = system: if isDarwin system then "/Users" else "/home";
 
-      supportedSystems = [ "x86_64-darwin" "x86_64-linux" ];
-
       # generate a base darwin configuration with the
       # specified hostname, overlays, and any extraModules applied
       mkDarwinConfig = { system, nixpkgs ? inputs.nixpkgs, stable ? inputs

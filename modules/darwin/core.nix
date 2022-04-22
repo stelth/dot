@@ -8,7 +8,12 @@ in {
   };
 
   fonts.fontDir.enable = true;
-  nix.nixPath = [ "darwin=/etc/${config.environment.etc.darwin.target}" ];
+  nix = {
+    nixPath = [ "darwin=/etc/${config.environment.etc.darwin.target}" ];
+    extraOptions = ''
+      extra-platforms = x86_64-darwin
+    '';
+  };
 
   users.nix.configureBuildUsers = true;
 
