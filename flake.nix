@@ -91,8 +91,6 @@
             personal =
               self.darwinConfigurations.personal.config.system.build.toplevel;
             work = self.darwinConfigurations.work.config.system.build.toplevel;
-            darwinServer =
-              self.homeConfigurations.darwinServer.activationPackage;
           };
         }) nixpkgs.lib.platforms.darwin) ++
         # linux checks
