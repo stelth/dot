@@ -159,15 +159,15 @@ local keymap_callback = function(client, bufnr)
   end
 end
 
+local on_attach = function(client, bufnr)
+  format_callback(client, bufnr)
+  keymap_callback(client, bufnr)
+  require("illuminate").on_attach(client)
+end
+
 local make_config = function(config)
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
-
-  local on_attach = function(client, bufnr)
-    format_callback(client, bufnr)
-    keymap_callback(client, bufnr)
-    require("illuminate").on_attach(client)
-  end
 
   local default_config = {
     on_attach = on_attach,
@@ -220,7 +220,7 @@ end
 local jdtls_setup = function()
   require("jdtls").start_or_attach({
     cmd = { "jdt-language-server" },
-    on_attach = require("lsp.util").on_attach,
+    on_attach = on_attach,
   })
 end
 
