@@ -15,7 +15,7 @@
     devshell = { url = "github:numtide/devshell"; };
     stable = { url = "github:nixos/nixpkgs/nixos-21.11"; };
     nixos-unstable = { url = "github:nixos/nixpkgs/nixos-unstable"; };
-    nixpkgs = { url = "github:nixos/nixpkgs/nixos-unstable"; };
+    nixpkgs = { url = "github:nixos/nixpkgs/nixpkgs-unstable"; };
     small = { url = "github:nixos/nixpkgs/nixos-unstable-small"; };
     flake-utils = { url = "github:numtide/flake-utils"; };
     flake-compat = {
