@@ -1,4 +1,17 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, lib, ... }:
+let
+  clangd-extensions = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "clangd-extensions";
+    version = "2022-04-27";
+    src = pkgs.fetchFromGitHub {
+      owner = "p00f";
+      repo = "clangd_extensions.nvim";
+      rev = "46eeb0c93d69bdd135e2ca5dca267d44c3404a72";
+      sha256 = "sha256-sBzPMJTasBZOihdjNlTtlyfH9aY74G955iQj+w5wF4o=";
+    };
+    meta.homepage = "https://github.com/p00f/clangd_extensions.nvim";
+  };
+in {
   xdg.configFile = {
     "nvim" = {
       source = ./nvim;
@@ -16,6 +29,7 @@
     plugins = with pkgs.vimPlugins; [
       (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
       bufferline-nvim
+      clangd-extensions
       cmp-buffer
       cmp-calc
       cmp-nvim-lsp

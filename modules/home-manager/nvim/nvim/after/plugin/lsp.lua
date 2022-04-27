@@ -196,14 +196,6 @@ local luadev = require("lua-dev").setup({
 
 local servers = {
   bashls = {},
-  clangd = {
-    cmd = {
-      "clangd",
-      "--background-index",
-      "--clang-tidy",
-      "--header-insertion=iwyu",
-    },
-  },
   cmake = {},
   jsonls = { cmd = { "vscode-json-languageserver", "--stdio" } },
   pyright = {},
@@ -227,6 +219,17 @@ end
 vim.api.nvim_create_autocmd("Filetype", {
   pattern = "java",
   callback = jdtls_setup,
+})
+
+require("clangd_extensions").setup({
+  server = {
+    cmd = {
+      "clangd",
+      "--background-index",
+      "--clang-tidy",
+      "--header-insertion=iwyu",
+    },
+  },
 })
 
 local nls = require("null-ls")
