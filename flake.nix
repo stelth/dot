@@ -30,10 +30,6 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    neovim-nightly-overlay = {
-      url = "github:nix-community/neovim-nightly-overlay";
-      inputs = { nixpkgs = { follows = "nixpkgs"; }; };
-    };
   };
 
   outputs = inputs@{ self, nixpkgs, darwin, home-manager, flake-utils, ... }:
