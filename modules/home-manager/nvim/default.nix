@@ -11,6 +11,17 @@ let
     };
     meta.homepage = "https://github.com/p00f/clangd_extensions.nvim";
   };
+  neovim-cmake = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "neovim-cmake";
+    version = "2022-05-04";
+    src = pkgs.fetchFromGitHub {
+      owner = "Shatur";
+      repo = "neovim-cmake";
+      rev = "d9e4be6bfa5f44fb04c5326db9d7093cbc6a8b93";
+      sha256 = "sha256-4X+D7tCWn/BQ07O5PoSl2g2hNoKCdp69OrzciBeA2kE=";
+    };
+    meta.homepage = "https://Shatur/neovim-cmake";
+  };
 in {
   xdg.configFile = {
     "nvim" = {
@@ -45,6 +56,7 @@ in {
       lightspeed-nvim
       lua-dev-nvim
       luasnip
+      neovim-cmake
       null-ls-nvim
       nvim-autopairs
       nvim-cmp
