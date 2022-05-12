@@ -66,20 +66,7 @@ cmp.setup({
   },
   formatting = {
     format = function(entry, vim_item)
-      local alias = {
-        buffer = "Buffer",
-        calc = "Calc",
-        luasnip = "Snippet",
-        nvim_lsp = "LSP",
-        path = "Path",
-        treesitter = "treesitter",
-      }
-
-      if entry.source.name == "nvim_lsp" then
-        vim_item.menu = entry.source.source.client.name
-      else
-        vim_item.menu = alias[entry.source.name] or entry.source.name
-      end
+      vim_item.menu = entry:get_completion_item().detail
       return vim_item
     end,
   },
