@@ -2,7 +2,7 @@
 let
   clangd-extensions = pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "clangd-extensions";
-    version = "2022-04-27";
+    version = "2022-04-13";
     src = pkgs.fetchFromGitHub {
       owner = "p00f";
       repo = "clangd_extensions.nvim";
