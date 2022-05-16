@@ -24,7 +24,10 @@ cmp.setup({
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
     ["<C-Space>"] = cmp.mapping.complete(),
-    ["<C-e>"] = cmp.mapping.close(),
+    ["<C-e>"] = cmp.mapping({
+      i = cmp.mapping.abort(),
+      c = cmp.mapping.close(),
+    }),
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -49,7 +52,7 @@ cmp.setup({
       "i",
       "s",
     }),
-    ["<CR>"] = cmp.mapping.confirm({}),
+    ["<CR>"] = cmp.mapping.confirm({ select = true }),
   },
   sources = cmp.config.sources({
     { name = "buffer" },
