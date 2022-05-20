@@ -55,8 +55,3 @@ ts_configs.setup({
     },
   },
 })
-
-local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-parser_config.jsonc.filetype_to_parsername = "json"
-
-vim.keymap.set("n", "<leader>hl", ":TSHighlightCapturesUnderCursor<CR>", { desc = "Show highlight" })
