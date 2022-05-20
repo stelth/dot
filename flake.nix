@@ -41,7 +41,7 @@
       inherit (darwin.lib) darwinSystem;
       inherit (nixpkgs.lib) nixosSystem;
       inherit (home-manager.lib) homeManagerConfiguration;
-      inherit (flake-utils.lib) eachDefaultSystem eachSystem;
+      inherit (flake-utils.lib) eachSystemMap defaultSystems;
       inherit (builtins) listToAttrs map;
 
       isDarwin = system: (builtins.elem system nixpkgs.lib.platforms.darwin);
@@ -102,26 +102,34 @@
           extraModules = [ ./profiles/work.nix ./modules/darwin/apps.nix ];
         };
       };
-    } // eachDefaultSystem (system:
-      let
-        pkgs = import nixpkgs {
-          inherit system;
-          overlays = [ inputs.devshell.overlay ];
-        };
-        pyEnv = pkgs.python3.withPackages
-          (ps: with ps; [ pylint typer colorama shellingham ]);
-        sysdo = pkgs.writeShellScriptBin "sysdo" ''
-          cd $PRJ_ROOT && ${pyEnv}/bin/python3 bin/do.py $@
-        '';
-      in {
-        devShell = pkgs.devshell.mkShell {
-          packages = with pkgs; [ pyEnv treefmt nixfmt stylua black ];
-          commands = [{
-            name = "sysdo";
-            package = sysdo;
-            category = "utilities";
-            help = "perform actions on this repository";
-          }];
-        };
-      });
+      devShells = eachSystemMap defaultSystems (system:
+        let
+          pkgs = import nixpkgs {
+            inherit system;
+            overlays = [ inputs.devshell.overlay ];
+          };
+          pyEnv = (pkgs.python3.withPackages
+            (ps: with ps; [ typer colorama shellingham ]));
+          sysdo = pkgs.writeShellScriptBin "sysdo" ''
+            cd $PRJ_ROOT && ${pyEnv}/bin/python3 bin/do.py $@
+          '';
+        in {
+          default = pkgs.devshell.mkShell {
+            packages = with pkgs; [
+              nixfmt
+              pyEnv
+              black
+              rnix-lsp
+              stylua
+              treefmt
+            ];
+            commands = [{
+              name = "sysdo";
+              package = sysdo;
+              category = "utilities";
+              help = "perform actions on this repository";
+            }];
+          };
+        });
+    };
 }
