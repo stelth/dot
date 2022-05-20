@@ -32,17 +32,36 @@ local toggle = function()
   end
 end
 
+local nls_has_formatter = function(ft)
+  local sources = require("null-ls.sources")
+  local available = sources.get_available(ft, "NULL_LS_FORMATTING")
+
+  return #available > 0
+end
+
 local format = function()
   if autoformat then
-    vim.lsp.buf.formatting_seq_sync()
+    vim.lsp.buf.format()
   end
 end
 
-local format_callback = function(_, _)
-  vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = "<buffer>",
-    callback = format,
-  })
+local format_callback = function(client, bufnr)
+  local ft = vim.api.nvim_buf_get_option(bufnr, "filetype")
+  local enable = false
+
+  if nls_has_formatter(ft) then
+    enable = client.name == "null-ls"
+  else
+    enable = not (client.name == "null-ls")
+  end
+
+  client.server_capabilities.documentFormatting = enable
+  if client.server_capabilities.documentFormatting then
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      pattern = "<buffer>",
+      callback = format,
+    })
+  end
 end
 
 local keymap_callback = function(client, bufnr)
@@ -146,12 +165,14 @@ local keymap_callback = function(client, bufnr)
   })
 
   -- Set some keybinds conditional on server capabilities
-  if client.server_capabilities.document_formatting then
+  if client.server_capabilities.documentFormatting then
     vim.keymap.set("n", "<leader>cf", "", {
-      callback = vim.lsp.buf.formatting,
+      callback = vim.lsp.buf.format,
       desc = "Format document",
     })
-  elseif client.server_capabilities.document_range_formatting then
+  end
+
+  if client.server_capabilities.documentRangeFormatting then
     vim.keymap.set("v", "<leader>cf", "", {
       callback = vim.lsp.buf.range_formatting,
       desc = "Format range",
@@ -162,7 +183,9 @@ end
 local on_attach = function(client, bufnr)
   format_callback(client, bufnr)
   keymap_callback(client, bufnr)
-  require("illuminate").on_attach(client)
+  if client.server_capabilities.documentHighlight then
+    require("illuminate").on_attach(client)
+  end
 end
 
 local make_config = function(config)

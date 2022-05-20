@@ -30,6 +30,10 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs = { nixpkgs = { follows = "nixpkgs"; }; };
+    };
   };
 
   outputs = inputs@{ self, nixpkgs, darwin, home-manager, flake-utils, ... }:
@@ -45,11 +49,16 @@
 
       # generate a base darwin configuration with the
       # specified hostname, overlays, and any extraModules applied
-      mkDarwinConfig = { system, nixpkgs ? inputs.nixpkgs, stable ? inputs
+      mkDarwinConfig =
+        { system
+        , nixpkgs ? inputs.nixpkgs
+        , stable ? inputs
         , baseModules ? [
-          home-manager.darwinModules.home-manager
-          ./modules/darwin
-        ], extraModules ? [ ] }:
+            home-manager.darwinModules.home-manager
+            ./modules/darwin
+          ]
+        , extraModules ? [ ]
+        }:
         darwinSystem {
           inherit system;
           modules = baseModules ++ extraModules;
@@ -58,16 +67,22 @@
 
       # generate a home-manager configuration usable on any unix system
       # with overlays and any extraModules applied
-      mkHomeConfig = { username, system ? "x86_64-linux"
-        , nixpkgs ? inputs.nixpkgs, stable ? inputs.stable, baseModules ? [
-          ./modules/home-manager
-          {
-            home.sessionVariables = {
-              NIX_PATH =
-                "nixpkgs=${nixpkgs}:stable=${stable}\${NIX_PATH:+:}$NIX_PATH";
-            };
-          }
-        ], extraModules ? [ ] }:
+      mkHomeConfig =
+        { username
+        , system ? "x86_64-linux"
+        , nixpkgs ? inputs.nixpkgs
+        , stable ? inputs.stable
+        , baseModules ? [
+            ./modules/home-manager
+            {
+              home.sessionVariables = {
+                NIX_PATH =
+                  "nixpkgs=${nixpkgs}:stable=${stable}\${NIX_PATH:+:}$NIX_PATH";
+              };
+            }
+          ]
+        , extraModules ? [ ]
+        }:
         homeManagerConfiguration rec {
           inherit system username;
           homeDirectory = "${homePrefix system}/${username}";
@@ -78,15 +93,18 @@
             ];
           };
         };
-    in {
-      checks = listToAttrs (map (system: {
-        name = system;
-        value = {
-          personal =
-            self.darwinConfigurations.personal.config.system.build.toplevel;
-          work = self.darwinConfigurations.work.config.system.build.toplevel;
-        };
-      }) nixpkgs.lib.platforms.darwin);
+    in
+    {
+      checks = listToAttrs (map
+        (system: {
+          name = system;
+          value = {
+            personal =
+              self.darwinConfigurations.personal.config.system.build.toplevel;
+            work = self.darwinConfigurations.work.config.system.build.toplevel;
+          };
+        })
+        nixpkgs.lib.platforms.darwin);
 
       darwinConfigurations = {
         personal = mkDarwinConfig {
@@ -109,7 +127,8 @@
         sysdo = pkgs.writeShellScriptBin "sysdo" ''
           cd $PRJ_ROOT && ${pyEnv}/bin/python3 bin/do.py $@
         '';
-      in {
+      in
+      {
         devShell = pkgs.devshell.mkShell {
           packages = with pkgs; [ pyEnv treefmt nixfmt stylua black ];
           commands = [{

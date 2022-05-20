@@ -22,7 +22,8 @@ let
     };
     meta.homepage = "https://Shatur/neovim-cmake";
   };
-in {
+in
+{
   xdg.configFile = {
     "nvim" = {
       source = ./nvim;
@@ -31,6 +32,7 @@ in {
   };
   programs.neovim = {
     enable = true;
+    package = pkgs.neovim-unwrapped;
     vimAlias = true;
     withNodeJs = false;
     withPython3 = false;
