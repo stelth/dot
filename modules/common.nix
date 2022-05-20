@@ -37,5 +37,8 @@
     shells = with pkgs; [ bash zsh fish ];
   };
 
-  fonts.fonts = with pkgs; [ nerdfonts ibm-plex ];
+  fonts = {
+    fontDir.enable = true;
+    fonts = with pkgs; [ nerdfonts ibm-plex ];
+  };
 }
