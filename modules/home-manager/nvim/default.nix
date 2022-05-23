@@ -2,28 +2,27 @@
 let
   clangd-extensions = pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "clangd-extensions";
-    version = "2022-04-13";
+    version = "2022-05-19";
     src = pkgs.fetchFromGitHub {
       owner = "p00f";
       repo = "clangd_extensions.nvim";
-      rev = "46eeb0c93d69bdd135e2ca5dca267d44c3404a72";
-      sha256 = "sha256-sBzPMJTasBZOihdjNlTtlyfH9aY74G955iQj+w5wF4o=";
+      rev = "22bf787361729eb9e473cfc97386b09fd917402c";
+      sha256 = "sha256-i2ZCgxP7y0g4AduUmIpYS4ARCf20SkbruOPM0FF/X/M=";
     };
     meta.homepage = "https://github.com/p00f/clangd_extensions.nvim";
   };
   neovim-cmake = pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "neovim-cmake";
-    version = "2022-05-04";
+    version = "2022-05-14";
     src = pkgs.fetchFromGitHub {
       owner = "Shatur";
       repo = "neovim-cmake";
-      rev = "d9e4be6bfa5f44fb04c5326db9d7093cbc6a8b93";
-      sha256 = "sha256-4X+D7tCWn/BQ07O5PoSl2g2hNoKCdp69OrzciBeA2kE=";
+      rev = "5e2eee8e5299d86949e498c3bf4b56c7a241db34";
+      sha256 = "sha256-rs78Y2ndmgC7xmFa879Ipjr34/N6LnHJdahOLEX92XE=";
     };
     meta.homepage = "https://Shatur/neovim-cmake";
   };
-in
-{
+in {
   xdg.configFile = {
     "nvim" = {
       source = ./nvim;
