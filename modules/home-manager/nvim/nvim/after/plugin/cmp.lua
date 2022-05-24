@@ -9,6 +9,12 @@ cmp.setup({
       require("luasnip").lsp_expand(args.body)
     end,
   },
+  formatting = {
+    fields = { "kind", "abbr", "menu" },
+    format = require("lspkind").cmp_format({
+      with_text = false,
+    }),
+  },
   mapping = cmp.mapping.preset.insert({
     ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
     ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
@@ -21,12 +27,11 @@ cmp.setup({
     ["<CR>"] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Insert }),
   }),
   sources = cmp.config.sources({
-    { name = "buffer" },
-    { name = "calc" },
-    { name = "luasnip" },
     { name = "nvim_lsp" },
+    { name = "luasnip" },
     { name = "path" },
-    { name = "treesitter" },
+    { name = "calc" },
+    { name = "buffer" },
   }),
   experimental = {
     ghost_text = {

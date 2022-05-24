@@ -46,7 +46,6 @@ in {
       cmp-cmdline
       cmp-nvim-lsp
       cmp-path
-      cmp-treesitter
       cmp_luasnip
       comment-nvim
       diffview-nvim
@@ -56,6 +55,7 @@ in {
       impatient-nvim
       indent-blankline-nvim
       lightspeed-nvim
+      lspkind-nvim
       lua-dev-nvim
       luasnip
       neovim-cmake
