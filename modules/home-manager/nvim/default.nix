@@ -22,7 +22,8 @@ let
     };
     meta.homepage = "https://Shatur/neovim-cmake";
   };
-in {
+in
+{
   xdg.configFile = {
     "nvim" = {
       source = ./nvim;
@@ -45,6 +46,7 @@ in {
       cmp-calc
       cmp-cmdline
       cmp-nvim-lsp
+      cmp-nvim-lsp-document-symbol
       cmp-path
       cmp_luasnip
       comment-nvim
