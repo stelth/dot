@@ -1,5 +1,4 @@
 local cmp = require("cmp")
-local luasnip = require("luasnip")
 
 cmp.setup({
   completion = {
@@ -7,45 +6,20 @@ cmp.setup({
   },
   snippet = {
     expand = function(args)
-      luasnip.lsp_expand(args.body)
+      require("luasnip").lsp_expand(args.body)
     end,
   },
-  mapping = {
-    ["<C-p>"] = cmp.mapping.select_prev_item(),
-    ["<C-n>"] = cmp.mapping.select_next_item(),
-    ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-    ["<C-f>"] = cmp.mapping.scroll_docs(4),
-    ["<C-Space>"] = cmp.mapping.complete(),
+  mapping = cmp.mapping.preset.insert({
+    ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+    ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
+    ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(nil), { "i" }),
     ["<C-e>"] = cmp.mapping({
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
     }),
-    ["<Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      else
-        fallback()
-      end
-    end, {
-      "i",
-      "s",
-    }),
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, {
-      "i",
-      "s",
-    }),
-    ["<CR>"] = cmp.mapping.confirm({ select = true }),
-  },
+    ["<C-y"] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
+    ["<CR>"] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Insert }),
+  }),
   sources = cmp.config.sources({
     { name = "buffer" },
     { name = "calc" },
@@ -59,21 +33,23 @@ cmp.setup({
       hl_group = "LspCodeLens",
     },
   },
-  formatting = {
-    format = function(entry, vim_item)
-      vim_item.menu = entry:get_completion_item().detail
-      return vim_item
-    end,
-  },
-  sorting = {
-    comparators = {
-      cmp.config.compare.sort_text,
-      cmp.config.compare.offset,
-      cmp.config.compare.score,
-      cmp.config.compare.order,
-    },
-  },
 })
 
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({}))
+
+cmp.setup.cmdline("/", {
+  sources = {
+    { name = "nvim_lsp_document_symbol" },
+    { name = "buffer" },
+  },
+  mapping = cmp.mapping.preset.cmdline({}),
+})
+cmp.setup.cmdline(":", {
+  sources = cmp.config.sources({
+    { name = "path" },
+  }, {
+    { name = "cmdline" },
+  }),
+  mapping = cmp.mapping.preset.cmdline({}),
+})

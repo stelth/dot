@@ -43,6 +43,7 @@ in {
       clangd-extensions
       cmp-buffer
       cmp-calc
+      cmp-cmdline
       cmp-nvim-lsp
       cmp-path
       cmp-treesitter
