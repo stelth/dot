@@ -1,7 +1,7 @@
 hs.window.animationDuration = 0
 
 hs.loadSpoon("SpoonInstall")
-Install = spoon.SpoonInstall
+local Install = spoon.SpoonInstall
 Install.use_syncinstall = true
 
 Install:andUse("ReloadConfiguration", { start = true })

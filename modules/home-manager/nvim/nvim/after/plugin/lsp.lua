@@ -206,11 +206,11 @@ local make_config = function(config)
 end
 
 local luadev = require("lua-dev").setup({
-  LspConfig = {
+  lspconfig = {
     settings = {
       Lua = {
         diagnostics = {
-          globals = "vim",
+          globals = { "vim", "hs", "spoon" },
         },
       },
     },
