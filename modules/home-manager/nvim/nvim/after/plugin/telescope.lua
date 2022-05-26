@@ -49,7 +49,6 @@ telescope.setup({
 })
 
 telescope.load_extension("fzy_native")
-telescope.load_extension("frecency")
 telescope.load_extension("projects")
 
 vim.keymap.set("n", "<leader>gc", ":Telescope git_commits<CR>", { desc = "Git commits" })
