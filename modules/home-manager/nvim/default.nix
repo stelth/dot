@@ -17,13 +17,12 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "Shatur";
       repo = "neovim-cmake";
-      rev = "5e2eee8e5299d86949e498c3bf4b56c7a241db34";
-      sha256 = "sha256-rs78Y2ndmgC7xmFa879Ipjr34/N6LnHJdahOLEX92XE=";
+      rev = "196bd95a53305930ffff2566ffaaa6056d8f5fc3";
+      sha256 = "sha256-gMzuNKw2DUOn2Sq/pS4BrgcrAmZa5FiDjr2VYvDM0co=";
     };
     meta.homepage = "https://Shatur/neovim-cmake";
   };
-in
-{
+in {
   xdg.configFile = {
     "nvim" = {
       source = ./nvim;
