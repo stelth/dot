@@ -77,6 +77,7 @@ in {
       popup-nvim
       project-nvim
       tabular
+      telescope-dap-nvim
       telescope-fzy-native-nvim
       telescope-nvim
       toggleterm-nvim
