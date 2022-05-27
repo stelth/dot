@@ -205,17 +205,8 @@ local make_config = function(config)
   return new_config
 end
 
-local luadev = require("lua-dev").setup({
-  lspconfig = {
-    settings = {
-      Lua = {
-        diagnostics = {
-          globals = { "vim", "hs", "spoon" },
-        },
-      },
-    },
-  },
-})
+local luadev = require("lua-dev").setup({})
+table.insert(luadev.settings.Lua.workspace.library, "/Users/coxj/.hammerspoon/Spoons/EmmyLua.spoon/annotations")
 
 local servers = {
   bashls = {},

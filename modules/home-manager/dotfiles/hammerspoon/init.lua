@@ -4,6 +4,7 @@ hs.loadSpoon("SpoonInstall")
 local Install = spoon.SpoonInstall
 Install.use_syncinstall = true
 
+Install:andUse("EmmyLua")
 Install:andUse("ReloadConfiguration", { start = true })
 Install:andUse("RoundedCorners", { start = true, config = { radius = 8 } })
 Install:andUse("Caffeine", {
