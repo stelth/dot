@@ -46,8 +46,7 @@ in {
       nix
       parallel
       pfetch
-      pkgs.coreutils-full
-      procs
+      stable.procs
       ripgrep-all
       rsync
       sysdo
