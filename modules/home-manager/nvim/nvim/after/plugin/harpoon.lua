@@ -3,7 +3,7 @@ vim.keymap.set("n", "<leader>a", "", {
   desc = "Add file to harpoon",
 })
 
-vim.keymap.set("n", "<C-e>", "", {
+vim.keymap.set("n", "<C-h>", "", {
   callback = require("harpoon.ui").toggle_quick_menu,
   desc = "Harpoon quick menu",
 })
