@@ -99,7 +99,7 @@ in {
       # C/C++
       clang-tools
       cppcheck
-      lldb
+      # lldb
 
       # Java
       jdt-language-server
