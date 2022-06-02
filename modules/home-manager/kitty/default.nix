@@ -1,7 +1,7 @@
 { config, pkgs, ... }: {
   programs.kitty = {
     enable = true;
-    package = pkgs.stable.kitty;
+    package = pkgs.small.kitty;
     font = { name = "FiraCode Nerd Font"; };
     theme = "Tokyo Night";
     settings = {
