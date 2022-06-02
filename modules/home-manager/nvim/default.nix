@@ -66,7 +66,6 @@ in {
       harpoon
       impatient-nvim
       indent-blankline-nvim
-      lightspeed-nvim
       lspkind-nvim
       lua-dev-nvim
       luasnip
