@@ -20,7 +20,18 @@ let
       rev = "196bd95a53305930ffff2566ffaaa6056d8f5fc3";
       sha256 = "sha256-gMzuNKw2DUOn2Sq/pS4BrgcrAmZa5FiDjr2VYvDM0co=";
     };
-    meta.homepage = "https://Shatur/neovim-cmake";
+    meta.homepage = "https://github.com/Shatur/neovim-cmake";
+  };
+  refactoring = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "refactoring";
+    version = "2022-06-01";
+    src = pkgs.fetchFromGitHub {
+      owner = "ThePrimeagen";
+      repo = "refactoring.nvim";
+      rev = "8aae61389d3654335b2fd913d137f4908d482717";
+      sha256 = "sha256-NMP0ftIhe1GezfL+IoTUYiio4M72HlVW492z82xlZko=";
+    };
+    meta.homepage = "https://github.com/ThePrimeagen/refactoring.nvim";
   };
 in {
   xdg.configFile = {
@@ -77,6 +88,7 @@ in {
       plenary-nvim
       popup-nvim
       project-nvim
+      refactoring
       tabular
       telescope-dap-nvim
       telescope-fzy-native-nvim
@@ -125,7 +137,7 @@ in {
       shfmt
 
       # Additional
-      stable.cmake-language-server
+      cmake-language-server
       nodePackages.markdownlint-cli
       nodePackages.prettier
       nodePackages.vscode-json-languageserver
