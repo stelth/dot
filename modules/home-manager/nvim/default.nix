@@ -50,7 +50,6 @@ in {
 
     plugins = with pkgs.vimPlugins; [
       (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
-      bufferline-nvim
       clangd-extensions
       cmp-buffer
       cmp-calc
