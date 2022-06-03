@@ -62,7 +62,6 @@ in {
       diffview-nvim
       dressing-nvim
       friendly-snippets
-      gitsigns-nvim
       harpoon
       impatient-nvim
       lspkind-nvim
