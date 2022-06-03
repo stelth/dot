@@ -65,7 +65,6 @@ in {
       gitsigns-nvim
       harpoon
       impatient-nvim
-      indent-blankline-nvim
       lspkind-nvim
       lua-dev-nvim
       luasnip
@@ -76,7 +75,6 @@ in {
       nvim-dap
       nvim-dap-ui
       nvim-dap-virtual-text
-      nvim-hlslens
       nvim-jdtls
       nvim-lspconfig
       nvim-terminal-lua
