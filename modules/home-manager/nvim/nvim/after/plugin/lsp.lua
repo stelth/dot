@@ -183,9 +183,6 @@ end
 local on_attach = function(client, bufnr)
   format_callback(client, bufnr)
   keymap_callback(client, bufnr)
-  if client.server_capabilities.documentHighlight then
-    require("illuminate").on_attach(client)
-  end
 end
 
 local make_config = function(config)

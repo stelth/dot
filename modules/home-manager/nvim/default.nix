@@ -90,7 +90,6 @@ in {
       toggleterm-nvim
       tokyonight-nvim
       undotree
-      vim-illuminate
       vim-markdown
       vim-matchup
       vim-mergetool
