@@ -77,7 +77,6 @@ in {
       nvim-jdtls
       nvim-lspconfig
       nvim-terminal-lua
-      nvim-treesitter-textobjects
       nvim-ts-context-commentstring
       nvim-web-devicons
       plenary-nvim
