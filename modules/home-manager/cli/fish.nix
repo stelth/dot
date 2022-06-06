@@ -1,6 +1,4 @@
-{ config, pkgs, lib, ... }:
-let theme = builtins.readFile ./fish_tokyonight_night.fish;
-in {
+{ config, pkgs, lib, ... }: {
   home.sessionVariables.LLDB_DEBUGSERVER_PATH =
     "/Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Versions/A/Resources/debugserver";
   programs.fish = {
@@ -35,7 +33,6 @@ in {
       hide-cursor = "tput civis";
     };
     interactiveShellInit = ''
-      ${theme}
       eval (direnv hook fish)
     '';
   };

@@ -62,6 +62,7 @@ in {
       diffview-nvim
       dressing-nvim
       friendly-snippets
+      gruvbox
       harpoon
       impatient-nvim
       lspkind-nvim
@@ -88,7 +89,6 @@ in {
       telescope-fzy-native-nvim
       telescope-nvim
       toggleterm-nvim
-      tokyonight-nvim
       undotree
       vim-markdown
       vim-matchup
