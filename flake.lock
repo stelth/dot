@@ -123,15 +123,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1654180137,
-        "narHash": "sha256-zThGne2XXgW2F14bZtHJZFS6dc+oe5jsrjxxcmYa2u8=",
-        "owner": "stelth",
+        "lastModified": 1654422613,
+        "narHash": "sha256-ZxkMM13AnrMwYOV99ohzcqeTkAOqD9Q2SBdZ9WoFE9Y=",
+        "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "9de4b8439a4fcdf95c61fda073b7e6b796f0ff24",
+        "rev": "20703892473d01c70fb10248442231fe94f4ceb4",
         "type": "github"
       },
       "original": {
-        "owner": "stelth",
+        "owner": "nix-community",
         "repo": "home-manager",
         "type": "github"
       }
