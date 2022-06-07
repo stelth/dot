@@ -11,17 +11,6 @@ let
     };
     meta.homepage = "https://github.com/p00f/clangd_extensions.nvim";
   };
-  neovim-cmake = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "neovim-cmake";
-    version = "2022-06-03";
-    src = pkgs.fetchFromGitHub {
-      owner = "Shatur";
-      repo = "neovim-cmake";
-      rev = "2d8ea160fe390afd84ab66e1d12167bda45e7e21";
-      sha256 = "sha256-gxs4f8JNXWlrKBj3+W316u6ImjuBBvcQ43z0+ZQUBZE=";
-    };
-    meta.homepage = "https://github.com/Shatur/neovim-cmake";
-  };
   refactoring = pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "refactoring";
     version = "2022-06-06";
@@ -66,13 +55,9 @@ in {
       lspkind-nvim
       lua-dev-nvim
       luasnip
-      neovim-cmake
       null-ls-nvim
       nvim-autopairs
       nvim-cmp
-      nvim-dap
-      nvim-dap-ui
-      nvim-dap-virtual-text
       nvim-jdtls
       nvim-lspconfig
       nvim-ts-context-commentstring
@@ -82,7 +67,6 @@ in {
       project-nvim
       refactoring
       tabular
-      telescope-dap-nvim
       telescope-fzy-native-nvim
       telescope-nvim
       undotree
@@ -100,7 +84,6 @@ in {
       # C/C++
       clang-tools
       cppcheck
-      # lldb
 
       # Java
       jdt-language-server
