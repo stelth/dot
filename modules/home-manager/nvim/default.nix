@@ -59,7 +59,6 @@ in {
       nvim-jdtls
       nvim-lspconfig
       nvim-ts-context-commentstring
-      nvim-web-devicons
       plenary-nvim
       popup-nvim
       project-nvim
