@@ -1,9 +1,10 @@
 { inputs, ... }: {
   nixpkgs.overlays = [
-    (final: prev: {
-      stable = import inputs.stable { inherit (prev) system; };
-      small = import inputs.small { inherit (prev) system; };
+    (self: super: {
+      stable = import inputs.stable { inherit (super) system; };
+      small = import inputs.small { inherit (super) system; };
     })
     inputs.neovim-nightly-overlay.overlay
+    (import ../pkgs/tmux-sessionizer.nix)
   ];
 }

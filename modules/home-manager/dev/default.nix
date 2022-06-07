@@ -10,6 +10,7 @@
     openjdk
     rustc
     cargo
+    tmux-sessionizer
   ];
 
   programs.ssh = {

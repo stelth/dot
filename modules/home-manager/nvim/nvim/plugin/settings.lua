@@ -143,3 +143,8 @@ vim.keymap.set("n", "<leader>tn", "", {
   end,
   desc = "Toggle Line Numbers",
 })
+
+vim.keymap.set("n", "<C-f>", ":silent !tmux neww tmux-sessionizer<CR>", {
+  silent = true,
+  desc = "New tmux-sessionizer window",
+})
