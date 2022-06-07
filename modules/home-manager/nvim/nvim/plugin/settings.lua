@@ -109,6 +109,12 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "J", "mzJ`z")
 
+vim.keymap.set("x", "<leader>p", '"_dp')
+vim.keymap.set({ "n", "v" }, "<leader>y", '"+y"')
+vim.keymap.set("n", "<leader>Y", '"+Y"')
+
+vim.keymap.set({ "n", "v" }, "<leader>d", '"_d"')
+
 -- Add undo break-points
 vim.keymap.set("i", ",", ",<c-g>u", {})
 vim.keymap.set("i", ".", ".<c-g>u", {})
