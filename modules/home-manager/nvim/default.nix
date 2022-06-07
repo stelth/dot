@@ -13,23 +13,23 @@ let
   };
   neovim-cmake = pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "neovim-cmake";
-    version = "2022-05-25";
+    version = "2022-06-03";
     src = pkgs.fetchFromGitHub {
       owner = "Shatur";
       repo = "neovim-cmake";
-      rev = "196bd95a53305930ffff2566ffaaa6056d8f5fc3";
-      sha256 = "sha256-gMzuNKw2DUOn2Sq/pS4BrgcrAmZa5FiDjr2VYvDM0co=";
+      rev = "2d8ea160fe390afd84ab66e1d12167bda45e7e21";
+      sha256 = "sha256-gxs4f8JNXWlrKBj3+W316u6ImjuBBvcQ43z0+ZQUBZE=";
     };
     meta.homepage = "https://github.com/Shatur/neovim-cmake";
   };
   refactoring = pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "refactoring";
-    version = "2022-06-01";
+    version = "2022-06-06";
     src = pkgs.fetchFromGitHub {
       owner = "ThePrimeagen";
       repo = "refactoring.nvim";
-      rev = "8aae61389d3654335b2fd913d137f4908d482717";
-      sha256 = "sha256-NMP0ftIhe1GezfL+IoTUYiio4M72HlVW492z82xlZko=";
+      rev = "6b4be45e8df8eb835bc2e73c05b67f69f4b5e234";
+      sha256 = "sha256-sdyzc/M/HFen+03IP6jz/a+57XYBdGTmOT2KCQBPnnI=";
     };
     meta.homepage = "https://github.com/ThePrimeagen/refactoring.nvim";
   };
@@ -90,6 +90,7 @@ in {
       telescope-nvim
       toggleterm-nvim
       undotree
+      vim-fugitive
       vim-markdown
       vim-matchup
       vim-mergetool
