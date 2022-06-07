@@ -2,49 +2,23 @@ local telescope = require("telescope")
 
 telescope.setup({
   extensions = {
-    fzy_native = { override_generic_sorter = true, override_file_sorter = true },
+    fzy_native = { override_generic_sorter = false, override_file_sorter = true },
   },
   defaults = {
-    prompt_prefix = "> ",
-    selection_caret = "> ",
-    entry_prefix = "  ",
-    multi_icon = "<>",
-    winblend = 0,
+    file_sorter = require("telescope.sorters").get_fzy_sorter,
+    prompt_prefix = " > ",
+    color_devicons = true,
 
-    layout_strategy = "horizontal",
-    layout_config = {
-      width = 0.95,
-      height = 0.85,
-      -- preview_cutoff = 120,
-      prompt_position = "top",
+    file_previewer = require("telescope.previewers").vim_buffer_cat.new,
+    grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
+    qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
 
-      horizontal = {
-        preview_width = function(_, cols, _)
-          if cols > 200 then
-            return math.floor(cols * 0.4)
-          else
-            return math.floor(cols * 0.6)
-          end
-        end,
-      },
-
-      vertical = {
-        width = 0.9,
-        height = 0.95,
-        preview_height = 0.5,
-      },
-
-      flex = {
-        horizontal = {
-          preview_width = 0.9,
-        },
+    mappings = {
+      i = {
+        ["<C-x>"] = false,
+        ["<C-q>"] = require("telescope.actions").send_to_qflist,
       },
     },
-
-    selection_strategy = "reset",
-    sorting_strategy = "descending",
-    scroll_strategy = "cycle",
-    color_devicons = true,
   },
 })
 
