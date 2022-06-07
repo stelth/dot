@@ -39,7 +39,6 @@ vim.opt.smartcase = true -- Don't ignore case with capitals
 vim.opt.smartindent = true -- Insert indents automatically
 vim.opt.splitbelow = true -- Put new windows below current
 vim.opt.splitright = true -- Put new windows right of current
-vim.opt.statusline = "%f  %y%m%r%h%w%=[%l,%v]      [%L,%p%%] %n"
 vim.opt.tabstop = indent -- Number of spaces tabs count for
 vim.opt.termguicolors = true -- True color support
 vim.opt.undofile = true
@@ -144,19 +143,3 @@ vim.keymap.set("n", "<leader>tn", "", {
   end,
   desc = "Toggle Line Numbers",
 })
-
--- makes * and # work on visual mode too.
-vim.api.nvim_exec(
-  [[
-  function! g:VSetSearch(cmdtype)
-    let temp = @s
-    norm! gv"sy
-    let @/ = '\V' . substitute(escape(@s, a:cmdtype.'\'), '\n', '\\n', 'g')
-    let @s = temp
-  endfunction
-
-  xnoremap * :<C-u>call g:VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
-  xnoremap # :<C-u>call g:VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
-]],
-  false
-)
