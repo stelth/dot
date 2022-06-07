@@ -17,6 +17,7 @@ vim.opt.grepformat = "%f:%l:%c:%m"
 vim.opt.grepprg = "rg --vimgrep"
 vim.opt.guifont = "FiraCode Nerd Font:h12"
 vim.opt.hidden = true -- Enable modified buffers in background
+vim.opt.hlsearch = false -- Don't highlight search terms
 vim.opt.ignorecase = true -- Ignore case
 vim.opt.inccommand = "split" -- preview incremental substitute
 vim.opt.joinspaces = false -- No double spaces with join after a dot
@@ -102,6 +103,11 @@ end
 -- ----------------------------------
 -- Key maps
 -- ----------------------------------
+
+vim.keymap.set("n", "Y", "yg$")
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+vim.keymap.set("n", "J", "mzJ`z")
 
 -- Add undo break-points
 vim.keymap.set("i", ",", ",<c-g>u", {})
