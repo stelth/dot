@@ -63,7 +63,6 @@ in {
       friendly-snippets
       gruvbox
       harpoon
-      impatient-nvim
       lspkind-nvim
       lua-dev-nvim
       luasnip
