@@ -59,7 +59,6 @@ in {
       cmp-path
       cmp_luasnip
       comment-nvim
-      diffview-nvim
       dressing-nvim
       friendly-snippets
       gruvbox
@@ -93,7 +92,6 @@ in {
       vim-fugitive
       vim-markdown
       vim-matchup
-      vim-mergetool
     ];
 
     extraPackages = with pkgs; [

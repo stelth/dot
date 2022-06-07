@@ -18,17 +18,6 @@
       push = { followTags = true; };
       ghq = { root = "~/dev/repos"; };
       color = { ui = true; };
-      diff = { tool = "nvimdiff"; };
-      "difftool \"nvimdiff\"" = { cmd = ''nvim -d "$LOCAL" "$REMOTE"''; };
-      merge = {
-        tool = "nvim_mergetool";
-        conflictstyle = "diff3";
-      };
-      "mergetool \"nvim_mergetool\"" = {
-        cmd =
-          ''nvim -f -c "MergetoolStart" "$MERGED" "$BASE" "$LOCAL" "$REMOTE"'';
-        trustExitCode = true;
-      };
     };
     aliases = {
       fix = "commit --amend --no-edit";
