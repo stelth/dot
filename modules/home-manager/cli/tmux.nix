@@ -5,7 +5,6 @@
     baseIndex = 1;
     terminal = "xterm-256color";
     keyMode = "vi";
-    clock24 = true;
     customPaneNavigationAndResize = true;
     disableConfirmationPrompt = true;
     escapeTime = 0;
@@ -17,10 +16,7 @@
       setw -g monitor-activity on
       bind | split-window -h
       bind - split-window -v
-      unbind '"'
-      unbind %
-      set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'
-      set -as terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'  # underscore colours - needs tmux-3.0
+      set -g status-style 'bg=#333333 fg=#5EACD3'
     '';
   };
 }
