@@ -3,13 +3,10 @@ self: super: {
     name = "tmux-sessionizer";
     runtimeInputs = [ super.tmux super.ghq super.fzf ];
     text = ''
-      #shellcheck disable=SC2086
-      #shellcheck disable=SC2046
-
       if [[ $# -eq 1 ]]; then
           selected=$1
       else
-          selected=$(find $(ghq list -p) $HOME/dot -mindepth 0 -maxdepth 0 -type d | fzf)
+          selected=$(printf "%s\n$HOME/dot" "$(ghq list -p)" | fzf)
       fi
 
       if [[ -z "$selected" ]]; then
