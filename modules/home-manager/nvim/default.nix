@@ -62,7 +62,6 @@ in {
       nvim-ts-context-commentstring
       plenary-nvim
       popup-nvim
-      project-nvim
       refactoring
       telescope-fzy-native-nvim
       telescope-nvim
