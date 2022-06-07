@@ -66,12 +66,10 @@ in {
       popup-nvim
       project-nvim
       refactoring
-      tabular
       telescope-fzy-native-nvim
       telescope-nvim
       undotree
       vim-fugitive
-      vim-markdown
       vim-matchup
     ];
 
