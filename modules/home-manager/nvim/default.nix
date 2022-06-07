@@ -75,7 +75,6 @@ in {
       nvim-dap-virtual-text
       nvim-jdtls
       nvim-lspconfig
-      nvim-terminal-lua
       nvim-ts-context-commentstring
       nvim-web-devicons
       plenary-nvim
@@ -86,7 +85,6 @@ in {
       telescope-dap-nvim
       telescope-fzy-native-nvim
       telescope-nvim
-      toggleterm-nvim
       undotree
       vim-fugitive
       vim-markdown
