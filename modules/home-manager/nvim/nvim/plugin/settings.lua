@@ -137,19 +137,6 @@ vim.keymap.set("n", "<leader>tn", "", {
   desc = "Toggle Line Numbers",
 })
 
--- Quickfix and Location List mappings
-vim.keymap.set("n", "<leader>xl", ":lopen<CR>", { desc = "Open Location List" })
-vim.keymap.set("n", "<leader>xq", ":copen<CR>", { desc = "Open Quickfix List" })
-
-vim.keymap.set("n", "<leader>cu", "", {
-  callback = function()
-    local number = math.random(math.pow(2, 127) + 1, math.pow(2, 128))
-    return "i" .. string.format("%.0f", number)
-  end,
-  desc = "",
-  expr = true,
-})
-
 -- makes * and # work on visual mode too.
 vim.api.nvim_exec(
   [[
