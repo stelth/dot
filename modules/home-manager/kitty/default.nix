@@ -3,7 +3,6 @@
     enable = true;
     package = pkgs.kitty;
     font = { name = "FiraCode Nerd Font"; };
-    # theme = "Gruvbox Dark Hard";
     settings = {
       allow_remote_control = "socket-only";
       bold_font = "FiraCode Nerd Font Mono Bold";
