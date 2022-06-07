@@ -42,9 +42,7 @@ in {
       clangd-extensions
       cmp-buffer
       cmp-calc
-      cmp-cmdline
       cmp-nvim-lsp
-      cmp-nvim-lsp-document-symbol
       cmp-path
       cmp_luasnip
       comment-nvim
