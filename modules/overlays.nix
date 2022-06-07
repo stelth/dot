@@ -5,6 +5,5 @@
       small = import inputs.small { inherit (prev) system; };
     })
     inputs.neovim-nightly-overlay.overlay
-    (import ../pkgs)
   ];
 }
