@@ -9,6 +9,7 @@
     disableConfirmationPrompt = true;
     escapeTime = 0;
     extraConfig = ''
+      bind r source-file ~/.config/tmux/tmux.conf
       bind | split-window -h
       bind - split-window -v
       set -g status-style 'bg=#333333 fg=#5EACD3'
