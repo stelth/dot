@@ -6,5 +6,6 @@
     })
     inputs.neovim-nightly-overlay.overlay
     (import ../pkgs/tmux-sessionizer.nix)
+    (import ../pkgs/tmux-cht.nix)
   ];
 }

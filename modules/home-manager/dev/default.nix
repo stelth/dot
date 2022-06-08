@@ -11,6 +11,7 @@
     rustc
     cargo
     tmux-sessionizer
+    tmux-cht
   ];
 
   programs.ssh = {

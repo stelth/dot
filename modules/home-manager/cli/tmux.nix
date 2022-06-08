@@ -14,6 +14,7 @@
       set -g status-style 'bg=#333333 fg=#5EACD3'
 
       bind-key -r f run-shell "tmux neww tmux-sessionizer"
+      bind-key -r i run-shell "tmux neww tmux-cht"
     '';
   };
 }
