@@ -1,13 +1,9 @@
-self: super:
-let
-  cht-languages = builtins.readFile ./tmux-cht-languages;
-  cht-commands = builtins.readFile ./tmux-cht-commands;
-in {
+self: super: {
   tmux-cht = super.writeShellApplication {
     name = "tmux-cht";
     runtimeInputs = [ super.tmux super.curl ];
     text = ''
-      selected=$(printf "${cht-languages}${cht-commands}" | fzf)
+      selected=$(curl -sS https://cht.sh/:list | fzf)
       if [[ -z $selected ]]; then
         exit 0
       fi
