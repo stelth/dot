@@ -10,10 +10,6 @@
   xdg.enable = true;
   xdg.configFile = {
     "nixpkgs/config.nix" = { source = ../../config.nix; };
-    karabiner = lib.mkIf pkgs.stdenvNoCC.isDarwin {
-      source = ./karabiner;
-      recursive = true;
-    };
     yabai = lib.mkIf pkgs.stdenvNoCC.isDarwin {
       source = ./yabai;
       recursive = true;

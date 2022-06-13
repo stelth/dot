@@ -5,7 +5,6 @@
       "avibrazil-rdm"
       "google-chrome"
       "hammerspoon"
-      "karabiner-elements"
       "kitty"
     ];
     masApps = { };
