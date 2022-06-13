@@ -13,12 +13,12 @@ let
   };
   refactoring = pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "refactoring";
-    version = "2022-06-08";
+    version = "2022-06-10";
     src = pkgs.fetchFromGitHub {
       owner = "ThePrimeagen";
       repo = "refactoring.nvim";
-      rev = "21b47bda407194fbe1f603256e101c26c0dbe589";
-      sha256 = "sha256-s1bocb1TDySHovvnZLfqQyXuDdHDQ7oUqf72XesJ7T0=";
+      rev = "802667c9b8da79678a78cb10bc0286e8a2644e8d";
+      sha256 = "sha256-PMcSTeHor0TGndwJCKNYT6tPmSuQz5XR9t7yt/Xr6Vc=";
     };
     meta.homepage = "https://github.com/ThePrimeagen/refactoring.nvim";
   };
