@@ -48,6 +48,7 @@ in {
       nvim-cmp
       nvim-jdtls
       nvim-lspconfig
+      nvim-notify
       nvim-ts-context-commentstring
       plenary-nvim
       popup-nvim

@@ -23,6 +23,7 @@ telescope.setup({
 })
 
 telescope.load_extension("fzy_native")
+telescope.load_extension("notify")
 
 vim.keymap.set("n", "<leader>gc", ":Telescope git_commits<CR>", { desc = "Git commits" })
 vim.keymap.set("n", "<leader>gb", ":Telescope git_branches<CR>", { desc = "Git branches" })
