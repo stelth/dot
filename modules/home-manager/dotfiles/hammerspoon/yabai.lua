@@ -96,13 +96,20 @@ for key, target in pairs(targets) do
     execYabai(string.format("-m display --focus %s", target))
   end)
 end
+
+local displayMaps = {
+  t = 1,
+  h = 2,
+  n = 3,
+  s = 4,
+}
 -- numbered monitors
-for i = 1, 5 do
-  hs.hotkey.bind({ "ctrl", "alt" }, tostring(i), function()
-    execYabai(string.format("-m display --focus %s", i))
+for key, screen in pairs(displayMaps) do
+  hs.hotkey.bind({ "ctrl", "alt" }, key, function()
+    execYabai(string.format("-m display --focus %s", screen))
   end)
-  hs.hotkey.bind({ "ctrl", "cmd" }, tostring(i), function()
-    execYabai(string.format("-m window --display %s", i))
-    execYabai(string.format("-m display --focus %s", i))
+  hs.hotkey.bind({ "ctrl", "cmd" }, key, function()
+    execYabai(string.format("-m window --display %s", screen))
+    execYabai(string.format("-m display --focus %s", screen))
   end)
 end
