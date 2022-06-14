@@ -7,7 +7,7 @@ vim.g.maplocalleader = ","
 
 vim.opt.autowrite = true -- enable auto write
 vim.opt.clipboard = "unnamedplus" -- sync with system clipboard
-vim.opt.cmdheight = 1 -- hide cmdline on the bottom
+vim.opt.cmdheight = 0 -- hide cmdline on the bottom
 vim.opt.concealcursor = "n" -- Hide * markup for bold and italic
 vim.opt.conceallevel = 2 -- Hide * markup for bold and italic
 vim.opt.confirm = true -- confirm to save changes before exiting modified buffer
