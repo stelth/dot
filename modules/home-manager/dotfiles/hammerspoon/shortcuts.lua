@@ -48,6 +48,11 @@ local keymaps = {
     mods = hyper,
     key = "c",
   },
+  ["Lock Screen"] = {
+    mods = hyper,
+    key = "l",
+    callback = hs.caffeinate.lockScreen,
+  },
 }
 
 for name, options in pairs(keymaps) do
