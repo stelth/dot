@@ -11,7 +11,7 @@ local keymaps = {
     key = "b",
     callback = function()
       hs.osascript.javascript([[
-        Application("Firefox").Window().make()
+        Application("Google Chrome").Window().make()
     ]])
     end,
   },
