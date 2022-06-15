@@ -1,15 +1,15 @@
 { config, pkgs, lib, ... }:
 let
-  refactoring = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "refactoring";
-    version = "2022-06-10";
+  neovim-cmake = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "neovim-cmake";
+    version = "2022-06-03";
     src = pkgs.fetchFromGitHub {
-      owner = "ThePrimeagen";
-      repo = "refactoring.nvim";
-      rev = "802667c9b8da79678a78cb10bc0286e8a2644e8d";
-      sha256 = "sha256-PMcSTeHor0TGndwJCKNYT6tPmSuQz5XR9t7yt/Xr6Vc=";
+      owner = "Shatur";
+      repo = "neovim-cmake";
+      rev = "2d8ea160fe390afd84ab66e1d12167bda45e7e21";
+      sha256 = "sha256-gxs4f8JNXWlrKBj3+W316u6ImjuBBvcQ43z0+ZQUBZE=";
     };
-    meta.homepage = "https://github.com/ThePrimeagen/refactoring.nvim";
+    meta.homepage = "https://github.com/Shatur/neovim-cmake";
   };
 in {
   xdg.configFile = {
@@ -43,16 +43,20 @@ in {
       lspkind-nvim
       lua-dev-nvim
       luasnip
+      neovim-cmake
       null-ls-nvim
       nvim-autopairs
       nvim-cmp
+      nvim-dap
+      nvim-dap-ui
+      nvim-dap-virtual-text
       nvim-jdtls
       nvim-lspconfig
       nvim-notify
       nvim-ts-context-commentstring
       plenary-nvim
       popup-nvim
-      refactoring
+      telescope-dap-nvim
       telescope-fzy-native-nvim
       telescope-nvim
       undotree
