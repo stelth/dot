@@ -38,7 +38,6 @@ in {
       comment-nvim
       dressing-nvim
       friendly-snippets
-      gruvbox
       harpoon
       lspkind-nvim
       lua-dev-nvim
@@ -59,6 +58,7 @@ in {
       telescope-dap-nvim
       telescope-fzy-native-nvim
       telescope-nvim
+      tokyonight-nvim
       undotree
       vim-fugitive
       vim-matchup
