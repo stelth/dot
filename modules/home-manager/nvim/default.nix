@@ -71,7 +71,7 @@ in {
       fzy
 
       # C/C++
-      clang-tools
+      clang-tools_14
       cppcheck
       lldb_14
 
