@@ -73,6 +73,7 @@ in {
       # C/C++
       clang-tools
       cppcheck
+      lldb_14
 
       # Java
       jdt-language-server
