@@ -42,6 +42,7 @@ in {
       lspkind-nvim
       lua-dev-nvim
       luasnip
+      neogit
       neovim-cmake
       null-ls-nvim
       nvim-autopairs
@@ -60,7 +61,6 @@ in {
       telescope-nvim
       tokyonight-nvim
       undotree
-      vim-fugitive
       vim-matchup
     ];
 
