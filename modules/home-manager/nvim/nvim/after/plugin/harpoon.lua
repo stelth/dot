@@ -3,7 +3,7 @@ vim.keymap.set("n", "<leader>a", "", {
   desc = "Add file to harpoon",
 })
 
-vim.keymap.set("n", "<C-h>", "", {
+vim.keymap.set("n", "<C-e>", "", {
   callback = require("harpoon.ui").toggle_quick_menu,
   desc = "Harpoon quick menu",
 })
@@ -13,28 +13,28 @@ vim.keymap.set("n", "<leader>tc", "", {
   desc = "Harpoon command quick menu",
 })
 
-vim.keymap.set("n", "<C-j>", "", {
+vim.keymap.set("n", "<C-h>", "", {
   callback = function()
     require("harpoon.ui").nav_file(1)
   end,
   desc = "First harpoon file",
 })
 
-vim.keymap.set("n", "<C-k>", "", {
+vim.keymap.set("n", "<C-t>", "", {
   callback = function()
     require("harpoon.ui").nav_file(2)
   end,
   desc = "Second harpoon file",
 })
 
-vim.keymap.set("n", "<C-l>", "", {
+vim.keymap.set("n", "<C-n>", "", {
   callback = function()
     require("harpoon.ui").nav_file(3)
   end,
   desc = "Third harpoon file",
 })
 
-vim.keymap.set("n", "<C-;>", "", {
+vim.keymap.set("n", "<C-s>", "", {
   callback = function()
     require("harpoon.ui").nav_file(4)
   end,
