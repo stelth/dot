@@ -176,6 +176,7 @@ end
 local on_attach = function(client, bufnr)
   format_callback(client, bufnr)
   keymap_callback(client, bufnr)
+  require("lsp_signature").on_attach()
 end
 
 local make_config = function(config)

@@ -40,6 +40,7 @@ in {
       friendly-snippets
       harpoon
       lspkind-nvim
+      lsp_signature-nvim
       lua-dev-nvim
       luasnip
       neogit
