@@ -1,17 +1,4 @@
-{ config, pkgs, lib, ... }:
-let
-  neovim-cmake = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "neovim-cmake";
-    version = "2022-06-03";
-    src = pkgs.fetchFromGitHub {
-      owner = "Shatur";
-      repo = "neovim-cmake";
-      rev = "2d8ea160fe390afd84ab66e1d12167bda45e7e21";
-      sha256 = "sha256-gxs4f8JNXWlrKBj3+W316u6ImjuBBvcQ43z0+ZQUBZE=";
-    };
-    meta.homepage = "https://github.com/Shatur/neovim-cmake";
-  };
-in {
+{ config, pkgs, lib, ... }: {
   xdg.configFile = {
     "nvim" = {
       source = ./nvim;
@@ -44,7 +31,6 @@ in {
       lua-dev-nvim
       luasnip
       neogit
-      neovim-cmake
       null-ls-nvim
       nvim-autopairs
       nvim-cmp
