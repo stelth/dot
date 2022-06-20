@@ -17,6 +17,8 @@
 
       bind-key -r f run-shell "tmux neww tmux-sessionizer"
       bind-key -r i run-shell "tmux neww tmux-cht"
+
+      bind-key -r ^ last-window
     '';
   };
 }
