@@ -71,7 +71,7 @@ vim.keymap.set("n", "<C-f>", ":silent !tmux neww tmux-sessionizer<CR>", {
   desc = "New tmux-sessionizer window",
 })
 
-vim.keymap.set("n", "<C-k>", "<CMD>cnext<CR>")
-vim.keymap.set("n", "<C-j>", "<CMD>cprev<CR>")
+vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>")
+vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>")
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>")
-vim.keymap.set("n", "<leader>k", "<cmd>lprev<CR>")
+vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>")
