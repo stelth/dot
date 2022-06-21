@@ -70,7 +70,8 @@
       statix
 
       # python
-      (python3.withPackages (ps: with ps; [ autopep8 flake8 isort yamllint ]))
+      (python3.withPackages
+        (ps: with ps; [ autopep8 debugpy flake8 isort yamllint ]))
       nodePackages.pyright
 
       # Lua

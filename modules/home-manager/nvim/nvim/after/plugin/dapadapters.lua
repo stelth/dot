@@ -28,3 +28,19 @@ vim.api.nvim_create_user_command("Lldb", function(command)
   dap.run(config)
   dap.repl.open()
 end, { nargs = "+", complete = "file", desc = "Start debugging" })
+
+dap.adapters.python = {
+  type = "executable",
+  command = "python",
+  args = { "-m", "debugpy.adapter" },
+}
+
+dap.configurations.python = {
+  {
+    type = "python",
+    request = "launch",
+    name = "Launch File",
+
+    program = "${file}",
+  },
+}
