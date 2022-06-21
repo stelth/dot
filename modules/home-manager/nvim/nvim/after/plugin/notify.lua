@@ -4,3 +4,5 @@ vim.notify = function(msg, log_level, opts)
   end
   require("notify").notify(msg, log_level, opts)
 end
+
+require("telescope").load_extension("notify")

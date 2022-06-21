@@ -25,6 +25,7 @@
       comment-nvim
       dressing-nvim
       friendly-snippets
+      git-worktree-nvim
       harpoon
       lspkind-nvim
       lsp_signature-nvim
@@ -43,7 +44,6 @@
       nvim-ts-context-commentstring
       plenary-nvim
       telescope-dap-nvim
-      telescope-fzy-native-nvim
       telescope-nvim
       tokyonight-nvim
       undotree
@@ -54,7 +54,6 @@
       # Essentials
       tree-sitter
       fd
-      fzy
 
       # C/C++
       clang-tools_14
