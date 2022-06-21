@@ -74,6 +74,7 @@
         ], extraModules ? [ ] }:
         homeManagerConfiguration rec {
           inherit system username;
+          pkgs = import nixpkgs { inherit system; };
           homeDirectory = "${homePrefix system}/${username}";
           extraSpecialArgs = { inherit inputs nixpkgs stable; };
           configuration = {
