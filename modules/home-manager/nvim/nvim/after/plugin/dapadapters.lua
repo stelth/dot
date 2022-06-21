@@ -14,12 +14,15 @@ dap.adapters.lldb = {
 }
 
 vim.api.nvim_create_user_command("Lldb", function(command)
+  local cmd = command.fargs[1]
+  local args = vim.list_slice(command.fargs, 2, vim.tbl_count(command.fargs))
+
   local config = {
     type = "lldb",
-    name = command.fargs[1],
+    name = cmd,
     request = "launch",
-    program = command.fargs[1],
-    args = { vim.list_slice(command.fargs, 2, vim.tbl_count(command.fargs)) },
+    program = cmd,
+    args = args,
   }
 
   dap.run(config)
