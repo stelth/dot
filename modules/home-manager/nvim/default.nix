@@ -42,7 +42,6 @@
       nvim-notify
       nvim-ts-context-commentstring
       plenary-nvim
-      popup-nvim
       telescope-dap-nvim
       telescope-fzy-native-nvim
       telescope-nvim
