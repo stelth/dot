@@ -3,9 +3,6 @@ local dapui = require("dapui")
 local daptext = require("nvim-dap-virtual-text")
 
 dapui.setup({
-  sidebar = { size = 80 },
-  tray = { size = 10 },
-  floating = { max_width = 0.9, max_height = 0.5, border = vim.g.border_chars },
   layouts = {
     {
       elements = {
