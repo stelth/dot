@@ -15,18 +15,9 @@ local keymaps = {
     ]])
     end,
   },
-  ["Firefox"] = {
+  ["Firefox Developer Edition"] = {
     mods = hyper,
     key = "f",
-  },
-  ["Firefox New Window"] = {
-    mods = meh,
-    key = "f",
-    callback = function()
-      hs.osascript.javascript([[
-         Application("Firefox").Window().make()
-     ]])
-    end,
   },
   ["kitty"] = {
     mods = hyper,
