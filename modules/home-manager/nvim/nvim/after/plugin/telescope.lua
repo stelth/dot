@@ -47,6 +47,11 @@ vim.keymap.set("n", "<leader>vh", "", {
   desc = "Find help tag",
 })
 
+vim.keymap.set("n", "<leader>vk", "", {
+  callback = builtin.keymaps,
+  desc = "Find keymaps",
+})
+
 vim.keymap.set("n", "<leader>gb", "", {
   callback = builtin.git_branches,
   desc = "Git branches",
