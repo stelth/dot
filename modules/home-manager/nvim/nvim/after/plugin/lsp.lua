@@ -59,33 +59,39 @@ end
 
 local keymap_callback = function(client, bufnr)
   vim.keymap.set("n", "<leader>cd", "", {
+    buffer = bufnr,
     callback = vim.diagnostic.open_float,
     desc = "Line Diagnostics",
   })
 
   vim.keymap.set("n", "<leader>ca", "", {
+    buffer = bufnr,
     callback = vim.lsp.buf.code_action,
     desc = "Code Action",
   })
 
   vim.keymap.set("n", "<leader>cr", "", {
+    buffer = bufnr,
     callback = vim.lsp.buf.rename,
     desc = "Rename",
   })
 
-  vim.keymap.set("n", "<leader>cli", ":LspInfo<CR>", { desc = "Lsp Info" })
+  vim.keymap.set("n", "<leader>cli", ":LspInfo<CR>", { buffer = bufnr, desc = "Lsp Info" })
 
   vim.keymap.set("n", "<leader>cla", "", {
+    buffer = bufnr,
     callback = vim.lsp.buf.add_workspace_folder,
     desc = "Add folder to workspace",
   })
 
   vim.keymap.set("n", "<leader>clr", "", {
+    buffer = bufnr,
     callback = vim.lsp.buf.remove_workspace_folder,
     desc = "Remove folder from workspace",
   })
 
   vim.keymap.set("n", "<leader>cll", "", {
+    buffer = bufnr,
     callback = function()
       print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end,
@@ -93,32 +99,47 @@ local keymap_callback = function(client, bufnr)
   })
 
   vim.keymap.set("n", "<leader>tf", "", {
+    buffer = bufnr,
     callback = toggle,
     desc = "Toggle format on save",
   })
 
-  vim.keymap.set("n", "gr", ":Telescope lsp_references<CR>", { desc = "References" })
+  vim.keymap.set("n", "gr", ":Telescope lsp_references<CR>", { buffer = bufnr, desc = "References" })
 
   vim.keymap.set("n", "gd", "", {
+    buffer = bufnr,
     callback = vim.lsp.buf.definition,
     desc = "Goto definition",
   })
 
-  vim.keymap.set("n", "gdv", ":vsplit | lua vim.lsp.buf.definition()<CR>", { desc = "Goto definition in vsplit" })
+  vim.keymap.set(
+    "n",
+    "gdv",
+    ":vsplit | lua vim.lsp.buf.definition()<CR>",
+    { buffer = bufnr, desc = "Goto definition in vsplit" }
+  )
 
-  vim.keymap.set("n", "gds", ":split | lua vim.lsp.buf.definition()<CR>", { desc = "Goto definition in split" })
+  vim.keymap.set(
+    "n",
+    "gds",
+    ":split | lua vim.lsp.buf.definition()<CR>",
+    { buffer = bufnr, desc = "Goto definition in split" }
+  )
 
   vim.keymap.set("n", "gs", "", {
+    buffer = bufnr,
     callback = vim.lsp.buf.signature_help,
     desc = "Goto signature help",
   })
 
   vim.keymap.set("n", "gI", "", {
+    buffer = bufnr,
     callback = vim.lsp.buf.implementation,
     desc = "Goto implementation",
   })
 
   vim.keymap.set("n", "gt", "", {
+    buffer = bufnr,
     callback = vim.lsp.buf.type_definition,
     desc = "Goto type definition",
   })
@@ -160,6 +181,7 @@ local keymap_callback = function(client, bufnr)
   -- Set some keybinds conditional on server capabilities
   if client.server_capabilities.documentFormatting then
     vim.keymap.set("n", "<leader>cf", "", {
+      buffer = bufnr,
       callback = vim.lsp.buf.format,
       desc = "Format document",
     })
