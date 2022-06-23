@@ -29,17 +29,17 @@ cmp.setup({
       else
         fallback()
       end
-    end),
-  }, { "i", "s" }),
-  ["<S-TAB>"] = cmp.mapping(function(fallback)
-    if cmp.visible() then
-      cmp.select_prew_item()
-    elseif luasnip.jumpable(-1) then
-      luasnip.jump(-1)
-    else
-      fallback()
-    end
-  end, { "i", "s" }),
+    end, { "i", "s" }),
+    ["<S-TAB>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+  }),
   sources = cmp.config.sources({
     { name = "nvim_lsp" },
     { name = "luasnip" },
