@@ -38,11 +38,6 @@ dap.listeners.after.event_initialized["dapui_config"] = function()
   dapui.open()
 end
 
-vim.keymap.set("n", "<leader>5", "", {
-  callback = dap.continue,
-  desc = "DAP Continue",
-})
-
 vim.keymap.set("n", "<leader>6", "", {
   callback = function()
     dapui.close()

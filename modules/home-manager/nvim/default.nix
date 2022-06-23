@@ -14,7 +14,6 @@
     withRuby = false;
 
     plugins = with pkgs.vimPlugins; [
-      (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
       clangd_extensions-nvim
       cmp-buffer
       cmp-calc
@@ -41,8 +40,8 @@
       nvim-jdtls
       nvim-lspconfig
       nvim-notify
+      (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
       nvim-ts-context-commentstring
-      plenary-nvim
       telescope-dap-nvim
       telescope-nvim
       tokyonight-nvim
