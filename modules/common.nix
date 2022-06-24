@@ -1,6 +1,9 @@
 { inputs, config, pkgs, ... }: {
   imports = [ ./primary.nix ./nixpkgs.nix ./overlays.nix ];
 
+  programs.fish.enable = true;
+  programs.zsh.enable = true;
+
   user = {
     description = "Jason Cox";
     home = "${
