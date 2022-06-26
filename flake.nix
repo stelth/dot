@@ -18,10 +18,6 @@
     nixpkgs = { url = "github:nixos/nixpkgs/nixpkgs-unstable"; };
     small = { url = "github:nixos/nixpkgs/nixos-unstable-small"; };
     flake-utils = { url = "github:numtide/flake-utils"; };
-    flake-compat = {
-      url = "github:edolstra/flake-compat";
-      flake = false;
-    };
     darwin = {
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
