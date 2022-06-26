@@ -13,5 +13,8 @@
           ++ [ ./patches/lldb-fix-cpu-subtype-not-found.patch ];
       });
     })
+    (final: prev: rec {
+      kitty = prev.kitty.overrideAttrs (old: { doInstallCheck = false; });
+    })
   ];
 }
