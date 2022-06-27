@@ -1,4 +1,17 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, lib, ... }:
+let
+  leap-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "leap-nvim";
+    version = "2022-06-25";
+    src = pkgs.fetchFromGitHub {
+      owner = "ggandor";
+      repo = "leap.nvim";
+      rev = "19442875412a7c82fce2ddf548d825b9dc6c48bc";
+      sha256 = "sha256-d3HOGuDMcnTRoxrG0QLns1EZsCZqftvg1K6bDwS8pYY=";
+    };
+    meta.homepage = "https://github.com/ggandor/leap.nvim";
+  };
+in {
   xdg.configFile = {
     "nvim" = {
       source = ./nvim;
@@ -26,6 +39,7 @@
       friendly-snippets
       git-worktree-nvim
       harpoon
+      leap-nvim
       lspkind-nvim
       lsp_signature-nvim
       lua-dev-nvim
