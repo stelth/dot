@@ -62,32 +62,35 @@
         , nixpkgs ? inputs.nixpkgs, stable ? inputs.stable, baseModules ? [
           ./modules/home-manager
           {
-            home.sessionVariables = {
-              NIX_PATH =
-                "nixpkgs=${nixpkgs}:stable=${stable}\${NIX_PATH:+:}$NIX_PATH";
+            home = {
+              inherit username;
+              homeDirectory = "${homePrefix system}/${username}";
+              sessionVariables = {
+                NIX_PATH =
+                  "nixpkgs=${nixpkgs}:stable=${stable}\${NIX_PATH:+:}$NIX_PATH";
+              };
             };
           }
         ], extraModules ? [ ] }:
         homeManagerConfiguration rec {
-          inherit system username;
-          pkgs = import nixpkgs { inherit system; };
-          homeDirectory = "${homePrefix system}/${username}";
+          pkgs = nixpkgs.legacyPackages.${system};
           extraSpecialArgs = { inherit inputs nixpkgs stable; };
-          configuration = {
-            imports = baseModules ++ extraModules ++ [
-              (import ./modules/overlays.nix { inherit inputs nixpkgs stable; })
-            ];
-          };
+          modules = [ ./modules/overlays.nix ] ++ baseModules ++ extraModules;
         };
     in {
-      checks = listToAttrs (map (system: {
+      checks = listToAttrs ((map (system: {
         name = system;
         value = {
           personal =
             self.darwinConfigurations.personal.config.system.build.toplevel;
           work = self.darwinConfigurations.work.config.system.build.toplevel;
         };
-      }) nixpkgs.lib.platforms.darwin);
+      }) nixpkgs.lib.platforms.darwin) ++ (map (system: {
+        name = system;
+        value = {
+          personal = self.homeConfigurations.personal.activationPackage;
+        };
+      }) nixpkgs.lib.platforms.linux));
 
       darwinConfigurations = {
         personal = mkDarwinConfig {
@@ -97,6 +100,13 @@
         work = mkDarwinConfig {
           system = "x86_64-darwin";
           extraModules = [ ./profiles/work.nix ./modules/darwin/apps.nix ];
+        };
+      };
+
+      homeConfigurations = {
+        personal = mkHomeConfig {
+          username = "coxj";
+          extraModules = [ ./profiles/home-manager/personal.nix ];
         };
       };
       devShells = eachSystemMap defaultSystems (system:
