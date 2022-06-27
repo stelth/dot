@@ -7,33 +7,28 @@ local function execYabai(args)
   os.execute(command)
 end
 
--- "directions" for vim keybindings
 local directions = {
-  h = "west",
-  l = "east",
-  k = "north",
-  j = "south",
+  a = "west",
+  u = "east",
+  e = "north",
+  o = "south",
 }
 for key, direction in pairs(directions) do
   -- focus windows
-  -- cmd + ctrl
   hs.hotkey.bind({ "cmd", "ctrl" }, key, function()
     execYabai(string.format("-m window --focus %s", direction))
   end)
   -- move windows
-  -- cmd + shift
   hs.hotkey.bind({ "cmd", "shift" }, key, function()
     execYabai(string.format("-m window --warp %s", direction))
   end)
   -- swap windows
-  -- alt + shift
   hs.hotkey.bind({ "shift", "alt" }, key, function()
     execYabai(string.format("-m window --swap %s", direction))
   end)
 end
 
 -- window float settings
--- alt + shift
 local floating = {
   -- full
   up = "1:1:0:0:1:1",
@@ -48,14 +43,14 @@ for key, gridConfig in pairs(floating) do
   end)
 end
 -- balance window size
-hs.hotkey.bind({ "alt", "shift" }, "0", function()
+hs.hotkey.bind({ "alt", "shift" }, "down", function()
   execYabai("-m space --balance")
 end)
 
 -- layout settings
 local layouts = {
-  a = "bsp",
-  d = "float",
+  j = "bsp",
+  k = "float",
 }
 for key, layout in pairs(layouts) do
   hs.hotkey.bind({ "alt", "shift" }, key, function()
@@ -65,15 +60,15 @@ end
 
 -- toggle settings
 local toggleArgs = {
-  a = "-m space --toggle padding; yabai -m space --toggle gap",
-  d = "-m window --toggle zoom-parent",
-  e = "-m window --toggle split",
-  f = "-m window --toggle zoom-fullscreen",
-  o = "-m window --toggle topmost",
-  r = "-m space --rotate 90",
-  s = "-m window --toggle sticky",
-  x = "-m space --mirror x-axis",
-  y = "-m space --mirror y-axis",
+  g = "-m space --toggle padding; yabai -m space --toggle gap",
+  c = "-m window --toggle zoom-parent",
+  r = "-m window --toggle split",
+  h = "-m window --toggle zoom-fullscreen",
+  t = "-m window --toggle topmost",
+  n = "-m space --rotate 90",
+  m = "-m window --toggle sticky",
+  w = "-m space --mirror x-axis",
+  v = "-m space --mirror y-axis",
 }
 for key, args in pairs(toggleArgs) do
   hs.hotkey.bind({ "alt" }, key, function()
@@ -84,8 +79,8 @@ end
 -- throw/focus monitors
 local targets = {
   x = "recent",
-  z = "prev",
-  c = "next",
+  p = "prev",
+  y = "next",
 }
 for key, target in pairs(targets) do
   hs.hotkey.bind({ "ctrl", "alt" }, key, function()
@@ -98,17 +93,17 @@ for key, target in pairs(targets) do
 end
 
 local displayMaps = {
-  t = 1,
-  h = 2,
-  n = 3,
-  s = 4,
+  a = 1,
+  o = 2,
+  e = 3,
+  u = 4,
 }
 -- numbered monitors
 for key, screen in pairs(displayMaps) do
   hs.hotkey.bind({ "ctrl", "alt" }, key, function()
     execYabai(string.format("-m display --focus %s", screen))
   end)
-  hs.hotkey.bind({ "ctrl", "cmd" }, key, function()
+  hs.hotkey.bind({ "alt", "cmd" }, key, function()
     execYabai(string.format("-m window --display %s", screen))
     execYabai(string.format("-m display --focus %s", screen))
   end)
