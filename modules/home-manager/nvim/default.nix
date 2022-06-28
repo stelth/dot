@@ -4,21 +4,25 @@
   lib.vimUtils = rec {
     wrapLuaConfig = luaConfig: ''
       lua<<EOF
-      ${luaConfig}
+      ${builtins.readFile luaConfig}
       EOF
     '';
 
-    readVimConfigRaw = file:
-      if (lib.strings.hasSuffix ".lua" (builtins.toString file)) then
-        wrapLuaConfig (builtins.readFile file)
-      else
-        builtins.readFile file;
+    readVimConfigRaw = builtins.readFile;
 
     readVimConfig = file: ''
       ${readVimConfigRaw file}
     '';
+
+    configType = file:
+      if (lib.strings.hasSuffix ".lua" (builtins.toString file)) then
+        "lua"
+      else
+        "vimL";
+
     pluginWithCfg = { plugin, file }: {
       inherit plugin;
+      type = configType file;
       config = readVimConfig file;
     };
   };
@@ -32,8 +36,8 @@
     withRuby = false;
 
     extraConfig = ''
-      ${config.lib.vimUtils.readVimConfig ./settings.lua}
-      ${config.lib.vimUtils.readVimConfig ./keymaps.lua}
+      ${config.lib.vimUtils.wrapLuaConfig ./settings.lua}
+      ${config.lib.vimUtils.wrapLuaConfig ./keymaps.lua}
     '';
   };
 }
