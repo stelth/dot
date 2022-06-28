@@ -93,8 +93,8 @@ for key, target in pairs(targets) do
 end
 
 local displayMaps = {
-  a = 1,
-  o = 2,
+  a = 2,
+  o = 1,
   e = 3,
   u = 4,
 }
