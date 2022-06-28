@@ -57,6 +57,7 @@ in {
       (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
       nvim-ts-context-commentstring
       telescope-dap-nvim
+      telescope-file-browser-nvim
       telescope-nvim
       tokyonight-nvim
       undotree
