@@ -6,4 +6,4 @@ luasnip.config.set_config({
   updateEvents = "TextChanged,TextChangedI",
 })
 
-require("luasnip/loaders/from_vscode").load()
+require("luasnip/loaders/from_vscode").lazy_load()
