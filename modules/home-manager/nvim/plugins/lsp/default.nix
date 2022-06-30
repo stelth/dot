@@ -23,6 +23,12 @@
     stylua
     sumneko-lua-language-server
 
+    # Go
+    gopls
+
+    # Rust
+    rust-analyzer
+
     # Shell scripting
     nodePackages.bash-language-server
     shellcheck
@@ -47,6 +53,7 @@
         plugin = nvim-lspconfig;
         file = ./lsp.lua;
       })
+      rust-tools-nvim
     ];
   };
 }

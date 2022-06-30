@@ -201,7 +201,7 @@ local on_attach = function(client, bufnr)
   require("lsp_signature").on_attach()
 end
 
-local make_config = function(config)
+local config = function(customConfig)
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
@@ -213,7 +213,7 @@ local make_config = function(config)
     },
   }
 
-  local new_config = vim.tbl_deep_extend("force", default_config, config)
+  local new_config = vim.tbl_deep_extend("force", default_config, customConfig)
 
   return new_config
 end
@@ -221,20 +221,24 @@ end
 local luadev = require("lua-dev").setup({})
 table.insert(luadev.settings.Lua.workspace.library, "/Users/coxj/.hammerspoon/Spoons/EmmyLua.spoon/annotations")
 
-local servers = {
-  bashls = {},
-  cmake = {},
-  jsonls = { cmd = { "vscode-json-languageserver", "--stdio" } },
-  pyright = {},
-  rnix = {},
-  sumneko_lua = luadev,
-  yamlls = {},
-}
-
 local lspconfig = require("lspconfig")
-for server, config in pairs(servers) do
-  lspconfig[server].setup(make_config(config))
-end
+lspconfig.bashls.setup(config({}))
+
+lspconfig.cmake.setup(config({}))
+
+lspconfig.gopls.setup(config({}))
+
+lspconfig.jsonls.setup(config({
+  cmd = { { "vscode-json-languageserver", "--stdio" } },
+}))
+
+lspconfig.pyright.setup(config({}))
+
+lspconfig.rnix.setup(config({}))
+
+lspconfig.sumneko_lua.setup(config(luadev))
+
+lspconfig.yamlls.setup(config({}))
 
 local jdtls_setup = function()
   require("jdtls").start_or_attach({
@@ -259,8 +263,14 @@ require("clangd_extensions").setup({
   },
 })
 
+require("rust-tools").setup({
+  server = {
+    on_attach = on_attach,
+  },
+})
+
 local nls = require("null-ls")
-nls.setup(make_config({
+nls.setup(config({
   save_after_format = false,
   sources = {
     -- Python
