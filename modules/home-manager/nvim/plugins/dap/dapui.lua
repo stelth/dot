@@ -9,8 +9,6 @@ dapui.setup({
     {
       elements = {
         "scopes",
-        "breakpoints",
-        "stacks",
         "watches",
       },
       size = 40,
@@ -38,7 +36,7 @@ dap.listeners.after.event_initialized["dapui_config"] = function()
   dapui.open()
 end
 
-vim.keymap.set("n", "<leader>6", "", {
+vim.keymap.set("n", "<leader><leader>", "", {
   callback = function()
     dapui.close()
     dap.terminate()
