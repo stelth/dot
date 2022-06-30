@@ -27,7 +27,9 @@
     gopls
 
     # Rust
+    clippy
     rust-analyzer
+    rustfmt
 
     # Shell scripting
     nodePackages.bash-language-server

@@ -266,6 +266,21 @@ require("clangd_extensions").setup({
 require("rust-tools").setup({
   server = {
     on_attach = on_attach,
+    settings = {
+      ["rust-analyzer"] = {
+        checkOnSave = {
+          allFeatures = true,
+          overrideCommand = {
+            "cargo",
+            "clippy",
+            "--workspace",
+            "--message-format=json",
+            "--all-targets",
+            "--all-features",
+          },
+        },
+      },
+    },
   },
 })
 
@@ -298,6 +313,9 @@ nls.setup(config({
     -- Lua
     nls.builtins.diagnostics.selene,
     nls.builtins.formatting.stylua,
+
+    -- Rust
+    nls.builtins.formatting.rustfmt,
 
     -- Nix
     nls.builtins.formatting.nixfmt,
