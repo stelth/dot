@@ -24,6 +24,7 @@
     sumneko-lua-language-server
 
     # Go
+    golangci-lint
     gopls
 
     # Rust

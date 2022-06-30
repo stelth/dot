@@ -317,6 +317,10 @@ nls.setup(config({
     -- Rust
     nls.builtins.formatting.rustfmt,
 
+    -- Go
+    nls.builtins.diagnostics.golangci_lint,
+    nls.builtins.formatting.gofmt,
+
     -- Nix
     nls.builtins.formatting.nixfmt,
     nls.builtins.diagnostics.statix,
