@@ -1,6 +1,7 @@
 -- ----------------------------------
 -- General Settings
 -- ----------------------------------
+local indent = 2
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 vim.opt.backup = false
@@ -15,13 +16,13 @@ vim.opt.incsearch = true
 vim.opt.nu = true
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 8
-vim.opt.shiftwidth = 4
+vim.opt.shiftwidth = indent
 vim.opt.shortmess:append("c")
 vim.opt.signcolumn = "yes"
 vim.opt.smartindent = true
 vim.opt.softtabstop = 4
 vim.opt.swapfile = false
-vim.opt.tabstop = 4
+vim.opt.tabstop = indent
 vim.opt.termguicolors = true
 vim.opt.updatetime = 50
 vim.opt.wrap = false
