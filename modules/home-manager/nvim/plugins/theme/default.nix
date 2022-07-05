@@ -3,8 +3,8 @@
     plugins = with pkgs.vimPlugins;
       [
         (config.lib.vimUtils.pluginWithCfg {
-          plugin = gruvbox-nvim;
-          file = ./gruvbox.lua;
+          plugin = kanagawa-nvim;
+          file = ./kanagawa.lua;
         })
       ];
   };
