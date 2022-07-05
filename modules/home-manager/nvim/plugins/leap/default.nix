@@ -6,19 +6,19 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "ggandor";
       repo = "leap.nvim";
-      rev = "19442875412a7c82fce2ddf548d825b9dc6c48bc";
-      sha256 = "sha256-d3HOGuDMcnTRoxrG0QLns1EZsCZqftvg1K6bDwS8pYY=";
+      rev = "1ab9deb88ef8ccf01a359ef5053b7d3804f8425a";
+      sha256 = "sha256-UuZvMxBt1FRnKAUo/G5HBLDkRcyQiQhlN+xJ9ti3+Wg=";
     };
     meta.homepage = "https://github.com/ggandor/leap.nvim";
   };
 in {
   programs.neovim = {
-    plugins = with pkgs.vimPlugins;
-      [
-        (config.lib.vimUtils.pluginWithCfg {
-          plugin = leap-nvim;
-          file = ./leap.lua;
-        })
-      ];
+    plugins = with pkgs.vimPlugins; [
+      (config.lib.vimUtils.pluginWithCfg {
+        plugin = leap-nvim;
+        file = ./leap.lua;
+      })
+      vim-repeat
+    ];
   };
 }
