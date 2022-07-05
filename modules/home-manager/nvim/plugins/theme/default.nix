@@ -3,8 +3,8 @@
     plugins = with pkgs.vimPlugins;
       [
         (config.lib.vimUtils.pluginWithCfg {
-          plugin = tokyonight-nvim;
-          file = ./tokyonight.lua;
+          plugin = gruvbox-nvim;
+          file = ./gruvbox.lua;
         })
       ];
   };
