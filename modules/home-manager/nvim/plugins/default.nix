@@ -4,6 +4,7 @@
     ./dap
     ./leap
     ./lsp
+    ./lualine
     ./misc
     ./neogit
     ./telescope
