@@ -1,7 +1,7 @@
 -- ----------------------------------
 -- General Settings
 -- ----------------------------------
-local indent = 2
+local indent = 4
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 vim.opt.backup = false
