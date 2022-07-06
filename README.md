@@ -61,13 +61,13 @@ git clone git@github.com:stelth/dot.git ~/dot
 You can bootstrap a new nix-darwin system using
 
 ```bash
-nix --extra-experimental-features "nix-command flakes" develop -c sysdo bootstrap --darwin jcox
+nix develop -c sysdo bootstrap --darwin personal
 ```
 
 or a home-manager configuration using
 
 ```bash
-nix --extra-experimental-feautres "nix-command flakes" develop -c sysdo bootstrap --homemanager [host]
+nix develop -c sysdo bootstrap --homemanager [host]
 ```
 
 ## `sysdo` CLI
