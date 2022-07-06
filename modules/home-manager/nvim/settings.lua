@@ -25,6 +25,8 @@ vim.opt.softtabstop = 4
 vim.opt.swapfile = false
 vim.opt.tabstop = indent
 vim.opt.termguicolors = true
+vim.opt.undofile = true
+vim.opt.undolevels = 10000
 vim.opt.updatetime = 50
 vim.opt.wrap = false
 
