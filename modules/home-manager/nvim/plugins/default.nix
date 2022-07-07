@@ -2,7 +2,6 @@
   imports = [
     ./cmp
     ./dap
-    ./leap
     ./lsp
     ./lualine
     ./misc
