@@ -6,8 +6,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "kylechui";
       repo = "nvim-surround";
-      rev = "1e308812e9bf9b98c4cf5fa7500b569385a19f96";
-      sha256 = "sha256-dgC1ZdV/IWEYQTn66jDFF2H71iTZYwZMLrzgYrFBFcc=";
+      rev = "cf27dc456860878256bee9e83d42c6c425ef1dcb";
+      sha256 = "sha256-gtpx2TbHmXNjJ1lUuolCBN2BVNkAY9hdgdZLQIpDp/Q=";
     };
     meta.homepage = "https://github.com/kylechui/nvim-surround";
   };
