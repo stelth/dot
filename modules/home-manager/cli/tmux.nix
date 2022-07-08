@@ -8,6 +8,7 @@
     customPaneNavigationAndResize = true;
     disableConfirmationPrompt = true;
     escapeTime = 0;
+    clock24 = true;
     extraConfig = ''
       set -g mouse on
       set-option -sa terminal-overrides ',xterm-256color:RGB'
