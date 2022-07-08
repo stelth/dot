@@ -11,6 +11,7 @@
     openjdk
     rustc
     cargo
+    switch-back-to-nvim
     tmux-sessionizer
     tmux-cht
   ];

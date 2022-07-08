@@ -19,6 +19,7 @@
 
       bind-key -r f run-shell "tmux neww tmux-sessionizer"
       bind-key -r i run-shell "tmux neww tmux-cht"
+      bind-key -r n run-shell "switch-back-to-nvim"
 
       bind-key -r ^ last-window
     '';
