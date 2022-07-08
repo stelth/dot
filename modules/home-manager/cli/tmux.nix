@@ -3,13 +3,14 @@
     enable = true;
     prefix = "C-a";
     baseIndex = 1;
-    terminal = "xterm-256color";
+    terminal = "screen-256color";
     keyMode = "vi";
     customPaneNavigationAndResize = true;
     disableConfirmationPrompt = true;
     escapeTime = 0;
     extraConfig = ''
       set -g mouse on
+      set-option -sa terminal-overrides ',xterm-256color:RGB'
       bind r source-file ~/.config/tmux/tmux.conf
       bind | split-window -h
       bind - split-window -v
