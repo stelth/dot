@@ -15,9 +15,6 @@
       });
     })
     (final: prev: rec {
-      kitty = prev.kitty.overrideAttrs (old: { doInstallCheck = false; });
-    })
-    (final: prev: rec {
       golangci-lint =
         prev.golangci-lint.override { inherit (prev) buildGoModule; };
     })

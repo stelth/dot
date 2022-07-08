@@ -11,7 +11,7 @@ let
     (${sysDoNixos}) || (${sysDoDarwin})
   '';
 in {
-  imports = [ ./cli ./dev ./dotfiles ./git.nix ./kitty ./nvim ./1password ];
+  imports = [ ./cli ./dev ./dotfiles ./git.nix ./nvim ./1password ];
 
   programs.home-manager = {
     enable = true;
