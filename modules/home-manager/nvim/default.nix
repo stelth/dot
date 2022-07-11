@@ -35,6 +35,8 @@
     withPython3 = false;
     withRuby = false;
 
+    extraPackages = with pkgs; [ fd ];
+
     extraConfig = ''
       ${config.lib.vimUtils.wrapLuaConfig ./settings.lua}
       ${config.lib.vimUtils.wrapLuaConfig ./keymaps.lua}
