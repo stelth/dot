@@ -6,8 +6,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "kylechui";
       repo = "nvim-surround";
-      rev = "cf27dc456860878256bee9e83d42c6c425ef1dcb";
-      sha256 = "sha256-gtpx2TbHmXNjJ1lUuolCBN2BVNkAY9hdgdZLQIpDp/Q=";
+      rev = "1d5a090d79bc4c6242116427c4372b7a0633276d";
+      sha256 = "sha256-lyju4px//HVapoXeOrr8ZESm3ODnKBj+cSjUCQYwTS4=";
     };
     meta.homepage = "https://github.com/kylechui/nvim-surround";
   };
@@ -17,8 +17,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "ggandor";
       repo = "leap.nvim";
-      rev = "a6072a8e1ed3d655e214721fc804c1eae508665e";
-      sha256 = "sha256-eGatUG9aPSYRHVsp/6CH6JlCXDeDen6rw7SnoZ9SdGc=";
+      rev = "1bb1fec369b1e9ae96e6ff1b829ea9272c51f844";
+      sha256 = "sha256-dH0v1D5q5OlMLA/omTDMb/taKyIgQ5VfVMYXJ609k/k=";
     };
     meta.homepage = "https://github.com/ggandor/leap.nvim";
   };
