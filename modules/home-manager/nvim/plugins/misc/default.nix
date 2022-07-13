@@ -2,23 +2,23 @@
 let
   nvim-surround = pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "nvim-surround";
-    version = "2022-07-07";
+    version = "2022-07-13";
     src = pkgs.fetchFromGitHub {
       owner = "kylechui";
       repo = "nvim-surround";
-      rev = "1d5a090d79bc4c6242116427c4372b7a0633276d";
-      sha256 = "sha256-lyju4px//HVapoXeOrr8ZESm3ODnKBj+cSjUCQYwTS4=";
+      rev = "beea0fd11c4dafb66845914c6cfc705e46cc3207";
+      sha256 = "sha256-Ns+DvLkiqMpg50OL0UtpurpgrCbh6jknZ/d9QTRQER4=";
     };
     meta.homepage = "https://github.com/kylechui/nvim-surround";
   };
   leap-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "leap-nvim";
-    version = "2022-07-05";
+    version = "2022-07-13";
     src = pkgs.fetchFromGitHub {
       owner = "ggandor";
       repo = "leap.nvim";
-      rev = "1bb1fec369b1e9ae96e6ff1b829ea9272c51f844";
-      sha256 = "sha256-dH0v1D5q5OlMLA/omTDMb/taKyIgQ5VfVMYXJ609k/k=";
+      rev = "1d1032feefb53d407c59ea37d80374d77f6f9f3b";
+      sha256 = "sha256-rD8Z+/SkhMoMr5PtI7bkJFgEMz+nB6A09dDhlvG6oBY=";
     };
     meta.homepage = "https://github.com/ggandor/leap.nvim";
   };
