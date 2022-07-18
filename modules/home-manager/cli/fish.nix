@@ -20,8 +20,6 @@
       vim = "nvim";
       vi = "nvim";
       v = "nvim";
-      g = "git";
-      st = "git st";
       push = "git push";
       pull = "git pull";
       su = "su -";
