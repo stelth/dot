@@ -3,7 +3,6 @@
     cmake
     gh
     go
-    hub
     lua
     maven
     ninja

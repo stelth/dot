@@ -20,11 +20,10 @@
       vim = "nvim";
       vi = "nvim";
       v = "nvim";
-      git = "hub";
-      g = "hub";
-      st = "hub st";
-      push = "hub push";
-      pull = "hub pull";
+      g = "git";
+      st = "git st";
+      push = "git push";
+      pull = "git pull";
       su = "su -";
       df = "grc /bin/df -h";
       rga = "rg -uu";
