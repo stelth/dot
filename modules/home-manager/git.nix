@@ -15,7 +15,10 @@
       http = { sslVerify = true; };
       init = { defaultBranch = "main"; };
       pull = { rebase = true; };
-      push = { followTags = true; };
+      push = {
+        followTags = true;
+        autoSetupRemote = true;
+      };
       ghq = { root = "~/dev/repos"; };
       color = { ui = true; };
     };
