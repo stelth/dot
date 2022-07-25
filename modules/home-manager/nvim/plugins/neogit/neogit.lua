@@ -5,6 +5,9 @@ vim.keymap.set("n", "<leader>gs", "", {
   desc = "Neogit",
 })
 
-vim.keymap.set("n", "<leader>ga", "<cmd>!git fetch --all<CR>", {
+vim.keymap.set("n", "<leader>ga", "", {
+  callback = function()
+    os.execute("git fetch --all")
+  end,
   desc = "Git fetch all",
 })
