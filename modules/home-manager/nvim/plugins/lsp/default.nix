@@ -48,7 +48,6 @@
   programs.neovim = {
     plugins = with pkgs.vimPlugins; [
       clangd_extensions-nvim
-      lsp_signature-nvim
       lua-dev-nvim
       null-ls-nvim
       nvim-jdtls

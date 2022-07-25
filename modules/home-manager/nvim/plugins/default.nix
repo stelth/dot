@@ -1,4 +1,3 @@
 { lib, ... }: {
-  imports =
-    [ ./cmp ./dap ./lsp ./lualine ./misc ./telescope ./theme ./treesitter ];
+  imports = [ ./completion ./dap ./lsp ./misc ./telescope ./treesitter ./ui ];
 }

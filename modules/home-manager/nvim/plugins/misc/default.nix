@@ -1,24 +1,13 @@
 { config, pkgs, lib, ... }:
 let
-  nvim-surround = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "nvim-surround";
-    version = "2022-07-13";
-    src = pkgs.fetchFromGitHub {
-      owner = "kylechui";
-      repo = "nvim-surround";
-      rev = "beea0fd11c4dafb66845914c6cfc705e46cc3207";
-      sha256 = "sha256-Ns+DvLkiqMpg50OL0UtpurpgrCbh6jknZ/d9QTRQER4=";
-    };
-    meta.homepage = "https://github.com/kylechui/nvim-surround";
-  };
   leap-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
     name = "leap-nvim";
-    version = "2022-07-13";
+    version = "2022-07-24";
     src = pkgs.fetchFromGitHub {
       owner = "ggandor";
       repo = "leap.nvim";
-      rev = "1d1032feefb53d407c59ea37d80374d77f6f9f3b";
-      sha256 = "sha256-rD8Z+/SkhMoMr5PtI7bkJFgEMz+nB6A09dDhlvG6oBY=";
+      rev = "4e6e6afe81052483bf0900dc2bb8882194b7be50";
+      sha256 = "sha256-UpAmjD5ib1zRtLg7pEV5+/sh+Zl22b3H+OHY9GDPzrU=";
     };
     meta.homepage = "https://github.com/ggandor/leap.nvim";
   };
@@ -49,14 +38,6 @@ in {
       (config.lib.vimUtils.pluginWithCfg {
         plugin = nvim-autopairs;
         file = ./autopairs.lua;
-      })
-      (config.lib.vimUtils.pluginWithCfg {
-        plugin = nvim-notify;
-        file = ./notify.lua;
-      })
-      (config.lib.vimUtils.pluginWithCfg {
-        plugin = nvim-surround;
-        file = ./surround.lua;
       })
       (config.lib.vimUtils.pluginWithCfg {
         plugin = undotree;
