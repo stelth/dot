@@ -43,6 +43,10 @@ in {
         file = ./leap.lua;
       })
       (config.lib.vimUtils.pluginWithCfg {
+        plugin = neogit;
+        file = ./neogit.lua;
+      })
+      (config.lib.vimUtils.pluginWithCfg {
         plugin = nvim-autopairs;
         file = ./autopairs.lua;
       })

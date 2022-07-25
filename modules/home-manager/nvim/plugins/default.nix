@@ -1,13 +1,4 @@
 { lib, ... }: {
-  imports = [
-    ./cmp
-    ./dap
-    ./lsp
-    ./lualine
-    ./misc
-    ./neogit
-    ./telescope
-    ./theme
-    ./treesitter
-  ];
+  imports =
+    [ ./cmp ./dap ./lsp ./lualine ./misc ./telescope ./theme ./treesitter ];
 }
