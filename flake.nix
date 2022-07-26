@@ -116,13 +116,13 @@
             overlays = [ inputs.devshell.overlay ];
           };
           pyEnv = pkgs.python3.withPackages
-            (ps: with ps; [ typer colorama shellingham ]);
+            (ps: with ps; [ black typer colorama shellingham ]);
           sysdo = pkgs.writeShellScriptBin "sysdo" ''
             cd $PRJ_ROOT && ${pyEnv}/bin/python3 bin/do.py $@
           '';
         in {
           default = pkgs.devshell.mkShell {
-            packages = with pkgs; [ nixfmt pyEnv black stylua treefmt ];
+            packages = with pkgs; [ nixfmt pyEnv stylua treefmt ];
             commands = [{
               name = "sysdo";
               package = sysdo;
