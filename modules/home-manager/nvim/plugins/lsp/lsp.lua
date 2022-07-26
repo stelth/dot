@@ -225,6 +225,8 @@ lspconfig.bashls.setup(config({}))
 
 lspconfig.cmake.setup(config({}))
 
+lspconfig.dockerls.setup(config({}))
+
 lspconfig.gopls.setup(config({}))
 
 lspconfig.jsonls.setup(config({
@@ -324,6 +326,9 @@ nls.setup(config({
         nls.builtins.formatting.nixfmt,
         nls.builtins.diagnostics.statix,
         nls.builtins.code_actions.statix,
+
+        -- Docker
+        nls.builtins.diagnostics.hadolint,
 
         -- Additional
         nls.builtins.formatting.trim_whitespace.with({

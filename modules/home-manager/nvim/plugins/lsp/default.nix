@@ -32,6 +32,10 @@
     rust-analyzer
     rustfmt
 
+    # Docker
+    nodePackages.dockerfile-language-server-nodejs
+    hadolint
+
     # Shell scripting
     nodePackages.bash-language-server
     shellcheck
