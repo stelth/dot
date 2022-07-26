@@ -6,7 +6,7 @@ self: super: {
       if [[ $# -eq 1 ]]; then
           selected=$1
       else
-          selected=$(printf "%s\n$HOME/dot" "$(ghq list -p)" | fzf)
+          selected=$(printf "%s\n$HOME/dot\n$HOME/dev" "$(ghq list -p)" | fzf)
       fi
 
       if [[ -z "$selected" ]]; then
