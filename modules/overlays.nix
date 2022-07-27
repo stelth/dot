@@ -14,9 +14,5 @@
           ++ [ ./patches/lldb-fix-cpu-subtype-not-found.patch ];
       });
     })
-    (final: prev: rec {
-      golangci-lint =
-        prev.golangci-lint.override { inherit (prev) buildGoModule; };
-    })
   ];
 }
