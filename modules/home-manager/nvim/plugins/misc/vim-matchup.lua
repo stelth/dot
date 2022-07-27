@@ -1,3 +1,3 @@
-vim.g.matchup_paren_offscreen = {
+vim.g.matchup_matchparen_offscreen = {
   method = "status_manual",
 }
