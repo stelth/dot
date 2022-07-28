@@ -5,9 +5,7 @@
       small = import inputs.small { inherit (super) system; };
     })
     inputs.neovim-nightly-overlay.overlay
-    (import ../pkgs/tmux-sessionizer.nix)
-    (import ../pkgs/tmux-cht.nix)
-    (import ../pkgs/switch-back-to-nvim.nix)
+    (import ../pkgs)
     (final: prev: rec {
       lldb_14 = prev.lldb_14.overrideAttrs (old: {
         patches = (old.patches or [ ])
