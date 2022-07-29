@@ -6,8 +6,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "ggandor";
       repo = "leap.nvim";
-      rev = "4e6e6afe81052483bf0900dc2bb8882194b7be50";
-      sha256 = "sha256-UpAmjD5ib1zRtLg7pEV5+/sh+Zl22b3H+OHY9GDPzrU=";
+      rev = "2a11836d290560c746b75c424827660e4d94bd12";
+      sha256 = "sha256-ICg67pTUttioq4LJsEvlDv08CDSgDRJh72XiAE0IOvU=";
     };
     meta.homepage = "https://github.com/ggandor/leap.nvim";
   };
