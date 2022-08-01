@@ -43,7 +43,7 @@
     shfmt
 
     # Additional
-    cmake-language-server
+    neocmakelsp
     nodePackages.markdownlint-cli
     nodePackages.prettier
     nodePackages.vscode-json-languageserver

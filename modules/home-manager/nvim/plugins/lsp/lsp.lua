@@ -221,9 +221,8 @@ local luadev = require("lua-dev").setup({})
 table.insert(luadev.settings.Lua.workspace.library, "/Users/coxj/.hammerspoon/Spoons/EmmyLua.spoon/annotations")
 
 local lspconfig = require("lspconfig")
+local configs = require("lspconfig.configs")
 lspconfig.bashls.setup(config({}))
-
-lspconfig.cmake.setup(config({}))
 
 lspconfig.dockerls.setup(config({}))
 
@@ -232,6 +231,21 @@ lspconfig.gopls.setup(config({}))
 lspconfig.jsonls.setup(config({
   cmd = { { "vscode-json-languageserver", "--stdio" } },
 }))
+
+if not configs.neocmake then
+  configs.neocmake = {
+    default_config = {
+      cmd = { "neocmakelsp" },
+      filetypes = { "cmake" },
+      root_dir = function(fname)
+        return lspconfig.util.find_git_ancestor(fname)
+      end,
+      single_file_support = true,
+      on_attach = on_attach,
+    },
+  }
+end
+lspconfig.neocmake.setup(config({}))
 
 lspconfig.pyright.setup(config({}))
 
