@@ -17,7 +17,7 @@ rustPlatform.buildRustPackage rec {
   meta = with lib; {
     description = "CMake lsp based on Tower and treesitter";
     homepage = "https://github.com/Decodetalkers/neocmakelsp";
-    license = licenses.unlicense;
-    maintainers = [ maintainers.mit ];
+    license = licenses.mit;
+    maintainers = [ maintainers.tailhook ];
   };
 }
