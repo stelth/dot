@@ -42,8 +42,11 @@
     shellharden
     shfmt
 
-    # Additional
+    # CMake
+    cmake-format
     neocmakelsp
+
+    # Additional
     nodePackages.markdownlint-cli
     nodePackages.prettier
     nodePackages.vscode-json-languageserver
