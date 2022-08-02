@@ -1,4 +1,4 @@
-{ lib, fetchFromGitHub, rustPlatform, }:
+{ lib, pkgs, fetchFromGitHub, rustPlatform, }:
 rustPlatform.buildRustPackage rec {
   pname = "neocmakelsp";
   version = "d3c0ae4625accd7afec56f02aab68e1aca85699b";
@@ -12,7 +12,7 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-lACbnazrD+YO3ZUwiH6TZ/3GHWFpQ7AZiNqSI7ZocDQ=";
 
-  doCheck = false;
+  nativeBuildInputs = with pkgs; [ cmake ];
 
   meta = with lib; {
     description = "CMake lsp based on Tower and treesitter";
