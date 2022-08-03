@@ -36,6 +36,10 @@ in {
         file = ./neogit.lua;
       })
       (config.lib.vimUtils.pluginWithCfg {
+        plugin = nvim-notify;
+        file = ./notify.lua;
+      })
+      (config.lib.vimUtils.pluginWithCfg {
         plugin = nvim-autopairs;
         file = ./autopairs.lua;
       })
