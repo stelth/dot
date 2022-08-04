@@ -307,6 +307,7 @@ nls.setup(config({
         nls.builtins.formatting.autopep8,
         nls.builtins.formatting.isort,
         nls.builtins.diagnostics.flake8,
+        nls.builtins.diagnostics.pylint,
 
         -- Shell
         nls.builtins.formatting.shfmt,
