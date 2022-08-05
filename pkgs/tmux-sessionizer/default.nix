@@ -4,27 +4,32 @@ writeShellApplication {
   runtimeInputs = [ tmux ghq fzf ];
   text = ''
     if [[ $# -eq 1 ]]; then
-        selected=$1
+    	selected=$1 && [[ "$selected" == "." ]] && selected="$PWD"
     else
-        selected=$(printf "%s\n$HOME/dot\n$HOME/dev" "$(ghq list -p)" | fzf)
+    	selected=$(printf "%s\n$HOME/dot\n$HOME/dev" "$(ghq list -p)" | fzf)
     fi
 
     if [[ -z "$selected" ]]; then
-        exit 0
+    	exit 0
     fi
 
     selected_name=$(basename "$selected" | tr . _)
-    tmux_running=$(pgrep tmux)
+    selected_name_t=''${selected_name:0:8}
 
-    if [[ -z "$TMUX" ]] && [[ -z "$tmux_running" ]]; then
-        tmux new-session -s "$selected_name" -c "$selected"
-        exit 0
+    # If you are in a tmux session, and the selected session exists, switch to it;
+    # if not create a new one and then swith to it.
+    if [[ -n ''${TMUX+x} ]]; then
+    	if ! tmux switch-client -t "$selected_name_t"; then
+    		if tmux new-session -ds "$selected_name_t" -c "$selected"; then
+    			tmux switch-client -t "$selected_name_t"
+    		fi
+    	fi
+    # If outside of a tmux session, try to create a new session;
+    # if it fails attach to the selected session
+    else
+    	if ! tmux new-session -s "$selected_name_t" -c "$selected"; then
+    		tmux attach -t "$selected_name_t"
+    	fi
     fi
-
-    if ! tmux has-session -t="$selected_name" 2> /dev/null; then
-        tmux new-session -ds "$selected_name" -c "$selected"
-    fi
-
-    tmux switch-client -t "$selected_name"
   '';
 }

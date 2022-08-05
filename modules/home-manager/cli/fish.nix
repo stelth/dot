@@ -4,14 +4,9 @@
   programs.fish = {
     enable = true;
     shellAbbrs = {
-      t = "tmux";
-      tc = "tmux attach";
-      ta = "tmux attach -t";
-      tad = "tmux attach -d -t";
-      ts = "tmux new -s";
+      ts = "tmux-sessionizer";
       tl = "tmux ls";
       tk = "tmux kill-session -t";
-      mux = "tmuxinator";
       mv = "mv -iv";
       cp = "cp -riv";
       mkdir = "mkdir -vp";
