@@ -36,48 +36,24 @@ dap.listeners.after.event_initialized["dapui_config"] = function()
   dapui.open()
 end
 
-vim.keymap.set("n", "<leader><leader>", "", {
-  callback = function()
-    dapui.close()
-    dap.terminate()
-    daptext.refresh()
-  end,
-  desc = "DAP Close",
-})
+vim.keymap.set("n", "<leader><leader>", function()
+  dapui.close()
+  dap.terminate()
+  daptext.refresh()
+end, { desc = "DAP Close" })
 
-vim.keymap.set("n", "<Up>", "", {
-  callback = dap.continue,
-  desc = "DAP Continue",
-})
+vim.keymap.set("n", "<Up>", dap.continue, { desc = "DAP Continue" })
 
-vim.keymap.set("n", "<Down>", "", {
-  callback = dap.step_over,
-  desc = "DAP Step Over",
-})
+vim.keymap.set("n", "<Down>", dap.step_over, { desc = "DAP Step Over" })
 
-vim.keymap.set("n", "<Right>", "", {
-  callback = dap.step_into,
-  desc = "DAP Step Into",
-})
+vim.keymap.set("n", "<Right>", dap.step_into, { desc = "DAP Step Into" })
 
-vim.keymap.set("n", "<Left>", "", {
-  callback = dap.step_out,
-  desc = "DAP Step Out",
-})
+vim.keymap.set("n", "<Left>", dap.step_out, { desc = "DAP Step Out" })
 
-vim.keymap.set("n", "<leader>b", "", {
-  callback = dap.toggle_breakpoint,
-  desc = "DAP Toggle Breakpoint",
-})
+vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = "DAP Toggle Breakpoint" })
 
-vim.keymap.set("n", "<leader>B", "", {
-  callback = function()
-    dap.set_breakpoint(vim.fn.input("Breakpoint Condition: "))
-  end,
-  desc = "DAP Conditional Breakpoint",
-})
+vim.keymap.set("n", "<leader>B", function()
+  dap.set_breakpoint(vim.fn.input("Breakpoint Condition: "))
+end, { desc = "DAP Conditional Breakpoint" })
 
-vim.keymap.set("n", "<leader>rc", "", {
-  callback = dap.run_to_cursor,
-  desc = "DAP Run To Cursor",
-})
+vim.keymap.set("n", "<leader>rc", dap.run_to_cursor, { desc = "DAP Run To Cursor" })

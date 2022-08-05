@@ -20,54 +20,42 @@ telescope.setup({
   },
 })
 
-vim.keymap.set("n", "<leader>ps", "", {
-  callback = builtin.live_grep,
+vim.keymap.set("n", "<leader>ps", builtin.live_grep, {
   desc = "Find string",
 })
 
-vim.keymap.set("n", "<leader>pf", "", {
-  callback = builtin.find_files,
+vim.keymap.set("n", "<leader>pf", builtin.find_files, {
   desc = "Find file",
 })
 
-vim.keymap.set("n", "<leader>pw", "", {
-  callback = function()
-    builtin.grep_string({ search = vim.fn.expand("<cword>") })
-  end,
-  desc = "Find current word",
-})
+vim.keymap.set("n", "<leader>pw", function()
+  builtin.grep_string({ search = vim.fn.expand("<cword>") })
+end, { desc = "Find current word" })
 
-vim.keymap.set("n", "<leader>pb", "", {
-  callback = builtin.buffers,
+vim.keymap.set("n", "<leader>pb", builtin.buffers, {
   desc = "Find buffer",
 })
 
-vim.keymap.set("n", "<leader>vh", "", {
-  callback = builtin.help_tags,
+vim.keymap.set("n", "<leader>vh", builtin.help_tags, {
   desc = "Find help tag",
 })
 
-vim.keymap.set("n", "<leader>vk", "", {
-  callback = builtin.keymaps,
+vim.keymap.set("n", "<leader>vk", builtin.keymaps, {
   desc = "Find keymaps",
 })
 
-vim.keymap.set("n", "<leader>gb", "", {
-  callback = builtin.git_branches,
+vim.keymap.set("n", "<leader>gb", builtin.git_branches, {
   desc = "Git branches",
 })
 
-vim.keymap.set("n", "<leader>gc", "", {
-  callback = builtin.git_commits,
+vim.keymap.set("n", "<leader>gc", builtin.git_commits, {
   desc = "Git commits",
 })
 
-vim.keymap.set("n", "<leader>gw", "", {
-  callback = telescope.extensions.git_worktree.git_worktrees,
+vim.keymap.set("n", "<leader>gw", telescope.extensions.git_worktree.git_worktrees, {
   desc = "Git worktrees",
 })
 
-vim.keymap.set("n", "<leader>gm", "", {
-  callback = telescope.extensions.git_worktree.create_git_worktree,
+vim.keymap.set("n", "<leader>gm", telescope.extensions.git_worktree.create_git_worktree, {
   desc = "Create git worktree",
 })

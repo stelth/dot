@@ -51,40 +51,23 @@ vim.keymap.set("v", "<", "<gv", {})
 vim.keymap.set("v", ">", ">gv", {})
 
 -- Toggle
-vim.keymap.set("n", "<leader>ts", "", {
-  callback = function()
-    toggle("spell")
-  end,
-  desc = "Toggle Spell",
-})
-vim.keymap.set("n", "<leader>tw", "", {
-  callback = function()
-    toggle("wrap")
-  end,
-  desc = "Toggle Wrap",
-})
-vim.keymap.set("n", "<leader>tn", "", {
-  callback = function()
-    toggle("relativenumber", true)
-    toggle("number")
-  end,
-  desc = "Toggle Line Numbers",
-})
+vim.keymap.set("n", "<leader>ts", function()
+  toggle("spell")
+end, { desc = "Toggle Spell" })
+vim.keymap.set("n", "<leader>tw", function()
+  toggle("wrap")
+end, { desc = "Toggle Wrap" })
+vim.keymap.set("n", "<leader>tn", function()
+  toggle("relativenumber", true)
+  toggle("number")
+end, { desc = "Toggle Line Numbers" })
 
 vim.keymap.set("n", "<C-f>", ":silent !tmux neww tmux-sessionizer<CR>", {
   silent = true,
   desc = "New tmux-sessionizer window",
 })
 
-vim.keymap.set("n", "<C-k>", "", {
-  callback = vim.cmd.cnext,
-})
-vim.keymap.set("n", "<C-j>", "", {
-  callback = vim.cmd.cprev,
-})
-vim.keymap.set("n", "<leader>k", "", {
-  callback = vim.cmd.lnext,
-})
-vim.keymap.set("n", "<leader>j", "", {
-  callback = vim.cmd.lprev,
-})
+vim.keymap.set("n", "<C-k>", vim.cmd.cnext)
+vim.keymap.set("n", "<C-j>", vim.cmd.cprev)
+vim.keymap.set("n", "<leader>k", vim.cmd.lnext)
+vim.keymap.set("n", "<leader>j", vim.cmd.lprev)
