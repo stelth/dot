@@ -3,10 +3,15 @@ writeShellApplication {
   name = "tmux-sessionizer";
   runtimeInputs = [ tmux ghq fzf ];
   text = ''
+    readarray -t repo_list < <(ghq list -p)
+    repo_list+=("$HOME"/dot)
+    repo_list+=("$HOME"/dev)
+    repo_list+=("$HOME")
+
     if [[ $# -eq 1 ]]; then
     	selected=$1 && [[ "$selected" == "." ]] && selected="$PWD"
     else
-    	selected=$(printf "%s\n$HOME/dot\n$HOME/dev" "$(ghq list -p)" | fzf)
+    	selected=$(printf "%s\n" "''${repo_list[@]}" | fzf)
     fi
 
     if [[ -z "$selected" ]]; then
