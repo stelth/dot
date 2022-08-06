@@ -1,17 +1,4 @@
-{ config, pkgs, lib, ... }:
-let
-  leap-nvim = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "leap-nvim";
-    version = "2022-08-02";
-    src = pkgs.fetchFromGitHub {
-      owner = "ggandor";
-      repo = "leap.nvim";
-      rev = "a9949044bc59b0ae026c2e8394da826069049211";
-      sha256 = "sha256-wfppbg8PsjAMHFsqAyNNcMxvMMpcPwzrG6saSxNxQ+Q=";
-    };
-    meta.homepage = "https://github.com/ggandor/leap.nvim";
-  };
-in {
+{ config, pkgs, lib, ... }: {
   programs.neovim = {
     plugins = with pkgs.vimPlugins; [
       (config.lib.vimUtils.pluginWithCfg {
@@ -36,12 +23,16 @@ in {
         file = ./neogit.lua;
       })
       (config.lib.vimUtils.pluginWithCfg {
+        plugin = nvim-autopairs;
+        file = ./autopairs.lua;
+      })
+      (config.lib.vimUtils.pluginWithCfg {
         plugin = nvim-notify;
         file = ./notify.lua;
       })
       (config.lib.vimUtils.pluginWithCfg {
-        plugin = nvim-autopairs;
-        file = ./autopairs.lua;
+        plugin = nvim-surround;
+        file = ./nvim-surround.lua;
       })
       (config.lib.vimUtils.pluginWithCfg {
         plugin = undotree;
