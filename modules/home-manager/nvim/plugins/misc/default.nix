@@ -15,7 +15,7 @@
         file = ./harpoon.lua;
       })
       (config.lib.vimUtils.pluginWithCfg {
-        plugin = leap-nvim;
+        plugin = pkgs.vimExtraPlugins.leap-nvim;
         file = ./leap.lua;
       })
       (config.lib.vimUtils.pluginWithCfg {
@@ -31,7 +31,7 @@
         file = ./notify.lua;
       })
       (config.lib.vimUtils.pluginWithCfg {
-        plugin = nvim-surround;
+        plugin = pkgs.vimExtraPlugins.nvim-surround;
         file = ./nvim-surround.lua;
       })
       (config.lib.vimUtils.pluginWithCfg {

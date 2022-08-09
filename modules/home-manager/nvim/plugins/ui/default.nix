@@ -2,7 +2,7 @@
   programs.neovim = {
     plugins = with pkgs.vimPlugins; [
       (config.lib.vimUtils.pluginWithCfg {
-        plugin = fine-cmdline-nvim;
+        plugin = pkgs.vimExtraPlugins.fine-cmdline-nvim;
         file = ./fine-cmdline.lua;
       })
       (config.lib.vimUtils.pluginWithCfg {
@@ -11,7 +11,7 @@
       })
       nvim-web-devicons
       (config.lib.vimUtils.pluginWithCfg {
-        plugin = staline-nvim;
+        plugin = pkgs.vimExtraPlugins.staline-nvim;
         file = ./staline.lua;
       })
     ];
