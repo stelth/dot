@@ -1,10 +1,6 @@
 { config, pkgs, lib, ... }: {
   programs.neovim = {
     plugins = with pkgs.vimPlugins; [
-      (config.lib.vimUtils.pluginWithCfg {
-        plugin = comment-nvim;
-        file = ./comment.lua;
-      })
       dressing-nvim
       (config.lib.vimUtils.pluginWithCfg {
         plugin = git-worktree-nvim;
@@ -42,6 +38,7 @@
         plugin = vim-matchup;
         file = ./vim-matchup.lua;
       })
+      vim-commentary
       vim-repeat
     ];
   };
