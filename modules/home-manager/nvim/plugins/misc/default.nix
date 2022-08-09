@@ -27,19 +27,16 @@
         file = ./notify.lua;
       })
       (config.lib.vimUtils.pluginWithCfg {
-        plugin = pkgs.vimExtraPlugins.nvim-surround;
-        file = ./nvim-surround.lua;
-      })
-      (config.lib.vimUtils.pluginWithCfg {
         plugin = undotree;
         file = ./undotree.lua;
       })
+      vim-commentary
       (config.lib.vimUtils.pluginWithCfg {
         plugin = vim-matchup;
         file = ./vim-matchup.lua;
       })
-      vim-commentary
       vim-repeat
+      vim-surround
     ];
   };
 }
