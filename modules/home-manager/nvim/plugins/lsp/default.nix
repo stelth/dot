@@ -54,6 +54,12 @@
   ];
   programs.neovim = {
     plugins = with pkgs.vimPlugins; [
+      coq-artifacts
+      (config.lib.vimUtils.pluginWithCfg {
+        plugin = coq_nvim;
+        file = ./coq.lua;
+      })
+      coq-thirdparty
       clangd_extensions-nvim
       lua-dev-nvim
       null-ls-nvim

@@ -20,10 +20,10 @@ for key, fileId in pairs(keyToFileId) do
 end
 
 local keyToTmuxWindowByNumber = {
-  ["<C-m>"] = 1,
-  ["<C-w>"] = 2,
-  ["<C-v>"] = 3,
-  ["<C-z>"] = 4,
+  ["<C-G>"] = 1,
+  ["<C-C>"] = 2,
+  ["<C-R>"] = 3,
+  ["<C-L>"] = 4,
 }
 
 for key, windowNumber in pairs(keyToTmuxWindowByNumber) do

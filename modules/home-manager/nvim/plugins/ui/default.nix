@@ -6,10 +6,6 @@
         file = ./kanagawa.lua;
       })
       nvim-web-devicons
-      (config.lib.vimUtils.pluginWithCfg {
-        plugin = pkgs.vimExtraPlugins.staline-nvim;
-        file = ./staline.lua;
-      })
     ];
   };
 }
