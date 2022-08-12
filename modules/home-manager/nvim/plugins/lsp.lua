@@ -211,7 +211,7 @@ lspconfig.dockerls.setup(config({}))
 lspconfig.gopls.setup(config({}))
 
 lspconfig.jsonls.setup(config({
-  cmd = { { "vscode-json-languageserver", "--stdio" } },
+  cmd = { "vscode-json-languageserver", "--stdio" },
 }))
 
 if not configs.neocmake then
