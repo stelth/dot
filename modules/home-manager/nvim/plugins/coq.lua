@@ -1,6 +1,14 @@
 vim.g.coq_settings = {
   auto_start = "shut-up",
   xdg = true,
+  keymap = {
+    jump_to_mark = "<C-v>",
+  },
+  display = {
+    icons = {
+      mode = "short",
+    },
+  },
 }
 
 require("coq")
