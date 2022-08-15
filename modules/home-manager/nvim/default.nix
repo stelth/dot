@@ -20,7 +20,7 @@
       else
         "vimL";
 
-    pluginWithCfg = { plugin, file }: {
+    pluginWithCfgFile = { plugin, file }: {
       inherit plugin;
       type = configType file;
       config = readVimConfig file;
