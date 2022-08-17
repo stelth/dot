@@ -20,6 +20,12 @@
       else
         "vimL";
 
+    pluginWithCfg = { plugin, config }: {
+      inherit plugin;
+      inherit config;
+      type = "lua";
+    };
+
     pluginWithCfgFile = { plugin, file }: {
       inherit plugin;
       type = configType file;

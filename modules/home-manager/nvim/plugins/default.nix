@@ -1,4 +1,8 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, lib, ... }:
+let
+  inherit (config.lib.vimUtils) pluginWithCfgFile;
+  inherit (config.lib.vimUtils) pluginWithCfg;
+in {
   home.packages = with pkgs; [
     # C/C++
     clang-tools_14
@@ -57,24 +61,23 @@
     plugins = with pkgs.vimPlugins; [
       clangd_extensions-nvim
       coq-artifacts
-      (config.lib.vimUtils.pluginWithCfgFile {
+      (pluginWithCfgFile {
         plugin = coq_nvim;
         file = ./coq.lua;
       })
       coq-thirdparty
       dressing-nvim
-      {
+      (pluginWithCfg {
         plugin = git-worktree-nvim;
         config = ''
           require("telescope").load_extension("git_worktree")
         '';
-        type = "lua";
-      }
-      (config.lib.vimUtils.pluginWithCfgFile {
+      })
+      (pluginWithCfgFile {
         plugin = harpoon;
         file = ./harpoon.lua;
       })
-      {
+      (pluginWithCfg {
         plugin = kanagawa-nvim;
         config = ''
           require("kanagawa").setup({
@@ -84,34 +87,32 @@
 
           vim.cmd.colorscheme("kanagawa")
         '';
-        type = "lua";
-      }
+      })
       lua-dev-nvim
       null-ls-nvim
-      {
+      (pluginWithCfg {
         plugin = nvim-autopairs;
         config = ''
           require("nvim-autopairs").setup({
             enable_check_bracket_line = false,
           })
         '';
-        type = "lua";
-      }
-      (config.lib.vimUtils.pluginWithCfgFile {
+      })
+      (pluginWithCfgFile {
         plugin = nvim-dap;
         file = ./dapadapters.lua;
       })
-      (config.lib.vimUtils.pluginWithCfgFile {
+      (pluginWithCfgFile {
         plugin = nvim-dap-ui;
         file = ./dapui.lua;
       })
       nvim-dap-virtual-text
       nvim-jdtls
-      (config.lib.vimUtils.pluginWithCfgFile {
+      (pluginWithCfgFile {
         plugin = nvim-lspconfig;
         file = ./lsp.lua;
       })
-      (config.lib.vimUtils.pluginWithCfgFile {
+      (pluginWithCfgFile {
         plugin =
           nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars);
         file = ./treesitter.lua;
@@ -120,27 +121,25 @@
       nvim-web-devicons
       rust-tools-nvim
       telescope-dap-nvim
-      (config.lib.vimUtils.pluginWithCfgFile {
+      (pluginWithCfgFile {
         plugin = telescope-nvim;
         file = ./telescope.lua;
       })
-      {
+      (pluginWithCfg {
         plugin = undotree;
         config = ''
           vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Undo Tree" })
         '';
-        type = "lua";
-      }
+      })
       vim-commentary
-      {
+      (pluginWithCfg {
         plugin = vim-matchup;
         config = ''
           vim.g.matchup_matchparen_offscreen = {
             method = "status_manual",
           }
         '';
-        type = "lua";
-      }
+      })
       vim-repeat
       vim-surround
     ];
