@@ -105,12 +105,7 @@ in {
       nvim-ts-context-commentstring
       nvim-web-devicons
       rust-tools-nvim
-      (pluginWithCfg {
-        plugin = vimExtraPlugins.staline-nvim;
-        config = ''
-          require("staline").setup()
-        '';
-      })
+      (pluginWithCfgFile { plugin = vimExtraPlugins.staline-nvim; })
       telescope-dap-nvim
       (pluginWithCfgFile { plugin = telescope-nvim; })
       (pluginWithCfg {
