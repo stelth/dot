@@ -32,27 +32,37 @@ local nls_has_formatter = function(ft)
   return #available > 0
 end
 
-local format = function()
+local lsp_formatting = function(bufnr)
   if autoformat then
-    vim.lsp.buf.format()
+    vim.lsp.buf.format({
+      filter = function(client)
+        local ft = vim.api.nvim_buf_get_option(bufnr, "filetype")
+        local enable = false
+
+        if nls_has_formatter(ft) then
+          enable = client.name == "null-ls"
+        else
+          enable = not (client.name == "null-ls")
+        end
+
+        return enable
+      end,
+      bufnr = bufnr,
+    })
   end
 end
 
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
 local format_callback = function(client, bufnr)
-  local ft = vim.api.nvim_buf_get_option(bufnr, "filetype")
-  local enable = false
-
-  if nls_has_formatter(ft) then
-    enable = client.name == "null-ls"
-  else
-    enable = not (client.name == "null-ls")
-  end
-
-  client.server_capabilities.documentFormatting = enable
-  if client.server_capabilities.documentFormatting then
+  if client.supports_method("textDocument/formatting") then
+    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
     vim.api.nvim_create_autocmd("BufWritePre", {
-      pattern = "<buffer>",
-      callback = format,
+      group = augroup,
+      buffer = bufnr,
+      callback = function()
+        lsp_formatting(bufnr)
+      end,
     })
   end
 end
