@@ -37,15 +37,9 @@ local lsp_formatting = function(bufnr)
     vim.lsp.buf.format({
       filter = function(client)
         local ft = vim.api.nvim_buf_get_option(bufnr, "filetype")
-        local enable = false
+        local is_null_ls = (client.name == "null-ls")
 
-        if nls_has_formatter(ft) then
-          enable = client.name == "null-ls"
-        else
-          enable = not (client.name == "null-ls")
-        end
-
-        return enable
+        return (nls_has_formatter(ft) and is_null_ls) or (not nls_has_formatter(ft) and not is_null_ls)
       end,
       bufnr = bufnr,
     })
