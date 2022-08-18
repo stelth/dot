@@ -2,6 +2,7 @@
 let
   inherit (config.lib.vimUtils) pluginWithCfgFile;
   inherit (config.lib.vimUtils) pluginWithCfg;
+  inherit (pkgs) vimExtraPlugins;
 in {
   home.packages = with pkgs; [
     # C/C++
@@ -120,6 +121,12 @@ in {
       nvim-ts-context-commentstring
       nvim-web-devicons
       rust-tools-nvim
+      (pluginWithCfg {
+        plugin = vimExtraPlugins.staline-nvim;
+        config = ''
+          require("staline").setup()
+        '';
+      })
       telescope-dap-nvim
       (pluginWithCfgFile {
         plugin = telescope-nvim;
