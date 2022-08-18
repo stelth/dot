@@ -8,28 +8,16 @@
       EOF
     '';
 
-    readVimConfigRaw = builtins.readFile;
-
-    readVimConfig = file: ''
-      ${readVimConfigRaw file}
-    '';
-
-    configType = file:
-      if (lib.strings.hasSuffix ".lua" (builtins.toString file)) then
-        "lua"
-      else
-        "vimL";
-
     pluginWithCfg = { plugin, config }: {
       inherit plugin;
       inherit config;
       type = "lua";
     };
 
-    pluginWithCfgFile = { plugin, file }: {
+    pluginWithCfgFile = { plugin }: {
       inherit plugin;
-      type = configType file;
-      config = readVimConfig file;
+      type = "lua";
+      config = builtins.readFile (./. + "/plugins/${plugin.pname}.lua");
     };
   };
 

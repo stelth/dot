@@ -62,10 +62,7 @@ in {
     plugins = with pkgs.vimPlugins; [
       clangd_extensions-nvim
       coq-artifacts
-      (pluginWithCfgFile {
-        plugin = coq_nvim;
-        file = ./coq.lua;
-      })
+      (pluginWithCfgFile { plugin = coq_nvim; })
       coq-thirdparty
       dressing-nvim
       (pluginWithCfg {
@@ -74,10 +71,7 @@ in {
           require("telescope").load_extension("git_worktree")
         '';
       })
-      (pluginWithCfgFile {
-        plugin = harpoon;
-        file = ./harpoon.lua;
-      })
+      (pluginWithCfgFile { plugin = harpoon; })
       (pluginWithCfg {
         plugin = kanagawa-nvim;
         config = ''
@@ -99,24 +93,14 @@ in {
           })
         '';
       })
-      (pluginWithCfgFile {
-        plugin = nvim-dap;
-        file = ./dapadapters.lua;
-      })
-      (pluginWithCfgFile {
-        plugin = nvim-dap-ui;
-        file = ./dapui.lua;
-      })
+      (pluginWithCfgFile { plugin = nvim-dap; })
+      (pluginWithCfgFile { plugin = nvim-dap-ui; })
       nvim-dap-virtual-text
       nvim-jdtls
-      (pluginWithCfgFile {
-        plugin = nvim-lspconfig;
-        file = ./lsp.lua;
-      })
+      (pluginWithCfgFile { plugin = nvim-lspconfig; })
       (pluginWithCfgFile {
         plugin =
           nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars);
-        file = ./treesitter.lua;
       })
       nvim-ts-context-commentstring
       nvim-web-devicons
@@ -128,10 +112,7 @@ in {
         '';
       })
       telescope-dap-nvim
-      (pluginWithCfgFile {
-        plugin = telescope-nvim;
-        file = ./telescope.lua;
-      })
+      (pluginWithCfgFile { plugin = telescope-nvim; })
       (pluginWithCfg {
         plugin = undotree;
         config = ''
