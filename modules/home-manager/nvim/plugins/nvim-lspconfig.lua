@@ -6,8 +6,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
   severity_sort = true,
 })
 
-local autoformat = true
-
 local warn = function(msg, name)
   vim.notify(msg, vim.log.levels.WARN, { title = name })
 end
@@ -16,6 +14,7 @@ local info = function(msg, name)
   vim.notify(msg, vim.log.levels.INFO, { title = name })
 end
 
+local autoformat = true
 local toggle = function()
   autoformat = not autoformat
   if autoformat then
@@ -25,21 +24,14 @@ local toggle = function()
   end
 end
 
-local nls_has_formatter = function(ft)
-  local sources = require("null-ls.sources")
-  local available = sources.get_available(ft, "NULL_LS_FORMATTING")
-
-  return #available > 0
-end
-
 local lsp_formatting = function(bufnr)
   if autoformat then
     vim.lsp.buf.format({
       filter = function(client)
         local ft = vim.api.nvim_buf_get_option(bufnr, "filetype")
-        local is_null_ls = (client.name == "null-ls")
+        local nls_available = require("null-ls.sources").get_available(ft, "NULL_LS_FORMATTING")
 
-        return (nls_has_formatter(ft) and is_null_ls) or (not nls_has_formatter(ft) and not is_null_ls)
+        return (#nls_available > 0) == (client.name == "null-ls")
       end,
       bufnr = bufnr,
     })
