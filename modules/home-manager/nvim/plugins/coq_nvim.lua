@@ -2,7 +2,7 @@ vim.g.coq_settings = {
   auto_start = "shut-up",
   xdg = true,
   keymap = {
-    jump_to_mark = "<C-v>",
+    jump_to_mark = "<C-f>",
   },
   display = {
     icons = {
