@@ -98,6 +98,7 @@ in {
       nvim-dap-virtual-text
       nvim-jdtls
       (pluginWithCfgFile { plugin = nvim-lspconfig; })
+      (pluginWithCfgFile { plugin = nvim-notify; })
       (pluginWithCfgFile {
         plugin =
           nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars);
