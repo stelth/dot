@@ -8,12 +8,21 @@
       keep-derivations = true
       experimental-features = nix-command flakes
     '';
-    trustedUsers = [ "${config.user.name}" ];
+    configureBuildUsers = true;
+    settings = {
+      trusted-users = [ "${config.user.name}" ];
+      max-jobs = 1;
+      substituters =
+        [ "https://nix-community.cachix.org/" "https://cache.nixos.org/" ];
+      trusted-public-keys = [
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+      ];
+    };
     gc = {
       automatic = true;
       options = "--delete-older-than 14d";
     };
-    maxJobs = 8;
     readOnlyStore = true;
     nixPath = builtins.map
       (source: "${source}=/etc/${config.environment.etc.${source}.target}") [
@@ -21,12 +30,6 @@
         "nixpkgs"
         "stable"
       ];
-    binaryCaches =
-      [ "https://nix-community.cachix.org/" "https://cache.nixos.org/" ];
-    binaryCachePublicKeys = [
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-    ];
     registry = {
       nixpkgs = {
         from = {

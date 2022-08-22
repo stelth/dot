@@ -14,8 +14,6 @@ in {
     '';
   };
 
-  users.nix.configureBuildUsers = true;
-
   services.nix-daemon.enable = true;
 
   system.stateVersion = 4;
