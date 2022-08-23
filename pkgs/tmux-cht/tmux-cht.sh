@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 selected=$(curl -sS https://cht.sh/:list | fzf)
 if [[ -z $selected ]]; then
 	exit 0

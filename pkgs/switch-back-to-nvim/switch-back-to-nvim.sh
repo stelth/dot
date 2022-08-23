@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # Make sure tmux is running
 tmux_running=$(pgrep tmux)
 
