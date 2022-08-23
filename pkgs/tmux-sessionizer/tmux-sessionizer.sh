@@ -14,7 +14,6 @@ if [[ -z "$selected" ]]; then
 fi
 
 selected_name=$(basename "$selected" | tr . _)
-# selected_name_t=''${selected_name:0:8}
 
 # If you are in a tmux session, and the selected session exists, switch to it;
 # if not create a new one and then swith to it.
