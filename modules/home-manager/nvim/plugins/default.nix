@@ -62,68 +62,51 @@ in {
     plugins = with pkgs.vimPlugins; [
       clangd_extensions-nvim
       coq-artifacts
-      (pluginWithCfgFile { plugin = coq_nvim; })
+      (pluginWithCfgFile coq_nvim)
       coq-thirdparty
       dressing-nvim
-      (pluginWithCfg {
-        plugin = git-worktree-nvim;
-        config = ''
-          require("telescope").load_extension("git_worktree")
-        '';
-      })
-      (pluginWithCfgFile { plugin = harpoon; })
-      (pluginWithCfg {
-        plugin = kanagawa-nvim;
-        config = ''
-          require("kanagawa").setup({
-            dimInactive = true,
-            globalStatus = true,
-          })
+      (pluginWithCfg git-worktree-nvim ''
+        require("telescope").load_extension("git_worktree")
+      '')
+      (pluginWithCfgFile harpoon)
+      (pluginWithCfg kanagawa-nvim ''
+        require("kanagawa").setup({
+          dimInactive = true,
+          globalStatus = true,
+        })
 
-          vim.cmd.colorscheme("kanagawa")
-        '';
-      })
+        vim.cmd.colorscheme("kanagawa")
+      '')
       lua-dev-nvim
       null-ls-nvim
-      (pluginWithCfg {
-        plugin = nvim-autopairs;
-        config = ''
-          require("nvim-autopairs").setup({
-            enable_check_bracket_line = false,
-          })
-        '';
-      })
-      (pluginWithCfgFile { plugin = nvim-dap; })
-      (pluginWithCfgFile { plugin = nvim-dap-ui; })
+      (pluginWithCfg nvim-autopairs ''
+        require("nvim-autopairs").setup({
+          enable_check_bracket_line = false,
+        })
+      '')
+      (pluginWithCfgFile nvim-dap)
+      (pluginWithCfgFile nvim-dap-ui)
       nvim-dap-virtual-text
       nvim-jdtls
-      (pluginWithCfgFile { plugin = nvim-lspconfig; })
-      (pluginWithCfgFile { plugin = nvim-notify; })
-      (pluginWithCfgFile {
-        plugin =
-          nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars);
-      })
+      (pluginWithCfgFile nvim-lspconfig)
+      (pluginWithCfgFile nvim-notify)
+      (pluginWithCfgFile
+        (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars)))
       nvim-ts-context-commentstring
       nvim-web-devicons
       rust-tools-nvim
-      (pluginWithCfgFile { plugin = vimExtraPlugins.staline-nvim; })
+      (pluginWithCfgFile vimExtraPlugins.staline-nvim)
       telescope-dap-nvim
-      (pluginWithCfgFile { plugin = telescope-nvim; })
-      (pluginWithCfg {
-        plugin = undotree;
-        config = ''
-          vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Undo Tree" })
-        '';
-      })
+      (pluginWithCfgFile telescope-nvim)
+      (pluginWithCfg undotree ''
+        vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Undo Tree" })
+      '')
       vim-commentary
-      (pluginWithCfg {
-        plugin = vim-matchup;
-        config = ''
-          vim.g.matchup_matchparen_offscreen = {
-            method = "status_manual",
-          }
-        '';
-      })
+      (pluginWithCfg vim-matchup ''
+        vim.g.matchup_matchparen_offscreen = {
+          method = "status_manual",
+        }
+      '')
       vim-repeat
       vim-surround
     ];

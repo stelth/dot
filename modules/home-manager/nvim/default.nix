@@ -8,13 +8,13 @@
       EOF
     '';
 
-    pluginWithCfg = { plugin, config }: {
+    pluginWithCfg = plugin: config: {
       inherit plugin;
       inherit config;
       type = "lua";
     };
 
-    pluginWithCfgFile = { plugin }: {
+    pluginWithCfgFile = plugin: {
       inherit plugin;
       type = "lua";
       config = builtins.readFile (./. + "/plugins/${plugin.pname}.lua");
