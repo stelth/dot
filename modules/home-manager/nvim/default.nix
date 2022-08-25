@@ -14,11 +14,9 @@
       type = "lua";
     };
 
-    pluginWithCfgFile = plugin: {
-      inherit plugin;
-      type = "lua";
-      config = builtins.readFile (./. + "/plugins/${plugin.pname}.lua");
-    };
+    pluginWithCfgFile = plugin:
+      pluginWithCfg plugin
+      (builtins.readFile (./. + "/plugins/${plugin.pname}.lua"));
   };
 
   programs.neovim = {
