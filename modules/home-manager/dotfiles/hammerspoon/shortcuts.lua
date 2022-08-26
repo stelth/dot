@@ -2,16 +2,16 @@ local hyper = { "ctrl", "alt", "shift", "cmd" }
 local meh = { "ctrl", "alt", "shift" }
 
 local keymaps = {
-  ["Firefox"] = {
+  ["Brave Browser"] = {
     mods = hyper,
     key = "b",
   },
-  ["Firefox New Window"] = {
+  ["Brave New Window"] = {
     mods = meh,
     key = "b",
     callback = function()
       hs.osascript.javascript([[
-        Application("Firefox").Window().make()
+        Application("Brave").Window().make()
     ]])
     end,
   },
