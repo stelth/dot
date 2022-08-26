@@ -1,16 +1,18 @@
 { lib, pkgs, fetchFromGitHub, rustPlatform, }:
 rustPlatform.buildRustPackage rec {
   pname = "neocmakelsp";
-  version = "d3c0ae4625accd7afec56f02aab68e1aca85699b";
+  version = "2121eb2038c27370e8bfcc7e717b876901143877";
 
   src = fetchFromGitHub {
     owner = "Decodetalkers";
     repo = pname;
     rev = version;
-    sha256 = "sha256-fEGRewzM41zGOVRmYNtr7f2wQ5qNdxUZUaZjSZ46C6g=";
+    sha256 = "sha256-svqkdrjp3+hGXkR/DoVWPw4lR6HNC6N8/SZwI+0jPg0=";
   };
 
-  cargoHash = "sha256-lACbnazrD+YO3ZUwiH6TZ/3GHWFpQ7AZiNqSI7ZocDQ=";
+  cargoHash = "sha256-ZZMsuJQQXpAWjn8eV94z9xC5z3W6bjG+lfHKyUCReTU=";
+
+  cargoPatches = [ ./cargo-lock.patch ];
 
   nativeBuildInputs = with pkgs; [ cmake ];
 
