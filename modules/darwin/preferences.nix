@@ -22,8 +22,8 @@
 
     dock = {
       autohide = true;
-      autohide-delay = "0.0";
-      autohide-time-modifier = "0.4";
+      autohide-delay = 0.0;
+      autohide-time-modifier = 0.4;
       tilesize = 40;
       static-only = false;
       showhidden = false;
@@ -35,7 +35,7 @@
 
     NSGlobalDomain = {
       "com.apple.sound.beep.feedback" = 0;
-      "com.apple.sound.beep.volume" = "0.000";
+      "com.apple.sound.beep.volume" = 0.0;
       ApplePressAndHoldEnabled = false;
       InitialKeyRepeat = 10;
       KeyRepeat = 2;
