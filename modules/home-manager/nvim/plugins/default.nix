@@ -2,7 +2,6 @@
 let
   inherit (config.lib.vimUtils) pluginWithCfgFile;
   inherit (config.lib.vimUtils) pluginWithCfg;
-  inherit (pkgs) vimExtraPlugins;
 in {
   home.packages = with pkgs; [
     # C/C++
@@ -95,7 +94,6 @@ in {
       nvim-ts-context-commentstring
       nvim-web-devicons
       rust-tools-nvim
-      (pluginWithCfgFile vimExtraPlugins.staline-nvim)
       telescope-dap-nvim
       (pluginWithCfgFile telescope-nvim)
       (pluginWithCfg undotree ''
