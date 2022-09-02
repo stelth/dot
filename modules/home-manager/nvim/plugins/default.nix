@@ -2,7 +2,6 @@
 let
   inherit (config.lib.vimUtils) pluginWithCfgFile;
   inherit (config.lib.vimUtils) pluginWithCfg;
-  inherit (pkgs) vimExtraPlugins;
 in {
   home.packages = with pkgs; [
     # C/C++
@@ -75,7 +74,7 @@ in {
           globalStatus = true,
         })
 
-        vim.cmd.colorscheme("kanagawa")
+        vim.cmd([[colorscheme kanagawa ]])
       '')
       lua-dev-nvim
       null-ls-nvim
@@ -95,11 +94,10 @@ in {
       nvim-ts-context-commentstring
       nvim-web-devicons
       rust-tools-nvim
-      (pluginWithCfgFile vimExtraPlugins.staline-nvim)
       telescope-dap-nvim
       (pluginWithCfgFile telescope-nvim)
       (pluginWithCfg undotree ''
-        vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Undo Tree" })
+        vim.keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<CR>", { desc = "Undo Tree" })
       '')
       vim-commentary
       (pluginWithCfg vim-matchup ''

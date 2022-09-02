@@ -21,7 +21,6 @@
 
   programs.neovim = {
     enable = true;
-    package = pkgs.neovim-unwrapped;
     vimAlias = true;
     withNodeJs = false;
     withPython3 = false;
