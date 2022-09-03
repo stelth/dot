@@ -1,5 +1,7 @@
-{ inputs, config, pkgs, ... }: {
-  imports = [ ./primary.nix ./nixpkgs.nix ./overlays.nix ];
+{ self, inputs, config, lib, pkgs, ... }: {
+  imports = [ ./primary.nix ./nixpkgs.nix ];
+
+  nixpkgs.overlays = builtins.attrValues self.overlays;
 
   programs.fish.enable = true;
   programs.zsh.enable = true;
@@ -15,7 +17,7 @@
   hm = import ./home-manager;
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = { inherit self inputs; };
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "orig";

@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ self, config, pkgs, lib, ... }:
 let
   inherit (config.lib.vimUtils) pluginWithCfgFile;
   inherit (config.lib.vimUtils) pluginWithCfg;
@@ -7,7 +7,6 @@ in {
     # C/C++
     clang-tools_14
     cppcheck
-    lldb_14
 
     # Java
     jdt-language-server
@@ -48,7 +47,7 @@ in {
 
     # CMake
     cmake-format
-    neocmakelsp
+    self.packages.${pkgs.system}.neocmakelsp
 
     # Additional
     nodePackages.markdownlint-cli
@@ -83,9 +82,6 @@ in {
           enable_check_bracket_line = false,
         })
       '')
-      (pluginWithCfgFile nvim-dap)
-      (pluginWithCfgFile nvim-dap-ui)
-      nvim-dap-virtual-text
       nvim-jdtls
       (pluginWithCfgFile nvim-lspconfig)
       (pluginWithCfgFile nvim-notify)
@@ -94,7 +90,6 @@ in {
       nvim-ts-context-commentstring
       nvim-web-devicons
       rust-tools-nvim
-      telescope-dap-nvim
       (pluginWithCfgFile telescope-nvim)
       (pluginWithCfg undotree ''
         vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Undo Tree" })

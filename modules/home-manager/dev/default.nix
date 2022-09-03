@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }: {
+{ self, config, pkgs, lib, ... }: {
   home.packages = with pkgs; [
     cmake
     gh
@@ -10,9 +10,9 @@
     openjdk
     rustc
     cargo
-    switch-back-to-nvim
-    tmux-sessionizer
-    tmux-cht
+    self.packages.${pkgs.system}.switch-back-to-nvim
+    self.packages.${pkgs.system}.tmux-sessionizer
+    self.packages.${pkgs.system}.tmux-cht
   ];
 
   programs.ssh = {
