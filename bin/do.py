@@ -21,19 +21,16 @@ class Colors(Enum):
     ERROR = typer.colors.RED
 
 
-check_git = subprocess.run(
-    ["git", "rev-parse", "--show-toplevel"], capture_output=True)
-is_local = check_git.returncode == 0
+check_git = subprocess.run(["git", "rev-parse", "--show-toplevel"], capture_output=True)
+LOCAL_FLAKE = os.path.realpath(check_git.stdout.decode().strip())
 REMOTE_FLAKE = "github:stelth/dot"
-FLAKE_PATH = (
-    os.path.realpath(check_git.stdout.decode().strip()
-                     ) if is_local else REMOTE_FLAKE
+is_local = check_git.returncode == 0 and os.path.isfile(
+    os.path.join(LOCAL_FLAKE, "flake.nix")
 )
+FLAKE_PATH = LOCAL_FLAKE if is_local else REMOTE_FLAKE
 
-check_nixos = subprocess.run(
-    ["command", "-v", "nixos-rebuild"], capture_output=True)
-check_darwin = subprocess.run(
-    ["command", "-v", "darwin-rebuild"], capture_output=True)
+check_nixos = subprocess.run(["command", "-v", "nixos-rebuild"], capture_output=True)
+check_darwin = subprocess.run(["command", "-v", "darwin-rebuild"], capture_output=True)
 if check_nixos.returncode == 0:
     # if we're on nixos, this command is built in
     PLATFORM = FlakeOutputs.NIXOS
@@ -89,8 +86,7 @@ def select(nixos: bool, darwin: bool, home_manager: bool):
     hidden=PLATFORM == FlakeOutputs.NIXOS,
 )
 def bootstrap(
-    host: str = typer.Argument(
-        None, help="the hostname of the configuration to build"),
+    host: str = typer.Argument(None, help="the hostname of the configuration to build"),
     remote: bool = typer.Option(
         default=False,
         hidden=not is_local,
@@ -121,8 +117,7 @@ def bootstrap(
         flake = f"{bootstrap_flake}#{cfg.value}.{host}.config.system.build.toplevel"
         run_cmd(["nix", "build", flake] + flags)
         run_cmd(
-            f"./result/sw/bin/darwin-rebuild switch --flake {FLAKE_PATH}#{host}".split(
-            )
+            f"./result/sw/bin/darwin-rebuild switch --flake {FLAKE_PATH}#{host}".split()
         )
     elif cfg == FlakeOutputs.HOME_MANAGER:
         flake = f"{bootstrap_flake}#{host}"
@@ -150,8 +145,7 @@ def bootstrap(
     no_args_is_help=True,
 )
 def build(
-    host: str = typer.Argument(
-        None, help="the hostname of the configuration to build"),
+    host: str = typer.Argument(None, help="the hostname of the configuration to build"),
     remote: bool = typer.Option(
         default=False,
         hidden=not is_local,
@@ -227,8 +221,7 @@ def gc(
         metavar="[AGE]",
         help="specify minimum age for deleting store paths",
     ),
-    dry_run: bool = typer.Option(
-        False, help="test the result of garbage collection"),
+    dry_run: bool = typer.Option(False, help="test the result of garbage collection"),
 ):
     cmd = f"nix-collect-garbage --delete-older-than {delete_older_than} {'--dry-run' if dry_run else ''}"
     run_cmd(cmd.split())
@@ -286,8 +279,7 @@ def switch(
     home_manager: bool = False,
 ):
     if not host:
-        typer.secho("Error: host configuration not specified.",
-                    fg=Colors.ERROR.value)
+        typer.secho("Error: host configuration not specified.", fg=Colors.ERROR.value)
         raise typer.Abort()
 
     cfg = select(nixos=nixos, darwin=darwin, home_manager=home_manager)
