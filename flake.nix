@@ -56,7 +56,7 @@
         inputs.darwin.lib.darwinSystem {
           inherit system;
           modules = baseModules ++ extraModules;
-          specialArgs = { inherit self inputs nixpkgs stable; };
+          specialArgs = { inherit self inputs nixpkgs; };
         };
 
       # generate a home-manager configuration usable on any unix system
@@ -113,7 +113,7 @@
 
       devShells = eachSystemMap defaultSystems (system:
         let
-          pkgs = import nixpkgs {
+          pkgs = import inputs.stable {
             inherit system;
             overlays = builtins.attrValues self.overlays;
           };
