@@ -37,13 +37,14 @@
     devshell = { url = "github:numtide/devshell"; };
   };
 
-  outputs = inputs@{ self, darwin, home-manager, flake-utils, ... }:
+  outputs = inputs@{ self, nixpkgs, darwin, home-manager, flake-utils, ... }:
     let
-      inherit (flake-utils.lib) eachSystemMap defaultSystems;
+      inherit (flake-utils.lib) eachSystemMap;
 
       isDarwin = system:
         (builtins.elem system inputs.nixpkgs.lib.platforms.darwin);
       homePrefix = system: if isDarwin system then "/Users" else "/home";
+      defaultSystems = [ "x86_64-darwin" "x86_64-linux" ];
 
       # generate a base darwin configuration with the
       # specified hostname, overlays, and any extraModules applied
@@ -112,7 +113,7 @@
 
       devShells = eachSystemMap defaultSystems (system:
         let
-          pkgs = import inputs.stable {
+          pkgs = import nixpkgs {
             inherit system;
             overlays = builtins.attrValues self.overlays;
           };
