@@ -18,7 +18,7 @@ in {
 
     # python
     (python3.withPackages
-      (ps: with ps; [ autopep8 debugpy flake8 isort yamllint pylint ]))
+      (ps: with ps; [ black debugpy flake8 isort yamllint pylint ]))
     nodePackages.pyright
 
     # Lua

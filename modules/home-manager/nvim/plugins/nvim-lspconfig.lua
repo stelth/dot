@@ -274,7 +274,7 @@ nls.setup(config({
   save_after_format = false,
   sources = {
     -- Python
-    nls.builtins.formatting.autopep8,
+    nls.builtins.formatting.black,
     nls.builtins.formatting.isort,
     nls.builtins.diagnostics.flake8,
     nls.builtins.diagnostics.pylint,
