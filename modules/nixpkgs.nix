@@ -11,7 +11,7 @@
     configureBuildUsers = true;
     settings = {
       trusted-users = [ "${config.user.name}" ];
-      max-jobs = 1;
+      max-jobs = 4;
       substituters =
         [ "https://nix-community.cachix.org/" "https://cache.nixos.org/" ];
       trusted-public-keys = [
