@@ -8,7 +8,6 @@
       keep-derivations = true
       experimental-features = nix-command flakes
     '';
-    configureBuildUsers = true;
     settings = {
       trusted-users = [ "${config.user.name}" "root" "@admin" "@wheel" ];
       max-jobs = 4;
