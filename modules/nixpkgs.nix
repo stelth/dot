@@ -10,9 +10,9 @@
     '';
     configureBuildUsers = true;
     settings = {
-      trusted-users = [ "${config.user.name}" ];
+      trusted-users = [ "${config.user.name}" "root" "@admin" "@wheel" ];
       max-jobs = 4;
-      substituters =
+      trusted-substituters =
         [ "https://nix-community.cachix.org/" "https://cache.nixos.org/" ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="

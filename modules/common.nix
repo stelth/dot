@@ -36,7 +36,7 @@
     ];
     etc = {
       home-manager.source = "${inputs.home-manager}";
-      nixpkgs.source = "${pkgs.path}";
+      nixpkgs.source = "${inputs.nixpkgs}";
       stable.source = "${inputs.stable}";
     };
     shells = with pkgs; [ bash zsh fish ];
