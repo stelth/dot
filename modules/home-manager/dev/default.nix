@@ -10,9 +10,9 @@
     openjdk
     rustc
     cargo
-    self.packages.${pkgs.system}.switch-back-to-nvim
-    self.packages.${pkgs.system}.tmux-sessionizer
-    self.packages.${pkgs.system}.tmux-cht
+    switch-back-to-nvim
+    tmux-sessionizer
+    tmux-cht
   ];
 
   programs.ssh = {

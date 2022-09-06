@@ -47,7 +47,7 @@ in {
 
     # CMake
     cmake-format
-    self.packages.${pkgs.system}.neocmakelsp
+    neocmakelsp
 
     # Additional
     nodePackages.markdownlint-cli

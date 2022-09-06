@@ -173,8 +173,9 @@
           small = import inputs.small { inherit (prev) system; };
         };
         extraPackages = final: prev: {
-          inherit (self.packages.${prev.system}) sysdo;
-          inherit (self.packages.${prev.system}) pyEnv;
+          inherit (self.packages.${prev.system})
+            sysdo pyEnv neocmakelsp switch-back-to-nvim tmux-cht
+            tmux-sessionizer;
         };
         devshell = inputs.devshell.overlay;
         neovim-nightly = inputs.neovim-nightly-overlay.overlay;
