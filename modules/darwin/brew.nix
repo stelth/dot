@@ -8,11 +8,7 @@ in {
 
   homebrew = {
     enable = true;
-    autoUpdate = true;
-    global = {
-      brewfile = true;
-      noLock = true;
-    };
+    global = { brewfile = true; };
     taps = [
       "beeftornado/rmtree"
       "homebrew/bundle"
