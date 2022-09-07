@@ -122,14 +122,7 @@
           };
         in {
           default = pkgs.devshell.mkShell {
-            packages = with pkgs; [
-              nixfmt
-              pre-commit
-              rnix-lsp
-              self.packages.${system}.pyEnv
-              stylua
-              treefmt
-            ];
+            packages = with pkgs; [ nixfmt pre-commit rnix-lsp stylua treefmt ];
             commands = [{
               name = "sysdo";
               package = self.packages.${system}.sysdo;
@@ -146,10 +139,10 @@
             overlays = builtins.attrValues self.overlays;
           };
         in rec {
-          pyEnv = pkgs.python3.withPackages
-            (ps: with ps; [ black typer colorama shellingham ]);
-          sysdo = pkgs.writeScriptBin "sysdo" ''
-            #! ${pyEnv}/bin/python3
+          sysdo = pkgs.writers.writePython3Bin "sysdo" {
+            flakeIgnore = [ "E501" "W503" "W391" ];
+            libraries = with pkgs.python3Packages; [ typer ];
+          } ''
             ${builtins.readFile ./bin/do.py}
           '';
           neocmakelsp = pkgs.callPackage ./pkgs/neocmakelsp { };
@@ -174,8 +167,7 @@
         };
         extraPackages = final: prev: {
           inherit (self.packages.${prev.system})
-            sysdo pyEnv neocmakelsp switch-back-to-nvim tmux-cht
-            tmux-sessionizer;
+            sysdo neocmakelsp switch-back-to-nvim tmux-cht tmux-sessionizer;
         };
         devshell = inputs.devshell.overlay;
         neovim-nightly = inputs.neovim-nightly-overlay.overlay;

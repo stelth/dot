@@ -42,7 +42,8 @@ elif (
     check_darwin.returncode == 0
     or platform.uname().system.lower().strip() == "darwin".lower().strip()
 ):
-    # if we're on darwin, we might have darwin-rebuild or the distro id will be 'darwin'
+    # if we're on darwin, we might have darwin-rebuild
+    # or the distro id will be 'darwin'
     PLATFORM = FlakeOutputs.DARWIN
 else:
     # in all other cases of linux
@@ -77,12 +78,14 @@ def select(nixos: bool, darwin: bool, home_manager: bool):
 
     if nixos:
         return FlakeOutputs.NIXOS
-    elif darwin:
+
+    if darwin:
         return FlakeOutputs.DARWIN
-    elif home_manager:
+
+    if home_manager:
         return FlakeOutputs.HOME_MANAGER
-    else:
-        return PLATFORM
+
+    return PLATFORM
 
 
 @app.command(
@@ -162,7 +165,8 @@ def build(
     cfg = select(nixos=nixos, darwin=darwin, home_manager=home_manager)
     if cfg is None:
         return
-    elif cfg == FlakeOutputs.NIXOS:
+
+    if cfg == FlakeOutputs.NIXOS:
         cmd = ["sudo", "nixos-rebuild", "build", "--flake"]
     elif cfg == FlakeOutputs.DARWIN:
         cmd = ["darwin-rebuild", "build", "--flake"]
@@ -260,7 +264,7 @@ def update(
 
 @app.command(help="pull changes from remote repo", hidden=not is_local)
 def pull():
-    cmd = f"git stash && git pull && git stash apply"
+    cmd = "git stash && git pull && git stash apply"
     run_cmd(cmd.split())
 
 
@@ -289,12 +293,13 @@ def switch(
     cfg = select(nixos=nixos, darwin=darwin, home_manager=home_manager)
     if cfg is None:
         return
-    elif cfg == FlakeOutputs.NIXOS:
-        cmd = f"sudo nixos-rebuild switch --flake"
+
+    if cfg == FlakeOutputs.NIXOS:
+        cmd = "sudo nixos-rebuild switch --flake"
     elif cfg == FlakeOutputs.DARWIN:
-        cmd = f"darwin-rebuild switch --flake"
+        cmd = "darwin-rebuild switch --flake"
     elif cfg == FlakeOutputs.HOME_MANAGER:
-        cmd = f"home-manager switch --flake"
+        cmd = "home-manager switch --flake"
     else:
         typer.secho("could not infer system type.", fg=Colors.ERROR.value)
         raise typer.Abort()
