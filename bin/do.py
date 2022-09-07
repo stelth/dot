@@ -21,7 +21,9 @@ class Colors(Enum):
     ERROR = typer.colors.RED
 
 
-check_git = subprocess.run(["git", "rev-parse", "--show-toplevel"], capture_output=True)
+check_git = subprocess.run(
+    ["git", "rev-parse", "--show-toplevel"], capture_output=True, check=False
+)
 LOCAL_FLAKE = os.path.realpath(check_git.stdout.decode().strip())
 REMOTE_FLAKE = "github:stelth/dot"
 is_local = check_git.returncode == 0 and os.path.isfile(
@@ -30,10 +32,10 @@ is_local = check_git.returncode == 0 and os.path.isfile(
 FLAKE_PATH = LOCAL_FLAKE if is_local else REMOTE_FLAKE
 
 check_nixos = subprocess.run(
-    ["/usr/bin/env", "type", "nixos-rebuild"], capture_output=True
+    ["/usr/bin/env", "type", "nixos-rebuild"], capture_output=True, check=False
 )
 check_darwin = subprocess.run(
-    ["/usr/bin/env", "type", "darwin-rebuild"], capture_output=True
+    ["/usr/bin/env", "type", "darwin-rebuild"], capture_output=True, check=False
 )
 if check_nixos.returncode == 0:
     # if we're on nixos, this command is built in
@@ -56,15 +58,15 @@ def fmt_command(cmd: List[str]):
 
 
 def test_cmd(cmd: List[str]):
-    return subprocess.run(cmd).returncode == 0
+    return subprocess.run(cmd, check=False).returncode == 0
 
 
 def run_cmd(cmd: List[str], shell=False):
     typer.secho(fmt_command(cmd), fg=Colors.INFO.value)
     return (
-        subprocess.run(" ".join(cmd), shell=True)
+        subprocess.run(" ".join(cmd), shell=True, check=False)
         if shell
-        else subprocess.run(cmd, shell=False)
+        else subprocess.run(cmd, shell=False, check=False)
     )
 
 
@@ -255,9 +257,9 @@ def update(
         run_cmd(["nix", "flake", "update"] + flags)
     else:
         inputs = []
-        for input in flake:
+        for flake_input in flake:
             inputs.append("--update-input")
-            inputs.append(input)
+            inputs.append(flake_input)
         typer.secho(f"updating {', '.join(flake)}")
         run_cmd(["nix", "flake", "lock"] + inputs + flags)
 
