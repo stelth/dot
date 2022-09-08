@@ -45,7 +45,7 @@ local format_callback = function(client, bufnr)
   end
 end
 
-local keymap_callback = function(client, bufnr)
+local keymap_callback = function(_, bufnr)
   vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, {
     buffer = bufnr,
     desc = "Line Diagnostics",
@@ -152,20 +152,6 @@ local keymap_callback = function(client, bufnr)
     buffer = bufnr,
     desc = "Goto next error",
   })
-
-  -- Set some keybinds conditional on server capabilities
-  if client.server_capabilities.documentFormatting then
-    vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format, {
-      buffer = bufnr,
-      desc = "Format document",
-    })
-  end
-
-  if client.server_capabilities.documentRangeFormatting then
-    vim.keymap.set("v", "<leader>cf", vim.lsp.buf.range_formatting, {
-      desc = "Format range",
-    })
-  end
 end
 
 local on_attach = function(client, bufnr)
