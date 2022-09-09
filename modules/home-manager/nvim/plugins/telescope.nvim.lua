@@ -51,11 +51,3 @@ vim.keymap.set("n", "<leader>gb", builtin.git_branches, {
 vim.keymap.set("n", "<leader>gc", builtin.git_commits, {
   desc = "Git commits",
 })
-
-vim.keymap.set("n", "<leader>gw", telescope.extensions.git_worktree.git_worktrees, {
-  desc = "Git worktrees",
-})
-
-vim.keymap.set("n", "<leader>gm", telescope.extensions.git_worktree.create_git_worktree, {
-  desc = "Create git worktree",
-})

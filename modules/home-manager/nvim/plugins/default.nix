@@ -63,9 +63,6 @@ in {
       (pluginWithCfgFile coq_nvim)
       coq-thirdparty
       dressing-nvim
-      (pluginWithCfg git-worktree-nvim ''
-        require("telescope").load_extension("git_worktree")
-      '')
       (pluginWithCfgFile harpoon)
       (pluginWithCfg kanagawa-nvim ''
         require("kanagawa").setup({
