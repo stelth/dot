@@ -27,7 +27,7 @@
     withPython3 = false;
     withRuby = false;
 
-    extraPackages = with pkgs; [ fd ];
+    extraPackages = with pkgs; [ fd tree-sitter ];
 
     extraConfig = ''
       ${config.lib.vimUtils.wrapLuaConfig ./settings.lua}
