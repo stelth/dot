@@ -312,6 +312,7 @@ nls.setup(config({
     nls.builtins.diagnostics.gitlint,
     nls.builtins.diagnostics.jsonlint,
     nls.builtins.code_actions.proselint,
+    nls.builtins.diagnostics.todo_comments,
     nls.builtins.formatting.trim_whitespace.with({
       filetypes = { "*" },
     }),
