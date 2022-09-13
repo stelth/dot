@@ -1,4 +1,8 @@
-{ config, pkgs, ... }: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   system.defaults = {
     loginwindow = {
       GuestEnabled = false;

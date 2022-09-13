@@ -1,7 +1,7 @@
 # One CLI to format the code tree
 
 [formatter.nix]
-command = "nixfmt"
+command = "alejandra"
 options = []
 includes = [ "*.nix" ]
 excludes = []

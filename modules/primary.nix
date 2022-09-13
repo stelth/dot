@@ -1,16 +1,21 @@
-{ config, lib, options, ... }:
-let inherit (lib) mkAliasDefinitions mkOption types;
+{
+  config,
+  lib,
+  options,
+  ...
+}: let
+  inherit (lib) mkAliasDefinitions mkOption types;
 in {
   options = {
     user = mkOption {
       description = "Primary user configuration";
       type = types.attrs;
-      default = { };
+      default = {};
     };
 
     hm = mkOption {
       type = types.attrs;
-      default = { };
+      default = {};
     };
   };
 

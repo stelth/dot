@@ -295,8 +295,8 @@ nls.setup(config({
     nls.builtins.formatting.gofmt,
 
     -- Nix
+    nls.builtins.formatting.alejandra,
     nls.builtins.diagnostics.deadnix,
-    nls.builtins.formatting.nixfmt,
     nls.builtins.diagnostics.statix,
     nls.builtins.code_actions.statix,
 

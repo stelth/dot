@@ -1,8 +1,11 @@
-{ config, lib, pkgs, ... }:
-let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   home = config.home.homeDirectory;
-  darwinSockPath =
-    "${home}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
+  darwinSockPath = "${home}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
   sockPath = "~/.1password/agent.sock";
 in {
   home.sessionVariables.SSH_AUTH_SOCK = sockPath;

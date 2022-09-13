@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   homebrew = {
     casks = [
       "1password-beta"
@@ -7,6 +12,6 @@
       "hammerspoon"
       "kitty"
     ];
-    masApps = { };
+    masApps = {};
   };
 }

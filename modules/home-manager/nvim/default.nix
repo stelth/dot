@@ -1,5 +1,10 @@
-{ config, pkgs, lib, ... }: {
-  imports = [ ./plugins ];
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
+  imports = [./plugins];
 
   lib.vimUtils = rec {
     wrapLuaConfig = luaConfig: ''
@@ -27,7 +32,7 @@
     withPython3 = false;
     withRuby = false;
 
-    extraPackages = with pkgs; [ fd tree-sitter ];
+    extraPackages = with pkgs; [fd tree-sitter];
 
     extraConfig = ''
       ${config.lib.vimUtils.wrapLuaConfig ./settings.lua}

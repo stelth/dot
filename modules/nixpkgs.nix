@@ -1,5 +1,11 @@
-{ inputs, config, lib, pkgs, ... }: {
-  nixpkgs = { config = import ./config.nix; };
+{
+  inputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  nixpkgs = {config = import ./config.nix;};
 
   nix = {
     package = pkgs.nix;
@@ -9,10 +15,9 @@
       experimental-features = nix-command flakes
     '';
     settings = {
-      trusted-users = [ "${config.user.name}" "root" "@admin" "@wheel" ];
+      trusted-users = ["${config.user.name}" "root" "@admin" "@wheel"];
       max-jobs = 4;
-      trusted-substituters =
-        [ "https://nix-community.cachix.org/" "https://cache.nixos.org/" ];
+      trusted-substituters = ["https://nix-community.cachix.org/" "https://cache.nixos.org/"];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
@@ -23,7 +28,8 @@
       options = "--delete-older-than 14d";
     };
     readOnlyStore = true;
-    nixPath = builtins.map
+    nixPath =
+      builtins.map
       (source: "${source}=/etc/${config.environment.etc.${source}.target}") [
         "home-manager"
         "nixpkgs"

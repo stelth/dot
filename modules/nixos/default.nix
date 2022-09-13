@@ -1,10 +1,14 @@
-{ config, pkgs, ... }: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   # bundles essential nixos modules
-  imports = [ ../common.nix ];
+  imports = [../common.nix];
 
   services.interception-tools = {
     enable = true;
-    plugins = with pkgs.interception-tools-plugins; [ caps2esc ];
+    plugins = with pkgs.interception-tools-plugins; [caps2esc];
     udevmonConfig = ''
       - JOB: intercept -g $DEVNODE | caps2esc -m 1 | uinput -d $DEVNODE
         DEVICE:
@@ -25,23 +29,22 @@
     dataDir = config.user.home;
   };
 
-  environment.systemPackages = with pkgs; [ vscode firefox gnome.gnome-tweaks ];
+  environment.systemPackages = with pkgs; [vscode firefox gnome.gnome-tweaks];
 
-  hm = { pkgs, ... }: { imports = [ ../home-manager/gnome ]; };
+  hm = {pkgs, ...}: {imports = [../home-manager/gnome];};
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users = {
     defaultUserShell = pkgs.fish;
     mutableUsers = false;
-    groups.localtimed = { };
+    groups.localtimed = {};
     users = {
       localtimed.group = "localtimed";
       "${config.user.name}" = {
         isNormalUser = true;
         createHome = true;
         useDefaultShell = true;
-        extraGroups =
-          [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
+        extraGroups = ["wheel" "networkmanager"]; # Enable ‘sudo’ for the user.
         hashedPassword = "";
       };
     };
@@ -137,5 +140,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.05"; # Did you read the comment?
-
 }

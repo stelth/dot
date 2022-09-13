@@ -1,5 +1,10 @@
-{ self, config, pkgs, lib, ... }:
-let
+{
+  self,
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
   inherit (config.lib.vimUtils) pluginWithCfgFile;
   inherit (config.lib.vimUtils) pluginWithCfg;
 in {
@@ -13,14 +18,14 @@ in {
     jdt-language-server
 
     #nix
+    alejandra
     deadnix
-    nixfmt
     rnix-lsp
     statix
 
     # python
     (python3.withPackages
-      (ps: with ps; [ black debugpy flake8 isort yamllint pylint ]))
+      (ps: with ps; [black debugpy flake8 isort yamllint pylint]))
     nodePackages.pyright
 
     # Lua

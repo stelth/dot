@@ -1,5 +1,10 @@
-{ config, lib, pkgs, ... }: {
-  imports = [ ./apps-minimal.nix ];
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  imports = [./apps-minimal.nix];
   homebrew = {
     casks = [
       "cyberduck"
@@ -9,6 +14,6 @@
       "slack"
       "spotify"
     ];
-    masApps = { };
+    masApps = {};
   };
 }

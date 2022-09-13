@@ -1,14 +1,18 @@
-{ inputs, config, pkgs, ... }:
-let
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}: let
   checkBrew = "command -v brew > /dev/null";
   installBrew = ''
     ${pkgs.bash}/bin/bash -c "$(${pkgs.curl}/bin/curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"'';
 in {
-  environment = { extraInit = "${checkBrew} || ${installBrew}"; };
+  environment = {extraInit = "${checkBrew} || ${installBrew}";};
 
   homebrew = {
     enable = true;
-    global = { brewfile = true; };
+    global = {brewfile = true;};
     taps = [
       "beeftornado/rmtree"
       "homebrew/bundle"
@@ -23,6 +27,6 @@ in {
       brew "yabai", restart_service: "changed"
     '';
 
-    brews = [ ];
+    brews = [];
   };
 }

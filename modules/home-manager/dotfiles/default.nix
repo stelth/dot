@@ -1,5 +1,9 @@
-{ config, pkgs, lib, ... }: {
-
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   home.file = {
     hammerspoon = lib.mkIf pkgs.stdenvNoCC.isDarwin {
       source = ./hammerspoon;
@@ -9,7 +13,7 @@
   };
   xdg.enable = true;
   xdg.configFile = {
-    "nixpkgs/config.nix" = { source = ../../config.nix; };
+    "nixpkgs/config.nix" = {source = ../../config.nix;};
     yabai = lib.mkIf pkgs.stdenvNoCC.isDarwin {
       source = ./yabai;
       recursive = true;

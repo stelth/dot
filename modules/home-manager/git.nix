@@ -1,27 +1,32 @@
-{ config, lib, pkgs, ... }: {
-  home.packages = with pkgs; [ github-cli ];
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  home.packages = with pkgs; [github-cli];
 
   programs.git = {
     userName = "Jason Cox";
     extraConfig = {
       credential = {
-        helper = if pkgs.stdenvNoCC.isDarwin then
-          "osxkeychain"
-        else
-          "cache --timeout=1000000000";
+        helper =
+          if pkgs.stdenvNoCC.isDarwin
+          then "osxkeychain"
+          else "cache --timeout=1000000000";
       };
-      commit = { verbose = true; };
-      fetch = { prune = true; };
-      http = { sslVerify = true; };
-      init = { defaultBranch = "main"; };
-      pull = { rebase = true; };
-      push = { followTags = true; };
-      diff = { tool = "nvimdiff"; };
-      merge = { tool = "nvimdiff"; };
-      "mergetool \"nvimdiff\"" = { path = "nvim"; };
+      commit = {verbose = true;};
+      fetch = {prune = true;};
+      http = {sslVerify = true;};
+      init = {defaultBranch = "main";};
+      pull = {rebase = true;};
+      push = {followTags = true;};
+      diff = {tool = "nvimdiff";};
+      merge = {tool = "nvimdiff";};
+      "mergetool \"nvimdiff\"" = {path = "nvim";};
 
-      ghq = { root = "~/dev/repos"; };
-      color = { ui = true; };
+      ghq = {root = "~/dev/repos";};
+      color = {ui = true;};
     };
     aliases = {
       fix = "commit --amend --no-edit";

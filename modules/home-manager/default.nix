@@ -1,7 +1,12 @@
-{ inputs, config, pkgs, ... }:
-let homeDir = config.home.homeDirectory;
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}: let
+  homeDir = config.home.homeDirectory;
 in {
-  imports = [ ./cli ./dev ./dotfiles ./git.nix ./nvim ./1password ];
+  imports = [./cli ./dev ./dotfiles ./git.nix ./nvim ./1password];
 
   programs.home-manager = {
     enable = true;

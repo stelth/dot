@@ -1,6 +1,10 @@
-{ config, pkgs, lib, ... }: {
-  home.sessionVariables.LLDB_DEBUGSERVER_PATH =
-    "/Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Versions/A/Resources/debugserver";
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
+  home.sessionVariables.LLDB_DEBUGSERVER_PATH = "/Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Versions/A/Resources/debugserver";
   programs.fish = {
     enable = true;
     shellAbbrs = {

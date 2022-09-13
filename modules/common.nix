@@ -1,5 +1,12 @@
-{ self, inputs, config, lib, pkgs, ... }: {
-  imports = [ ./primary.nix ./nixpkgs.nix ];
+{
+  self,
+  inputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  imports = [./primary.nix ./nixpkgs.nix];
 
   nixpkgs.overlays = builtins.attrValues self.overlays;
 
@@ -9,15 +16,17 @@
   user = {
     description = "Jason Cox";
     home = "${
-        if pkgs.stdenvNoCC.isDarwin then "/Users" else "/home"
-      }/${config.user.name}";
+      if pkgs.stdenvNoCC.isDarwin
+      then "/Users"
+      else "/home"
+    }/${config.user.name}";
     shell = pkgs.fish;
   };
 
   hm = import ./home-manager;
 
   home-manager = {
-    extraSpecialArgs = { inherit self inputs; };
+    extraSpecialArgs = {inherit self inputs;};
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "orig";
@@ -39,11 +48,11 @@
       nixpkgs.source = "${inputs.nixpkgs}";
       stable.source = "${inputs.stable}";
     };
-    shells = with pkgs; [ bash zsh fish ];
+    shells = with pkgs; [bash zsh fish];
   };
 
   fonts = {
     fontDir.enable = true;
-    fonts = with pkgs; [ nerdfonts ibm-plex ];
+    fonts = with pkgs; [nerdfonts ibm-plex];
   };
 }
