@@ -54,6 +54,7 @@ in {
     nodePackages.prettier
     nodePackages.vscode-json-languageserver
     nodePackages.yaml-language-server
+    proselint
   ];
 
   programs.neovim = {

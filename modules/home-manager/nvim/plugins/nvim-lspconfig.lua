@@ -308,6 +308,7 @@ nls.setup(config({
     nls.builtins.formatting.trim_whitespace.with({
       filetypes = { "*" },
     }),
+    nls.builtins.code_actions.proselint,
   },
   root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".nvim.settings.json", ".git"),
 }))
