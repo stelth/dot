@@ -301,8 +301,9 @@ nls.setup(config({
     -- Docker
     nls.builtins.diagnostics.hadolint,
 
-    -- CMake
+    -- {C}Make
     nls.builtins.formatting.cmake_format,
+    nls.builtins.diagnostics.checkmake,
 
     -- Additional
     nls.builtins.formatting.trim_whitespace.with({

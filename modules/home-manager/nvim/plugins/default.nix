@@ -45,7 +45,8 @@ in {
     shellharden
     shfmt
 
-    # CMake
+    # {C}Make
+    checkmake
     cmake-format
     neocmakelsp
 
