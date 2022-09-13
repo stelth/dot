@@ -60,6 +60,7 @@ in {
     # Additional
     actionlint
     gitlint
+    jq
     nodePackages.jsonlint
     nodePackages.markdownlint-cli
     nodePackages.prettier
