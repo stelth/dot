@@ -13,6 +13,7 @@ in {
     jdt-language-server
 
     #nix
+    deadnix
     nixfmt
     rnix-lsp
     statix
