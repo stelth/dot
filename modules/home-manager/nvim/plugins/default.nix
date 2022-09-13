@@ -55,6 +55,7 @@ in {
     # Additional
     actionlint
     gitlint
+    nodePackages.jsonlint
     nodePackages.markdownlint-cli
     nodePackages.prettier
     nodePackages.vscode-json-languageserver

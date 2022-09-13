@@ -310,6 +310,7 @@ nls.setup(config({
     -- Additional
     nls.builtins.diagnostics.actionlint,
     nls.builtins.diagnostics.gitlint,
+    nls.builtins.diagnostics.jsonlint,
     nls.builtins.code_actions.proselint,
     nls.builtins.formatting.trim_whitespace.with({
       filetypes = { "*" },
