@@ -7,6 +7,7 @@ in {
     # C/C++
     clang-tools_14
     cppcheck
+    cpplint
 
     # Java
     jdt-language-server

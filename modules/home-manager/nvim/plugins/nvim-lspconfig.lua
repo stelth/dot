@@ -281,6 +281,7 @@ nls.setup(config({
       filetypes = { "c", "cpp" },
     }),
     nls.builtins.diagnostics.cppcheck,
+    nls.builtins.diagnostics.cpplint,
 
     -- Lua
     nls.builtins.diagnostics.selene,
