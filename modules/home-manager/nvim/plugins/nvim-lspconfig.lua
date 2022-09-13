@@ -309,6 +309,7 @@ nls.setup(config({
       filetypes = { "*" },
     }),
     nls.builtins.code_actions.proselint,
+    nls.builtins.diagnostics.actionlint,
   },
   root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".nvim.settings.json", ".git"),
 }))

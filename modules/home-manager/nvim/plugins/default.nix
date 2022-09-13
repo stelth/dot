@@ -50,6 +50,7 @@ in {
     neocmakelsp
 
     # Additional
+    actionlint
     nodePackages.markdownlint-cli
     nodePackages.prettier
     nodePackages.vscode-json-languageserver
