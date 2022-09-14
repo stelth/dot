@@ -26,6 +26,7 @@ local lsp_formatting = function(bufnr)
         return (#nls_available > 0) == (client.name == "null-ls")
       end,
       bufnr = bufnr,
+      timeout_ms = 2000,
     })
   end
 end
