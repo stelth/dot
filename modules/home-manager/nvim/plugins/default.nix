@@ -60,7 +60,6 @@ in {
     # Additional
     actionlint
     gitlint
-    jq
     nodePackages.jsonlint
     nodePackages.markdownlint-cli
     nodePackages.prettier
@@ -105,6 +104,8 @@ in {
         vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Undo Tree" })
       '')
       vim-commentary
+      vim-dadbod
+      vim-dadbod-ui
       (pluginWithCfg vim-matchup ''
         vim.g.matchup_matchparen_offscreen = {
           method = "status_manual",
