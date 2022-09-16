@@ -20,6 +20,9 @@
       url = "github:nix-community/neovim-nightly-overlay";
       inputs = {nixpkgs = {follows = "nixpkgs";};};
     };
+    vim-extra-plugins = {
+      url = "github:stelth/nixpkgs-vim-extra-plugins";
+    };
 
     # system management
     darwin = {
@@ -204,6 +207,7 @@
       };
       devshell = inputs.devshell.overlay;
       neovim-nightly = inputs.neovim-nightly-overlay.overlay;
+      vim-extra-plugins = inputs.vim-extra-plugins.overlays.default;
     };
   };
 }
