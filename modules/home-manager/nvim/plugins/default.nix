@@ -86,6 +86,7 @@ in {
         vim.cmd.colorscheme("kanagawa")
       '')
       lua-dev-nvim
+      (pluginWithCfgFile pkgs.vimExtraPlugins.neovim-tasks)
       null-ls-nvim
       (pluginWithCfg nvim-autopairs ''
         require("nvim-autopairs").setup({
