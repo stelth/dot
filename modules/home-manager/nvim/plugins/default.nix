@@ -92,6 +92,9 @@ in {
           enable_check_bracket_line = false,
         })
       '')
+      (pluginWithCfgFile nvim-dap)
+      nvim-dap-ui
+      nvim-dap-virtual-text
       nvim-jdtls
       (pluginWithCfgFile nvim-lspconfig)
       (pluginWithCfgFile nvim-notify)
