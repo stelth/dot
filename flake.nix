@@ -205,6 +205,14 @@
           tmux-sessionizer
           ;
       };
+
+      lldb = final: prev: rec {
+        lldb = prev.lldb.overrideAttrs (old: {
+          patches =
+            (old.patches or [])
+            ++ [./pkgs/patches/lldb-fix-cpu-subtype-not-found.patch];
+        });
+      };
       devshell = inputs.devshell.overlay;
       neovim-nightly = inputs.neovim-nightly-overlay.overlay;
       vim-extra-plugins = inputs.vim-extra-plugins.overlays.default;

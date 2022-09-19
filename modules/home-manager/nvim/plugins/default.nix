@@ -13,6 +13,7 @@ in {
     clang-tools_14
     cppcheck
     cpplint
+    lldb
 
     # Java
     jdt-language-server
@@ -25,7 +26,7 @@ in {
 
     # python
     (python3.withPackages
-      (ps: with ps; [black flake8 isort yamllint pylint]))
+      (ps: with ps; [black debugpy flake8 isort yamllint pylint]))
     nodePackages.pyright
 
     # Lua
