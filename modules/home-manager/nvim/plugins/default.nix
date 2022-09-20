@@ -67,6 +67,7 @@ in {
     nodePackages.vscode-json-languageserver
     nodePackages.yaml-language-server
     proselint
+    taplo
   ];
 
   programs.neovim = {
