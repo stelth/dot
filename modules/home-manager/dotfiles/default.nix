@@ -10,6 +10,11 @@
       target = ".hammerspoon";
       recursive = true;
     };
+    clangd = {
+      source = ./clangd;
+      target = "Library/Preferences/clangd";
+      recursive = true;
+    };
   };
   xdg.enable = true;
   xdg.configFile = {

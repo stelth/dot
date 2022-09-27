@@ -10,9 +10,10 @@
 in {
   home.packages = with pkgs; [
     # C/C++
-    clang-tools_14
+    clang-tools
     cppcheck
     cpplint
+    include-what-you-use
     lldb
 
     # Java

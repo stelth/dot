@@ -1,0 +1,13 @@
+---
+Diagnostics:
+  ClangTidy:
+    Add:
+      [
+        "clang-diagnostic-*",
+        "clang-analyzer-*",
+        "cppcoreguidelines-*",
+        "modernize-*",
+        "readability-*",
+        "bugprone-*",
+      ]
+  UnusedIncludes: Strict

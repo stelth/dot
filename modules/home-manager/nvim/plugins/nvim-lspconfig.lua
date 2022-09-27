@@ -230,6 +230,7 @@ require("clangd_extensions").setup({
       "clangd",
       "--background-index",
       "--clang-tidy",
+      "--completion-style=bundled",
       "--header-insertion=iwyu",
     },
   },
