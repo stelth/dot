@@ -79,6 +79,7 @@ in {
       coq-thirdparty
       dressing-nvim
       (pluginWithCfgFile harpoon)
+      impatient-nvim
       (pluginWithCfg kanagawa-nvim ''
         require("kanagawa").setup({
           dimInactive = true,
