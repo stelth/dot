@@ -23,7 +23,7 @@ vim.opt.relativenumber = true
 vim.opt.scrolloff = 8
 vim.opt.shiftwidth = indent
 vim.opt.shortmess:append("c")
-vim.opt.showmode = false
+vim.opt.showmode = true
 vim.opt.sidescrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.smartcase = true
