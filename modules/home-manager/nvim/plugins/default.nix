@@ -113,6 +113,7 @@ in {
       '')
       vim-commentary
       vim-dadbod
+      vim-dadbod-completion
       vim-dadbod-ui
       (pluginWithCfg vim-matchup ''
         vim.g.matchup_matchparen_offscreen = {

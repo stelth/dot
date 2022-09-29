@@ -16,4 +16,6 @@ require("coq")
 require("coq_3p")({
   { src = "repl", sh = "bash" },
   { src = "bc", short_name = "MATH", precision = 6 },
+  { src = "vim_dadbod_completion", short_name = "DB" },
+  { src = "dap" },
 })
