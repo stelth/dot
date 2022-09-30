@@ -205,7 +205,6 @@
           tmux-sessionizer
           ;
       };
-
       lldb = final: prev: rec {
         lldb = prev.lldb.overrideAttrs (old: {
           patches =
