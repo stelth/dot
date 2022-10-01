@@ -8,7 +8,7 @@ end
 
 cmp.setup({
   enabled = function()
-    return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt" or require("cmp-dap").is_dap_buffer()
+    return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt" or require("cmp_dap").is_dap_buffer()
   end,
   completion = {
     completeopt = "menu,menuone,noinsert",
