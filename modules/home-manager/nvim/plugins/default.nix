@@ -74,10 +74,15 @@ in {
   programs.neovim = {
     plugins = with pkgs.vimPlugins; [
       clangd_extensions-nvim
-      coq-artifacts
-      (pluginWithCfgFile coq_nvim)
-      coq-thirdparty
+      cmp-buffer
+      cmp-calc
+      cmp-dap
+      cmp-git
+      cmp-nvim-lsp
+      cmp-path
+      cmp_luasnip
       dressing-nvim
+      friendly-snippets
       (pluginWithCfgFile harpoon)
       impatient-nvim
       (pluginWithCfg kanagawa-nvim ''
@@ -88,7 +93,9 @@ in {
 
         vim.cmd.colorscheme("kanagawa")
       '')
+      lspkind-nvim
       lua-dev-nvim
+      (pluginWithCfgFile luasnip)
       (pluginWithCfgFile pkgs.vimExtraPlugins.neovim-tasks)
       null-ls-nvim
       (pluginWithCfg nvim-autopairs ''
@@ -96,6 +103,7 @@ in {
           enable_check_bracket_line = false,
         })
       '')
+      (pluginWithCfgFile nvim-cmp)
       (pluginWithCfgFile nvim-dap)
       nvim-dap-ui
       nvim-dap-virtual-text

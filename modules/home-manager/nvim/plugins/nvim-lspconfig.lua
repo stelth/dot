@@ -163,15 +163,13 @@ end
 local config = function(customConfig)
   local default_config = {
     on_attach = on_attach,
-    capabilities = vim.lsp.protocol.make_client_capabilities(),
+    capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
     flags = {
       debounce_text_changes = 150,
     },
   }
 
-  local new_config = vim.tbl_deep_extend("force", default_config, customConfig)
-
-  return require("coq").lsp_ensure_capabilities(new_config)
+  return vim.tbl_deep_extend("force", default_config, customConfig)
 end
 
 local luadev = require("lua-dev").setup({})
