@@ -18,5 +18,4 @@ require("coq_3p")({
   { src = "bc", short_name = "MATH", precision = 6 },
   { src = "vim_dadbod_completion", short_name = "DB" },
   { src = "dap" },
-  { src = "nvimlua", short_name = "nLUA", conf_only = false },
 })

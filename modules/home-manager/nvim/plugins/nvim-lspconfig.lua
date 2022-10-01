@@ -174,6 +174,9 @@ local config = function(customConfig)
   return require("coq").lsp_ensure_capabilities(new_config)
 end
 
+local luadev = require("lua-dev").setup({})
+table.insert(luadev.settings.Lua.workspace.library, "/Users/coxj/.hammerspoon/Spoons/EmmyLua.spoon/annotations")
+
 local lspconfig = require("lspconfig")
 local configs = require("lspconfig.configs")
 lspconfig.bashls.setup(config({}))
@@ -205,21 +208,7 @@ lspconfig.pyright.setup(config({}))
 
 lspconfig.rnix.setup(config({}))
 
-lspconfig.sumneko_lua.setup(config({
-  settings = {
-    Lua = {
-      runtime = {
-        version = "LuaJIT",
-      },
-      diagnostics = {
-        globals = { "vim" },
-      },
-      telemetry = {
-        enable = false,
-      },
-    },
-  },
-}))
+lspconfig.sumneko_lua.setup(config(luadev))
 
 lspconfig.yamlls.setup(config({}))
 
