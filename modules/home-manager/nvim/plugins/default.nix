@@ -118,8 +118,18 @@ in {
       nvim-jdtls
       (pluginWithCfgFile nvim-lspconfig)
       (pluginWithCfgFile nvim-notify)
-      (pluginWithCfgFile
-        (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars)))
+      (pluginWithCfg
+        (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars)) ''
+          require("nvim-treesitter.configs").setup({
+            highlight = { enable = true },
+            incremental_selection = { enable = true },
+            textobjects = { enable = true },
+            indent = { enable = true },
+          })
+
+          vim.opt.foldmethod = "expr"
+          vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+        '')
       nvim-ts-context-commentstring
       nvim-web-devicons
       rust-tools-nvim
