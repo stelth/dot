@@ -135,6 +135,9 @@ in {
       nvim-jdtls
       (pluginWithCfgFile nvim-lspconfig)
       (pluginWithCfgFile nvim-notify)
+      (pluginWithCfg nvim-surround ''
+        require("nvim-surround").setup({})
+      '')
       (pluginWithCfg
         (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars)) ''
           require("nvim-treesitter.configs").setup({
@@ -160,7 +163,6 @@ in {
         }
       '')
       vim-repeat
-      vim-surround
     ];
   };
 }
