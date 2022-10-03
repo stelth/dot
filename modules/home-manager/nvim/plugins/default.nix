@@ -137,9 +137,6 @@ in {
       nvim-web-devicons
       rust-tools-nvim
       (pluginWithCfgFile telescope-nvim)
-      (pluginWithCfg undotree ''
-        vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Undo Tree" })
-      '')
       vim-commentary
       vim-dadbod
       vim-dadbod-completion
