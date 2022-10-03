@@ -87,6 +87,14 @@ in {
             })
       '')
       dressing-nvim
+      (pluginWithCfg fidget-nvim ''
+        require('fidget').setup({
+                window = {
+                        relative = "editor",
+                    },
+            })
+        vim.api.nvim_create_autocmd("VimLeavePre", { command = [[silent! FidgetClose]] })
+      '')
       friendly-snippets
       (pluginWithCfgFile harpoon)
       impatient-nvim
