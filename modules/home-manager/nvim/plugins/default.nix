@@ -105,6 +105,9 @@ in {
         require("luasnip/loaders/from_vscode").lazy_load()
       '')
       (pluginWithCfgFile pkgs.vimExtraPlugins.neovim-tasks)
+      (pluginWithCfg pkgs.vimExtraPlugins.noice-nvim ''
+        require('noice').setup()
+      '')
       null-ls-nvim
       (pluginWithCfg nvim-autopairs ''
         require("nvim-autopairs").setup({
