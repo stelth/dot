@@ -226,7 +226,7 @@ vim.api.nvim_create_autocmd("Filetype", {
 })
 
 require("clangd_extensions").setup({
-  server = {
+  server = config({
     cmd = {
       "clangd",
       "--background-index",
@@ -234,7 +234,7 @@ require("clangd_extensions").setup({
       "--completion-style=bundled",
       "--header-insertion=iwyu",
     },
-  },
+  }),
 })
 
 require("rust-tools").setup({
