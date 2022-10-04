@@ -182,9 +182,33 @@ local lspconfig = require("lspconfig")
 local configs = require("lspconfig.configs")
 lspconfig.bashls.setup(config({}))
 
+require("clangd_extensions").setup({
+  server = config({
+    cmd = {
+      "clangd",
+      "--background-index",
+      "--clang-tidy",
+      "--completion-style=bundled",
+      "--header-insertion=iwyu",
+    },
+  }),
+})
+
 lspconfig.dockerls.setup(config({}))
 
 lspconfig.gopls.setup(config({}))
+
+local jdtls_setup = function()
+  require("jdtls").start_or_attach({
+    cmd = { "jdt-language-server" },
+    on_attach = on_attach,
+  })
+end
+
+vim.api.nvim_create_autocmd("Filetype", {
+  pattern = "java",
+  callback = jdtls_setup,
+})
 
 lspconfig.jsonls.setup(config({
   cmd = { "vscode-json-languageserver", "--stdio" },
@@ -209,34 +233,6 @@ lspconfig.pyright.setup(config({}))
 
 lspconfig.rnix.setup(config({}))
 
-lspconfig.sumneko_lua.setup(config(luadev))
-
-lspconfig.yamlls.setup(config({}))
-
-local jdtls_setup = function()
-  require("jdtls").start_or_attach({
-    cmd = { "jdt-language-server" },
-    on_attach = on_attach,
-  })
-end
-
-vim.api.nvim_create_autocmd("Filetype", {
-  pattern = "java",
-  callback = jdtls_setup,
-})
-
-require("clangd_extensions").setup({
-  server = config({
-    cmd = {
-      "clangd",
-      "--background-index",
-      "--clang-tidy",
-      "--completion-style=bundled",
-      "--header-insertion=iwyu",
-    },
-  }),
-})
-
 require("rust-tools").setup({
   server = {
     on_attach = on_attach,
@@ -257,6 +253,10 @@ require("rust-tools").setup({
     },
   },
 })
+
+lspconfig.sumneko_lua.setup(config(luadev))
+
+lspconfig.yamlls.setup(config({}))
 
 local nls = require("null-ls")
 nls.setup(config({
