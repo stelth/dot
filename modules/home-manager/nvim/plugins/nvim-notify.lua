@@ -1,7 +1,6 @@
 require("notify").setup({
-  fps = 60,
-  stages = "slide",
-  timeout = 2000,
+  fps = 20,
+  level = vim.log.levels.INFO,
 })
 
 vim.notify = function(msg, log_level, opts)
