@@ -19,9 +19,7 @@ cmp.setup({
     end,
   },
   formatting = {
-    format = require("lspkind").cmp_format({
-      with_text = false,
-    }),
+    format = require("lspkind").cmp_format(),
   },
   mapping = cmp.mapping.preset.insert({
     ["<C-Space>"] = cmp.mapping.complete(),
