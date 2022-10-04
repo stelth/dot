@@ -85,6 +85,7 @@ in {
       dressing-nvim
       (pluginWithCfg fidget-nvim)
       friendly-snippets
+      (pluginWithCfg pkgs.vimExtraPlugins.github-notifications-nvim)
       (pluginWithCfg harpoon)
       impatient-nvim
       (pluginWithCfg kanagawa-nvim)

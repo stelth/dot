@@ -51,6 +51,7 @@ require("lualine").setup({
         cond = require("noice.status").search.has,
         color = { fg = "#ff9e64" },
       },
+      { require("github-notifications").statusline_notification_count },
     },
     lualine_y = { "location" },
     lualine_z = { clock },
