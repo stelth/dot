@@ -75,6 +75,8 @@ in {
       clangd_extensions-nvim
       cmp-buffer
       cmp-calc
+      cmp-cmdline
+      cmp-cmdline-history
       cmp-dap
       cmp-git
       cmp-nvim-lsp
