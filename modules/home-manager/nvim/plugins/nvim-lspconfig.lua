@@ -156,6 +156,9 @@ local keymap_callback = function(_, bufnr)
 end
 
 local on_attach = function(client, bufnr)
+  if client.server_capabilities.documentSymbolProvider then
+    require("nvim-navic").attach(client, bufnr)
+  end
   format_callback(client, bufnr)
   keymap_callback(client, bufnr)
 end

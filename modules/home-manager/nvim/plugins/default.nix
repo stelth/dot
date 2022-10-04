@@ -101,6 +101,8 @@ in {
       nvim-dap-virtual-text
       nvim-jdtls
       (pluginWithCfg nvim-lspconfig)
+      (pluginWithCfg pkgs.vimExtraPlugins.nvim-navic)
+      (pluginWithCfg pkgs.vimExtraPlugins.lualine-nvim)
       (pluginWithCfg nvim-notify)
       (pluginWithCfg nvim-surround)
       (pluginWithCfg
