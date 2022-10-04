@@ -13,15 +13,11 @@
       EOF
     '';
 
-    pluginWithCfg = plugin: config: {
+    pluginWithCfg = plugin: {
       inherit plugin;
-      inherit config;
+      config = builtins.readFile (./. + "/plugins/${plugin.pname}.lua");
       type = "lua";
     };
-
-    pluginWithCfgFile = plugin:
-      pluginWithCfg plugin
-      (builtins.readFile (./. + "/plugins/${plugin.pname}.lua"));
   };
 
   programs.neovim = {

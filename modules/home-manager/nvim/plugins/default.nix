@@ -5,7 +5,6 @@
   lib,
   ...
 }: let
-  inherit (config.lib.vimUtils) pluginWithCfgFile;
   inherit (config.lib.vimUtils) pluginWithCfg;
 in {
   home.packages = with pkgs; [
@@ -81,87 +80,39 @@ in {
       cmp-nvim-lsp
       cmp-path
       cmp_luasnip
-      (pluginWithCfg comment-nvim ''
-        require('Comment').setup({
-            pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
-            })
-      '')
-      (pluginWithCfgFile pkgs.vimExtraPlugins.dial-nvim)
+      (pluginWithCfg comment-nvim)
+      (pluginWithCfg pkgs.vimExtraPlugins.dial-nvim)
       dressing-nvim
-      (pluginWithCfg fidget-nvim ''
-        require('fidget').setup({
-                window = {
-                        relative = "editor",
-                    },
-            })
-        vim.api.nvim_create_autocmd("VimLeavePre", { command = [[silent! FidgetClose]] })
-      '')
+      (pluginWithCfg fidget-nvim)
       friendly-snippets
-      (pluginWithCfgFile harpoon)
+      (pluginWithCfg harpoon)
       impatient-nvim
-      (pluginWithCfg kanagawa-nvim ''
-        require("kanagawa").setup({
-          dimInactive = true,
-          globalStatus = true,
-        })
-
-        vim.cmd.colorscheme("kanagawa")
-      '')
+      (pluginWithCfg kanagawa-nvim)
       lspkind-nvim
       lua-dev-nvim
-      (pluginWithCfg luasnip ''
-        require("luasnip").config.set_config({
-          history = false,
-          -- Update more often
-          updateEvents = "TextChanged,TextChangedI",
-        })
-
-        require("luasnip/loaders/from_vscode").lazy_load()
-      '')
-      (pluginWithCfgFile pkgs.vimExtraPlugins.neovim-tasks)
-      (pluginWithCfg pkgs.vimExtraPlugins.noice-nvim ''
-        require('noice').setup()
-      '')
+      (pluginWithCfg luasnip)
+      (pluginWithCfg pkgs.vimExtraPlugins.neovim-tasks)
+      (pluginWithCfg pkgs.vimExtraPlugins.noice-nvim)
       null-ls-nvim
-      (pluginWithCfg nvim-autopairs ''
-        require("nvim-autopairs").setup({
-          enable_check_bracket_line = false,
-        })
-      '')
-      (pluginWithCfgFile nvim-cmp)
-      (pluginWithCfgFile nvim-dap)
+      (pluginWithCfg nvim-autopairs)
+      (pluginWithCfg nvim-cmp)
+      (pluginWithCfg nvim-dap)
       nvim-dap-ui
       nvim-dap-virtual-text
       nvim-jdtls
-      (pluginWithCfgFile nvim-lspconfig)
-      (pluginWithCfgFile nvim-notify)
-      (pluginWithCfg nvim-surround ''
-        require("nvim-surround").setup({})
-      '')
+      (pluginWithCfg nvim-lspconfig)
+      (pluginWithCfg nvim-notify)
+      (pluginWithCfg nvim-surround)
       (pluginWithCfg
-        (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars)) ''
-          require("nvim-treesitter.configs").setup({
-            highlight = { enable = true },
-            incremental_selection = { enable = true },
-            textobjects = { enable = true },
-            indent = { enable = true },
-          })
-
-          vim.opt.foldmethod = "expr"
-          vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-        '')
+        (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars)))
       nvim-ts-context-commentstring
       nvim-web-devicons
       rust-tools-nvim
-      (pluginWithCfgFile telescope-nvim)
+      (pluginWithCfg telescope-nvim)
       vim-dadbod
       vim-dadbod-completion
       vim-dadbod-ui
-      (pluginWithCfg vim-matchup ''
-        vim.g.matchup_matchparen_offscreen = {
-          method = "status_manual",
-        }
-      '')
+      (pluginWithCfg vim-matchup)
       vim-repeat
     ];
   };
