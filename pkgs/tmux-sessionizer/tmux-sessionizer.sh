@@ -1,6 +1,7 @@
 # shellcheck shell=bash
 readarray -t repo_list < <(ghq list -p)
 repo_list+=("$HOME"/dot)
+repo_list+=("$HOME"/dev/logs)
 repo_list+=("$HOME"/dev)
 repo_list+=("$HOME")
 
