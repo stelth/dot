@@ -183,15 +183,7 @@ local configs = require("lspconfig.configs")
 lspconfig.bashls.setup(config({}))
 
 require("clangd_extensions").setup({
-  server = config({
-    cmd = {
-      "clangd",
-      "--background-index",
-      "--clang-tidy",
-      "--completion-style=bundled",
-      "--header-insertion=iwyu",
-    },
-  }),
+  server = config({}),
 })
 
 lspconfig.dockerls.setup(config({}))
