@@ -234,24 +234,7 @@ lspconfig.pyright.setup(config({}))
 lspconfig.rnix.setup(config({}))
 
 require("rust-tools").setup({
-  server = {
-    on_attach = on_attach,
-    settings = {
-      ["rust-analyzer"] = {
-        checkOnSave = {
-          allFeatures = true,
-          overrideCommand = {
-            "cargo",
-            "clippy",
-            "--workspace",
-            "--message-format=json",
-            "--all-targets",
-            "--all-features",
-          },
-        },
-      },
-    },
-  },
+  server = config({}),
 })
 
 lspconfig.sumneko_lua.setup(config(luadev))
