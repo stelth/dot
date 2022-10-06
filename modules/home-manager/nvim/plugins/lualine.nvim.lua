@@ -1,7 +1,3 @@
-local function clock()
-  return " " .. os.date("%H:%M")
-end
-
 require("lualine").setup({
   options = {
     theme = "auto",
@@ -33,28 +29,28 @@ require("lualine").setup({
     },
     lualine_x = {
       {
-        require("noice.status").message.get_hl,
-        cond = require("noice.status").message.has,
+        require("noice").api.statusline.message.get_hl,
+        cond = require("noice").api.statusline.message.has,
       },
       {
-        require("noice.status").command.get,
-        cond = require("noice.status").command.has,
+        require("noice").api.statusline.command.get,
+        cond = require("noice").api.statusline.command.has,
         color = { fg = "#ff9e64" },
       },
       {
-        require("noice.status").mode.get,
-        cond = require("noice.status").mode.has,
+        require("noice").api.statusline.mode.get,
+        cond = require("noice").api.statusline.mode.has,
         color = { fg = "#ff9e64" },
       },
       {
-        require("noice.status").search.get,
-        cond = require("noice.status").search.has,
+        require("noice").api.statusline.search.get,
+        cond = require("noice").api.statusline.search.has,
         color = { fg = "#ff9e64" },
       },
       { require("github-notifications").statusline_notification_count },
     },
     lualine_y = { "location" },
-    lualine_z = { clock },
+    lualine_z = {},
   },
   inactive_sections = {
     lualine_a = {},
