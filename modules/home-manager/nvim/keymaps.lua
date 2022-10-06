@@ -1,30 +1,3 @@
-local warn = function(msg, name)
-  vim.notify(msg, vim.log.levels.WARN, { title = name })
-end
-
-local info = function(msg, name)
-  vim.notify(msg, vim.log.levels.INFO, { title = name })
-end
-
-local toggle = function(option, silent)
-  local option_info = vim.api.nvim_get_option_info(option)
-  local scopes = { buf = "bo", win = "wo", global = "o" }
-  local scope = scopes[option_info.scope]
-  local options = vim[scope]
-  options[option] = not options[option]
-  if silent ~= true then
-    if options[option] then
-      info("enabled vim." .. scope .. "." .. option, "Toggle")
-    else
-      warn("disabled vim." .. scope .. "." .. option, "Toggle")
-    end
-  end
-end
-
--- ----------------------------------
--- Key maps
--- ----------------------------------
-
 vim.keymap.set("n", "Y", "yg$")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
@@ -51,6 +24,7 @@ vim.keymap.set("v", "<", "<gv", {})
 vim.keymap.set("v", ">", ">gv", {})
 
 -- Toggle
+local toggle = require("utils").toggle
 vim.keymap.set("n", "<leader>ts", function()
   toggle("spell")
 end, { desc = "Toggle Spell" })

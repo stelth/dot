@@ -102,7 +102,13 @@ in {
       (pluginWithCfg nvim-dap)
       nvim-dap-ui
       nvim-dap-virtual-text
-      nvim-jdtls
+      {
+        plugin = nvim-jdtls;
+        type = "lua";
+        runtime = {
+          "ftplugin/java.lua".text = builtins.readFile ./runtime/java.lua;
+        };
+      }
       (pluginWithCfg nvim-lspconfig)
       (pluginWithCfg pkgs.vimExtraPlugins.nvim-navic)
       (pluginWithCfg pkgs.vimExtraPlugins.lualine-nvim)

@@ -20,6 +20,13 @@
     };
   };
 
+  xdg.configFile = {
+    "nvim/lua" = {
+      recursive = true;
+      source = ./nvim;
+    };
+  };
+
   programs.neovim = {
     enable = true;
     package = pkgs.neovim-unwrapped;
