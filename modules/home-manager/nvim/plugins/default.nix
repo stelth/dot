@@ -75,8 +75,6 @@ in {
       clangd_extensions-nvim
       cmp-buffer
       cmp-calc
-      cmp-cmdline
-      cmp-cmdline-history
       cmp-dap
       cmp-git
       cmp-nvim-lsp
@@ -85,9 +83,7 @@ in {
       (pluginWithCfg comment-nvim)
       (pluginWithCfg pkgs.vimExtraPlugins.dial-nvim)
       dressing-nvim
-      (pluginWithCfg fidget-nvim)
       friendly-snippets
-      (pluginWithCfg pkgs.vimExtraPlugins.github-notifications-nvim)
       (pluginWithCfg harpoon)
       impatient-nvim
       (pluginWithCfg kanagawa-nvim)
