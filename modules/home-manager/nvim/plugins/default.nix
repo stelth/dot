@@ -95,7 +95,6 @@ in {
       lua-dev-nvim
       (pluginWithCfg luasnip)
       (pluginWithCfg pkgs.vimExtraPlugins.neovim-tasks)
-      (pluginWithCfg pkgs.vimExtraPlugins.noice-nvim)
       null-ls-nvim
       (pluginWithCfg nvim-autopairs)
       (pluginWithCfg nvim-cmp)
@@ -111,7 +110,6 @@ in {
       }
       (pluginWithCfg nvim-lspconfig)
       (pluginWithCfg pkgs.vimExtraPlugins.nvim-navic)
-      (pluginWithCfg pkgs.vimExtraPlugins.lualine-nvim)
       (pluginWithCfg nvim-notify)
       (pluginWithCfg nvim-surround)
       (pluginWithCfg
