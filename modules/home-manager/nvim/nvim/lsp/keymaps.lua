@@ -1,49 +1,6 @@
 local M = {}
 
-local warn = require("utils").warn
-local info = require("utils").info
-
-local autoformat = true
-local toggle = function()
-  autoformat = not autoformat
-  if autoformat then
-    info("enabled format on save", "Formatting")
-  else
-    warn("disabled format on save", "Formatting")
-  end
-end
-
-local lsp_formatting = function(bufnr)
-  if autoformat then
-    vim.lsp.buf.format({
-      filter = function(client)
-        local ft = vim.api.nvim_buf_get_option(bufnr, "filetype")
-        local nls_available = require("null-ls.sources").get_available(ft, "NULL_LS_FORMATTING")
-
-        return (#nls_available > 0) == (client.name == "null-ls")
-      end,
-      bufnr = bufnr,
-      timeout_ms = 2000,
-    })
-  end
-end
-
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-
-local format_callback = function(client, bufnr)
-  if client.supports_method("textDocument/formatting") then
-    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      group = augroup,
-      buffer = bufnr,
-      callback = function()
-        lsp_formatting(bufnr)
-      end,
-    })
-  end
-end
-
-local keymap_callback = function(_, bufnr)
+M.keymap_callback = function(_, bufnr)
   vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, {
     buffer = bufnr,
     desc = "Line Diagnostics",
@@ -78,7 +35,7 @@ local keymap_callback = function(_, bufnr)
     desc = "List workspace folders",
   })
 
-  vim.keymap.set("n", "<leader>tf", toggle, {
+  vim.keymap.set("n", "<leader>tf", require("lsp.formatting").toggle_formatting, {
     buffer = bufnr,
     desc = "Toggle format on save",
   })
@@ -150,26 +107,6 @@ local keymap_callback = function(_, bufnr)
     buffer = bufnr,
     desc = "Goto next error",
   })
-end
-
-M.on_attach = function(client, bufnr)
-  if client.server_capabilities.documentSymbolProvider then
-    require("nvim-navic").attach(client, bufnr)
-  end
-  format_callback(client, bufnr)
-  keymap_callback(client, bufnr)
-end
-
-M.config = function(customConfig)
-  local default_config = {
-    on_attach = M.on_attach,
-    capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-    flags = {
-      debounce_text_changes = 150,
-    },
-  }
-
-  return vim.tbl_deep_extend("force", default_config, customConfig)
 end
 
 return M

@@ -1,22 +1,20 @@
-local lspinfo = require("lspinfo")
-
-local luadev = require("lua-dev").setup({})
-table.insert(luadev.settings.Lua.workspace.library, "/Users/coxj/.hammerspoon/Spoons/EmmyLua.spoon/annotations")
+local on_attach = require("lsp.config").on_attach
+local make_config = require("lsp.config").make_config
 
 local lspconfig = require("lspconfig")
 local configs = require("lspconfig.configs")
 
-lspconfig.bashls.setup(lspinfo.config({}))
+lspconfig.bashls.setup(make_config({}))
 
 require("clangd_extensions").setup({
-  server = lspinfo.config({}),
+  server = make_config({}),
 })
 
-lspconfig.dockerls.setup(lspinfo.config({}))
+lspconfig.dockerls.setup(make_config({}))
 
-lspconfig.gopls.setup(lspinfo.config({}))
+lspconfig.gopls.setup(make_config({}))
 
-lspconfig.jsonls.setup(lspinfo.config({
+lspconfig.jsonls.setup(make_config({
   cmd = { "vscode-json-languageserver", "--stdio" },
 }))
 
@@ -29,26 +27,28 @@ if not configs.neocmake then
         return lspconfig.util.find_git_ancestor(fname)
       end,
       single_file_support = true,
-      on_attach = lspinfo.on_attach,
+      on_attach = on_attach,
     },
   }
 end
-lspconfig.neocmake.setup(lspinfo.config({}))
+lspconfig.neocmake.setup(make_config({}))
 
-lspconfig.pyright.setup(lspinfo.config({}))
+lspconfig.pyright.setup(make_config({}))
 
-lspconfig.rnix.setup(lspinfo.config({}))
+lspconfig.rnix.setup(make_config({}))
 
 require("rust-tools").setup({
-  server = lspinfo.config({}),
+  server = make_config({}),
 })
 
-lspconfig.sumneko_lua.setup(lspinfo.config(luadev))
+local luadev = require("lua-dev").setup({})
+table.insert(luadev.settings.Lua.workspace.library, "/Users/coxj/.hammerspoon/Spoons/EmmyLua.spoon/annotations")
+lspconfig.sumneko_lua.setup(make_config(luadev))
 
-lspconfig.yamlls.setup(lspinfo.config({}))
+lspconfig.yamlls.setup(make_config({}))
 
 local nls = require("null-ls")
-nls.setup(lspinfo.config({
+nls.setup(make_config({
   save_after_format = false,
   sources = {
     -- Python

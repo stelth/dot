@@ -109,7 +109,6 @@ in {
         };
       }
       (pluginWithCfg nvim-lspconfig)
-      (pluginWithCfg pkgs.vimExtraPlugins.nvim-navic)
       (pluginWithCfg nvim-notify)
       (pluginWithCfg nvim-surround)
       (pluginWithCfg
