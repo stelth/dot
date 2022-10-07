@@ -90,6 +90,7 @@ in {
       lspkind-nvim
       lua-dev-nvim
       (pluginWithCfg luasnip)
+      (pluginWithCfg neorg)
       (pluginWithCfg pkgs.vimExtraPlugins.neovim-tasks)
       null-ls-nvim
       (pluginWithCfg nvim-autopairs)
@@ -118,6 +119,7 @@ in {
       vim-dadbod-ui
       (pluginWithCfg vim-matchup)
       vim-repeat
+      (pluginWithCfg zen-mode-nvim)
     ];
   };
 }

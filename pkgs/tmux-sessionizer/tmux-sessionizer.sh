@@ -1,8 +1,10 @@
 # shellcheck shell=bash
 readarray -t repo_list < <(ghq list -p)
-repo_list+=("$HOME"/dot)
-repo_list+=("$HOME"/dev/logs)
 repo_list+=("$HOME"/dev)
+repo_list+=("$HOME"/dot)
+repo_list+=("$HOME"/logs)
+repo_list+=("$HOME"/notes/home)
+repo_list+=("$HOME"/notes/work)
 repo_list+=("$HOME")
 
 if [[ $# -eq 1 ]]; then
