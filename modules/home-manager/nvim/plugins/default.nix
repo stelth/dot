@@ -118,8 +118,6 @@ in {
       vim-dadbod-ui
       (pluginWithCfg vim-matchup)
       vim-repeat
-      zen-mode-nvim
-      (pluginWithCfg neorg)
     ];
   };
 }
