@@ -175,7 +175,6 @@
         } ''
           ${builtins.readFile ./bin/do.py}
         '';
-      neocmakelsp = pkgs.callPackage ./pkgs/neocmakelsp {};
       switch-back-to-nvim = pkgs.callPackage ./pkgs/switch-back-to-nvim {};
       tmux-cht = pkgs.callPackage ./pkgs/tmux-cht {};
       tmux-sessionizer = pkgs.callPackage ./pkgs/tmux-sessionizer {};
@@ -199,7 +198,6 @@
         inherit
           (self.packages.${prev.system})
           sysdo
-          neocmakelsp
           switch-back-to-nvim
           tmux-cht
           tmux-sessionizer
