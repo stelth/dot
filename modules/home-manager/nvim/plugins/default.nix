@@ -95,6 +95,7 @@ in {
       (pluginWithCfg nvim-autopairs)
       (pluginWithCfg nvim-cmp)
       (pluginWithCfg nvim-dap)
+      nvim-dap-python
       nvim-dap-ui
       nvim-dap-virtual-text
       {

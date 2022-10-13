@@ -14,21 +14,7 @@ dap.adapters.lldb = {
   name = "lldb",
 }
 
-dap.adapters.python = {
-  type = "executable",
-  command = "python",
-  args = { "-m", "debugpy.adapter" },
-}
-
-dap.configurations.python = {
-  {
-    type = "python",
-    request = "launch",
-    name = "Launch File",
-
-    program = "${file}",
-  },
-}
+require("dap-python").setup("/etc/profiles/per-user/coxj/bin/python")
 
 dapui.setup({
   layouts = {
