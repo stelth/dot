@@ -1,14 +1,14 @@
-local on_attach = require("lsp.config").on_attach
 local make_config = require("lsp.config").make_config
 
 local lspconfig = require("lspconfig")
-local configs = require("lspconfig.configs")
 
 lspconfig.bashls.setup(make_config({}))
 
 require("clangd_extensions").setup({
   server = make_config({}),
 })
+
+lspconfig.cmake.setup(make_config({}))
 
 lspconfig.dockerls.setup(make_config({}))
 
@@ -18,19 +18,6 @@ lspconfig.jsonls.setup(make_config({
   cmd = { "vscode-json-languageserver", "--stdio" },
 }))
 
-if not configs.neocmake then
-  configs.neocmake = {
-    default_config = {
-      cmd = { "neocmakelsp" },
-      filetypes = { "cmake" },
-      root_dir = function(fname)
-        return lspconfig.util.find_git_ancestor(fname)
-      end,
-      single_file_support = true,
-      on_attach = on_attach,
-    },
-  }
-end
 lspconfig.neocmake.setup(make_config({}))
 
 lspconfig.pyright.setup(make_config({}))
