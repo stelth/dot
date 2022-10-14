@@ -18,8 +18,6 @@ lspconfig.jsonls.setup(make_config({
   cmd = { "vscode-json-languageserver", "--stdio" },
 }))
 
-lspconfig.neocmake.setup(make_config({}))
-
 lspconfig.pyright.setup(make_config({}))
 
 lspconfig.rnix.setup(make_config({}))
