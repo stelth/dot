@@ -88,7 +88,6 @@ in {
       impatient-nvim
       (pluginWithCfg kanagawa-nvim)
       lspkind-nvim
-      lua-dev-nvim
       (pluginWithCfg luasnip)
       (pluginWithCfg pkgs.vimExtraPlugins.neovim-tasks)
       null-ls-nvim

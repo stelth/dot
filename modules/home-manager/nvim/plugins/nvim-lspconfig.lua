@@ -26,9 +26,7 @@ require("rust-tools").setup({
   server = make_config({}),
 })
 
-local luadev = require("lua-dev").setup({})
-table.insert(luadev.settings.Lua.workspace.library, "/Users/coxj/.hammerspoon/Spoons/EmmyLua.spoon/annotations")
-lspconfig.sumneko_lua.setup(make_config(luadev))
+lspconfig.sumneko_lua.setup(make_config({}))
 
 lspconfig.yamlls.setup(make_config({}))
 
