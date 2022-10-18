@@ -83,13 +83,16 @@ in {
       (pluginWithCfg comment-nvim)
       (pluginWithCfg pkgs.vimExtraPlugins.dial-nvim)
       dressing-nvim
+      (pluginWithCfg fidget-nvim)
       friendly-snippets
       (pluginWithCfg harpoon)
       impatient-nvim
       (pluginWithCfg kanagawa-nvim)
       lspkind-nvim
+      (pluginWithCfg pkgs.vimExtraPlugins.lualine-nvim)
       (pluginWithCfg luasnip)
       (pluginWithCfg pkgs.vimExtraPlugins.neovim-tasks)
+      (pluginWithCfg pkgs.vimExtraPlugins.noice-nvim)
       null-ls-nvim
       (pluginWithCfg nvim-autopairs)
       (pluginWithCfg nvim-cmp)
@@ -105,7 +108,6 @@ in {
         };
       }
       (pluginWithCfg nvim-lspconfig)
-      (pluginWithCfg nvim-notify)
       (pluginWithCfg nvim-surround)
       (pluginWithCfg
         (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars)))
