@@ -4,15 +4,42 @@ local lspconfig = require("lspconfig")
 
 lspconfig.bashls.setup(make_config({}))
 
-require("clangd_extensions").setup({
-  server = make_config({}),
-})
+lspconfig.clangd.setup(make_config({
+  cmd = {
+    "clangd",
+    "--background-index",
+    "--clang-tidy",
+    "--completion-style=bundled",
+    "--cross-file-rename",
+    "--header-insertion=iwyu",
+  },
+  init_options = {
+    clangdFileStatus = true,
+    usePlaceholders = true,
+    completeUnimported = true,
+    semanticHighlighting = true,
+  },
+}))
 
 lspconfig.cmake.setup(make_config({}))
 
 lspconfig.dockerls.setup(make_config({}))
 
-lspconfig.gopls.setup(make_config({}))
+lspconfig.gopls.setup(make_config({
+  settings = {
+    gopls = {
+      hints = {
+        assignVariableTypes = true,
+        compositeLiteralFields = true,
+        compositeLiteralTypes = true,
+        constantValues = true,
+        functionTypeParameters = true,
+        parameterNames = true,
+        rangeVariableTypes = true,
+      },
+    },
+  },
+}))
 
 lspconfig.jsonls.setup(make_config({
   cmd = { "vscode-json-languageserver", "--stdio" },
@@ -23,10 +50,26 @@ lspconfig.pyright.setup(make_config({}))
 lspconfig.rnix.setup(make_config({}))
 
 require("rust-tools").setup({
+  tools = {
+    inlay_hints = {
+      auto = false,
+    },
+  },
   server = make_config({}),
 })
 
-lspconfig.sumneko_lua.setup(make_config({}))
+lspconfig.sumneko_lua.setup(make_config({
+  settings = {
+    Lua = {
+      hint = {
+        enable = true,
+      },
+      completion = {
+        callSnippet = "Replace",
+      },
+    },
+  },
+}))
 
 lspconfig.yamlls.setup(make_config({}))
 

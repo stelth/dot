@@ -72,7 +72,6 @@ in {
 
   programs.neovim = {
     plugins = with pkgs.vimPlugins; [
-      clangd_extensions-nvim
       cmp-buffer
       cmp-calc
       cmp-dap
@@ -87,6 +86,7 @@ in {
       friendly-snippets
       (pluginWithCfg harpoon)
       impatient-nvim
+      (pluginWithCfg pkgs.vimExtraPlugins.inlay-hints-nvim)
       (pluginWithCfg kanagawa-nvim)
       lspkind-nvim
       (pluginWithCfg pkgs.vimExtraPlugins.lualine-nvim)
