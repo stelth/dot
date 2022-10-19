@@ -6,7 +6,7 @@ M.on_attach = function(client, bufnr)
   require("plugins.lsp.keymaps").keymap_callback(client, bufnr)
 end
 
-M.make_config = function(customConfig)
+M.make_config = function(custom_config)
   local default_config = {
     on_attach = M.on_attach,
     capabilities = require("cmp_nvim_lsp").default_capabilities(),
@@ -15,7 +15,7 @@ M.make_config = function(customConfig)
     },
   }
 
-  return vim.tbl_deep_extend("force", default_config, customConfig)
+  return vim.tbl_deep_extend("force", default_config, custom_config)
 end
 
 return M
