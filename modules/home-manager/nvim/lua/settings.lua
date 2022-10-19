@@ -1,7 +1,7 @@
 -- ----------------------------------
 -- General Settings
 -- ----------------------------------
-require("impatient")
+require("impatient").enable_profile()
 
 local indent = 4
 vim.g.mapleader = " "
