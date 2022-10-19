@@ -1,4 +1,4 @@
-local make_config = require("lsp.config").make_config
+local make_config = require("plugins.lsp.config").make_config
 
 local lspconfig = require("lspconfig")
 

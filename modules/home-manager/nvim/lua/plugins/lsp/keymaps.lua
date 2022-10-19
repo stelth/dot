@@ -35,7 +35,7 @@ M.keymap_callback = function(_, bufnr)
     desc = "List workspace folders",
   })
 
-  vim.keymap.set("n", "<leader>tf", require("lsp.formatting").toggle_formatting, {
+  vim.keymap.set("n", "<leader>tf", require("plugins.lsp.formatting").toggle_formatting, {
     buffer = bufnr,
     desc = "Toggle format on save",
   })

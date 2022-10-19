@@ -1,4 +1,4 @@
-local on_attach = require("lspinfo").on_attach
+local on_attach = require("plugins.lsp.config").on_attach
 
 local root_markers = { "gradlew", ".git" }
 local root_dir = require("jdtls.setup").find_root(root_markers)
