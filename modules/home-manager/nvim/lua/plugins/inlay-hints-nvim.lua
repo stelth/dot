@@ -1,1 +1,3 @@
-require("inlay-hints").setup({})
+require("inlay-hints").setup({
+  renderer = "inlay-hints/render/eol",
+})
