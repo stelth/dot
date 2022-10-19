@@ -58,6 +58,8 @@ require("rust-tools").setup({
   server = make_config({}),
 })
 
+require("neodev").setup({})
+
 lspconfig.sumneko_lua.setup(make_config({
   settings = {
     Lua = {
