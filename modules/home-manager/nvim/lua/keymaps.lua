@@ -15,13 +15,13 @@ vim.keymap.set("n", "<leader>Y", '"+Y"')
 vim.keymap.set({ "n", "v" }, "<leader>d", '"_d"')
 
 -- Add undo break-points
-vim.keymap.set("i", ",", ",<c-g>u", {})
-vim.keymap.set("i", ".", ".<c-g>u", {})
-vim.keymap.set("i", ";", ";<c-g>u", {})
+vim.keymap.set("i", ",", ",<c-g>u")
+vim.keymap.set("i", ".", ".<c-g>u")
+vim.keymap.set("i", ";", ";<c-g>u")
 
 -- better indenting
-vim.keymap.set("v", "<", "<gv", {})
-vim.keymap.set("v", ">", ">gv", {})
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
 
 -- Toggle
 local toggle = require("utils").toggle
