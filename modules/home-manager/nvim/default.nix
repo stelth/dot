@@ -4,26 +4,12 @@
   lib,
   ...
 }: {
-  imports = [./plugins];
-
-  lib.vimUtils = rec {
-    wrapLuaConfig = luaConfig: ''
-      lua<<EOF
-      ${builtins.readFile luaConfig}
-      EOF
-    '';
-
-    pluginWithCfg = plugin: {
-      inherit plugin;
-      config = builtins.readFile (./. + "/plugins/${plugin.pname}.lua");
-      type = "lua";
-    };
-  };
+  imports = [./plugins.nix];
 
   xdg.configFile = {
     "nvim/lua" = {
       recursive = true;
-      source = ./nvim;
+      source = ./lua;
     };
   };
 
@@ -38,8 +24,9 @@
     extraPackages = with pkgs; [fd tree-sitter];
 
     extraConfig = ''
-      ${config.lib.vimUtils.wrapLuaConfig ./settings.lua}
-      ${config.lib.vimUtils.wrapLuaConfig ./keymaps.lua}
+      lua<<EOF
+      require('settings')
+      EOF
     '';
   };
 }

@@ -4,9 +4,7 @@
   pkgs,
   lib,
   ...
-}: let
-  inherit (config.lib.vimUtils) pluginWithCfg;
-in {
+}: {
   home.packages = with pkgs; [
     # C/C++
     clang-tools
@@ -79,46 +77,40 @@ in {
       cmp-nvim-lsp
       cmp-path
       cmp_luasnip
-      (pluginWithCfg comment-nvim)
-      (pluginWithCfg pkgs.vimExtraPlugins.dial-nvim)
+      comment-nvim
+      pkgs.vimExtraPlugins.dial-nvim
       dressing-nvim
-      (pluginWithCfg fidget-nvim)
+      fidget-nvim
       friendly-snippets
-      (pluginWithCfg harpoon)
+      harpoon
       impatient-nvim
-      (pluginWithCfg pkgs.vimExtraPlugins.inlay-hints-nvim)
-      (pluginWithCfg kanagawa-nvim)
+      pkgs.vimExtraPlugins.inlay-hints-nvim
+      kanagawa-nvim
       lspkind-nvim
-      (pluginWithCfg pkgs.vimExtraPlugins.lualine-nvim)
-      (pluginWithCfg luasnip)
-      (pluginWithCfg pkgs.vimExtraPlugins.neovim-tasks)
-      (pluginWithCfg pkgs.vimExtraPlugins.noice-nvim)
+      pkgs.vimExtraPlugins.lualine-nvim
+      luasnip
+      pkgs.vimExtraPlugins.neodev-nvim
+      pkgs.vimExtraPlugins.neovim-tasks
+      pkgs.vimExtraPlugins.noice-nvim
       null-ls-nvim
-      (pluginWithCfg nvim-autopairs)
-      (pluginWithCfg nvim-cmp)
-      (pluginWithCfg nvim-dap)
+      nvim-autopairs
+      nvim-cmp
+      nvim-dap
       nvim-dap-python
       nvim-dap-ui
       nvim-dap-virtual-text
-      {
-        plugin = nvim-jdtls;
-        type = "lua";
-        runtime = {
-          "ftplugin/java.lua".text = builtins.readFile ./runtime/java.lua;
-        };
-      }
-      (pluginWithCfg nvim-lspconfig)
-      (pluginWithCfg nvim-surround)
-      (pluginWithCfg
-        (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars)))
+      nvim-jdtls
+      nvim-lspconfig
+      nvim-surround
+      (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
       nvim-ts-context-commentstring
       nvim-web-devicons
       rust-tools-nvim
-      (pluginWithCfg telescope-nvim)
+      telescope-nvim
       vim-dadbod
       vim-dadbod-completion
       vim-dadbod-ui
-      (pluginWithCfg vim-matchup)
+      vim-matchup
       vim-repeat
     ];
   };
