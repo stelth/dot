@@ -13,6 +13,12 @@ in {
     path = "${config.home.homeDirectory}/dot/modules/home-manager";
   };
 
+  manual = {
+    html.enable = false;
+    manpages.enable = false;
+    json.enable = false;
+  };
+
   home = {
     stateVersion = "22.05";
     sessionVariables = {

@@ -23,4 +23,5 @@ in {
   services.nix-daemon.enable = true;
 
   system.stateVersion = 4;
+  documentation.enable = false;
 }
