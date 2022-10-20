@@ -74,15 +74,7 @@ vim.g.loaded_vimballPlugin = 1
 vim.g.loaded_zip = 1
 vim.g.loaded_zipPlugin = 1
 
-vim.api.nvim_create_autocmd("TextYankPost", {
-  callback = function()
-    vim.highlight.on_yank({
-      higroup = "Visual",
-      timeout = "120",
-    })
-  end,
-})
-
 require("keymaps")
+require("autocmds")
 require("plugins")
 require("plugins.lsp")
