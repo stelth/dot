@@ -170,6 +170,17 @@ vim.g.matchup_matchparen_offscreen = {
   method = "status_manual",
 }
 
+require("zen-mode").setup({
+  plugins = {
+    kitty = {
+      enabled = false,
+      font = "+2",
+    },
+  },
+})
+
+vim.keymap.set("n", "<leader>z", vim.cmd.ZenMode)
+
 require("plugins.nvim-cmp")
 require("plugins.nvim-dap")
 require("plugins.telescope-nvim")

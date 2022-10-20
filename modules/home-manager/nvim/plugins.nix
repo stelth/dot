@@ -108,11 +108,13 @@
       nvim-web-devicons
       rust-tools-nvim
       telescope-nvim
+      twilight-nvim
       vim-dadbod
       vim-dadbod-completion
       vim-dadbod-ui
       vim-matchup
       vim-repeat
+      zen-mode-nvim
     ];
   };
 }
