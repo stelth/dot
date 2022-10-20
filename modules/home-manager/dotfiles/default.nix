@@ -23,9 +23,5 @@
       source = ./yabai;
       recursive = true;
     };
-    kitty = {
-      source = ./kitty;
-      recursive = true;
-    };
   };
 }
