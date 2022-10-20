@@ -17,6 +17,9 @@ require("dial.config").augends:register_group({
 vim.keymap.set("n", "<C-i>", require("dial.map").inc_normal(), { noremap = true })
 vim.keymap.set("n", "<C-x>", require("dial.map").dec_normal(), { noremap = true })
 
+require("diffview").setup({})
+vim.keymap.set("n", "<leader>gd", vim.cmd.DiffviewOpen)
+
 require("fidget").setup({
   text = {
     spinner = "dots",

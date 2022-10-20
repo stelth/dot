@@ -79,6 +79,7 @@
       cmp_luasnip
       comment-nvim
       pkgs.vimExtraPlugins.dial-nvim
+      diffview-nvim
       dressing-nvim
       fidget-nvim
       friendly-snippets
