@@ -146,5 +146,4 @@ vim.g.matchup_matchparen_offscreen = {
 
 require("plugins.nvim-cmp")
 require("plugins.nvim-dap")
-require("plugins.nvim-lspconfig")
 require("plugins.telescope-nvim")
