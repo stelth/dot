@@ -19,6 +19,23 @@ vim.opt.hidden = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 vim.opt.laststatus = 3
+vim.opt.list = true
+vim.opt.listchars = {
+  space = "⋅",
+  eol = "↴",
+  tab = "__",
+  trail = "•",
+  extends = "❯",
+  precedes = "❮",
+  nbsp = "ﰸ",
+}
+vim.opt.fillchars = {
+  fold = " ",
+  foldsep = " ",
+  foldopen = "",
+  foldclose = "",
+  diff = "╱",
+}
 vim.opt.nu = true
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 8
@@ -68,4 +85,4 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 require("keymaps")
 require("plugins")
-require('plugins.lsp')
+require("plugins.lsp")

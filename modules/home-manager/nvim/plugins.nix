@@ -84,6 +84,7 @@
       friendly-snippets
       harpoon
       impatient-nvim
+      indent-blankline-nvim
       pkgs.vimExtraPlugins.inlay-hints-nvim
       kanagawa-nvim
       lspkind-nvim
