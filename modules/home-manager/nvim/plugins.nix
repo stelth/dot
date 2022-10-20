@@ -87,7 +87,6 @@
       impatient-nvim
       indent-blankline-nvim
       pkgs.vimExtraPlugins.inlay-hints-nvim
-      kanagawa-nvim
       lspkind-nvim
       pkgs.vimExtraPlugins.lualine-nvim
       luasnip
@@ -109,6 +108,7 @@
       nvim-web-devicons
       rust-tools-nvim
       telescope-nvim
+      tokyonight-nvim
       twilight-nvim
       vim-dadbod
       vim-dadbod-completion
