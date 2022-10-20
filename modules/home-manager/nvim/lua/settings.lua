@@ -3,20 +3,25 @@
 -- ----------------------------------
 require("impatient").enable_profile()
 
-local indent = 4
+local indent = 2
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
+vim.opt.autowrite = true
 vim.opt.backup = false
 vim.opt.clipboard = "unnamedplus"
-vim.opt.completeopt = "menuone,noinsert"
-vim.opt.cmdheight = 1
+vim.opt.completeopt = "menuone,noselect"
+vim.opt.conceallevel = 3
+vim.opt.cmdheight = 0
 vim.opt.colorcolumn = "80"
+vim.opt.cursorline = true
 vim.opt.errorbells = false
 vim.opt.expandtab = true
-vim.opt.guicursor = ""
+vim.opt.grepprg = "rg --vimgrep"
+vim.opt.grepformat = "%f:%l:%c:%m"
 vim.opt.hidden = true
-vim.opt.hlsearch = false
+vim.opt.ignorecase = true
+vim.opt.inccommand = "split"
 vim.opt.incsearch = true
 vim.opt.laststatus = 3
 vim.opt.list = true
@@ -36,7 +41,7 @@ vim.opt.fillchars = {
   foldclose = "",
   diff = "╱",
 }
-vim.opt.nu = true
+vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 8
 vim.opt.shiftwidth = indent
@@ -46,7 +51,6 @@ vim.opt.sidescrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.smartcase = true
 vim.opt.smartindent = true
-vim.opt.softtabstop = 4
 vim.opt.spell = true
 vim.opt.swapfile = false
 vim.opt.tabstop = indent
@@ -54,6 +58,7 @@ vim.opt.termguicolors = true
 vim.opt.undofile = true
 vim.opt.undolevels = 10000
 vim.opt.updatetime = 50
+vim.opt.wildmode = "longest:full,full"
 vim.opt.wrap = false
 
 -- don't load the plugins below

@@ -204,7 +204,10 @@ end, {})
 require("noice").setup({})
 
 require("nvim-autopairs").setup({
-  enable_check_bracket_line = false,
+  check_ts = true,
+  ts_config = {
+    lua = { "string", "comment" },
+  },
 })
 
 require("nvim-surround").setup({})
