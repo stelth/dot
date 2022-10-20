@@ -169,6 +169,15 @@ require("nvim-treesitter.configs").setup({
   indent = { enable = true },
 })
 
+require("illuminate").configure({ delay = 200 })
+
+vim.keymap.set("n", "]]", function()
+  require("illuminate").goto_next_reference(false)
+end)
+vim.keymap.set("n", "[[", function()
+  require("illuminate").goto_prev_reference(false)
+end)
+
 vim.g.matchup_matchparen_offscreen = {
   method = "status_manual",
 }

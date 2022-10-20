@@ -113,6 +113,7 @@
       vim-dadbod
       vim-dadbod-completion
       vim-dadbod-ui
+      vim-illuminate
       vim-matchup
       vim-repeat
       zen-mode-nvim
