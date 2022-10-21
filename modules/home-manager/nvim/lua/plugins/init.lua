@@ -219,6 +219,17 @@ require("noice").setup({
       },
     },
   },
+  routes = {
+    {
+      filter = {
+        warning = true,
+        find = "offset_encodings",
+      },
+      opts = {
+        skip = true,
+      },
+    },
+  },
   lsp_progress = {
     enabled = true,
   },
