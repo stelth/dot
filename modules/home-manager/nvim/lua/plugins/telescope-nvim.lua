@@ -20,6 +20,8 @@ telescope.setup({
   },
 })
 
+telescope.load_extension("file_browser")
+
 vim.keymap.set("n", "<leader>ps", builtin.live_grep, {
   desc = "Find string",
 })
