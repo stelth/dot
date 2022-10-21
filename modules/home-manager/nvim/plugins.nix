@@ -81,7 +81,6 @@
       pkgs.vimExtraPlugins.dial-nvim
       diffview-nvim
       dressing-nvim
-      fidget-nvim
       friendly-snippets
       harpoon
       impatient-nvim

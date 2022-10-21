@@ -20,19 +20,6 @@ vim.keymap.set("n", "<C-x>", require("dial.map").dec_normal(), { noremap = true 
 require("diffview").setup({})
 vim.keymap.set("n", "<leader>gd", vim.cmd.DiffviewOpen)
 
-require("fidget").setup({
-  text = {
-    spinner = "dots",
-  },
-  window = {
-    relative = "editor",
-  },
-})
-
-vim.api.nvim_create_autocmd("VimLeavePre", {
-  command = "silent! FidgetClose",
-})
-
 vim.keymap.set("n", "<leader>a", require("harpoon.mark").add_file, { desc = "Add file to harpoon" })
 vim.keymap.set("n", "<C-e>", require("harpoon.ui").toggle_quick_menu, { desc = "Harpoon quick menu" })
 vim.keymap.set("n", "<leader>tc", require("harpoon.cmd-ui").toggle_quick_menu, {
@@ -111,7 +98,7 @@ tokyonight.setup({
     "startuptime",
     "Outline",
   },
-  on_colors = function(c) end,
+  on_colors = function(_) end,
   on_highlights = function(hl, c)
     -- make the current line cursor orange
     hl.CursorLineNr = { fg = c.orange, bold = true }
@@ -201,7 +188,41 @@ vim.keymap.set({ "", "i" }, "<F9>", function()
   dapui.close()
 end, {})
 
-require("noice").setup({})
+require("noice").setup({
+  views = {
+    cmdline_popup = {
+      position = {
+        row = 5,
+        col = "50%",
+      },
+      size = {
+        width = 60,
+        height = "auto",
+      },
+    },
+    popupmenu = {
+      relative = "editor",
+      position = {
+        row = 8,
+        col = "50%",
+      },
+      size = {
+        width = 60,
+        height = 10,
+      },
+      border = {
+        style = "rounded",
+        padding = { 0, 1 },
+      },
+      win_options = {
+        winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
+      },
+    },
+  },
+  lsp_progress = {
+    enabled = true,
+  },
+})
 
 require("nvim-autopairs").setup({
   check_ts = true,
