@@ -22,9 +22,6 @@ vim.keymap.set("n", "<leader>gd", vim.cmd.DiffviewOpen)
 
 vim.keymap.set("n", "<leader>a", require("harpoon.mark").add_file, { desc = "Add file to harpoon" })
 vim.keymap.set("n", "<C-e>", require("harpoon.ui").toggle_quick_menu, { desc = "Harpoon quick menu" })
-vim.keymap.set("n", "<leader>tc", require("harpoon.cmd-ui").toggle_quick_menu, {
-  desc = "Harpoon command quick menu",
-})
 
 local keyToFileId = {
   ["<C-h>"] = 1,
@@ -327,8 +324,6 @@ require("zen-mode").setup({
     },
   },
 })
-
-vim.keymap.set("n", "<leader>z", vim.cmd.ZenMode)
 
 require("plugins.lualine")
 require("plugins.nvim-cmp")
