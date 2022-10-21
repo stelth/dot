@@ -82,6 +82,40 @@ require("inlay-hints").setup({
   renderer = "inlay-hints/render/eol",
 })
 
+require("nvim-navic").setup({
+  icons = {
+    File = " ",
+    Module = " ",
+    Namespace = " ",
+    Package = " ",
+    Class = " ",
+    Method = " ",
+    Property = " ",
+    Field = " ",
+    Constructor = " ",
+    Enum = " ",
+    Interface = " ",
+    Function = " ",
+    Variable = " ",
+    Constant = " ",
+    String = " ",
+    Number = " ",
+    Boolean = " ",
+    Array = " ",
+    Object = " ",
+    Key = " ",
+    Null = " ",
+    EnumMember = " ",
+    Struct = " ",
+    Event = " ",
+    Operator = " ",
+    TypeParameter = " ",
+  },
+  separator = " ",
+  highlight = true,
+  depth_limit = 5,
+})
+
 local tokyonight = require("tokyonight")
 tokyonight.setup({
   style = "moon",
@@ -273,7 +307,7 @@ require("zen-mode").setup({
 
 vim.keymap.set("n", "<leader>z", vim.cmd.ZenMode)
 
-require('plugins.lualine')
+require("plugins.lualine")
 require("plugins.nvim-cmp")
 require("plugins.nvim-dap")
 require("plugins.telescope-nvim")
