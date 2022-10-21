@@ -136,8 +136,6 @@ tokyonight.setup({
 })
 tokyonight.load()
 
-require("lualine").setup({})
-
 require("luasnip").config.set_config({
   history = true,
   -- Update more often
@@ -275,6 +273,7 @@ require("zen-mode").setup({
 
 vim.keymap.set("n", "<leader>z", vim.cmd.ZenMode)
 
+require('plugins.lualine')
 require("plugins.nvim-cmp")
 require("plugins.nvim-dap")
 require("plugins.telescope-nvim")
