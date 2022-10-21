@@ -116,6 +116,7 @@
       vim-illuminate
       vim-matchup
       vim-repeat
+      pkgs.vimExtraPlugins.yanky-nvim
       zen-mode-nvim
     ];
   };

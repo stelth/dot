@@ -296,6 +296,29 @@ vim.g.matchup_matchparen_offscreen = {
   method = "status_manual",
 }
 
+require("yanky").setup({
+  highlight = {
+    timer = 150,
+  },
+  ring = {
+    storage = "sqlite",
+  },
+})
+
+vim.keymap.set("n", "<leader>P", function()
+  require("telescope").extensions.yank_history.yank_history({})
+end)
+
+vim.keymap.set({ "n", "x" }, "y", "<Plug>(YankyYank)")
+vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
+vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
+vim.keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
+vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
+vim.keymap.set("n", "<c-n>", "<Plug>(YankyCycleForward)")
+vim.keymap.set("n", "<c-p>", "<Plug>(YankyCycleBackward)")
+vim.keymap.set("n", "]p", "<Plug>(YankyPutAfterFilter)")
+vim.keymap.set("n", "[p", "<Plug>(YankyPutBeforeFilter)")
+
 require("zen-mode").setup({
   plugins = {
     kitty = {
