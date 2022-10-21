@@ -115,7 +115,6 @@
       vim-illuminate
       vim-matchup
       vim-repeat
-      which-key-nvim
       zen-mode-nvim
     ];
   };
