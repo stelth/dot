@@ -49,3 +49,5 @@ vim.keymap.set("n", "<C-k>", vim.cmd.cnext)
 vim.keymap.set("n", "<C-j>", vim.cmd.cprev)
 vim.keymap.set("n", "<leader>k", vim.cmd.lnext)
 vim.keymap.set("n", "<leader>j", vim.cmd.lprev)
+
+vim.keymap.set("", "<ESC>", ":noh<ESC>")
