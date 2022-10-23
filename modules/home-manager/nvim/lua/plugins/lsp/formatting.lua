@@ -13,7 +13,7 @@ M.toggle_formatting = function()
   end
 end
 
-local lsp_formatting = function(bufnr)
+M.format = function(bufnr)
   if autoformat then
     vim.lsp.buf.format({
       filter = function(client)
@@ -37,7 +37,9 @@ M.format_callback = function(client, bufnr)
       group = augroup,
       buffer = bufnr,
       callback = function()
-        lsp_formatting(bufnr)
+        if autoformat then
+          M.format(bufnr)
+        end
       end,
     })
   end

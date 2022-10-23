@@ -1,5 +1,6 @@
 local wk = require("which-key")
 local utils = require("utils")
+local telescope_builtin = require("telescope.builtin")
 
 vim.o.timeoutlen = 300
 
@@ -10,138 +11,375 @@ wk.setup({
   key_labels = { ["<leader>"] = "SPC" },
 })
 
-vim.keymap.set("n", "Y", "yg$")
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
-vim.keymap.set("n", "J", "mzJ`z")
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
+-- Make all keymaps silent by default
+local keymap_set = vim.keymap.set
+vim.keymap.set = function(mode, lhs, rhs, opts)
+  opts = opts or {}
+  opts.silent = opts.silent ~= false
+  return keymap_set(mode, lhs, rhs, opts)
+end
 
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-
--- Add undo break-points
-vim.keymap.set("i", ",", ",<c-g>u")
-vim.keymap.set("i", ".", ".<c-g>u")
-vim.keymap.set("i", ";", ";<c-g>u")
-
--- better indenting
-vim.keymap.set("v", "<", "<gv")
-vim.keymap.set("v", ">", ">gv")
-
--- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
-vim.keymap.set("n", "n", "'Nn'[v:searchforward]", { expr = true })
-vim.keymap.set("x", "n", "'Nn'[v:searchforward]", { expr = true })
-vim.keymap.set("o", "n", "'Nn'[v:searchforward]", { expr = true })
-vim.keymap.set("n", "N", "'nN'[v:searchforward]", { expr = true })
-vim.keymap.set("x", "N", "'nN'[v:searchforward]", { expr = true })
-vim.keymap.set("o", "N", "'nN'[v:searchforward]", { expr = true })
-
-vim.keymap.set("n", "<C-k>", vim.cmd.cnext)
-vim.keymap.set("n", "<C-j>", vim.cmd.cprev)
-vim.keymap.set("n", "<leader>k", vim.cmd.lnext)
-vim.keymap.set("n", "<leader>j", vim.cmd.lprev)
-
-vim.keymap.set("", "<ESC>", ":noh<ESC>")
-
-local leader = {
-  w = {
-    name = "+window",
-    w = { "<C-W>p", "Other Window" },
-    d = { "<C-W>d", "Delete Window" },
-    ["-"] = { "<C-W>s", "Split Window Below" },
-    ["|"] = { "<C-W>v", "Split Window Right" },
-    h = { "<C-W>h", "Window Left" },
-    j = { "<C-W>j", "Window Below" },
-    k = { "<C-W>k", "Window Up" },
-    l = { "<C-W>l", "Window Right" },
-    H = { "<C-W>5<", "Expand Window Left" },
-    J = { ":resize +5", "Expand Window Below" },
-    K = { ":resize -5", "Expand Window Up" },
-    L = { "<C-W>5>", "Expand Window Right" },
-    ["="] = { "<C-W>=", "Balance Window" },
-  },
-  c = {
-    name = "+code",
-  },
-  g = {
-    name = "+git",
-    c = { "<cmd>Telescope git_commits<cr>", "Commits" },
-    b = { "<cmd>Telescope git_branches<cr>", "Branches" },
-    s = { "<cmd>Telescope git_status<cr>", "Status" },
-    d = { "<cmd>DiffviewOpen<cr>", "DiffView" },
-  },
-  h = {
-    name = "+help",
-    t = { "<cmd>:Telescope builtin<cr>", "Telescope" },
-    c = { "<cmd>:Telescope commands<cr>", "Commands" },
-    h = { "<cmd>:Telescope help_tags<cr>", "Help Pages" },
-    m = { "<cmd>:Telescope man_pages<cr>", "Man Pages" },
-    k = { "<cmd>:Telescope keymaps<cr>", "Key Maps" },
-    s = { "<cmd>:Telescope highlights<cr>", "Search Highlight Groups" },
-    f = { "<cmd>:Telescope filetypes<cr>", "File Types" },
-    o = { "<cmd>:Telescope vim_options<cr>", "Options" },
-    a = { "<cmd>:Telescope autocommands<cr>", "Auto Commands" },
-  },
-  s = {
-    name = "+search",
-    g = { "<cmd>Telescope live_grep<cr>", "Grep" },
-    b = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Buffer" },
-    h = { "<cmd>Telescope command_history<cr>", "Command History" },
-    m = { "<cmd>Telescope marks<cr>", "Jump to Mark" },
-    w = {
+local keymaps = {
+  {
+    Y = { "yg$", "" },
+    J = {
+      { "mzJ`z", "" },
+      { ":m '>+1<CR>gv=gv", "Move Line Down", mode = "v" },
+    },
+    K = { ":m '<-2<CR>gv=gv", "Move Line Up", mode = "v" },
+    ["<C-d>"] = { "<C-d>zz" },
+    ["<C-u>"] = { "<C-u>zz" },
+    [","] = { ",<c-g>u", "", mode = "i" },
+    ["."] = { ".<c-g>u", "", mode = "i" },
+    [";"] = { ";<c-g>u", "", mode = "i" },
+    ["<"] = { "<gv", "", mode = "v" },
+    [">"] = { ">gv", "", mode = "v" },
+    n = {
+      expr = true,
+      { "'Nn'[v:searchforward]", "" },
+      { "'Nn'[v:searchforward]", "", mode = "x" },
+      { "'Nn'[v:searchforward]", "", mode = "o" },
+    },
+    N = {
+      expr = true,
+      { "'nN'[v:searchforward]", "" },
+      { "'nN'[v:searchforward]", "", mode = "x" },
+      { "'nN'[v:searchforward]", "", mode = "o" },
+    },
+    ["<C-k>"] = { vim.cmd.cnext, "" },
+    ["<C-j>"] = { vim.cmd.cprev, "" },
+    ["<BS>"] = { vim.cmd.nohlsearch, "" },
+    ["<C-i>"] = { require("dial.map").inc_normal, "" },
+    ["<C-x>"] = { require("dial.map").dec_normal, "" },
+    ["<C-e>"] = { require("harpoon.ui").toggle_quick_menu, "Harpoon Quick Menu" },
+    ["<C-h>"] = {
       function()
-        require("telescope.builtin").grep_string({ search = vim.fn.expand("<cword>") })
+        require("harpoon.ui").nav_file(1)
       end,
-      "Current Word",
+      "Go to Harpoon File 1",
+    },
+    ["<C-t>"] = {
+      function()
+        require("harpoon.ui").nav_file(2)
+      end,
+      "Go to Harpoon File 2",
+    },
+    ["<C-n>"] = {
+      function()
+        require("harpoon.ui").nav_file(3)
+      end,
+      "Go to Harpoon File 3",
+    },
+    ["<C-s>"] = {
+      function()
+        require("harpoon.ui").nav_file(4)
+      end,
+      "Go to Harpoon File 4",
+    },
+    ["<C-g>"] = {
+      function()
+        require("harpoon.tmux").gotoTerminal(1)
+      end,
+      "Go to Tmux Window 1",
+    },
+    ["<C-c>"] = {
+      function()
+        require("harpoon.tmux").gotoTerminal(2)
+      end,
+      "Go to Tmux Window 2",
+    },
+    ["<C-r>"] = {
+      function()
+        require("harpoon.tmux").gotoTerminal(3)
+      end,
+      "Go to Tmux Window 3",
+    },
+    ["<C-l>"] = {
+      function()
+        require("harpoon.tmux").gotoTerminal(4)
+      end,
+      "Go to Tmux Window 4",
+    },
+    ["]]"] = {
+      function()
+        require("illuminate").goto_next_reference(false)
+      end,
+      "Go to Next Reference",
+    },
+    ["[["] = {
+      function()
+        require("illuminate").goto_prev_reference(false)
+      end,
+      "Go to Previous Reference",
+    },
+    y = {
+      { "<Plug>(YankyYank)", "Yank" },
+      { "<Plug>(YankyYank)", "Yank", mode = "x" },
+    },
+    p = {
+      { "<Plug>(YankyPutAfter)", "Yank Put After" },
+      { "<Plug>(YankyPutAfter)", "Yank Put After", mode = "x" },
+    },
+    P = {
+      { "<Plug>(YankyPutBefore)", "Yank Put Before" },
+      { "<Plug>(YankyPutBefore)", "Yank Put Before", mode = "x" },
+    },
+    g = {
+      p = {
+        { "<Plug>(YankyGPutAfter)", "Yank G Put After" },
+        { "<Plug>(YankyGPutAfter)", "Yank G Put After", mode = "x" },
+      },
+      P = {
+        { "<Plug>(YankyGPutBefore)", "Yank G Put Before" },
+        { "<Plug>(YankyGPutBefore)", "Yank G Put Before", mode = "x" },
+      },
+    },
+    ["<C-y>"] = { "<Plug>(YankyCycleForward)", "Yank Cycle Forward" },
+    ["<C-p>"] = { "<Plug>(YankyCycleBackward)", "Yank Cycle Backwards" },
+    ["]p"] = { "<Plug>(YankyPutAfterFilter)", "Yank Put After Filter" },
+    ["[p"] = { "<Plug>(YankyPutBeforeFilter)", "Yank Put Before Filter" },
+    ["<C-BS>"] = {
+      function()
+        require("tasks").cancel()
+        require("dapui").close()
+      end,
+      "Cancel Debug",
+    },
+    ["<F1>"] = {
+      function()
+        require("tasks").start("auto", "run")
+      end,
+      "Run 'Run' Task",
+    },
+    ["<S-F1>"] = {
+      function()
+        require("tasks").set_task_param("auto", "run", "args")
+      end,
+      "Set args for 'Run' Task",
+    },
+    ["<A-F1>"] = {
+      function()
+        require("tasks").set_task_param("auto", "run", "env")
+      end,
+      "Set env for 'Run' Task",
+    },
+    ["<F2>"] = {
+      function()
+        require("tasks").start("auto", "test")
+      end,
+      "Run 'test' Task",
+    },
+    ["<S-F2>"] = {
+      function()
+        require("tasks").set_task_param("auto", "test", "args")
+      end,
+      "Set args for 'test' Task",
+    },
+    ["<A-F2>"] = {
+      function()
+        require("tasks").set_task_param("auto", "test", "env")
+      end,
+      "Set env for 'test' Task",
+    },
+    ["<F3>"] = {
+      function()
+        require("tasks").start("auto", "build")
+      end,
+      "Run 'build' Task",
+    },
+    ["<S-F3>"] = {
+      function()
+        require("tasks").set_task_param("auto", "build", "args")
+      end,
+      "Set args for 'build' Task",
+    },
+    ["<A-F3>"] = {
+      function()
+        require("tasks").set_task_param("auto", "build", "env")
+      end,
+      "Set env for 'build' Task",
+    },
+    ["<F4>"] = {
+      function()
+        require("tasks").start("auto", "debug")
+      end,
+      "Run 'debug' Task",
+    },
+    ["<F5>"] = {
+      function()
+        require("tasks").start("auto", "debug_test")
+      end,
+      "Run 'debug_test' Task",
+    },
+    ["<F6>"] = {
+      function()
+        require("tasks").start("auto", "configure")
+      end,
+      "Run CMake configure Task",
+    },
+    ["<C-F6>"] = {
+      function()
+        require("tasks").set_module_param("auto", "target")
+      end,
+      "Select CMake target",
+    },
+    ["<A-F6>"] = {
+      function()
+        require("tasks").set_module_param("auto", "build")
+      end,
+      "Select CMake build type",
+    },
+    ["<F7>"] = {
+      function()
+        require("tasks").start("auto", "check")
+      end,
+      "Run Cargo check task",
+    },
+    ["<C-F7>"] = {
+      function()
+        require("tasks").start("auto", "clippy")
+      end,
+      "Run Cargo clippy task",
+    },
+    ["<A-F7>"] = {
+      function()
+        require("tasks").start("auto", "clean")
+      end,
+      "Run clean task",
+    },
+    ["<F13>"] = { require("dap").step_over, "Step Over" },
+    ["<F14>"] = { require("dap").step_into, "Step Into" },
+    ["<F15>"] = { require("dap").step_out, "Step Out" },
+    ["<F16>"] = { require("dap").pause, "Pause" },
+    ["<F17>"] = { require("dap").continue, "Continue" },
+    ["<F18>"] = { require("dapui").toggle, "Toggle UI" },
+    ["<F19>"] = { require("dap").toggle_breakpoint, "Toggle Breakpoint" },
+    ["<F20>"] = {
+      function()
+        vim.ui.input({ prompt = "Breakpoint Condition: " }, function(condition)
+          require("dap").set_breakpoint(condition)
+        end)
+      end,
+      "Set Conditional Breakpoint",
+    },
+    ["<F21>"] = {
+      function()
+        vim.ui.input({ prompt = "Log point message: " }, function(message)
+          require("dap").set_breakpoint(nil, nil, message)
+        end)
+      end,
+      "Set log point message",
     },
   },
-  f = {
-    name = "+file",
-    f = { "<cmd>Telescope find_files<cr>", "Find File" },
-    r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
-  },
-  t = {
-    name = "+toggle",
-    f = {
-      require("plugins.lsp.formatting").toggle_formatting,
-      "Format on Save",
+  {
+    prefix = "<leader>",
+    w = {
+      name = "+window",
+      w = { "<C-W>p", "Other Window" },
+      d = { "<C-W>d", "Delete Window" },
+      ["-"] = { "<C-W>s", "Split Window Below" },
+      ["|"] = { "<C-W>v", "Split Window Right" },
+      h = { "<C-W>h", "Window Left" },
+      j = { "<C-W>j", "Window Below" },
+      k = { "<C-W>k", "Window Up" },
+      l = { "<C-W>l", "Window Right" },
+      H = { "<C-W>5<", "Expand Window Left" },
+      J = { ":resize +5", "Expand Window Below" },
+      K = { ":resize -5", "Expand Window Up" },
+      L = { "<C-W>5>", "Expand Window Right" },
+      ["="] = { "<C-W>=", "Balance Window" },
+    },
+    c = {
+      name = "+code",
+    },
+    g = {
+      name = "+git",
+      c = { telescope_builtin.git_commits, "Commits" },
+      b = { telescope_builtin.git_branches, "Branches" },
+      s = { telescope_builtin.git_status, "Status" },
+      d = { vim.cmd.DiffviewOpen, "DiffView" },
+    },
+    h = {
+      name = "+help",
+      t = { telescope_builtin.builtin, "Telescope" },
+      c = { telescope_builtin.commands, "Commands" },
+      h = { telescope_builtin.help_tags, "Help Pages" },
+      m = { telescope_builtin.man_pages, "Man Pages" },
+      k = { telescope_builtin.keymaps, "Key Maps" },
+      s = { telescope_builtin.highlights, "Search Highlight Groups" },
+      f = { telescope_builtin.filetypes, "File Types" },
+      o = { telescope_builtin.vim_options, "Options" },
+      a = { telescope_builtin.autocommands, "Auto Commands" },
     },
     s = {
-      function()
-        utils.toggle("spell")
-      end,
-      "Spelling",
+      name = "+search",
+      g = { telescope_builtin.live_grep, "Grep" },
+      b = { telescope_builtin.current_buffer_fuzzy_find, "Buffer" },
+      h = { telescope_builtin.command_history, "Command History" },
+      m = { telescope_builtin.marks, "Jump to Mark" },
+      w = {
+        function()
+          telescope_builtin.grep_string({ search = vim.fn.expand("<cword>") })
+        end,
+        "Current Word",
+      },
     },
-    w = {
-      function()
-        utils.toggle("wrap")
-      end,
-      "Word Wrap",
+    f = {
+      name = "+file",
+      f = { telescope_builtin.find_files, "Find File" },
+      r = { telescope_builtin.oldfiles, "Open Recent File" },
     },
-    n = {
-      function()
-        utils.toggle("relativenumber")
-        utils.toggle("number")
-      end,
-      "Line Numbers",
+    t = {
+      name = "+toggle",
+      f = {
+        require("plugins.lsp.formatting").toggle_formatting,
+        "Format on Save",
+      },
+      s = {
+        function()
+          utils.toggle("spell")
+        end,
+        "Spelling",
+      },
+      w = {
+        function()
+          utils.toggle("wrap")
+        end,
+        "Word Wrap",
+      },
+      n = {
+        function()
+          utils.toggle("relativenumber")
+          utils.toggle("number")
+        end,
+        "Line Numbers",
+      },
     },
+    a = { require("harpoon.mark").add_file, "Add file to harpoon" },
+    ["."] = { require("telescope").extensions.file_browser.file_browser, "Browse Files" },
+    [","] = {
+      function()
+        telescope_builtin.buffers({ show_all_buffers = true })
+      end,
+      "Switch buffer",
+    },
+    ["/"] = { telescope_builtin.live_grep, "Search" },
+    [":"] = { telescope_builtin.command_history, "Command History" },
+    x = {
+      name = "+errors",
+      l = { vim.cmd.lopen, "Open Location List" },
+      q = { vim.cmd.copen, "Open Quickfix List" },
+    },
+    z = { vim.cmd.ZenMode, "Zen Mode" },
+    k = { vim.cmd.lnext, "" },
+    j = { vim.cmd.lprev, "" },
+    P = { require("telescope").extensions.yank_history.yank_history, "Yank History" },
   },
-  ["."] = { "<cmd>Telescope file_browser<cr>", "Browse Files" },
-  [","] = { "<cmd>Telescope buffers show_all_buffers=true<cr>", "Switch buffer" },
-  ["/"] = { "<cmd>Telescope live_grep<cr>", "Search" },
-  [":"] = { "<cmd>Telescope command_history<cr>", "Command History" },
-  x = {
-    name = "+errors",
-    l = { "<cmd>lopen<cr>", "Open Location List" },
-    q = { "<cmd>copen<cr>", "Open Quickfix List" },
-  },
-  z = { "<cmd>ZenMode<cr>", "Zen Mode" },
 }
 
 for i = 0, 10 do
-  leader[tostring(i)] = "which_key_ignore"
+  keymaps[tostring(i)] = "which_key_ignore"
 end
 
-wk.register(leader, { prefix = "<leader>" })
+wk.register(keymaps)
 wk.register({ g = { name = "+goto" } })

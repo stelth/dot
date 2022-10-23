@@ -117,7 +117,7 @@
       vim-illuminate
       vim-matchup
       vim-repeat
-      which-key-nvim
+      pkgs.vimExtraPlugins.which-key-nvim
       pkgs.vimExtraPlugins.yanky-nvim
       zen-mode-nvim
     ];

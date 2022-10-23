@@ -14,40 +14,7 @@ require("dial.config").augends:register_group({
   },
 })
 
-vim.keymap.set("n", "<C-i>", require("dial.map").inc_normal(), { noremap = true })
-vim.keymap.set("n", "<C-x>", require("dial.map").dec_normal(), { noremap = true })
-
 require("diffview").setup({})
-vim.keymap.set("n", "<leader>gd", vim.cmd.DiffviewOpen)
-
-vim.keymap.set("n", "<leader>a", require("harpoon.mark").add_file, { desc = "Add file to harpoon" })
-vim.keymap.set("n", "<C-e>", require("harpoon.ui").toggle_quick_menu, { desc = "Harpoon quick menu" })
-
-local keyToFileId = {
-  ["<C-h>"] = 1,
-  ["<C-t>"] = 2,
-  ["<C-n>"] = 3,
-  ["<C-s>"] = 4,
-}
-
-for key, fileId in pairs(keyToFileId) do
-  vim.keymap.set("n", key, function()
-    require("harpoon.ui").nav_file(fileId)
-  end, { desc = "Go to harpoon file " .. tostring(fileId) })
-end
-
-local keyToTmuxWindowByNumber = {
-  ["<C-G>"] = 1,
-  ["<C-C>"] = 2,
-  ["<C-R>"] = 3,
-  ["<C-L>"] = 4,
-}
-
-for key, windowNumber in pairs(keyToTmuxWindowByNumber) do
-  vim.keymap.set("n", key, function()
-    require("harpoon.tmux").gotoTerminal(windowNumber)
-  end, { desc = "Go to tmux window " .. tostring(windowNumber) })
-end
 
 require("indent_blankline").setup({
   viewport_buffer = 100,
@@ -175,47 +142,9 @@ require("luasnip").config.set_config({
 
 require("luasnip/loaders/from_vscode").lazy_load()
 
-local tasks = require("tasks")
-local dapui = require("dapui")
-
-tasks.setup({
-  dap_open_command = dapui.open,
+require("tasks").setup({
+  dap_open_command = require("dapui").open,
 })
-
-local f_index = 1
-for _, task_name in ipairs({ "debug", "run", "test", "build" }) do
-  vim.keymap.set({ "", "i" }, string.format("<F%d>", f_index), function()
-    tasks.start("auto", task_name)
-  end, {})
-  vim.keymap.set({ "", "i" }, string.format("<S-F%d>", f_index), function()
-    tasks.set_task_param("auto", task_name, "args")
-  end, {})
-  vim.keymap.set({ "", "i" }, string.format("<A-F%d>", f_index), function()
-    tasks.set_task_param("auto", task_name, "env")
-  end, {})
-  f_index = f_index + 1
-end
-
-vim.keymap.set({ "", "i" }, "<F5>", function()
-  tasks.set_module_param("auto", "target")
-end, {})
-
-vim.keymap.set({ "", "i" }, "<F6>", function()
-  tasks.set_module_param("auto", "build")
-end, {})
-
-vim.keymap.set({ "", "i" }, "<F7>", function()
-  tasks.start("auto", "configure")
-end, {})
-
-vim.keymap.set({ "", "i" }, "<F8>", function()
-  tasks.start("auto", "clean")
-end, {})
-
-vim.keymap.set({ "", "i" }, "<F9>", function()
-  tasks.cancel()
-  dapui.close()
-end, {})
 
 require("noice").setup({
   views = {
@@ -282,13 +211,6 @@ require("nvim-treesitter.configs").setup({
 
 require("illuminate").configure({ delay = 200 })
 
-vim.keymap.set("n", "]]", function()
-  require("illuminate").goto_next_reference(false)
-end)
-vim.keymap.set("n", "[[", function()
-  require("illuminate").goto_prev_reference(false)
-end)
-
 vim.g.matchup_matchparen_offscreen = {
   method = "status_manual",
 }
@@ -301,20 +223,6 @@ require("yanky").setup({
     storage = "sqlite",
   },
 })
-
-vim.keymap.set("n", "<leader>P", function()
-  require("telescope").extensions.yank_history.yank_history({})
-end)
-
-vim.keymap.set({ "n", "x" }, "y", "<Plug>(YankyYank)")
-vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
-vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
-vim.keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
-vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
-vim.keymap.set("n", "<c-n>", "<Plug>(YankyCycleForward)")
-vim.keymap.set("n", "<c-p>", "<Plug>(YankyCycleBackward)")
-vim.keymap.set("n", "]p", "<Plug>(YankyPutAfterFilter)")
-vim.keymap.set("n", "[p", "<Plug>(YankyPutBeforeFilter)")
 
 require("zen-mode").setup({
   plugins = {
