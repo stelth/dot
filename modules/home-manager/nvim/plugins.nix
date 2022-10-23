@@ -82,7 +82,6 @@
       diffview-nvim
       dressing-nvim
       friendly-snippets
-      harpoon
       impatient-nvim
       indent-blankline-nvim
       pkgs.vimExtraPlugins.inlay-hints-nvim

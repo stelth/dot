@@ -51,55 +51,6 @@ local keymaps = {
     ["<BS>"] = { vim.cmd.nohlsearch, "" },
     ["<C-i>"] = { require("dial.map").inc_normal, "" },
     ["<C-x>"] = { require("dial.map").dec_normal, "" },
-    ["<C-e>"] = { require("harpoon.ui").toggle_quick_menu, "Harpoon Quick Menu" },
-    ["<C-h>"] = {
-      function()
-        require("harpoon.ui").nav_file(1)
-      end,
-      "Go to Harpoon File 1",
-    },
-    ["<C-t>"] = {
-      function()
-        require("harpoon.ui").nav_file(2)
-      end,
-      "Go to Harpoon File 2",
-    },
-    ["<C-n>"] = {
-      function()
-        require("harpoon.ui").nav_file(3)
-      end,
-      "Go to Harpoon File 3",
-    },
-    ["<C-s>"] = {
-      function()
-        require("harpoon.ui").nav_file(4)
-      end,
-      "Go to Harpoon File 4",
-    },
-    ["<C-g>"] = {
-      function()
-        require("harpoon.tmux").gotoTerminal(1)
-      end,
-      "Go to Tmux Window 1",
-    },
-    ["<C-c>"] = {
-      function()
-        require("harpoon.tmux").gotoTerminal(2)
-      end,
-      "Go to Tmux Window 2",
-    },
-    ["<C-r>"] = {
-      function()
-        require("harpoon.tmux").gotoTerminal(3)
-      end,
-      "Go to Tmux Window 3",
-    },
-    ["<C-l>"] = {
-      function()
-        require("harpoon.tmux").gotoTerminal(4)
-      end,
-      "Go to Tmux Window 4",
-    },
     ["]]"] = {
       function()
         require("illuminate").goto_next_reference(false)
@@ -355,7 +306,6 @@ local keymaps = {
         "Line Numbers",
       },
     },
-    a = { require("harpoon.mark").add_file, "Add file to harpoon" },
     ["."] = { require("telescope").extensions.file_browser.file_browser, "Browse Files" },
     [","] = {
       function()
