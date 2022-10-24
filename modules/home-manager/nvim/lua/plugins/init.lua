@@ -253,6 +253,19 @@ require("yanky").setup({
 })
 require("telescope").load_extension("yank_history")
 
+require("todo-comments").setup({
+  keywords = {
+    TODO = {
+      alt = { "WIP" },
+    },
+  },
+})
+
+require("trouble").setup({
+  auto_open = false,
+  use_diagnostic_signs = true,
+})
+
 require("zen-mode").setup({
   plugins = {
     kitty = {

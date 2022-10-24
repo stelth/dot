@@ -294,6 +294,20 @@ local keymaps = {
     [":"] = { telescope_builtin.command_history, "Command History" },
     x = {
       name = "+errors",
+      x = {
+        function()
+          vim.cmd.TroubleToggle({ "workspace_diagnostics" })
+        end,
+        "Trouble",
+      },
+      t = { vim.cmd.TodoTrouble, "Todo Trouble" },
+      tt = {
+        function()
+          vim.cmd.TodoTrouble({ "keywords=TODO,FIX,FIXME" })
+        end,
+        "Todo Trouble",
+      },
+      T = { vim.cmd.TodoTelescope, "Todo Telescope" },
       l = { vim.cmd.lopen, "Open Location List" },
       q = { vim.cmd.copen, "Open Quickfix List" },
     },

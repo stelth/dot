@@ -111,7 +111,9 @@
       rust-tools-nvim
       telescope-file-browser-nvim
       telescope-nvim
+      todo-comments-nvim
       tokyonight-nvim
+      trouble-nvim
       twilight-nvim
       vim-dadbod
       vim-dadbod-completion

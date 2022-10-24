@@ -54,6 +54,12 @@ M.keymap_callback = function(client, bufnr)
       name = "+goto",
       d = { require("telescope.builtin").lsp_definitions, "Goto Definition" },
       r = { require("telescope.builtin").lsp_references, "References" },
+      R = {
+        function()
+          vim.cmd.Trouble({ "lsp_references" })
+        end,
+        "Trouble References",
+      },
       D = { require("telescope.builtin").lsp_declarations, "Goto Declaration" },
       s = { vim.lsp.buf.signature_help, "Signature Help" },
       I = { require("telescope.builtin").lsp_implementations, "Goto Implementation" },
