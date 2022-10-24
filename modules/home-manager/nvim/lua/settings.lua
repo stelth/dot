@@ -81,6 +81,8 @@ vim.g.loaded_vimballPlugin = 1
 vim.g.loaded_zip = 1
 vim.g.loaded_zipPlugin = 1
 
+vim.notify = require("utils").notify
+
 require("autocmds")
 require("plugins")
 require("keymaps")

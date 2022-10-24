@@ -102,6 +102,7 @@
       nvim-jdtls
       nvim-lspconfig
       pkgs.vimExtraPlugins.nvim-navic
+      nvim-notify
       nvim-surround
       (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
       nvim-ts-context-commentstring
