@@ -223,6 +223,7 @@ require("yanky").setup({
     storage = "sqlite",
   },
 })
+require("telescope").load_extension("yank_history")
 
 require("zen-mode").setup({
   plugins = {

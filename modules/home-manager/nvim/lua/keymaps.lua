@@ -323,7 +323,12 @@ local keymaps = {
     z = { vim.cmd.ZenMode, "Zen Mode" },
     k = { vim.cmd.lnext, "" },
     j = { vim.cmd.lprev, "" },
-    P = { require("telescope").extensions.yank_history.yank_history, "Yank History" },
+    P = {
+      function()
+        require("telescope").extensions.yank_history.yank_history({})
+      end,
+      "Yank History",
+    },
   },
 }
 
