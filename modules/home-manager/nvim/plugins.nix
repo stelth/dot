@@ -84,6 +84,7 @@
       dressing-nvim
       friendly-snippets
       impatient-nvim
+      pkgs.vimExtraPlugins.inc-rename-nvim
       indent-blankline-nvim
       pkgs.vimExtraPlugins.inlay-hints-nvim
       lspkind-nvim
