@@ -92,7 +92,7 @@ local keymaps = {
     ["<C-BS>"] = {
       function()
         require("tasks").cancel()
-        require("dapui").close()
+        require("dapui").close({})
       end,
       "Cancel Debug",
     },
@@ -197,29 +197,6 @@ local keymaps = {
         require("tasks").start("auto", "clean")
       end,
       "Run clean task",
-    },
-    ["<F13>"] = { require("dap").step_over, "Step Over" },
-    ["<F14>"] = { require("dap").step_into, "Step Into" },
-    ["<F15>"] = { require("dap").step_out, "Step Out" },
-    ["<F16>"] = { require("dap").pause, "Pause" },
-    ["<F17>"] = { require("dap").continue, "Continue" },
-    ["<F18>"] = { require("dapui").toggle, "Toggle UI" },
-    ["<F19>"] = { require("dap").toggle_breakpoint, "Toggle Breakpoint" },
-    ["<F20>"] = {
-      function()
-        vim.ui.input({ prompt = "Breakpoint Condition: " }, function(condition)
-          require("dap").set_breakpoint(condition)
-        end)
-      end,
-      "Set Conditional Breakpoint",
-    },
-    ["<F21>"] = {
-      function()
-        vim.ui.input({ prompt = "Log point message: " }, function(message)
-          require("dap").set_breakpoint(nil, nil, message)
-        end)
-      end,
-      "Set log point message",
     },
   },
   {
@@ -328,6 +305,20 @@ local keymaps = {
         require("telescope").extensions.yank_history.yank_history({})
       end,
       "Yank History",
+    },
+    d = {
+      b = { require("dap").toggle_breakpoint, "Toggle breakpoint" },
+      c = { require("dap").continue, "Continue" },
+      o = { require("dap").step_over, "Step over" },
+      i = { require("dap").step_into, "Step into" },
+      w = { require("dap.ui.widgets").hover, "Widgets" },
+      r = { require("dap").repl.open, "Repl" },
+      u = {
+        function()
+          require("dapui").toggle({})
+        end,
+        "Dap UI",
+      },
     },
   },
 }
