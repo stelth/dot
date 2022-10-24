@@ -52,6 +52,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.smartcase = true
 vim.opt.smartindent = true
 vim.opt.spell = true
+vim.opt.splitkeep = "screen"
 vim.opt.swapfile = false
 vim.opt.tabstop = indent
 vim.opt.termguicolors = true
