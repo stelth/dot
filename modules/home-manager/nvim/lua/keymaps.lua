@@ -1,6 +1,7 @@
 local wk = require("which-key")
 local utils = require("utils")
 local telescope_builtin = require("telescope.builtin")
+local tasks = tasks
 
 vim.o.timeoutlen = 300
 
@@ -91,112 +92,10 @@ local keymaps = {
     ["[p"] = { "<Plug>(YankyPutBeforeFilter)", "Yank Put Before Filter" },
     ["<C-BS>"] = {
       function()
-        require("tasks").cancel()
+        tasks.cancel()
         require("dapui").close({})
       end,
       "Cancel Debug",
-    },
-    ["<F1>"] = {
-      function()
-        require("tasks").start("auto", "run")
-      end,
-      "Run 'Run' Task",
-    },
-    ["<S-F1>"] = {
-      function()
-        require("tasks").set_task_param("auto", "run", "args")
-      end,
-      "Set args for 'Run' Task",
-    },
-    ["<A-F1>"] = {
-      function()
-        require("tasks").set_task_param("auto", "run", "env")
-      end,
-      "Set env for 'Run' Task",
-    },
-    ["<F2>"] = {
-      function()
-        require("tasks").start("auto", "test")
-      end,
-      "Run 'test' Task",
-    },
-    ["<S-F2>"] = {
-      function()
-        require("tasks").set_task_param("auto", "test", "args")
-      end,
-      "Set args for 'test' Task",
-    },
-    ["<A-F2>"] = {
-      function()
-        require("tasks").set_task_param("auto", "test", "env")
-      end,
-      "Set env for 'test' Task",
-    },
-    ["<F3>"] = {
-      function()
-        require("tasks").start("auto", "build")
-      end,
-      "Run 'build' Task",
-    },
-    ["<S-F3>"] = {
-      function()
-        require("tasks").set_task_param("auto", "build", "args")
-      end,
-      "Set args for 'build' Task",
-    },
-    ["<A-F3>"] = {
-      function()
-        require("tasks").set_task_param("auto", "build", "env")
-      end,
-      "Set env for 'build' Task",
-    },
-    ["<F4>"] = {
-      function()
-        require("tasks").start("auto", "debug")
-      end,
-      "Run 'debug' Task",
-    },
-    ["<F5>"] = {
-      function()
-        require("tasks").start("auto", "debug_test")
-      end,
-      "Run 'debug_test' Task",
-    },
-    ["<F6>"] = {
-      function()
-        require("tasks").start("auto", "configure")
-      end,
-      "Run CMake configure Task",
-    },
-    ["<C-F6>"] = {
-      function()
-        require("tasks").set_module_param("auto", "target")
-      end,
-      "Select CMake target",
-    },
-    ["<A-F6>"] = {
-      function()
-        require("tasks").set_module_param("auto", "build")
-      end,
-      "Select CMake build type",
-    },
-    ["<F7>"] = {
-      function()
-        require("tasks").start("auto", "check")
-      end,
-      "Run Cargo check task",
-    },
-    ["<C-F7>"] = {
-      function()
-        require("tasks").start("auto", "clippy")
-      end,
-      "Run Cargo clippy task",
-    },
-    ["<A-F7>"] = {
-      function()
-        require("tasks").start("auto", "clean")
-      end,
-      "Run clean task",
     },
   },
   {
@@ -281,6 +180,126 @@ local keymaps = {
           utils.toggle("number")
         end,
         "Line Numbers",
+      },
+    },
+    r = {
+      name = "+run",
+      r = {
+        name = "+run",
+        r = {
+          function()
+            tasks.start("auto", "run")
+          end,
+          "Run 'run' Task",
+        },
+        a = {
+          function()
+            tasks.set_task_param("auto", "run", "args")
+          end,
+          "Set 'run' Args",
+        },
+        e = {
+          function()
+            tasks.set_task_param("auto", "run", "env")
+          end,
+          "Set 'run' Environment",
+        },
+      },
+      t = {
+        name = "+test",
+        r = {
+          function()
+            tasks.start("auto", "test")
+          end,
+          "Run 'test' Task",
+        },
+        a = {
+          function()
+            tasks.set_task_param("auto", "test", "args")
+          end,
+          "Set 'test' Args",
+        },
+        e = {
+          function()
+            tasks.set_task_param("auto", "test", "env")
+          end,
+          "Set 'test' Environment",
+        },
+      },
+      b = {
+        name = "+build",
+        r = {
+          function()
+            tasks.start("auto", "build")
+          end,
+          "Run 'build' Task",
+        },
+        a = {
+          function()
+            tasks.set_task_param("auto", "build", "args")
+          end,
+          "Set 'build' Args",
+        },
+        e = {
+          function()
+            tasks.set_task_param("auto", "build", "env")
+          end,
+          "Set 'build' Environment",
+        },
+      },
+      dd = {
+        function()
+          tasks.start("auto", "debug")
+        end,
+        "Run 'debug' Task",
+      },
+      dt = {
+        function()
+          tasks.start("auto", "debug_test")
+        end,
+        "Run 'debug_test' Task",
+      },
+      n = {
+        function()
+          tasks.start("auto", "clean")
+        end,
+        "Run Clean Task",
+      },
+      c = {
+        name = "+cmake",
+        c = {
+          function()
+            tasks.start("auto", "configure")
+          end,
+          "Run CMake Configure Task",
+        },
+        t = {
+          function()
+            tasks.set_module_param("auto", "target")
+          end,
+          "Select CMake Target",
+        },
+        b = {
+          function()
+            tasks.set_module_param("auto", "build")
+          end,
+          "Select CMake Build Type",
+        },
+      },
+      C = {
+        name = "+cargo",
+        c = {
+          function()
+            tasks.start("auto", "check")
+          end,
+          "Run Cargo Check Task",
+        },
+        l = {
+          function()
+            tasks.start("auto", "clippy")
+          end,
+          "Run Cargo clippy Task",
+        },
       },
     },
     ["."] = { require("telescope").extensions.file_browser.file_browser, "Browse Files" },
