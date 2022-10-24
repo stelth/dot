@@ -1,7 +1,7 @@
 local wk = require("which-key")
 local utils = require("utils")
 local telescope_builtin = require("telescope.builtin")
-local tasks = tasks
+local tasks = require("tasks")
 
 vim.o.timeoutlen = 300
 
