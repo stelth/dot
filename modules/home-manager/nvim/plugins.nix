@@ -59,6 +59,7 @@
     # Additional
     actionlint
     gitlint
+    marksman
     nodePackages.jsonlint
     nodePackages.markdownlint-cli
     nodePackages.prettier

@@ -168,6 +168,8 @@
         overlays = builtins.attrValues self.overlays;
       };
     in rec {
+      marksman = pkgs.callPackage ./pkgs/marksman {};
+      switch-back-to-nvim = pkgs.callPackage ./pkgs/switch-back-to-nvim {};
       sysdo =
         pkgs.writers.writePython3Bin "sysdo" {
           flakeIgnore = ["E501" "W503" "W391"];
@@ -175,7 +177,6 @@
         } ''
           ${builtins.readFile ./bin/do.py}
         '';
-      switch-back-to-nvim = pkgs.callPackage ./pkgs/switch-back-to-nvim {};
       tmux-cht = pkgs.callPackage ./pkgs/tmux-cht {};
       tmux-sessionizer = pkgs.callPackage ./pkgs/tmux-sessionizer {};
     });
@@ -197,8 +198,9 @@
       extraPackages = final: prev: {
         inherit
           (self.packages.${prev.system})
-          sysdo
+          marksman
           switch-back-to-nvim
+          sysdo
           tmux-cht
           tmux-sessionizer
           ;
