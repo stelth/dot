@@ -83,6 +83,7 @@
       diffview-nvim
       dressing-nvim
       friendly-snippets
+      hop-nvim
       impatient-nvim
       inc-rename-nvim
       indent-blankline-nvim
@@ -90,6 +91,7 @@
       lspkind-nvim
       lualine-nvim
       luasnip
+      mini-nvim
       neodev-nvim
       neovim-tasks
       noice-nvim
