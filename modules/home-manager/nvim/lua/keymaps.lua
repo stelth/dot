@@ -97,7 +97,6 @@ local keymaps = {
       end,
       "Cancel Debug",
     },
-    gh = { vim.cmd.HopWord, "Hop Word" },
   },
   {
     prefix = "<leader>",

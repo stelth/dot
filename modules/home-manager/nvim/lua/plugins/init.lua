@@ -16,8 +16,6 @@ require("dial.config").augends:register_group({
 
 require("diffview").setup({})
 
-require("hop").setup()
-
 require("inc_rename").setup()
 
 require("indent_blankline").setup({
@@ -49,8 +47,6 @@ require("indent_blankline").setup({
 require("inlay-hints").setup({
   renderer = "inlay-hints/render/eol",
 })
-
-require("mini.jump").setup({})
 
 require("nvim-navic").setup({
   icons = {
