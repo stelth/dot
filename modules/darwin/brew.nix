@@ -13,6 +13,9 @@ in {
   homebrew = {
     enable = true;
     global = {brewfile = true;};
+    onActivation = {
+      upgrade = true;
+    };
     taps = [
       "beeftornado/rmtree"
       "homebrew/bundle"
