@@ -83,6 +83,7 @@
       diffview-nvim
       dressing-nvim
       friendly-snippets
+      gitsigns-nvim
       impatient-nvim
       inc-rename-nvim
       indent-blankline-nvim

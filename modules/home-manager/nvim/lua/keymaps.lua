@@ -2,6 +2,7 @@ local wk = require("which-key")
 local utils = require("utils")
 local telescope_builtin = require("telescope.builtin")
 local tasks = require("tasks")
+local gitsigns = require("gitsigns")
 
 vim.o.timeoutlen = 300
 
@@ -97,6 +98,48 @@ local keymaps = {
       end,
       "Cancel Debug",
     },
+    ["]h"] = {
+      function()
+        if vim.wo.diff then
+          return "]h"
+        end
+        vim.schedule(function()
+          gitsigns.next_hunk()
+        end)
+        return "<Ignore>"
+      end,
+      "Next Hunk",
+      expr = true,
+    },
+    ["[h"] = {
+      function()
+        if vim.wo.diff then
+          return "]h"
+        end
+        vim.schedule(function()
+          gitsigns.prev_hunk()
+        end)
+        return "<Ignore>"
+      end,
+      "Prev Hunk",
+      expr = true,
+    },
+    ["ih"] = {
+      {
+        function()
+        vim.cmd.Gitsigns({ "select_hunk" })
+end,
+        "Gitsigns Select Hunk",
+        mode = "o",
+      },
+      {
+        function()
+        vim.cmd.Gitsigns({ "select_hunk" })
+end,
+        "Gitsigns Select Hunk",
+        mode = "x",
+      },
+    },
   },
   {
     prefix = "<leader>",
@@ -125,6 +168,56 @@ local keymaps = {
       b = { telescope_builtin.git_branches, "Branches" },
       s = { telescope_builtin.git_status, "Status" },
       d = { vim.cmd.DiffviewOpen, "DiffView" },
+      h = {
+        name = "+hunk",
+        s = {
+          {
+            function()
+              vim.cmd.Gitsigns({ "stage_hunk" })
+            end,
+            "Stage Hunk",
+          },
+          {
+            function()
+              vim.cmd.Gitsigns({ "stage_hunk" })
+            end,
+            "Stage Hunk",
+            mode = "v",
+          },
+        },
+        r = {
+          {
+            function()
+              vim.cmd.Gitsigns({ "reset_hunk" })
+            end,
+            "Reset Hunk",
+          },
+          {
+            function()
+              vim.cmd.Gitsigns({ "reset_hunk" })
+            end,
+            "Reset Hunk",
+            mode = "v",
+          },
+        },
+        S = { gitsigns.stage_buffer, "Stage Buffer" },
+        u = { gitsigns.undo_stage_hunk, "Undo Stage Hunk" },
+        R = { gitsigns.reset_buffer, "Reset Buffer" },
+        p = { gitsigns.preview_hunk, "Preview Hunk" },
+        b = {
+          function()
+            gitsigns.blame_line({ full = true })
+          end,
+          "Blame Line",
+        },
+        d = { gitsigns.diffthis, "Diff This" },
+        D = {
+          function()
+            gitsigns.diffthis("~")
+          end,
+          "Diff This ~",
+        },
+      },
     },
     h = {
       name = "+help",
