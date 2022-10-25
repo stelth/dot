@@ -70,7 +70,7 @@
   ];
 
   programs.neovim = {
-    plugins = with pkgs.vimPlugins; [
+    plugins = with pkgs.vimExtraPlugins; [
       cmp-buffer
       cmp-calc
       cmp-dap
@@ -79,20 +79,20 @@
       cmp-path
       cmp_luasnip
       comment-nvim
-      pkgs.vimExtraPlugins.dial-nvim
+      dial-nvim
       diffview-nvim
       dressing-nvim
       friendly-snippets
       impatient-nvim
-      pkgs.vimExtraPlugins.inc-rename-nvim
+      inc-rename-nvim
       indent-blankline-nvim
-      pkgs.vimExtraPlugins.inlay-hints-nvim
+      inlay-hints-nvim
       lspkind-nvim
-      pkgs.vimExtraPlugins.lualine-nvim
+      lualine-nvim
       luasnip
-      pkgs.vimExtraPlugins.neodev-nvim
-      pkgs.vimExtraPlugins.neovim-tasks
-      pkgs.vimExtraPlugins.noice-nvim
+      neodev-nvim
+      neovim-tasks
+      noice-nvim
       null-ls-nvim
       nvim-autopairs
       nvim-cmp
@@ -102,7 +102,7 @@
       nvim-dap-virtual-text
       nvim-jdtls
       nvim-lspconfig
-      pkgs.vimExtraPlugins.nvim-navic
+      nvim-navic
       nvim-notify
       nvim-surround
       (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
@@ -121,8 +121,8 @@
       vim-illuminate
       vim-matchup
       vim-repeat
-      pkgs.vimExtraPlugins.which-key-nvim
-      pkgs.vimExtraPlugins.yanky-nvim
+      which-key-nvim
+      yanky-nvim
       zen-mode-nvim
     ];
   };
