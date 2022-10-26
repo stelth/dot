@@ -127,15 +127,15 @@ local keymaps = {
     ["ih"] = {
       {
         function()
-        vim.cmd.Gitsigns({ "select_hunk" })
-end,
+          vim.cmd.Gitsigns({ "select_hunk" })
+        end,
         "Gitsigns Select Hunk",
         mode = "o",
       },
       {
         function()
-        vim.cmd.Gitsigns({ "select_hunk" })
-end,
+          vim.cmd.Gitsigns({ "select_hunk" })
+        end,
         "Gitsigns Select Hunk",
         mode = "x",
       },
@@ -445,6 +445,10 @@ end,
         end,
         "Dap UI",
       },
+    },
+    o = {
+      name = "+open",
+      g = { vim.cmd.Glow, "Glow" },
     },
   },
 }

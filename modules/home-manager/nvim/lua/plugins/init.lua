@@ -46,6 +46,8 @@ require("gitsigns").setup({
   },
 })
 
+require("glow").setup({})
+
 require("inc_rename").setup()
 
 require("indent_blankline").setup({

@@ -84,6 +84,7 @@
       dressing-nvim
       friendly-snippets
       gitsigns-nvim
+      glow-nvim
       impatient-nvim
       inc-rename-nvim
       indent-blankline-nvim
