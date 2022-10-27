@@ -42,7 +42,7 @@ When possible, home-manager functionality is extracted into [./profiles/home-man
 Run the installer script to perform a multi-user installation
 on darwin or any other type of linux. This script can optionally accept an argument with the URL to a nix installer, but will use the nixFlakes installer by default:
 
-```bash
+```bash:
 ./install-nix.sh
 ```
 
@@ -54,19 +54,19 @@ Note that this step is naturally skipped on NixOS since `nix` is the package man
 
 Clone this repository into `~/dot` with
 
-```bash
+```bash:
 git clone git@github.com:stelth/dot.git ~/dot
 ```
 
 You can bootstrap a new nix-darwin system using
 
-```bash
+```bash:
 nix develop -c sysdo bootstrap --darwin personal
 ```
 
 or a home-manager configuration using
 
-```bash
+```bash:
 nix develop -c sysdo bootstrap --homemanager [host]
 ```
 
