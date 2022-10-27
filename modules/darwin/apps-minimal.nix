@@ -12,6 +12,8 @@
       "hammerspoon"
       "kitty"
     ];
-    masApps = {};
+    masApps = {
+      "BetterSnapTool" = 417375580;
+    };
   };
 }
