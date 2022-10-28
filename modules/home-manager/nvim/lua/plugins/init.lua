@@ -185,6 +185,8 @@ require("nvim-navic").setup({
   depth_limit = 5,
 })
 
+require("terminal").setup({})
+
 require("scrollbar").setup({
   handle = {
     color = colors.bg_highlight,
@@ -279,6 +281,20 @@ require("todo-comments").setup({
     },
   },
 })
+
+require("toggleterm").setup({
+  size = 20,
+  hide_numbers = true,
+  open_mapping = [[<C-_>]],
+  shade_filetypes = {},
+  shade_terminals = false,
+  shading_factor = 0.3,
+  start_in_insert = true,
+  persist_size = true,
+  direction = "horizontal",
+})
+-- Esc twice to get to normal mode
+vim.cmd([[tnoremap <esc><esc> <C-\><C-N>]])
 
 require("trouble").setup({
   auto_open = false,

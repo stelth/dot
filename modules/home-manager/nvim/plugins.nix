@@ -111,6 +111,7 @@
       nvim-notify
       nvim-scrollbar
       nvim-surround
+      nvim-terminal-lua
       (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
       nvim-ts-context-commentstring
       nvim-web-devicons
@@ -118,6 +119,7 @@
       telescope-file-browser-nvim
       telescope-nvim
       todo-comments-nvim
+      toggleterm-nvim
       tokyonight-nvim
       trouble-nvim
       twilight-nvim
