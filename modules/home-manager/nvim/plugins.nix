@@ -85,6 +85,7 @@
       friendly-snippets
       gitsigns-nvim
       glow-nvim
+      hlargs-nvim
       impatient-nvim
       inc-rename-nvim
       incline-nvim

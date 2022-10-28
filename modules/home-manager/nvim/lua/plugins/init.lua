@@ -103,6 +103,15 @@ require("gitsigns").setup({
 
 require("glow").setup({})
 
+require("hlargs").setup({
+  color = require("tokyonight.colors").setup().yellow,
+  excluded_argnames = {
+    usages = {
+      lua = { "self", "use" },
+    },
+  },
+})
+
 require("inc_rename").setup()
 
 require("incline").setup({
