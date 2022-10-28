@@ -116,6 +116,7 @@
       nvim-ts-context-commentstring
       nvim-web-devicons
       rust-tools-nvim
+      specs-nvim
       telescope-file-browser-nvim
       telescope-nvim
       todo-comments-nvim
