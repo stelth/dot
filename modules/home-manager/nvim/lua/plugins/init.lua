@@ -51,6 +51,7 @@ tokyonight.setup({
   end,
 })
 tokyonight.load()
+local colors = require("tokyonight.colors").setup()
 
 require("Comment").setup({
   pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
@@ -104,7 +105,6 @@ require("glow").setup({})
 
 require("inc_rename").setup()
 
-local colors = require("tokyonight.colors").setup()
 require("incline").setup({
   highlight = {
     groups = {
@@ -170,6 +170,20 @@ require("nvim-navic").setup({
   separator = " ",
   highlight = true,
   depth_limit = 5,
+})
+
+require("scrollbar").setup({
+  handle = {
+    color = colors.bg_highlight,
+  },
+  marks = {
+    Search = { color = colors.orange },
+    Error = { color = colors.error },
+    Warn = { color = colors.warning },
+    Info = { color = colors.info },
+    Hint = { color = colors.hint },
+    Misc = { color = colors.purple },
+  },
 })
 
 require("luasnip").config.set_config({

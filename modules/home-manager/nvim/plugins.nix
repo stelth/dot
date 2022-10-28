@@ -107,6 +107,7 @@
       nvim-lspconfig
       nvim-navic
       nvim-notify
+      nvim-scrollbar
       nvim-surround
       (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
       nvim-ts-context-commentstring
