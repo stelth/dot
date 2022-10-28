@@ -86,6 +86,7 @@
       gitsigns-nvim
       glow-nvim
       hlargs-nvim
+      hop-nvim
       impatient-nvim
       inc-rename-nvim
       incline-nvim
@@ -94,6 +95,7 @@
       lspkind-nvim
       lualine-nvim
       luasnip
+      mini-nvim
       neodev-nvim
       neogen
       neovim-tasks

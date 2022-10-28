@@ -140,6 +140,7 @@ local keymaps = {
         mode = "x",
       },
     },
+    ["gh"] = { vim.cmd.HopWord, "Hop Word" },
   },
   {
     prefix = "<leader>",
