@@ -125,6 +125,7 @@
       vim-matchup
       vim-repeat
       which-key-nvim
+      windows-nvim
       yanky-nvim
       zen-mode-nvim
     ];

@@ -424,6 +424,7 @@ local keymaps = {
       q = { vim.cmd.copen, "Open Quickfix List" },
     },
     z = { vim.cmd.ZenMode, "Zen Mode" },
+    Z = { vim.cmd.WindowsMaximize, "Maximize Window" },
     k = { vim.cmd.lnext, "" },
     j = { vim.cmd.lprev, "" },
     P = {

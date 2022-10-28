@@ -286,6 +286,15 @@ require("trouble").setup({
   use_diagnostic_signs = true,
 })
 
+vim.o.winwidth = 5
+vim.o.winminwidth = 5
+vim.o.equalalways = false
+require("windows").setup({
+  animation = {
+    duration = 150,
+  },
+})
+
 require("zen-mode").setup({
   plugins = {
     kitty = {
