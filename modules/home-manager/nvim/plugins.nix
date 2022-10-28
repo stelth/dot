@@ -94,6 +94,7 @@
       lualine-nvim
       luasnip
       neodev-nvim
+      neogen
       neovim-tasks
       noice-nvim
       null-ls-nvim

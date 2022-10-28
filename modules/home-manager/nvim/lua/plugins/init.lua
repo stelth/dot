@@ -166,6 +166,10 @@ require("inlay-hints").setup({
   renderer = "inlay-hints/render/eol",
 })
 
+require("neogen").setup({
+  snippet_engine = "luasnip",
+})
+
 require("nvim-navic").setup({
   separator = " ",
   highlight = true,
@@ -188,7 +192,7 @@ require("scrollbar").setup({
 
 require("luasnip").config.set_config({
   history = true,
-  -- Update more often
+  enable_autosnippets = true,
   updateEvents = "TextChanged,TextChangedI",
 })
 

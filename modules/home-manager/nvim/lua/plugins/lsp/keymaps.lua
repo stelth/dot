@@ -38,6 +38,7 @@ M.keymap_callback = function(client, bufnr)
           },
         },
         d = { vim.diagnostic.open_float, "Line Diagnostics" },
+        g = { require("neogen").generate, "Annotate" },
         l = {
           name = "+lsp",
           i = { vim.cmd.LspInfo, "Lsp Info" },
