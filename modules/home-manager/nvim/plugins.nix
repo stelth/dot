@@ -124,7 +124,6 @@
       vim-dadbod-ui
       vim-illuminate
       vim-matchup
-      vim-repeat
       which-key-nvim
       windows-nvim
       yanky-nvim
