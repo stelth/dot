@@ -213,60 +213,16 @@ require("tasks").setup({
 })
 
 require("noice").setup({
-  cmdline = {
-    format = {
-      IncRename = {
-        pattern = "^:%s*IncRename%s+",
-        icon = " ",
-        conceal = true,
-        opts = {
-          relative = "cursor",
-          size = { min_width = 20 },
-          position = { row = -3, col = 0 },
-          buf_options = { filetype = "text" },
-        },
-      },
-    },
+  presets = {
+    command_palette = true,
+    long_message_to_split = true,
+    inc_rename = true,
   },
-  views = {
-    cmdline_popup = {
-      position = {
-        row = 5,
-        col = "50%",
-      },
-      size = {
-        width = 60,
-        height = "auto",
-      },
-    },
-    popupmenu = {
-      relative = "editor",
-      position = {
-        row = 8,
-        col = "50%",
-      },
-      size = {
-        width = 60,
-        height = 10,
-      },
-      border = {
-        style = "rounded",
-        padding = { 0, 1 },
-      },
-      win_options = {
-        winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
-      },
-    },
-  },
-  routes = {
-    {
-      filter = {
-        warning = true,
-        find = "offset_encodings",
-      },
-      opts = {
-        skip = true,
-      },
+  lsp = {
+    override = {
+      ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+      ["vim.lsp.util.stylize_markdown"] = true,
+      ["cmp.entry.get_documentation"] = true,
     },
   },
   lsp_progress = {
