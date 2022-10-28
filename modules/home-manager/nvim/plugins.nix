@@ -87,6 +87,7 @@
       glow-nvim
       impatient-nvim
       inc-rename-nvim
+      incline-nvim
       indent-blankline-nvim
       inlay-hints-nvim
       lspkind-nvim

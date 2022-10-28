@@ -1,3 +1,57 @@
+local tokyonight = require("tokyonight")
+tokyonight.setup({
+  style = "moon",
+  -- transparent = true,
+  -- hide_inactive_statusline = false,
+  sidebars = {
+    "qf",
+    "vista_kind",
+    "terminal",
+    "packer",
+    "spectre_panel",
+    "NeogitStatus",
+    "help",
+    "startuptime",
+    "Outline",
+  },
+  on_colors = function(_) end,
+  on_highlights = function(hl, c)
+    -- make the current line cursor orange
+    hl.CursorLineNr = { fg = c.orange, bold = true }
+
+    -- borderless telescope
+    local prompt = "#2d3149"
+    hl.TelescopeNormal = {
+      bg = c.bg_dark,
+      fg = c.fg_dark,
+    }
+    hl.TelescopeBorder = {
+      bg = c.bg_dark,
+      fg = c.bg_dark,
+    }
+    hl.TelescopePromptNormal = {
+      bg = prompt,
+    }
+    hl.TelescopePromptBorder = {
+      bg = prompt,
+      fg = prompt,
+    }
+    hl.TelescopePromptTitle = {
+      bg = c.fg_gutter,
+      fg = c.orange,
+    }
+    hl.TelescopePreviewTitle = {
+      bg = c.bg_dark,
+      fg = c.bg_dark,
+    }
+    hl.TelescopeResultsTitle = {
+      bg = c.bg_dark,
+      fg = c.bg_dark,
+    }
+  end,
+})
+tokyonight.load()
+
 require("Comment").setup({
   pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
 })
@@ -49,6 +103,38 @@ require("gitsigns").setup({
 require("glow").setup({})
 
 require("inc_rename").setup()
+
+local colors = require("tokyonight.colors").setup()
+require("incline").setup({
+  highlight = {
+    groups = {
+      InclineNormal = {
+        guibg = "#FC56B1",
+        guifg = colors.black,
+        -- gui = "bold",
+      },
+      InclineNormalNC = {
+        guifg = "#FC56B1",
+        guibg = colors.black,
+      },
+    },
+  },
+  window = {
+    margin = {
+      vertical = 0,
+      horizontal = 1,
+    },
+  },
+  render = function(props)
+    local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
+    local icon, color = require("nvim-web-devicons").get_icon_color(filename)
+    return {
+      { icon, guifg = color },
+      { " " },
+      { filename },
+    }
+  end,
+})
 
 require("indent_blankline").setup({
   viewport_buffer = 100,
@@ -113,60 +199,6 @@ require("nvim-navic").setup({
   highlight = true,
   depth_limit = 5,
 })
-
-local tokyonight = require("tokyonight")
-tokyonight.setup({
-  style = "moon",
-  -- transparent = true,
-  -- hide_inactive_statusline = false,
-  sidebars = {
-    "qf",
-    "vista_kind",
-    "terminal",
-    "packer",
-    "spectre_panel",
-    "NeogitStatus",
-    "help",
-    "startuptime",
-    "Outline",
-  },
-  on_colors = function(_) end,
-  on_highlights = function(hl, c)
-    -- make the current line cursor orange
-    hl.CursorLineNr = { fg = c.orange, bold = true }
-
-    -- borderless telescope
-    local prompt = "#2d3149"
-    hl.TelescopeNormal = {
-      bg = c.bg_dark,
-      fg = c.fg_dark,
-    }
-    hl.TelescopeBorder = {
-      bg = c.bg_dark,
-      fg = c.bg_dark,
-    }
-    hl.TelescopePromptNormal = {
-      bg = prompt,
-    }
-    hl.TelescopePromptBorder = {
-      bg = prompt,
-      fg = prompt,
-    }
-    hl.TelescopePromptTitle = {
-      bg = c.fg_gutter,
-      fg = c.orange,
-    }
-    hl.TelescopePreviewTitle = {
-      bg = c.bg_dark,
-      fg = c.bg_dark,
-    }
-    hl.TelescopeResultsTitle = {
-      bg = c.bg_dark,
-      fg = c.bg_dark,
-    }
-  end,
-})
-tokyonight.load()
 
 require("luasnip").config.set_config({
   history = true,

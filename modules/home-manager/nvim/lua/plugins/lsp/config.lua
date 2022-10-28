@@ -5,7 +5,6 @@ M.on_attach = function(client, bufnr)
   if client.server_capabilities.documentSymbolProvider then
     require("nvim-navic").attach(client, bufnr)
   end
-  require("plugins.lsp.hover").setup(client, bufnr)
   require("plugins.lsp.formatting").format_callback(client, bufnr)
   require("plugins.lsp.keymaps").keymap_callback(client, bufnr)
 end
