@@ -21,8 +21,6 @@ lspconfig.clangd.setup(make_config({
   },
 }))
 
-lspconfig.cmake.setup(make_config({}))
-
 lspconfig.dockerls.setup(make_config({}))
 
 lspconfig.gopls.setup(make_config({
@@ -46,6 +44,21 @@ lspconfig.jsonls.setup(make_config({
 }))
 
 lspconfig.marksman.setup(make_config({}))
+
+local configs = require("lspconfig.configs")
+if not configs.neocmake then
+  configs.neocmake = {
+    default_config = {
+      cmd = { "neocmakelsp", "--stdio" },
+      filetypes = { "cmake" },
+      root_dir = function(fname)
+        return lspconfig.util.find_git_ancestor(fname)
+      end,
+      single_file_support = true, -- suggested
+    },
+  }
+end
+lspconfig.neocmake.setup(make_config({}))
 
 lspconfig.pyright.setup(make_config({}))
 

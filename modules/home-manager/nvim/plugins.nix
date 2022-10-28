@@ -54,7 +54,7 @@
     # {C}Make
     checkmake
     cmake-format
-    cmake-language-server
+    neocmakelsp
 
     # Additional
     actionlint
