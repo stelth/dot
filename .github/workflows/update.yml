@@ -26,8 +26,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_user_name: pluginbot
-          commit_user_email: pluginbot@users.noreply.github.com
+          commit_user_name: flakebot
+          commit_user_email: flakebot@users.noreply.github.com
           commit_author: Jason Cox <steel300@gmail.com>
-          commit_message: "chore(plugins): auto update plugins"
+          commit_message: "chore(nix): auto update flake.lock"
           push_options: "--force"
