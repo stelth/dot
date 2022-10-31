@@ -112,8 +112,6 @@ require("hlargs").setup({
   },
 })
 
-require("hop").setup({})
-
 require("inc_rename").setup()
 
 require("incline").setup({
@@ -176,8 +174,6 @@ require("indent_blankline").setup({
 require("inlay-hints").setup({
   renderer = "inlay-hints/render/eol",
 })
-
-require("mini.jump").setup({})
 
 require("neogen").setup({
   snippet_engine = "luasnip",
