@@ -103,7 +103,6 @@
       null-ls-nvim
       nvim-autopairs
       nvim-cmp
-      nvim-colorizer-lua
       nvim-dap
       nvim-dap-python
       nvim-dap-ui
@@ -112,14 +111,12 @@
       nvim-lspconfig
       nvim-navic
       nvim-notify
-      nvim-scrollbar
       nvim-surround
       nvim-terminal-lua
       (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
       nvim-ts-context-commentstring
       nvim-web-devicons
       rust-tools-nvim
-      specs-nvim
       telescope-file-browser-nvim
       telescope-nvim
       todo-comments-nvim

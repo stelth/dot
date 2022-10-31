@@ -27,12 +27,3 @@ vim.api.nvim_create_autocmd({ "InsertEnter", "WinLeave" }, {
     end
   end,
 })
-
-vim.api.nvim_create_autocmd("ColorScheme", {
-  pattern = "*",
-  callback = function()
-    package.loaded["colorizer"] = nil
-    require("colorizer").setup()
-    require("colorizer").attach_to_buffer(0)
-  end,
-})

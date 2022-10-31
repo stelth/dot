@@ -53,24 +53,6 @@ tokyonight.setup({
 tokyonight.load()
 local colors = require("tokyonight.colors").setup()
 
-require("colorizer").setup({
-  user_default_options = {
-    RGB = true, -- #RGB hex codes
-    RRGGBB = true, -- #RRGGBB hex codes
-    names = false, -- "Name" codes like Blue
-    RRGGBBAA = true, -- #RRGGBBAA hex codes
-    AARRGGBB = false, -- 0xAARRGGBB hex codes
-    rgb_fn = true, -- CSS rgb() and rgba() functions
-    hsl_fn = true, -- CSS hsl() and hsla() functions
-    css = false, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-    css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
-    -- Available modes: foreground, background
-    -- Available modes for `mode`: foreground, background,  virtualtext
-    mode = "background", -- Set the display mode.
-    virtualtext = "■",
-  },
-})
-
 require("Comment").setup({
   pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
 })
@@ -209,20 +191,6 @@ require("nvim-navic").setup({
 
 require("terminal").setup({})
 
-require("scrollbar").setup({
-  handle = {
-    color = colors.bg_highlight,
-  },
-  marks = {
-    Search = { color = colors.orange },
-    Error = { color = colors.error },
-    Warn = { color = colors.warning },
-    Info = { color = colors.info },
-    Hint = { color = colors.hint },
-    Misc = { color = colors.purple },
-  },
-})
-
 require("luasnip").config.set_config({
   history = true,
   enable_autosnippets = true,
@@ -296,22 +264,6 @@ require("illuminate").configure({ delay = 200 })
 vim.g.matchup_matchparen_offscreen = {
   method = "status_manual",
 }
-
-require("specs").setup({
-  show_jumps = true,
-  min_jump = 10,
-  popup = {
-    delay_ms = 0, -- delay before popup displays
-    inc_ms = 20, -- time increments used for fade/resize effects
-    blend = 10, -- starting blend, between 0-100 (fully transparent), see :h winblend
-    width = 20,
-    winhl = "PMenu",
-    fader = require("specs").linear_fader,
-    resizer = require("specs").shrink_resizer,
-  },
-  ignore_filetypes = {},
-  ignore_buftypes = { nofile = true },
-})
 
 require("yanky").setup({
   highlight = {
