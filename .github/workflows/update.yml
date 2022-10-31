@@ -11,38 +11,23 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    name: Update flake.lock
     steps:
-      # - uses: styfle/cancel-workflow-action@0.7.0
-      #   with:
-      #     access_token: ${{ github.token }}
       - uses: actions/checkout@v3
         with:
-          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
-          fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
-      - uses: cachix/install-nix-action@v18
+          ref: ${{ github.head_ref }}
+      - uses: cachix/install-nix-action@v17
         with:
+          nix_path: nixpkgs=channel:nixos-unstable
           extra_nix_config: |
-            experimental-features = nix-command flakes
-      - name: Prepare flakebot branch
-        run: |
-          git config --local user.email "flakebot@users.noreply.github.com"
-          git config --local user.name "flakebot"
-          git checkout -B flakebot
-      - name: Update and commit lockfile
-        run: nix flake update --commit-lock-file
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: flakebot
-          force: true
-      - name: pull-request-action
-        uses: vsoch/pull-request-action@1.0.22
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+      - run: nix flake update --commit-lockfile
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PULL_REQUEST_FROM_BRANCH: "flakebot"
-          PULL_REQUEST_BRANCH: "master"
-          MAINTAINER_CANT_MODIFY: true
-          PASS_IF_EXISTS: true
-          PASS_ON_ERROR: true
-          PULL_REQUEST_TITLE: "Update Flake Inputs"
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_user_name: pluginbot
+          commit_user_email: pluginbot@users.noreply.github.com
+          commit_author: Jason Cox <steel300@gmail.com>
+          commit_message: "chore(plugins): auto update plugins"
+          push_options: "--force"
