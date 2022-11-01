@@ -14,10 +14,6 @@ telescope.setup({
     mappings = {
       i = {
         ["<C-t>"] = trouble.open_with_trouble,
-        ["<C-x>"] = false,
-        ["<C-q>"] = require("telescope.actions").send_to_qflist,
-        ["<C-Down"] = require("telescope.actions").cycle_history_next,
-        ["<C-Up>"] = require("telescope.actions").cycle_history_prev,
       },
     },
   },
