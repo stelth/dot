@@ -111,7 +111,7 @@
       nvim-notify
       nvim-surround
       nvim-terminal-lua
-      (nvim-treesitter.withPlugins (plugins: pkgs.tree-sitter.allGrammars))
+      nvim-treesitter
       nvim-ts-context-commentstring
       nvim-web-devicons
       rust-tools-nvim
