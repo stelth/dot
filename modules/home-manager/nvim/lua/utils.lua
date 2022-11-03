@@ -23,4 +23,15 @@ M.toggle = function(option, silent)
   end
 end
 
+local oldNotify = vim.notify
+
+M.setup_notify = function()
+  vim.notify = function(msg, log_level, opts)
+    if msg:match("offset_encodings") then
+      return
+    end
+    oldNotify(msg, log_level, opts)
+  end
+end
+
 return M
