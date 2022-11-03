@@ -51,44 +51,6 @@ local keymaps = {
     ["<C-k>"] = { vim.cmd.cnext, "" },
     ["<C-j>"] = { vim.cmd.cprev, "" },
     ["<BS>"] = { vim.cmd.nohlsearch, "" },
-    ["]]"] = {
-      function()
-        require("illuminate").goto_next_reference(false)
-      end,
-      "Go to Next Reference",
-    },
-    ["[["] = {
-      function()
-        require("illuminate").goto_prev_reference(false)
-      end,
-      "Go to Previous Reference",
-    },
-    y = {
-      { "<Plug>(YankyYank)", "Yank" },
-      { "<Plug>(YankyYank)", "Yank", mode = "x" },
-    },
-    p = {
-      { "<Plug>(YankyPutAfter)", "Yank Put After" },
-      { "<Plug>(YankyPutAfter)", "Yank Put After", mode = "x" },
-    },
-    P = {
-      { "<Plug>(YankyPutBefore)", "Yank Put Before" },
-      { "<Plug>(YankyPutBefore)", "Yank Put Before", mode = "x" },
-    },
-    g = {
-      p = {
-        { "<Plug>(YankyGPutAfter)", "Yank G Put After" },
-        { "<Plug>(YankyGPutAfter)", "Yank G Put After", mode = "x" },
-      },
-      P = {
-        { "<Plug>(YankyGPutBefore)", "Yank G Put Before" },
-        { "<Plug>(YankyGPutBefore)", "Yank G Put Before", mode = "x" },
-      },
-    },
-    ["<C-y>"] = { "<Plug>(YankyCycleForward)", "Yank Cycle Forward" },
-    ["<C-p>"] = { "<Plug>(YankyCycleBackward)", "Yank Cycle Backwards" },
-    ["]p"] = { "<Plug>(YankyPutAfterFilter)", "Yank Put After Filter" },
-    ["[p"] = { "<Plug>(YankyPutBeforeFilter)", "Yank Put Before Filter" },
     ["<C-BS>"] = {
       function()
         tasks.cancel()

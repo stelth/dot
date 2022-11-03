@@ -184,21 +184,9 @@ require("nvim-treesitter.configs").setup({
   indent = { enable = true },
 })
 
-require("illuminate").configure({ delay = 200 })
-
 vim.g.matchup_matchparen_offscreen = {
   method = "status_manual",
 }
-
-require("yanky").setup({
-  highlight = {
-    timer = 150,
-  },
-  ring = {
-    storage = "sqlite",
-  },
-})
-require("telescope").load_extension("yank_history")
 
 require("toggleterm").setup({
   size = 20,

@@ -114,10 +114,8 @@
       vim-dadbod
       vim-dadbod-completion
       vim-dadbod-ui
-      vim-illuminate
       vim-matchup
       which-key-nvim
-      yanky-nvim
     ];
   };
 }
