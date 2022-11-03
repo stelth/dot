@@ -44,6 +44,26 @@ local keymaps = {
     key = "l",
     callback = hs.caffeinate.lockScreen,
   },
+  ["Load Default Setup"] = {
+    mods = hyper,
+    key = "i",
+    callback = function()
+      local initialApps = {
+        "Brave Browser",
+        "Firefox Developer Edition",
+        "kitty",
+        "Microsoft Outlook",
+        "Slack",
+        "Discord",
+      }
+
+      for _, app in ipairs(initialApps) do
+        hs.application.launchOrFocus(app)
+      end
+
+      hs.alert.show("Launched all applications")
+    end,
+  },
 }
 
 for name, options in pairs(keymaps) do
