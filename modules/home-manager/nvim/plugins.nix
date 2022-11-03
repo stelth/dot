@@ -84,7 +84,6 @@
       gitsigns-nvim
       glow-nvim
       impatient-nvim
-      indent-blankline-nvim
       inlay-hints-nvim
       lspkind-nvim
       lualine-nvim
