@@ -92,10 +92,6 @@ require("inlay-hints").setup({
   renderer = "inlay-hints/render/eol",
 })
 
-require("neogen").setup({
-  snippet_engine = "luasnip",
-})
-
 require("terminal").setup({})
 
 require("luasnip").config.set_config({
@@ -105,10 +101,6 @@ require("luasnip").config.set_config({
 })
 
 require("luasnip/loaders/from_vscode").lazy_load()
-
-require("tasks").setup({
-  dap_open_command = require("dapui").open,
-})
 
 require("nvim-autopairs").setup({
   check_ts = true,

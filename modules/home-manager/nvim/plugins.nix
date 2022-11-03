@@ -89,8 +89,6 @@
       lualine-nvim
       luasnip
       neodev-nvim
-      neogen
-      neovim-tasks
       null-ls-nvim
       nvim-autopairs
       nvim-cmp
