@@ -79,16 +79,11 @@
       cmp-path
       cmp_luasnip
       comment-nvim
-      dial-nvim
-      diffview-nvim
       dressing-nvim
       friendly-snippets
       gitsigns-nvim
       glow-nvim
-      hlargs-nvim
       impatient-nvim
-      inc-rename-nvim
-      incline-nvim
       indent-blankline-nvim
       inlay-hints-nvim
       lspkind-nvim
@@ -97,7 +92,6 @@
       neodev-nvim
       neogen
       neovim-tasks
-      noice-nvim
       null-ls-nvim
       nvim-autopairs
       nvim-cmp
@@ -107,8 +101,6 @@
       nvim-dap-virtual-text
       nvim-jdtls
       nvim-lspconfig
-      nvim-navic
-      nvim-notify
       nvim-surround
       nvim-terminal-lua
       nvim-treesitter
@@ -117,20 +109,15 @@
       rust-tools-nvim
       telescope-file-browser-nvim
       telescope-nvim
-      todo-comments-nvim
       toggleterm-nvim
       tokyonight-nvim
-      trouble-nvim
-      twilight-nvim
       vim-dadbod
       vim-dadbod-completion
       vim-dadbod-ui
       vim-illuminate
       vim-matchup
       which-key-nvim
-      windows-nvim
       yanky-nvim
-      zen-mode-nvim
     ];
   };
 }

@@ -51,25 +51,10 @@ tokyonight.setup({
   end,
 })
 tokyonight.load()
-local colors = require("tokyonight.colors").setup()
 
 require("Comment").setup({
   pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
 })
-
-local augend = require("dial.augend")
-
-require("dial.config").augends:register_group({
-  default = {
-    augend.integer.alias.decimal,
-    augend.integer.alias.hex,
-    augend.date.alias["%Y/%m/%d"],
-    augend.constant.alias.bool,
-    augend.semver.alias.semver,
-  },
-})
-
-require("diffview").setup({})
 
 require("gitsigns").setup({
   signs = {
@@ -102,48 +87,6 @@ require("gitsigns").setup({
 })
 
 require("glow").setup({})
-
-require("hlargs").setup({
-  color = require("tokyonight.colors").setup().yellow,
-  excluded_argnames = {
-    usages = {
-      lua = { "self", "use" },
-    },
-  },
-})
-
-require("inc_rename").setup()
-
-require("incline").setup({
-  highlight = {
-    groups = {
-      InclineNormal = {
-        guibg = "#FC56B1",
-        guifg = colors.black,
-        -- gui = "bold",
-      },
-      InclineNormalNC = {
-        guifg = "#FC56B1",
-        guibg = colors.black,
-      },
-    },
-  },
-  window = {
-    margin = {
-      vertical = 0,
-      horizontal = 1,
-    },
-  },
-  render = function(props)
-    local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
-    local icon, color = require("nvim-web-devicons").get_icon_color(filename)
-    return {
-      { icon, guifg = color },
-      { " " },
-      { filename },
-    }
-  end,
-})
 
 require("indent_blankline").setup({
   viewport_buffer = 100,
@@ -179,12 +122,6 @@ require("neogen").setup({
   snippet_engine = "luasnip",
 })
 
-require("nvim-navic").setup({
-  separator = " ",
-  highlight = true,
-  depth_limit = 5,
-})
-
 require("terminal").setup({})
 
 require("luasnip").config.set_config({
@@ -199,52 +136,11 @@ require("tasks").setup({
   dap_open_command = require("dapui").open,
 })
 
-require("noice").setup({
-  presets = {
-    command_palette = true,
-    long_message_to_split = true,
-    inc_rename = true,
-    lsp_doc_border = true,
-  },
-  routes = {
-    {
-      filter = {
-        warning = true,
-        find = "offset_encodings",
-      },
-      opts = {
-        skip = true,
-      },
-    },
-  },
-  lsp = {
-    override = {
-      ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-      ["vim.lsp.util.stylize_markdown"] = true,
-      ["cmp.entry.get_documentation"] = true,
-    },
-  },
-  lsp_progress = {
-    enabled = true,
-  },
-})
-
 require("nvim-autopairs").setup({
   check_ts = true,
   ts_config = {
     lua = { "string", "comment" },
   },
-})
-
-require("notify").setup({
-  level = vim.log.levels.INFO,
-  fps = 20,
-  max_height = function()
-    return math.floor(vim.o.lines * 0.75)
-  end,
-  max_width = function()
-    return math.floor(vim.o.columns * 0.75)
-  end,
 })
 
 require("nvim-surround").setup({})
@@ -255,7 +151,33 @@ vim.opt.runtimepath:append(parser_dir)
 
 require("nvim-treesitter.configs").setup({
   parser_install_dir = parser_dir,
-  ensure_installed = "all",
+  ensure_installed = {
+    "bash",
+    "c",
+    "cmake",
+    "comment",
+    "cpp",
+    "diff",
+    "dockerfile",
+    "git_rebase",
+    "gitattributes",
+    "gitignore",
+    "go",
+    "java",
+    "json",
+    "lua",
+    "make",
+    "markdown",
+    "markdown_inline",
+    "nix",
+    "python",
+    "regex",
+    "rust",
+    "sql",
+    "toml",
+    "vim",
+    "yaml",
+  },
   highlight = { enable = true },
   incremental_selection = { enable = true },
   textobjects = { enable = true },
@@ -278,14 +200,6 @@ require("yanky").setup({
 })
 require("telescope").load_extension("yank_history")
 
-require("todo-comments").setup({
-  keywords = {
-    TODO = {
-      alt = { "WIP" },
-    },
-  },
-})
-
 require("toggleterm").setup({
   size = 20,
   hide_numbers = true,
@@ -299,29 +213,6 @@ require("toggleterm").setup({
 })
 -- Esc twice to get to normal mode
 vim.cmd([[tnoremap <esc><esc> <C-\><C-N>]])
-
-require("trouble").setup({
-  auto_open = false,
-  use_diagnostic_signs = true,
-})
-
-vim.o.winwidth = 5
-vim.o.winminwidth = 5
-vim.o.equalalways = false
-require("windows").setup({
-  animation = {
-    duration = 150,
-  },
-})
-
-require("zen-mode").setup({
-  plugins = {
-    kitty = {
-      enabled = false,
-      font = "+2",
-    },
-  },
-})
 
 require("plugins.lualine")
 require("plugins.nvim-cmp")

@@ -23,22 +23,4 @@ M.toggle = function(option, silent)
   end
 end
 
-local notify = {
-  old = vim.notify,
-  lazy = nil,
-}
-
-notify.lazy = function(...)
-  local args = { ... }
-  vim.defer_fn(function()
-    if vim.notify == notify.lazy then
-      notify.old(unpack(args))
-    else
-      vim.notify(unpack(args))
-    end
-  end, 300)
-end
-
-M.notify = notify.lazy
-
 return M

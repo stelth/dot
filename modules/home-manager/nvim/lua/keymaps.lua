@@ -51,8 +51,6 @@ local keymaps = {
     ["<C-k>"] = { vim.cmd.cnext, "" },
     ["<C-j>"] = { vim.cmd.cprev, "" },
     ["<BS>"] = { vim.cmd.nohlsearch, "" },
-    ["<C-i>"] = { require("dial.map").inc_normal, "" },
-    ["<C-x>"] = { require("dial.map").dec_normal, "" },
     ["]]"] = {
       function()
         require("illuminate").goto_next_reference(false)
@@ -167,7 +165,6 @@ local keymaps = {
       c = { telescope_builtin.git_commits, "Commits" },
       b = { telescope_builtin.git_branches, "Branches" },
       s = { telescope_builtin.git_status, "Status" },
-      d = { vim.cmd.DiffviewOpen, "DiffView" },
       h = {
         name = "+hunk",
         s = {
@@ -406,25 +403,9 @@ local keymaps = {
     [":"] = { telescope_builtin.command_history, "Command History" },
     x = {
       name = "+errors",
-      x = {
-        function()
-          vim.cmd.TroubleToggle({ "workspace_diagnostics" })
-        end,
-        "Trouble",
-      },
-      t = { vim.cmd.TodoTrouble, "Todo Trouble" },
-      tt = {
-        function()
-          vim.cmd.TodoTrouble({ "keywords=TODO,FIX,FIXME" })
-        end,
-        "Todo Trouble",
-      },
-      T = { vim.cmd.TodoTelescope, "Todo Telescope" },
       l = { vim.cmd.lopen, "Open Location List" },
       q = { vim.cmd.copen, "Open Quickfix List" },
     },
-    z = { vim.cmd.ZenMode, "Zen Mode" },
-    Z = { vim.cmd.WindowsMaximize, "Maximize Window" },
     k = { vim.cmd.lnext, "" },
     j = { vim.cmd.lprev, "" },
     P = {
