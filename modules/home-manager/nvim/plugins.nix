@@ -100,11 +100,10 @@
       nvim-lspconfig
       nvim-surround
       nvim-terminal-lua
-      nvim-treesitter
+      (nvim-treesitter.withPlugins (plugins: nvim-treesitter.allGrammars))
       nvim-ts-context-commentstring
       nvim-web-devicons
       rust-tools-nvim
-      telescope-file-browser-nvim
       telescope-nvim
       toggleterm-nvim
       tokyonight-nvim

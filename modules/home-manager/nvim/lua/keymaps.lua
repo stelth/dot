@@ -226,7 +226,6 @@ local keymaps = {
         "Line Numbers",
       },
     },
-    ["."] = { require("telescope").extensions.file_browser.file_browser, "Browse Files" },
     [","] = {
       function()
         telescope_builtin.buffers({ show_all_buffers = true })

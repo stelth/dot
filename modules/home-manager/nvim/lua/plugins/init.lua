@@ -111,39 +111,7 @@ require("nvim-autopairs").setup({
 
 require("nvim-surround").setup({})
 
-local parser_dir = vim.fn.expand("~/.local/treesitter")
-
-vim.opt.runtimepath:append(parser_dir)
-
 require("nvim-treesitter.configs").setup({
-  parser_install_dir = parser_dir,
-  ensure_installed = {
-    "bash",
-    "c",
-    "cmake",
-    "comment",
-    "cpp",
-    "diff",
-    "dockerfile",
-    "git_rebase",
-    "gitattributes",
-    "gitignore",
-    "go",
-    "java",
-    "json",
-    "lua",
-    "make",
-    "markdown",
-    "markdown_inline",
-    "nix",
-    "python",
-    "regex",
-    "rust",
-    "sql",
-    "toml",
-    "vim",
-    "yaml",
-  },
   highlight = { enable = true },
   incremental_selection = { enable = true },
   textobjects = { enable = true },
