@@ -207,16 +207,6 @@
           tmux-sessionizer
           ;
       };
-      cppcheck = final: prev: rec {
-        cppcheck = prev.cppcheck.overrideAttrs (old: {
-          src = prev.fetchFromGitHub {
-            owner = "danmar";
-            repo = "cppcheck";
-            rev = old.version;
-            hash = "sha256-bKZOAGInks26NmzlKo1T8NREO9xoF8ZsssNDzyTJwlU=";
-          };
-        });
-      };
       devshell = inputs.devshell.overlay;
       neovim-nightly = inputs.neovim-nightly-overlay.overlay;
       vim-extra-plugins = inputs.vim-extra-plugins.overlays.default;
