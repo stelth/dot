@@ -15,6 +15,7 @@ vim.opt.conceallevel = 3
 vim.opt.cmdheight = 1
 vim.opt.colorcolumn = "80"
 vim.opt.cursorline = true
+vim.opt.diffopt:append("linematch:60")
 vim.opt.errorbells = false
 vim.opt.expandtab = true
 vim.opt.formatoptions = "jcroqlnt"
