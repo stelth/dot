@@ -6,13 +6,13 @@
 }:
 buildDotnetModule rec {
   pname = "marksman";
-  version = "2022-09-13";
+  version = "2022-10-30";
 
   src = fetchFromGitHub {
     owner = "artempyanykh";
     repo = "marksman";
     rev = version;
-    sha256 = "sha256-87XuapUeeIw+MQ8rosiG7p6SVNOmflBsb3CcvfaUdCU=";
+    sha256 = "sha256-Ko/dHV0mxRYukr9vdQD7HSDOYdqfc/DcuU8XPCYkSWA=";
   };
 
   patches = [./patches/0001-revert-embed-git-commit-into-the-version.patch];
