@@ -82,7 +82,6 @@
       dressing-nvim
       friendly-snippets
       gitsigns-nvim
-      glow-nvim
       impatient-nvim
       inlay-hints-nvim
       lspkind-nvim

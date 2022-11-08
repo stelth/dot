@@ -263,7 +263,6 @@ local keymaps = {
     },
     o = {
       name = "+open",
-      g = { vim.cmd.Glow, "Glow" },
     },
   },
 }

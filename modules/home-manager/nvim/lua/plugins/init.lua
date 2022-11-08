@@ -55,8 +55,6 @@ require("gitsigns").setup({
   },
 })
 
-require("glow").setup({})
-
 require("inlay-hints").setup({
   renderer = "inlay-hints/render/eol",
 })
