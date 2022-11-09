@@ -222,12 +222,18 @@
               if final.stdenv.isDarwin
               then "config_mac"
               else "config_linux";
+            configSSDir =
+              if final.stdenv.isDarwin
+              then "config_ss_mac"
+              else "config_ss_linux";
           in ''
             # Copy jars
             install -D -t $out/plugins/ plugins/*.jar
+            install -D -t $out/features/ features/*.jar
 
             # Copy config directories
             install -Dm 444 -t $out/${configDir} ${configDir}/*
+            install -Dm 444 -t $out/${configSSDir} ${configSSDir}/*
 
             # Copy official wrapper script
             install -Dm 755 -t $out/bin/ bin/*
