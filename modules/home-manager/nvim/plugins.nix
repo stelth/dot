@@ -95,7 +95,6 @@
       nvim-dap-python
       nvim-dap-ui
       nvim-dap-virtual-text
-      nvim-jdtls
       nvim-lspconfig
       nvim-surround
       nvim-terminal-lua

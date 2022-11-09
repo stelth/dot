@@ -39,6 +39,8 @@ lspconfig.gopls.setup(make_config({
   },
 }))
 
+lspconfig.jdtls.setup(make_config({}))
+
 lspconfig.jsonls.setup(make_config({
   cmd = { "vscode-json-languageserver", "--stdio" },
 }))

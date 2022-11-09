@@ -11,10 +11,6 @@
       recursive = true;
       source = ./lua;
     };
-    "nvim/ftplugin" = {
-      recursive = true;
-      source = ./ftplugin;
-    };
   };
 
   programs.neovim = {

@@ -207,6 +207,33 @@
           tmux-sessionizer
           ;
       };
+      jdt-language-server = final: prev: {
+        jdt-language-server = prev.jdt-language-server.overrideAttrs (_: rec {
+          version = "1.17.0";
+          timestamp = "202210271413";
+
+          src = final.fetchurl {
+            url = "https://download.eclipse.org/jdtls/milestones/${version}/jdt-language-server-${version}-${timestamp}.tar.gz";
+            sha256 = "sha256-3NVzL3o/8LXR94/3Yma42XHfwNEFEVrmUijkeMs/vL0=";
+          };
+
+          installPhase = let
+            configDir =
+              if final.stdenv.isDarwin
+              then "config_mac"
+              else "config_linux";
+          in ''
+            # Copy jars
+            install -D -t $out/plugins/ plugins/*.jar
+
+            # Copy config directories
+            install -Dm 444 -t $out/${configDir} ${configDir}/*
+
+            # Copy official wrapper script
+            install -Dm 755 -t $out/bin/ bin/*
+          '';
+        });
+      };
       devshell = inputs.devshell.overlay;
       neovim-nightly = inputs.neovim-nightly-overlay.overlay;
       vim-extra-plugins = inputs.vim-extra-plugins.overlays.default;
