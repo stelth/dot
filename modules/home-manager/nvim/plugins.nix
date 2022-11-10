@@ -88,6 +88,7 @@
       lualine-nvim
       luasnip
       neodev-nvim
+      noice-nvim
       null-ls-nvim
       nvim-autopairs
       nvim-cmp
