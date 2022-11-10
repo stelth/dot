@@ -83,6 +83,7 @@
       friendly-snippets
       gitsigns-nvim
       impatient-nvim
+      inc-rename-nvim
       inlay-hints-nvim
       lspkind-nvim
       lualine-nvim

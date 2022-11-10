@@ -53,6 +53,8 @@ require("gitsigns").setup({
   },
 })
 
+require("inc_rename").setup()
+
 require("inlay-hints").setup({
   renderer = "inlay-hints/render/eol",
 })
@@ -69,6 +71,7 @@ require("luasnip/loaders/from_vscode").lazy_load()
 
 require("noice").setup({
   presets = {
+    bottom_search = true,
     command_palette = true,
     long_message_to_split = true,
     inc_rename = true,

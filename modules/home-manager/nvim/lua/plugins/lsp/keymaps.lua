@@ -8,7 +8,14 @@ M.keymap_callback = function(client, bufnr)
     ["<leader>"] = {
       c = {
         name = "+code",
-        r = { vim.lsp.buf.rename, "Rename", cond = cap.renameProvider },
+        r = {
+          function()
+            return ":IncRename " .. vim.fn.expand("<cword>")
+          end,
+          "Rename",
+          cond = cap.renameProvider,
+          expr = true,
+        },
         a = {
           { vim.lsp.buf.code_action, "Code Action" },
           { vim.lsp.buf.code_action, "Code Action", mode = "v" },
