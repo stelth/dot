@@ -217,26 +217,9 @@
             sha256 = "sha256-3NVzL3o/8LXR94/3Yma42XHfwNEFEVrmUijkeMs/vL0=";
           };
 
-          installPhase = let
-            configDir =
-              if final.stdenv.isDarwin
-              then "config_mac"
-              else "config_linux";
-            configSSDir =
-              if final.stdenv.isDarwin
-              then "config_ss_mac"
-              else "config_ss_linux";
-          in ''
-            # Copy jars
-            install -D -t $out/plugins/ plugins/*.jar
-            install -D -t $out/features/ features/*.jar
-
-            # Copy config directories
-            install -Dm 444 -t $out/${configDir} ${configDir}/*
-            install -Dm 444 -t $out/${configSSDir} ${configSSDir}/*
-
-            # Copy official wrapper script
-            install -Dm 755 -t $out/bin/ bin/*
+          installPhase = ''
+            find . -type f -exec install -Dm444 "{}" "$out/{}" \;
+            chmod 755 $out/bin/*
           '';
         });
       };
