@@ -11,3 +11,5 @@ telescope.setup({
     qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
   },
 })
+
+telescope.load_extension("fzf")

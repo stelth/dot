@@ -104,6 +104,7 @@
       nvim-ts-context-commentstring
       nvim-web-devicons
       rust-tools-nvim
+      telescope-fzf-native-nvim
       telescope-nvim
       toggleterm-nvim
       tokyonight-nvim
