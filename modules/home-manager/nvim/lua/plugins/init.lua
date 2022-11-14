@@ -3,14 +3,8 @@ tokyonight.setup({
   style = "moon",
   sidebars = {
     "qf",
-    "vista_kind",
     "terminal",
-    "packer",
-    "spectre_panel",
-    "NeogitStatus",
     "help",
-    "startuptime",
-    "Outline",
   },
   on_highlights = function(hl, c)
     -- make the current line cursor orange
