@@ -15,7 +15,6 @@
       cp = "cp -riv";
       mkdir = "mkdir -vp";
       l = "ll";
-      ncdu = "ncdu --color dark";
       vim = "nvim";
       vi = "nvim";
       v = "nvim";

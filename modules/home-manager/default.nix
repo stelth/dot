@@ -43,7 +43,6 @@ in {
       grc
       less
       manix
-      ncdu
       nix
       parallel
       pfetch
