@@ -79,7 +79,6 @@
       cmp-nvim-lsp
       cmp-path
       cmp_luasnip
-      comment-nvim
       dressing-nvim
       friendly-snippets
       gitsigns-nvim
@@ -90,17 +89,20 @@
       lspkind-nvim
       lualine-nvim
       luasnip
+      mini-ai
+      mini-comment
+      mini-jump
+      mini-pairs
+      mini-surround
       neodev-nvim
       noice-nvim
       null-ls-nvim
-      nvim-autopairs
       nvim-cmp
       nvim-dap
       nvim-dap-python
       nvim-dap-ui
       nvim-dap-virtual-text
       nvim-lspconfig
-      nvim-surround
       nvim-terminal-lua
       (nvim-treesitter.withPlugins (plugins: nvim-treesitter.allGrammars))
       nvim-treesitter-context

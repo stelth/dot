@@ -10,6 +10,7 @@ require("catppuccin").setup({
       enabled = true,
       colored_indent_levels = true,
     },
+    mini = true,
     native_lsp = {
       enabled = true,
       virtual_text = {
@@ -33,10 +34,6 @@ require("catppuccin").setup({
   },
 })
 vim.cmd.colorscheme("catppuccin")
-
-require("Comment").setup({
-  pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
-})
 
 require("gitsigns").setup({})
 
@@ -89,12 +86,6 @@ require("noice").setup({
   },
 })
 
-require("nvim-autopairs").setup({
-  check_ts = true,
-})
-
-require("nvim-surround").setup({})
-
 require("nvim-treesitter.configs").setup({
   highlight = { enable = true },
   incremental_selection = { enable = true },
@@ -123,6 +114,7 @@ require("toggleterm").setup({
 vim.cmd([[tnoremap <esc><esc> <C-\><C-N>]])
 
 require("plugins.lualine")
+require("plugins.mini")
 require("plugins.nvim-cmp")
 require("plugins.nvim-dap")
 require("plugins.telescope-nvim")
