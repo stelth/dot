@@ -1,13 +1,13 @@
 require("lualine").setup({
   options = {
     theme = "auto",
-    section_separators = { left = "", right = "" },
+    section_separators = { left = "", right = "" },
     component_separators = { left = "", right = "" },
     icons_enabled = true,
     globalstatus = true,
   },
   sections = {
-    lualine_a = { "mode" },
+    lualine_a = { { "mode", separator = { left = "" } } },
     lualine_b = { "branch" },
     lualine_c = {
       { "diagnostics", sources = { "nvim_diagnostic" } },
