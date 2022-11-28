@@ -1,17 +1,4 @@
-local tokyonight = require("tokyonight")
-tokyonight.setup({
-  style = "moon",
-  sidebars = {
-    "qf",
-    "terminal",
-    "help",
-  },
-  on_highlights = function(hl, c)
-    -- make the current line cursor orange
-    hl.CursorLineNr = { fg = c.orange, bold = true }
-  end,
-})
-tokyonight.load()
+vim.cmd.colorscheme("catppuccin")
 
 require("Comment").setup({
   pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),

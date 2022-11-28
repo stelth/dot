@@ -71,6 +71,7 @@
 
   programs.neovim = {
     plugins = with pkgs.vimExtraPlugins; [
+      catppuccin
       cmp-buffer
       cmp-calc
       cmp-dap
@@ -107,7 +108,6 @@
       telescope-fzf-native-nvim
       telescope-nvim
       toggleterm-nvim
-      tokyonight-nvim
       vim-dadbod
       vim-dadbod-completion
       vim-dadbod-ui

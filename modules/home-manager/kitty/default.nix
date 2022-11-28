@@ -7,7 +7,7 @@
     enable = true;
     package = pkgs.kitty;
     font = {name = "DejaVuSansMono Nerd Font";};
-    theme = "Tokyo Night";
+    theme = "Catppuccin-Mocha";
     settings = {
       allow_remote_control = "socket-only";
       bold_font = "FiraCode Nerd Font Mono Bold";
