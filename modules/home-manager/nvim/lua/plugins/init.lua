@@ -102,6 +102,8 @@ require("nvim-treesitter.configs").setup({
   indent = { enable = true },
 })
 
+require("treesitter-context").setup()
+
 vim.g.matchup_matchparen_offscreen = {
   method = "status_manual",
 }

@@ -103,6 +103,7 @@
       nvim-surround
       nvim-terminal-lua
       (nvim-treesitter.withPlugins (plugins: nvim-treesitter.allGrammars))
+      nvim-treesitter-context
       nvim-ts-context-commentstring
       nvim-web-devicons
       rust-tools-nvim
