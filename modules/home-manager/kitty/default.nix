@@ -6,12 +6,12 @@
   programs.kitty = {
     enable = true;
     package = pkgs.kitty;
-    font = {name = "DejaVuSansMono Nerd Font";};
+    font = {name = "FiraCode Nerd Font";};
     theme = "Catppuccin-Mocha";
     settings = {
       allow_remote_control = "socket-only";
-      bold_font = "FiraCode Nerd Font Mono Bold";
-      bold_italic_font = "VictorMono Nerd Font Mono Bold Italic";
+      bold_font = "Fira Code Bold Nerd Font Complete";
+      bold_italic_font = "Victor Mono Bold Italic Nerd Font Complete";
       copy_on_select = true;
       disable_ligatures = "always";
       dynamic_background_opacity = true;
@@ -19,7 +19,7 @@
       font_size = 11;
       hide_window_decorations = "titlebar-only";
       inactive_border_color = "#ff0000";
-      italic_font = "VictorMono Nerd Font Mono Medium Italic";
+      italic_font = "Victor Mono Medium Italic Nerd Font Complete";
       kitty_mod = "cmd+shift";
       listen_on = "unix:/tmp/kitty";
       macos_option_as_alt = true;
