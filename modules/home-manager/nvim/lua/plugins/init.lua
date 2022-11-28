@@ -30,6 +30,7 @@ require("catppuccin").setup({
     notify = true,
     telescope = true,
     treesitter = true,
+    treesitter_context = true,
     which_key = true,
   },
 })
@@ -93,7 +94,7 @@ require("nvim-treesitter.configs").setup({
   indent = { enable = true },
 })
 
-require("treesitter-context").setup()
+require("treesitter-context").setup({})
 
 vim.g.matchup_matchparen_offscreen = {
   method = "status_manual",
