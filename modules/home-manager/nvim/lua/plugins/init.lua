@@ -42,6 +42,8 @@ require("gitsigns").setup({})
 
 require("inc_rename").setup()
 
+require("indent_blankline").setup({})
+
 require("inlay-hints").setup({
   renderer = "inlay-hints/render/eol",
 })
