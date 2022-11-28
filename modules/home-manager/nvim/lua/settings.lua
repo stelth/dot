@@ -47,7 +47,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 8
 vim.opt.shiftwidth = indent
-vim.opt.shortmess:append("c")
+vim.opt.shortmess = "filnxtToOFWIcC"
 vim.opt.showmode = true
 vim.opt.sidescrolloff = 8
 vim.opt.signcolumn = "yes"
