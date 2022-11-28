@@ -9,6 +9,16 @@ telescope.setup({
     file_previewer = require("telescope.previewers").vim_buffer_cat.new,
     grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
     qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
+
+    layout_strategy = "vertical",
+    layout_config = {
+      vertical = {
+        width = 0.9,
+        height = 0.9,
+        preview_height = 0.6,
+        preview_cutoff = 0,
+      },
+    },
   },
 })
 
