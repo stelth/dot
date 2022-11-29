@@ -53,7 +53,7 @@
       if isDarwin system
       then "/Users"
       else "/home";
-    defaultSystems = ["x86_64-darwin" "x86_64-linux"];
+    defaultSystems = ["aarch64-darwin" "aarch64-linux" "x86_64-darwin" "x86_64-linux"];
 
     # generate a base darwin configuration with the
     # specified hostname, overlays, and any extraModules applied
