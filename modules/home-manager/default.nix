@@ -35,6 +35,7 @@ in {
       MANPAGER = "nvim +Man!";
       MANROFFOPT = "-c";
       NIX_GCC = "${pkgs.gcc}/bin/gcc";
+      JAVA_HOME = "${pkgs.jdk}";
     };
 
     packages = with pkgs; [
@@ -51,6 +52,7 @@ in {
       ghq
       gnused
       grc
+      jdk
       lua
       manix
       maven
@@ -80,7 +82,6 @@ in {
     jq.enable = true;
     gpg.enable = true;
     htop.enable = true;
-    java.enable = true;
     less.enable = true;
     nix-index.enable = true;
     zoxide.enable = true;
