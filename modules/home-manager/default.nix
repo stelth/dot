@@ -14,6 +14,7 @@ in {
     ./fzf.nix
     ./git.nix
     ./kitty.nix
+    ./nushell.nix
     ./nvim
     ./shell.nix
     ./ssh.nix
