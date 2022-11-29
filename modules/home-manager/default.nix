@@ -42,8 +42,10 @@ in {
       as-tree
       aspell
       bottom
+      cachix
       cargo
       cmake
+      cirrus-cli
       comma
       coreutils-full
       curl
