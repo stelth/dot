@@ -53,12 +53,12 @@
       if isDarwin system
       then "/Users"
       else "/home";
-    defaultSystems = ["aarch64-darwin" "aarch64-linux" "x86_64-darwin" "x86_64-linux"];
+    defaultSystems = ["aarch64-linux" "aarch64-darwin" "x86_64-darwin" "x86_64-linux"];
 
     # generate a base darwin configuration with the
     # specified hostname, overlays, and any extraModules applied
     mkDarwinConfig = {
-      system ? "x86_64-darwin",
+      system ? "aarch64-darwin",
       nixpkgs ? inputs.nixpkgs,
       stable ? inputs.stable,
       baseModules ? [
@@ -82,6 +82,7 @@
       hardwareModules,
       baseModules ? [
         home-manager.nixosModules.home-manager
+        ./modules/nixos
       ],
       extraModules ? [],
     }:
@@ -173,23 +174,27 @@
       };
       "jcox@aarch64-darwin" = mkDarwinConfig {
         system = "aarch64-darwin";
-        extraModules = [./profiles/work.nix ./modules/darwin/apps.nix];
+        extraModules = [./profiles/work.nix];
       };
       "jcox@x86_64-darwin" = mkDarwinConfig {
         system = "x86_64-darwin";
-        extraModules = [./profiles/work.nix ./modules/darwin/apps.nix];
+        extraModules = [./profiles/work.nix];
       };
     };
 
     nixosConfigurations = {
       "coxj@x86_64-linux" = mkNixosConfig {
         system = "x86_64-linux";
-        hardwareModules = [];
+        hardwareModules = [
+          ./modules/hardware/jason.nix
+        ];
         extraModules = [./profiles/personal.nix];
       };
       "coxj@aarch64-linux" = mkNixosConfig {
         system = "aarch64-linux";
-        hardwareModules = [];
+        hardwareModules = [
+          ./modules/hardware/jason.nix
+        ];
         extraModules = [./profiles/personal.nix];
       };
     };
@@ -205,7 +210,6 @@
         system = "aarch64-linux";
         extraModules = [./profiles/home-manager/personal.nix];
       };
-
       "coxj@x86_64-darwin" = mkHomeConfig {
         username = "coxj";
         system = "x86_64-darwin";
