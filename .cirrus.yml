@@ -15,11 +15,11 @@ build_darwin_task:
     image: $DARWIN_BUILD_IMAGE
   matrix:
     - env:
-        CIRRUS_ARCH: arm64
+        ARCH: arm64
     - env:
-        CIRRUS_ARCH: x86_64
+        ARCH: x86_64
   install_rosetta_script: softwareupdate --install-rosetta --agree-to-license
-  install_nix_script: arch -$CIRRUS_ARCH ./bin/install-nix.sh
+  install_nix_script: arch -$ARCH ./bin/install-nix.sh
   enable_trusted_users_script: echo "trusted-users = root admin" | $SUDO tee -a /etc/nix/nix.conf && sudo launchctl kickstart -k system/org.nixos.nix-daemon
   <<: *BUILD_TEMPLATE
 
@@ -30,13 +30,15 @@ build_linux_task:
         cpu: 4
         memory: 8G
       env:
-        CIRRUS_ARCH: arm64
+        ARCH: arm64
         SUDO: ""
     - container:
         image: $LINUX_BUILD_IMAGE
         cpu: 4
         memory: 8G
+      env:
+        ARCH: x86_64
   env:
-    CIRRUS_ARCH: x86_64
+    ARCH: x86_64
     SUDO: ""
   <<: *RUN_BUILD_TEMPLATE
