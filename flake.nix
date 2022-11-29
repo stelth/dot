@@ -73,6 +73,24 @@
         specialArgs = {inherit self inputs nixpkgs;};
       };
 
+    # generate a base nixos configuration with the
+    # specified overlays, hardware modules, and any extraModules applied
+    mkNixosConfig = {
+      system ? "x86_64-linux",
+      nixpkgs ? inputs.nixos-unstable,
+      stable ? inputs.stable,
+      hardwareModules,
+      baseModules ? [
+        home-manager.nixosModules.home-manager
+      ],
+      extraModules ? [],
+    }:
+      nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = baseModules ++ hardwareModules ++ extraModules;
+        specialArgs = {inherit self inputs nixpkgs;};
+      };
+
     # generate a home-manager configuration usable on any unix system
     # with overlays and any extraModules applied
     mkHomeConfig = {
@@ -102,21 +120,47 @@
         extraSpecialArgs = {inherit self inputs nixpkgs;};
         modules = baseModules ++ extraModules;
       };
-  in {
-    checks = {
-      aarch64-darwin = {
-        coxj_darwin = self.darwinConfigurations."coxj@aarch64-darwin".config.system.build.toplevel;
-        coxj_home = self.homeConfigurations."coxj@aarch64-darwin".activationPackage;
-        jcox_darwin = self.darwinConfigurations."jcox@aarch64-darwin".config.system.build.toplevel;
-        devshell = self.devShells.aarch64-darwin.default;
-      };
-      x86_64-darwin = {
-        coxj_darwin = self.darwinConfigurations."coxj@x86_64-darwin".config.system.build.toplevel;
-        coxj_home = self.homeConfigurations."coxj@x86_64-darwin".activationPackage;
-        jcox_darwin = self.darwinConfigurations."jcox@x86_64-darwin".config.system.build.toplevel;
-        devshell = self.devShells.x86_64-darwin.default;
+
+    mkChecks = {
+      arch,
+      os,
+      username ? "coxj",
+    }: {
+      "${arch}-${os}" = {
+        "${username}_${os}" =
+          (
+            if os == "darwin"
+            then self.darwinConfigurations
+            else self.nixosConfigurations
+          )
+          ."${username}@${arch}-${os}"
+          .config
+          .system
+          .build
+          .toplevel;
+        "${username}_home" = self.homeConfigurations."${username}@${arch}-${os}".activationPackage;
+        devShell = self.devShells."${arch}-${os}".default;
       };
     };
+  in {
+    checks =
+      {}
+      // (mkChecks {
+        arch = "aarch64";
+        os = "darwin";
+      })
+      // (mkChecks {
+        arch = "x86_64";
+        os = "darwin";
+      })
+      // (mkChecks {
+        arch = "aarch64";
+        os = "linux";
+      })
+      // (mkChecks {
+        arch = "x86_64";
+        os = "linux";
+      });
 
     darwinConfigurations = {
       "coxj@aarch64-darwin" = mkDarwinConfig {
@@ -137,7 +181,31 @@
       };
     };
 
+    nixosConfigurations = {
+      "coxj@x86_64-linux" = mkNixosConfig {
+        system = "x86_64-linux";
+        hardwareModules = [];
+        extraModules = [./profiles/personal.nix];
+      };
+      "coxj@aarch64-linux" = mkNixosConfig {
+        system = "aarch64-linux";
+        hardwareModules = [];
+        extraModules = [./profiles/personal.nix];
+      };
+    };
+
     homeConfigurations = {
+      "coxj@x86_64-linux" = mkHomeConfig {
+        username = "coxj";
+        system = "x86_64-linux";
+        extraModules = [./profiles/home-manager/personal.nix];
+      };
+      "coxj@aarch64-linux" = mkHomeConfig {
+        username = "coxj";
+        system = "aarch64-linux";
+        extraModules = [./profiles/home-manager/personal.nix];
+      };
+
       "coxj@x86_64-darwin" = mkHomeConfig {
         username = "coxj";
         system = "x86_64-darwin";
@@ -147,6 +215,11 @@
         username = "coxj";
         system = "aarch64-darwin";
         extraModules = [./profiles/home-manager/personal.nix];
+      };
+      "jcox@x86_64-linux" = mkHomeConfig {
+        username = "jcox";
+        system = "x86_64-linux";
+        extraModules = [./profiles/home-manager/work.nix];
       };
     };
 
