@@ -2,16 +2,16 @@ build_darwin_arm64_task:
   macos_instance:
     image: ghcr.io/cirruslabs/macos-monterey-base:latest
   install_nix_script: ./bin/install-nix.sh && echo "experimental-features = nix-command flakes" | sudo tee -a /etc/nix/nix.conf && echo "trusted-users = root admin" | sudo tee -a /etc/nix/nix.conf && sudo launchctl kickstart -k system/org.nixos.nix-daemon
-  install_cachix_script: source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh && nix-env -iA cachix -f https://cachix.org/api/v1/install && cachix use kclejeune
-  flake_check_script: source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh && cachix watch-exec kclejeune -- nix flake check -v --show-trace
+  install_cachix_script: source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh && nix-env -iA cachix -f https://cachix.org/api/v1/install
+  flake_check_script: source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh && nix flake check -v --show-trace
 
 build_darwin_x86_64_task:
   macos_instance:
     image: ghcr.io/cirruslabs/macos-monterey-base:latest
   install_rosetta_script: softwareupdate --install-rosetta --agree-to-license
   install_nix_script: arch -x86_64 ./bin/install-nix.sh && echo "experimental-features = nix-command flakes" | sudo tee -a /etc/nix/nix.conf && echo "trusted-users = root admin" | sudo tee -a /etc/nix/nix.conf && sudo launchctl kickstart -k system/org.nixos.nix-daemon
-  install_cachix_script: source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh && nix-env -iA cachix -f https://cachix.org/api/v1/install && cachix use kclejeune
-  flake_check_script: source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh && cachix watch-exec kclejeune -- nix flake check -v --show-trace
+  install_cachix_script: source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh && nix-env -iA cachix -f https://cachix.org/api/v1/install
+  flake_check_script: source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh && nix flake check -v --show-trace
 
 build_linux_task:
   matrix:
@@ -24,5 +24,5 @@ build_linux_task:
         cpu: 4
         memory: 8G
   enable_flake_script: echo "experimental-features = nix-command flakes" | tee -a /etc/nix/nix.conf
-  install_cachix_script: nix-env -iA cachix -f https://cachix.org/api/v1/install && cachix use kclejeune
-  flake_check_script: cachix watch-exec kclejeune -- nix flake check -v --show-trace
+  install_cachix_script: nix-env -iA cachix -f https://cachix.org/api/v1/install
+  flake_check_script: nix flake check -v --show-trace
