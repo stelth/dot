@@ -36,12 +36,6 @@
       sub = "submodule update --init --recursive";
       ignore = "!gi() { curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;}; gi";
     };
-    delta = {
-      enable = true;
-      options = {
-        side-by-side = false;
-        line-numbers = true;
-      };
-    };
+    difftastic.enable = true;
   };
 }
