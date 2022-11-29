@@ -8,6 +8,8 @@
 
   programs.git = {
     userName = "Jason Cox";
+    enable = true;
+    lfs = {enable = true;};
     extraConfig = {
       credential = {
         helper =
@@ -32,6 +34,7 @@
       fix = "commit --amend --no-edit";
       oops = "reset HEAD~1";
       sub = "submodule update --init --recursive";
+      ignore = "!gi() { curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;}; gi";
     };
     delta = {
       enable = true;
@@ -40,7 +43,5 @@
         line-numbers = true;
       };
     };
-
-    lfs.enable = true;
   };
 }

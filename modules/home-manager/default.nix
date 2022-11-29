@@ -6,12 +6,20 @@
 }: let
   homeDir = config.home.homeDirectory;
 in {
-  imports = [./cli ./dev ./dotfiles ./git.nix ./kitty ./nvim ./1password ./shell.nix];
-
-  programs.home-manager = {
-    enable = true;
-    path = "${config.home.homeDirectory}/dot/modules/home-manager";
-  };
+  imports = [
+    ./1password.nix
+    ./bat.nix
+    ./direnv.nix
+    ./dotfiles
+    ./fzf.nix
+    ./git.nix
+    ./kitty.nix
+    ./nvim
+    ./shell.nix
+    ./ssh.nix
+    ./starship.nix
+    ./tmux.nix
+  ];
 
   manual = {
     html.enable = false;
@@ -24,7 +32,6 @@ in {
     sessionVariables = {
       EDITOR = "nvim";
       VISUAL = "nvim";
-      JAVA_HOME = "${pkgs.openjdk.home}";
       MANPAGER = "nvim +Man!";
       MANROFFOPT = "-c";
       NIX_GCC = "${pkgs.gcc}/bin/gcc";
@@ -34,23 +41,48 @@ in {
       as-tree
       aspell
       bottom
+      cargo
+      cmake
       comma
       coreutils-full
       curl
       du-dust
+      gh
       ghq
       gnused
       grc
-      less
+      lua
       manix
+      maven
+      ninja
       nix
+      nodejs_latest
       parallel
       pfetch
-      stable.procs
       ripgrep-all
       rsync
+      rustc
+      stable.procs
       sysdo
+      tmux-cht
+      tmux-sessionizer
       tokei
     ];
+  };
+
+  programs = {
+    home-manager = {
+      enable = true;
+      path = "${config.home.homeDirectory}/dot/modules/home-manager";
+    };
+    dircolors.enable = true;
+    go.enable = true;
+    jq.enable = true;
+    gpg.enable = true;
+    htop.enable = true;
+    java.enable = true;
+    less.enable = true;
+    nix-index.enable = true;
+    zoxide.enable = true;
   };
 }
