@@ -2,10 +2,9 @@
   description = "nix system configurations";
 
   nixConfig = {
-    substituters = ["https://nix-community.cachix.org/" "https://cache.nixos.org"];
+    substituters = ["https://cache.nixos.org"];
 
     trusted-public-keys = [
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
     ];
   };
@@ -104,35 +103,47 @@
         modules = baseModules ++ extraModules;
       };
   in {
-    checks = builtins.listToAttrs ((builtins.map (system: {
-          name = system;
-          value = {
-            personal =
-              self.darwinConfigurations.personal.config.system.build.toplevel;
-            work = self.darwinConfigurations.work.config.system.build.toplevel;
-          };
-        })
-        inputs.nixpkgs.lib.platforms.darwin)
-      ++ (map (system: {
-          name = system;
-          value = {
-            personal = self.homeConfigurations.personal.activationPackage;
-          };
-        })
-        inputs.nixpkgs.lib.platforms.linux));
+    checks = {
+      aarch64-darwin = {
+        coxj_darwin = self.darwinConfigurations."coxj@aarch64-darwin".config.system.build.toplevel;
+        coxj_home = self.homeConfigurations."coxj@aarch64-darwin".activationPackage;
+        jcox_darwin = self.darwinConfigurations."jcox@aarch64-darwin".config.system.build.toplevel;
+      };
+      x86_64-darwin = {
+        coxj_darwin = self.darwinConfigurations."coxj@x86_64-darwin".config.system.build.toplevel;
+        coxj_home = self.homeConfigurations."coxj@x86_64-darwin".activationPackage;
+        jcox_darwin = self.darwinConfigurations."jcox@x86_64-darwin".config.system.build.toplevel;
+      };
+    };
 
     darwinConfigurations = {
-      personal = mkDarwinConfig {
+      "coxj@aarch64-darwin" = mkDarwinConfig {
+        system = "aarch64-darwin";
         extraModules = [./profiles/personal.nix ./modules/darwin/apps.nix];
       };
-      work = mkDarwinConfig {
+      "coxj@x86_64-darwin" = mkDarwinConfig {
+        system = "x86_64-darwin";
+        extraModules = [./profiles/personal.nix ./modules/darwin/apps.nix];
+      };
+      "jcox@aarch64-darwin" = mkDarwinConfig {
+        system = "aarch64-darwin";
+        extraModules = [./profiles/work.nix ./modules/darwin/apps.nix];
+      };
+      "jcox@x86_64-darwin" = mkDarwinConfig {
+        system = "x86_64-darwin";
         extraModules = [./profiles/work.nix ./modules/darwin/apps.nix];
       };
     };
 
     homeConfigurations = {
-      personal = mkHomeConfig {
+      "coxj@x86_64-darwin" = mkHomeConfig {
         username = "coxj";
+        system = "x86_64-darwin";
+        extraModules = [./profiles/home-manager/personal.nix];
+      };
+      "coxj@aarch64-darwin" = mkHomeConfig {
+        username = "coxj";
+        system = "aarch64-darwin";
         extraModules = [./profiles/home-manager/personal.nix];
       };
     };

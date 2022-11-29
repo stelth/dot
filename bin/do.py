@@ -31,6 +31,7 @@ is_local = check_git.returncode == 0 and os.path.isfile(
 )
 FLAKE_PATH = LOCAL_FLAKE if is_local else REMOTE_FLAKE
 
+UNAME = platform.uname()
 check_nixos = subprocess.run(
     ["/usr/bin/env", "type", "nixos-rebuild"], capture_output=True, check=False
 )
@@ -40,16 +41,20 @@ check_darwin = subprocess.run(
 if check_nixos.returncode == 0:
     # if we're on nixos, this command is built in
     PLATFORM = FlakeOutputs.NIXOS
-elif (
-    check_darwin.returncode == 0
-    or platform.uname().system.lower().strip() == "darwin".lower().strip()
-):
+elif check_darwin.returncode == 0 or UNAME.system.lower() == "darwin":
     # if we're on darwin, we might have darwin-rebuild
     # or the distro id will be 'darwin'
     PLATFORM = FlakeOutputs.DARWIN
 else:
     # in all other cases of linux
     PLATFORM = FlakeOutputs.HOME_MANAGER
+
+USERNAME = (
+    subprocess.run(["id", "-u", "--name"], capture_output=True).stdout.decode().strip()
+)
+SYSTEM_ARCH = "aarch64" if UNAME.machine == "arm64" else UNAME.machine
+SYSTEM_OS = UNAME.system.lower()
+DEFAULT_HOST = f"{USERNAME}@{SYSTEM_ARCH}-{SYSTEM_OS}"
 
 
 def fmt_command(cmd: List[str]):
@@ -95,7 +100,9 @@ def select(nixos: bool, darwin: bool, home_manager: bool):
     hidden=PLATFORM == FlakeOutputs.NIXOS,
 )
 def bootstrap(
-    host: str = typer.Argument(None, help="the hostname of the configuration to build"),
+    host: str = typer.Argument(
+        DEFAULT_HOST, help="the hostname of the configuration to build"
+    ),
     remote: bool = typer.Option(
         default=False,
         hidden=not is_local,
@@ -151,10 +158,11 @@ def bootstrap(
 
 @app.command(
     help="builds the specified flake output; infers correct platform to use if not specified",
-    no_args_is_help=True,
 )
 def build(
-    host: str = typer.Argument(None, help="the hostname of the configuration to build"),
+    host: str = typer.Argument(
+        DEFAULT_HOST, help="the hostname of the configuration to build"
+    ),
     remote: bool = typer.Option(
         default=False,
         hidden=not is_local,
@@ -272,11 +280,10 @@ def pull():
 
 @app.command(
     help="builds and activates the specified flake output; infers correct platform to use if not specified",
-    no_args_is_help=True,
 )
 def switch(
     host: str = typer.Argument(
-        default=None,
+        default=DEFAULT_HOST,
         help="the hostname of the configuration to build",
     ),
     remote: bool = typer.Option(
