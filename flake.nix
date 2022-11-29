@@ -108,11 +108,13 @@
         coxj_darwin = self.darwinConfigurations."coxj@aarch64-darwin".config.system.build.toplevel;
         coxj_home = self.homeConfigurations."coxj@aarch64-darwin".activationPackage;
         jcox_darwin = self.darwinConfigurations."jcox@aarch64-darwin".config.system.build.toplevel;
+        devshell = self.devShells.aarch64-darwin.default;
       };
       x86_64-darwin = {
         coxj_darwin = self.darwinConfigurations."coxj@x86_64-darwin".config.system.build.toplevel;
         coxj_home = self.homeConfigurations."coxj@x86_64-darwin".activationPackage;
         jcox_darwin = self.darwinConfigurations."jcox@x86_64-darwin".config.system.build.toplevel;
+        devshell = self.devShells.x86_64-darwin.default;
       };
     };
 
