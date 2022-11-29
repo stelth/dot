@@ -10,8 +10,11 @@
 
   nixpkgs.overlays = builtins.attrValues self.overlays;
 
-  programs.fish.enable = true;
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    enableBashCompletion = true;
+  };
 
   user = {
     description = "Jason Cox";
@@ -20,7 +23,7 @@
       then "/Users"
       else "/home"
     }/${config.user.name}";
-    shell = pkgs.fish;
+    shell = pkgs.zsh;
   };
 
   hm = import ./home-manager;
