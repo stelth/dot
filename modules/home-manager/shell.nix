@@ -42,7 +42,6 @@ in {
       DEFAULT_USER = "${config.home.username}";
       CLICOLOR = 1;
       LS_COLORS = "ExFxBxDxCxegedabagacad";
-      TERM = "xterm-256color";
     };
     shellAliases = aliases;
     initExtraBeforeCompInit = ''

@@ -30,7 +30,6 @@
       shell_integration = "no-cursor";
       tab_bar_style = "powerline";
       tab_separator = "";
-      term = "xterm-256color";
       update_check_interval = 0;
       window_border_width = "1.0";
       window_padding_width = 5;
