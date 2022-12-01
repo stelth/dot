@@ -1,7 +1,7 @@
 # shellcheck shell=bash
 selected=$(curl -sS https://cht.sh/:list | fzf)
 if [[ -z $selected ]]; then
-	exit 0
+  exit 0
 fi
 
 read -r -p "Enter Query: " query

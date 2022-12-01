@@ -40,6 +40,7 @@ in {
     };
 
     packages = with pkgs; [
+      alejandra
       as-tree
       aspell
       bottom
@@ -72,6 +73,7 @@ in {
       tmux-cht
       tmux-sessionizer
       tokei
+      treefmt
     ];
   };
 

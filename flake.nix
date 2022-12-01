@@ -36,6 +36,7 @@
     # shell utilities
     flake-utils = {url = "github:numtide/flake-utils";};
     devshell = {url = "github:numtide/devshell";};
+    treefmt-nix = {url = "github:numtide/treefmt-nix";};
   };
 
   outputs = inputs @ {
@@ -44,6 +45,7 @@
     darwin,
     home-manager,
     flake-utils,
+    treefmt-nix,
     ...
   }: let
     inherit (flake-utils.lib) eachSystemMap;
@@ -239,7 +241,7 @@
           pre-commit
           rnix-lsp
           stylua
-          treefmt
+          (treefmt-nix.lib.mkWrapper pkgs (import ./treefmt.nix))
         ];
         commands = [
           {

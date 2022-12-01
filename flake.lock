@@ -273,6 +273,7 @@
         "nixpkgs": "nixpkgs_2",
         "small": "small",
         "stable": "stable",
+        "treefmt-nix": "treefmt-nix",
         "vim-extra-plugins": "vim-extra-plugins"
       }
     },
@@ -305,6 +306,21 @@
         "owner": "nixos",
         "ref": "nixos-22.05",
         "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "treefmt-nix": {
+      "locked": {
+        "lastModified": 1669546209,
+        "narHash": "sha256-JqWTMyZTJcxExJJRrXwNx/nrmFJAXusRpEElDIiLVwc=",
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "rev": "11c31677c45957fb1de0a9102912cf6462730884",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "treefmt-nix",
         "type": "github"
       }
     },
