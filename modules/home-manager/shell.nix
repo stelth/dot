@@ -43,6 +43,9 @@ in {
       CLICOLOR = 1;
       LS_COLORS = "ExFxBxDxCxegedabagacad";
     };
+    sessionVariables = {
+      LLDB_DEBUGSERVER_PATH = "/Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Versions/A/Resources/debugserver";
+    };
     shellAliases = aliases;
     initExtraBeforeCompInit = ''
       fpath+=~/.zfunc
