@@ -29,7 +29,7 @@ in {
   };
 
   home = {
-    stateVersion = "22.05";
+    stateVersion = "22.11";
     sessionVariables = {
       EDITOR = "nvim";
       VISUAL = "nvim";
