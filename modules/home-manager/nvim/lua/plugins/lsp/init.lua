@@ -103,7 +103,9 @@ nls.setup(make_config({
     nls.builtins.diagnostics.pylint,
 
     -- Shell
-    nls.builtins.formatting.shfmt,
+    nls.builtins.formatting.shfmt.with({
+      extra_args = { "-i", "2", "-s" },
+    }),
     nls.builtins.formatting.shellharden,
     nls.builtins.diagnostics.shellcheck,
     nls.builtins.code_actions.shellcheck,
@@ -122,7 +124,9 @@ nls.setup(make_config({
 
     -- Lua
     nls.builtins.diagnostics.selene,
-    nls.builtins.formatting.stylua,
+    nls.builtins.formatting.stylua.with({
+      extra_args = { "--indent-type", "Spaces" },
+    }),
 
     -- Rust
     nls.builtins.formatting.rustfmt,
