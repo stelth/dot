@@ -95,6 +95,7 @@
       mini-pairs
       mini-surround
       neodev-nvim
+      neovim-tasks
       noice-nvim
       null-ls-nvim
       nvim-cmp
