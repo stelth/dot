@@ -116,6 +116,7 @@ vim.cmd([[tnoremap <esc><esc> <C-\><C-N>]])
 
 require("plugins.lualine")
 require("plugins.mini")
+require("plugins.neovim-tasks")
 require("plugins.nvim-cmp")
 require("plugins.nvim-dap")
 require("plugins.telescope-nvim")
