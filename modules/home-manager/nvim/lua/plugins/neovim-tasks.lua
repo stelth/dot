@@ -11,7 +11,7 @@ vim.keymap.set({ "", "i" }, "<C-BS>", function()
 end, { desc = "Cancel last task" })
 
 local key_index = 1
-for _, task_name in ipairs({ "run", "test", "build", "debug", "debug_test" }) do
+for _, task_name in ipairs({ "build", "run", "debug", "test", "debug_test" }) do
   vim.keymap.set({ "", "i" }, string.format("<F%d>", key_index), function()
     tasks.start("auto", task_name)
   end, { desc = string.format("Run %s task", task_name) })
