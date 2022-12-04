@@ -8,7 +8,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 vim.opt.autowrite = true
-vim.opt.backup = false
+vim.opt.backup = true
+vim.opt.backupdir = vim.fn.stdpath("state") .. "/backup"
 vim.opt.clipboard = "unnamedplus"
 vim.opt.completeopt = "menuone,noselect"
 vim.opt.conceallevel = 3
