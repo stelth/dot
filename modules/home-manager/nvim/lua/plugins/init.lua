@@ -76,6 +76,13 @@ require("noice").setup({
   routes = {
     {
       filter = {
+        event = "msg_show",
+        find = "%d+L, %d+B",
+      },
+      view = "mini",
+    },
+    {
+      filter = {
         warning = true,
         find = "offset_encodings",
       },
@@ -93,6 +100,13 @@ require("noice").setup({
   },
   lsp_progress = {
     enabled = true,
+  },
+  commands = {
+    all = {
+      view = "split",
+      opts = { enter = true, format = "details" },
+      filter = {},
+    },
   },
 })
 
