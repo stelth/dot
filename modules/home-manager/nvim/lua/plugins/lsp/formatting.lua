@@ -1,7 +1,7 @@
 local M = {}
 
-local warn = require("utils").warn
-local info = require("utils").info
+local warn = require("util").warn
+local info = require("util").info
 
 local autoformat = true
 M.toggle_formatting = function()

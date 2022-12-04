@@ -1,5 +1,5 @@
 local wk = require("which-key")
-local utils = require("utils")
+local util = require("util")
 local telescope_builtin = require("telescope.builtin")
 local gitsigns = require("gitsigns")
 
@@ -230,20 +230,20 @@ local keymaps = {
       },
       s = {
         function()
-          utils.toggle("spell")
+          util.toggle("spell")
         end,
         "Spelling",
       },
       w = {
         function()
-          utils.toggle("wrap")
+          util.toggle("wrap")
         end,
         "Word Wrap",
       },
       n = {
         function()
-          utils.toggle("relativenumber")
-          utils.toggle("number")
+          util.toggle("relativenumber")
+          util.toggle("number")
         end,
         "Line Numbers",
       },
