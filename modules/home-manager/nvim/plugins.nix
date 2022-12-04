@@ -105,6 +105,7 @@
       nvim-dap-ui
       nvim-dap-virtual-text
       nvim-lspconfig
+      nvim-notify
       nvim-terminal-lua
       (nvim-treesitter.withPlugins (plugins: nvim-treesitter.allGrammars))
       nvim-treesitter-context
