@@ -80,18 +80,19 @@
       cmp-path
       cmp_luasnip
       dressing-nvim
+      flit-nvim
       friendly-snippets
       gitsigns-nvim
       impatient-nvim
       inc-rename-nvim
       indent-blankline-nvim
       inlay-hints-nvim
+      leap-ast-nvim
       lspkind-nvim
       lualine-nvim
       luasnip
       mini-ai
       mini-comment
-      mini-jump
       mini-pairs
       mini-surround
       neodev-nvim

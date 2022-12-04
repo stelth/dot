@@ -10,6 +10,7 @@ require("catppuccin").setup({
       enabled = true,
       colored_indent_levels = true,
     },
+    leap = true,
     mini = true,
     native_lsp = {
       enabled = true,
@@ -35,6 +36,14 @@ require("catppuccin").setup({
   },
 })
 vim.cmd.colorscheme("catppuccin")
+
+require("leap").add_default_mappings()
+require("flit").setup({
+  labeled_modes = "nv",
+})
+vim.keymap.set({ "n", "x", "o" }, "M", function()
+  require("leap-ast").leap()
+end)
 
 require("gitsigns").setup({})
 
