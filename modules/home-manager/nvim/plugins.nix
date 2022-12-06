@@ -109,6 +109,8 @@
       nvim-terminal-lua
       (nvim-treesitter.withPlugins (plugins: nvim-treesitter.allGrammars))
       nvim-treesitter-context
+      nvim-treesitter-textobjects
+      nvim-treesitter-textsubjects
       nvim-ts-context-commentstring
       nvim-web-devicons
       rust-tools-nvim
