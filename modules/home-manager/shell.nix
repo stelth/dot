@@ -15,8 +15,6 @@
     mv = "${pkgs.coreutils}/bin/mv -iv";
     cp = "${pkgs.coreutils}/bin/cp -riv";
     mkdir = "${pkgs.coreutils}/bin/mkdir -vp";
-    push = "${lib.getExe pkgs.git} push";
-    pull = "${lib.getExe pkgs.git} pull";
     su = "su -";
     df = "${lib.getExe pkgs.grc} /bin/df -h";
     rga = "${lib.getExe pkgs.ripgrep} -uu";
