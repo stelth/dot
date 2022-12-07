@@ -162,11 +162,11 @@
       },
       "locked": {
         "dir": "contrib",
-        "lastModified": 1670297660,
-        "narHash": "sha256-OB1P48rxsqSqB50yTyvy75sLS5AdmJvtdRXtgCl5D8U=",
+        "lastModified": 1670395896,
+        "narHash": "sha256-Nz4ZCPER+Z1JGMf5XDJAcssr/wg6h7PASwy6baym8kY=",
         "owner": "neovim",
         "repo": "neovim",
-        "rev": "6d7b94ea086e17d16e2490e56572f17031924af5",
+        "rev": "0caae2376e6c8f6665143e77e4e7a0cdf2b054c4",
         "type": "github"
       },
       "original": {
@@ -185,11 +185,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1670314513,
-        "narHash": "sha256-NfUfsaA9RaTQWTjv1fMHqPkcI1u3rqddUPLLX4s47ZM=",
+        "lastModified": 1670400905,
+        "narHash": "sha256-g7zvYhGPxqZnrueTo1NR7AU1j1ejatDO9W6GGzAfk6o=",
         "owner": "nix-community",
         "repo": "neovim-nightly-overlay",
-        "rev": "66d0dd530766c323b5cb177773409be387231238",
+        "rev": "36b9905aa2f520da2be8703ffcd887b7f1162f72",
         "type": "github"
       },
       "original": {
@@ -346,11 +346,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1670366235,
-        "narHash": "sha256-aVjW/1g9hBrH8o3Q92OL3qG8GxrbPUGzmg9tHlIZXTo=",
+        "lastModified": 1670400955,
+        "narHash": "sha256-LBDCEzDPHzZWrm6sPwsM1aDRw5clw8fU4ZDdpHjYv30=",
         "owner": "stelth",
         "repo": "nixpkgs-vim-extra-plugins",
-        "rev": "ef079aa3b55100966fe073a6c04ce488e39b9913",
+        "rev": "5999c19bf1bf6f28254af47361492e988b693a74",
         "type": "github"
       },
       "original": {
