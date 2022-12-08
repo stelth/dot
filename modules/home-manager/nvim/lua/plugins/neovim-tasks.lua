@@ -5,7 +5,7 @@ tasks.setup({
   dap_open_command = dapui.open,
 })
 
-vim.keymap.set({ "", "i" }, "<C-BS>", function()
+vim.keymap.set({ "", "i" }, "<F9>", function()
   tasks.cancel()
   dapui.close()
 end, { desc = "Cancel last task" })
