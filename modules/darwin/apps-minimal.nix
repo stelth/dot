@@ -8,7 +8,7 @@
     casks = [
       "1password-beta"
       "avibrazil-rdm"
-      "brave-browser"
+      "google-chrome"
       "hammerspoon"
       "kitty"
     ];
