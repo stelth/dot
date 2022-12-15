@@ -49,7 +49,7 @@ local keymaps = {
     key = "i",
     callback = function()
       local initialApps = {
-        "Brave Browser",
+        "Google Chrome",
         "Firefox Developer Edition",
         "kitty",
         "Microsoft Outlook",
