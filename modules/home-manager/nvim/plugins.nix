@@ -116,6 +116,7 @@
       rust-tools-nvim
       telescope-fzf-native-nvim
       telescope-nvim
+      telescope-undo-nvim
       toggleterm-nvim
       vim-dadbod
       vim-dadbod-completion

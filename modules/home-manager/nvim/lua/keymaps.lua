@@ -263,12 +263,6 @@ local keymaps = {
     },
     k = { vim.cmd.lnext, "" },
     j = { vim.cmd.lprev, "" },
-    P = {
-      function()
-        require("telescope").extensions.yank_history.yank_history({})
-      end,
-      "Yank History",
-    },
     d = {
       b = { require("dap").toggle_breakpoint, "Toggle breakpoint" },
       c = { require("dap").continue, "Continue" },
@@ -286,6 +280,7 @@ local keymaps = {
     o = {
       name = "+open",
     },
+    u = { require("telescope-undo"), "Undo history" },
   },
 }
 
