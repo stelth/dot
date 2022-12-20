@@ -280,7 +280,7 @@ local keymaps = {
     o = {
       name = "+open",
     },
-    u = { require("telescope-undo"), "Undo history" },
+    u = { require("telescope").extensions.undo.undo, "Undo history" },
   },
 }
 
