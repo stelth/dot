@@ -9,7 +9,7 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  build:
+  update:
     runs-on: ubuntu-latest
     name: Update flake.lock
     steps:
@@ -21,13 +21,7 @@ jobs:
           nix_path: nixpkgs=channel:nixos-unstable
           extra_nix_config: |
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
-      - run: nix flake update
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - name: Update flake.lock
+        uses: DeterminateSystems/update-flake-lock@v15
         with:
-          commit_user_name: flakebot
-          commit_user_email: flakebot@users.noreply.github.com
-          commit_author: Jason Cox <steel300@gmail.com>
-          commit_message: "chore(nix): auto update flake.lock"
-          push_options: "--force"
+          token: ${{ secrets.GITHUB_TOKEN }}
