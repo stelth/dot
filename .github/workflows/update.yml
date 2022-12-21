@@ -30,6 +30,7 @@ jobs:
           pr-labels: |
       - name: Merge flake.lock update-flake-lock
         uses: peter-evans/enable-pull-request-automerge@v2
+        if: ${{ steps.update.outputs.pull-request-number }} != 0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           pull-request-number: ${{ steps.update.outputs.pull-request-number }}
