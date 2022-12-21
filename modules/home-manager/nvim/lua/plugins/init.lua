@@ -65,51 +65,6 @@ require("luasnip").config.set_config({
 
 require("luasnip/loaders/from_vscode").lazy_load()
 
-require("noice").setup({
-  presets = {
-    bottom_search = true,
-    command_palette = true,
-    long_message_to_split = true,
-    inc_rename = true,
-    lsp_doc_border = true,
-  },
-  routes = {
-    {
-      filter = {
-        event = "msg_show",
-        find = "%d+L, %d+B",
-      },
-      view = "mini",
-    },
-    {
-      filter = {
-        warning = true,
-        find = "offset_encodings",
-      },
-      opts = {
-        skip = true,
-      },
-    },
-  },
-  lsp = {
-    override = {
-      ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-      ["vim.lsp.util.stylize_markdown"] = true,
-      ["cmp.entry.get_documentation"] = true,
-    },
-  },
-  lsp_progress = {
-    enabled = true,
-  },
-  commands = {
-    all = {
-      view = "split",
-      opts = { enter = true, format = "details" },
-      filter = {},
-    },
-  },
-})
-
 require("notify").setup({
   timeout = 3000,
   level = vim.log.levels.INFO,
@@ -184,6 +139,7 @@ vim.cmd([[tnoremap <esc><esc> <C-\><C-N>]])
 require("plugins.lualine")
 require("plugins.mini")
 require("plugins.neovim-tasks")
+require("plugins.noice")
 require("plugins.nvim-cmp")
 require("plugins.nvim-dap")
 require("plugins.telescope-nvim")
