@@ -23,15 +23,33 @@ M.toggle = function(option, silent)
   end
 end
 
-local oldNotify = vim.notify
+local notifs = {}
+local notify = {
+  orig = vim.notify,
+  lazy = function(...)
+    table.insert(notifs, { ... })
+  end,
+}
 
-M.setup_notify = function()
-  vim.notify = function(msg, log_level, opts)
-    if msg:match("offset_encodings") then
+local lazy_notify = function()
+  local check = vim.loop.new_check()
+  local start = vim.loop.hrtime()
+  check:start(function()
+    if vim.notify ~= notify.lazy then
+    elseif (vim.loop.hrtime() - start) / 1e6 > 300 then
+      vim.notify = notify.orig
+    else
       return
     end
-    oldNotify(msg, log_level, opts)
-  end
+    check:stop()
+    vim.schedule(function()
+      for _, notif in ipairs(notifs) do
+        vim.notify(unpack(notif))
+      end
+    end)
+  end)
 end
+
+M.setup_notify = lazy_notify
 
 return M
