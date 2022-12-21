@@ -200,6 +200,7 @@ local keymaps = {
       m = { telescope_builtin.man_pages, "Man Pages" },
       k = { telescope_builtin.keymaps, "Key Maps" },
       s = { telescope_builtin.highlights, "Search Highlight Groups" },
+      l = { vim.show_pos, "Highlight Groups at curser" },
       f = { telescope_builtin.filetypes, "File Types" },
       o = { telescope_builtin.vim_options, "Options" },
       a = { telescope_builtin.autocommands, "Auto Commands" },
