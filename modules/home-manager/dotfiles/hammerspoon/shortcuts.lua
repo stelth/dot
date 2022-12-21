@@ -76,3 +76,6 @@ for name, options in pairs(keymaps) do
   end
   hs.hotkey.bind(options.mods or {}, options.key, fn)
 end
+
+hs.hotkey.bind(hyper, "m", require("windows").officeMobile)
+hs.hotkey.bind(hyper, "w", require("windows").office)

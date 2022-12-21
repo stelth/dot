@@ -14,5 +14,6 @@ Install:andUse("Caffeine", {
 spoon.Caffeine:setState(true)
 
 require("shortcuts")
+require("windows")
 
 hs.alert.show("Hammerspoon Loaded!")
