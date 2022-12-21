@@ -28,7 +28,6 @@
     nodePackages.pyright
 
     # Lua
-    selene
     stylua
     sumneko-lua-language-server
 

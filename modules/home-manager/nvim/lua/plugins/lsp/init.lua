@@ -162,7 +162,6 @@ nls.setup(make_config({
     nls.builtins.diagnostics.cpplint,
 
     -- Lua
-    nls.builtins.diagnostics.selene,
     nls.builtins.formatting.stylua.with({
       extra_args = { "--indent-type", "Spaces" },
     }),
