@@ -22,6 +22,14 @@ jobs:
           extra_nix_config: |
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
       - name: Update flake.lock
+        id: update
         uses: DeterminateSystems/update-flake-lock@v15
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          pr-title: "Update flake.lock"
+          pr-labels: |
+      - name: Merge flake.lock update-flake-lock
+        uses: peter-evans/enable-pull-request-automerge@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          pull-request-number: ${{ steps.update.outputs.pull-request-number }}
