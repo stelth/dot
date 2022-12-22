@@ -105,8 +105,8 @@ menubar:setIcon(hs.image.imageFromName("NSHandCursor"))
 
 if menubar then
   menubar:setMenu({
-    { title = "Office", fn = office },
-    { title = "Office Mobile", fn = officeMobile },
+    { title = "Office", fn = M.office },
+    { title = "Office Mobile", fn = M.officeMobile },
   })
 end
 
