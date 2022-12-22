@@ -36,11 +36,12 @@ local ensureSpaces = function(screen, numSpaces)
   table.sort(allSpaces)
 
   for _ = 1, numSpaces - #allSpaces, 1 do
-    hs.spaces.addSpaceToScreen(screen)
+    hs.spaces.addSpaceToScreen(screen, false)
   end
 end
 
 M.officeMobile = function()
+  hs.spaces.openMissionControl()
   -- Get screens
   local screen = hs.screen.mainScreen()
   ensureSpaces(screen, 4)
@@ -55,9 +56,12 @@ M.officeMobile = function()
   positionApp("Firefox Developer Edition", screen, allSpaces[3], hs.layout.maximize)
   positionApp("Microsoft Outlook", screen, allSpaces[4], hs.layout.left50)
   positionApp("Slack", screen, allSpaces[4], hs.layout.right50)
+
+  hs.spaces.closeMissionControl()
 end
 
 M.office = function()
+  hs.spaces.openMissionControl()
   -- Get screens
   local leftScreen = nil
   local rightScreen = nil
@@ -98,6 +102,8 @@ M.office = function()
 
   positionApp("Microsoft Outlook", rightScreen, rightSpaces[1], hs.layout.left50)
   positionApp("Slack", rightScreen, rightSpaces[1], hs.layout.right50)
+
+  hs.spaces.closeMissionControl()
 end
 
 local menubar = hs.menubar.new()
