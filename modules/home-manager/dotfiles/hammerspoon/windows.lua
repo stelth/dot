@@ -58,6 +58,8 @@ M.officeMobile = function()
   positionApp("Slack", screen, allSpaces[4], hs.layout.right50)
 
   hs.spaces.closeMissionControl()
+
+  hs.alert.show("Done Positioning Windows")
 end
 
 M.office = function()
@@ -80,6 +82,7 @@ M.office = function()
 
   if leftScreen == nil or rightScreen == nil then
     hs.alert.show("Did not detect 3 monitors")
+    hs.spaces.closeMissionControl()
     return
   end
 
@@ -104,6 +107,8 @@ M.office = function()
   positionApp("Slack", rightScreen, rightSpaces[1], hs.layout.right50)
 
   hs.spaces.closeMissionControl()
+
+  hs.alert.show("Done Positioning Windows")
 end
 
 local menubar = hs.menubar.new()
