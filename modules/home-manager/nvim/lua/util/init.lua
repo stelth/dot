@@ -23,33 +23,4 @@ M.toggle = function(option, silent)
   end
 end
 
-local notifs = {}
-local notify = {
-  orig = vim.notify,
-  lazy = function(...)
-    table.insert(notifs, { ... })
-  end,
-}
-
-local lazy_notify = function()
-  local check = vim.loop.new_check()
-  local start = vim.loop.hrtime()
-  check:start(function()
-    if vim.notify ~= notify.lazy then
-    elseif (vim.loop.hrtime() - start) / 1e6 > 300 then
-      vim.notify = notify.orig
-    else
-      return
-    end
-    check:stop()
-    vim.schedule(function()
-      for _, notif in ipairs(notifs) do
-        vim.notify(unpack(notif))
-      end
-    end)
-  end)
-end
-
-M.setup_notify = lazy_notify
-
 return M

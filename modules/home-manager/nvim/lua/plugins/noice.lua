@@ -25,9 +25,9 @@ require("noice").setup({
         cond = function()
           return not focused
         end,
-        view = "notify_send",
-        opts = { stop = false },
       },
+      view = "notify_send",
+      opts = { stop = false },
     },
     {
       filter = {
