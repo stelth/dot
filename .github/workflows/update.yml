@@ -29,8 +29,8 @@ jobs:
           pr-title: "Update flake.lock"
           pr-labels: |
       - name: Merge flake.lock update-flake-lock
-        uses: peter-evans/enable-pull-request-automerge@v2
+        uses: sudo-bot/action-pull-request-merge@v1.2.0
         if: ${{ steps.update.outputs.pull-request-number }} != 0
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          pull-request-number: ${{ steps.update.outputs.pull-request-number }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          number: ${{ steps.update.outputs.pull-request-number }}
