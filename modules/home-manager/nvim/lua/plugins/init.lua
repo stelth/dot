@@ -136,6 +136,23 @@ require("toggleterm").setup({
 -- Esc twice to get to normal mode
 vim.cmd([[tnoremap <esc><esc> <C-\><C-N>]])
 
+require("zen-mode").setup({
+  window = {
+    width = 90,
+    options = {
+      number = true,
+      relativenumber = true,
+    },
+  },
+  plugins = {
+    gitsigns = true,
+    kitty = {
+      enabled = false,
+      font = "+2",
+    },
+  },
+})
+
 require("plugins.lualine")
 require("plugins.mini")
 require("plugins.neovim-tasks")

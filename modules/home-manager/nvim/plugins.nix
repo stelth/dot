@@ -122,6 +122,7 @@
       vim-dadbod-ui
       vim-matchup
       which-key-nvim
+      zen-mode-nvim
     ];
   };
 }
