@@ -59,15 +59,11 @@ local keymaps = {
     [">"] = { ">gv", "", mode = "v" },
     n = {
       expr = true,
-      { "'Nn'[v:searchforward]", "" },
-      { "'Nn'[v:searchforward]", "", mode = "x" },
-      { "'Nn'[v:searchforward]", "", mode = "o" },
+      { "'Nn'[v:searchforward]", "", mode = { "n", "x", "o" } },
     },
     N = {
       expr = true,
-      { "'nN'[v:searchforward]", "" },
-      { "'nN'[v:searchforward]", "", mode = "x" },
-      { "'nN'[v:searchforward]", "", mode = "o" },
+      { "'nN'[v:searchforward]", "", mode = { "n", "x", "o" } },
     },
     ["<C-k>"] = { vim.cmd.cnext, "" },
     ["<C-j>"] = { vim.cmd.cprev, "" },
@@ -104,14 +100,7 @@ local keymaps = {
           vim.cmd.Gitsigns({ "select_hunk" })
         end,
         "Gitsigns Select Hunk",
-        mode = "o",
-      },
-      {
-        function()
-          vim.cmd.Gitsigns({ "select_hunk" })
-        end,
-        "Gitsigns Select Hunk",
-        mode = "x",
+        mode = { "o", "x" },
       },
     },
   },
@@ -149,13 +138,7 @@ local keymaps = {
               vim.cmd.Gitsigns({ "stage_hunk" })
             end,
             "Stage Hunk",
-          },
-          {
-            function()
-              vim.cmd.Gitsigns({ "stage_hunk" })
-            end,
-            "Stage Hunk",
-            mode = "v",
+            mode = { "n", "v" },
           },
         },
         r = {
@@ -164,13 +147,7 @@ local keymaps = {
               vim.cmd.Gitsigns({ "reset_hunk" })
             end,
             "Reset Hunk",
-          },
-          {
-            function()
-              vim.cmd.Gitsigns({ "reset_hunk" })
-            end,
-            "Reset Hunk",
-            mode = "v",
+            mode = { "n", "v" },
           },
         },
         S = { gitsigns.stage_buffer, "Stage Buffer" },
