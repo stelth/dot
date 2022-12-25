@@ -106,7 +106,7 @@
       nvim-lspconfig
       nvim-notify
       nvim-terminal-lua
-      (nvim-treesitter.withPlugins (plugins: nvim-treesitter.allGrammars))
+      nvim-treesitter.withAllGrammars
       nvim-treesitter-context
       nvim-treesitter-textobjects
       nvim-treesitter-textsubjects
