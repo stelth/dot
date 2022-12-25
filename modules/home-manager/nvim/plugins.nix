@@ -91,6 +91,7 @@
       lualine-nvim
       luasnip
       mini-ai
+      mini-bufremove
       mini-comment
       mini-pairs
       mini-surround

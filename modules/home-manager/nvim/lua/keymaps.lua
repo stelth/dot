@@ -283,6 +283,20 @@ local keymaps = {
     },
     u = { require("telescope").extensions.undo.undo, "Undo history" },
     zz = { require("zen-mode").toggle, "Zen Mode" },
+    b = {
+      d = {
+        function()
+          require("mini.bufremove").delete(0, false)
+        end,
+        "Delete buffer",
+      },
+      D = {
+        function()
+          require("mini.bufremove").delete(0, true)
+        end,
+        "Delete buffer",
+      },
+    },
   },
 }
 
