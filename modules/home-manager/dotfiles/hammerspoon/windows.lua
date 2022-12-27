@@ -32,83 +32,148 @@ end
 
 local ensureSpaces = function(screen, numSpaces)
   local allSpaces = hs.spaces.spacesForScreen(screen:id())
-
   table.sort(allSpaces)
 
+  local activeSpace = hs.spaces.spacesForScreen(screen:id())
+
+  for _, space in pairs(allSpaces) do
+    if space ~= activeSpace then
+      hs.spaces.removeSpace(space, false)
+    end
+  end
+
+  allSpaces = hs.spaces.spacesForScreen(screen:id())
   for _ = 1, numSpaces - #allSpaces, 1 do
     hs.spaces.addSpaceToScreen(screen, false)
   end
 end
 
-M.officeMobile = function()
+local positionWindows = function(appLayout)
   hs.spaces.openMissionControl()
-  -- Get screens
-  local screen = hs.screen.mainScreen()
-  ensureSpaces(screen, 4)
 
-  local allSpaces = hs.spaces.spacesForScreen(screen:id())
+  local screens = hs.screen.allScreens()
 
-  table.sort(allSpaces)
+  table.sort(screens, function(a, b)
+    local ax, _ = a:position()
+    local bx, _ = b:position()
 
-  positionApp("kitty", screen, allSpaces[1], hs.layout.left50)
-  positionApp("Google Chrome", screen, allSpaces[1], hs.layout.right50)
-  positionApp("Discord", screen, allSpaces[2], hs.layout.maximize)
-  positionApp("Firefox Developer Edition", screen, allSpaces[3], hs.layout.maximize)
-  positionApp("Microsoft Outlook", screen, allSpaces[4], hs.layout.left50)
-  positionApp("Slack", screen, allSpaces[4], hs.layout.right50)
+    return ax < bx
+  end)
 
-  hs.spaces.closeMissionControl()
+  for displayIndex, display in ipairs(appLayout.displays) do
+    ensureSpaces(screens[displayIndex], #display.spaces)
 
-  hs.alert.show("Done Positioning Windows")
-end
+    local screenSpaces = hs.spaces.spacesForScreen(screens[displayIndex])
+    table.sort(screenSpaces)
 
-M.office = function()
-  hs.spaces.openMissionControl()
-  -- Get screens
-  local leftScreen = nil
-  local rightScreen = nil
-  local centerScreen = nil
-  for _, v in pairs(hs.screen.allScreens()) do
-    local x, _ = v:position()
-
-    if x == -1 then
-      leftScreen = v
-    elseif x == 1 then
-      rightScreen = v
-    else
-      centerScreen = v
+    for spaceIndex, space in ipairs(display.spaces) do
+      for appName, appInfo in pairs(space.apps) do
+        positionApp(appName, screens[displayIndex], screenSpaces[spaceIndex], appInfo.layout)
+      end
     end
   end
 
-  if leftScreen == nil or rightScreen == nil then
-    hs.alert.show("Did not detect 3 monitors")
-    hs.spaces.closeMissionControl()
-    return
-  end
-
-  ensureSpaces(leftScreen, 1)
-  ensureSpaces(centerScreen, 1)
-  ensureSpaces(rightScreen, 1)
-
-  local leftSpaces = hs.spaces.spacesForScreen(leftScreen:id())
-  table.sort(leftSpaces)
-  local centerSpaces = hs.spaces.spacesForScreen(centerScreen:id())
-  table.sort(centerSpaces)
-  local rightSpaces = hs.spaces.spacesForScreen(rightScreen:id())
-  table.sort(rightSpaces)
-
-  positionApp("kitty", leftScreen, leftSpaces[1], hs.layout.left50)
-  positionApp("Firefox Developer Edition", leftScreen, leftSpaces[1], hs.layout.right50)
-
-  positionApp("Google Chrome", centerScreen, centerSpaces[1], hs.layout.left50)
-  positionApp("Discord", centerScreen, centerSpaces[1], hs.layout.right50)
-
-  positionApp("Microsoft Outlook", rightScreen, rightSpaces[1], hs.layout.left50)
-  positionApp("Slack", rightScreen, rightSpaces[1], hs.layout.right50)
-
   hs.spaces.closeMissionControl()
 
-  hs.alert.show("Done Positioning Windows")
+  hs.alert.show("Finished organizing windows")
+end
+
+M.officeMobile = function()
+  local mobileLayout = {
+    displays = {
+      {
+        spaces = {
+          {
+            apps = {
+              ["kitty"] = {
+                layout = hs.layout.left50,
+              },
+              ["Google Chrome"] = {
+                layout = hs.layout.right50,
+              },
+            },
+          },
+          {
+            apps = {
+              ["Discord"] = {
+                layout = hs.layout.maximized,
+              },
+            },
+          },
+          {
+            apps = {
+              ["Firefox Developer Edition"] = {
+                layout = hs.layout.maximized,
+              },
+            },
+          },
+          {
+            apps = {
+              ["Microsoft Outlook"] = {
+                layout = hs.layout.left50,
+              },
+              ["Slack"] = {
+                layout = hs.layout.right50,
+              },
+            },
+          },
+        },
+      },
+    },
+  }
+
+  positionWindows(mobileLayout)
+end
+
+M.office = function()
+  local homeOfficeLayout = {
+    displays = {
+      {
+        spaces = {
+          {
+            apps = {
+              ["kitty"] = {
+                layout = hs.layout.left50,
+              },
+              ["Firefox Developer Edition"] = {
+                layout = hs.layout.right50,
+              },
+            },
+          },
+        },
+      },
+      {
+        spaces = {
+          {
+            apps = {
+              ["Google Chrome"] = {
+                layout = hs.layout.left50,
+              },
+              ["Discord"] = {
+                layout = hs.layout.right50,
+              },
+            },
+          },
+        },
+      },
+      {
+        spaces = {
+          {
+            apps = {
+              ["Microsoft Outlook"] = {
+                layout = hs.layout.left50,
+              },
+              ["Slack"] = {
+                layout = hs.layout.right50,
+              },
+            },
+          },
+        },
+      },
+    },
+  }
+
+  positionWindows(homeOfficeLayout)
 end
 
 local menubar = hs.menubar.new()
