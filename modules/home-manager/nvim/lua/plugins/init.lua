@@ -122,20 +122,6 @@ vim.g.matchup_matchparen_offscreen = {
   method = "status_manual",
 }
 
-require("toggleterm").setup({
-  size = 20,
-  hide_numbers = true,
-  open_mapping = [[<C-_>]],
-  shade_filetypes = {},
-  shade_terminals = false,
-  shading_factor = 0.3,
-  start_in_insert = true,
-  persist_size = true,
-  direction = "horizontal",
-})
--- Esc twice to get to normal mode
-vim.cmd([[tnoremap <esc><esc> <C-\><C-N>]])
-
 require("zen-mode").setup({
   window = {
     width = 90,

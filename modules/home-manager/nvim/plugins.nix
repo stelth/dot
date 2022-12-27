@@ -117,7 +117,6 @@
       telescope-fzf-native-nvim
       telescope-nvim
       telescope-undo-nvim
-      toggleterm-nvim
       vim-dadbod
       vim-dadbod-completion
       vim-dadbod-ui
