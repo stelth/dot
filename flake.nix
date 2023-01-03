@@ -301,12 +301,12 @@
       };
       jdt-language-server = final: prev: {
         jdt-language-server = prev.jdt-language-server.overrideAttrs (_: rec {
-          version = "1.17.0";
-          timestamp = "202210271413";
+          version = "1.18.0";
+          timestamp = "202212011657";
 
           src = final.fetchurl {
             url = "https://download.eclipse.org/jdtls/milestones/${version}/jdt-language-server-${version}-${timestamp}.tar.gz";
-            sha256 = "sha256-3NVzL3o/8LXR94/3Yma42XHfwNEFEVrmUijkeMs/vL0=";
+            sha256 = "sha256-uYdcEkQtXLgOD39mpV0Z/B99s7PCu8PHk2EiRoWOugQ=";
           };
 
           installPhase = ''
