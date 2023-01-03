@@ -6,18 +6,17 @@
 }:
 buildDotnetModule rec {
   pname = "marksman";
-  version = "2022-10-30";
+  version = "2022-12-23";
 
   src = fetchFromGitHub {
     owner = "artempyanykh";
     repo = "marksman";
     rev = version;
-    sha256 = "sha256-Ko/dHV0mxRYukr9vdQD7HSDOYdqfc/DcuU8XPCYkSWA=";
+    sha256 = "sha256-ySR4ss+FVNBijqdwGBFRROZDpUfV/AH+geixUhjuNHg=";
   };
 
-  patches = [./patches/0001-revert-embed-git-commit-into-the-version.patch];
-
   projectFile = "Marksman/Marksman.fsproj";
+  dotnetBuildFlags = "-p:VersionString=${version}";
 
   doCheck = true;
   testProjectFile = "Tests/Tests.fsproj";
@@ -26,6 +25,10 @@ buildDotnetModule rec {
 
   dotnet-sdk = dotnetCorePackages.sdk_6_0;
   dotnet-runtime = dotnetCorePackages.runtime_6_0;
+
+  postInstall = ''
+    install -m 644 -D -t "$out/share/doc/${pname}" LICENSE
+  '';
 
   meta = with lib; {
     description = "Language Server for Markdown";
@@ -39,12 +42,6 @@ buildDotnetModule rec {
     '';
     homepage = "https://github.com/artempyanykh/marksman";
     license = licenses.mit;
-    maintainers = with maintainers; [];
-    platforms = [
-      "x86_64-linux"
-      "aarch64-linux"
-      "x86_64-darwin"
-      "aarch64-darwin"
-    ];
+    inherit (dotnet-sdk.meta) platforms;
   };
 }
