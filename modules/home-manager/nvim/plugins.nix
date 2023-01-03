@@ -78,6 +78,7 @@
       cmp-nvim-lsp
       cmp-path
       cmp_luasnip
+      dial-nvim
       dressing-nvim
       flit-nvim
       friendly-snippets

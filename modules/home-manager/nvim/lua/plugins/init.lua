@@ -45,6 +45,17 @@ vim.keymap.set({ "n", "x", "o" }, "M", function()
   require("leap-ast").leap()
 end)
 
+local augend = require("dial.augend")
+require("dial.config").augends:register_group({
+  default = {
+    augend.integer.alias.decimal,
+    augend.integer.alias.hex,
+    augend.date.alias["%Y/%m/%d"],
+    augend.constant.alias.bool,
+    augend.semver.alias.semver,
+  },
+})
+
 require("gitsigns").setup({})
 
 require("inc_rename").setup()
