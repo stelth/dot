@@ -6,10 +6,6 @@ require("catppuccin").setup({
       enabled_ui = true,
     },
     gitsigns = true,
-    indent_blankline = {
-      enabled = true,
-      colored_indent_levels = true,
-    },
     leap = true,
     mini = true,
     native_lsp = {
@@ -59,8 +55,6 @@ require("dial.config").augends:register_group({
 require("gitsigns").setup({})
 
 require("inc_rename").setup()
-
-require("indent_blankline").setup({})
 
 require("inlay-hints").setup({
   renderer = "inlay-hints/render/eol",

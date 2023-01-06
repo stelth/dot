@@ -85,7 +85,6 @@
       gitsigns-nvim
       impatient-nvim
       inc-rename-nvim
-      indent-blankline-nvim
       inlay-hints-nvim
       leap-ast-nvim
       lspkind-nvim
@@ -94,6 +93,7 @@
       mini-ai
       mini-bufremove
       mini-comment
+      mini-indentscope
       mini-pairs
       mini-surround
       neodev-nvim
