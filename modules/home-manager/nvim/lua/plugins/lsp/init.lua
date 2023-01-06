@@ -131,6 +131,12 @@ lspconfig.sumneko_lua.setup(make_config({
 
 lspconfig.yamlls.setup(make_config({}))
 
+local should_enable_cpp = function(utils)
+  local kernel_repo_dir = vim.fn.system("ghq list -p linux")
+
+  return utils.root_matches(kernel_repo_dir)
+end
+
 local nls = require("null-ls")
 nls.setup(make_config({
   save_after_format = false,
@@ -156,10 +162,15 @@ nls.setup(make_config({
 
     -- C/C++
     nls.builtins.formatting.clang_format.with({
+      condition = should_enable_cpp,
       filetypes = { "c", "cpp" },
     }),
-    nls.builtins.diagnostics.cppcheck,
-    nls.builtins.diagnostics.cpplint,
+    nls.builtins.diagnostics.cppcheck.with({
+      condition = should_enable_cpp,
+    }),
+    nls.builtins.diagnostics.cpplint.with({
+      condition = should_enable_cpp,
+    }),
 
     -- Lua
     nls.builtins.formatting.stylua.with({
