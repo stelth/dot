@@ -144,7 +144,6 @@ require("zen-mode").setup({
   },
 })
 
-require("plugins.lualine")
 require("plugins.mini")
 require("plugins.neovim-tasks")
 require("plugins.noice")

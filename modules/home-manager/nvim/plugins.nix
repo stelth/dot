@@ -88,13 +88,13 @@
       inlay-hints-nvim
       leap-ast-nvim
       lspkind-nvim
-      lualine-nvim
       luasnip
       mini-ai
       mini-bufremove
       mini-comment
       mini-indentscope
       mini-pairs
+      mini-statusline
       mini-surround
       neodev-nvim
       neovim-tasks

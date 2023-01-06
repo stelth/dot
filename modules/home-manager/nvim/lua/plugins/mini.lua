@@ -47,6 +47,8 @@ require("mini.indentscope").setup({
 
 require("mini.pairs").setup({})
 
+require("mini.statusline").setup({})
+
 require("mini.surround").setup({
   mappings = {
     add = "gza", -- Add surrounding in Normal and Visual modes
