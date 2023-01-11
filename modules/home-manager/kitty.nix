@@ -6,7 +6,7 @@
 }: {
   programs.kitty = {
     enable = true;
-    package = pkgs.kitty;
+    package = pkgs.stable.kitty;
     font = {name = "FiraCode Nerd Font Mono";};
     theme = "Catppuccin-Mocha";
     settings = {
