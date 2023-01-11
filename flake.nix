@@ -315,6 +315,18 @@
           '';
         });
       };
+      neovim-unwrapped = final: prev: {
+        neovim-unwrapped = prev.neovim-unwrapped.overrideAttrs (oa: rec {
+          patches = builtins.filter (p: let
+            patch =
+              if builtins.typeOf p == "set"
+              then baseNameOf p.name
+              else baseNameOf p;
+          in
+            patch != "neovim-build-make-generated-source-files-reproducible.patch")
+          oa.patches;
+        });
+      };
       devshell = inputs.devshell.overlay;
       neovim-nightly = inputs.neovim-nightly-overlay.overlay;
       vim-extra-plugins = inputs.vim-extra-plugins.overlays.default;
