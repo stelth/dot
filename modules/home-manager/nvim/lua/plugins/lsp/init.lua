@@ -139,6 +139,9 @@ end
 
 local nls = require("null-ls")
 nls.setup(make_config({
+  should_attach = function(bufnr)
+    return vim.api.nvim_buf_line_count(bufnr) < 1000
+  end,
   save_after_format = false,
   sources = {
     -- Python
