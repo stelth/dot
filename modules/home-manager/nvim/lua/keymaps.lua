@@ -25,11 +25,6 @@ util.cowboy()
 local keymaps = {
   {
     Y = { "yg$", "" },
-    J = {
-      { "mzJ`z", "" },
-      { ":m '>+1<CR>gv=gv", "Move Line Down", mode = "v" },
-    },
-    K = { ":m '<-2<CR>gv=gv", "Move Line Up", mode = "v" },
     ["<C-d>"] = { "<C-d>zz" },
     ["<C-u>"] = { "<C-u>zz" },
     [","] = { ",<c-g>u", "", mode = "i" },

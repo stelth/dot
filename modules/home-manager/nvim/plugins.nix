@@ -93,6 +93,7 @@
       mini-bufremove
       mini-comment
       mini-indentscope
+      mini-move
       mini-pairs
       mini-statusline
       mini-surround
