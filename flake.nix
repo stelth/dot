@@ -260,7 +260,6 @@
         overlays = builtins.attrValues self.overlays;
       };
     in rec {
-      marksman = pkgs.callPackage ./pkgs/marksman {};
       neocmakelsp = pkgs.callPackage ./pkgs/neocmakelsp {};
       switch-back-to-nvim = pkgs.callPackage ./pkgs/switch-back-to-nvim {};
       sysdo =
@@ -291,7 +290,6 @@
       extraPackages = final: prev: {
         inherit
           (self.packages.${prev.system})
-          marksman
           neocmakelsp
           switch-back-to-nvim
           sysdo
