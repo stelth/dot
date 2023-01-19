@@ -82,13 +82,10 @@
       inc-rename-nvim
       lspkind-nvim
       luasnip
-      mini-ai
       mini-comment
-      mini-indentscope
       mini-move
       mini-pairs
       mini-statusline
-      mini-surround
       neodev-nvim
       neogit
       null-ls-nvim

@@ -19,13 +19,6 @@ vim.opt.cursorline = true
 vim.opt.diffopt:append("linematch:60")
 vim.opt.errorbells = false
 vim.opt.expandtab = true
-vim.opt.fillchars = {
-  fold = " ",
-  foldsep = " ",
-  foldopen = "",
-  foldclose = "",
-  diff = "╱",
-}
 vim.opt.formatoptions = "jcroqlnt"
 vim.opt.grepprg = "rg --vimgrep"
 vim.opt.grepformat = "%f:%l:%c:%m"
@@ -35,15 +28,6 @@ vim.opt.inccommand = "nosplit"
 vim.opt.incsearch = true
 vim.opt.laststatus = 0
 vim.opt.list = true
-vim.opt.listchars = {
-  space = "⋅",
-  eol = "↴",
-  tab = "__",
-  trail = "•",
-  extends = "❯",
-  precedes = "❮",
-  nbsp = "ﰸ",
-}
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 8

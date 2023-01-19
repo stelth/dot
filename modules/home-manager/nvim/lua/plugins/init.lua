@@ -1,4 +1,13 @@
-require("rose-pine").setup({})
+require("rose-pine").setup({
+  highlight_groups = {
+    MiniStatuslineModeNormal = { bg = "rose", fg = "base", gui = "bold" },
+    MiniStatuslineModeInsert = { bg = "overlay", fg = "rose", gui = "bold" },
+    MiniStatuslineModeVisual = { bg = "iris", fg = "base", gui = "bold" },
+    MiniStatuslineModeReplace = { bg = "pine", fg = "base", gui = "bold" },
+    MiniStatuslineModeCommand = { bg = "love", fg = "base", gui = "bold" },
+    MiniStatuslineInactive = { bg = "base", fg = "muted", gui = "bold" },
+  },
+})
 vim.cmd.colorscheme("rose-pine")
 
 require("git-worktree").setup({})
