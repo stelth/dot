@@ -18,9 +18,6 @@ cmp.setup({
       luasnip.lsp_expand(args.body)
     end,
   },
-  formatting = {
-    format = require("lspkind").cmp_format(),
-  },
   mapping = cmp.mapping.preset.insert({
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.close(),
@@ -50,7 +47,6 @@ cmp.setup({
     { name = "nvim_lsp" },
     { name = "luasnip" },
     { name = "path" },
-    { name = "calc" },
     { name = "buffer" },
     { name = "git" },
   }),

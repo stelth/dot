@@ -71,7 +71,6 @@
   programs.neovim = {
     plugins = with pkgs.vimExtraPlugins; [
       cmp-buffer
-      cmp-calc
       cmp-git
       cmp-nvim-lsp
       cmp-path
@@ -80,9 +79,7 @@
       git-worktree-nvim
       impatient-nvim
       inc-rename-nvim
-      lspkind-nvim
       luasnip
-      mini-comment
       mini-move
       mini-pairs
       mini-statusline
@@ -94,8 +91,6 @@
       nvim-terminal-lua
       nvim-treesitter.withAllGrammars
       nvim-treesitter-textobjects
-      nvim-treesitter-textsubjects
-      nvim-ts-context-commentstring
       nvim-web-devicons
       rose-pine
       rust-tools-nvim

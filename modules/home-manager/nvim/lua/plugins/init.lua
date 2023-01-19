@@ -1,4 +1,5 @@
 require("rose-pine").setup({
+  disable_italics = true,
   highlight_groups = {
     MiniStatuslineModeNormal = { bg = "rose", fg = "base", gui = "bold" },
     MiniStatuslineModeInsert = { bg = "overlay", fg = "rose", gui = "bold" },
@@ -21,8 +22,13 @@ require("luasnip").config.set_config({
   enable_autosnippets = true,
   updateEvents = "TextChanged,TextChangedI",
 })
-
 require("luasnip/loaders/from_vscode").lazy_load()
+
+require("mini.move").setup({})
+
+require("mini.pairs").setup({})
+
+require("mini.statusline").setup({})
 
 require("nvim-treesitter.configs").setup({
   highlight = { enable = true },
@@ -53,13 +59,6 @@ require("nvim-treesitter.configs").setup({
       },
     },
   },
-  textsubjects = {
-    enable = true,
-    keymaps = {
-      ["."] = "textsubjects-smart",
-      [";"] = "textsubjects-container-outer",
-    },
-  },
   indent = { enable = true },
 })
 
@@ -83,6 +82,5 @@ require("zen-mode").setup({
   },
 })
 
-require("plugins.mini")
 require("plugins.nvim-cmp")
 require("plugins.telescope-nvim")
