@@ -53,7 +53,6 @@ in {
       curl
       du-dust
       gh
-      ghq
       gnused
       grc
       jdk

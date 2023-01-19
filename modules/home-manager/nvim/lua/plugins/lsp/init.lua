@@ -132,7 +132,7 @@ lspconfig.sumneko_lua.setup(make_config({
 lspconfig.yamlls.setup(make_config({}))
 
 local should_enable_cpp = function(utils)
-  local kernel_repo_dir = vim.fn.system("ghq list -p linux")
+  local kernel_repo_dir = vim.fn.expand("~/dev/repos/linux")
 
   return utils.root_matches(kernel_repo_dir)
 end

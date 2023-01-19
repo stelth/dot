@@ -27,7 +27,6 @@
       merge = {tool = "nvimdiff";};
       "mergetool \"nvimdiff\"" = {path = "nvim";};
 
-      ghq = {root = "~/dev/repos";};
       color = {ui = true;};
     };
     aliases = {
