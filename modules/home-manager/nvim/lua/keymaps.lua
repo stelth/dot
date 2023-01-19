@@ -143,6 +143,11 @@ local keymaps = {
           "Diff This ~",
         },
       },
+      w = {
+        name = "+worktree",
+        w = { require("telescope").extensions.git_worktree.git_worktrees, "Worktrees" },
+        c = { require("telescope").extensions.git_worktree.create_git_worktree, "Create worktree" },
+      },
     },
     h = {
       name = "+help",

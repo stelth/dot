@@ -52,6 +52,8 @@ require("dial.config").augends:register_group({
   },
 })
 
+require("git-worktree").setup({})
+
 require("gitsigns").setup({})
 
 require("inc_rename").setup()

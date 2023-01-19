@@ -82,6 +82,7 @@
       dressing-nvim
       flit-nvim
       friendly-snippets
+      git-worktree-nvim
       gitsigns-nvim
       impatient-nvim
       inc-rename-nvim
