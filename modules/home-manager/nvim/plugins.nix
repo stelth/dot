@@ -99,7 +99,6 @@
       telescope-undo-nvim
       vim-matchup
       which-key-nvim
-      zen-mode-nvim
     ];
   };
 }

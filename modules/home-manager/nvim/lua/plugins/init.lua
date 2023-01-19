@@ -66,21 +66,5 @@ vim.g.matchup_matchparen_offscreen = {
   method = "status_manual",
 }
 
-require("zen-mode").setup({
-  window = {
-    width = 90,
-    options = {
-      number = true,
-      relativenumber = true,
-    },
-  },
-  plugins = {
-    kitty = {
-      enabled = false,
-      font = "+2",
-    },
-  },
-})
-
 require("plugins.nvim-cmp")
 require("plugins.telescope-nvim")

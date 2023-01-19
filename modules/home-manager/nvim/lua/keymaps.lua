@@ -150,7 +150,6 @@ local keymaps = {
       name = "+open",
     },
     u = { require("telescope").extensions.undo.undo, "Undo history" },
-    zz = { require("zen-mode").toggle, "Zen Mode" },
   },
 }
 
