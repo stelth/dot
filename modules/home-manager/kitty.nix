@@ -8,7 +8,7 @@
     enable = true;
     package = pkgs.stable.kitty;
     font = {name = "FiraCode Nerd Font Mono";};
-    theme = "Catppuccin-Mocha";
+    theme = "Rosé Pine";
     settings = {
       allow_remote_control = "socket-only";
       bold_font = "FiraCode Bold Nerd Font Mono";

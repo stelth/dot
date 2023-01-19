@@ -1,28 +1,5 @@
-require("catppuccin").setup({
-  integrations = {
-    cmp = true,
-    mini = true,
-    native_lsp = {
-      enabled = true,
-      virtual_text = {
-        errors = { "italic" },
-        hints = { "italic" },
-        warnings = { "italic" },
-        information = { "italic" },
-      },
-      underlines = {
-        errors = { "underline" },
-        hints = { "underline" },
-        warnings = { "underline" },
-        information = { "underline" },
-      },
-    },
-    telescope = true,
-    treesitter = true,
-    which_key = true,
-  },
-})
-vim.cmd.colorscheme("catppuccin")
+require("rose-pine").setup({})
+vim.cmd.colorscheme("rose-pine")
 
 require("git-worktree").setup({})
 

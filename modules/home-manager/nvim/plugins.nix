@@ -70,7 +70,6 @@
 
   programs.neovim = {
     plugins = with pkgs.vimExtraPlugins; [
-      catppuccin
       cmp-buffer
       cmp-calc
       cmp-git
@@ -101,6 +100,7 @@
       nvim-treesitter-textsubjects
       nvim-ts-context-commentstring
       nvim-web-devicons
+      rose-pine
       rust-tools-nvim
       telescope-fzf-native-nvim
       telescope-nvim
