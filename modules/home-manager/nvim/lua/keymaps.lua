@@ -1,7 +1,6 @@
 local wk = require("which-key")
 local util = require("util")
 local telescope_builtin = require("telescope.builtin")
-local gitsigns = require("gitsigns")
 
 vim.o.timeoutlen = 300
 
@@ -43,41 +42,6 @@ local keymaps = {
     ["<C-k>"] = { vim.cmd.cnext, "" },
     ["<C-j>"] = { vim.cmd.cprev, "" },
     ["<BS>"] = { vim.cmd.nohlsearch, "" },
-    ["]h"] = {
-      function()
-        if vim.wo.diff then
-          return "]h"
-        end
-        vim.schedule(function()
-          gitsigns.next_hunk()
-        end)
-        return "<Ignore>"
-      end,
-      "Next Hunk",
-      expr = true,
-    },
-    ["[h"] = {
-      function()
-        if vim.wo.diff then
-          return "]h"
-        end
-        vim.schedule(function()
-          gitsigns.prev_hunk()
-        end)
-        return "<Ignore>"
-      end,
-      "Prev Hunk",
-      expr = true,
-    },
-    ["ih"] = {
-      {
-        function()
-          vim.cmd.Gitsigns({ "select_hunk" })
-        end,
-        "Gitsigns Select Hunk",
-        mode = { "o", "x" },
-      },
-    },
   },
   {
     prefix = "<leader>",
@@ -105,49 +69,12 @@ local keymaps = {
       c = { telescope_builtin.git_commits, "Commits" },
       b = { telescope_builtin.git_branches, "Branches" },
       s = { telescope_builtin.git_status, "Status" },
-      h = {
-        name = "+hunk",
-        s = {
-          {
-            function()
-              vim.cmd.Gitsigns({ "stage_hunk" })
-            end,
-            "Stage Hunk",
-            mode = { "n", "v" },
-          },
-        },
-        r = {
-          {
-            function()
-              vim.cmd.Gitsigns({ "reset_hunk" })
-            end,
-            "Reset Hunk",
-            mode = { "n", "v" },
-          },
-        },
-        S = { gitsigns.stage_buffer, "Stage Buffer" },
-        u = { gitsigns.undo_stage_hunk, "Undo Stage Hunk" },
-        R = { gitsigns.reset_buffer, "Reset Buffer" },
-        p = { gitsigns.preview_hunk, "Preview Hunk" },
-        b = {
-          function()
-            gitsigns.blame_line({ full = true })
-          end,
-          "Blame Line",
-        },
-        d = { gitsigns.diffthis, "Diff This" },
-        D = {
-          function()
-            gitsigns.diffthis("~")
-          end,
-          "Diff This ~",
-        },
-      },
       w = {
         name = "+worktree",
         w = { require("telescope").extensions.git_worktree.git_worktrees, "Worktrees" },
         c = { require("telescope").extensions.git_worktree.create_git_worktree, "Create worktree" },
       },
+      n = { require("neogit").open, "Neogit" },
     },
     h = {
       name = "+help",

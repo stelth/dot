@@ -5,8 +5,6 @@ require("catppuccin").setup({
       enabled = true,
       enabled_ui = true,
     },
-    gitsigns = true,
-    leap = true,
     mini = true,
     native_lsp = {
       enabled = true,
@@ -33,28 +31,7 @@ require("catppuccin").setup({
 })
 vim.cmd.colorscheme("catppuccin")
 
-require("leap").add_default_mappings()
-require("flit").setup({
-  labeled_modes = "nv",
-})
-vim.keymap.set({ "n", "x", "o" }, "M", function()
-  require("leap-ast").leap()
-end)
-
-local augend = require("dial.augend")
-require("dial.config").augends:register_group({
-  default = {
-    augend.integer.alias.decimal,
-    augend.integer.alias.hex,
-    augend.date.alias["%Y/%m/%d"],
-    augend.constant.alias.bool,
-    augend.semver.alias.semver,
-  },
-})
-
 require("git-worktree").setup({})
-
-require("gitsigns").setup({})
 
 require("inc_rename").setup()
 
@@ -138,7 +115,6 @@ require("zen-mode").setup({
     },
   },
   plugins = {
-    gitsigns = true,
     kitty = {
       enabled = false,
       font = "+2",
@@ -147,7 +123,6 @@ require("zen-mode").setup({
 })
 
 require("plugins.mini")
-require("plugins.neovim-tasks")
 require("plugins.noice")
 require("plugins.nvim-cmp")
 require("plugins.nvim-dap")

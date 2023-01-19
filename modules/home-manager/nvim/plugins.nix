@@ -78,16 +78,12 @@
       cmp-nvim-lsp
       cmp-path
       cmp_luasnip
-      dial-nvim
       dressing-nvim
-      flit-nvim
       friendly-snippets
       git-worktree-nvim
-      gitsigns-nvim
       impatient-nvim
       inc-rename-nvim
       inlay-hints-nvim
-      leap-ast-nvim
       lspkind-nvim
       luasnip
       mini-ai
@@ -99,7 +95,7 @@
       mini-statusline
       mini-surround
       neodev-nvim
-      neovim-tasks
+      neogit
       noice-nvim
       null-ls-nvim
       nvim-cmp
