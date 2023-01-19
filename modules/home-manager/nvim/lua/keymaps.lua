@@ -19,8 +19,6 @@ vim.keymap.set = function(mode, lhs, rhs, opts)
   return keymap_set(mode, lhs, rhs, opts)
 end
 
-util.cowboy()
-
 local keymaps = {
   {
     Y = { "yg$", "" },
