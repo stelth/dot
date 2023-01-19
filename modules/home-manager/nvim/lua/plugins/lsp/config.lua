@@ -1,7 +1,6 @@
 local M = {}
 
 M.on_attach = function(client, bufnr)
-  require("inlay-hints").on_attach(client, bufnr)
   require("plugins.lsp.formatting").format_callback(client, bufnr)
   require("plugins.lsp.keymaps").keymap_callback(client, bufnr)
 end

@@ -1,10 +1,6 @@
 require("catppuccin").setup({
   integrations = {
     cmp = true,
-    dap = {
-      enabled = true,
-      enabled_ui = true,
-    },
     mini = true,
     native_lsp = {
       enabled = true,
@@ -21,11 +17,8 @@ require("catppuccin").setup({
         information = { "underline" },
       },
     },
-    noice = true,
-    notify = true,
     telescope = true,
     treesitter = true,
-    treesitter_context = true,
     which_key = true,
   },
 })
@@ -34,10 +27,6 @@ vim.cmd.colorscheme("catppuccin")
 require("git-worktree").setup({})
 
 require("inc_rename").setup()
-
-require("inlay-hints").setup({
-  renderer = "inlay-hints/render/eol",
-})
 
 require("terminal").setup({})
 
@@ -48,18 +37,6 @@ require("luasnip").config.set_config({
 })
 
 require("luasnip/loaders/from_vscode").lazy_load()
-
-require("notify").setup({
-  timeout = 3000,
-  level = vim.log.levels.INFO,
-  fps = 20,
-  max_height = function()
-    return math.floor(vim.o.lines * 0.75)
-  end,
-  max_width = function()
-    return math.floor(vim.o.columns * 0.75)
-  end,
-})
 
 require("nvim-treesitter.configs").setup({
   highlight = { enable = true },
@@ -100,8 +77,6 @@ require("nvim-treesitter.configs").setup({
   indent = { enable = true },
 })
 
-require("treesitter-context").setup({})
-
 vim.g.matchup_matchparen_offscreen = {
   method = "status_manual",
 }
@@ -123,7 +98,5 @@ require("zen-mode").setup({
 })
 
 require("plugins.mini")
-require("plugins.noice")
 require("plugins.nvim-cmp")
-require("plugins.nvim-dap")
 require("plugins.telescope-nvim")

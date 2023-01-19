@@ -67,11 +67,6 @@ lspconfig.pyright.setup(make_config({}))
 lspconfig.rnix.setup(make_config({}))
 
 require("rust-tools").setup({
-  tools = {
-    inlay_hints = {
-      auto = false,
-    },
-  },
   server = make_config({}),
 })
 

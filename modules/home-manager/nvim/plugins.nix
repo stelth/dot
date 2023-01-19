@@ -73,21 +73,17 @@
       catppuccin
       cmp-buffer
       cmp-calc
-      cmp-dap
       cmp-git
       cmp-nvim-lsp
       cmp-path
       cmp_luasnip
-      dressing-nvim
       friendly-snippets
       git-worktree-nvim
       impatient-nvim
       inc-rename-nvim
-      inlay-hints-nvim
       lspkind-nvim
       luasnip
       mini-ai
-      mini-bufremove
       mini-comment
       mini-indentscope
       mini-move
@@ -96,18 +92,11 @@
       mini-surround
       neodev-nvim
       neogit
-      noice-nvim
       null-ls-nvim
       nvim-cmp
-      nvim-dap
-      nvim-dap-python
-      nvim-dap-ui
-      nvim-dap-virtual-text
       nvim-lspconfig
-      nvim-notify
       nvim-terminal-lua
       nvim-treesitter.withAllGrammars
-      nvim-treesitter-context
       nvim-treesitter-textobjects
       nvim-treesitter-textsubjects
       nvim-ts-context-commentstring
@@ -116,9 +105,6 @@
       telescope-fzf-native-nvim
       telescope-nvim
       telescope-undo-nvim
-      vim-dadbod
-      vim-dadbod-completion
-      vim-dadbod-ui
       vim-matchup
       which-key-nvim
       zen-mode-nvim

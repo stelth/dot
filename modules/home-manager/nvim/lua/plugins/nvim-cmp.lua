@@ -8,7 +8,7 @@ end
 
 cmp.setup({
   enabled = function()
-    return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt" or require("cmp_dap").is_dap_buffer()
+    return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt"
   end,
   completion = {
     completeopt = "menu,menuone,noinsert",
@@ -58,12 +58,6 @@ cmp.setup({
     ghost_text = {
       hl_group = "LspCodeLens",
     },
-  },
-})
-
-cmp.setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
-  sources = {
-    { name = "dap" },
   },
 })
 

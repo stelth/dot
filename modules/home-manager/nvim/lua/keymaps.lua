@@ -146,39 +146,11 @@ local keymaps = {
     },
     k = { vim.cmd.lnext, "" },
     j = { vim.cmd.lprev, "" },
-    d = {
-      b = { require("dap").toggle_breakpoint, "Toggle breakpoint" },
-      c = { require("dap").continue, "Continue" },
-      o = { require("dap").step_over, "Step over" },
-      i = { require("dap").step_into, "Step into" },
-      w = { require("dap.ui.widgets").hover, "Widgets" },
-      r = { require("dap").repl.open, "Repl" },
-      u = {
-        function()
-          require("dapui").toggle({})
-        end,
-        "Dap UI",
-      },
-    },
     o = {
       name = "+open",
     },
     u = { require("telescope").extensions.undo.undo, "Undo history" },
     zz = { require("zen-mode").toggle, "Zen Mode" },
-    b = {
-      d = {
-        function()
-          require("mini.bufremove").delete(0, false)
-        end,
-        "Delete buffer",
-      },
-      D = {
-        function()
-          require("mini.bufremove").delete(0, true)
-        end,
-        "Delete buffer",
-      },
-    },
   },
 }
 
