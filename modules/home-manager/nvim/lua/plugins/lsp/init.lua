@@ -23,21 +23,7 @@ lspconfig.clangd.setup(make_config({
 
 lspconfig.dockerls.setup(make_config({}))
 
-lspconfig.gopls.setup(make_config({
-  settings = {
-    gopls = {
-      hints = {
-        assignVariableTypes = true,
-        compositeLiteralFields = true,
-        compositeLiteralTypes = true,
-        constantValues = true,
-        functionTypeParameters = true,
-        parameterNames = true,
-        rangeVariableTypes = true,
-      },
-    },
-  },
-}))
+lspconfig.gopls.setup(make_config({}))
 
 lspconfig.jdtls.setup(make_config({}))
 
@@ -47,19 +33,6 @@ lspconfig.jsonls.setup(make_config({
 
 lspconfig.marksman.setup(make_config({}))
 
-local configs = require("lspconfig.configs")
-if not configs.neocmake then
-  configs.neocmake = {
-    default_config = {
-      cmd = { "neocmakelsp", "--stdio" },
-      filetypes = { "cmake" },
-      root_dir = function(fname)
-        return lspconfig.util.find_git_ancestor(fname)
-      end,
-      single_file_support = true, -- suggested
-    },
-  }
-end
 lspconfig.neocmake.setup(make_config({}))
 
 lspconfig.pyright.setup(make_config({}))
@@ -73,53 +46,9 @@ require("rust-tools").setup({
 require("neodev").setup({})
 
 lspconfig.sumneko_lua.setup(make_config({
-  single_file_support = true,
   settings = {
     Lua = {
-      hint = {
-        enable = true,
-      },
-      workspace = {
-        checkThirdParty = false,
-      },
-      completion = {
-        workspaceWord = true,
-        callSnippet = "Both",
-      },
-      misc = {
-        parameters = {
-          "--log-level=trace",
-        },
-      },
-      diagnostics = {
-        groupSeverity = {
-          strong = "Warning",
-          strict = "Warning",
-        },
-        groupFileStatus = {
-          ["ambiguity"] = "Opened",
-          ["await"] = "Opened",
-          ["codestyle"] = "None",
-          ["duplicate"] = "Opened",
-          ["global"] = "Opened",
-          ["luadoc"] = "Opened",
-          ["redefined"] = "Opened",
-          ["strict"] = "Opened",
-          ["strong"] = "Opened",
-          ["type-check"] = "Opened",
-          ["unbalanced"] = "Opened",
-          ["unused"] = "Opened",
-        },
-        unusedLocalExclude = { "_*" },
-      },
-      format = {
-        enable = false,
-        defaultConfig = {
-          indent_style = "space",
-          indent_size = "2",
-          continuation_indent_size = "2",
-        },
-      },
+      callSnippet = "Replace",
     },
   },
 }))
