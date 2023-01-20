@@ -9,6 +9,10 @@
     package = pkgs.stable.kitty;
     font = {name = "FiraCode Nerd Font Mono";};
     theme = "Rosé Pine";
+    keybindings = {
+      "cmd+c" = "copy_to_clipboard";
+      "cmd+v" = "paste_from_clipboard";
+    };
     settings = {
       allow_remote_control = "socket-only";
       bold_font = "FiraCode Bold Nerd Font Mono";
