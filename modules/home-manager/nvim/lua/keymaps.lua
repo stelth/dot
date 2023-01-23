@@ -1,15 +1,7 @@
-local wk = require("which-key")
 local util = require("util")
 local telescope_builtin = require("telescope.builtin")
 
 vim.o.timeoutlen = 300
-
-wk.setup({
-  show_help = false,
-  triggers = "auto",
-  plugins = { spelling = true },
-  key_labels = { ["<leader>"] = "SPC" },
-})
 
 -- Make all keymaps silent by default
 local keymap_set = vim.keymap.set
@@ -19,143 +11,80 @@ vim.keymap.set = function(mode, lhs, rhs, opts)
   return keymap_set(mode, lhs, rhs, opts)
 end
 
-local keymaps = {
-  {
-    Y = { "yg$", "" },
-    ["<C-d>"] = { "<C-d>zz" },
-    ["<C-u>"] = { "<C-u>zz" },
-    [","] = { ",<c-g>u", "", mode = "i" },
-    ["."] = { ".<c-g>u", "", mode = "i" },
-    [";"] = { ";<c-g>u", "", mode = "i" },
-    ["<"] = { "<gv", "", mode = "v" },
-    [">"] = { ">gv", "", mode = "v" },
-    n = {
-      expr = true,
-      { "'Nn'[v:searchforward]", "", mode = { "n", "x", "o" } },
-    },
-    N = {
-      expr = true,
-      { "'nN'[v:searchforward]", "", mode = { "n", "x", "o" } },
-    },
-    ["<C-k>"] = { vim.cmd.cnext, "" },
-    ["<C-j>"] = { vim.cmd.cprev, "" },
-    ["<BS>"] = { vim.cmd.nohlsearch, "" },
-  },
-  {
-    prefix = "<leader>",
-    w = {
-      name = "+window",
-      w = { "<C-W>p", "Other Window" },
-      d = { "<C-W>d", "Delete Window" },
-      ["-"] = { "<C-W>s", "Split Window Below" },
-      ["|"] = { "<C-W>v", "Split Window Right" },
-      h = { "<C-W>h", "Window Left" },
-      j = { "<C-W>j", "Window Below" },
-      k = { "<C-W>k", "Window Up" },
-      l = { "<C-W>l", "Window Right" },
-      H = { "<C-W>5<", "Expand Window Left" },
-      J = { ":resize +5<cr>", "Expand Window Below" },
-      K = { ":resize -5<cr>", "Expand Window Up" },
-      L = { "<C-W>5>", "Expand Window Right" },
-      ["="] = { "<C-W>=", "Balance Window" },
-    },
-    c = {
-      name = "+code",
-    },
-    g = {
-      name = "+git",
-      c = { telescope_builtin.git_commits, "Commits" },
-      b = { telescope_builtin.git_branches, "Branches" },
-      s = { telescope_builtin.git_status, "Status" },
-      w = {
-        name = "+worktree",
-        w = { require("telescope").extensions.git_worktree.git_worktrees, "Worktrees" },
-        c = { require("telescope").extensions.git_worktree.create_git_worktree, "Create worktree" },
-      },
-      n = { require("neogit").open, "Neogit" },
-    },
-    h = {
-      name = "+help",
-      t = { telescope_builtin.builtin, "Telescope" },
-      c = { telescope_builtin.commands, "Commands" },
-      h = { telescope_builtin.help_tags, "Help Pages" },
-      m = { telescope_builtin.man_pages, "Man Pages" },
-      k = { telescope_builtin.keymaps, "Key Maps" },
-      s = { telescope_builtin.highlights, "Search Highlight Groups" },
-      l = { vim.show_pos, "Highlight Groups at curser" },
-      f = { telescope_builtin.filetypes, "File Types" },
-      o = { telescope_builtin.vim_options, "Options" },
-      a = { telescope_builtin.autocommands, "Auto Commands" },
-    },
-    s = {
-      name = "+search",
-      g = { telescope_builtin.live_grep, "Grep" },
-      b = { telescope_builtin.current_buffer_fuzzy_find, "Buffer" },
-      h = { telescope_builtin.command_history, "Command History" },
-      m = { telescope_builtin.marks, "Jump to Mark" },
-      w = {
-        function()
-          telescope_builtin.grep_string({ search = vim.fn.expand("<cword>") })
-        end,
-        "Current Word",
-      },
-    },
-    f = {
-      name = "+file",
-      f = { telescope_builtin.find_files, "Find File" },
-      r = { telescope_builtin.oldfiles, "Open Recent File" },
-    },
-    t = {
-      name = "+toggle",
-      f = {
-        require("plugins.lsp.formatting").toggle_formatting,
-        "Format on Save",
-      },
-      s = {
-        function()
-          util.toggle("spell")
-        end,
-        "Spelling",
-      },
-      w = {
-        function()
-          util.toggle("wrap")
-        end,
-        "Word Wrap",
-      },
-      n = {
-        function()
-          util.toggle("relativenumber")
-          util.toggle("number")
-        end,
-        "Line Numbers",
-      },
-    },
-    [","] = {
-      function()
-        telescope_builtin.buffers({ show_all_buffers = true })
-      end,
-      "Switch buffer",
-    },
-    ["/"] = { telescope_builtin.live_grep, "Search" },
-    [":"] = { telescope_builtin.command_history, "Command History" },
-    x = {
-      name = "+errors",
-      l = { vim.cmd.lopen, "Open Location List" },
-      q = { vim.cmd.copen, "Open Quickfix List" },
-    },
-    k = { vim.cmd.lnext, "" },
-    j = { vim.cmd.lprev, "" },
-    o = {
-      name = "+open",
-    },
-    u = { require("telescope").extensions.undo.undo, "Undo history" },
-  },
-}
+vim.keymap.set("n", "Y", "yg$")
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("i", ",", ",<C-g>u")
+vim.keymap.set("i", ".", ".<C-g>u")
+vim.keymap.set("i", ";", ";<C-g>u")
+vim.keymap.set({ "n", "x", "o" }, "n", "'Nn'[v:searchforward]", { expr = true })
+vim.keymap.set({ "n", "x", "o" }, "N", "'nN'[v:searchforward]", { expr = true })
+vim.keymap.set("n", "<C-k>", vim.cmd.cnext)
+vim.keymap.set("n", "<C-j>", vim.cmd.cprev)
+vim.keymap.set("n", "<BS>", vim.cmd.nohlsearch)
 
-for i = 0, 10 do
-  keymaps[tostring(i)] = "which_key_ignore"
-end
+-- Git keymaps
+vim.keymap.set("n", "<leader>gc", telescope_builtin.git_commits, { desc = "Commits" })
+vim.keymap.set("n", "<leader>gb", telescope_builtin.git_branches, { desc = "Branches" })
+vim.keymap.set("n", "<leader>gs", telescope_builtin.git_status, { desc = "Status" })
+vim.keymap.set("n", "<leader>gww", require("telescope").extensions.git_worktree.git_worktrees, { desc = "Worktrees" })
+vim.keymap.set(
+  "n",
+  "<leader>gwc",
+  require("telescope").extensions.git_worktree.create_git_worktree,
+  { desc = "Create worktree" }
+)
+vim.keymap.set("n", "<leader>gwn", require("neogit").open, { desc = "Neogit" })
 
-wk.register(keymaps)
-wk.register({ g = { name = "+goto" } })
+-- Help keymaps
+vim.keymap.set("n", "<leader>ht", telescope_builtin.builtin, { desc = "Telescope" })
+vim.keymap.set("n", "<leader>hc", telescope_builtin.commands, { desc = "Commands" })
+vim.keymap.set("n", "<leader>hm", telescope_builtin.help_tags, { desc = "Help Pages" })
+vim.keymap.set("n", "<leader>hm", telescope_builtin.man_pages, { desc = "Man Pages" })
+vim.keymap.set("n", "<leader>hk", telescope_builtin.keymaps, { desc = "Keymaps" })
+vim.keymap.set("n", "<leader>hs", telescope_builtin.highlights, { desc = "Search Highlight Groups" })
+vim.keymap.set("n", "<leader>hl", vim.show_pos, { desc = "Highlight Groups at Cursor" })
+vim.keymap.set("n", "<leader>hf", telescope_builtin.filetypes, { desc = "Filetypes" })
+vim.keymap.set("n", "<leader>ho", telescope_builtin.vim_options, { desc = "Options" })
+vim.keymap.set("n", "<leader>ha", telescope_builtin.autocommands, { desc = "Auto Commands" })
+
+-- Search keymaps
+vim.keymap.set("n", "<leader>sg", telescope_builtin.live_grep, { desc = "Grep" })
+vim.keymap.set("n", "<leader>sb", telescope_builtin.current_buffer_fuzzy_find, { desc = "Buffer" })
+vim.keymap.set("n", "<leader>sh", telescope_builtin.command_history, { desc = "Command History" })
+vim.keymap.set("n", "<leader>sm", telescope_builtin.marks, { desc = "Marks" })
+vim.keymap.set("n", "<leader>sw", function()
+  telescope_builtin.grep_string({ search = vim.fn.expand("<cword>") })
+end, { desc = "Current Word" })
+vim.keymap.set("n", "<leader>ff", telescope_builtin.find_files, { desc = "Find File" })
+vim.keymap.set("n", "<leader>fr", telescope_builtin.oldfiles, { desc = "Recent Files" })
+
+-- Toggle keymaps
+vim.keymap.set("n", "<leader>ts", function()
+  util.toggle("spell")
+end, { desc = "Spelling" })
+vim.keymap.set("n", "<leader>tw", function()
+  util.toggle("wrap")
+end, { desc = "Word Wrap" })
+vim.keymap.set("n", "<leader>tn", function()
+  util.toggle("relativenumber")
+  util.toggle("number")
+end)
+
+-- Switch buffer
+vim.keymap.set("n", "<leader>,", function()
+  telescope_builtin.buffers({ show_all_buffers = true })
+end, {desc = "Switch Buffer"})
+
+-- Quick search
+vim.keymap.set("n", "<leader>/", telescope_builtin.live_grep, { desc = "Search" })
+vim.keymap.set("n", "<leader>:", telescope_builtin.command_history, { desc = "Command History" })
+
+-- Move around location list
+vim.keymap.set("n", "<leader>xl", vim.cmd.lopen, { desc = "Open Location List" })
+vim.keymap.set("n", "<leader>xq", vim.cmd.copen, { desc = "Open Quickfix List" })
+vim.keymap.set("n", "<leader>k", vim.cmd.lnext)
+vim.keymap.set("n", "<leader>j", vim.cmd.lprev)
+
+-- Undo navigation
+vim.keymap.set("n", "<leader>u", require("telescope").extensions.undo.undo)

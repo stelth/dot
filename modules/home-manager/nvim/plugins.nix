@@ -98,7 +98,6 @@
       telescope-nvim
       telescope-undo-nvim
       vim-matchup
-      which-key-nvim
     ];
   };
 }
