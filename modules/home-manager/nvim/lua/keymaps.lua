@@ -34,7 +34,7 @@ vim.keymap.set(
   require("telescope").extensions.git_worktree.create_git_worktree,
   { desc = "Create worktree" }
 )
-vim.keymap.set("n", "<leader>gwn", require("neogit").open, { desc = "Neogit" })
+vim.keymap.set("n", "<leader>gn", require("neogit").open, { desc = "Neogit" })
 
 -- Help keymaps
 vim.keymap.set("n", "<leader>ht", telescope_builtin.builtin, { desc = "Telescope" })
@@ -74,7 +74,7 @@ end)
 -- Switch buffer
 vim.keymap.set("n", "<leader>,", function()
   telescope_builtin.buffers({ show_all_buffers = true })
-end, {desc = "Switch Buffer"})
+end, { desc = "Switch Buffer" })
 
 -- Quick search
 vim.keymap.set("n", "<leader>/", telescope_builtin.live_grep, { desc = "Search" })
