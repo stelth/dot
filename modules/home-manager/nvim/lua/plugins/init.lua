@@ -28,6 +28,8 @@ require("luasnip").config.set_config({
 })
 require("luasnip/loaders/from_vscode").lazy_load()
 
+require("mini.comment").setup({})
+
 require("mini.move").setup({})
 
 require("mini.pairs").setup({})

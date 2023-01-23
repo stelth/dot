@@ -81,6 +81,7 @@
       inc-rename-nvim
       kanagawa-nvim
       luasnip
+      mini-comment
       mini-move
       mini-pairs
       mini-statusline
