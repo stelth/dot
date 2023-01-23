@@ -1,6 +1,6 @@
 env:
   CIRRUS_SHELL: bash -il
-  DARWIN_BUILD_IMAGE: ghcr.io/cirruslabs/macos-monterey-base:latest
+  DARWIN_BUILD_IMAGE: ghcr.io/cirruslabs/macos-ventura-base:latest
   LINUX_BUILD_IMAGE: nixos/nix:latest
   NIX_INSTALL_URL: https://nixos.org/nix/install
   SUDO: sudo
