@@ -8,7 +8,6 @@
     enable = true;
     package = pkgs.stable.kitty;
     font = {name = "FiraCode Nerd Font Mono";};
-    theme = "Rosé Pine";
     keybindings = {
       "cmd+c" = "copy_to_clipboard";
       "cmd+v" = "paste_from_clipboard";

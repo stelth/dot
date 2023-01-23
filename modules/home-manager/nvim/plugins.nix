@@ -79,6 +79,7 @@
       git-worktree-nvim
       impatient-nvim
       inc-rename-nvim
+      kanagawa-nvim
       luasnip
       mini-move
       mini-pairs
@@ -92,7 +93,6 @@
       nvim-treesitter.withAllGrammars
       nvim-treesitter-textobjects
       nvim-web-devicons
-      rose-pine
       rust-tools-nvim
       telescope-fzf-native-nvim
       telescope-nvim

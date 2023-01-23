@@ -1,15 +1,19 @@
-require("rose-pine").setup({
-  disable_italics = true,
-  highlight_groups = {
-    MiniStatuslineModeNormal = { bg = "rose", fg = "base", gui = "bold" },
-    MiniStatuslineModeInsert = { bg = "overlay", fg = "rose", gui = "bold" },
-    MiniStatuslineModeVisual = { bg = "iris", fg = "base", gui = "bold" },
-    MiniStatuslineModeReplace = { bg = "pine", fg = "base", gui = "bold" },
-    MiniStatuslineModeCommand = { bg = "love", fg = "base", gui = "bold" },
-    MiniStatuslineInactive = { bg = "base", fg = "muted", gui = "bold" },
+local default_colors = require("kanagawa.colors").setup()
+require("kanagawa").setup({
+  overrides = {
+    MiniStatuslineDevinfo = { fg = default_colors.fg_dark, bg = default_colors.bg_light0 },
+    MiniStatuslineFileinfo = { fg = default_colors.fg_dark, bg = default_colors.bg_light0 },
+    MiniStatuslineFilename = { fg = default_colors.fg_dark, bg = default_colors.bg_status },
+    MiniStatuslineInactive = { fg = default_colors.fg_comment, bg = default_colors.bg_status },
+    MiniStatuslineModeCommand = { fg = default_colors.bg_dark, bg = default_colors.op, bold = true },
+    MiniStatuslineModeInsert = { fg = default_colors.bg_dark, bg = default_colors.git.added, bold = true },
+    MiniStatuslineModeNormal = { fg = default_colors.bg_dark, bg = default_colors.fn, bold = true },
+    MiniStatuslineModeOther = { fg = default_colors.bg_dark, bg = default_colors.dep, bold = true },
+    MiniStatuslineModeReplace = { fg = default_colors.bg_dark, bg = default_colors.git.removed, bold = true },
+    MiniStatuslineModeVisual = { fg = default_colors.bg_dark, bg = default_colors.kw, bold = true },
   },
 })
-vim.cmd.colorscheme("rose-pine")
+vim.cmd.colorscheme("kanagawa")
 
 require("git-worktree").setup({})
 
