@@ -6,16 +6,16 @@
 }:
 rustPlatform.buildRustPackage rec {
   pname = "neocmakelsp";
-  version = "0.5.1";
+  version = "0.5.2";
 
   src = fetchFromGitHub {
     owner = "Decodetalkers";
     repo = pname;
     rev = version;
-    sha256 = "sha256-G4eNk2eIryXd75Iqhj/ooCjAvh7IkyJP3SAh7hcLoLw=";
+    sha256 = "sha256-KHlsyNgGm5+l7aqzoUdlOKJ4gb6KmJlCegQTAWqm4GI=";
   };
 
-  cargoHash = "sha256-G3Oez5D8dNKCeQcWM5OOJkuFoI8WXIrz5wXvsoSmdEU=";
+  cargoHash = "sha256-s5I0NoyX05kfpyPxwQdIaoLeb9rLSuWTuQXrGkYyhaw=";
 
   nativeBuildInputs = with pkgs; [cmake];
 
