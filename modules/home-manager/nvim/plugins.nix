@@ -75,6 +75,7 @@
       cmp-nvim-lsp
       cmp-path
       cmp_luasnip
+      dressing-nvim
       friendly-snippets
       git-worktree-nvim
       impatient-nvim
