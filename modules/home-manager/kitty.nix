@@ -8,6 +8,7 @@
     enable = true;
     package = pkgs.stable.kitty;
     font = {name = "FiraCode Nerd Font Mono";};
+    theme = "Tokyo Night";
     keybindings = {
       "cmd+c" = "copy_to_clipboard";
       "cmd+v" = "paste_from_clipboard";

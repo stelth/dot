@@ -80,7 +80,6 @@
       git-worktree-nvim
       impatient-nvim
       inc-rename-nvim
-      kanagawa-nvim
       luasnip
       mini-comment
       mini-move
@@ -99,6 +98,7 @@
       telescope-fzf-native-nvim
       telescope-nvim
       telescope-undo-nvim
+      tokyonight-nvim
       vim-matchup
     ];
   };
