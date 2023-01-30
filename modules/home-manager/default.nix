@@ -45,7 +45,6 @@ in {
       aspell
       bottom
       cachix
-      cargo
       cmake
       cirrus-cli
       comma
@@ -66,7 +65,6 @@ in {
       pfetch
       ripgrep-all
       rsync
-      rustc
       stable.procs
       sysdo
       tmux-cht
@@ -82,7 +80,6 @@ in {
       path = "${config.home.homeDirectory}/dot/modules/home-manager";
     };
     dircolors.enable = true;
-    go.enable = true;
     jq.enable = true;
     gpg.enable = true;
     htop.enable = true;

@@ -31,15 +31,6 @@
     stylua
     sumneko-lua-language-server
 
-    # Go
-    golangci-lint
-    gopls
-
-    # Rust
-    clippy
-    rust-analyzer
-    rustfmt
-
     # Docker
     nodePackages.dockerfile-language-server-nodejs
     hadolint
@@ -91,7 +82,6 @@
       nvim-treesitter.withAllGrammars
       nvim-treesitter-textobjects
       nvim-web-devicons
-      rust-tools-nvim
       telescope-fzf-native-nvim
       telescope-nvim
       telescope-undo-nvim

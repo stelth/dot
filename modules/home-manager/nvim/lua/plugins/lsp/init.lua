@@ -23,8 +23,6 @@ lspconfig.clangd.setup(make_config({
 
 lspconfig.dockerls.setup(make_config({}))
 
-lspconfig.gopls.setup(make_config({}))
-
 lspconfig.jdtls.setup(make_config({}))
 
 lspconfig.jsonls.setup(make_config({
@@ -38,10 +36,6 @@ lspconfig.neocmake.setup(make_config({}))
 lspconfig.pyright.setup(make_config({}))
 
 lspconfig.rnix.setup(make_config({}))
-
-require("rust-tools").setup({
-  server = make_config({}),
-})
 
 require("neodev").setup({})
 
@@ -103,13 +97,6 @@ nls.setup(make_config({
     nls.builtins.formatting.stylua.with({
       extra_args = { "--indent-type", "Spaces" },
     }),
-
-    -- Rust
-    nls.builtins.formatting.rustfmt,
-
-    -- Go
-    nls.builtins.diagnostics.golangci_lint,
-    nls.builtins.formatting.gofmt,
 
     -- Nix
     nls.builtins.formatting.alejandra,
