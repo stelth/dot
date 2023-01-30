@@ -1,7 +1,12 @@
 local M = {}
 
-local warn = require("util").warn
-local info = require("util").info
+local warn = function(msg, name)
+  vim.notify(msg, vim.log.levels.WARN, { title = name })
+end
+
+local info = function(msg, name)
+  vim.notify(msg, vim.log.levels.INFO, { title = name })
+end
 
 local autoformat = true
 M.toggle_formatting = function()

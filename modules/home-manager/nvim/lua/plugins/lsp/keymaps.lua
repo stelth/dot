@@ -11,6 +11,7 @@ M.keymap_callback = function(_, bufnr)
     expr = true,
   })
   vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr })
+  vim.keymap.set("n", "<leader>tf", require("plugins.lsp.formatting").toggle_formatting, { desc = "Toggle formatting" })
   vim.keymap.set("n", "<leader>cf", function()
     require("plugins.lsp.formatting").format(vim.api.nvim_get_current_buf())
   end, {

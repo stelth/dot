@@ -1,4 +1,3 @@
-local util = require("util")
 local telescope_builtin = require("telescope.builtin")
 
 vim.o.timeoutlen = 300
