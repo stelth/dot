@@ -59,18 +59,6 @@ end, { desc = "Current Word" })
 vim.keymap.set("n", "<leader>ff", telescope_builtin.find_files, { desc = "Find File" })
 vim.keymap.set("n", "<leader>fr", telescope_builtin.oldfiles, { desc = "Recent Files" })
 
--- Toggle keymaps
-vim.keymap.set("n", "<leader>ts", function()
-  util.toggle("spell")
-end, { desc = "Spelling" })
-vim.keymap.set("n", "<leader>tw", function()
-  util.toggle("wrap")
-end, { desc = "Word Wrap" })
-vim.keymap.set("n", "<leader>tn", function()
-  util.toggle("relativenumber")
-  util.toggle("number")
-end)
-
 -- Switch buffer
 vim.keymap.set("n", "<leader>,", function()
   telescope_builtin.buffers({ show_all_buffers = true })

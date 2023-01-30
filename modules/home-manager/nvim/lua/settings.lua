@@ -3,51 +3,34 @@
 -- ----------------------------------
 require("impatient").enable_profile()
 
-local indent = 2
-vim.g.mapleader = " "
-vim.g.maplocalleader = ","
+require("mini.basics").setup({
+  options = {
+    extra_ui = true,
+  },
+  mappings = {
+    option_toggle_prefix = "<Space>t",
+  },
+})
 
-vim.opt.autowrite = true
-vim.opt.backup = true
+local indent = 2
+
 vim.opt.backupdir = vim.fn.stdpath("state") .. "/backup"
 vim.opt.clipboard = "unnamedplus"
-vim.opt.completeopt = "menuone,noselect"
 vim.opt.conceallevel = 3
-vim.opt.cmdheight = 1
-vim.opt.colorcolumn = "80"
-vim.opt.cursorline = true
 vim.opt.diffopt:append("linematch:60")
-vim.opt.errorbells = false
 vim.opt.expandtab = true
-vim.opt.formatoptions = "jcroqlnt"
 vim.opt.grepprg = "rg --vimgrep"
 vim.opt.grepformat = "%f:%l:%c:%m"
-vim.opt.hidden = true
-vim.opt.ignorecase = true
 vim.opt.inccommand = "nosplit"
-vim.opt.incsearch = true
 vim.opt.laststatus = 0
-vim.opt.list = true
-vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.scrolloff = 8
 vim.opt.shiftwidth = indent
-vim.opt.shortmess = "filnxtToOFWIcC"
-vim.opt.showmode = true
-vim.opt.sidescrolloff = 8
-vim.opt.signcolumn = "yes"
-vim.opt.smartcase = true
-vim.opt.smartindent = true
 vim.opt.spell = true
-vim.opt.splitkeep = "screen"
 vim.opt.swapfile = false
 vim.opt.tabstop = indent
-vim.opt.termguicolors = true
-vim.opt.undofile = true
 vim.opt.undolevels = 10000
 vim.opt.updatetime = 50
 vim.opt.wildmode = "longest:full,full"
-vim.opt.wrap = false
 
 -- don't load the plugins below
 vim.g.loaded_2html_plugin = 1
@@ -67,7 +50,6 @@ vim.g.loaded_vimballPlugin = 1
 vim.g.loaded_zip = 1
 vim.g.loaded_zipPlugin = 1
 
-require("autocmds")
 require("plugins")
 require("keymaps")
 require("plugins.lsp")

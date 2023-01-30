@@ -81,10 +81,7 @@
       impatient-nvim
       inc-rename-nvim
       luasnip
-      mini-comment
-      mini-move
-      mini-pairs
-      mini-statusline
+      mini-nvim
       neodev-nvim
       neogit
       null-ls-nvim
