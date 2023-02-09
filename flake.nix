@@ -299,14 +299,6 @@
       };
       jdt-language-server = final: prev: {
         jdt-language-server = prev.jdt-language-server.overrideAttrs (_: rec {
-          version = "1.19.0";
-          timestamp = "202301171536";
-
-          src = final.fetchurl {
-            url = "https://download.eclipse.org/jdtls/milestones/${version}/jdt-language-server-${version}-${timestamp}.tar.gz";
-            sha256 = "sha256-9rreuMw2pODzOVX5PBmUZoV5ixUDilQyTsrnyCQ+IHs=";
-          };
-
           installPhase = ''
             find . -type f -exec install -Dm444 "{}" "$out/{}" \;
             chmod 755 $out/bin/*
