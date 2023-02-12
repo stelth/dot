@@ -29,7 +29,7 @@
 
     # Lua
     stylua
-    sumneko-lua-language-server
+    lua-language-server
 
     # Docker
     nodePackages.dockerfile-language-server-nodejs

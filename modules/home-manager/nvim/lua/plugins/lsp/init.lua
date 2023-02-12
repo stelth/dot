@@ -39,7 +39,7 @@ lspconfig.rnix.setup(make_config({}))
 
 require("neodev").setup({})
 
-lspconfig.sumneko_lua.setup(make_config({
+lspconfig.lua_ls.setup(make_config({
   settings = {
     Lua = {
       callSnippet = "Replace",
