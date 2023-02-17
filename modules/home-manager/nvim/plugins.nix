@@ -61,6 +61,7 @@
 
   programs.neovim = {
     plugins = with pkgs.vimExtraPlugins; [
+      barbecue-nvim
       cmp-buffer
       cmp-git
       cmp-nvim-lsp
@@ -78,6 +79,7 @@
       null-ls-nvim
       nvim-cmp
       nvim-lspconfig
+      nvim-navic
       nvim-terminal-lua
       nvim-treesitter.withAllGrammars
       nvim-treesitter-textobjects

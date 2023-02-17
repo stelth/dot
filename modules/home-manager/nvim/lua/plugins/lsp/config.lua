@@ -3,6 +3,9 @@ local M = {}
 M.on_attach = function(client, bufnr)
   require("plugins.lsp.formatting").format_callback(client, bufnr)
   require("plugins.lsp.keymaps").keymap_callback(client, bufnr)
+  if client.server_capabilities["documentSymbolProvider"] then
+    require("nvim-navic").attach(client, bufnr)
+  end
 end
 
 M.make_config = function(custom_config)

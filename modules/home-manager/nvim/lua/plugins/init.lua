@@ -3,6 +3,10 @@ require("tokyonight").setup({
 })
 vim.cmd.colorscheme("tokyonight")
 
+require("barbecue").setup({
+  attach_navic = false,
+})
+
 require("git-worktree").setup({})
 
 require("inc_rename").setup()
