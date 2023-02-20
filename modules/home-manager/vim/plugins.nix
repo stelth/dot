@@ -58,4 +58,10 @@
     proselint
     taplo
   ];
+
+  programs.vim = {
+    plugins = with pkgs.vimExtraPlugins; [
+      coc-nvim
+    ];
+  };
 }
