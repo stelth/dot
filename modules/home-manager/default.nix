@@ -19,6 +19,7 @@ in {
     ./ssh.nix
     ./starship.nix
     ./tmux.nix
+    ./vim
   ];
 
   manual = {
