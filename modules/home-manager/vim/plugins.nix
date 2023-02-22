@@ -61,7 +61,11 @@
 
   programs.vim = {
     plugins = with pkgs.vimExtraPlugins; [
-      coc-nvim
+      fzf-vim
+      vim-commentary
+      vim-fugitive
+      vim-gitgutter
+      vim-sensible
     ];
   };
 }

@@ -23,9 +23,8 @@
       init = {defaultBranch = "main";};
       pull = {rebase = true;};
       push = {followTags = true;};
-      diff = {tool = "nvimdiff";};
-      merge = {tool = "nvimdiff";};
-      "mergetool \"nvimdiff\"" = {path = "nvim";};
+      diff = {tool = "vimdiff";};
+      merge = {tool = "vimdiff";};
 
       color = {ui = true;};
     };

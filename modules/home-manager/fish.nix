@@ -15,9 +15,6 @@
       cp = "cp -riv";
       mkdir = "mkdir -vp";
       l = "ll";
-      vim = "nvim";
-      vi = "nvim";
-      v = "nvim";
       push = "git push";
       pull = "git pull";
       su = "su -";

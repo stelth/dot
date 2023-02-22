@@ -31,9 +31,9 @@ in {
   home = {
     stateVersion = "22.11";
     sessionVariables = {
-      EDITOR = "nvim";
-      VISUAL = "nvim";
-      MANPAGER = "nvim +Man!";
+      EDITOR = "vim";
+      VISUAL = "vim";
+      MANPAGER = "vim +Man!";
       MANROFFOPT = "-c";
       NIX_GCC = "${pkgs.gcc}/bin/gcc";
       JAVA_HOME = "${pkgs.jdk}";
