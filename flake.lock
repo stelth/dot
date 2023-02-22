@@ -365,11 +365,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1677035277,
-        "narHash": "sha256-S9/p3PTtAFGTIx1BSzDn/2xSEgYDVI6RxUgL4Ss+MnY=",
+        "lastModified": 1677035532,
+        "narHash": "sha256-Yk5nbxopb426mnRHr0+SLLQM6k4gOmES64KBjK0c6fs=",
         "owner": "stelth",
         "repo": "nixpkgs-vim-extra-plugins",
-        "rev": "f51cfb530a3ce344436a661bf6114c7afb10f77b",
+        "rev": "44e500a1a4cdec86f5ab99d22ab5ac4a680b5ffe",
         "type": "github"
       },
       "original": {
