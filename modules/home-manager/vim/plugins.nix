@@ -66,7 +66,8 @@
       coc-yaml
       coc-yank
       fzf-vim
-      tender-vim
+      onedark-vim
+      vim-airline
       vim-commentary
       vim-fugitive
       vim-gitgutter

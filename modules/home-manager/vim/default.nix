@@ -1,6 +1,5 @@
 {
-  config,
-  pkgs,
+  config, pkgs,
   lib,
   ...
 }: {
@@ -26,9 +25,13 @@
     };
     extraConfig = ''
       set clipboard=unnamed
-      colorscheme tender
+
+      let g:onedark_terminal_italics=1
+
+      colorscheme onedark
 
       let g:ale_disable_lsp = 1
+      let g:ale_floating_preview = 1
     '';
   };
 }
