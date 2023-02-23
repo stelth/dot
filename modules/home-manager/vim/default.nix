@@ -6,6 +6,14 @@
 }: {
   imports = [./plugins.nix];
 
+  home.file = {
+    vim = {
+      source = ./vim;
+      target = ".vim";
+      recursive = true;
+    };
+  };
+
   programs.vim = {
     enable = true;
     packageConfigurable = pkgs.vim_configurable.override {
@@ -19,6 +27,8 @@
     extraConfig = ''
       set clipboard=unnamed
       colorscheme tender
+
+      let g:ale_disable_lsp = 1
     '';
   };
 }
