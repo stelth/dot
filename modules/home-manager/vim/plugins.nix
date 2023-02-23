@@ -65,6 +65,7 @@
       coc-sumneko-lua
       coc-yaml
       coc-yank
+      fzf-checkout-vim
       fzf-vim
       onedark-vim
       vim-airline
