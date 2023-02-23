@@ -15,7 +15,6 @@
 
     #nix
     alejandra
-    deadnix
     rnix-lsp
     statix
 
@@ -30,21 +29,18 @@
     hadolint
 
     # Shell scripting
+    bashate
     shellcheck
-    shellharden
     shfmt
 
     # {C}Make
-    checkmake
     cmake-format
 
     # Additional
     actionlint
     gitlint
-    marksman
     nodePackages.jsonlint
     proselint
-    taplo
   ];
 
   programs.vim = {
@@ -63,6 +59,7 @@
       coc-pyright
       coc-sh
       coc-sumneko-lua
+      coc-vimlsp
       coc-yaml
       coc-yank
       fzf-checkout-vim
