@@ -69,6 +69,7 @@
       vim-commentary
       vim-fugitive
       vim-gitgutter
+      vim-polyglot
       vim-sensible
     ];
   };
