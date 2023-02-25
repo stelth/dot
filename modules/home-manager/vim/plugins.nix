@@ -6,41 +6,62 @@
   ...
 }: {
   home.packages = with pkgs; [
-    # C/C++
+    # Bash
+    bashate
+    nodePackages.bash-language-server
+    shellcheck
+    shfmt
+
+    #C/CPP
     clang-tools
     cppcheck
     cpplint
-    include-what-you-use
-    lldb
 
-    #nix
+    # CMake
+    cmake-format
+
+    # Docker
+    dprint
+    hadolint
+
+    # Git
+    gitlint
+
+    # Java
+    google-java-format
+    jdt-language-server
+
+    # JSON
+    nodePackages.vscode-json-languageserver
+    jq
+
+    # Make
+    checkmake
+
+    # Markdown
+    alex
+    proselint
+    nodePackages.prettier
+    vale
+    nodePackages.write-good
+
+    # Nix
     alejandra
     rnix-lsp
     statix
 
-    # python
+    # Python
     (python3.withPackages
-      (ps: with ps; [black debugpy flake8 isort yamllint pylint]))
+      (ps: with ps; [black flake8 isort pylint]))
 
-    # Lua
-    stylua
+    # Vim
+    nodePackages.vim-language-server
+    vim-vint
 
-    # Docker
-    hadolint
-
-    # Shell scripting
-    bashate
-    shellcheck
-    shfmt
-
-    # {C}Make
-    cmake-format
-
-    # Additional
-    actionlint
-    gitlint
-    nodePackages.jsonlint
-    proselint
+    # YAML
+    nodePackages.yaml-language-server
+    yamlfix
+    yamllint
   ];
 
   programs.vim = {
@@ -58,7 +79,6 @@
       coc-prettier
       coc-pyright
       coc-sh
-      coc-sumneko-lua
       coc-vimlsp
       coc-yaml
       coc-yank

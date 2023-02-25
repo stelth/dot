@@ -1,4 +1,4 @@
-let mapleader=" "
+let mapleader = ' '
 
 let g:onedark_terminal_italics=1
 colorscheme onedark
@@ -10,6 +10,19 @@ set nowritebackup
 
 let g:ale_disable_lsp = 1
 let g:ale_floating_preview = 1
+let g:ale_fixers = {
+			\ '*': ['remove_trailing_lines', 'trim_whitespace' ],
+			\ 'sh': [ 'shfmt' ],
+			\ 'c': ['clang-format', 'clangtidy'],
+			\ 'cpp': ['clang-format', 'clangtidy'],
+			\ 'cmake': ['cmakeformat'],
+			\ 'dockerfile': ['dprint'],
+			\ 'java': ['google_java_format'],
+			\ 'markdown': ['prettier'],
+			\ 'nix': ['alejandra', 'statix'],
+			\ 'python': ['black', 'isort'],
+			\ 'yaml': ['prettier', 'yamlfix'],
+			\ }
 
 nmap <leader>hc :Commands<CR>
 nmap <leader>ht :Helptags<CR>
