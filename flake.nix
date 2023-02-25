@@ -15,10 +15,6 @@
     nixos-unstable = {url = "github:nixos/nixpkgs/nixos-unstable";};
     nixpkgs = {url = "github:nixos/nixpkgs/nixpkgs-unstable";};
     small = {url = "github:nixos/nixpkgs/nixos-unstable-small";};
-    neovim-nightly-overlay = {
-      url = "github:nix-community/neovim-nightly-overlay";
-      inputs = {nixpkgs = {follows = "nixpkgs";};};
-    };
     vim-extra-plugins = {
       url = "github:stelth/nixpkgs-vim-extra-plugins";
     };
@@ -306,7 +302,6 @@
         });
       };
       devshell = inputs.devshell.overlay;
-      neovim-nightly = inputs.neovim-nightly-overlay.overlay;
       vim-extra-plugins = inputs.vim-extra-plugins.overlays.default;
     };
   };
