@@ -32,8 +32,8 @@
     jdt-language-server
 
     # JSON
+    nodePackages.fixjson
     nodePackages.vscode-json-languageserver
-    jq
 
     # Make
     checkmake

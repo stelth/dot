@@ -18,6 +18,7 @@ let g:ale_fixers = {
 			\ 'cmake': ['cmakeformat'],
 			\ 'dockerfile': ['dprint'],
 			\ 'java': ['google_java_format'],
+			\ 'json': ['fixjson'],
 			\ 'markdown': ['prettier'],
 			\ 'nix': ['alejandra', 'statix'],
 			\ 'python': ['black', 'isort'],
