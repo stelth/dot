@@ -79,6 +79,7 @@
       coc-prettier
       coc-pyright
       coc-sh
+      coc-snippets
       coc-vimlsp
       coc-yaml
       coc-yank
@@ -91,6 +92,7 @@
       vim-gitgutter
       vim-polyglot
       vim-sensible
+      vim-snippets
     ];
   };
 }

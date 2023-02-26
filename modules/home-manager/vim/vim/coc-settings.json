@@ -1,1 +1,13 @@
-{ "diagnostic.displayByAle": true}
+{
+	"coc.preferences.colorSupport": true,
+	"coc.preferences.snippets.enable": true,
+	"coc.preferences.useQuickFixForLocations": true,
+	"codeLens.enable": true,
+	"diagnostic.displayByAle": true,
+	"highlight.colors.enable": true,
+	"inlayHint.enable": true,
+	"inlayHint.enableParameter": true,
+	"signature.enable": true,
+	"suggest.removeDuplicateItems": true,
+	"suggets.noselect": false,
+}
