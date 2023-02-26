@@ -40,6 +40,8 @@ let g:ale_fixers = {
 			\ 'yaml': ['prettier', 'yamlfix'],
 			\ }
 
+nmap <leader>u :UndotreeToggle<CR>
+
 nmap <leader>hc :Commands<CR>
 nmap <leader>ht :Helptags<CR>
 nmap <leader>hm :Maps<CR>

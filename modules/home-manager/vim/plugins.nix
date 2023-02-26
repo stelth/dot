@@ -86,6 +86,7 @@
       fzf-checkout-vim
       fzf-vim
       onedark-vim
+      undotree
       vim-airline
       vim-commentary
       vim-fugitive
