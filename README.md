@@ -3,6 +3,8 @@
 This repository manages system configurations for all of my
 macOS, nixOS, and linux machines.
 
+[![Build Status](https://api.cirrus-ci.com/github/stelth/dot.svg?branch=master)](https://cirrus-ci.com/github/stelth/dot)
+
 ## Structure
 
 This repository is a [flake](https://nixos.wiki/wiki/Flakes). All system configurations are defined
