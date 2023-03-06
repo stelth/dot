@@ -10,3 +10,5 @@ known_hosts
 Spoons
 sessions
 .direnv
+.devenv/
+.pre-commit-config.yaml

@@ -18,6 +18,7 @@
     vim-extra-plugins = {
       url = "github:stelth/nixpkgs-vim-extra-plugins";
     };
+    devenv = {url = "github:cachix/devenv";};
 
     # system management
     darwin = {
@@ -31,19 +32,18 @@
 
     # shell utilities
     flake-utils = {url = "github:numtide/flake-utils";};
-    devshell = {url = "github:numtide/devshell";};
     treefmt-nix = {url = "github:numtide/treefmt-nix";};
   };
 
-  outputs = inputs @ {
+  outputs = {
     self,
     nixpkgs,
+    devenv,
     darwin,
     home-manager,
     flake-utils,
-    treefmt-nix,
     ...
-  }: let
+  } @ inputs: let
     inherit (flake-utils.lib) eachSystemMap;
 
     isDarwin = system: (builtins.elem system inputs.nixpkgs.lib.platforms.darwin);
@@ -58,7 +58,6 @@
     mkDarwinConfig = {
       system ? "aarch64-darwin",
       nixpkgs ? inputs.nixpkgs,
-      stable ? inputs.stable,
       baseModules ? [
         home-manager.darwinModules.home-manager
         ./modules/darwin
@@ -76,7 +75,6 @@
     mkNixosConfig = {
       system ? "x86_64-linux",
       nixpkgs ? inputs.nixos-unstable,
-      stable ? inputs.stable,
       hardwareModules,
       baseModules ? [
         home-manager.nixosModules.home-manager
@@ -231,21 +229,10 @@
         overlays = builtins.attrValues self.overlays;
       };
     in {
-      default = pkgs.devshell.mkShell {
-        packages = with pkgs; [
-          alejandra
-          pre-commit
-          rnix-lsp
-          stylua
-          (treefmt-nix.lib.mkWrapper pkgs (import ./treefmt.nix))
-        ];
-        commands = [
-          {
-            name = "sysdo";
-            package = self.packages.${system}.sysdo;
-            category = "utilities";
-            help = "perform actions on this repository";
-          }
+      default = devenv.lib.mkShell {
+        inherit inputs pkgs;
+        modules = [
+          (import ./devenv.nix)
         ];
       };
     });
@@ -257,6 +244,7 @@
       };
     in rec {
       neocmakelsp = pkgs.callPackage ./pkgs/neocmakelsp {};
+      pyEnv = pkgs.python3.withPackages (ps: with ps; [black]);
       switch-back-to-nvim = pkgs.callPackage ./pkgs/switch-back-to-nvim {};
       sysdo =
         pkgs.writers.writePython3Bin "sysdo" {
@@ -301,7 +289,6 @@
           '';
         });
       };
-      devshell = inputs.devshell.overlays.default;
       vim-extra-plugins = inputs.vim-extra-plugins.overlays.default;
     };
   };

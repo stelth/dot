@@ -5,8 +5,8 @@
     black.enable = true;
     gofmt.enable = true;
     prettier.enable = true;
-    shellcheck.enable = false;
-    shfmt.enable = true;
+    shellcheck.enable = true;
+    shfmt.enable = false;
     stylua.enable = true;
   };
   settings.formatter = {
