@@ -49,7 +49,6 @@ in {
       comma
       coreutils-full
       curl
-      devenv
       du-dust
       gh
       gnused
