@@ -17,7 +17,7 @@
       shellcheck.enable = true;
       alejandra.enable = true;
       deadnix.enable = true;
-      shfmt.enable = false;
+      shfmt.enable = true;
       stylua.enable = true;
     };
 

@@ -31,7 +31,7 @@
 
   environment.systemPackages = with pkgs; [vscode firefox gnome.gnome-tweaks];
 
-  hm = {pkgs, ...}: {};
+  hm = {...}: {};
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users = {

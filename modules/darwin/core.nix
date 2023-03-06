@@ -3,9 +3,7 @@
   config,
   pkgs,
   ...
-}: let
-  prefix = "/run/current-system/sw/bin";
-in {
+}: {
   environment = {
     loginShell = pkgs.zsh;
     pathsToLink = ["/Applications"];

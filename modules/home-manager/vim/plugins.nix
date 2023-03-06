@@ -1,10 +1,4 @@
-{
-  self,
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     # Bash
     bashate

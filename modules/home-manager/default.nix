@@ -1,11 +1,8 @@
 {
-  inputs,
   config,
   pkgs,
   ...
-}: let
-  homeDir = config.home.homeDirectory;
-in {
+}: {
   imports = [
     ./1password.nix
     ./bat.nix
