@@ -11,4 +11,4 @@ Spoons
 sessions
 .direnv
 .devenv/
-.pre-commig-config.yaml
+.pre-commit-config.yaml
