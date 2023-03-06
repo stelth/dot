@@ -31,19 +31,19 @@
 
     # shell utilities
     flake-utils = {url = "github:numtide/flake-utils";};
-    devshell = {url = "github:numtide/devshell";};
+    devenv = {url = "github:cachix/devenv";};
     treefmt-nix = {url = "github:numtide/treefmt-nix";};
   };
 
-  outputs = inputs @ {
+  outputs = {
     self,
     nixpkgs,
     darwin,
+    devenv,
     home-manager,
     flake-utils,
-    treefmt-nix,
     ...
-  }: let
+  } @ inputs: let
     inherit (flake-utils.lib) eachSystemMap;
 
     isDarwin = system: (builtins.elem system inputs.nixpkgs.lib.platforms.darwin);
@@ -231,21 +231,10 @@
         overlays = builtins.attrValues self.overlays;
       };
     in {
-      default = pkgs.devshell.mkShell {
-        packages = with pkgs; [
-          alejandra
-          pre-commit
-          rnix-lsp
-          stylua
-          (treefmt-nix.lib.mkWrapper pkgs (import ./treefmt.nix))
-        ];
-        commands = [
-          {
-            name = "sysdo";
-            package = self.packages.${system}.sysdo;
-            category = "utilities";
-            help = "perform actions on this repository";
-          }
+      defaults = devenv.lib.mkShell {
+        inherit inputs pkgs;
+        modules = [
+          (import ./devenv.nix)
         ];
       };
     });
@@ -265,6 +254,7 @@
         } ''
           ${builtins.readFile ./bin/do.py}
         '';
+      devenv = inputs.devenv.defaultPackage.${system};
       tmux-cht = pkgs.callPackage ./pkgs/tmux-cht {};
       tmux-sessionizer = pkgs.callPackage ./pkgs/tmux-sessionizer {};
     });
@@ -285,7 +275,8 @@
       };
       extraPackages = final: prev: {
         inherit
-          (self.packages.${prev.system})
+        (self.packages.${prev.system})
+          devenv
           neocmakelsp
           switch-back-to-nvim
           sysdo
@@ -301,7 +292,6 @@
           '';
         });
       };
-      devshell = inputs.devshell.overlays.default;
       vim-extra-plugins = inputs.vim-extra-plugins.overlays.default;
     };
   };
