@@ -301,7 +301,7 @@
           '';
         });
       };
-      devshell = inputs.devshell.overlay;
+      devshell = inputs.devshell.overlays.default;
       vim-extra-plugins = inputs.vim-extra-plugins.overlays.default;
     };
   };
