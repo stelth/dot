@@ -9,7 +9,4 @@
     shfmt.enable = false;
     stylua.enable = true;
   };
-  settings.formatter = {
-    stylua.options = ["--indent-type" "Spaces"];
-  };
 }
