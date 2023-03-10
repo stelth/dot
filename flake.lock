@@ -28,11 +28,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1678342485,
-        "narHash": "sha256-KPaZDnAwQmu4PQ66iCL4vamUNZjMOR1OBidOCfWoqeY=",
+        "lastModified": 1678433945,
+        "narHash": "sha256-hb6ftcauPXLK2pg/SUWGKk/a0LnFc6WdCsGC9dSHP7M=",
         "owner": "cachix",
         "repo": "devenv",
-        "rev": "d0958f1f59b68af839aab2411f4a68068b46cec2",
+        "rev": "acac54b2775647597b1432856aa3a24dea43e3fd",
         "type": "github"
       },
       "original": {
@@ -357,11 +357,11 @@
     },
     "small": {
       "locked": {
-        "lastModified": 1678332372,
-        "narHash": "sha256-TWoYS13uQYRgJUoj2LebdTjY4u47K7sLqLwiHUVpYlw=",
+        "lastModified": 1678419322,
+        "narHash": "sha256-xL+2dsx2B+/YhBUD4gE3Q3c+Og7OcaGJs1SoNndGRTE=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "60a820c2c459d1b61dc458f9167b8f503c7cedb3",
+        "rev": "92a9b81a531940fb92143e774315365669e66754",
         "type": "github"
       },
       "original": {
@@ -427,11 +427,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1678351082,
-        "narHash": "sha256-kIRIklu5qeT7IleVd96d2g9jooqw9BSEmGXrV5GWG/w=",
+        "lastModified": 1678437569,
+        "narHash": "sha256-O4FMhbEepFIkPLETsnSKduZ/gfb8lhe9dTJFPHbqMOQ=",
         "owner": "stelth",
         "repo": "nixpkgs-vim-extra-plugins",
-        "rev": "11d0a9175229a1cedfad2f100e4d32135d0605fa",
+        "rev": "ef7c3bf6b914d478146d176bbd4ac7409cf1a63e",
         "type": "github"
       },
       "original": {
