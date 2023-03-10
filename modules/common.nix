@@ -44,6 +44,7 @@
       bat
       fzf
       ripgrep
+      moreutils
     ];
     etc = {
       home-manager.source = "${inputs.home-manager}";
