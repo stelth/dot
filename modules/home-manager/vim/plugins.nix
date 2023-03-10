@@ -65,7 +65,6 @@
       coc-cmake
       coc-docker
       coc-git
-      coc-java
       coc-json
       coc-lists
       coc-markdownlint
