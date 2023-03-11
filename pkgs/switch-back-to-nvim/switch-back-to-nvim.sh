@@ -3,8 +3,8 @@
 tmux_running=$(pgrep tmux)
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-  echo "tmux needs to be running"
-  exit 1
+	echo "tmux needs to be running"
+	exit 1
 fi
 
 # Switch to a window called nvim in tmux - if it exists
