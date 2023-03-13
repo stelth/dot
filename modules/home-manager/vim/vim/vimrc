@@ -31,20 +31,9 @@ set relativenumber
 set signcolumn=yes
 set updatetime=300
 set nowritebackup
+set undofile
 
 let g:coc_config_home=$XDG_CONFIG_HOME.'/vim'
-
-if has('persistent_undo')
-	let target_path = expand('~/.cache/vim/')
-
-	if !isdirectory(target_path)
-		call system('mkdir -p ' . target_path)
-	endif
-
-	let &undodir = target_path
-
-	set undofile
-endif
 
 nnoremap <expr> n 'Nn'[v:searchforward]
 nnoremap <expr> N 'nN'[v:searchforward]
