@@ -83,9 +83,9 @@
       vim-airline
       vim-commentary
       vim-fugitive
-      vim-gitgutter
       vim-polyglot
       vim-sensible
+      vim-signify
       vim-snippets
     ];
   };
