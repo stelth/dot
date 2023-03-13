@@ -84,9 +84,11 @@
       vim-commentary
       vim-fugitive
       vim-polyglot
+      vim-repeat
       vim-sensible
       vim-signify
       vim-snippets
+      vim-surround
     ];
   };
 }
