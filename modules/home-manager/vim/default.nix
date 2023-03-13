@@ -1,10 +1,10 @@
 {pkgs, ...}: {
   imports = [./plugins.nix];
 
-  home.file = {
+  xdg.configFile = {
     vim = {
       source = ./vim;
-      target = ".vim";
+      target = "vim";
       recursive = true;
     };
   };
@@ -15,10 +15,8 @@
       guiSupport = "no";
       darwinSupport = true;
     };
-    settings = {
-      number = true;
-      relativenumber = true;
-    };
-    extraConfig = builtins.readFile ./vimrc;
+    extraConfig = ''
+      source ~/.config/vim/vimrc
+    '';
   };
 }
