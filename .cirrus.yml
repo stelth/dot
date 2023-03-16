@@ -1,5 +1,5 @@
 env:
-  CIRRUS_SHELL: sh -il
+  CIRRUS_SHELL: bash -il
   DARWIN_BUILD_IMAGE: ghcr.io/cirruslabs/macos-ventura-base:latest
   LINUX_BUILD_IMAGE: debian:11
   SUDO: sudo
