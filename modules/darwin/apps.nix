@@ -4,7 +4,6 @@
     casks = [
       "cyberduck"
       "discord"
-      "docker"
       "firefox-developer-edition"
       "slack"
       "spotify"
