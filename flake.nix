@@ -289,6 +289,17 @@
           '';
         });
       };
+      python = let
+        overrides = _: pprev: {
+          ruyaml = pprev.ruyaml.overridePythonAttrs (_: {
+            doCheck = false;
+          });
+        };
+      in
+        final: prev: {
+          python3 = prev.python3.override {packageOverrides = overrides;};
+          python310 = prev.python310.override {packageOverrides = overrides;};
+        };
       vim-extra-plugins = inputs.vim-extra-plugins.overlays.default;
     };
   };
