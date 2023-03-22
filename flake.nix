@@ -289,6 +289,19 @@
           '';
         });
       };
+      vim-vint = final: prev: {
+        vim-vint = prev.vim-vint.overrideAttrs (_: rec {
+          pname = "vim-vint";
+          version = "0.4a3";
+
+          src = prev.python3Packages.fetchPypi {
+            inherit pname version;
+            sha256 = "sha256-xsA9mr0dwhu+LPnCuZRdHAlvtVHUv1I4oUr5J+9WqqI=";
+          };
+
+          preCheck = "";
+        });
+      };
       python = let
         overrides = _: pprev: {
           ruyaml = pprev.ruyaml.overridePythonAttrs (_: {
