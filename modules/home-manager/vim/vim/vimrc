@@ -1,3 +1,5 @@
+" Vimrc 2.0 {{{
+
 if empty($MYVIMRC) | let $MYVIMRC = expand('<sfile>:p') | endif
 
 if empty($XDG_CACHE_HOME)  | let $XDG_CACHE_HOME  = $HOME.'/.cache'       | endif
@@ -19,6 +21,7 @@ set backupdir=$XDG_STATE_HOME/vim/backup | call mkdir(&backupdir, 'p', 0700)
 set directory=$XDG_STATE_HOME/vim/swap   | call mkdir(&directory, 'p', 0700)
 set undodir=$XDG_STATE_HOME/vim/undo     | call mkdir(&undodir,   'p', 0700)
 set viewdir=$XDG_STATE_HOME/vim/view     | call mkdir(&viewdir,   'p', 0700)
+"}}}
 
 let mapleader = ' '
 
@@ -38,6 +41,15 @@ colorscheme onedark
 hi search cterm=none ctermfg=white ctermbg=darkyellow
 " vertical split color
 hi vertsplit guibg=white guifg=white ctermbg=white ctermfg=white
+
+" " qq to record macro, q to replay
+nnoremap q @q
+
+" select last paste
+nnoremap <expr> lp '`[' . strpart(getregtype(), 0, 1) . '`]'
+
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 
 let g:coc_config_home=$XDG_CONFIG_HOME.'/vim'
 
