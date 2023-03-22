@@ -61,6 +61,7 @@
   programs.vim = {
     plugins = with pkgs.vimExtraPlugins; [
       ale
+      auto-pairs
       coc-clangd
       coc-cmake
       coc-docker
