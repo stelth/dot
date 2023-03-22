@@ -22,17 +22,22 @@ set viewdir=$XDG_STATE_HOME/vim/view     | call mkdir(&viewdir,   'p', 0700)
 
 let mapleader = ' '
 
-let g:onedark_terminal_italics=1
-set termguicolors
-colorscheme onedark
-
 set clipboard=unnamed
 set number
 set relativenumber
 set signcolumn=yes
+set termguicolors
 set updatetime=300
 set nowritebackup
 set undofile
+
+let g:onedark_terminal_italics=1
+colorscheme onedark
+
+" highlight search
+hi search cterm=none ctermfg=white ctermbg=darkyellow
+" vertical split color
+hi vertsplit guibg=white guifg=white ctermbg=white ctermfg=white
 
 let g:coc_config_home=$XDG_CONFIG_HOME.'/vim'
 

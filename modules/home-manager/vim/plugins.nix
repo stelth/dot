@@ -81,7 +81,6 @@
       fzf-vim
       onedark-vim
       undotree
-      vim-airline
       vim-commentary
       vim-fugitive
       vim-polyglot
