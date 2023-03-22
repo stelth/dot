@@ -12,7 +12,6 @@
       allow_remote_control = "socket-only";
       bold_font = "FiraCode Bold Nerd Font Mono";
       bold_italic_font = "VictorMono Nerd Font Mono Bold Italic";
-      clear_all_shortcuts = true;
       copy_on_select = true;
       disable_ligatures = "always";
       dynamic_background_opacity = true;
