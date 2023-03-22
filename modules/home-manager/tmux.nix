@@ -8,7 +8,7 @@
     disableConfirmationPrompt = true;
     clock24 = true;
     plugins = with pkgs; [
-      tmuxPlugins.gruvbox
+      tmuxPlugins.onedark-theme
       tmuxPlugins.sensible
       tmuxPlugins.yank
     ];
@@ -19,8 +19,6 @@
 
       bind-key -r f run-shell "tmux neww tmux-sessionizer"
       bind-key -r i run-shell "tmux neww tmux-cht"
-
-      set -g @tmux-gruvbox 'dark'
     '';
   };
 }

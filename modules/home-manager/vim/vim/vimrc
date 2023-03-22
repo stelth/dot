@@ -23,6 +23,7 @@ set viewdir=$XDG_STATE_HOME/vim/view     | call mkdir(&viewdir,   'p', 0700)
 let mapleader = ' '
 
 let g:onedark_terminal_italics=1
+set termguicolors
 colorscheme onedark
 
 set clipboard=unnamed
