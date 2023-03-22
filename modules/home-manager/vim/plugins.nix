@@ -89,6 +89,7 @@
       vim-signify
       vim-snippets
       vim-surround
+      vim-tmux-navigator
     ];
   };
 }

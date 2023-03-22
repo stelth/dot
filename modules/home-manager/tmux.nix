@@ -10,6 +10,7 @@
     plugins = with pkgs; [
       tmuxPlugins.onedark-theme
       tmuxPlugins.sensible
+      tmuxPlugins.vim-tmux-navigator
       tmuxPlugins.yank
     ];
     extraConfig = ''
