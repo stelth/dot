@@ -1,21 +1,18 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     # Bash
-    bashate
     nodePackages.bash-language-server
     shellcheck
     shfmt
 
     #C/CPP
     clang-tools
-    cppcheck
     cpplint
 
     # CMake
     cmake-format
 
     # Docker
-    dprint
     hadolint
 
     # Git
@@ -33,8 +30,6 @@
     checkmake
 
     # Markdown
-    alex
-    proselint
     nodePackages.prettier
     vale
     nodePackages.write-good
@@ -60,10 +55,10 @@
 
   programs.vim = {
     plugins = with pkgs.vimExtraPlugins; [
-      ale
       auto-pairs
       coc-clangd
       coc-cmake
+      coc-diagnostic
       coc-docker
       coc-git
       coc-java

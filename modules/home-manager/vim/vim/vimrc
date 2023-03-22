@@ -23,17 +23,24 @@ set undodir=$XDG_STATE_HOME/vim/undo     | call mkdir(&undodir,   'p', 0700)
 set viewdir=$XDG_STATE_HOME/vim/view     | call mkdir(&viewdir,   'p', 0700)
 "}}}
 
+" => Leader
 let mapleader = ' '
 
+" => General Settings
 set clipboard=unnamed
+set cursorline
+set ignorecase
+set nowritebackup
 set number
 set relativenumber
 set signcolumn=yes
+set smartcase
+set smartindent
 set termguicolors
-set updatetime=300
-set nowritebackup
 set undofile
+set updatetime=300
 
+" => Colors and colorschemes
 let g:onedark_terminal_italics=1
 colorscheme onedark
 
@@ -42,39 +49,24 @@ hi search cterm=none ctermfg=white ctermbg=darkyellow
 " vertical split color
 hi vertsplit guibg=white guifg=white ctermbg=white ctermfg=white
 
-" " qq to record macro, q to replay
+" qq to record macro, q to replay
 nnoremap q @q
-
-" select last paste
-nnoremap <expr> lp '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
-let g:coc_config_home=$XDG_CONFIG_HOME.'/vim'
-
 nnoremap <expr> n 'Nn'[v:searchforward]
 nnoremap <expr> N 'nN'[v:searchforward]
 
-let g:ale_disable_lsp = 1
-let g:ale_floating_preview = 1
-let g:ale_fixers = {
-			\ '*': ['remove_trailing_lines', 'trim_whitespace' ],
-			\ 'sh': [ 'shfmt' ],
-			\ 'c': ['clang-format', 'clangtidy'],
-			\ 'cpp': ['clang-format', 'clangtidy'],
-			\ 'cmake': ['cmakeformat'],
-			\ 'dockerfile': ['dprint'],
-			\ 'java': ['google_java_format'],
-			\ 'json': ['fixjson'],
-			\ 'markdown': ['prettier'],
-			\ 'nix': ['alejandra', 'statix'],
-			\ 'python': ['black', 'isort'],
-			\ 'yaml': ['prettier', 'yamlfix'],
-			\ }
+" => Plugin settings
 
-nmap <leader>u :UndotreeToggle<CR>
+" undotree {{{
+let g:undotree_ShortIndicators=1
+let g:undotree_WindowLayout=4
+nnoremap <silent> <leader>u :UndotreeToggle<CR>
+" }}}
 
+" fzf.vim {{{
 nmap <leader>hc :Commands<CR>
 nmap <leader>ht :Helptags<CR>
 nmap <leader>hm :Maps<CR>
@@ -95,12 +87,12 @@ nmap <leader>gc :Commits<CR>
 nmap <leader>gcc :BCommits<CR>
 nmap <leader>gs :GFiles?<CR>
 nmap <leader>gb :GBranches<CR>
+" }}}
+
+" coc-nvim {{{
+let g:coc_config_home=$XDG_CONFIG_HOME.'/vim'
 
 " Use tab for trigger completion with characters ahead and navigate
-" NOTE: There's always complete item selected by default, you may want to enable
-" no select by `"suggest.noselect": true` in your configuration file
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config
 inoremap <silent><expr> <TAB>
 			\ coc#pum#visible() ? coc#pum#next(1) :
 			\ CheckBackspace() ? "\<Tab>" :
@@ -123,7 +115,6 @@ inoremap <silent><expr> <c-@> coc#refresh()
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
-nnoremap <leader>cd :ALEDetail<CR>
 
 " GoTo code navigation
 nmap <silent> gd <Plug>(coc-definition)
@@ -229,3 +220,4 @@ nnoremap <silent><nowait> <space>lj  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>lk  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent><nowait> <space>lp  :<C-u>CocListResume<CR>
+" }}}
