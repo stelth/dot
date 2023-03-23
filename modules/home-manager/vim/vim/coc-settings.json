@@ -17,6 +17,10 @@
       "command": "alejandra",
       "args": ["--quiet"]
     },
+    "cmake-format": {
+      "command": "cmake-format",
+      "args": ["-"]
+    },
     "google-java-format": {
       "command": "google-java-format",
       "args": ["-"]
@@ -129,7 +133,9 @@
   },
 
   "diagnostic-languageserver.formatFiletypes": {
+    "cmake": "cmake-format",
     "java": "google-java-format",
+    "markdown": "prettier",
     "nix": "alejandra",
     "python": ["isort", "black"],
     "sh": "shfmt",
