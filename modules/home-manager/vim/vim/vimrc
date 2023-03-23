@@ -86,7 +86,6 @@ nmap <leader>: :History:<CR>
 nmap <leader>gc :Commits<CR>
 nmap <leader>gcc :BCommits<CR>
 nmap <leader>gs :GFiles?<CR>
-nmap <leader>gb :GBranches<CR>
 " }}}
 
 " coc-nvim {{{

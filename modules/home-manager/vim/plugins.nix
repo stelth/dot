@@ -73,7 +73,6 @@
       coc-vimlsp
       coc-yaml
       coc-yank
-      fzf-checkout-vim
       fzf-vim
       onedark-vim
       undotree
