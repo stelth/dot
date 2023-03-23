@@ -11,8 +11,7 @@
   "signature.enable": true,
   "suggest.removeDuplicateItems": true,
   "suggets.noselect": false,
-  "diagnostic-languageserver.debug": true,
-  "diagnostic-languageserver.trace.server": "verbose",
+
   "diagnostic-languageserver.formatters": {
     "alejandra": {
       "command": "alejandra",
@@ -27,6 +26,7 @@
       "args": ["-"]
     }
   },
+
   "diagnostic-languageserver.linters": {
     "checkmake": {
       "command": "checkmake",
@@ -112,6 +112,7 @@
       }
     }
   },
+
   "diagnostic-languageserver.filetypes": {
     "c": "cpplint",
     "cmake": "cmake-lint",
@@ -126,6 +127,7 @@
     "vim": "vint",
     "yaml": "yamllint"
   },
+
   "diagnostic-languageserver.formatFiletypes": {
     "java": "google-java-format",
     "nix": "alejandra",
