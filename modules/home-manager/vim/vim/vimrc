@@ -30,6 +30,7 @@ let mapleader = ' '
 set clipboard=unnamed
 set cursorline
 set ignorecase
+set mouse=a
 set nowritebackup
 set number
 set relativenumber
