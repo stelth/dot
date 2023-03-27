@@ -76,16 +76,23 @@
       is-vim
       onedark-vim
       undotree
+      vim-abolish
       vim-commentary
+      vim-dispatch
+      vim-endwise
+      vim-eunuch
       vim-flagship
       vim-fugitive
       vim-polyglot
       vim-repeat
       vim-sensible
       vim-signify
+      vim-sleuth
       vim-snippets
       vim-surround
       vim-tmux-navigator
+      vim-unimpaired
+      vim-vinegar
     ];
   };
 }
