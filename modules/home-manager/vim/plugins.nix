@@ -77,8 +77,8 @@
       onedark-vim
       undotree
       vim-commentary
+      vim-flagship
       vim-fugitive
-      vim-git
       vim-polyglot
       vim-repeat
       vim-sensible
