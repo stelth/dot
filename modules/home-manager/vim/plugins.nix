@@ -78,6 +78,7 @@
       undotree
       vim-commentary
       vim-fugitive
+      vim-git
       vim-polyglot
       vim-repeat
       vim-sensible
