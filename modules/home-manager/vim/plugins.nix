@@ -73,6 +73,7 @@
       coc-yaml
       coc-yank
       fzf-vim
+      is-vim
       onedark-vim
       undotree
       vim-commentary
