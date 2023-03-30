@@ -52,6 +52,14 @@ Note that this step is naturally skipped on NixOS since `nix` is the package man
 
 ## System Bootstrapping
 
+### NixOS
+
+Follow the installation instructions, then run
+
+```bash
+sudo nixos-install --flake github:stelth/dot#jason
+```
+
 ### Darwin/Linux
 
 Clone this repository into `~/dot` with
