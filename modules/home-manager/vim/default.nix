@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [./plugins.nix];
 
   xdg.configFile = {
@@ -13,7 +17,7 @@
     enable = true;
     packageConfigurable = pkgs.vim_configurable.override {
       guiSupport = "no";
-      darwinSupport = true;
+      darwinSupport = lib.mkIf pkgs.stdenvNoCC.isDarwin;
     };
     extraConfig = ''
       source ~/.config/vim/vimrc
