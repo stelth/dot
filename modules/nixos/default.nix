@@ -6,30 +6,9 @@
   # bundles essential nixos modules
   imports = [../common.nix];
 
-  services.interception-tools = {
-    enable = true;
-    plugins = with pkgs.interception-tools-plugins; [caps2esc];
-    udevmonConfig = ''
-      - JOB: intercept -g $DEVNODE | caps2esc -m 1 | uinput -d $DEVNODE
-        DEVICE:
-          EVENTS:
-            EV_KEY: [KEY_CAPSLOCK, KEY_ESC]
-    '';
-  };
-
   # manually disable this to resolve https://github.com/NixOS/nixos-hardware/issues/260
   # TODO: resolve this later
   services.power-profiles-daemon.enable = false;
-
-  services.syncthing = {
-    enable = true;
-    user = config.user.name;
-    group = "users";
-    openDefaultPorts = true;
-    dataDir = config.user.home;
-  };
-
-  environment.systemPackages = with pkgs; [vscode firefox gnome.gnome-tweaks];
 
   hm = {...}: {};
 
@@ -58,16 +37,6 @@
   boot.loader.grub.version = 2;
   # Define on which hard drive you want to install Grub.
   boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
-  # boot.loader.grub.efiSupport = true;
-  # boot.loader.grub.efiInstallAsRemovable = true;
-  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
-
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
-  networking.useDHCP = false;
-  networking.interfaces.enp0s31f6.useDHCP = true;
-  networking.interfaces.wlp4s0.useDHCP = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -85,38 +54,15 @@
   services.geoclue2.enable = true;
   services.localtime.enable = true;
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-    pinentryFlavor = "gnome3";
-  };
-
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
-
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
     layout = "us";
-    # services.xserver.xkbOptions = "eurosign:e";
 
     # Enable touchpad support.
     libinput.enable = true;
