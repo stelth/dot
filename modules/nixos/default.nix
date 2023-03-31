@@ -35,10 +35,8 @@
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
-  boot.loader.grub.efiSupport = true;
-  boot.loader.grub.efiInstallAsRemovable = true;
   # Define on which hard drive you want to install Grub.
-  boot.loader.grub.devices = ["nodev"]; # or "nodev" for efi only
+  boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
