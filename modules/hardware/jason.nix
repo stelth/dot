@@ -8,17 +8,20 @@
 }: {
   imports = [(modulesPath + "/installer/scan/not-detected.nix")];
 
-  boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "usb_storage" "sd_mod" "rtsx_pci_sdmmc"];
+  boot.initrd.availableKernelModules = ["ata_generic" "ehci_pci" "ahci" "isci" "xhci_pci" "usbhid" "usb_storage" "sd_mod" "sr_mod"];
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/0e79aab0-c525-49e2-8969-881775ee6aab";
+    device = "/dev/disk/by-uuid/21103668-7ba0-4e3b-83af-1a6ead023467";
     fsType = "ext4";
   };
 
-  swapDevices = [{device = "/dev/disk/by-uuid/290950fc-6304-4dfb-b147-9759d19b36ff";}];
+  swapDevices = [];
 
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  networking.useDHCP = lib.mkDefault true;
+
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
