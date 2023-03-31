@@ -52,7 +52,7 @@
   # Set your time zone.
   # time.timeZone = "EST";
   services.geoclue2.enable = true;
-  services.localtime.enable = true;
+  services.localtimed.enable = true;
 
   # List services that you want to enable:
 
