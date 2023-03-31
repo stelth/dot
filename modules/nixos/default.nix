@@ -32,9 +32,8 @@
   networking.hostName = "nixDev"; # Define your hostname.
   networking.networkmanager.enable = true;
 
-  boot.loader.systemd-boot.enable = true;
   # Use the GRUB 2 boot loader.
-  boot.loader.grub.enable = false;
+  boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
   boot.loader.grub.efiSupport = true;
   # Define on which hard drive you want to install Grub.
