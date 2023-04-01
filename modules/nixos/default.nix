@@ -12,6 +12,15 @@
 
   hm = {...}: {};
 
+  environment.systemPackages = with pkgs; [];
+
+  security.polkit.enable = true;
+
+  programs._1password-gui = {
+    enable = true;
+    polkitPolicyOwners = ["${config.user.name}"];
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users = {
     defaultUserShell = pkgs.zsh;
@@ -24,7 +33,7 @@
         createHome = true;
         useDefaultShell = true;
         extraGroups = ["wheel" "networkmanager"]; # Enable ‘sudo’ for the user.
-        hashedPassword = "";
+        hashedPassword = "$6$mwlr.3ZwTZHQDLHS$gCnJwFaZuwt7qN2qWYkkuBgdbBA/FpedYz09WKZm2BwnRf/JpEzb0rCLlksnNFkd2wUduPgn7b.DMp1PcW1yT.";
       };
     };
   };

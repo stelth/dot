@@ -33,10 +33,10 @@ FLAKE_PATH = LOCAL_FLAKE if is_local else REMOTE_FLAKE
 
 UNAME = platform.uname()
 check_nixos = subprocess.run(
-    ["/usr/bin/env", "type", "nixos-rebuild"], capture_output=True, check=False
+    ["which", "nixos-rebuild"], capture_output=True, check=False
 )
 check_darwin = subprocess.run(
-    ["/usr/bin/env", "type", "darwin-rebuild"], capture_output=True, check=False
+    ["which", "darwin-rebuild"], capture_output=True, check=False
 )
 if check_nixos.returncode == 0:
     # if we're on nixos, this command is built in

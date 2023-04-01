@@ -15,6 +15,8 @@
     enableBashCompletion = true;
   };
 
+  programs._1password-gui.polkitPolicyOwners = ["${config.user.name}"];
+
   user = {
     description = "Jason Cox";
     home = "${
@@ -56,6 +58,6 @@
 
   fonts = {
     fontDir.enable = true;
-    # fonts = with pkgs; [nerdfonts ibm-plex];
+    fonts = with pkgs; [nerdfonts ibm-plex];
   };
 }
