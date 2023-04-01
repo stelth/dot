@@ -12,7 +12,7 @@
 
   hm = {...}: {};
 
-  environment.systemPackages = with pkgs; [];
+  environment.systemPackages = with pkgs; [google-chrome];
 
   security.polkit.enable = true;
 
