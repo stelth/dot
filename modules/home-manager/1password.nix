@@ -9,9 +9,6 @@
   sockPath = "~/.1password/agent.sock";
 in {
   home = {
-    sessionVariables = {
-      SSH_AUTH_SOCK = sockPath;
-    };
     file = {
       sock = lib.mkIf pkgs.stdenvNoCC.isDarwin {
         source = config.lib.file.mkOutOfStoreSymlink darwinSockPath;
