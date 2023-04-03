@@ -15,8 +15,6 @@
     enableBashCompletion = true;
   };
 
-  programs._1password-gui.polkitPolicyOwners = ["${config.user.name}"];
-
   user = {
     description = "Jason Cox";
     home = "${
