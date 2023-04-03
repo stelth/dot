@@ -25,7 +25,7 @@
     text = "auth include login";
   };
 
-  environment.systemPackages = with pkgs; [polkit_gnome];
+  environment.systemPackages = with pkgs; [polkit_gnome wl-clipboard wofi];
 
   hm = {
     wayland.windowManager.sway = {
@@ -37,10 +37,29 @@
       config = rec {
         modifier = "Mod4";
         terminal = "kitty";
+        menu = "${pkgs.wofi}/bin/wofi --show run";
         startup = [
           {command = "1password";}
         ];
+        bars = [{command = "${config.programs.waybar.package}/bin/waybar";}];
       };
+    };
+
+    services.mako.enable = true;
+
+    programs.waybar = {
+      enable = true;
+
+      settings = [
+        {
+          layer = "bottom";
+          position = "bottom";
+          height = 24;
+          modules-left = ["sway/workspaces" "sway/mode"];
+          modules-center = ["sway/window"];
+          modules-right = ["cpu" "memory" "network" "clock" "tray"];
+        }
+      ];
     };
   };
 
