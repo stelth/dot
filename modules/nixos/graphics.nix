@@ -37,6 +37,9 @@
       config = rec {
         modifier = "Mod4";
         terminal = "kitty";
+        startup = [
+          {command = "1password";}
+        ];
       };
     };
   };
