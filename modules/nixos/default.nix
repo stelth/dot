@@ -4,7 +4,7 @@
   ...
 }: {
   # bundles essential nixos modules
-  imports = [../common.nix];
+  imports = [../common.nix ./graphics.nix];
 
   # manually disable this to resolve https://github.com/NixOS/nixos-hardware/issues/260
   # TODO: resolve this later
@@ -12,7 +12,7 @@
 
   hm = {...}: {};
 
-  environment.systemPackages = with pkgs; [google-chrome];
+  environment.systemPackages = with pkgs; [google-chrome discord];
 
   security.polkit.enable = true;
 
@@ -66,26 +66,6 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-
-  # Enable the X11 windowing system.
-  services.xserver = {
-    enable = true;
-    layout = "us";
-
-    # Enable touchpad support.
-    libinput.enable = true;
-
-    # Enable the KDE Desktop Environment.
-    # services.xserver.displayManager.sddm.enable = true;
-    # services.xserver.desktopManager.plasma5.enable = true;
-    displayManager = {
-      gdm = {
-        enable = true;
-        wayland = true;
-      };
-    };
-    desktopManager.gnome.enable = true;
-  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
