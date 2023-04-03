@@ -59,8 +59,7 @@
   # };
 
   # Set your time zone.
-  # time.timeZone = "EST";
-  services.geoclue2.enable = true;
+  time.timeZone = "America/Chicago";
   services.localtimed.enable = true;
 
   # List services that you want to enable:
