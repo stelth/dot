@@ -28,6 +28,10 @@
   environment.systemPackages = with pkgs; [polkit_gnome wl-clipboard wofi];
 
   hm = {
+    xdg.configFile = {
+      "waybar/style.css" = {source = ./config/waybar.css;};
+    };
+
     wayland.windowManager.sway = {
       enable = true;
       wrapperFeatures = {
@@ -57,7 +61,50 @@
           height = 24;
           modules-left = ["sway/workspaces" "sway/mode"];
           modules-center = ["sway/window"];
-          modules-right = ["cpu" "memory" "network" "clock" "tray"];
+          modules-right = ["idle_inhibitor" "cpu" "memory" "network" "clock" "tray"];
+
+          "sway/mode" = {
+            format = " {}";
+          };
+
+          "sway/workspaces" = {
+            format = "{name}";
+            disable-scroll = true;
+          };
+
+          "sway/window" = {
+            max-length = 80;
+            tooltip = false;
+          };
+
+          clock = {
+            format = "{:%a %d %b %H:%M}";
+            tooltip = false;
+          };
+
+          network = {
+            format = "{icon}";
+            format-alt = "{ipaddr}/{cidr} {icon}";
+            format-alt-click = "click-right";
+            format-icons = {
+              ethernet = [""];
+              disconnected = [""];
+            };
+            tooltip = false;
+          };
+
+          idle_inhibitor = {
+            format = "{icon}";
+            format-icons = {
+              activated = "";
+              deactivated = "";
+            };
+            tooltip = false;
+          };
+
+          tray = {
+            icon-size = 18;
+          };
         }
       ];
     };
