@@ -25,6 +25,8 @@
     text = "auth include login";
   };
 
+  services.gnome.gnome-keyring.enable = true;
+
   environment.systemPackages = with pkgs; [polkit_gnome wl-clipboard wofi];
 
   hm = {
