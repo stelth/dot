@@ -31,7 +31,7 @@
 
   hm = {
     xdg.configFile = {
-      "waybar/style.css" = {source = ./config/waybar.css;};
+      # "waybar/style.css" = {source = ./config/waybar.css;};
       "wofi/style.css" = {source = ./config/wofi.css;};
     };
 
@@ -67,60 +67,6 @@
 
     programs.waybar = {
       enable = true;
-
-      settings = [
-        {
-          layer = "top";
-          position = "top";
-          height = 24;
-          modules-left = ["sway/workspaces" "sway/mode"];
-          modules-center = ["sway/window"];
-          modules-right = ["idle_inhibitor" "cpu" "memory" "network" "clock" "tray"];
-
-          "sway/mode" = {
-            format = " {}";
-          };
-
-          "sway/workspaces" = {
-            format = "{name}";
-            disable-scroll = true;
-          };
-
-          "sway/window" = {
-            max-length = 80;
-            tooltip = false;
-          };
-
-          clock = {
-            format = "{:%a %d %b %H:%M}";
-            tooltip = false;
-          };
-
-          network = {
-            format = "{icon}";
-            format-alt = "{ipaddr}/{cidr} {icon}";
-            format-alt-click = "click-right";
-            format-icons = {
-              ethernet = [""];
-              disconnected = [""];
-            };
-            tooltip = false;
-          };
-
-          idle_inhibitor = {
-            format = "{icon}";
-            format-icons = {
-              activated = "";
-              deactivated = "";
-            };
-            tooltip = false;
-          };
-
-          tray = {
-            icon-size = 18;
-          };
-        }
-      ];
     };
   };
 
