@@ -93,6 +93,7 @@
       vim-tmux-navigator
       vim-unimpaired
       vim-vinegar
+      vim-wayland-clipboard
     ];
   };
 }
