@@ -30,6 +30,7 @@
   hm = {
     xdg.configFile = {
       "waybar/style.css" = {source = ./config/waybar.css;};
+      "wofi/style.css" = {source = ./config/wofi.css;};
     };
 
     wayland.windowManager.sway = {
