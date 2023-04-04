@@ -50,7 +50,18 @@
       };
     };
 
-    services.mako.enable = true;
+    services.mako = {
+      enable = true;
+      backgroundColor = "#282C34";
+      textColor = "#ABB2BF";
+      borderColor = "#2C323C";
+      defaultTimeout = 5000;
+
+      extraConfig = ''
+        [urgency=high]
+        text-color=#CB4B16
+      '';
+    };
 
     programs.waybar = {
       enable = true;
