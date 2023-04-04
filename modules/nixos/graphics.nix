@@ -70,8 +70,8 @@
 
       settings = [
         {
-          layer = "bottom";
-          position = "bottom";
+          layer = "top";
+          position = "top";
           height = 24;
           modules-left = ["sway/workspaces" "sway/mode"];
           modules-center = ["sway/window"];
