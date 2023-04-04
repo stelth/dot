@@ -62,10 +62,10 @@
             "${modifier}+Down" = "focus down";
 
             # Move
-            "${modifier}+Shift+Left" = "focus left";
-            "${modifier}+Shift+Right" = "focus right";
-            "${modifier}+Shift+Up" = "focus up";
-            "${modifier}+Shift+Down" = "focus down";
+            "${modifier}+Shift+Left" = "move left";
+            "${modifier}+Shift+Right" = "move right";
+            "${modifier}+Shift+Up" = "move up";
+            "${modifier}+Shift+Down" = "move down";
 
             "${modifier}+Shift+space" = "floating toggle";
             "${modifier}+space" = "focus mode_toggle";
