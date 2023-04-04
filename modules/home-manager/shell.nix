@@ -48,9 +48,6 @@ in {
     initExtraBeforeCompInit = ''
       fpath+=~/.zfunc
     '';
-    profileExtra = ''
-      "${lib.optionalString pkgs.stdenvNoCC.isLinux "[[ -e /etc/profile ]] && source /etc/profile"}"
-    '';
     plugins = with pkgs; [
       (mkZshPlugin {pkg = zsh-autopair;})
       (mkZshPlugin {pkg = zsh-completions;})
