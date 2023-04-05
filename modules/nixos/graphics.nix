@@ -27,7 +27,7 @@
 
   services.gnome.gnome-keyring.enable = true;
 
-  environment.systemPackages = with pkgs; [polkit_gnome wl-clipboard wofi];
+  environment.systemPackages = with pkgs; [polkit_gnome wl-clipboard wofi swaylock swayidle];
 
   hm = {
     xdg.configFile = {
@@ -50,6 +50,17 @@
           {command = "google-chrome-stable";}
           {command = "kitty";}
           {command = "discord";}
+          {
+            command = let
+              lockCmd = "'swaylock -f'";
+            in ''
+              swayidle -w \
+              timeout 600 "${lockCmd}" \
+              timeout 1200 'swaymsg "output * dpms off"' \
+              resume 'swaymsg "output * dpms on"' \
+              before-sleep ${lockCmd}
+            '';
+          }
         ];
         keybindings = let
           inherit modifier;
