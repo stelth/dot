@@ -110,10 +110,6 @@
         };
         window.commands = [
           {
-            command = "inhibit_idle fullscreen";
-            criteria.class = "Google-chrome";
-          }
-          {
             command = "move to scratchpad";
             criteria = {
               class = "1Password";
