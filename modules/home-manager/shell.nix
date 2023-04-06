@@ -16,7 +16,7 @@
     cp = "${pkgs.coreutils}/bin/cp -riv";
     mkdir = "${pkgs.coreutils}/bin/mkdir -vp";
     su = "su -";
-    df = "${lib.getExe pkgs.grc} /bin/df -h";
+    df = "${lib.getExe pkgs.grc} ${pkgs.coreutils}/bin/df -h";
     rga = "${lib.getExe pkgs.ripgrep} -uu";
     grep = "${lib.getExe pkgs.ripgrep}";
   };
