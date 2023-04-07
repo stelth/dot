@@ -4,7 +4,6 @@
     prefix = "C-a";
     baseIndex = 1;
     terminal = "tmux-256color";
-    customPaneNavigationAndResize = true;
     disableConfirmationPrompt = true;
     clock24 = true;
     plugins = with pkgs; [
