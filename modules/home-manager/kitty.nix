@@ -2,6 +2,7 @@
   programs.kitty = {
     enable = true;
     package = pkgs.stable.kitty;
+    font = {name = "FiraCode Nerd Font Mono";};
     theme = "One Dark";
     keybindings = {
       "cmd+c" = "copy_to_clipboard";
@@ -9,6 +10,8 @@
     };
     settings = {
       allow_remote_control = "socket-only";
+      bold_font = "FiraCode Bold Nerd Font Mono";
+      bold_italic_font = "VictorMono Nerd Font Mono Bold Italic";
       copy_on_select = true;
       disable_ligatures = "always";
       dynamic_background_opacity = true;
@@ -16,6 +19,7 @@
       font_size = 11;
       hide_window_decorations = "titlebar-only";
       inactive_border_color = "#ff0000";
+      italic_font = "VictorMono Nerd Font Mono Italic";
       kitty_mod = "cmd+shift";
       listen_on = "unix:/tmp/kitty";
       macos_option_as_alt = true;

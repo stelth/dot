@@ -56,6 +56,6 @@
 
   fonts = {
     fontDir.enable = true;
-    fonts = with pkgs; [jetbrains-mono ibm-plex];
+    fonts = with pkgs; [nerdfonts ibm-plex];
   };
 }
