@@ -56,6 +56,16 @@
 
   fonts = {
     fontDir.enable = true;
-    fonts = with pkgs; [nerdfonts ibm-plex];
+    fonts = with pkgs; [
+      (nerdfonts.override {
+        fonts = [
+          "FiraCode"
+          "FiraMono"
+          "JetBrainsMono"
+          "VictorMono"
+        ];
+      })
+      ibm-plex
+    ];
   };
 }
