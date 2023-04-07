@@ -50,11 +50,7 @@
       yamlfix
       yamllint
     ]
-    ++ (
-      if pkgs.stdenvNoCC.isDarwin
-      then []
-      else [checkmake]
-    );
+    ++ lib.optionals (!pkgs.stdenvNoCC.isDarwin) [checkmake];
 
   programs.vim = {
     plugins = with pkgs.vimExtraPlugins; [
