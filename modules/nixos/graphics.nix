@@ -100,6 +100,10 @@
 
             "${modifier}+minus" = "scratchpad show";
             "${modifier}+underscore" = "move container to scratchpad";
+
+            "XF86AudioMute" = "exec ${pkgs.pulseaudio}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle";
+            "XF86AudioRaiseVolume" = "exec ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%";
+            "XF86AudioLowerVolume" = "exec ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%";
           };
         bars = [{command = "${config.programs.waybar.package}/bin/waybar";}];
         modes = {
