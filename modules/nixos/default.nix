@@ -18,14 +18,6 @@
 
   security.polkit.enable = true;
 
-  programs._1password-gui = {
-    enable =
-      if pkgs.system == "x86_64-linux"
-      then true
-      else false;
-    polkitPolicyOwners = ["${config.user.name}"];
-  };
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users = {
     defaultUserShell = pkgs.zsh;
@@ -44,10 +36,6 @@
   };
 
   networking.hostName = "nixDev"; # Define your hostname.
-  networking.networkmanager.enable =
-    if pkgs.system == "x86_64-linux"
-    then true
-    else false;
 
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;

@@ -184,7 +184,7 @@
         hardwareModules = [
           ./modules/hardware/jason.nix
         ];
-        extraModules = [./profiles/personal.nix];
+        extraModules = [./profiles/personal.nix ./modules/nixos/intel.nix];
       };
       "coxj@aarch64-linux" = mkNixosConfig {
         system = "aarch64-linux";
