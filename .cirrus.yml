@@ -23,7 +23,6 @@ build_template: &BUILD_TEMPLATE
       else
         curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
       fi
-  install_cachix_script: nix profile install github:nixos/nixpkgs/nixpkgs-unstable#cachix
   flake_check_script: NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1 nix flake check -j auto --system ${ARCH//arm/aarch}-{CIRRUS_OS} -v --show-trace --impure --accept-flake-config
 
 build_darwin_task:
