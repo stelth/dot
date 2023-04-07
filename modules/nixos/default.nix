@@ -44,7 +44,10 @@
   };
 
   networking.hostName = "nixDev"; # Define your hostname.
-  networking.networkmanager.enable = true;
+  networking.networkmanager.enable =
+    if pkgs.system == "x86_64-linux"
+    then true
+    else false;
 
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
