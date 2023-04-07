@@ -23,7 +23,7 @@ build_template: &BUILD_TEMPLATE
     else
       curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
     fi
-  flake_check_script: nix flake check -j auto --system ${ARCH//arm/aarch}-${CIRRUS_OS} --show-trace --accept-flake-config
+  flake_check_script: NIX_ALLOW_UNSUPPORTED_SYSTEM=1 nix flake check -j auto --system ${ARCH//arm/aarch}-${CIRRUS_OS} --show-trace --accept-flake-config
 
 build_darwin_task:
   macos_instance:
