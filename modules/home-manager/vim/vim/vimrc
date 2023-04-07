@@ -51,9 +51,6 @@ hi search cterm=none ctermfg=white ctermbg=darkyellow
 " vertical split color
 hi vertsplit guibg=white guifg=white ctermbg=white ctermfg=white
 
-" qq to record macro, q to replay
-nnoremap q @q
-
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
