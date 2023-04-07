@@ -12,6 +12,8 @@
 
   hm = {...}: {};
 
+  boot.readOnlyNixStore = true;
+
   environment.systemPackages = with pkgs; [google-chrome discord];
 
   security.polkit.enable = true;

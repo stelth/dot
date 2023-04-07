@@ -6,8 +6,6 @@
 }: {
   nixpkgs = {config = import ./config.nix;};
 
-  boot.readOnlyNixStore = true;
-
   nix = {
     package = pkgs.nix;
     extraOptions = ''
