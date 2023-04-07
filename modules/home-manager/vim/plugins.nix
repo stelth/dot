@@ -1,57 +1,56 @@
 {pkgs, ...}: {
-  home.packages = with pkgs; [
-    # Bash
-    nodePackages.bash-language-server
-    shellcheck
-    shfmt
+  home.packages = with pkgs;
+    [
+      # Bash
+      nodePackages.bash-language-server
+      shellcheck
+      shfmt
 
-    #C/CPP
-    clang-tools
-    cpplint
+      #C/CPP
+      clang-tools
+      cpplint
 
-    # CMake
-    cmake-format
+      # CMake
+      cmake-format
 
-    # Docker
-    hadolint
+      # Docker
+      hadolint
 
-    # Git
-    gitlint
+      # Git
+      gitlint
 
-    # Java
-    google-java-format
-    jdt-language-server
+      # Java
+      google-java-format
+      jdt-language-server
 
-    # JSON
-    nodePackages.fixjson
-    nodePackages.vscode-json-languageserver
+      # JSON
+      nodePackages.fixjson
+      nodePackages.vscode-json-languageserver
 
-    # Make
-    checkmake
+      # Markdown
+      nodePackages.prettier
+      vale
+      nodePackages.write-good
 
-    # Markdown
-    nodePackages.prettier
-    vale
-    nodePackages.write-good
+      # Nix
+      alejandra
+      rnix-lsp
+      statix
 
-    # Nix
-    alejandra
-    rnix-lsp
-    statix
+      # Python
+      (python3.withPackages
+        (ps: with ps; [black flake8 isort pylint]))
 
-    # Python
-    (python3.withPackages
-      (ps: with ps; [black flake8 isort pylint]))
+      # Vim
+      nodePackages.vim-language-server
+      vim-vint
 
-    # Vim
-    nodePackages.vim-language-server
-    vim-vint
-
-    # YAML
-    nodePackages.yaml-language-server
-    yamlfix
-    yamllint
-  ];
+      # YAML
+      nodePackages.yaml-language-server
+      yamlfix
+      yamllint
+    ]
+    ++ (!lib.optionals stdenv.isDarwin) [checkmake];
 
   programs.vim = {
     plugins = with pkgs.vimExtraPlugins; [
