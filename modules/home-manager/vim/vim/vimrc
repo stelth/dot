@@ -93,6 +93,7 @@ let g:coc_config_home=$XDG_CONFIG_HOME.'/vim'
 " Use tab for trigger completion with characters ahead and navigate
 inoremap <silent><expr> <TAB>
 			\ coc#pum#visible() ? coc#pum#next(1) :
+			\ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump', ''])\<CR>" :
 			\ CheckBackspace() ? "\<Tab>" :
 			\ coc#refresh()
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
@@ -106,6 +107,8 @@ function! CheckBackspace() abort
 	let col = col('.') - 1
 	return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+let g:coc_snippet_next = '<tab>'
 
 inoremap <silent><expr> <c-@> coc#refresh()
 
