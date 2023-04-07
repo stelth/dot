@@ -9,8 +9,20 @@ build_template: &BUILD_TEMPLATE
   name: build_${CIRRUS_OS}_${ARCH}
   timeout_in: 120m
   env:
-    NIX_INSTALLER_EXTRA_CONF: "trusted-users = root admin\nextra-platforms = x86_64-${CIRRUS_OS} aarch64-${CIRRUS_OS}\nsandbox = false"
-  install_nix_script: curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --no-confirm --extra-conf "${NIX_INSTALLER_EXTRA_CONF}"
+    RUST_BACKTRACE: "1"
+    NIX_INSTALLER_NO_CONFIRM: "true"
+    NIX_INSTALLER_TAG: "v0.7.0"
+    NIX_INSTALLER_EXTRA_CONF: |
+      trusted-users = root admin @sudo @wheel
+      extra-systems = x86_64-${CIRRUS_OS} aarch64-${CIRRUS_OS}
+      substituters = https://cache.nixos.org https://devenv.cachix.org
+      trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=
+    install_nix_script: |
+      if [[ "$CIRRUS_OS" = "linux" ]]; then
+        curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install linux --init none
+      else
+        curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+      fi
   install_cachix_script: nix profile install github:nixos/nixpkgs/nixpkgs-unstable#cachix
   flake_check_script: NIXPKGS_ALLOW_BROKEN=1 NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1 nix flake check -j auto --system ${ARCH//arm/aarch}-{CIRRUS_OS} -v --show-trace --impure --accept-flake-config
 
@@ -30,14 +42,14 @@ build_linux_task:
     - arm_container:
         image: $LINUX_BUILD_IMAGE
         cpu: 4
-        memory: 12G
+        memory: 16G
       env:
         ARCH: arm64
         USER: root
     - container:
         image: $LINUX_BUILD_IMAGE
         cpu: 4
-        memory: 12G
+        memory: 16G
       env:
         ARCH: x86_64
         USER: root
