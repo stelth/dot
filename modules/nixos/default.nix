@@ -19,7 +19,10 @@
   security.polkit.enable = true;
 
   programs._1password-gui = {
-    enable = pkgs.system == "x86_64-linux";
+    enable =
+      if pkgs.system == "x86_64-linux"
+      then true
+      else false;
     polkitPolicyOwners = ["${config.user.name}"];
   };
 
