@@ -21,7 +21,6 @@
 
       # Java
       google-java-format
-      jdt-language-server
 
       # JSON
       nodePackages.fixjson

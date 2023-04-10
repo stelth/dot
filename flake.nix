@@ -281,14 +281,6 @@
           tmux-sessionizer
           ;
       };
-      jdt-language-server = final: prev: {
-        jdt-language-server = prev.jdt-language-server.overrideAttrs (_: rec {
-          installPhase = ''
-            find . -type f -exec install -Dm444 "{}" "$out/{}" \;
-            chmod 755 $out/bin/*
-          '';
-        });
-      };
       python = let
         overrides = _: pprev: {
           ruyaml = pprev.ruyaml.overridePythonAttrs (_: {
