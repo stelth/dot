@@ -18,6 +18,11 @@
     '';
   };
 
+  fonts = {
+    fontDir.enable = true;
+    fonts = with pkgs; [nerdfonts ibm-plex];
+  };
+
   services.nix-daemon.enable = true;
 
   system.stateVersion = 4;
