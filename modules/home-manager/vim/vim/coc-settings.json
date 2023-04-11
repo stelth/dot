@@ -28,6 +28,10 @@
     "yamlfix": {
       "command": "yamlfix",
       "args": ["-"]
+    },
+    "fixjson": {
+      "command": "fixjson",
+      "args": []
     }
   },
 
@@ -135,6 +139,7 @@
   "diagnostic-languageserver.formatFiletypes": {
     "cmake": "cmake-format",
     "java": "google-java-format",
+    "json": "fixjson",
     "markdown": "prettier",
     "nix": "alejandra",
     "python": ["isort", "black"],

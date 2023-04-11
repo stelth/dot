@@ -2,7 +2,6 @@
   home.packages = with pkgs;
     [
       # Bash
-      nodePackages.bash-language-server
       shellcheck
       shfmt
 
@@ -24,7 +23,6 @@
 
       # JSON
       nodePackages.fixjson
-      nodePackages.vscode-json-languageserver
 
       # Markdown
       nodePackages.prettier
@@ -33,7 +31,6 @@
 
       # Nix
       alejandra
-      rnix-lsp
       statix
 
       # Python
@@ -41,11 +38,9 @@
         (ps: with ps; [black flake8 isort pylint]))
 
       # Vim
-      nodePackages.vim-language-server
       vim-vint
 
       # YAML
-      nodePackages.yaml-language-server
       yamlfix
       yamllint
     ]
