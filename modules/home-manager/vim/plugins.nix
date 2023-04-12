@@ -83,10 +83,10 @@
       vim-sleuth
       vim-snippets
       vim-surround
+      vim-system-copy
       vim-tmux-navigator
       vim-unimpaired
       vim-vinegar
-      vim-wayland-clipboard
     ];
   };
 }
