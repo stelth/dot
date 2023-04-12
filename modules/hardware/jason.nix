@@ -15,6 +15,9 @@
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
+  boot.extraModprobeConfig = ''
+    options snd-hda-intel model=laptop
+  '';
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/1b52376d-4c3b-4f0d-bcf8-c74cc1b4fe7c";

@@ -25,7 +25,7 @@
         isNormalUser = true;
         createHome = true;
         useDefaultShell = true;
-        extraGroups = ["wheel" "networkmanager"]; # Enable ‘sudo’ for the user.
+        extraGroups = ["wheel" "networkmanager" "audio"]; # Enable ‘sudo’ for the user.
         hashedPassword = "$6$mwlr.3ZwTZHQDLHS$gCnJwFaZuwt7qN2qWYkkuBgdbBA/FpedYz09WKZm2BwnRf/JpEzb0rCLlksnNFkd2wUduPgn7b.DMp1PcW1yT.";
       };
     };
