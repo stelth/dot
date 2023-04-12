@@ -12,10 +12,7 @@
   programs.vim = {
     enable = true;
     packageConfigurable = pkgs.vim-full.override {
-      guiSupport =
-        if pkgs.stdenvNoCC.isDarwin or (!pkgs.stdenv.isx86_64)
-        then "no"
-        else "gtk3";
+      guiSupport = "no";
       darwinSupport = pkgs.stdenvNoCC.isDarwin;
     };
     extraConfig = ''
