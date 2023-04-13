@@ -3,7 +3,10 @@
   hm,
   pkgs,
   ...
-}: {
+}: let
+  theme = "Adwaita";
+  colorscheme = import ./colors.nix;
+in {
   hardware = {
     opengl = {
       enable = true;
@@ -27,9 +30,75 @@
 
   services.gnome.gnome-keyring.enable = true;
 
-  environment.systemPackages = with pkgs; [polkit_gnome wl-clipboard wofi swaylock swayidle];
+  environment.systemPackages = with pkgs; [polkit_gnome wl-clipboard wofi swaylock swayidle gnome-themes-extra gnome.adwaita-icon-theme];
+
+  fonts = {
+    enableDefaultFonts = false;
+
+    fonts = with pkgs; [
+      dejavu_fonts
+      freefont_ttf
+      go-font
+      gyre-fonts
+      (iosevka.override {
+        set = "slab-terminal";
+        privateBuildPlan = {
+          family = "Iosevka Slab Terminal";
+          spacing = "term";
+          serifs = "slab";
+          no-cv-ss = false;
+          no-litigation = true;
+        };
+      })
+      liberation_ttf
+      libertine
+      noto-fonts
+      noto-fonts-emoji
+    ];
+
+    fontconfig = {
+      defaultFonts = {
+        serif = ["Equity Text A" "DejaVu Serif"];
+        sansSerif = ["Concourse T4" "DejaVu Sans"];
+        monospace = ["Iosevka Slab Terminal Extended" "Dejavu Sans Mono"];
+      };
+    };
+  };
 
   hm = {
+    programs.foot = {
+      enable = true;
+      server.enable = true;
+      settings = {
+        main.font = "monospace:pixelsize=11";
+        colors = {
+          foreground = colorscheme.dark.fg_0;
+          background = colorscheme.dark.bg_0;
+          alpha = 0.9;
+          regular0 = colorscheme.dark.bg_1;
+          regular1 = colorscheme.dark.red;
+          regular2 = colorscheme.dark.green;
+          regular3 = colorscheme.dark.yellow;
+          regular4 = colorscheme.dark.blue;
+          regular5 = colorscheme.dark.magenta;
+          regular6 = colorscheme.dark.cyan;
+          regular7 = colorscheme.dark.dim_0;
+          bright0 = colorscheme.dark.bg_2;
+          bright1 = colorscheme.dark.br_red;
+          bright2 = colorscheme.dark.br_green;
+          bright3 = colorscheme.dark.br_yellow;
+          bright4 = colorscheme.dark.br_blue;
+          bright5 = colorscheme.dark.br_magenta;
+          bright6 = colorscheme.dark.br_cyan;
+          bright7 = colorscheme.dark.fg_1;
+        };
+        tweak = {
+          max-shm-pool-size-mb = 2048;
+        };
+      };
+    };
+    systemd.user.services.foot.Service.ExecSearchPath = "${pkgs.foot}/bin:${pkgs.xdg-utils}/bin";
+
     xdg.configFile = {
       # "waybar/style.css" = {source = ./config/waybar.css;};
       "wofi/style.css" = {source = ./config/wofi.css;};
@@ -43,12 +112,12 @@
 
       config = rec {
         modifier = "Mod4";
-        terminal = "kitty";
+        terminal = "${pkgs.foot}/bin/footclient";
         menu = "${pkgs.wofi}/bin/wofi --show run";
         startup = [
           {command = "1password";}
           {command = "google-chrome-stable";}
-          {command = "kitty";}
+          {command = "footclient";}
           {command = "discord";}
           {
             command = let
@@ -132,7 +201,7 @@
           }
         ];
         assigns = {
-          "1" = [{app_id = "kitty";}];
+          "1" = [{app_id = "foot";}];
           "2" = [
             {class = "Google-chrome";}
             {class = "discord";}
@@ -153,9 +222,9 @@
 
     services.mako = {
       enable = true;
-      backgroundColor = "#282C34";
-      textColor = "#ABB2BF";
-      borderColor = "#2C323C";
+      backgroundColor = "#${colorscheme.dark.green}e6";
+      textColor = "#${colorscheme.dark.fg_1}";
+      borderColor = "#${colorscheme.dark.fg_0}";
       defaultTimeout = 5000;
 
       extraConfig = ''
@@ -167,20 +236,25 @@
     programs.waybar = {
       enable = true;
     };
+
+    gtk.iconTheme.name = theme;
+    gtk.theme.name = theme;
   };
 
   systemd = {
-    user.services.polkit-gnome-authentication-agent-1 = {
-      description = "polkit-gnome-authentication-agent-1";
-      wantedBy = ["graphical-session.target"];
-      wants = ["graphical-session.target"];
-      after = ["graphical-session.target"];
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-        Restart = "on-failure";
-        RestartSec = 1;
-        TimeoutStopSec = 10;
+    user.services = {
+      polkit-gnome-authentication-agent-1 = {
+        description = "polkit-gnome-authentication-agent-1";
+        wantedBy = ["graphical-session.target"];
+        wants = ["graphical-session.target"];
+        after = ["graphical-session.target"];
+        serviceConfig = {
+          Type = "simple";
+          ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+          Restart = "on-failure";
+          RestartSec = 1;
+          TimeoutStopSec = 10;
+        };
       };
     };
   };

@@ -42,7 +42,6 @@
       git
       jq
       bat
-      fzf
       ripgrep
       moreutils
     ];

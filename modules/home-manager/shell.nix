@@ -21,51 +21,85 @@
     grep = "${lib.getExe pkgs.ripgrep}";
   };
 in {
-  programs.zsh = let
-    mkZshPlugin = {
-      pkg,
-      file ? "${pkg.pname}.plugin.zsh",
-    }: rec {
-      name = pkg.pname;
-      inherit (pkg) src;
-      inherit file;
-    };
-  in {
-    enable = true;
-    autocd = true;
-    dotDir = ".config/zsh";
-    localVariables = {
-      LANG = "en_US.UTF-8";
-      GPG_TTY = "/dev/ttys000";
-      DEFAULT_USER = "${config.home.username}";
-      CLICOLOR = 1;
-      LS_COLORS = "ExFxBxDxCxegedabagacad";
-    };
-    sessionVariables = {
-      LLDB_DEBUGSERVER_PATH = "/Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Versions/A/Resources/debugserver";
-    };
-    shellAliases = aliases;
-    initExtraBeforeCompInit = ''
-      fpath+=~/.zfunc
-    '';
-    plugins = with pkgs; [
-      (mkZshPlugin {pkg = zsh-autopair;})
-      (mkZshPlugin {pkg = zsh-completions;})
-      (mkZshPlugin {pkg = zsh-autosuggestions;})
-      (mkZshPlugin {
-        pkg = zsh-fast-syntax-highlighting;
-        file = "fast-syntax-highlighting.plugin.zsh";
-      })
-      (mkZshPlugin {pkg = zsh-history-substring-search;})
-    ];
-    oh-my-zsh = {
+  programs = {
+    zsh = let
+      mkZshPlugin = {
+        pkg,
+        file ? "${pkg.pname}.plugin.zsh",
+      }: rec {
+        name = pkg.pname;
+        inherit (pkg) src;
+        inherit file;
+      };
+    in {
       enable = true;
-      plugins = ["git" "sudo"];
+      autocd = true;
+      dotDir = ".config/zsh";
+      localVariables = {
+        LANG = "en_US.UTF-8";
+        GPG_TTY = "/dev/ttys000";
+        DEFAULT_USER = "${config.home.username}";
+        CLICOLOR = 1;
+        LS_COLORS = "ExFxBxDxCxegedabagacad";
+      };
+      sessionVariables = {
+        LLDB_DEBUGSERVER_PATH = "/Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Versions/A/Resources/debugserver";
+      };
+      shellAliases = aliases;
+      initExtraBeforeCompInit = ''
+        fpath+=~/.zfunc
+      '';
+      plugins = with pkgs; [
+        (mkZshPlugin {pkg = zsh-autopair;})
+        (mkZshPlugin {pkg = zsh-completions;})
+        (mkZshPlugin {pkg = zsh-autosuggestions;})
+        (mkZshPlugin {
+          pkg = zsh-fast-syntax-highlighting;
+          file = "fast-syntax-highlighting.plugin.zsh";
+        })
+        (mkZshPlugin {pkg = zsh-history-substring-search;})
+      ];
+      oh-my-zsh = {
+        enable = true;
+        plugins = ["git" "sudo"];
+      };
     };
-  };
 
-  programs.bash = {
-    enable = true;
-    shellAliases = aliases;
+    starship = {
+      enable = true;
+      enableZshIntegration = true;
+      enableBashIntegration = false;
+      enableFishIntegration = false;
+      settings = {
+        character = {
+          success_symbol = "[\\$](bold green)";
+          error_symbol = "[\\$](bold red)";
+        };
+        directory = {
+          truncate_to_repo = false;
+          fish_style_pwd_dir_length = 1;
+          read_only = "";
+        };
+        hostname.ssh_only = false;
+        package.disabled = true;
+        status.disabled = false;
+        username.show_always = true;
+      };
+    };
+
+    zoxide = {
+      enable = true;
+      enableBashIntegration = false;
+      enableFishIntegration = false;
+    };
+
+    fzf = {
+      enable = true;
+      enableBashIntegration = false;
+      enableFishIntegration = false;
+      changeDirWidgetCommand = "${pkgs.fd}/bin/fd --type d";
+      defaultCommand = "${pkgs.fd}/bin/fd --type f";
+      fileWidgetCommand = "${pkgs.fd}/bin/fd --type f";
+    };
   };
 }

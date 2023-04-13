@@ -8,12 +8,9 @@
     ./bat.nix
     ./direnv.nix
     ./dotfiles
-    ./fzf.nix
     ./git.nix
-    ./kitty.nix
     ./shell.nix
     ./ssh.nix
-    ./starship.nix
     ./tmux.nix
     ./vim
   ];
@@ -29,9 +26,6 @@
     sessionVariables = {
       EDITOR = "vim";
       VISUAL = "vim";
-      MANPAGER = "vim +Man!";
-      MANROFFOPT = "-c";
-      NIX_GCC = "${pkgs.gcc}/bin/gcc";
       JAVA_HOME = "${pkgs.jdk}";
     };
 
@@ -81,6 +75,5 @@
     htop.enable = true;
     less.enable = true;
     nix-index.enable = true;
-    zoxide.enable = true;
   };
 }
