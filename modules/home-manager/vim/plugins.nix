@@ -76,6 +76,8 @@
       vim-eunuch
       vim-flagship
       vim-fugitive
+      vim-manpager
+      vim-pager
       vim-polyglot
       vim-repeat
       vim-sensible

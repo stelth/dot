@@ -24,6 +24,8 @@
   home = {
     stateVersion = "22.11";
     sessionVariables = {
+      MANPAGER = "vim -c ASMANPAGER -";
+      PAGER = "vim -c PAGER -";
       EDITOR = "vim";
       VISUAL = "vim";
       JAVA_HOME = "${pkgs.jdk}";
