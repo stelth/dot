@@ -124,7 +124,7 @@ in {
               lockCmd = "'swaylock -f'";
             in ''
               swayidle -w \
-              timeout 600 "${lockCmd}" \
+              timeout 600 ${lockCmd} \
               timeout 1200 'swaymsg "output * dpms off"' \
               resume 'swaymsg "output * dpms on"' \
               before-sleep ${lockCmd}
