@@ -41,7 +41,6 @@
       vim-vint
 
       # YAML
-      yamlfix
       yamllint
     ]
     ++ lib.optionals (!pkgs.stdenvNoCC.isDarwin) [checkmake];

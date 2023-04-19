@@ -25,10 +25,6 @@
       "command": "google-java-format",
       "args": ["-"]
     },
-    "yamlfix": {
-      "command": "yamlfix",
-      "args": ["-"]
-    },
     "fixjson": {
       "command": "fixjson",
       "args": []
@@ -144,6 +140,6 @@
     "nix": "alejandra",
     "python": ["isort", "black"],
     "sh": "shfmt",
-    "yaml": "yamlfix"
+    "yaml": "prettier"
   }
 }
