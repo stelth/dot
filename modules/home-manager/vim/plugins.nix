@@ -66,6 +66,7 @@
       coc-yank
       fzf-vim
       is-vim
+      markdown-preview-nvim
       onedark-vim
       undotree
       vim-abolish
