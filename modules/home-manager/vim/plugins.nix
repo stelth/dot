@@ -84,6 +84,7 @@
       vim-signify
       vim-sleuth
       vim-snippets
+      vim-speeddating
       vim-surround
       vim-system-copy
       vim-tmux-navigator
