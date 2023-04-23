@@ -86,6 +86,10 @@ nmap <leader>gcc :BCommits<CR>
 nmap <leader>gs :GFiles?<CR>
 " }}}
 
+" vim-cmake {{{
+let g:cmake_link_compile_commands = 1
+" }}}
+
 " coc-nvim {{{
 let g:coc_config_home=$XDG_CONFIG_HOME.'/vim'
 

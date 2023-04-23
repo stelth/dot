@@ -71,6 +71,7 @@
       onedark-vim
       undotree
       vim-abolish
+      vim-cmake
       vim-commentary
       vim-dispatch
       vim-endwise
