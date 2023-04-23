@@ -42,6 +42,8 @@ set termguicolors
 set undofile
 set updatetime=300
 
+packadd termdebug
+
 " => Colors and colorschemes
 let g:onedark_terminal_italics=1
 colorscheme onedark

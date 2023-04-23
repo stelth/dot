@@ -8,6 +8,7 @@
       #C/CPP
       clang-tools
       cpplint
+      gdb
 
       # CMake
       cmake-format
