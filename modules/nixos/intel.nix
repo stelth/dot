@@ -10,8 +10,6 @@
 
   environment.systemPackages = with pkgs; [google-chrome discord];
 
-  networking.networkmanager.enable = true;
-
   security.polkit.enable = true;
 
   fonts = {
