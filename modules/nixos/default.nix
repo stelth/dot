@@ -4,7 +4,7 @@
   ...
 }: {
   # bundles essential nixos modules
-  imports = [../common.nix ./graphics.nix];
+  imports = [../common.nix ./graphics.nix ./virt.nix];
 
   # manually disable this to resolve https://github.com/NixOS/nixos-hardware/issues/260
   # TODO: resolve this later
@@ -25,7 +25,7 @@
         isNormalUser = true;
         createHome = true;
         useDefaultShell = true;
-        extraGroups = ["wheel" "networkmanager" "audio"]; # Enable ‘sudo’ for the user.
+        extraGroups = ["wheel" "networkmanager" "audio" "libvirtd"]; # Enable ‘sudo’ for the user.
         hashedPassword = "$6$mwlr.3ZwTZHQDLHS$gCnJwFaZuwt7qN2qWYkkuBgdbBA/FpedYz09WKZm2BwnRf/JpEzb0rCLlksnNFkd2wUduPgn7b.DMp1PcW1yT.";
       };
     };

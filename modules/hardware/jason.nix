@@ -24,7 +24,7 @@
     fsType = "ext4";
   };
 
-  fileSystems."/mnt/logs" = {
+  fileSystems."/mnt/storage" = {
     device = "/dev/disk/by-uuid/1582dcc3-77cc-4641-922d-49fe8549eaba";
     fsType = "ext4";
   };

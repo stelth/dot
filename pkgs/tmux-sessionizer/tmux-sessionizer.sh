@@ -2,7 +2,7 @@
 readarray -t repo_list < <(ls -d "$HOME"/dev/repos/*)
 repo_list+=("$HOME"/dev)
 repo_list+=("$HOME"/dot)
-repo_list+=(/mnt/logs)
+repo_list+=(/mnt/storage/logs)
 repo_list+=("$HOME")
 
 if [[ $# -eq 1 ]]; then
