@@ -31,7 +31,7 @@
     };
   };
 
-  networking.hostName = "nixDev"; # Define your hostname.
+  networking.hostName = "kvasir"; # Define your hostname.
 
   # Use the GRUB 2 boot loader.
 
