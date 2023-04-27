@@ -64,7 +64,6 @@
       coc-snippets
       coc-vimlsp
       coc-yaml
-      coc-yank
       fzf-vim
       is-vim
       markdown-preview-nvim
