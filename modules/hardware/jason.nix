@@ -4,6 +4,7 @@
 {
   config,
   lib,
+  pkgs,
   modulesPath,
   ...
 }: {
@@ -13,6 +14,7 @@
 
   boot.initrd.availableKernelModules = ["ata_generic" "ehci_pci" "ahci" "isci" "xhci_pci" "usbhid" "sd_mod" "sr_mod"];
   boot.initrd.kernelModules = [];
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_zen;
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
   boot.extraModprobeConfig = ''
