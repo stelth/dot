@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  imports = [./git.nix ./starship.nix ./zsh.nix];
+  imports = [./git.nix ./starship.nix ./tmux.nix ./zsh.nix];
 
   home.packages = with pkgs; [
     comma
