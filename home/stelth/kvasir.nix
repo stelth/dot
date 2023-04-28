@@ -3,6 +3,8 @@
 in {
   imports = [
     ./global
+    ./features/cli
+    ./features/vim
   ];
 
   colorscheme = atelier-heath;

@@ -11,6 +11,7 @@
 
     ../common/global
     ../common/users/stelth
+    ../common/optional/quietboot.nix
   ];
 
   networking = {
