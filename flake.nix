@@ -51,11 +51,15 @@
 
     overlays = import ./overlays {inherit inputs outputs;};
 
+    packages = forEachPkgs (pkgs: (import ./pkgs {inherit pkgs;}));
+
     devShells = forEachPkgs (pkgs: {
       default = inputs.devenv.lib.mkShell {
         inherit inputs pkgs;
         modules = [(import ./devenv.nix)];
       };
     });
+
+    nixosConfigurations = {};
   };
 }
