@@ -37,6 +37,8 @@
 
   outputs = {
     self,
+    devenv,
+    home-manager,
     nixpkgs,
     ...
   } @ inputs: let
@@ -44,6 +46,18 @@
     inherit (inputs.flake-utils.lib) eachDefaultSystemMap;
 
     forEachPkgs = f: eachDefaultSystemMap (system: f nixpkgs.legacyPackages.${system});
+
+    mkNixos = modules:
+      nixpkgs.lib.nixosSystem {
+        inherit modules;
+        specialArgs = {inherit inputs outputs;};
+      };
+
+    mkHome = modules: pkgs:
+      home-manager.lib.homeManagerConfiguration {
+        inherit modules pkgs;
+        extraSpecialArgs = {inherit inputs outputs;};
+      };
   in {
     nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;
@@ -55,12 +69,18 @@
     packages = forEachPkgs (pkgs: (import ./pkgs {inherit pkgs;}));
 
     devShells = forEachPkgs (pkgs: {
-      default = inputs.devenv.lib.mkShell {
+      default = devenv.lib.mkShell {
         inherit inputs pkgs;
         modules = [(import ./devenv.nix)];
       };
     });
 
-    nixosConfigurations = {};
+    nixosConfigurations = {
+      kvasir = mkNixos [./hosts/kvasir];
+    };
+
+    homeConfigurations = {
+      "stelth@kvasir" = mkHome [./home/stelth/kvasir.nix] nixpkgs.legacyPackages."x86_64-linux";
+    };
   };
 }

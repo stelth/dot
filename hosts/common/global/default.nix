@@ -9,6 +9,7 @@
       ./locale.nix
       ./nix.nix
       ./systemd-initrd.nix
+      ./zsh.nix
     ]
     ++ (builtins.attrValues outputs.nixosModules);
 
