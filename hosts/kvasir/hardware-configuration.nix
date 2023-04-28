@@ -8,7 +8,7 @@
 
   boot = {
     initrd = {
-      availableKernelModules = ["ata_generic" "ehci_pci" "ahci" "isci" "xhci_pci" "usbhid" "sd_mod" "sr_mod"];
+      availableKernelModules = ["ata_generic" "ehci_pci" "ahci" "isci" "xhci_pci" "usbhid" "sd_mod" "sr_mod" "nouveau"];
       kernelModules = ["kvm-intel"];
     };
 
