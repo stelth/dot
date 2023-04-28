@@ -38,6 +38,8 @@
 
     forEachPkgs = f: eachDefaultSystemMap (system: f nixpkgs.legacyPackages.${system});
   in {
+    nixosModules = import ./modules/nixos;
+
     devShells = forEachPkgs (pkgs: {
       default = inputs.devenv.lib.mkShell {
         inherit inputs pkgs;
