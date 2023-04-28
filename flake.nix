@@ -12,6 +12,8 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    stable.url = "github:nixos/nixpkgs/nixos-22.11";
+    small.url = "github:nixos/nixpkgs/nixos-unstable-small";
 
     hardware.url = "github:nixos/nixos-hardware";
     nix-colors.url = "github:misterio77/nix-colors";
@@ -33,7 +35,12 @@
     treefmt-nix.url = "github:numtide/treefmt-nix";
   };
 
-  outputs = {nixpkgs, ...} @ inputs: let
+  outputs = {
+    self,
+    nixpkgs,
+    ...
+  } @ inputs: let
+    inherit (self) outputs;
     inherit (inputs.flake-utils.lib) eachDefaultSystemMap;
 
     forEachPkgs = f: eachDefaultSystemMap (system: f nixpkgs.legacyPackages.${system});
@@ -41,6 +48,8 @@
     nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;
     templates = import ./templates;
+
+    overlays = import ./overlays {inherit inputs outputs;};
 
     devShells = forEachPkgs (pkgs: {
       default = inputs.devenv.lib.mkShell {

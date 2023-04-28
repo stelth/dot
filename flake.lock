@@ -602,9 +602,27 @@
         "hyprwm-contrib": "hyprwm-contrib",
         "nix-colors": "nix-colors",
         "nixpkgs": "nixpkgs_5",
+        "small": "small",
         "sops-nix": "sops-nix",
+        "stable": "stable",
         "treefmt-nix": "treefmt-nix",
         "vim-extra-plugins": "vim-extra-plugins"
+      }
+    },
+    "small": {
+      "locked": {
+        "lastModified": 1682626080,
+        "narHash": "sha256-FVDKtq7Fv/Qdd0sQrgxB7UpaXCTYYJP7vPXnMOKw0j8=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "3d409345416cda845407e3075f5eaf7a590d9db5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable-small",
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "sops-nix": {
@@ -623,6 +641,22 @@
       "original": {
         "owner": "mic92",
         "repo": "sops-nix",
+        "type": "github"
+      }
+    },
+    "stable": {
+      "locked": {
+        "lastModified": 1682538316,
+        "narHash": "sha256-YuHgVsR7S9zxJWHo7lo2ugd+uDC4ESWg1hA4bEZQv3Y=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "15b75800dce80225b44f067c9012b09de37dfad2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-22.11",
+        "repo": "nixpkgs",
         "type": "github"
       }
     },
