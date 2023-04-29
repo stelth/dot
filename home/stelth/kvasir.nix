@@ -5,6 +5,7 @@ in {
     ./global
     ./features/cli
     ./features/vim
+    ./features/desktop/sway
   ];
 
   colorscheme = atelier-heath;
