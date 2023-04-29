@@ -11,6 +11,8 @@
 
     ../common/global
     ../common/users/stelth
+
+    ../common/optional/pipewire.nix
     ../common/optional/quietboot.nix
     ../common/optional/sddm.nix
   ];
