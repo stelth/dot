@@ -25,7 +25,7 @@
         {command = "discord";}
         {
           command = let
-            lockCmd = "'swaylock -f'";
+            lockCmd = "'swaylock -S'";
           in ''
             swayidle -w \
             timeout 600 ${lockCmd} \
