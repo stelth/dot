@@ -62,7 +62,7 @@
           "${modifier}+a" = "focus parent";
           "${modifier}+s" = "focus child";
 
-          "${modifier}+l" = ''exec ${pkgs.swaylock}/bin/swaylock'';
+          "${modifier}+l" = "exec ${config.programs.swaylock.package}/bin/swaylock -S";
 
           "${modifier}+Shift+c" = "reload";
           "${modifier}+Shift+r" = "restart";

@@ -1,6 +1,5 @@
 {
   config,
-  lib,
   pkgs,
   ...
 }: let
@@ -10,7 +9,6 @@
   playerctld = "${pkgs.playerctl}/bin/playerctld";
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
   btm = "${pkgs.bottom}/bin/btm";
-  wofi = "${pkgs.wofi}/bin/wofi";
 
   terminal = "${pkgs.foot}/bin/foot";
   terminal-spawn = cmd: "${terminal} $SHELL -i -c ${cmd}";
@@ -39,26 +37,8 @@
 in {
   programs.waybar = {
     enable = true;
+    package = pkgs.waybar;
     settings = {
-      secondary = {
-        mode = "dock";
-        layer = "top";
-        height = 32;
-        width = 100;
-        margin = "6";
-        position = "bottom";
-        modules-center = lib.optionals config.wayland.windowManager.sway.enable [
-          "sway/workspaces"
-          "sway/mode"
-        ]; # ++ (lib.optionals config.wayland.windowManager.hyprland.enable [
-        # "wlr/workspaces"
-        # ]);
-
-        "wlr/workspaces" = {
-          on-click = "activate";
-        };
-      };
-
       primary = {
         mode = "dock";
         layer = "top";
@@ -67,24 +47,19 @@ in {
         position = "top";
         output = builtins.map (m: m.name) (builtins.filter (m: ! m.noBar) config.monitors);
         modules-left = [
-          "custom/menu"
+          "sway/workspaces"
+          "sway/mode"
           "custom/currentplayer"
           "custom/player"
         ];
         modules-center = [
           "cpu"
-          "custom/gpu"
           "memory"
           "clock"
           "pulseaudio"
-          "custom/unread-mail"
-          "custom/gammastep"
-          "custom/gpg-agent"
         ];
         modules-right = [
-          "custom/gamemode"
           "network"
-          "custom/tailscale-ping"
           "battery"
           "tray"
           "custom/hostname"
@@ -145,14 +120,6 @@ in {
             Up: {bandwidthUpBits}
             Down: {bandwidthDownBits}'';
           on-click = "";
-        };
-        "custom/menu" = {
-          return-type = "json";
-          exec = jsonOutput "menu" {
-            text = "";
-            tooltip = ''$(cat /etc/os-release | grep PRETTY_NAME | cut -d '"' -f2)'';
-          };
-          on-click = "${wofi} -S drun -x 10 -y 10 -W 25% -H 60%";
         };
         "custom/hostname" = {
           exec = "echo $USER@$(hostname)";
