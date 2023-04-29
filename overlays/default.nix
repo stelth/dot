@@ -8,8 +8,10 @@
     small = import inputs.small {inherit (prev) system;};
   };
 
-  additions = final: prev: {
-  };
+  additions = final: prev:
+    import ../pkgs {pkgs = final;}
+    // {
+    };
 
   modifications = final: prev: {
   };

@@ -10,5 +10,6 @@
     ripgrep
     diffsitter
     jq
+    sessionizer
   ];
 }

@@ -9,7 +9,7 @@
     la = "${ls} -a";
     ll = "${ls} -la";
     lt = "${ls} -lat";
-    ts = "${lib.getExe pkgs.tmux-sessionizer}";
+    ts = "${lib.getExe pkgs.sessionizer}";
     tl = "${lib.getExe pkgs.tmux} ls";
     tk = "${lib.getExe pkgs.tmux} kill-session -t";
     mv = "${pkgs.coreutils}/bin/mv -iv";

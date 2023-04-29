@@ -17,7 +17,7 @@
       bind | split-window -h
       bind - split-window -v
 
-      bind-key -r f run-shell "tmux neww tmux-sessionizer"
+      bind-key -r f run-shell "tmux neww sessionizer"
       bind-key -r i run-shell "tmux neww tmux-cht"
 
       is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
