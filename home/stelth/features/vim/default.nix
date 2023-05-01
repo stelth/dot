@@ -43,9 +43,6 @@ in {
       set viewdir=$XDG_STATE_HOME/vim/view     | call mkdir(&viewdir,   'p', 0700)
       " }}}
 
-      " => Leader
-      let mapleader = ' '
-
       " => General Settings
       set clipboard^=unnamed,unnamedplus
       set cursorline

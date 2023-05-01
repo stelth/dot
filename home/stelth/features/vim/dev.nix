@@ -11,7 +11,7 @@
     ];
 
     extraConfig = ''
-      " undotree {{{
+      " vim-cmake {{{
       let g:cmake_link_compile_commands = 1
       " }}}
     '';
