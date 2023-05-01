@@ -1,5 +1,5 @@
 {inputs, ...}: let
-  inherit (inputs.nix-colors.colorSchemes) atelier-heath;
+  inherit (inputs.nix-colors.colorSchemes) onedark;
 in {
   imports = [
     ./global
@@ -8,7 +8,7 @@ in {
     ./features/desktop/sway
   ];
 
-  colorscheme = atelier-heath;
+  colorscheme = onedark;
 
   monitors = [
     {
