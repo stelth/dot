@@ -1,5 +1,6 @@
 {...}: {
   programs.sway.enable = true;
+  programs.hyprland.enable = true;
   services.xserver = {
     enable = true;
 

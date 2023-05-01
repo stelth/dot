@@ -4,7 +4,7 @@
   };
 
   home = {
-    sessionVariables.BROWSER = "firefox";
+    sessionVariables.BROWSER = "google-chrome-beta";
   };
 
   xdg.mimeApps.defaultApplications = {

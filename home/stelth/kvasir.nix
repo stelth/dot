@@ -5,7 +5,7 @@ in {
     ./global
     ./features/cli
     ./features/vim
-    ./features/desktop/sway
+    ./features/desktop/hyprland
   ];
 
   colorscheme = onedark;

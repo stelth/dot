@@ -5,6 +5,12 @@
 }: let
   inherit (config.colorscheme) colors;
 in {
+  home = {
+    sessionVariables = {
+      TERMINAL = "footclient";
+    };
+  };
+
   programs.foot = {
     enable = true;
     server.enable = true;
@@ -22,14 +28,6 @@ in {
         regular5 = "${colors.base0E}";
         regular6 = "${colors.base0C}";
         regular7 = "${colors.base03}";
-        # bright0 = colorscheme.dark.bg_2;
-        # bright1 = colorscheme.dark.br_red;
-        # bright2 = colorscheme.dark.br_green;
-        # bright3 = colorscheme.dark.br_yellow;
-        # bright4 = colorscheme.dark.br_blue;
-        # bright5 = colorscheme.dark.br_magenta;
-        # bright6 = colorscheme.dark.br_cyan;
-        # bright7 = colorscheme.dark.fg_1;
       };
       tweak = {
         max-shm-pool-size-mb = 2048;
