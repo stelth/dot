@@ -24,7 +24,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hydra.url = "github:nixos/hydra";
     hyprland.url = "github:hyprwm/hyprland";
     hyprwm-contrib.url = "github:hyprwm/contrib";
 
@@ -61,10 +60,8 @@
   in {
     nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;
-    templates = import ./templates;
 
     overlays = import ./overlays {inherit inputs outputs;};
-    hydraJobs = import ./hydra.nix {inherit inputs outputs;};
 
     packages = forEachPkgs (pkgs: (import ./pkgs {inherit pkgs;}));
 
