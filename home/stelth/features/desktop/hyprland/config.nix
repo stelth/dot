@@ -73,6 +73,7 @@ in ''
   exec-once=waybar
   exec-once=mako
   exec-once=swayidle -w
+  exec-once=1password
 
   # Mouse binding
   bindm=SUPER,mouse:272,movewindow
@@ -88,7 +89,7 @@ in ''
   bind=SUPER,d,exec,wofi -S run
 
   # Lock screen
-  bind=SUPER,l,exec,swaylock -S
+  bind=SUPER,backspace,exec,swaylock -S
 
   # Screenshots
   bind=,Print,exec,grimblast --notify copy output
