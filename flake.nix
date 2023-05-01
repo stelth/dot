@@ -20,7 +20,7 @@
     sops-nix.url = "github:mic92/sops-nix";
 
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:stelth/home-manager/vim-plugin-config";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

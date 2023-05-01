@@ -3,17 +3,18 @@
 
   programs.vim = {
     plugins = with pkgs.vimExtraPlugins; [
-      vim-cmake
+      {
+        plugin = vim-cmake;
+        config = ''
+          " vim-cmake {{{
+          let g:cmake_link_compile_commands = 1
+          " }}}
+        '';
+      }
       vim-commentary
       vim-endwise
       vim-polyglot
       vim-snippets
     ];
-
-    extraConfig = ''
-      " vim-cmake {{{
-      let g:cmake_link_compile_commands = 1
-      " }}}
-    '';
   };
 }

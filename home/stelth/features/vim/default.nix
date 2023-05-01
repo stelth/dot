@@ -43,6 +43,9 @@ in {
       set viewdir=$XDG_STATE_HOME/vim/view     | call mkdir(&viewdir,   'p', 0700)
       " }}}
 
+      " => Leader
+      let mapleader = ' '
+
       " => General Settings
       set clipboard^=unnamed,unnamedplus
       set cursorline
@@ -65,42 +68,48 @@ in {
 
       vnoremap J :m '>+1<CR>gv=gv
       vnoremap K :m '<-2<CR>gv=gv
-
-      " fzf-vim {{{
-      nmap <leader>hc :Commands<CR>
-      nmap <leader>ht :Helptags<CR>
-      nmap <leader>hm :Maps<CR>
-      nmap <leader>hf :Filetypes<CR>
-
-      nmap <leader>sg :Rg<CR>
-      nmap <leader>sb :BLines<CR>
-      nmap <leader>sh :History:<CR>
-      nmap <leader>sm :Marks<CR>
-      nmap <leader>sw :execute 'Rg ' . expand('<cword>')<CR>
-      nmap <leader>ff :Files<CR>
-
-      nmap <leader>, :Buffers<CR>
-      nmap <leader>/ :Rg<CR>
-      nmap <leader>: :History:<CR>
-
-      nmap <leader>gc :Commits<CR>
-      nmap <leader>gcc :BCommits<CR>
-      nmap <leader>gs :GFiles?<CR>
-      " }}}
-
-      " undotree {{{
-      let g:undotree_ShortIndicators=1
-      let g:undotree_WindowLayout=4
-      nnoremap <silent> <leader>u :UndotreeToggle<CR>
-      " }}}
     '';
 
     plugins = with pkgs.vimExtraPlugins; [
       auto-pairs
-      fzf-vim
+      {
+        plugin = fzf-vim;
+        config = ''
+          " fzf-vim {{{
+          nmap <leader>hc :Commands<CR>
+          nmap <leader>ht :Helptags<CR>
+          nmap <leader>hm :Maps<CR>
+          nmap <leader>hf :Filetypes<CR>
+
+          nmap <leader>sg :Rg<CR>
+          nmap <leader>sb :BLines<CR>
+          nmap <leader>sh :History:<CR>
+          nmap <leader>sm :Marks<CR>
+          nmap <leader>sw :execute 'Rg ' . expand('<cword>')<CR>
+          nmap <leader>ff :Files<CR>
+
+          nmap <leader>, :Buffers<CR>
+          nmap <leader>/ :Rg<CR>
+          nmap <leader>: :History:<CR>
+
+          nmap <leader>gc :Commits<CR>
+          nmap <leader>gcc :BCommits<CR>
+          nmap <leader>gs :GFiles?<CR>
+          " }}}
+        '';
+      }
       is-vim
       markdown-preview-nvim
-      undotree
+      {
+        plugin = undotree;
+        config = ''
+          " undotree {{{
+          let g:undotree_ShortIndicators=1
+          let g:undotree_WindowLayout=4
+          nnoremap <silent> <leader>u :UndotreeToggle<CR>
+          " }}}
+        '';
+      }
       vim-dispatch
       vim-eunuch
       vim-flagship
