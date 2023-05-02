@@ -118,7 +118,7 @@ in ''
 
   # Window manager controls
   bind=SUPER,q,killactive
-  bind=SUPER,e,exit
+  bind=SUPER,e,exec,wlogout
 
   bind=SUPER,s,togglesplit
   bind=SUPER,f,fullscreen,1
