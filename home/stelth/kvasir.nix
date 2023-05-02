@@ -9,6 +9,7 @@ in {
   ];
 
   colorscheme = onedark;
+  wallpaper = (import ./wallpapers).aenami-omen;
 
   monitors = [
     {

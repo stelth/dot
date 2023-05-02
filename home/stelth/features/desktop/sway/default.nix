@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  wallpaper,
   ...
 }: {
   imports = [
@@ -19,6 +20,7 @@
       terminal = "${pkgs.foot}/bin/footclient";
       menu = "${pkgs.wofi}/bin/wofi --show run";
       startup = [
+        {command = "swaybg -i ${wallpaper} --mode stretch";}
         {command = "1password";}
         {command = "google-chrome-beta";}
         {command = "footclient";}
