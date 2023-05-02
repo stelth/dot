@@ -50,9 +50,9 @@ else:
     PLATFORM = FlakeOutputs.HOME_MANAGER
 
 USERNAME = subprocess.run(["id", "-un"], capture_output=True).stdout.decode().strip()
+HOSTNAME = subprocess.run(["hostname"], capture_output=True).stdout.decode().strip()
 SYSTEM_ARCH = "aarch64" if UNAME.machine == "arm64" else UNAME.machine
 SYSTEM_OS = UNAME.system.lower()
-DEFAULT_HOST = f"{USERNAME}@{SYSTEM_ARCH}-{SYSTEM_OS}"
 
 
 def fmt_command(cmd: List[str]):
@@ -99,7 +99,10 @@ def select(nixos: bool, darwin: bool, home_manager: bool):
 )
 def bootstrap(
     host: str = typer.Argument(
-        DEFAULT_HOST, help="the hostname of the configuration to build"
+        HOSTNAME, help="the hostname of the configuration to build"
+    ),
+    user: str = typer.Argument(
+        USERNAME, help="the username of the configuration to build"
     ),
     remote: bool = typer.Option(
         default=False,
@@ -128,13 +131,15 @@ def bootstrap(
         raise typer.Abort()
     elif cfg == FlakeOutputs.DARWIN:
         disk_setup()
-        flake = f"{bootstrap_flake}#{cfg.value}.{host}.config.system.build.toplevel"
+        flake = (
+            f"{bootstrap_flake}#{cfg.value}.{user}@{host}.config.system.build.toplevel"
+        )
         run_cmd(["nix", "build", flake] + flags)
         run_cmd(
-            f"./result/sw/bin/darwin-rebuild switch --flake {FLAKE_PATH}#{host}".split()
+            f"./result/sw/bin/darwin-rebuild switch --flake {FLAKE_PATH}#{user}@{host}".split()
         )
     elif cfg == FlakeOutputs.HOME_MANAGER:
-        flake = f"{bootstrap_flake}#{host}"
+        flake = f"{bootstrap_flake}#{user}@{host}"
         run_cmd(
             ["nix", "run"]
             + flags
@@ -159,7 +164,10 @@ def bootstrap(
 )
 def build(
     host: str = typer.Argument(
-        DEFAULT_HOST, help="the hostname of the configuration to build"
+        HOSTNAME, help="the hostname of the configuration to build"
+    ),
+    user: str = typer.Argument(
+        USERNAME, help="the username of the configuration to build"
     ),
     remote: bool = typer.Option(
         default=False,
@@ -174,23 +182,23 @@ def build(
     if cfg is None:
         return
 
+    if remote:
+        flake = REMOTE_FLAKE
+    else:
+        flake = FLAKE_PATH
+
     if cfg == FlakeOutputs.NIXOS:
-        cmd = ["sudo", "nixos-rebuild", "build", "--flake"]
+        cmd = ["sudo", "nixos-rebuild", "build", "--flake", f"{flake}#{host}"]
     elif cfg == FlakeOutputs.DARWIN:
-        cmd = ["darwin-rebuild", "build", "--flake"]
+        cmd = ["darwin-rebuild", "build", "--flake", f"{flake}#{user}@{host}"]
     elif cfg == FlakeOutputs.HOME_MANAGER:
-        cmd = ["home-manager", "build", "--flake"]
+        cmd = ["home-manager", "build", "--flake", f"{flake}#{user}@{host}"]
     else:
         typer.secho("could not infer system type.", fg=Colors.ERROR.value)
         raise typer.Abort()
 
-    if remote:
-        flake = f"{REMOTE_FLAKE}#{host}"
-    else:
-        flake = f"{FLAKE_PATH}#{host}"
-
     flags = ["--show-trace"]
-    run_cmd(cmd + [flake] + flags)
+    run_cmd(cmd + flags)
 
 
 @app.command(
@@ -281,8 +289,11 @@ def pull():
 )
 def switch(
     host: str = typer.Argument(
-        default=DEFAULT_HOST,
+        default=HOSTNAME,
         help="the hostname of the configuration to build",
+    ),
+    user: str = typer.Argument(
+        USERNAME, help="the username of the configuration to build"
     ),
     remote: bool = typer.Option(
         default=False,
@@ -297,26 +308,27 @@ def switch(
         typer.secho("Error: host configuration not specified.", fg=Colors.ERROR.value)
         raise typer.Abort()
 
+    if remote:
+        flake = REMOTE_FLAKE
+    else:
+        flake = FLAKE_PATH
+
     cfg = select(nixos=nixos, darwin=darwin, home_manager=home_manager)
     if cfg is None:
         return
 
     if cfg == FlakeOutputs.NIXOS:
-        cmd = "sudo nixos-rebuild switch --flake"
+        cmd = f"sudo nixos-rebuild switch --flake {flake}#{host}"
     elif cfg == FlakeOutputs.DARWIN:
-        cmd = "darwin-rebuild switch --flake"
+        cmd = f"darwin-rebuild switch --flake {flake}#{user}@{host}"
     elif cfg == FlakeOutputs.HOME_MANAGER:
-        cmd = "home-manager switch --flake"
+        cmd = f"home-manager switch --flake {flake}#{user}@{host}"
     else:
         typer.secho("could not infer system type.", fg=Colors.ERROR.value)
         raise typer.Abort()
 
-    if remote:
-        flake = f"{REMOTE_FLAKE}#{host}"
-    else:
-        flake = f"{FLAKE_PATH}#{host}"
     flags = ["--show-trace"]
-    run_cmd(cmd.split() + [flake] + flags)
+    run_cmd(cmd.split() + flags)
 
 
 @app.command(hidden=not is_local, help="cache the output environment of flake.nix")

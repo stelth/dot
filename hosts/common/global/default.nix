@@ -1,6 +1,7 @@
 {
   inputs,
   outputs,
+  pkgs,
   ...
 }: {
   imports =
@@ -26,6 +27,8 @@
   };
 
   environment.enableAllTerminfo = true;
+
+  environment.systemPackages = [pkgs.sysdo];
 
   hardware.enableRedistributableFirmware = true;
 }
