@@ -1,5 +1,13 @@
 {pkgs, ...}: {
-  imports = [./git.nix ./nix-index.nix ./pfetch.nix ./starship.nix ./tmux.nix ./zsh.nix];
+  imports = [
+    ./direnv.nix
+    ./git.nix
+    ./nix-index.nix
+    ./pfetch.nix
+    ./starship.nix
+    ./tmux.nix
+    ./zsh.nix
+  ];
 
   home.packages = with pkgs; [
     comma
