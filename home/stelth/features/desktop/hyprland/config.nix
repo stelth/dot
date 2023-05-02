@@ -128,6 +128,9 @@ in ''
   bind=SUPER,minus,splitratio,-0.25
   bind=SUPERSHIFT,minus,splitratio,-0.3333333
 
+  bind=SUPER,equal,splitratio,0.25
+  bind=SUPERSHIFT,equal,splitratio,0.3333333
+
   bind=SUPER,g,togglegroup
   bind=SUPER,apostrophe,changegroupactive,f
   bind=SUPERSHIFT,apostrophe,changegroupactive,b
