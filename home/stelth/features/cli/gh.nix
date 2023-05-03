@@ -7,4 +7,8 @@
       prompt = "enabled";
     };
   };
+
+  home.persistence = {
+    "/persist/home/stelth".directories = [".config/gh"];
+  };
 }

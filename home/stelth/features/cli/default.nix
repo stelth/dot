@@ -5,6 +5,7 @@
     ./git.nix
     ./nix-index.nix
     ./pfetch.nix
+    ./ssh.nix
     ./starship.nix
     ./tmux.nix
     ./zsh.nix

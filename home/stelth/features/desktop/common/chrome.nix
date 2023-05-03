@@ -5,6 +5,10 @@
 
   home = {
     sessionVariables.BROWSER = "google-chrome-beta";
+
+    persistence = {
+      "/persist/home/stelth".directories = [".config/google-chrome"];
+    };
   };
 
   xdg.mimeApps.defaultApplications = {

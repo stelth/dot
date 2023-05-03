@@ -9,6 +9,7 @@
       inputs.home-manager.nixosModules.home-manager
       ./locale.nix
       ./nix.nix
+      ./optin-persistence.nix
       ./systemd-initrd.nix
       ./zsh.nix
     ]

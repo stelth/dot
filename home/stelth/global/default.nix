@@ -39,6 +39,20 @@ in {
     username = lib.mkDefault "stelth";
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
     stateVersion = lib.mkDefault "22.05";
+
+    persistence = {
+      "/persist/home/stelth" = {
+        directories = [
+          "Documents"
+          "Downloads"
+          "Pictures"
+          "Videos"
+          "dev"
+          "dot"
+        ];
+        allowOther = true;
+      };
+    };
   };
 
   colorscheme = lib.mkDefault colorSchemes.dracula;
