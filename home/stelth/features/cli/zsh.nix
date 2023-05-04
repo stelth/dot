@@ -64,5 +64,27 @@ in {
         plugins = ["git" "sudo"];
       };
     };
+
+    zoxide = {
+      enable = true;
+      enableBashIntegration = false;
+      enableFishIntegration = false;
+    };
+
+    fzf = {
+      enable = true;
+      enableBashIntegration = false;
+      enableFishIntegration = false;
+      changeDirWidgetCommand = "${pkgs.fd}/bin/fd --type d";
+      defaultCommand = "${pkgs.fd}/bin/fd --type f";
+      fileWidgetCommand = "${pkgs.fd}/bin/fd --type f";
+    };
+  };
+
+  home.persistence = {
+    "/persist/home/stelth" = {
+      directories = [".local/share/zoxide"];
+      files = [".zsh_history"];
+    };
   };
 }
