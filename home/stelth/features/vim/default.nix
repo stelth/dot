@@ -10,6 +10,10 @@ in {
     ./lsp.nix
   ];
 
+  home.persistence = {
+    "/persist/home/stelth".directories = [".config/coc"];
+  };
+
   programs.vim = {
     enable = true;
     defaultEditor = true;

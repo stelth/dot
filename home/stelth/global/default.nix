@@ -10,6 +10,7 @@ in {
   imports =
     [
       inputs.nix-colors.homeManagerModule
+      inputs.impermanence.nixosModules.home-manager.impermanence
     ]
     ++ (builtins.attrValues outputs.homeManagerModules);
 
@@ -48,7 +49,6 @@ in {
           "Pictures"
           "Videos"
           "dev"
-          "dot"
         ];
         allowOther = true;
       };

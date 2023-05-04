@@ -7,7 +7,11 @@
     sessionVariables.BROWSER = "google-chrome-beta";
 
     persistence = {
-      "/persist/home/stelth".directories = [".config/google-chrome"];
+      "/persist/home/stelth".directories = [
+        ".config/google-chrome"
+        ".config/google-chrome-beta"
+        ".config/google-chrome-unstable"
+      ];
     };
   };
 

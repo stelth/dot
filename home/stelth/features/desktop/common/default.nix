@@ -1,5 +1,6 @@
 {...}: {
   imports = [
+    ./1password.nix
     ./chrome.nix
     ./discord.nix
     ./font.nix
