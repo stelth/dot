@@ -3,6 +3,7 @@
 # to /etc/nixos/configuration.nix instead.
 {modulesPath, ...}: {
   imports = [
+    ../common/optional/ephemeral-btrfs.nix
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
@@ -22,17 +23,23 @@
     };
   };
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/1b52376d-4c3b-4f0d-bcf8-c74cc1b4fe7c";
-    fsType = "ext4";
+  fileSystems = {
+    "/boot" = {
+      device = "/dev/disk/by-label/boot";
+      fsType = "ext4";
+    };
+    "/mnt/storage" = {
+      device = "/dev/disk/by-uuid/1582dcc3-77cc-4641-922d-49fe8549eaba";
+      fsType = "ext4";
+    };
   };
 
-  fileSystems."/mnt/storage" = {
-    device = "/dev/disk/by-uuid/1582dcc3-77cc-4641-922d-49fe8549eaba";
-    fsType = "ext4";
-  };
-
-  swapDevices = [];
+  swapDevices = [
+    {
+      device = "/swap/swapfile";
+      size = 8196;
+    }
+  ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = true;
