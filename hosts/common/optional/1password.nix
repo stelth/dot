@@ -1,9 +1,13 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   environment.systemPackages = with pkgs; [polkit_gnome];
 
   programs._1password-gui = {
     enable = true;
-    polkitPolicyOwners = ["stelth"];
+    polkitPolicyOwners = builtins.attrNames config.home-manager.users;
   };
 
   services.gnome.gnome-keyring.enable = true;
