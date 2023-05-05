@@ -4,8 +4,11 @@
   lib,
   ...
 }: {
-  packages = [
+  packages = with pkgs; [
     (inputs.treefmt-nix.lib.mkWrapper pkgs (import ./treefmt.nix))
+    sops
+    ssh-to-age
+    age
   ];
 
   pre-commit = {
