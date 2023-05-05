@@ -20,6 +20,8 @@ in {
         "libvirtd"
       ];
 
+    openssh.authorizedKeys.keys = [(builtins.readFile ../../../../home/stelth/ssh.pub)];
+
     hashedPassword = "$6$mwlr.3ZwTZHQDLHS$gCnJwFaZuwt7qN2qWYkkuBgdbBA/FpedYz09WKZm2BwnRf/JpEzb0rCLlksnNFkd2wUduPgn7b.DMp1PcW1yT.";
 
     packages = [pkgs.home-manager];

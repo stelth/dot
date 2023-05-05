@@ -1,0 +1,17 @@
+keys:
+  - &users:
+    - &stelth
+  -&hosts:
+    - &kvasir
+
+creation_rules:
+  - path_regex: hosts/kvasir/secrets.ya?ml$
+    key_groups:
+      - age:
+        - *stelth
+        - *kvasir
+  - path_regex: hosts/common/secrets.ya?ml$
+    key_groups:
+      - age:
+        - *stelth
+        - *kvasir
