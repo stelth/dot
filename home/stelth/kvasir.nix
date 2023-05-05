@@ -5,6 +5,7 @@ in {
     ./global
     ./features/cli
     ./features/vim
+    ./features/music
     ./features/desktop/hyprland
   ];
 
