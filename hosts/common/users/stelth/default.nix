@@ -16,15 +16,20 @@ in {
         "video"
       ]
       ++ ifTheyExist [
+        config.users.groups.keys.name
         "networkmanager"
         "libvirtd"
       ];
 
     openssh.authorizedKeys.keys = [(builtins.readFile ../../../../home/stelth/ssh.pub)];
-
-    hashedPassword = "$6$mwlr.3ZwTZHQDLHS$gCnJwFaZuwt7qN2qWYkkuBgdbBA/FpedYz09WKZm2BwnRf/JpEzb0rCLlksnNFkd2wUduPgn7b.DMp1PcW1yT.";
+    passwordFile = config.sops.secrets.stelth-password.path;
 
     packages = [pkgs.home-manager];
+  };
+
+  sops.secrets.stelth-password = {
+    sopsFile = ../../secrets.yaml;
+    neededForUsers = true;
   };
 
   home-manager.users.stelth = import home/${config.networking.hostName}.nix;

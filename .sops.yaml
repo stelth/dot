@@ -1,17 +1,13 @@
 keys:
-  - &users:
-    - &stelth
-  -&hosts:
-    - &kvasir
+  - &hosts:
+    - &kvasir age14sncf8qh2d9w8txerxda6hdp3865kd5rvu96j9fm498ewhdtnpnq4gk7u8
 
 creation_rules:
   - path_regex: hosts/kvasir/secrets.ya?ml$
     key_groups:
       - age:
-        - *stelth
-        - *kvasir
+          - *kvasir
   - path_regex: hosts/common/secrets.ya?ml$
     key_groups:
       - age:
-        - *stelth
-        - *kvasir
+          - *kvasir

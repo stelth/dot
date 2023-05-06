@@ -11,6 +11,7 @@
       ./nix.nix
       ./openssh.nix
       ./optin-persistence.nix
+      ./sops.nix
       ./systemd-initrd.nix
       ./zsh.nix
     ]
