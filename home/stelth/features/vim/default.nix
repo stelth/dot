@@ -33,6 +33,7 @@
       vim-flagship
       vim-fugitive
       vim-manpager
+      vim-orgmode
       vim-pager
       vim-repeat
       vim-sensible
