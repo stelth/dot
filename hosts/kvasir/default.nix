@@ -14,6 +14,7 @@
 
     ../common/optional/1password.nix
     ../common/optional/pipewire.nix
+    ../common/optional/podman.nix
     ../common/optional/sddm.nix
   ];
 
