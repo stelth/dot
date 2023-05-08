@@ -164,16 +164,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1682964782,
-        "narHash": "sha256-CjBZujRHOvBZ57eit/7zD8Crl7MiiN4uk7FfRfMgqWY=",
-        "owner": "stelth",
+        "lastModified": 1683543852,
+        "narHash": "sha256-aS9qNcg9GwSYFLCWa3Lw+2nVPG11mmQ3B7Oka1hh04M=",
+        "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "b438d088e90c3c6f3583c7e994b55f4fc43c477d",
+        "rev": "3f3fa731ad0f99741d4dc98e8e1287b45e30b452",
         "type": "github"
       },
       "original": {
-        "owner": "stelth",
-        "ref": "vim-plugin-config",
+        "owner": "nix-community",
         "repo": "home-manager",
         "type": "github"
       }
