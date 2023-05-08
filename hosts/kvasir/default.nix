@@ -21,10 +21,6 @@
     hostName = "kvasir";
   };
 
-  boot = {
-    kernelPackages = pkgs.linuxKernel.packages.linux_zen;
-  };
-
   programs = {
     dconf.enable = true;
     kdeconnect.enable = true;
