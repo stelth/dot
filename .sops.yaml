@@ -1,6 +1,6 @@
 keys:
   - &users:
-    - &stelth F50EE1F161E4AD86DF630B00BA342F8A9C9C2ED0
+    - &stelth 92835489E0CAB55B
   - &hosts:
     - &kvasir age14sncf8qh2d9w8txerxda6hdp3865kd5rvu96j9fm498ewhdtnpnq4gk7u8
 
