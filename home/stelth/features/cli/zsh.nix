@@ -35,6 +35,7 @@ in {
       enable = true;
       autocd = true;
       dotDir = ".config/zsh";
+      history.path = "${config.home.homeDirectory}/.local/share/zsh/.zsh_history";
       localVariables = {
         LANG = "en_US.UTF-8";
         GPG_TTY = "/dev/ttys000";
@@ -83,8 +84,7 @@ in {
 
   home.persistence = {
     "/persist/home/stelth" = {
-      directories = [".local/share/zoxide"];
-      files = [".zsh_history"];
+      directories = [".local/share/zoxide" ".local/share/zsh"];
     };
   };
 }
