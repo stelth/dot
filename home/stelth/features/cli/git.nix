@@ -17,7 +17,7 @@
       pull.rebase = true;
       color.ui = true;
       commit.gpgSign = true;
-      user.signing.key = "00189A5945CB929704BDAACF92835489E0CAB55B";
+      user.signing.key = "0018 9A59 45CB 9297 04BD  AACF 9283 5489 E0CA B55B";
       gpg.program = "${config.programs.gpg.package}/bin/gpg2";
     };
     lfs.enable = true;
