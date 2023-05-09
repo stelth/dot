@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   programs.git = {
     enable = true;
     package = pkgs.gitAndTools.gitFull;
@@ -17,8 +13,7 @@
       pull.rebase = true;
       color.ui = true;
       commit.gpgSign = true;
-      user.signingKey = "BEA0869F3BB82DA2!";
-      gpg.program = "${config.programs.gpg.package}/bin/gpg2";
+      user.signingkey = "69ECAF2C353B08CF8ED63568BEA0869F3BB82DA2";
     };
     lfs.enable = true;
     ignores = [".direnv" "result"];
