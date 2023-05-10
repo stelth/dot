@@ -1,5 +1,5 @@
 {inputs, ...}: let
-  inherit (inputs.nix-colors.colorSchemes) onedark;
+  inherit (inputs.nix-colors.colorSchemes) catppuccin-mocha;
 in {
   imports = [
     ./global
@@ -9,7 +9,7 @@ in {
     ./features/desktop/hyprland
   ];
 
-  colorscheme = onedark;
+  colorscheme = catppuccin-mocha;
   wallpaper = (import ./wallpapers).aenami-omen;
 
   monitors = [
