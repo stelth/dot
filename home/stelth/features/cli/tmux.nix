@@ -9,7 +9,6 @@
     disableConfirmationPrompt = true;
     clock24 = true;
     plugins = with pkgs; [
-      tmuxPlugins.onedark-theme
       tmuxPlugins.sensible
       tmuxPlugins.yank
     ];
