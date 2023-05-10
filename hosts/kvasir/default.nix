@@ -16,6 +16,7 @@
     ../common/optional/pipewire.nix
     ../common/optional/podman.nix
     ../common/optional/sddm.nix
+    ../common/optional/workvpn.nix
   ];
 
   networking = {
