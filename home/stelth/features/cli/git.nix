@@ -13,7 +13,7 @@
       pull.rebase = true;
       color.ui = true;
       commit.gpgSign = true;
-      user.signingkey = "0x92835489E0CAB55B ";
+      user.signingkey = "EDE32FA164BE1F4A!";
     };
     lfs.enable = true;
     ignores = [".direnv" "result"];
