@@ -1,651 +1,333 @@
 scheme: let
   c = scheme.colors;
-in ''
-  let g:colors_name="nix-${scheme.slug}"
+in
+  /*
+  vim
+  */
+  ''
+    let g:colors_name="nix-${scheme.slug}"
 
-  highlight clear
+    set termguicolors
 
-  if exists("syntax on")
-    syntax reset
-  endif
-
-  set t_Co=256
-
-
-  " This function is based on one from FlatColor: https://github.com/MaxSt/FlatColor/
-  " Which in turn was based on one found in hemisu: https://github.com/noahfrederick/vim-hemisu/
-  let s:group_colors = {} " Cache of default highlight group settings
-  function! s:h(group, style, ...)
-    if (a:0 > 0)
-      let s:highlight = s:group_colors[a:group]
-      for style_type in ["fg", "bg", "sp"]
-        if (has_key(a:style, style_type))
-          let l:default_style = (has_key(s:highlight, style_type) ? copy(s:highlight[style_type]) : { "cterm16": "NONE", "cterm": "NONE", "gui": "NONE" })
-          let s:highlight[style_type] = extend(l:default_style, a:style[style_type])
-        endif
-      endfor
-      if (has_key(a:style, "gui"))
-        let s:highlight.gui = a:style.gui
-      endif
-      if (has_key(a:style, "cterm"))
-        let s:highlight.cterm = a:style.cterm
-      endif
-    else
-      let s:highlight = a:style
-      let s:group_colors[a:group] = s:highlight " Cache default highlight group settings
+    if exists("syntax_on")
+      syntax reset
     endif
 
-    if has_key(s:highlight, "cterm") && s:highlight["cterm"] == "italic"
-      unlet s:highlight.cterm
+    hi clear
+
+    hi Normal        guifg=#${c.base05} guibg=#${c.base00} gui=NONE guisp=NONE
+    hi Bold          guifg=NONE guibg=NONE gui=bold guisp=NONE
+    hi Debug         guifg=#${c.base08} guibg=NONE gui=NONE guisp=NONE
+    hi Directory     guifg=#${c.base0D} guibg=NONE gui=NONE guisp=NONE
+    hi Error         guifg=#${c.base00} guibg=#${c.base08} gui=NONE guisp=NONE
+    hi ErrorMsg      guifg=#${c.base08} guibg=#${c.base00} gui=NONE guisp=NONE
+    hi Exception     guifg=#${c.base08} guibg=NONE gui=NONE guisp=NONE
+    hi FoldColumn    guifg=#${c.base0C} guibg=#${c.base00} gui=NONE guisp=NONE
+    hi Folded        guifg=#${c.base03} guibg=#${c.base01} gui=NONE guisp=NONE
+    hi IncSearch     guifg=#${c.base01} guibg=#${c.base09} gui=NONE guisp=NONE
+    hi Italic        guifg=NONE guibg=NONE gui=NONE guisp=NONE
+    hi Macro         guifg=#${c.base08} guibg=NONE gui=NONE guisp=NONE
+    hi MatchParen    guifg=NONE guibg=#${c.base03} gui=NONE guisp=NONE
+    hi ModeMsg       guifg=#${c.base0B} guibg=NONE gui=NONE guisp=NONE
+    hi MoreMsg       guifg=#${c.base0B} guibg=NONE gui=NONE guisp=NONE
+    hi Question      guifg=#${c.base0D} guibg=NONE gui=NONE guisp=NONE
+    hi Search        guifg=#${c.base01} guibg=#${c.base0A} gui=NONE guisp=NONE
+    hi Substitute    guifg=#${c.base01} guibg=#${c.base0A} gui=NONE guisp=NONE
+    hi SpecialKey    guifg=#${c.base03} guibg=NONE gui=NONE guisp=NONE
+    hi TooLong       guifg=#${c.base08} guibg=NONE gui=NONE guisp=NONE
+    hi Underlined    guifg=#${c.base08} guibg=NONE gui=NONE guisp=NONE
+    hi Visual        guifg=NONE guibg=#${c.base02} gui=NONE guisp=NONE
+    hi VisualNOS     guifg=#${c.base08} guibg=NONE gui=NONE guisp=NONE
+    hi WarningMsg    guifg=#${c.base08} guibg=NONE gui=NONE guisp=NONE
+    hi WildMenu      guifg=#${c.base08} guibg=#${c.base0A} gui=NONE guisp=NONE
+    hi Title         guifg=#${c.base0D} guibg=NONE gui=NONE guisp=NONE
+    hi Conceal       guifg=#${c.base0D} guibg=#${c.base00} gui=NONE guisp=NONE
+    hi Cursor        guifg=#${c.base00} guibg=#${c.base05} gui=NONE guisp=NONE
+    hi NonText       guifg=#${c.base03} guibg=NONE gui=NONE guisp=NONE
+    hi LineNr        guifg=#${c.base04} guibg=#${c.base00} gui=NONE guisp=NONE
+    hi SignColumn    guifg=#${c.base04} guibg=#${c.base00} gui=NONE guisp=NONE
+    hi StatusLine    guifg=#${c.base0B} guibg=#${c.base02} gui=NONE guisp=NONE
+    hi StatusLineNC  guifg=#${c.base04} guibg=#${c.base01} gui=NONE guisp=NONE
+    hi VertSplit     guifg=#${c.base01} guibg=#${c.base00} gui=NONE guisp=NONE
+    hi ColorColumn   guifg=NONE guibg=#${c.base01} gui=NONE guisp=NONE
+    hi CursorColumn  guifg=NONE guibg=#${c.base01} gui=NONE guisp=NONE
+    hi CursorLine    guifg=NONE guibg=#${c.base02} gui=NONE guisp=NONE
+    hi CursorLineNr  guifg=#${c.base0B} guibg=#${c.base01} gui=NONE guisp=NONE
+    hi QuickFixLine  guifg=NONE guibg=#${c.base01} gui=NONE guisp=NONE
+    hi PMenu         guifg=#${c.base05} guibg=#${c.base01} gui=NONE guisp=NONE
+    hi PMenuSel      guifg=#${c.base01} guibg=#${c.base05} gui=NONE guisp=NONE
+    hi TabLine       guifg=#${c.base03} guibg=#${c.base01} gui=NONE guisp=NONE
+    hi TabLineFill   guifg=#${c.base03} guibg=#${c.base02} gui=NONE guisp=NONE
+    hi TabLineSel    guifg=#${c.base0B} guibg=#${c.base01} gui=NONE guisp=NONE
+    hi EndOfBuffer   guifg=#${c.base00} guibg=NONE gui=NONE guisp=NONE
+
+    hi Boolean       guifg=#${c.base09} guibg=NONE gui=NONE guisp=NONE
+    hi Character     guifg=#${c.base08} guibg=NONE gui=NONE guisp=NONE
+    hi Comment       guifg=#${c.base03} guibg=NONE gui=NONE guisp=NONE
+    hi Conditional   guifg=#${c.base0E} guibg=NONE gui=NONE guisp=NONE
+    hi Constant      guifg=#${c.base09} guibg=NONE gui=NONE guisp=NONE
+    hi Define        guifg=#${c.base0E} guibg=NONE gui=NONE guisp=NONE
+    hi Delimiter     guifg=#${c.base0F} guibg=NONE gui=NONE guisp=NONE
+    hi Float         guifg=#${c.base09} guibg=NONE gui=NONE guisp=NONE
+    hi Function      guifg=#${c.base0D} guibg=NONE gui=NONE guisp=NONE
+    hi Identifier    guifg=#${c.base08} guibg=NONE gui=NONE guisp=NONE
+    hi Include       guifg=#${c.base0D} guibg=NONE gui=NONE guisp=NONE
+    hi Keyword       guifg=#${c.base0E} guibg=NONE gui=NONE guisp=NONE
+    hi Label         guifg=#${c.base0A} guibg=NONE gui=NONE guisp=NONE
+    hi Number        guifg=#${c.base09} guibg=NONE gui=NONE guisp=NONE
+    hi Operator      guifg=#${c.base05} guibg=NONE gui=NONE guisp=NONE
+    hi PreProc       guifg=#${c.base0A} guibg=NONE gui=NONE guisp=NONE
+    hi Repeat        guifg=#${c.base0A} guibg=NONE gui=NONE guisp=NONE
+    hi Special       guifg=#${c.base0C} guibg=NONE gui=NONE guisp=NONE
+    hi SpecialChar   guifg=#${c.base0F} guibg=NONE gui=NONE guisp=NONE
+    hi Statement     guifg=#${c.base08} guibg=NONE gui=NONE guisp=NONE
+    hi StorageClass  guifg=#${c.base0A} guibg=NONE gui=NONE guisp=NONE
+    hi String        guifg=#${c.base0B} guibg=NONE gui=NONE guisp=NONE
+    hi Structure     guifg=#${c.base0E} guibg=NONE gui=NONE guisp=NONE
+    hi Tag           guifg=#${c.base0A} guibg=NONE gui=NONE guisp=NONE
+    hi Type          guifg=#${c.base0A} guibg=NONE gui=NONE guisp=NONE
+    hi Typedef       guifg=#${c.base0A} guibg=NONE gui=NONE guisp=NONE
+
+    hi Todo          guifg=#${c.base01} guibg=#${c.base0A} gui=NONE guisp=NONE
+    hi Done          guifg=#${c.base01} guibg=#${c.base0B} gui=NONE guisp=NONE
+    hi Start         guifg=#${c.base01} guibg=#${c.base0D} gui=NONE guisp=NONE
+    hi End           guifg=#${c.base01} guibg=#${c.base0E} gui=NONE guisp=NONE
+
+    hi DiffAdd      guifg=#${c.base0B} guibg=#${c.base00} gui=NONE guisp=NONE
+    hi DiffChange   guifg=#${c.base03} guibg=#${c.base00} gui=NONE guisp=NONE
+    hi DiffDelete   guifg=#${c.base08} guibg=#${c.base00} gui=NONE guisp=NONE
+    hi DiffText     guifg=#${c.base0D} guibg=#${c.base00} gui=NONE guisp=NONE
+    hi DiffAdded    guifg=#${c.base0B} guibg=#${c.base00} gui=NONE guisp=NONE
+    hi DiffFile     guifg=#${c.base08} guibg=#${c.base00} gui=NONE guisp=NONE
+    hi DiffNewFile  guifg=#${c.base0B} guibg=#${c.base00} gui=NONE guisp=NONE
+    hi DiffLine     guifg=#${c.base0D} guibg=#${c.base00} gui=NONE guisp=NONE
+    hi DiffRemoved  guifg=#${c.base08} guibg=#${c.base00} gui=NONE guisp=NONE
+
+    hi gitcommitOverflow       guifg=#${c.base08} guibg=NONE gui=NONE guisp=NONE
+    hi gitcommitSummary        guifg=#${c.base0B} guibg=NONE gui=NONE guisp=NONE
+    hi gitcommitComment        guifg=#${c.base03} guibg=NONE gui=NONE guisp=NONE
+    hi gitcommitUntracked      guifg=#${c.base03} guibg=NONE gui=NONE guisp=NONE
+    hi gitcommitDiscarded      guifg=#${c.base03} guibg=NONE gui=NONE guisp=NONE
+    hi gitcommitSelected       guifg=#${c.base03} guibg=NONE gui=NONE guisp=NONE
+    hi gitcommitHeader         guifg=#${c.base0E} guibg=NONE gui=NONE guisp=NONE
+    hi gitcommitSelectedType   guifg=#${c.base0D} guibg=NONE gui=NONE guisp=NONE
+    hi gitcommitUnmergedType   guifg=#${c.base0D} guibg=NONE gui=NONE guisp=NONE
+    hi gitcommitDiscardedType  guifg=#${c.base0D} guibg=NONE gui=NONE guisp=NONE
+    hi gitcommitBranch         guifg=#${c.base09} guibg=NONE gui=bold guisp=NONE
+    hi gitcommitUntrackedFile  guifg=#${c.base0A} guibg=NONE gui=NONE guisp=NONE
+    hi gitcommitUnmergedFile   guifg=#${c.base08} guibg=NONE gui=bold guisp=NONE
+    hi gitcommitDiscardedFile  guifg=#${c.base08} guibg=NONE gui=bold guisp=NONE
+    hi gitcommitSelectedFile   guifg=#${c.base0B} guibg=NONE gui=bold guisp=NONE
+
+    hi GitGutterAdd           guifg=#${c.base0B} guibg=#${c.base00} gui=NONE guisp=NONE
+    hi GitGutterChange        guifg=#${c.base0D} guibg=#${c.base00} gui=NONE guisp=NONE
+    hi GitGutterDelete        guifg=#${c.base08} guibg=#${c.base00} gui=NONE guisp=NONE
+    hi GitGutterChangeDelete  guifg=#${c.base0E} guibg=#${c.base00} gui=NONE guisp=NONE
+
+    hi SpellBad    guifg=NONE guibg=NONE gui=undercurl guisp=#${c.base08}
+    hi SpellLocal  guifg=NONE guibg=NONE gui=undercurl guisp=#${c.base0C}
+    hi SpellCap    guifg=NONE guibg=NONE gui=undercurl guisp=#${c.base0D}
+    hi SpellRare   guifg=NONE guibg=NONE gui=undercurl guisp=#${c.base0E}
+
+    hi DiagnosticError                     guifg=#${c.base08} guibg=#${c.base01} gui=NONE guisp=NONE
+    hi DiagnosticWarn                      guifg=#${c.base0E} guibg=#${c.base01} gui=NONE guisp=NONE
+    hi DiagnosticInfo                      guifg=#${c.base05} guibg=#${c.base01} gui=NONE guisp=NONE
+    hi DiagnosticHint                      guifg=#${c.base0C} guibg=#${c.base01} gui=NONE guisp=NONE
+    hi DiagnosticUnderlineError            guifg=NONE guibg=NONE gui=undercurl guisp=#${c.base08}
+    hi DiagnosticUnderlineWarning          guifg=NONE guibg=NONE gui=undercurl guisp=#${c.base0E}
+    hi DiagnosticUnderlineWarn             guifg=NONE guibg=NONE gui=undercurl guisp=#${c.base0E}
+    hi DiagnosticUnderlineInformation      guifg=NONE guibg=NONE gui=undercurl guisp=#${c.base0F}
+    hi DiagnosticUnderlineHint             guifg=NONE guibg=NONE gui=undercurl guisp=#${c.base0C}
+
+    hi LspReferenceText                    guifg=NONE guibg=NONE gui=underline guisp=#${c.base04}
+    hi LspReferenceRead                    guifg=NONE guibg=NONE gui=underline guisp=#${c.base04}
+    hi LspReferenceWrite                   guifg=NONE guibg=NONE gui=underline guisp=#${c.base04}
+
+    hi link LspDiagnosticsDefaultError         DiagnosticError
+    hi link LspDiagnosticsDefaultWarning       DiagnosticWarn
+    hi link LspDiagnosticsDefaultInformation   DiagnosticInfo
+    hi link LspDiagnosticsDefaultHint          DiagnosticHint
+    hi link LspDiagnosticsUnderlineError       DiagnosticUnderlineError
+    hi link LspDiagnosticsUnderlineWarning     DiagnosticUnderlineWarning
+    hi link LspDiagnosticsUnderlineInformation DiagnosticUnderlineInformation
+    hi link LspDiagnosticsUnderlineHint        DiagnosticUnderlineHint
+
+    hi TSAnnotation          guifg=#${c.base0F} guibg=NONE gui=NONE guisp=NONE
+    hi TSAttribute           guifg=#${c.base0A} guibg=NONE gui=NONE guisp=NONE
+    hi TSBoolean             guifg=#${c.base09} guibg=NONE gui=NONE guisp=NONE
+    hi TSCharacter           guifg=#${c.base08} guibg=NONE gui=NONE guisp=NONE
+    hi TSComment             guifg=#${c.base03} guibg=NONE gui=NONE guisp=NONE "was italic
+    hi TSConstructor         guifg=#${c.base0D} guibg=NONE gui=NONE guisp=NONE
+    hi TSConditional         guifg=#${c.base0E} guibg=NONE gui=NONE guisp=NONE
+    hi TSConstant            guifg=#${c.base09} guibg=NONE gui=NONE guisp=NONE
+    hi TSConstBuiltin        guifg=#${c.base09} guibg=NONE gui=NONE guisp=NONE "was italic
+    hi TSConstMacro          guifg=#${c.base08} guibg=NONE gui=NONE guisp=NONE
+    hi TSError               guifg=#${c.base08} guibg=NONE gui=NONE guisp=NONE
+    hi TSException           guifg=#${c.base08} guibg=NONE gui=NONE guisp=NONE
+    hi TSField               guifg=#${c.base05} guibg=NONE gui=NONE guisp=NONE
+    hi TSFloat               guifg=#${c.base09} guibg=NONE gui=NONE guisp=NONE
+    hi TSFunction            guifg=#${c.base0D} guibg=NONE gui=NONE guisp=NONE
+    hi TSFuncBuiltin         guifg=#${c.base0D} guibg=NONE gui=NONE guisp=NONE "was italic
+    hi TSFuncMacro           guifg=#${c.base08} guibg=NONE gui=NONE guisp=NONE
+    hi TSInclude             guifg=#${c.base0D} guibg=NONE gui=NONE guisp=NONE
+    hi TSKeyword             guifg=#${c.base0E} guibg=NONE gui=NONE guisp=NONE
+    hi TSKeywordFunction     guifg=#${c.base0E} guibg=NONE gui=NONE guisp=NONE
+    hi TSKeywordOperator     guifg=#${c.base0E} guibg=NONE gui=NONE guisp=NONE
+    hi TSLabel               guifg=#${c.base0A} guibg=NONE gui=NONE guisp=NONE
+    hi TSMethod              guifg=#${c.base0D} guibg=NONE gui=NONE guisp=NONE
+    hi TSNamespace           guifg=#${c.base08} guibg=NONE gui=NONE guisp=NONE
+    hi TSNone                guifg=#${c.base05} guibg=NONE gui=NONE guisp=NONE
+    hi TSNumber              guifg=#${c.base09} guibg=NONE gui=NONE guisp=NONE
+    hi TSOperator            guifg=#${c.base05} guibg=NONE gui=NONE guisp=NONE
+    hi TSParameter           guifg=#${c.base05} guibg=NONE gui=NONE guisp=NONE
+    hi TSParameterReference  guifg=#${c.base05} guibg=NONE gui=NONE guisp=NONE
+    hi TSProperty            guifg=#${c.base05} guibg=NONE gui=NONE guisp=NONE
+    hi TSPunctDelimiter      guifg=#${c.base0F} guibg=NONE gui=NONE guisp=NONE
+    hi TSPunctBracket        guifg=#${c.base05} guibg=NONE gui=NONE guisp=NONE
+    hi TSPunctSpecial        guifg=#${c.base05} guibg=NONE gui=NONE guisp=NONE
+    hi TSRepeat              guifg=#${c.base0A} guibg=NONE gui=NONE guisp=NONE
+    hi TSString              guifg=#${c.base0B} guibg=NONE gui=NONE guisp=NONE
+    hi TSStringRegex         guifg=#${c.base0C} guibg=NONE gui=NONE guisp=NONE
+    hi TSStringEscape        guifg=#${c.base0C} guibg=NONE gui=NONE guisp=NONE
+    hi TSSymbol              guifg=#${c.base0B} guibg=NONE gui=NONE guisp=NONE
+    hi TSTag                 guifg=#${c.base0A} guibg=NONE gui=NONE guisp=NONE
+    hi TSTagDelimiter        guifg=#${c.base0F} guibg=NONE gui=NONE guisp=NONE
+    hi TSText                guifg=#${c.base05} guibg=NONE gui=NONE guisp=NONE
+    hi TSStrong              guifg=NONE guibg=NONE gui=bold guisp=NONE
+    hi TSEmphasis            guifg=#${c.base09} guibg=NONE gui=NONE guisp=NONE "was italic
+    hi TSUnderline           guifg=#${c.base00} guibg=NONE gui=underline guisp=NONE
+    hi TSStrike              guifg=#${c.base00} guibg=NONE gui=strikethrough guisp=NONE
+    hi TSTitle               guifg=#${c.base0D} guibg=NONE gui=NONE guisp=NONE
+    hi TSLiteral             guifg=#${c.base09} guibg=NONE gui=NONE guisp=NONE
+    hi TSURI                 guifg=#${c.base09} guibg=NONE gui=underline guisp=NONE
+    hi TSType                guifg=#${c.base0A} guibg=NONE gui=NONE guisp=NONE
+    hi TSTypeBuiltin         guifg=#${c.base0A} guibg=NONE gui=NONE guisp=NONE "was italic
+    hi TSVariable            guifg=#${c.base08} guibg=NONE gui=NONE guisp=NONE
+    hi TSVariableBuiltin     guifg=#${c.base08} guibg=NONE gui=NONE guisp=NONE "was italic
+
+    hi TSDefinition          guifg=NONE guibg=NONE gui=underline guisp=#${c.base04}
+    hi TSDefinitionUsage     guifg=NONE guibg=NONE gui=underline guisp=#${c.base04}
+    hi TSCurrentScope        guifg=NONE guibg=NONE gui=bold guisp=NONE
+    if has('nvim-0.8.0')
+      highlight! link @annotation TSAnnotation
+      highlight! link @attribute TSAttribute
+      highlight! link @boolean TSBoolean
+      highlight! link @character TSCharacter
+      highlight! link @comment TSComment
+      highlight! link @conditional TSConditional
+      highlight! link @constant TSConstant
+      highlight! link @constant.builtin TSConstBuiltin
+      highlight! link @constant.macro TSConstMacro
+      highlight! link @constructor TSConstructor
+      highlight! link @exception TSException
+      highlight! link @field TSField
+      highlight! link @float TSFloat
+      highlight! link @function TSFunction
+      highlight! link @function.builtin TSFuncBuiltin
+      highlight! link @function.macro TSFuncMacro
+      highlight! link @include TSInclude
+      highlight! link @keyword TSKeyword
+      highlight! link @keyword.function TSKeywordFunction
+      highlight! link @keyword.operator TSKeywordOperator
+      highlight! link @label TSLabel
+      highlight! link @method TSMethod
+      highlight! link @namespace TSNamespace
+      highlight! link @none TSNone
+      highlight! link @number TSNumber
+      highlight! link @operator TSOperator
+      highlight! link @parameter TSParameter
+      highlight! link @parameter.reference TSParameterReference
+      highlight! link @property TSProperty
+      highlight! link @punctuation.bracket TSPunctBracket
+      highlight! link @punctuation.delimiter TSPunctDelimiter
+      highlight! link @punctuation.special TSPunctSpecial
+      highlight! link @repeat TSRepeat
+      highlight! link @storageclass TSStorageClass
+      highlight! link @string TSString
+      highlight! link @string.escape TSStringEscape
+      highlight! link @string.regex TSStringRegex
+      highlight! link @symbol TSSymbol
+      highlight! link @tag TSTag
+      highlight! link @tag.delimiter TSTagDelimiter
+      highlight! link @text TSText
+      highlight! link @strike TSStrike
+      highlight! link @math TSMath
+      highlight! link @type TSType
+      highlight! link @type.builtin TSTypeBuiltin
+      highlight! link @uri TSURI
+      highlight! link @variable TSVariable
+      highlight! link @variable.builtin TSVariableBuiltin
     endif
-    if has_key(s:highlight, "gui") && s:highlight["gui"] == "italic"
-      unlet s:highlight.gui
-    endif
 
-    let l:ctermfg = (has_key(s:highlight, "fg") ? s:highlight.fg.cterm : "NONE")
-    let l:ctermbg = (has_key(s:highlight, "bg") ? s:highlight.bg.cterm : "NONE")
+    hi IndentBlankLine       guifg=#${c.base01} guibg=NONE gui=NONE guisp=NONE
 
+    hi NvimTreeNormal        guifg=#${c.base05} guibg=#${c.base00} gui=NONE guisp=NONE
 
-    execute "highlight" a:group
-      \ "guifg="   (has_key(s:highlight, "fg")    ? s:highlight.fg.gui   : "NONE")
-      \ "guibg="   (has_key(s:highlight, "bg")    ? s:highlight.bg.gui   : "NONE")
-      \ "guisp="   (has_key(s:highlight, "sp")    ? s:highlight.sp.gui   : "NONE")
-      \ "gui="     (has_key(s:highlight, "gui")   ? s:highlight.gui      : "NONE")
-      \ "ctermfg=" . l:ctermfg
-      \ "ctermbg=" . l:ctermbg
-      \ "cterm="   (has_key(s:highlight, "cterm") ? s:highlight.cterm    : "NONE")
-  endfunction
+    hi CmpItemAbbr            guifg=#${c.base05} guibg=NONE gui=NONE guisp=NONE
+    hi CmpItemAbbrDeprecated  guifg=#${c.base03} guibg=NONE gui=NONE guisp=NONE
+    hi CmpItemAbbrMatch       guifg=#${c.base05} guibg=NONE gui=NONE guisp=NONE
+    hi CmpItemAbbrMatchFuzzy  guifg=#${c.base05} guibg=NONE gui=NONE guisp=NONE
+    hi CmpItemKind            guifg=#${c.base0C} guibg=NONE gui=NONE guisp=NONE
+    hi CmpItemMenu            guifg=#${c.base05} guibg=NONE gui=NONE guisp=NONE
 
-  let s:overrides = get(g:, "color_overrides", {})
+    hi BufferCurrent         guifg=#${c.base0B} guibg=#${c.base00} gui=NONE guisp=NONE
+    hi BufferCurrentIndex    guifg=#${c.base0B} guibg=#${c.base00} gui=NONE guisp=NONE
+    hi BufferCurrentMod      guifg=#${c.base0E} guibg=#${c.base00} gui=NONE guisp=NONE
+    hi BufferCurrentSign     guifg=#${c.base0B} guibg=#${c.base00} gui=NONE guisp=NONE
+    hi BufferCurrentTarget   guifg=#${c.base08} guibg=#${c.base00} gui=NONE guisp=NONE
+    hi BufferCurrentIcon     guifg=NONE guibg=#${c.base00} gui=NONE guisp=NONE
+    hi BufferVisible         guifg=#${c.base0A} guibg=#${c.base01} gui=NONE guisp=NONE
+    hi BufferVisibleIndex    guifg=#${c.base0A} guibg=#${c.base01} gui=NONE guisp=NONE
+    hi BufferVisibleMod      guifg=#${c.base0E} guibg=#${c.base01} gui=NONE guisp=NONE
+    hi BufferVisibleSign     guifg=#${c.base0A} guibg=#${c.base01} gui=NONE guisp=NONE
+    hi BufferVisibleTarget   guifg=#${c.base08} guibg=#${c.base01} gui=NONE guisp=NONE
+    hi BufferVisibleIcon     guifg=NONE guibg=#${c.base01} gui=NONE guisp=NONE
+    hi BufferInactive        guifg=#${c.base04} guibg=#${c.base02} gui=NONE guisp=NONE
+    hi BufferInactiveIndex   guifg=#${c.base05} guibg=#${c.base02} gui=NONE guisp=NONE
+    hi BufferInactiveMod     guifg=#${c.base0E} guibg=#${c.base02} gui=NONE guisp=NONE
+    hi BufferInactiveSign    guifg=#${c.base05} guibg=#${c.base02} gui=NONE guisp=NONE
+    hi BufferInactiveTarget  guifg=#${c.base08} guibg=#${c.base02} gui=NONE guisp=NONE
+    hi BufferInactiveIcon    guifg=NONE guibg=#${c.base02} gui=NONE guisp=NONE
+    hi BufferTabpages        guifg=#${c.base03} guibg=#${c.base02} gui=NONE guisp=NONE
+    hi BufferTabpageFill     guifg=#${c.base03} guibg=#${c.base02} gui=NONE guisp=NONE
 
-  let s:colors = {
-        \ "red": get(s:overrides, "red", { "gui": "#${c.base08}", "cterm": "204", "cterm16": "1" }),
-        \ "dark_red": get(s:overrides, "dark_red", { "gui": "#${c.base0F}", "cterm": "196", "cterm16": "9" }),
-        \ "green": get(s:overrides, "green", { "gui": "#${c.base0B}", "cterm": "114", "cterm16": "2" }),
-        \ "yellow": get(s:overrides, "yellow", { "gui": "#${c.base0A}", "cterm": "180", "cterm16": "3" }),
-        \ "dark_yellow": get(s:overrides, "dark_yellow", { "gui": "#${c.base09}", "cterm": "173", "cterm16": "11" }),
-        \ "blue": get(s:overrides, "blue", { "gui": "#${c.base0D}", "cterm": "39", "cterm16": "4" }),
-        \ "purple": get(s:overrides, "purple", { "gui": "#${c.base0E}", "cterm": "170", "cterm16": "5" }),
-        \ "cyan": get(s:overrides, "cyan", { "gui": "#${c.base0C}", "cterm": "38", "cterm16": "6" }),
-        \ "white": get(s:overrides, "white", { "gui": "#${c.base05}", "cterm": "145", "cterm16": "15" }),
-        \ "black": get(s:overrides, "black", { "gui": "#${c.base00}", "cterm": "235", "cterm16": "0" }),
-        \ "foreground": get(s:overrides, "foreground", { "gui": "#${c.base05}", "cterm": "145", "cterm16": "NONE" }),
-        \ "background": get(s:overrides, "background", { "gui": "#${c.base00}", "cterm": "235", "cterm16": "NONE" }),
-        \ "comment_grey": get(s:overrides, "comment_grey", { "gui": "#5C6370", "cterm": "59", "cterm16": "7" }),
-        \ "gutter_fg_grey": get(s:overrides, "gutter_fg_grey", { "gui": "#4B5263", "cterm": "238", "cterm16": "8" }),
-        \ "cursor_grey": get(s:overrides, "cursor_grey", { "gui": "#2C323C", "cterm": "236", "cterm16": "0" }),
-        \ "visual_grey": get(s:overrides, "visual_grey", { "gui": "#3E4452", "cterm": "237", "cterm16": "8" }),
-        \ "menu_grey": get(s:overrides, "menu_grey", { "gui": "#3E4452", "cterm": "237", "cterm16": "7" }),
-        \ "special_grey": get(s:overrides, "special_grey", { "gui": "#3B4048", "cterm": "238", "cterm16": "7" }),
-        \ "vertsplit": get(s:overrides, "vertsplit", { "gui": "#3E4452", "cterm": "59", "cterm16": "7" }),
-        \}
+    hi NvimInternalError  guifg=#${c.base00} guibg=#${c.base08} gui=NONE guisp=NONE
 
-  let s:red = s:colors.red
-  let s:dark_red = s:colors.dark_red
-  let s:green = s:colors.green
-  let s:yellow = s:colors.yellow
-  let s:dark_yellow = s:colors.dark_yellow
-  let s:blue = s:colors.blue
-  let s:purple = s:colors.purple
-  let s:cyan = s:colors.cyan
-  let s:white = s:colors.white
-  let s:black = s:colors.black
-  let s:foreground = s:colors.foreground
-  let s:background = s:colors.background
-  let s:comment_grey = s:colors.comment_grey
-  let s:gutter_fg_grey = s:colors.gutter_fg_grey
-  let s:cursor_grey = s:colors.cursor_grey
-  let s:visual_grey = s:colors.visual_grey
-  let s:menu_grey = s:colors.menu_grey
-  let s:special_grey = s:colors.special_grey
-  let s:vertsplit = s:colors.vertsplit
+    hi NormalFloat   guifg=#${c.base05} guibg=#${c.base00} gui=NONE guisp=NONE
+    hi FloatBorder   guifg=#${c.base05} guibg=#${c.base00} gui=NONE guisp=NONE
+    hi NormalNC      guifg=#${c.base05} guibg=#${c.base00} gui=NONE guisp=NONE
+    hi TermCursor    guifg=#${c.base00} guibg=#${c.base05} gui=NONE guisp=NONE
+    hi TermCursorNC  guifg=#${c.base00} guibg=#${c.base05} gui=NONE guisp=NONE
 
+    hi User1  guifg=#${c.base08} guibg=#${c.base02} gui=NONE guisp=NONE
+    hi User2  guifg=#${c.base0E} guibg=#${c.base02} gui=NONE guisp=NONE
+    hi User3  guifg=#${c.base05} guibg=#${c.base02} gui=NONE guisp=NONE
+    hi User4  guifg=#${c.base0C} guibg=#${c.base02} gui=NONE guisp=NONE
+    hi User5  guifg=#${c.base01} guibg=#${c.base02} gui=NONE guisp=NONE
+    hi User6  guifg=#${c.base05} guibg=#${c.base02} gui=NONE guisp=NONE
+    hi User7  guifg=#${c.base05} guibg=#${c.base02} gui=NONE guisp=NONE
+    hi User8  guifg=#${c.base00} guibg=#${c.base02} gui=NONE guisp=NONE
+    hi User9  guifg=#${c.base00} guibg=#${c.base02} gui=NONE guisp=NONE
 
-  " Terminal Colors {{{
+    hi TreesitterContext  guifg=NONE guibg=#${c.base01} gui=NONE guisp=NONE "was italic
 
-  if has('nvim')
-    let g:terminal_color_0 = s:black.gui
-    let g:terminal_color_1 = s:red.gui
-    let g:terminal_color_2 = s:green.gui
-    let g:terminal_color_3 = s:yellow.gui
-    let g:terminal_color_4 = s:blue.gui
-    let g:terminal_color_5 = s:purple.gui
-    let g:terminal_color_6 = s:cyan.gui
-    let g:terminal_color_7 = s:comment_grey.gui
-    let g:terminal_color_8 = s:visual_grey.gui
-    let g:terminal_color_9 = s:red.gui
-    let g:terminal_color_10 = s:green.gui
-    let g:terminal_color_11 = s:yellow.gui
-    let g:terminal_color_12 = s:blue.gui
-    let g:terminal_color_13 = s:purple.gui
-    let g:terminal_color_14 = s:cyan.gui
-    let g:terminal_color_15 = s:white.gui
-  else
-    let g:terminal_ansi_colors = [
-      \ s:black.gui, s:red.gui, s:green.gui, s:yellow.gui,
-      \ s:blue.gui, s:purple.gui, s:cyan.gui, s:comment_grey.gui,
-      \ s:visual_grey.gui, s:red.gui, s:green.gui, s:yellow.gui,
-      \ s:blue.gui, s:purple.gui, s:cyan.gui, s:white.gui
-    \]
-  endif
+    let g:terminal_color_background = "#${c.base00}"
+    let g:terminal_color_foreground = "#${c.base05}"
 
-  " }}}
-
-  " Syntax Groups (descriptions and ordering from `:h w18`) {{{
-
-  call s:h("Comment", { "fg": s:comment_grey, "gui": "italic", "cterm": "italic" }) " any comment
-  call s:h("Constant", { "fg": s:cyan }) " any constant
-  call s:h("String", { "fg": s:green }) " a string constant: "this is a string"
-  call s:h("Character", { "fg": s:green }) " a character constant: 'c', '\n'
-  call s:h("Number", { "fg": s:dark_yellow }) " a number constant: 234, 0xff
-  call s:h("Boolean", { "fg": s:dark_yellow }) " a boolean constant: TRUE, false
-  call s:h("Float", { "fg": s:dark_yellow }) " a floating point constant: 2.3e10
-  call s:h("Identifier", { "fg": s:red }) " any variable name
-  call s:h("Function", { "fg": s:blue }) " function name (also: methods for classes)
-  call s:h("Statement", { "fg": s:purple }) " any statement
-  call s:h("Conditional", { "fg": s:purple }) " if, then, else, endif, switch, etc.
-  call s:h("Repeat", { "fg": s:purple }) " for, do, while, etc.
-  call s:h("Label", { "fg": s:purple }) " case, default, etc.
-  call s:h("Operator", { "fg": s:purple }) " sizeof", "+", "*", etc.
-  call s:h("Keyword", { "fg": s:purple }) " any other keyword
-  call s:h("Exception", { "fg": s:purple }) " try, catch, throw
-  call s:h("PreProc", { "fg": s:yellow }) " generic Preprocessor
-  call s:h("Include", { "fg": s:blue }) " preprocessor #include
-  call s:h("Define", { "fg": s:purple }) " preprocessor #define
-  call s:h("Macro", { "fg": s:purple }) " same as Define
-  call s:h("PreCondit", { "fg": s:yellow }) " preprocessor #if, #else, #endif, etc.
-  call s:h("Type", { "fg": s:yellow }) " int, long, char, etc.
-  call s:h("StorageClass", { "fg": s:yellow }) " static, register, volatile, etc.
-  call s:h("Structure", { "fg": s:yellow }) " struct, union, enum, etc.
-  call s:h("Typedef", { "fg": s:yellow }) " A typedef
-  call s:h("Special", { "fg": s:blue }) " any special symbol
-  call s:h("SpecialChar", { "fg": s:dark_yellow }) " special character in a constant
-  call s:h("Tag", {}) " you can use CTRL-] on this
-  call s:h("Delimiter", {}) " character that needs attention
-  call s:h("SpecialComment", { "fg": s:comment_grey }) " special things inside a comment
-  call s:h("Debug", {}) " debugging statements
-  call s:h("Underlined", { "gui": "underline", "cterm": "underline" }) " text that stands out, HTML links
-  call s:h("Ignore", {}) " left blank, hidden
-  call s:h("Error", { "fg": s:red }) " any erroneous construct
-  call s:h("Todo", { "fg": s:purple }) " anything that needs extra attention; mostly the keywords TODO FIXME and XXX
-
-  " }}}
-
-  " Highlighting Groups (descriptions and ordering from `:h highlight-groups`) {{{
-  call s:h("ColorColumn", { "bg": s:cursor_grey }) " used for the columns set with 'colorcolumn'
-  call s:h("Conceal", {}) " placeholder characters substituted for concealed text (see 'conceallevel')
-  call s:h("Cursor", { "fg": s:black, "bg": s:blue }) " the character under the cursor
-  call s:h("CursorIM", {}) " like Cursor, but used when in IME mode
-  call s:h("CursorColumn", { "bg": s:cursor_grey }) " the screen column that the cursor is in when 'cursorcolumn' is set
-  if &diff
-    " Don't change the background color in diff mode
-    call s:h("CursorLine", { "gui": "underline" }) " the screen line that the cursor is in when 'cursorline' is set
-  else
-    call s:h("CursorLine", { "bg": s:cursor_grey }) " the screen line that the cursor is in when 'cursorline' is set
-  endif
-  call s:h("Directory", { "fg": s:blue }) " directory names (and other special names in listings)
-  call s:h("DiffAdd", { "bg": s:green, "fg": s:black }) " diff mode: Added line
-  call s:h("DiffChange", { "fg": s:yellow, "gui": "underline", "cterm": "underline" }) " diff mode: Changed line
-  call s:h("DiffDelete", { "bg": s:red, "fg": s:black }) " diff mode: Deleted line
-  call s:h("DiffText", { "bg": s:yellow, "fg": s:black }) " diff mode: Changed text within a changed line
-  call s:h("EndOfBuffer", { "fg": s:black }) " filler lines (~) after the last line in the buffer
-  call s:h("ErrorMsg", { "fg": s:red }) " error messages on the command line
-  call s:h("VertSplit", { "fg": s:vertsplit }) " the column separating vertically split windows
-  call s:h("Folded", { "fg": s:comment_grey }) " line used for closed folds
-  call s:h("FoldColumn", {}) " 'foldcolumn'
-  call s:h("SignColumn", {}) " column where signs are displayed
-  call s:h("IncSearch", { "fg": s:yellow, "bg": s:comment_grey }) " 'incsearch' highlighting; also used for the text replaced with ":s///c"
-  call s:h("LineNr", { "fg": s:gutter_fg_grey }) " Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
-  call s:h("CursorLineNr", {}) " Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
-  call s:h("MatchParen", { "fg": s:blue, "gui": "underline", "cterm": "underline" }) " The character under the cursor or just before it, if it is a paired bracket, and its match.
-  call s:h("ModeMsg", {}) " 'showmode' message (e.g., "-- INSERT --")
-  call s:h("MoreMsg", {}) " more-prompt
-  call s:h("NonText", { "fg": s:special_grey }) " '~' and '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line).
-  call s:h("Normal", { "fg": s:foreground, "bg": s:background }) " normal text
-  call s:h("Pmenu", { "fg": s:white, "bg": s:menu_grey }) " Popup menu: normal item.
-  call s:h("PmenuSel", { "fg": s:cursor_grey, "bg": s:blue }) " Popup menu: selected item.
-  call s:h("PmenuSbar", { "bg": s:cursor_grey }) " Popup menu: scrollbar.
-  call s:h("PmenuThumb", { "bg": s:white }) " Popup menu: Thumb of the scrollbar.
-  call s:h("Question", { "fg": s:purple }) " hit-enter prompt and yes/no questions
-  call s:h("QuickFixLine", { "fg": s:black, "bg": s:yellow }) " Current quickfix item in the quickfix window.
-  call s:h("Search", { "fg": s:black, "bg": s:yellow }) " Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
-  call s:h("SpecialKey", { "fg": s:special_grey }) " Meta and special keys listed with ":map", also for text used to show unprintable characters in the text, 'listchars'. Generally: text that is displayed differently from what it really is.
-  call s:h("SpellBad", { "fg": s:red, "gui": "underline", "cterm": "underline" }) " Word that is not recognized by the spellchecker. This will be combined with the highlighting used otherwise.
-  call s:h("SpellCap", { "fg": s:dark_yellow }) " Word that should start with a capital. This will be combined with the highlighting used otherwise.
-  call s:h("SpellLocal", { "fg": s:dark_yellow }) " Word that is recognized by the spellchecker as one that is used in another region. This will be combined with the highlighting used otherwise.
-  call s:h("SpellRare", { "fg": s:dark_yellow }) " Word that is recognized by the spellchecker as one that is hardly ever used. spell This will be combined with the highlighting used otherwise.
-  call s:h("StatusLine", { "fg": s:white, "bg": s:cursor_grey }) " status line of current window
-  call s:h("StatusLineNC", { "fg": s:comment_grey }) " status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
-  call s:h("StatusLineTerm", { "fg": s:white, "bg": s:cursor_grey }) " status line of current :terminal window
-  call s:h("StatusLineTermNC", { "fg": s:comment_grey }) " status line of non-current :terminal window
-  call s:h("TabLine", { "fg": s:comment_grey }) " tab pages line, not active tab page label
-  call s:h("TabLineFill", {}) " tab pages line, where there are no labels
-  call s:h("TabLineSel", { "fg": s:white }) " tab pages line, active tab page label
-  call s:h("Terminal", { "fg": s:white, "bg": s:black }) " terminal window (see terminal-size-color)
-  call s:h("Title", { "fg": s:green }) " titles for output from ":set all", ":autocmd" etc.
-  call s:h("Visual", { "bg": s:visual_grey }) " Visual mode selection
-  call s:h("VisualNOS", { "bg": s:visual_grey }) " Visual mode selection when vim is "Not Owning the Selection". Only X11 Gui's gui-x11 and xterm-clipboard supports this.
-  call s:h("WarningMsg", { "fg": s:yellow }) " warning messages
-  call s:h("WildMenu", { "fg": s:black, "bg": s:blue }) " current match in 'wildmenu' completion
-
-  " }}}
-
-  " Termdebug highlighting for Vim 8.1+ {{{
-
-  " See `:h hl-debugPC` and `:h hl-debugBreakpoint`.
-  call s:h("debugPC", { "bg": s:special_grey }) " the current position
-  call s:h("debugBreakpoint", { "fg": s:black, "bg": s:red }) " a breakpoint
-
-  " }}}
-
-  " Language-Specific Highlighting {{{
-
-  " CSS
-  call s:h("cssAttrComma", { "fg": s:purple })
-  call s:h("cssAttributeSelector", { "fg": s:green })
-  call s:h("cssBraces", { "fg": s:white })
-  call s:h("cssClassName", { "fg": s:dark_yellow })
-  call s:h("cssClassNameDot", { "fg": s:dark_yellow })
-  call s:h("cssDefinition", { "fg": s:purple })
-  call s:h("cssFontAttr", { "fg": s:dark_yellow })
-  call s:h("cssFontDescriptor", { "fg": s:purple })
-  call s:h("cssFunctionName", { "fg": s:blue })
-  call s:h("cssIdentifier", { "fg": s:blue })
-  call s:h("cssImportant", { "fg": s:purple })
-  call s:h("cssInclude", { "fg": s:white })
-  call s:h("cssIncludeKeyword", { "fg": s:purple })
-  call s:h("cssMediaType", { "fg": s:dark_yellow })
-  call s:h("cssProp", { "fg": s:white })
-  call s:h("cssPseudoClassId", { "fg": s:dark_yellow })
-  call s:h("cssSelectorOp", { "fg": s:purple })
-  call s:h("cssSelectorOp2", { "fg": s:purple })
-  call s:h("cssTagName", { "fg": s:red })
-
-  " Fish Shell
-  call s:h("fishKeyword", { "fg": s:purple })
-  call s:h("fishConditional", { "fg": s:purple })
-
-  " Go
-  call s:h("goDeclaration", { "fg": s:purple })
-  call s:h("goBuiltins", { "fg": s:cyan })
-  call s:h("goFunctionCall", { "fg": s:blue })
-  call s:h("goVarDefs", { "fg": s:red })
-  call s:h("goVarAssign", { "fg": s:red })
-  call s:h("goVar", { "fg": s:purple })
-  call s:h("goConst", { "fg": s:purple })
-  call s:h("goType", { "fg": s:yellow })
-  call s:h("goTypeName", { "fg": s:yellow })
-  call s:h("goDeclType", { "fg": s:cyan })
-  call s:h("goTypeDecl", { "fg": s:purple })
-
-  " HTML (keep consistent with Markdown, below)
-  call s:h("htmlArg", { "fg": s:dark_yellow })
-  call s:h("htmlBold", { "fg": s:dark_yellow, "gui": "bold", "cterm": "bold" })
-  call s:h("htmlBoldItalic", { "fg": s:green, "gui": "bold,italic", "cterm": "bold,italic" })
-  call s:h("htmlEndTag", { "fg": s:white })
-  call s:h("htmlH1", { "fg": s:red })
-  call s:h("htmlH2", { "fg": s:red })
-  call s:h("htmlH3", { "fg": s:red })
-  call s:h("htmlH4", { "fg": s:red })
-  call s:h("htmlH5", { "fg": s:red })
-  call s:h("htmlH6", { "fg": s:red })
-  call s:h("htmlItalic", { "fg": s:purple, "gui": "italic", "cterm": "italic" })
-  call s:h("htmlLink", { "fg": s:cyan, "gui": "underline", "cterm": "underline" })
-  call s:h("htmlSpecialChar", { "fg": s:dark_yellow })
-  call s:h("htmlSpecialTagName", { "fg": s:red })
-  call s:h("htmlTag", { "fg": s:white })
-  call s:h("htmlTagN", { "fg": s:red })
-  call s:h("htmlTagName", { "fg": s:red })
-  call s:h("htmlTitle", { "fg": s:white })
-
-  " JavaScript
-  call s:h("javaScriptBraces", { "fg": s:white })
-  call s:h("javaScriptFunction", { "fg": s:purple })
-  call s:h("javaScriptIdentifier", { "fg": s:purple })
-  call s:h("javaScriptNull", { "fg": s:dark_yellow })
-  call s:h("javaScriptNumber", { "fg": s:dark_yellow })
-  call s:h("javaScriptRequire", { "fg": s:cyan })
-  call s:h("javaScriptReserved", { "fg": s:purple })
-  " https://github.com/pangloss/vim-javascript
-  call s:h("jsArrowFunction", { "fg": s:purple })
-  call s:h("jsClassKeyword", { "fg": s:purple })
-  call s:h("jsClassMethodType", { "fg": s:purple })
-  call s:h("jsDocParam", { "fg": s:blue })
-  call s:h("jsDocTags", { "fg": s:purple })
-  call s:h("jsExport", { "fg": s:purple })
-  call s:h("jsExportDefault", { "fg": s:purple })
-  call s:h("jsExtendsKeyword", { "fg": s:purple })
-  call s:h("jsFrom", { "fg": s:purple })
-  call s:h("jsFuncCall", { "fg": s:blue })
-  call s:h("jsFunction", { "fg": s:purple })
-  call s:h("jsGenerator", { "fg": s:yellow })
-  call s:h("jsGlobalObjects", { "fg": s:yellow })
-  call s:h("jsImport", { "fg": s:purple })
-  call s:h("jsModuleAs", { "fg": s:purple })
-  call s:h("jsModuleWords", { "fg": s:purple })
-  call s:h("jsModules", { "fg": s:purple })
-  call s:h("jsNull", { "fg": s:dark_yellow })
-  call s:h("jsOperator", { "fg": s:purple })
-  call s:h("jsStorageClass", { "fg": s:purple })
-  call s:h("jsSuper", { "fg": s:red })
-  call s:h("jsTemplateBraces", { "fg": s:dark_red })
-  call s:h("jsTemplateVar", { "fg": s:green })
-  call s:h("jsThis", { "fg": s:red })
-  call s:h("jsUndefined", { "fg": s:dark_yellow })
-  " https://github.com/othree/yajs.vim
-  call s:h("javascriptArrowFunc", { "fg": s:purple })
-  call s:h("javascriptClassExtends", { "fg": s:purple })
-  call s:h("javascriptClassKeyword", { "fg": s:purple })
-  call s:h("javascriptDocNotation", { "fg": s:purple })
-  call s:h("javascriptDocParamName", { "fg": s:blue })
-  call s:h("javascriptDocTags", { "fg": s:purple })
-  call s:h("javascriptEndColons", { "fg": s:white })
-  call s:h("javascriptExport", { "fg": s:purple })
-  call s:h("javascriptFuncArg", { "fg": s:white })
-  call s:h("javascriptFuncKeyword", { "fg": s:purple })
-  call s:h("javascriptIdentifier", { "fg": s:red })
-  call s:h("javascriptImport", { "fg": s:purple })
-  call s:h("javascriptMethodName", { "fg": s:white })
-  call s:h("javascriptObjectLabel", { "fg": s:white })
-  call s:h("javascriptOpSymbol", { "fg": s:cyan })
-  call s:h("javascriptOpSymbols", { "fg": s:cyan })
-  call s:h("javascriptPropertyName", { "fg": s:green })
-  call s:h("javascriptTemplateSB", { "fg": s:dark_red })
-  call s:h("javascriptVariable", { "fg": s:purple })
-
-  " JSON
-  call s:h("jsonCommentError", { "fg": s:white })
-  call s:h("jsonKeyword", { "fg": s:red })
-  call s:h("jsonBoolean", { "fg": s:dark_yellow })
-  call s:h("jsonNumber", { "fg": s:dark_yellow })
-  call s:h("jsonQuote", { "fg": s:white })
-  call s:h("jsonMissingCommaError", { "fg": s:red, "gui": "reverse" })
-  call s:h("jsonNoQuotesError", { "fg": s:red, "gui": "reverse" })
-  call s:h("jsonNumError", { "fg": s:red, "gui": "reverse" })
-  call s:h("jsonString", { "fg": s:green })
-  call s:h("jsonStringSQError", { "fg": s:red, "gui": "reverse" })
-  call s:h("jsonSemicolonError", { "fg": s:red, "gui": "reverse" })
-
-  " LESS
-  call s:h("lessVariable", { "fg": s:purple })
-  call s:h("lessAmpersandChar", { "fg": s:white })
-  call s:h("lessClass", { "fg": s:dark_yellow })
-
-  " Markdown (keep consistent with HTML, above)
-  call s:h("markdownBlockquote", { "fg": s:comment_grey })
-  call s:h("markdownBold", { "fg": s:dark_yellow, "gui": "bold", "cterm": "bold" })
-  call s:h("markdownBoldItalic", { "fg": s:green, "gui": "bold,italic", "cterm": "bold,italic" })
-  call s:h("markdownCode", { "fg": s:green })
-  call s:h("markdownCodeBlock", { "fg": s:green })
-  call s:h("markdownCodeDelimiter", { "fg": s:green })
-  call s:h("markdownH1", { "fg": s:red })
-  call s:h("markdownH2", { "fg": s:red })
-  call s:h("markdownH3", { "fg": s:red })
-  call s:h("markdownH4", { "fg": s:red })
-  call s:h("markdownH5", { "fg": s:red })
-  call s:h("markdownH6", { "fg": s:red })
-  call s:h("markdownHeadingDelimiter", { "fg": s:red })
-  call s:h("markdownHeadingRule", { "fg": s:comment_grey })
-  call s:h("markdownId", { "fg": s:purple })
-  call s:h("markdownIdDeclaration", { "fg": s:blue })
-  call s:h("markdownIdDelimiter", { "fg": s:purple })
-  call s:h("markdownItalic", { "fg": s:purple, "gui": "italic", "cterm": "italic" })
-  call s:h("markdownLinkDelimiter", { "fg": s:purple })
-  call s:h("markdownLinkText", { "fg": s:blue })
-  call s:h("markdownListMarker", { "fg": s:red })
-  call s:h("markdownOrderedListMarker", { "fg": s:red })
-  call s:h("markdownRule", { "fg": s:comment_grey })
-  call s:h("markdownUrl", { "fg": s:cyan, "gui": "underline", "cterm": "underline" })
-
-  " Perl
-  call s:h("perlFiledescRead", { "fg": s:green })
-  call s:h("perlFunction", { "fg": s:purple })
-  call s:h("perlMatchStartEnd",{ "fg": s:blue })
-  call s:h("perlMethod", { "fg": s:purple })
-  call s:h("perlPOD", { "fg": s:comment_grey })
-  call s:h("perlSharpBang", { "fg": s:comment_grey })
-  call s:h("perlSpecialString",{ "fg": s:dark_yellow })
-  call s:h("perlStatementFiledesc", { "fg": s:red })
-  call s:h("perlStatementFlow",{ "fg": s:red })
-  call s:h("perlStatementInclude", { "fg": s:purple })
-  call s:h("perlStatementScalar",{ "fg": s:purple })
-  call s:h("perlStatementStorage", { "fg": s:purple })
-  call s:h("perlSubName",{ "fg": s:yellow })
-  call s:h("perlVarPlain",{ "fg": s:blue })
-
-  " PHP
-  call s:h("phpVarSelector", { "fg": s:red })
-  call s:h("phpOperator", { "fg": s:white })
-  call s:h("phpParent", { "fg": s:white })
-  call s:h("phpMemberSelector", { "fg": s:white })
-  call s:h("phpType", { "fg": s:purple })
-  call s:h("phpKeyword", { "fg": s:purple })
-  call s:h("phpClass", { "fg": s:yellow })
-  call s:h("phpUseClass", { "fg": s:white })
-  call s:h("phpUseAlias", { "fg": s:white })
-  call s:h("phpInclude", { "fg": s:purple })
-  call s:h("phpClassExtends", { "fg": s:green })
-  call s:h("phpDocTags", { "fg": s:white })
-  call s:h("phpFunction", { "fg": s:blue })
-  call s:h("phpFunctions", { "fg": s:cyan })
-  call s:h("phpMethodsVar", { "fg": s:dark_yellow })
-  call s:h("phpMagicConstants", { "fg": s:dark_yellow })
-  call s:h("phpSuperglobals", { "fg": s:red })
-  call s:h("phpConstants", { "fg": s:dark_yellow })
-
-  " Ruby
-  call s:h("rubyBlockParameter", { "fg": s:red})
-  call s:h("rubyBlockParameterList", { "fg": s:red })
-  call s:h("rubyClass", { "fg": s:purple})
-  call s:h("rubyConstant", { "fg": s:yellow})
-  call s:h("rubyControl", { "fg": s:purple })
-  call s:h("rubyEscape", { "fg": s:red})
-  call s:h("rubyFunction", { "fg": s:blue})
-  call s:h("rubyGlobalVariable", { "fg": s:red})
-  call s:h("rubyInclude", { "fg": s:blue})
-  call s:h("rubyIncluderubyGlobalVariable", { "fg": s:red})
-  call s:h("rubyInstanceVariable", { "fg": s:red})
-  call s:h("rubyInterpolation", { "fg": s:cyan })
-  call s:h("rubyInterpolationDelimiter", { "fg": s:red })
-  call s:h("rubyInterpolationDelimiter", { "fg": s:red})
-  call s:h("rubyRegexp", { "fg": s:cyan})
-  call s:h("rubyRegexpDelimiter", { "fg": s:cyan})
-  call s:h("rubyStringDelimiter", { "fg": s:green})
-  call s:h("rubySymbol", { "fg": s:cyan})
-
-  " Sass
-  " https://github.com/tpope/vim-haml
-  call s:h("sassAmpersand", { "fg": s:red })
-  call s:h("sassClass", { "fg": s:dark_yellow })
-  call s:h("sassControl", { "fg": s:purple })
-  call s:h("sassExtend", { "fg": s:purple })
-  call s:h("sassFor", { "fg": s:white })
-  call s:h("sassFunction", { "fg": s:cyan })
-  call s:h("sassId", { "fg": s:blue })
-  call s:h("sassInclude", { "fg": s:purple })
-  call s:h("sassMedia", { "fg": s:purple })
-  call s:h("sassMediaOperators", { "fg": s:white })
-  call s:h("sassMixin", { "fg": s:purple })
-  call s:h("sassMixinName", { "fg": s:blue })
-  call s:h("sassMixing", { "fg": s:purple })
-  call s:h("sassVariable", { "fg": s:purple })
-  " https://github.com/cakebaker/scss-syntax.vim
-  call s:h("scssExtend", { "fg": s:purple })
-  call s:h("scssImport", { "fg": s:purple })
-  call s:h("scssInclude", { "fg": s:purple })
-  call s:h("scssMixin", { "fg": s:purple })
-  call s:h("scssSelectorName", { "fg": s:dark_yellow })
-  call s:h("scssVariable", { "fg": s:purple })
-
-  " TeX
-  call s:h("texStatement", { "fg": s:purple })
-  call s:h("texSubscripts", { "fg": s:dark_yellow })
-  call s:h("texSuperscripts", { "fg": s:dark_yellow })
-  call s:h("texTodo", { "fg": s:dark_red })
-  call s:h("texBeginEnd", { "fg": s:purple })
-  call s:h("texBeginEndName", { "fg": s:blue })
-  call s:h("texMathMatcher", { "fg": s:blue })
-  call s:h("texMathDelim", { "fg": s:blue })
-  call s:h("texDelimiter", { "fg": s:dark_yellow })
-  call s:h("texSpecialChar", { "fg": s:dark_yellow })
-  call s:h("texCite", { "fg": s:blue })
-  call s:h("texRefZone", { "fg": s:blue })
-
-  " TypeScript
-  call s:h("typescriptReserved", { "fg": s:purple })
-  call s:h("typescriptEndColons", { "fg": s:white })
-  call s:h("typescriptBraces", { "fg": s:white })
-
-  " XML
-  call s:h("xmlAttrib", { "fg": s:dark_yellow })
-  call s:h("xmlEndTag", { "fg": s:red })
-  call s:h("xmlTag", { "fg": s:red })
-  call s:h("xmlTagName", { "fg": s:red })
-
-  " }}}
-
-  " Plugin Highlighting {{{
-
-  " airblade/vim-gitgutter
-  call s:h("GitGutterAdd", { "fg": s:green })
-  call s:h("GitGutterChange", { "fg": s:yellow })
-  call s:h("GitGutterDelete", { "fg": s:red })
-
-  " dense-analysis/ale
-  call s:h("ALEError", { "fg": s:red, "gui": "underline", "cterm": "underline" })
-  call s:h("ALEWarning", { "fg": s:yellow, "gui": "underline", "cterm": "underline" })
-  call s:h("ALEInfo", { "gui": "underline", "cterm": "underline" })
-  call s:h("ALEErrorSign", { "fg": s:red })
-  call s:h("ALEWarningSign", { "fg": s:yellow })
-  call s:h("ALEInfoSign", { })
-
-  " easymotion/vim-easymotion
-  call s:h("EasyMotionTarget", { "fg": s:red, "gui": "bold", "cterm": "bold" })
-  call s:h("EasyMotionTarget2First", { "fg": s:yellow, "gui": "bold", "cterm": "bold" })
-  call s:h("EasyMotionTarget2Second", { "fg": s:dark_yellow, "gui": "bold", "cterm": "bold" })
-  call s:h("EasyMotionShade",  { "fg": s:comment_grey })
-
-  " lewis6991/gitsigns.nvim
-  hi link GitSignsAdd    GitGutterAdd
-  hi link GitSignsChange GitGutterChange
-  hi link GitSignsDelete GitGutterDelete
-
-  " mhinz/vim-signify
-  hi link SignifySignAdd    GitGutterAdd
-  hi link SignifySignChange GitGutterChange
-  hi link SignifySignDelete GitGutterDelete
-
-  " neoclide/coc.nvim
-  call s:h("CocErrorSign", { "fg": s:red })
-  call s:h("CocWarningSign", { "fg": s:yellow })
-  call s:h("CocInfoSign", { "fg": s:blue })
-  call s:h("CocHintSign", { "fg": s:cyan })
-  call s:h("CocFadeOut", { "fg": s:comment_grey })
-  highlight! link CocMenuSel PmenuSel
-
-  " neomake/neomake
-  call s:h("NeomakeErrorSign", { "fg": s:red })
-  call s:h("NeomakeWarningSign", { "fg": s:yellow })
-  call s:h("NeomakeInfoSign", { "fg": s:blue })
-
-  " plasticboy/vim-markdown (keep consistent with Markdown, above)
-  call s:h("mkdDelimiter", { "fg": s:purple })
-  call s:h("mkdHeading", { "fg": s:red })
-  call s:h("mkdLink", { "fg": s:blue })
-  call s:h("mkdURL", { "fg": s:cyan, "gui": "underline", "cterm": "underline" })
-
-  " prabirshrestha/vim-lsp
-  call s:h("LspErrorText", { "fg": s:red })
-  call s:h("LspWarningText", { "fg": s:yellow })
-  call s:h("LspInformationText", { "fg":s:blue })
-  call s:h("LspHintText", { "fg":s:cyan })
-  call s:h("LspErrorHighlight", { "fg": s:red, "gui": "underline", "cterm": "underline" })
-  call s:h("LspWarningHighlight", { "fg": s:yellow, "gui": "underline", "cterm": "underline" })
-  call s:h("LspInformationHighlight", { "fg":s:blue, "gui": "underline", "cterm": "underline" })
-  call s:h("LspHintHighlight", { "fg":s:cyan, "gui": "underline", "cterm": "underline" })
-
-  " tpope/vim-fugitive
-  call s:h("diffAdded", { "fg": s:green })
-  call s:h("diffRemoved", { "fg": s:red })
-
-  " }}}
-
-  " Git Highlighting {{{
-
-  call s:h("gitcommitComment", { "fg": s:comment_grey })
-  call s:h("gitcommitUnmerged", { "fg": s:green })
-  call s:h("gitcommitOnBranch", {})
-  call s:h("gitcommitBranch", { "fg": s:purple })
-  call s:h("gitcommitDiscardedType", { "fg": s:red })
-  call s:h("gitcommitSelectedType", { "fg": s:green })
-  call s:h("gitcommitHeader", {})
-  call s:h("gitcommitUntrackedFile", { "fg": s:cyan })
-  call s:h("gitcommitDiscardedFile", { "fg": s:red })
-  call s:h("gitcommitSelectedFile", { "fg": s:green })
-  call s:h("gitcommitUnmergedFile", { "fg": s:yellow })
-  call s:h("gitcommitFile", {})
-  call s:h("gitcommitSummary", { "fg": s:white })
-  call s:h("gitcommitOverflow", { "fg": s:red })
-  hi link gitcommitNoBranch gitcommitBranch
-  hi link gitcommitUntracked gitcommitComment
-  hi link gitcommitDiscarded gitcommitComment
-  hi link gitcommitSelected gitcommitComment
-  hi link gitcommitDiscardedArrow gitcommitDiscardedFile
-  hi link gitcommitSelectedArrow gitcommitSelectedFile
-  hi link gitcommitUnmergedArrow gitcommitUnmergedFile
-
-  " }}}
-
-  " Neovim-Specific Highlighting {{{
-
-  if has("nvim")
-    " Neovim terminal colors {{{
-    let g:terminal_color_0 =  s:black.gui
-    let g:terminal_color_1 =  s:red.gui
-    let g:terminal_color_2 =  s:green.gui
-    let g:terminal_color_3 =  s:yellow.gui
-    let g:terminal_color_4 =  s:blue.gui
-    let g:terminal_color_5 =  s:purple.gui
-    let g:terminal_color_6 =  s:cyan.gui
-    let g:terminal_color_7 =  s:white.gui
-    let g:terminal_color_8 =  s:visual_grey.gui
-    let g:terminal_color_9 =  s:dark_red.gui
-    let g:terminal_color_10 = s:green.gui " No dark version
-    let g:terminal_color_11 = s:dark_yellow.gui
-    let g:terminal_color_12 = s:blue.gui " No dark version
-    let g:terminal_color_13 = s:purple.gui " No dark version
-    let g:terminal_color_14 = s:cyan.gui " No dark version
-    let g:terminal_color_15 = s:comment_grey.gui
-    let g:terminal_color_background = s:background.gui
-    let g:terminal_color_foreground = s:foreground.gui
-    " }}}
-
-    " Neovim Diagnostics {{{
-    call s:h("DiagnosticError", { "fg": s:red })
-    call s:h("DiagnosticWarn", { "fg": s:yellow })
-    call s:h("DiagnosticInfo", { "fg": s:blue })
-    call s:h("DiagnosticHint", { "fg": s:cyan })
-    call s:h("DiagnosticUnderlineError", { "fg": s:red, "gui": "underline", "cterm": "underline" })
-    call s:h("DiagnosticUnderlineWarn", { "fg": s:yellow, "gui": "underline", "cterm": "underline" })
-    call s:h("DiagnosticUnderlineInfo", { "fg": s:blue, "gui": "underline", "cterm": "underline" })
-    call s:h("DiagnosticUnderlineHint", { "fg": s:cyan, "gui": "underline", "cterm": "underline" })
-    " }}}
-
-    " Neovim LSP (for versions < 0.5.1) {{{
-    hi link LspDiagnosticsDefaultError DiagnosticError
-    hi link LspDiagnosticsDefaultWarning DiagnosticWarn
-    hi link LspDiagnosticsDefaultInformation DiagnosticInfo
-    hi link LspDiagnosticsDefaultHint DiagnosticHint
-    hi link LspDiagnosticsUnderlineError DiagnosticUnderlineError
-    hi link LspDiagnosticsUnderlineWarning DiagnosticUnderlineWarn
-    hi link LspDiagnosticsUnderlineInformation DiagnosticUnderlineInfo
-    hi link LspDiagnosticsUnderlineHint DiagnosticUnderlineHint
-    " }}}
-  endif
-
-  " }}}
-
-  " Must appear at the end of the file to work around this oddity:
-  " https://groups.google.com/forum/#!msg/vim_dev/afPqwAFNdrU/nqh6tOM87QUJ
-  set background=dark
-''
+    let g:terminal_color_0  = "#${c.base00}"
+    let g:terminal_color_1  = "#${c.base08}"
+    let g:terminal_color_2  = "#${c.base0B}"
+    let g:terminal_color_3  = "#${c.base0A}"
+    let g:terminal_color_4  = "#${c.base0D}"
+    let g:terminal_color_5  = "#${c.base0E}"
+    let g:terminal_color_6  = "#${c.base0C}"
+    let g:terminal_color_7  = "#${c.base05}"
+    let g:terminal_color_8  = "#${c.base03}"
+    let g:terminal_color_9  = "#${c.base08}"
+    let g:terminal_color_10 = "#${c.base0B}"
+    let g:terminal_color_11 = "#${c.base0A}"
+    let g:terminal_color_12 = "#${c.base0D}"
+    let g:terminal_color_13 = "#${c.base0E}"
+    let g:terminal_color_14 = "#${c.base0C}"
+    let g:terminal_color_15 = "#${c.base07}"
+  ''
