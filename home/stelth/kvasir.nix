@@ -10,7 +10,7 @@ in {
   ];
 
   colorscheme = catppuccin-mocha;
-  wallpaper = (import ./wallpapers).aenami-omen;
+  wallpaper = (import ./wallpapers).kosmos-space-dark;
 
   monitors = [
     {
