@@ -70,6 +70,9 @@ in ''
     }
   }
 
+  # Window Rules
+  windowrule=workspace special,1Password
+
   # Startup
   exec-once=waybar
   exec=swaybg -i ${wallpaper} --mode stretch
