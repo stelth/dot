@@ -32,9 +32,10 @@
       device = "/dev/disk/by-label/${config.networking.hostName}-boot";
       fsType = "ext4";
     };
-    "/mnt/storage" = {
-      device = "/dev/disk/by-uuid/1582dcc3-77cc-4641-922d-49fe8549eaba";
-      fsType = "ext4";
+    "/srv/logs" = {
+      device = "/dev/disk/by-label/data";
+      fsType = "btrfs";
+      options = ["subvol=logs" "noatime" "compress=zstd"];
     };
   };
 
