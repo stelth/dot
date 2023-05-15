@@ -66,7 +66,7 @@
 
     packages = forEachPkgs (pkgs: (import ./pkgs {inherit pkgs;}));
 
-    wallpapers = import ./home/stelth/wallpapers;
+    wallpapers = import ./wallpapers;
 
     devShells = forEachPkgs (pkgs: {
       default = devenv.lib.mkShell {
