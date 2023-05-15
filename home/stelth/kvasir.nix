@@ -1,4 +1,8 @@
-{inputs, ...}: let
+{
+  inputs,
+  outputs,
+  ...
+}: let
   inherit (inputs.nix-colors.colorSchemes) catppuccin-mocha;
 in {
   imports = [
@@ -10,7 +14,7 @@ in {
   ];
 
   colorscheme = catppuccin-mocha;
-  wallpaper = (import ./wallpapers).kosmos-space-dark;
+  wallpaper = outputs.wallpapers.kosmos-space-dark;
 
   monitors = [
     {
