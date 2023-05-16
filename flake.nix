@@ -64,7 +64,7 @@
 
     packages = forEachPkgs (pkgs: (import ./pkgs {inherit pkgs;}));
 
-    wallpapers = import ./wallpapers;
+    wallpapers = import ./home/common/wallpapers;
 
     devShells = forEachPkgs (pkgs: {
       default = devenv.lib.mkShell {
