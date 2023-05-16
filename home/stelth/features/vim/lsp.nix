@@ -33,6 +33,7 @@
       cmake-format
 
       # Docker
+      dprint
       hadolint
 
       # Git

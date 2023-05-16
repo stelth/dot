@@ -90,6 +90,31 @@ in ''
 
   " ale {{{
   let g:ale_disable_lsp = 1
+  let g:ale_fixers = {
+  \ 'c': ['clang-format'],
+  \ 'cmake': ['cmake-format'],
+  \ 'cpp': ['clang-format'],
+  \ 'dockerfile': ['dprint'],
+  \ 'java': ['google-java-format'],
+  \ 'json': ['fixjson'],
+  \ 'markdown': ['prettier'],
+  \ 'nix': ['alejandra', 'statix'],
+  \ 'python': ['black', 'isort'],
+  \ 'sh': ['shfmt'],
+  \ 'yaml': ['prettier'],
+  \}
+  let g:ale_linters = {
+  \ 'c': ['cpplint', 'clangtidy'],
+  \ 'cmake': ['cmake-lint'],
+  \ 'cpp': ['cpplint', 'clangtidy'],
+  \ 'dockerfile': ['hadolint'],
+  \ 'git': ['gitlint'],
+  \ 'markdown': ['vale', 'write-good'],
+  \ 'python': ['flake8', 'pylint'],
+  \ 'sh': ['shellcheck'],
+  \ 'vim': ['vint'],
+  \ 'yaml': ['yamllint'],
+  \}
   " }}}
 
   " coc-nvim {{{
@@ -173,8 +198,6 @@ in ''
   nmap <silent> <leader>re <Plug>(coc-codeaction-refactor)
   xmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
   nmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
-
-  nmap <silent> <leader>cf :call CocAction('format')<CR>
 
   " Run the Code Lens action on the current line
   nmap <leader>cl  <Plug>(coc-codelens-action)
