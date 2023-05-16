@@ -28,8 +28,6 @@
     hyprland.url = "github:hyprwm/hyprland";
     hyprwm-contrib.url = "github:hyprwm/contrib";
 
-    vim-extra-plugins.url = "github:stelth/nixpkgs-vim-extra-plugins";
-
     flake-utils.url = "github:numtide/flake-utils";
     devenv.url = "github:cachix/devenv";
     treefmt-nix.url = "github:numtide/treefmt-nix";

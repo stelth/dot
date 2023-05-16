@@ -18,7 +18,7 @@
     extraConfig = import ./config.nix {
       inherit config pkgs;
     };
-    plugins = with pkgs.vimExtraPlugins; [
+    plugins = with pkgs.vimPlugins; [
       auto-pairs
       fzf-vim
       is-vim

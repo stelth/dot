@@ -11,6 +11,7 @@
   additions = final: prev:
     import ../pkgs {pkgs = final;}
     // {
+      vimPlugins = prev.vimPlugins // final.callPackage ../pkgs/vim-plugins {};
     };
 
   modifications = final: prev: {
@@ -25,6 +26,4 @@
       patches = (oa.patches or []) ++ [./pfetch.patch];
     });
   };
-
-  vim-extra-plugins = inputs.vim-extra-plugins.overlays.default;
 }

@@ -2,7 +2,7 @@
   home.packages = with pkgs; [cmake];
 
   programs.vim = {
-    plugins = with pkgs.vimExtraPlugins; [
+    plugins = with pkgs.vimPlugins; [
       vim-cmake
       vim-commentary
       vim-endwise

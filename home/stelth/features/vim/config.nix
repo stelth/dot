@@ -88,6 +88,10 @@ in ''
   let g:cmake_link_compile_commands = 1
   " }}}
 
+  " ale {{{
+  let g:ale_disable_lsp = 1
+  " }}}
+
   " coc-nvim {{{
   let g:coc_config_home=$XDG_CONFIG_HOME.'/vim'
 
