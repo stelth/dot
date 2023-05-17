@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  home.packages = with pkgs; [cmake];
+  home.packages = with pkgs; [cmake ninja];
 
   programs.vim = {
     plugins = with pkgs.vimPlugins; [
