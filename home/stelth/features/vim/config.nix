@@ -123,6 +123,7 @@ in ''
   " }}}
 
   " ale {{{
+  let g:ale_disable_lsp = 1
   let g:ale_fixers = {
   \ 'c': ['clang-format'],
   \ 'cmake': ['cmake-format'],
@@ -151,6 +152,8 @@ in ''
   " }}}
 
   " vim-lsp {{{
+  let g:lsp_settings_enable_suggestions = 0
+
   autocmd User lsp_setup call lsp#register_server({
   \   'name': 'nil',
   \   'cmd': {server_info->['nil']},
