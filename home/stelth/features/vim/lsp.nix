@@ -1,10 +1,27 @@
 {pkgs, ...}: {
+  xdg.configFile."vim/coc-settings.json".text = builtins.toJSON {
+    coc.preferences = {
+      colorSupport = true;
+      snippets.enable = true;
+      useQuickFixForLocations = true;
+    };
+    codeLens.enable = true;
+    diagnostic.displayByAle = true;
+    diagnostic.virtualText = true;
+    diagnostic.virtualTextCurrentLineOnly = false;
+    highlight.colors.enable = true;
+    inlayHint.enable = true;
+    inlayHint.enableParameter = true;
+    signature.enable = true;
+    suggest.removeDuplicateItems = true;
+    suggest.noselect = false;
+  };
+
   home.packages = with pkgs;
     [
       nodejs
 
       # Bash
-      nodePackages.bash-language-server
       shellcheck
       shfmt
 
@@ -14,10 +31,8 @@
 
       # CMake
       cmake-format
-      cmake-language-server
 
       # Docker
-      nodePackages.dockerfile-language-server-nodejs
       dprint
       hadolint
 
@@ -29,44 +44,45 @@
 
       # JSON
       nodePackages.fixjson
-      nodePackages.vscode-json-languageserver
 
       # Markdown
-      marksman
       nodePackages.prettier
       vale
       nodePackages.write-good
 
       # Nix
       alejandra
-      nil
       statix
 
       # Python
-      nodePackages.pyright
       (python3.withPackages
         (ps: with ps; [black flake8 isort pylint]))
 
       # Vim
-      nodePackages.vim-language-server
       vim-vint
 
       # YAML
       yamllint
-      nodePackages.yaml-language-server
     ]
     ++ lib.optionals (!pkgs.stdenvNoCC.isDarwin) [checkmake];
 
   programs.vim = {
     plugins = with pkgs.vimPlugins; [
       ale
-      asyncomplete-buffer-vim
-      asyncomplete-file-vim
-      asyncomplete-lsp-vim
-      asyncomplete-vim
-      vim-lsp
-      vim-lsp-ale
-      vim-lsp-settings
+      coc-clangd
+      coc-cmake
+      coc-docker
+      coc-git
+      coc-json
+      coc-lists
+      coc-markdownlint
+      coc-nvim
+      coc-prettier
+      coc-pyright
+      coc-sh
+      coc-snippets
+      coc-vimlsp
+      coc-yaml
     ];
   };
 }

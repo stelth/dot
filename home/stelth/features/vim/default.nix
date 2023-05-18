@@ -9,11 +9,15 @@
     ./lsp.nix
   ];
 
+  home.persistence = {
+    "/persist/home/stelth".directories = [".config/coc"];
+  };
+
   programs.vim = {
     enable = true;
     defaultEditor = true;
     extraConfig = import ./config.nix {
-      inherit config lib pkgs;
+      inherit config pkgs;
     };
     plugins = with pkgs.vimPlugins;
       [
