@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   programs.tmux = {
     enable = true;
-    prefix = "C-a";
     baseIndex = 1;
     terminal = "tmux-256color";
     keyMode = "vi";
@@ -13,11 +12,7 @@
       tmuxPlugins.yank
     ];
     extraConfig = ''
-      bind | split-window -h
-      bind - split-window -v
-
       bind-key -r f run-shell "tmux neww sessionizer"
-      bind-key -r i run-shell "tmux neww tmux-cht"
 
       is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
              | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|\.?n?vim?x?(-wrapped)?)(diff)?$'"
