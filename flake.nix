@@ -60,15 +60,13 @@
     flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [
         inputs.devenv.flakeModule
+        ./devenv.nix
       ];
 
       systems = ["x86_64-linux"];
 
       perSystem = {pkgs, ...}: {
         packages = import ./pkgs {inherit pkgs;};
-
-        devenv.shells.default = {
-        };
       };
 
       flake = {
