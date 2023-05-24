@@ -28,57 +28,64 @@
     hyprland.url = "github:hyprwm/hyprland";
     hyprwm-contrib.url = "github:hyprwm/contrib";
 
-    flake-utils.url = "github:numtide/flake-utils";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    nix2container = {
+      url = "github:nlewo/nix2container";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    mk-shell-bin.url = "github:rrbutani/nix-mk-shell-bin";
     devenv.url = "github:cachix/devenv";
     treefmt-nix.url = "github:numtide/treefmt-nix";
   };
 
-  outputs = {
+  outputs = inputs @ {
     self,
-    devenv,
-    home-manager,
-    nixpkgs,
+    flake-parts,
     ...
-  } @ inputs: let
+  }: let
     inherit (self) outputs;
-    inherit (inputs.flake-utils.lib) eachDefaultSystemMap;
-
-    forEachPkgs = f: eachDefaultSystemMap (system: f nixpkgs.legacyPackages.${system});
 
     mkNixos = modules:
-      nixpkgs.lib.nixosSystem {
+      inputs.nixpkgs.lib.nixosSystem {
         inherit modules;
         specialArgs = {inherit inputs outputs;};
       };
 
     mkHome = modules: pkgs:
-      home-manager.lib.homeManagerConfiguration {
+      inputs.home-manager.lib.homeManagerConfiguration {
         inherit modules pkgs;
         extraSpecialArgs = {inherit inputs outputs;};
       };
-  in {
-    nixosModules = import ./modules/nixos;
-    homeManagerModules = import ./modules/home-manager;
+  in
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      imports = [
+        inputs.devenv.flakeModule
+      ];
 
-    overlays = import ./overlays {inherit inputs outputs;};
+      systems = ["x86_64-linux"];
 
-    packages = forEachPkgs (pkgs: (import ./pkgs {inherit pkgs;}));
+      perSystem = {pkgs, ...}: {
+        packages = import ./pkgs {inherit pkgs;};
 
-    wallpapers = import ./home/common/wallpapers;
-
-    devShells = forEachPkgs (pkgs: {
-      default = devenv.lib.mkShell {
-        inherit inputs pkgs;
-        modules = [(import ./devenv.nix)];
+        devenv.shells.default = {
+        };
       };
-    });
 
-    nixosConfigurations = {
-      kvasir = mkNixos [./hosts/kvasir];
-    };
+      flake = {
+        nixosModules = import ./modules/nixos;
+        homeManagerModules = import ./modules/home-manager;
 
-    homeConfigurations = {
-      "stelth@kvasir" = mkHome [./home/stelth/kvasir.nix] nixpkgs.legacyPackages."x86_64-linux";
+        overlays = import ./overlays {inherit inputs outputs;};
+
+        wallpapers = import ./home/common/wallpapers;
+
+        nixosConfigurations = {
+          kvasir = mkNixos [./hosts/kvasir];
+        };
+
+        homeConfigurations = {
+          "stelth@kvasir" = mkHome [./home/stelth/kvasir.nix] inputs.nixpkgs.legacyPackages."x86_64-linux";
+        };
+      };
     };
-  };
 }
