@@ -1,14 +1,5 @@
 {
-  description = "My NixOS Configuration";
-
-  nixConfig = {
-    substituters = ["https://cache.nixos.org" "https://nix-community.cachix.org"];
-
-    trusted-public-keys = [
-      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-    ];
-  };
+  outputs = inputs: inputs.flake-parts.lib.mkFlake {inherit inputs;} {imports = [./flake];};
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -37,53 +28,4 @@
     devenv.url = "github:cachix/devenv";
     treefmt-nix.url = "github:numtide/treefmt-nix";
   };
-
-  outputs = inputs @ {
-    self,
-    flake-parts,
-    ...
-  }: let
-    inherit (self) outputs;
-
-    mkNixos = modules:
-      inputs.nixpkgs.lib.nixosSystem {
-        inherit modules;
-        specialArgs = {inherit inputs outputs;};
-      };
-
-    mkHome = modules: pkgs:
-      inputs.home-manager.lib.homeManagerConfiguration {
-        inherit modules pkgs;
-        extraSpecialArgs = {inherit inputs outputs;};
-      };
-  in
-    flake-parts.lib.mkFlake {inherit inputs;} {
-      imports = [
-        inputs.devenv.flakeModule
-        ./devenv.nix
-      ];
-
-      systems = ["x86_64-linux"];
-
-      perSystem = {pkgs, ...}: {
-        packages = import ./pkgs {inherit pkgs;};
-      };
-
-      flake = {
-        nixosModules = import ./modules/nixos;
-        homeManagerModules = import ./modules/home-manager;
-
-        overlays = import ./overlays {inherit inputs outputs;};
-
-        wallpapers = import ./home/common/wallpapers;
-
-        nixosConfigurations = {
-          kvasir = mkNixos [./hosts/kvasir];
-        };
-
-        homeConfigurations = {
-          "stelth@kvasir" = mkHome [./home/stelth/kvasir.nix] inputs.nixpkgs.legacyPackages."x86_64-linux";
-        };
-      };
-    };
 }
