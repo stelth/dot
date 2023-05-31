@@ -61,6 +61,7 @@
       imports = [
         inputs.devenv.flakeModule
         ./devenv.nix
+        ./flake/lib
       ];
 
       systems = ["x86_64-linux"];
