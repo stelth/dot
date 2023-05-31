@@ -3,7 +3,7 @@
   outputs,
   ...
 }: let
-  inherit (inputs.nix-colors.colorSchemes) catppuccin-mocha;
+  inherit (inputs.nix-colors.colorSchemes) rose-pine-moon;
 in {
   imports = [
     ./global
@@ -13,7 +13,7 @@ in {
     ./features/desktop/hyprland
   ];
 
-  colorscheme = catppuccin-mocha;
+  colorscheme = rose-pine-moon;
   wallpaper = outputs.wallpapers.kosmos-space-dark;
 
   monitors = [
