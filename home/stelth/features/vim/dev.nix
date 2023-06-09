@@ -8,6 +8,8 @@
       vim-endwise
       vim-polyglot
       vim-snippets
+      vim-vsnip
+      vim-vsnip-integ
     ];
   };
 }

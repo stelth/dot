@@ -1,27 +1,17 @@
-{pkgs, ...}: {
-  xdg.configFile."vim/coc-settings.json".text = builtins.toJSON {
-    coc.preferences = {
-      colorSupport = true;
-      snippets.enable = true;
-      useQuickFixForLocations = true;
-    };
-    codeLens.enable = true;
-    diagnostic.displayByAle = true;
-    diagnostic.virtualText = true;
-    diagnostic.virtualTextCurrentLineOnly = false;
-    highlight.colors.enable = true;
-    inlayHint.enable = true;
-    inlayHint.enableParameter = true;
-    signature.enable = true;
-    suggest.removeDuplicateItems = true;
-    suggest.noselect = false;
-  };
+{
+  lib,
+  pkgs,
+  ...
+}: {
+  xdg.configFile."efm-langserver/config.yaml".text = import ./efm.nix {inherit lib pkgs;};
 
   home.packages = with pkgs;
     [
       nodejs
+      efm-langserver
 
       # Bash
+      nodePackages.bash-language-server
       shellcheck
       shfmt
 
@@ -30,9 +20,11 @@
       cpplint
 
       # CMake
+      cmake-language-server
       cmake-format
 
       # Docker
+      nodePackages.dockerfile-language-server-nodejs
       dprint
       hadolint
 
@@ -44,6 +36,7 @@
 
       # JSON
       nodePackages.fixjson
+      nodePackages.vscode-json-languageserver
 
       # Markdown
       nodePackages.prettier
@@ -55,34 +48,23 @@
       statix
 
       # Python
+      nodePackages.pyright
       (python3.withPackages
         (ps: with ps; [black flake8 isort pylint]))
 
       # Vim
+      nodePackages.vim-language-server
       vim-vint
 
       # YAML
+      nodePackages.yaml-language-server
       yamllint
     ]
     ++ lib.optionals (!pkgs.stdenvNoCC.isDarwin) [checkmake];
 
   programs.vim = {
     plugins = with pkgs.vimPlugins; [
-      ale
-      coc-clangd
-      coc-cmake
-      coc-docker
-      coc-git
-      coc-json
-      coc-lists
-      coc-markdownlint
-      coc-nvim
-      coc-prettier
-      coc-pyright
-      coc-sh
-      coc-snippets
-      coc-vimlsp
-      coc-yaml
+      vim9-lsp
     ];
   };
 }

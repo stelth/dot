@@ -17,7 +17,7 @@
     enable = true;
     defaultEditor = true;
     extraConfig = import ./config.nix {
-      inherit config pkgs;
+      inherit config pkgs lib;
     };
     plugins = with pkgs.vimPlugins;
       [
