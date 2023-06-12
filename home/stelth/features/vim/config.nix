@@ -144,6 +144,12 @@ in ''
                   \   },
                   \ },
                   \ {
+                  \   'name': 'nil',
+                  \   'filetype': ['nix'],
+                  \   'path': '${lib.getExe pkgs.nil}',
+                  \   'args': [],
+                  \ },
+                  \ {
                   \   'name': 'pyright',
                   \   'filetype': ['python'],
                   \   'path': '${pkgs.nodePackages.pyright}/bin/pyright-langserver',
