@@ -6,11 +6,11 @@
 in
   vimUtils.buildVimPlugin {
     inherit pname;
-    version = "2023-06-06";
+    version = "2023-06-10";
     src = fetchFromGitHub {
       owner = "yegappan";
       repo = "lsp";
-      rev = "c870798571904beddf3d5daebec5dc1f1a490ffa";
+      rev = "89583823a73ea867057604f1a88f4174500df98e";
       sha256 = "a7lCEN0RO34ScGjHhtD9tBloxRmzUXHDrpFOLb6AtDc=";
     };
     meta.homepage = "https://github.com/yegappan/lsp";
