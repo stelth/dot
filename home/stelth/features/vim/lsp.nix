@@ -27,6 +27,7 @@
       shfmt # bash
       cmake-format # c/cpp
       hadolint # docker
+      gitlint
       nodePackages.fixjson # json
       vale # markdown
       alejandra # nix

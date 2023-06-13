@@ -42,6 +42,14 @@
       lint-formats:
         - '%.%#.%l: %m'
 
+    gitlint: &gitlint
+      lint-command: '${lib.getExe pkgs.gitlint}'
+      prefix: gitlint
+      lint-stdin: true
+      lint-formats:
+        - '%l: %m: "%r"'
+        - '%l: %m'
+
   languages:
     sh:
       - <<: *sh-shellcheck
@@ -54,6 +62,8 @@
       - <<: *clang-format
       - <<: *clang-tidy
       - <<: *cpplint
+    gitcommit:
+      - <<: *gitlint
 ''
 # CMake
 # cmake-format

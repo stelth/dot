@@ -199,7 +199,7 @@ in ''
     },
     {
       name: 'efm',
-      filetype: ['sh', 'c', 'cpp'],
+      filetype: ['sh', 'c', 'cpp', 'gitcommit'],
       path: '${lib.getExe pkgs.efm-langserver}',
       args: [],
     },
