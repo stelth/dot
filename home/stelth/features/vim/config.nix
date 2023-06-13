@@ -121,11 +121,23 @@ in ''
   imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
   smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
 
+  def! g:WhitespaceOnly(): bool
+    return strpart(getline('.'), col('.') - 2, 1) =~ '^\s*$'
+  enddef
+
+  def! g:LspCleverTab(): string
+    return pumvisible() ? "\<c-n>" : vsnip#jumpable(1) ? "\<Plug>(vsnip-jump-next)" : g:WhitespaceOnly() ? "\<tab>" : "\<c-n>"
+  enddef
+
+  def! g:LspCleverSTab(): string
+    return pumvisible() ? "\<c-p>" : vsnip#jumpable(-1) ? "\<Plug>(vsnip-jump-prev)" : g:WhitespaceOnly() ? "\<s-tab>" : "\<c-p>"
+  enddef
+
   # Jump forward or backward
-  imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
-  smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
-  imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
-  smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+  inoremap <expr> <Tab> g:LspCleverTab()
+  snoremap <expr> <Tab> g:LspCleverTab()
+  inoremap <expr> <S-Tab> g:LspCleverSTab()
+  snoremap <expr> <S-Tab> g:LspCleverSTab()
 
   # Select or cut text to use as $TM_SELECTED_TEXT in the next snippet.
   # See https://github.com/hrsh7th/vim-vsnip/pull/50
@@ -211,10 +223,12 @@ in ''
 
   var lspOpts = {
     autoHighlightDiags: v:true,
+    completionTextEdit: v:false,
     showDiagWithVirtualText: v:true,
     showInlayHints: v:true,
     snippetSupport: v:true,
     vsnipSupport: v:true,
+    ultisnipsSupport: v:false,
   }
 
   autocmd VimEnter * call LspOptionsSet(lspOpts)
