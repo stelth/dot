@@ -1,12 +1,16 @@
-{...}: ''
+{
+  lib,
+  pkgs,
+  ...
+}: ''
   version: 2
   root-markers:
     - .git/
 
   tools:
     sh-shellcheck: &sh-shellcheck
-      lint-command: 'shellcheck -f gcc -x'
-      lint-source: shellcheck
+      lint-command: '${lib.getExe pkgs.shellcheck} -f gcc -x -'
+      prefix: shellcheck
       lint-formats:
         - '%f:%l:%c: %trror: %m'
         - '%f:%l:%c: %tarning: %m'

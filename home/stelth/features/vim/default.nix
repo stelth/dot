@@ -13,12 +13,16 @@
     "/persist/home/stelth".directories = [".config/coc"];
   };
 
+  xdg.configFile."vim/vimrc".text = import ./config.nix {
+    inherit config lib pkgs;
+  };
+
   programs.vim = {
     enable = true;
     defaultEditor = true;
-    extraConfig = import ./config.nix {
-      inherit config pkgs lib;
-    };
+    extraConfig = ''
+      source ~/.config/vim/vimrc
+    '';
     plugins = with pkgs.vimPlugins;
       [
         auto-pairs
