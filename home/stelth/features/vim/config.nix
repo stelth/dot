@@ -213,6 +213,8 @@ in ''
     autoHighlightDiags: v:true,
     showDiagWithVirtualText: v:true,
     showInlayHints: v:true,
+    snippetSupport: v:true,
+    vsnipSupport: v:true,
   }
 
   autocmd VimEnter * call LspOptionsSet(lspOpts)
