@@ -214,6 +214,9 @@ in ''
       filetype: ['sh', 'c', 'cpp', 'gitcommit'],
       path: '${lib.getExe pkgs.efm-langserver}',
       args: [],
+      initializationOptions: {
+        documentFormatting: v:true,
+      },
     },
   ]
 
