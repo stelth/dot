@@ -264,6 +264,8 @@ in ''
   autocmd VimEnter * call LspOptionsSet(lspOpts)
 
   def OnLspBufferAttached()
+    nmap <buffer> cf :LspFormat<CR>
+    vmap <buffer> cf :LspFormat<CR>
     nmap <buffer> ca :LspCodeAction<CR>
     vmap <buffer> ca :LspCodeAction<CR>
     nmap <buffer> gr :LspRename<CR>
