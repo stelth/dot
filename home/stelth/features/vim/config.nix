@@ -157,21 +157,24 @@ in ''
 
   lsp#lsp#AddServer([{
     name: 'cmake-language-server',
-    filetype: ['cmake'],
+    filetype: 'cmake',
     path: '${lib.getExe pkgs.cmake-language-server}',
     args: [],
   }])
 
   lsp#lsp#AddServer([{
     name: 'dockerls',
-    filetype: ['dockerfile'],
+    filetype: 'dockerfile',
     path: '${lib.getExe pkgs.nodePackages.dockerfile-language-server-nodejs}',
     args: ['--stdio'],
   }])
 
   lsp#lsp#AddServer([{
     name: 'jsonls',
-    filetype: ['json', 'jsonc'],
+    filetype: [
+      'json',
+      'jsonc'
+    ],
     path: '${lib.getExe pkgs.nodePackages.vscode-json-languageserver}',
     args: ['--stdio'],
     features: {
@@ -184,14 +187,17 @@ in ''
 
   lsp#lsp#AddServer([{
     name: 'nil',
-    filetype: ['nix'],
+    filetype: 'nix',
     path: '${lib.getExe pkgs.nil}',
     args: [],
+    features: {
+      documentFormatting: v:false,
+    },
   }])
 
   lsp#lsp#AddServer([{
     name: 'pyright',
-    filetype: ['python'],
+    filetype: 'python',
     path: '${pkgs.nodePackages.pyright}/bin/pyright-langserver',
     args: ['--stdio'],
   }])
@@ -205,21 +211,39 @@ in ''
 
   lsp#lsp#AddServer([{
     name: 'vimls',
-    filetype: ['vim'],
+    filetype: 'vim',
     path: '${lib.getExe pkgs.nodePackages.vim-language-server}',
     args: ['--stdio'],
   }])
 
   lsp#lsp#AddServer([{
     name: 'yamlls',
-    filetype: ['yaml', 'yaml.docker-compose'],
+    filetype: [
+      'yaml',
+      'yaml.docker-compose'
+    ],
     path: '${lib.getExe pkgs.nodePackages.yaml-language-server}',
     args: ['--stdio'],
   }])
 
   lsp#lsp#AddServer([{
     name: 'efm',
-    filetype: ['sh', 'c', 'cpp', 'gitcommit'],
+    filetype: [
+      'sh',
+      'c',
+      'cpp',
+      'dockerfile',
+      'gitcommit',
+      'java',
+      'json',
+      'json5',
+      'make',
+      'markdown',
+      'nix',
+      'python',
+      'vim',
+      'yaml',
+    ],
     path: '${lib.getExe pkgs.efm-langserver}',
     args: [],
     initializationOptions: {

@@ -26,10 +26,13 @@
       shellcheck # bash
       shfmt # bash
       cmake-format # c/cpp
+      dprint # docker
       hadolint # docker
-      gitlint
+      gitlint # git
+      google-java-format # java
       nodePackages.fixjson # json
-      vale # markdown
+      nodePackages.jsonlint # json
+      nodePackages.write-good # json
       alejandra # nix
       statix # nic
       (python3.withPackages (ps: with ps; [black flake8 isort pylint])) # python
