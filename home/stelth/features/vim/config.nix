@@ -148,81 +148,84 @@ in ''
   # }}}
 
   # lsp {{{
-  var lspServers = [
-    {
-      name: 'clangd',
-      filetype: ['c', 'cpp'],
-      path: '${pkgs.clang-tools}/bin/clangd',
-      args: ['--background-index', '--clang-tidy'],
-    },
-    {
-      name: 'cmake-language-server',
-      filetype: ['cmake'],
-      path: '${lib.getExe pkgs.cmake-language-server}',
-      args: [],
-    },
-    {
-      name: 'dockerls',
-      filetype: ['dockerfile'],
-      path: '${lib.getExe pkgs.nodePackages.dockerfile-language-server-nodejs}',
-      args: ['--stdio'],
-    },
-    {
-      name: 'jsonls',
-      filetype: ['json', 'jsonc'],
-      path: '${lib.getExe pkgs.nodePackages.vscode-json-languageserver}',
-      args: ['--stdio'],
-      features: {
-        documentFormatting: v:true,
-      },
-      initializationOptions: {
-        provideFormatter: v:true,
-      },
-    },
-    {
-      name: 'nil',
-      filetype: ['nix'],
-      path: '${lib.getExe pkgs.nil}',
-      args: [],
-    },
-    {
-      name: 'pyright',
-      filetype: ['python'],
-      path: '${pkgs.nodePackages.pyright}/bin/pyright-langserver',
-      args: ['--stdio'],
-    },
-    {
-      name: 'bashls',
-      filetype: ['sh'],
-      path: '${lib.getExe pkgs.nodePackages.bash-language-server}',
-      args: ['start'],
-    },
-    {
-      name: 'vimls',
-      filetype: ['vim'],
-      path: '${lib.getExe pkgs.nodePackages.vim-language-server}',
-      args: ['--stdio'],
-    },
-    {
-      name: 'yamlls',
-      filetype: ['yaml', 'yaml.docker-compose'],
-      path: '${lib.getExe pkgs.nodePackages.yaml-language-server}',
-      args: ['--stdio'],
-    },
-    {
-      name: 'efm',
-      filetype: ['sh', 'c', 'cpp', 'gitcommit'],
-      path: '${lib.getExe pkgs.efm-langserver}',
-      args: [],
-      initializationOptions: {
-        documentFormatting: v:true,
-      },
-    },
-  ]
+  lsp#lsp#AddServer([{
+    name: 'clangd',
+    filetype: ['c', 'cpp'],
+    path: '${pkgs.clang-tools}/bin/clangd',
+    args: ['--background-index', '--clang-tidy'],
+  }])
 
-  augroup lsp_servers
-    autocmd VimEnter * call LspAddServer(lspServers)
-  augroup END
+  lsp#lsp#AddServer([{
+    name: 'cmake-language-server',
+    filetype: ['cmake'],
+    path: '${lib.getExe pkgs.cmake-language-server}',
+    args: [],
+  }])
+
+  lsp#lsp#AddServer([{
+    name: 'dockerls',
+    filetype: ['dockerfile'],
+    path: '${lib.getExe pkgs.nodePackages.dockerfile-language-server-nodejs}',
+    args: ['--stdio'],
+  }])
+
+  lsp#lsp#AddServer([{
+    name: 'jsonls',
+    filetype: ['json', 'jsonc'],
+    path: '${lib.getExe pkgs.nodePackages.vscode-json-languageserver}',
+    args: ['--stdio'],
+    features: {
+      documentFormatting: v:true,
+    },
+    initializationOptions: {
+      provideFormatter: v:true,
+    },
+  }])
+
+  lsp#lsp#AddServer([{
+    name: 'nil',
+    filetype: ['nix'],
+    path: '${lib.getExe pkgs.nil}',
+    args: [],
+  }])
+
+  lsp#lsp#AddServer([{
+    name: 'pyright',
+    filetype: ['python'],
+    path: '${pkgs.nodePackages.pyright}/bin/pyright-langserver',
+    args: ['--stdio'],
+  }])
+
+  lsp#lsp#AddServer([{
+    name: 'bashls',
+    filetype: 'sh',
+    path: '${lib.getExe pkgs.nodePackages.bash-language-server}',
+    args: ['start'],
+  }])
+
+  lsp#lsp#AddServer([{
+    name: 'vimls',
+    filetype: ['vim'],
+    path: '${lib.getExe pkgs.nodePackages.vim-language-server}',
+    args: ['--stdio'],
+  }])
+
+  lsp#lsp#AddServer([{
+    name: 'yamlls',
+    filetype: ['yaml', 'yaml.docker-compose'],
+    path: '${lib.getExe pkgs.nodePackages.yaml-language-server}',
+    args: ['--stdio'],
+  }])
+
+  lsp#lsp#AddServer([{
+    name: 'efm',
+    filetype: ['sh', 'c', 'cpp', 'gitcommit'],
+    path: '${lib.getExe pkgs.efm-langserver}',
+    args: [],
+    initializationOptions: {
+      documentFormatting: v:true,
+    },
+  }])
 
   var lspOpts = {
     autoHighlightDiags: v:true,
