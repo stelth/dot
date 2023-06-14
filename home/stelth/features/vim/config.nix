@@ -262,5 +262,36 @@ in ''
   }
 
   autocmd VimEnter * call LspOptionsSet(lspOpts)
+
+  def OnLspBufferAttached()
+    nmap <buffer> ca :LspCodeAction<CR>
+    vmap <buffer> ca :LspCodeAction<CR>
+    nmap <buffer> gr :LspRename<CR>
+    nmap <buffer> gp :LspPeekDefinition<CR>
+    nmap <buffer> gd :LspGotoDefinition<CR>
+    nmap <buffer> <leader>wa :LspWorkspaceAddFolder<CR>
+    nmap <buffer> <leader>wr :LspWorkspaceRemoveFolder<CR>
+    nmap <buffer> <leader>wl :LspWorkspaceListFolders<CR>
+    nmap <buffer> gi :LspGotoImpl<CR>
+    nmap <buffer> gT :LspGotoTypeDefinition<CR>
+    nmap <buffer> gt :LspPeekTypeDefinition<CR>
+    nmap <buffer> sl :LspDiagCurrent<CR>
+    nmap <buffer> sb :LspDiagFirst<CR>
+    nmap <buffer> sc :LspDiagHere<CR>
+    nmap <buffer> [g :LspDiagPrev<CR>
+    nmap <buffer> ]g :LspDiagNext<CR>
+    nmap <buffer> [d :LspDiagLast<CR>
+    nmap <buffer> ]d :LspDiagFirst<CR>
+    nmap <buffer> <leader>q :LspDiagShow<CR>
+    nmap <buffer> K :LspHover<CR>
+    nmap <buffer> <leader>o :LspOutline<CR>
+    nmap <buffer> <leader>ci :LspIncomingCalls<CR>
+    nmap <buffer> <leader>co :LspOutgoingCalls<CR>
+  enddef
+
+  augroup lsp_install
+    au!
+    autocmd User LspAttached OnLspBufferAttached()
+  augroup END
   # }}}
 ''
