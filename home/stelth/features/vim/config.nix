@@ -264,26 +264,26 @@ in ''
   autocmd VimEnter * call LspOptionsSet(lspOpts)
 
   def OnLspBufferAttached()
-    nmap <buffer> cf :LspFormat<CR>
-    vmap <buffer> cf :LspFormat<CR>
-    nmap <buffer> ca :LspCodeAction<CR>
-    vmap <buffer> ca :LspCodeAction<CR>
-    nmap <buffer> gr :LspRename<CR>
-    nmap <buffer> gp :LspPeekDefinition<CR>
-    nmap <buffer> gd :LspGotoDefinition<CR>
+    nmap <buffer> <leader>cf :LspFormat<CR>
+    vmap <buffer> <leader>cf :LspFormat<CR>
+    nmap <buffer> <leader>ca :LspCodeAction<CR>
+    vmap <buffer> <leader>ca :LspCodeAction<CR>
+    nmap <buffer> <leader>cr :LspRename<CR>
+    nmap <buffer> <leader>gp :LspPeekDefinition<CR>
+    nmap <buffer> <leader>gd :LspGotoDefinition<CR>
     nmap <buffer> <leader>wa :LspWorkspaceAddFolder<CR>
     nmap <buffer> <leader>wr :LspWorkspaceRemoveFolder<CR>
     nmap <buffer> <leader>wl :LspWorkspaceListFolders<CR>
-    nmap <buffer> gi :LspGotoImpl<CR>
-    nmap <buffer> gT :LspGotoTypeDefinition<CR>
-    nmap <buffer> gt :LspPeekTypeDefinition<CR>
-    nmap <buffer> sl :LspDiagCurrent<CR>
-    nmap <buffer> sb :LspDiagFirst<CR>
-    nmap <buffer> sc :LspDiagHere<CR>
-    nmap <buffer> [g :LspDiagPrev<CR>
-    nmap <buffer> ]g :LspDiagNext<CR>
-    nmap <buffer> [d :LspDiagLast<CR>
-    nmap <buffer> ]d :LspDiagFirst<CR>
+    nmap <buffer> <leader>gi :LspGotoImpl<CR>
+    nmap <buffer> <leader>gT :LspGotoTypeDefinition<CR>
+    nmap <buffer> <leader>gt :LspPeekTypeDefinition<CR>
+    nmap <buffer> <leader>sl :LspDiagCurrent<CR>
+    nmap <buffer> <leader>sb :LspDiagFirst<CR>
+    nmap <buffer> <leader>sc :LspDiagHere<CR>
+    nmap <buffer> <leader>[g :LspDiagPrev<CR>
+    nmap <buffer> <leader>]g :LspDiagNext<CR>
+    nmap <buffer> <leader>[d :LspDiagLast<CR>
+    nmap <buffer> <leader>]d :LspDiagFirst<CR>
     nmap <buffer> <leader>q :LspDiagShow<CR>
     nmap <buffer> K :LspHover<CR>
     nmap <buffer> <leader>o :LspOutline<CR>
