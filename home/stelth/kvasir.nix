@@ -8,9 +8,10 @@ in {
   imports = [
     ./global
     ./features/cli
+    ./features/desktop/hyprland
     ./features/vim
     ./features/music
-    ./features/desktop/hyprland
+    ./features/wine
   ];
 
   colorscheme = rose-pine-moon;
