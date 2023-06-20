@@ -259,6 +259,7 @@ in ''
     snippetSupport: v:true,
     vsnipSupport: v:true,
     ultisnipsSupport: v:false,
+    useBufferCompletion: v:true,
   }
 
   autocmd VimEnter * call LspOptionsSet(lspOpts)
