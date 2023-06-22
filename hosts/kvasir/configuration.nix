@@ -17,6 +17,10 @@
   };
 
   hardware = {
+    nvidia = {
+      prime.offload.enable = false;
+      modesetting.enable = true;
+    };
     opengl = {
       enable = true;
       driSupport = true;
