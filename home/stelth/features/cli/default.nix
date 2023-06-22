@@ -21,7 +21,10 @@
     bat.enable = true;
     bottom.enable = true;
     jq.enable = true;
-    ripgrep.enable = true;
+    ripgrep = {
+      enable = true;
+      arguments = ["--max-columns-preview" "--colors=line:style:bold"];
+    };
   };
 
   home.packages = with pkgs; [
@@ -29,6 +32,7 @@
     bc
     ncdu
     diffsitter
+    ripgrep
     sessionizer
   ];
 }
