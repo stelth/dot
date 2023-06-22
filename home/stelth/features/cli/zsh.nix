@@ -4,21 +4,18 @@
   pkgs,
   ...
 }: let
-  aliases = rec {
-    ls = "${pkgs.coreutils}/bin/ls --color=auto -h";
-    la = "${ls} -a";
-    ll = "${ls} -la";
-    lt = "${ls} -lat";
-    ts = "${lib.getExe pkgs.sessionizer}";
-    tl = "${lib.getExe pkgs.tmux} ls";
-    tk = "${lib.getExe pkgs.tmux} kill-session -t";
-    mv = "${pkgs.coreutils}/bin/mv -iv";
+  aliases = {
+    cat = "${lib.getExe pkgs.bat}";
     cp = "${pkgs.coreutils}/bin/cp -riv";
-    mkdir = "${pkgs.coreutils}/bin/mkdir -vp";
-    su = "su -";
     df = "${lib.getExe pkgs.grc} ${pkgs.coreutils}/bin/df -h";
-    rga = "${lib.getExe pkgs.ripgrep} -uu";
     grep = "${lib.getExe pkgs.ripgrep}";
+    mkdir = "${pkgs.coreutils}/bin/mkdir -vp";
+    mv = "${pkgs.coreutils}/bin/mv -iv";
+    rga = "${lib.getExe pkgs.ripgrep} -uu";
+    su = "su -";
+    tk = "${lib.getExe pkgs.tmux} kill-session -t";
+    tl = "${lib.getExe pkgs.tmux} ls";
+    ts = "${lib.getExe pkgs.sessionizer}";
   };
 in {
   programs = {

@@ -12,15 +12,23 @@
     ./zsh.nix
   ];
 
+  programs = {
+    exa = {
+      enable = true;
+      enableAliases = true;
+    };
+
+    bat.enable = true;
+    bottom.enable = true;
+    jq.enable = true;
+    ripgrep.enable = true;
+  };
+
   home.packages = with pkgs; [
     comma
     bc
-    bottom
     ncdu
-    exa
-    ripgrep
     diffsitter
-    jq
     sessionizer
   ];
 }
