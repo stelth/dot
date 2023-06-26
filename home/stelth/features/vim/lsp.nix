@@ -13,7 +13,7 @@
 
       # language servers
       nodePackages.bash-language-server # bash
-      clang-tools # c/cpp
+      clang-tools_16 # c/cpp
       cmake-language-server # cmake
       nodePackages.dockerfile-language-server-nodejs # docker
       nodePackages.vscode-json-languageserver # json

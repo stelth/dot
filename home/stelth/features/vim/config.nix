@@ -160,7 +160,7 @@ in ''
   lsp#lsp#AddServer([{
     name: 'clangd',
     filetype: ['c', 'cpp'],
-    path: '${pkgs.clang-tools}/bin/clangd',
+    path: '${pkgs.clang-tools_16}/bin/clangd',
     args: ['--background-index', '--clang-tidy'],
   }])
 
