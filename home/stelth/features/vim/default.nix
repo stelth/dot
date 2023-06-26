@@ -29,6 +29,7 @@
         fzf-vim
         is-vim
         markdown-preview-nvim
+        search-complete-vim
         undotree
         vim-dispatch
         vim-eunuch
