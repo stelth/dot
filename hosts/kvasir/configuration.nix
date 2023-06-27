@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{...}: {
   networking = {
     hostName = "kvasir";
   };
@@ -6,14 +6,6 @@
   programs = {
     dconf.enable = true;
     kdeconnect.enable = true;
-  };
-
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-wlr
-      xdg-desktop-portal-gtk
-    ];
   };
 
   hardware = {
