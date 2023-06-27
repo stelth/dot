@@ -3,20 +3,6 @@
     bottles
     gamescope
     lutris
-    wineWowPackages.waylandFull
-    winetricks
-
-    # Steam
-    xorg.libXcursor
-    xorg.libXi
-    xorg.libXinerama
-    xorg.libXScrnSaver
-    libpng
-    libvorbis
-    stdenv.cc.cc.lib
-    libkrb5
-    keyutils
-    protontricks
   ];
 
   home.persistence = {
