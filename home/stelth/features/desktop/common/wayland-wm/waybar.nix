@@ -45,8 +45,7 @@ in {
         margin = "6";
         position = "top";
         modules-left = [
-          "sway/workspaces"
-          "sway/mode"
+          "wlr/workspaces"
           "custom/currentplayer"
           "custom/player"
         ];
@@ -104,9 +103,6 @@ in {
           format = "{icon} {capacity}%";
           format-charging = " {capacity}%";
           onclick = "";
-        };
-        "sway/window" = {
-          max-length = 20;
         };
         network = {
           interval = 3;
