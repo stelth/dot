@@ -24,16 +24,6 @@
       format-command: 'clang-format'
       format-stdin: true
 
-    clang-tidy: &clang-tidy
-      lint-command: 'clang-tidy'
-      prefix: clang-tidy
-      lint-stdin: false
-      lint-ignore-exit-code: true
-      lint-formats:
-        - '%f:%l:%c: %trror: %m'
-        - '%f:%l:%c: %tarning: %m'
-        - '%f:%l:%c: %tote: %m'
-
     cpplint: &cpplint
       lint-command: 'cpplint'
       prefix: cpplint
@@ -154,11 +144,9 @@
       - <<: *sh-shfmt
     c:
       - <<: *clang-format
-      - <<: *clang-tidy
       - <<: *cpplint
     cpp:
       - <<: *clang-format
-      - <<: *clang-tidy
       - <<: *cpplint
     dockerfile:
       - <<: *dprint
