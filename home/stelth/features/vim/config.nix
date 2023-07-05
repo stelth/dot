@@ -74,12 +74,14 @@ in ''
   set undofile
   set updatetime=300
 
-  packadd termdebug
-
   source ${color}
 
   vnoremap J :m '>+1<CR>gv=gv
   vnoremap K :m '<-2<CR>gv=gv
+
+  # asyncrun {{{
+  g:asyncrun_open = 6
+  # }}}
 
   # fzf-vim {{{
   nmap <leader>hc :Commands<CR>
@@ -116,10 +118,6 @@ in ''
   g:undotree_ShortIndicators = 1
   g:undotree_WindowLayout = 4
   nnoremap <silent> <leader>u :UndotreeToggle<CR>
-  # }}}
-
-  # vim-cmake {{{
-  g:cmake_link_compile_commands = 1
   # }}}
 
   # vim-vsnip {{{

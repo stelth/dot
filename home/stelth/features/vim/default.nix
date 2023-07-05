@@ -25,6 +25,8 @@
     '';
     plugins = with pkgs.vimPlugins;
       [
+        asyncrun-vim
+        asynctasks-vim
         auto-pairs
         fzf-vim
         is-vim
