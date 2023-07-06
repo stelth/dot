@@ -9,7 +9,7 @@ in rec {
   gtk = {
     enable = true;
     font = {
-      name = "Iosevka Nerd Font Propo";
+      name = "Fira Code";
       size = 12;
     };
     theme = {
