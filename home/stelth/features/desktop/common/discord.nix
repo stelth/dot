@@ -47,7 +47,7 @@ in {
         --activity-card-background: var(--background-secondary);
     }
     body {
-        font-family: ${config.fontProfiles.regular.family}, sans serif;
+        font-family: "Iosevka Nerd Font Propo";
     }
     .scroller-1Bvpku {
         background-color: var(--background-primary);

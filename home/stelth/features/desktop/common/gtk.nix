@@ -9,7 +9,7 @@ in rec {
   gtk = {
     enable = true;
     font = {
-      name = config.fontProfiles.regular.family;
+      name = "Iosevka Nerd Font Propo";
       size = 12;
     };
     theme = {
