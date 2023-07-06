@@ -70,17 +70,17 @@ in {
             <tt><small>{calendar}</small></tt>'';
         };
         cpu = {
-          format = "   {usage}%";
+          format = " {usage}%";
           on-click = systemMonitor;
         };
         memory = {
-          format = "󰍛  {}%";
+          format = "󰍛 {}%";
           interval = 5;
           on-click = systemMonitor;
         };
         pulseaudio = {
-          format = "{icon}  {volume}%";
-          format-muted = "   0%";
+          format = "{icon} {volume}%";
+          format-muted = " 0%";
           format-icons = {
             headphone = "󰋋";
             headset = "󰋎";
@@ -106,7 +106,7 @@ in {
         };
         network = {
           interval = 3;
-          format-wifi = "   {essid}";
+          format-wifi = " {essid}";
           format-ethernet = "󰈁 Connected";
           format-disconnected = "";
           tooltip-format = ''
