@@ -80,7 +80,7 @@ in ''
   vnoremap K :m '<-2<CR>gv=gv
 
   # asyncrun {{{
-  g:asyncrun_open = 6
+  g:asyncrun_open = 20
   # }}}
 
   # fzf-vim {{{
