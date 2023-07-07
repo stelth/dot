@@ -1,10 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}: let
-  inherit (config.colorscheme) colors;
-in {
+{pkgs, ...}: {
   home = {
     sessionVariables = {
       TERMINAL = "footclient";
@@ -17,17 +11,35 @@ in {
     settings = {
       main.font = "monospace:pixelsize=11";
       colors = {
-        foreground = "${colors.base05}";
-        background = "${colors.base00}";
-        alpha = 0.9;
-        regular0 = "${colors.base00}";
-        regular1 = "${colors.base08}";
-        regular2 = "${colors.base0B}";
-        regular3 = "${colors.base0A}";
-        regular4 = "${colors.base0D}";
-        regular5 = "${colors.base0E}";
-        regular6 = "${colors.base0C}";
-        regular7 = "${colors.base03}";
+        foreground = "d8dee9";
+        background = "2e3440";
+
+        regular0 = "3b4252";
+        regular1 = "bf616a";
+        regular2 = "a3be8c";
+        regular3 = "ebcb8b";
+        regular4 = "81a1c1";
+        regular5 = "b48ead";
+        regular6 = "88c0d0";
+        regular7 = "e5e9f0";
+
+        bright0 = "4c566a";
+        bright1 = "bf616a";
+        bright2 = "a3be8c";
+        bright3 = "ebcb8b";
+        bright4 = "81a1c1";
+        bright5 = "b48ead";
+        bright6 = "8fbcbb";
+        bright7 = "eceff4";
+
+        dim0 = "373e4d";
+        dim1 = "94545d";
+        dim2 = "809575";
+        dim3 = "b29e75";
+        dim4 = "68809a";
+        dim5 = "8c738c";
+        dim6 = "6d96a5";
+        dim7 = "aeb3bb";
       };
       tweak = {
         max-shm-pool-size-mb = 2048;

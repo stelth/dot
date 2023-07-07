@@ -1,10 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
-  inherit (config.colorscheme) colors;
-in {
+{pkgs, ...}: {
   home.packages = with pkgs; [discord discocss];
 
   home.persistence = {
@@ -13,41 +7,41 @@ in {
 
   xdg.configFile."discocss/custom.css".text = ''
     .theme-dark {
-        --header-primary: #${colors.base05};
-        --header-secondary: #${colors.base04};
-        --text-normal: #${colors.base05};
-        --text-muted: #${colors.base04};
-        --text-link: #${colors.base08};
-        --channels-default: #${colors.base05};
-        --interactive-normal: #${colors.base04};
-        --interactive-hover: #${colors.base05};
-        --interactive-active: #${colors.base05};
-        --interactive-muted: #${colors.base03};
-        --background-primary: #${colors.base00};
-        --background-secondary: #${colors.base01};
-        --background-secondary-alt: #${colors.base02};
-        --background-tertiary: #${colors.base01};
-        --background-accent: #${colors.base01};
-        --background-floating: #${colors.base00};
+        --header-primary: #e5e9f0;
+        --header-secondary: #d8dee9;
+        --text-normal: #e5e9f0;
+        --text-muted: #d8dee9;
+        --text-link: #88c0d0;
+        --channels-default: #e5e9f0;
+        --interactive-normal: #d8dee9;
+        --interactive-hover: #e5e9f0;
+        --interactive-active: #e5e9f0;
+        --interactive-muted: #4c566a;
+        --background-primary: #e23440;
+        --background-secondary: #3b4252;
+        --background-secondary-alt: #434c5e;
+        --background-tertiary: #3b4252;
+        --background-accent: #3b4252;
+        --background-floating: #2e3440;
         --background-mobile-primary: var(--background-primary);
         --background-mobile-secondary: var(--background-secondary);
         --background-modifier-selected: var(--background-secondary);
-        --scrollbar-thin-thumb: #${colors.base02};
-        --scrollbar-auto-thumb: #${colors.base02};
-        --scrollbar-auto-track: #${colors.base01};
-        --scrollbar-auto-scrollbar-color-thumb: #${colors.base02};
-        --scrollbar-auto-scrollbar-color-track: #${colors.base01};
-        --focus-primary: #${colors.base08};
-        --channeltextarea-background: #${colors.base01};
-        --deprecated-card-bg: #${colors.base01};
-        --deprecated-quickswitcher-input-background: #${colors.base01};
-        --deprecated-quickswitcher-input-placeholder: #${colors.base05};
+        --scrollbar-thin-thumb: #434c5e;
+        --scrollbar-auto-thumb: #434c5e;
+        --scrollbar-auto-track: #3b4252;
+        --scrollbar-auto-scrollbar-color-thumb: #434c5e;
+        --scrollbar-auto-scrollbar-color-track: #3b4252;
+        --focus-primary: #88c0d0;
+        --channeltextarea-background: #3b4252;
+        --deprecated-card-bg: #3b4252;
+        --deprecated-quickswitcher-input-background: #3b4252;
+        --deprecated-quickswitcher-input-placeholder: #e5e9f0;
         --background-modifier-hover: var(--background-secondary);
         --background-modifier-active: var(--background-secondary-alt);
         --activity-card-background: var(--background-secondary);
     }
     body {
-        font-family: "Iosevka Nerd Font Propo";
+        font-family: "Iosevka Nerd Font";
     }
     .scroller-1Bvpku {
         background-color: var(--background-primary);

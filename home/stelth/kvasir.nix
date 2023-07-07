@@ -1,10 +1,4 @@
-{
-  inputs,
-  outputs,
-  ...
-}: let
-  inherit (inputs.nix-colors.colorSchemes) rose-pine-moon;
-in {
+{outputs, ...}: {
   imports = [
     ./global
     ./features/cli
@@ -14,6 +8,5 @@ in {
     ./features/wine
   ];
 
-  colorscheme = rose-pine-moon;
   wallpaper = outputs.wallpapers.kosmos-space-dark;
 }

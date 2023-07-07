@@ -32,7 +32,7 @@
   wayland.windowManager.hyprland = {
     enable = true;
     extraConfig = import ./config.nix {
-      inherit (config) home colorscheme wallpaper;
+      inherit (config) home wallpaper;
     };
   };
 }

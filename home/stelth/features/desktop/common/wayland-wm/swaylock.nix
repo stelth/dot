@@ -1,17 +1,11 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
-  inherit (config.colorscheme) colors;
-in {
+{pkgs, ...}: {
   programs.swaylock = {
     package = pkgs.swaylock-effects;
     settings = {
       effect-blur = "20x3";
       fade-in = 0.1;
 
-      font = "Iosevka Nerd Font Propo";
+      font = "Iosevka Nerd Font";
       font-size = 15;
 
       line-uses-inside = true;
@@ -21,24 +15,25 @@ in {
       indicator-idle-visible = true;
       indicator-y-position = 1000;
 
-      ring-color = "#${colors.base02}";
-      inside-wrong-color = "#${colors.base08}";
-      ring-wrong-color = "#${colors.base08}";
-      key-hl-color = "#${colors.base0B}";
-      bs-hl-color = "#${colors.base08}";
-      ring-ver-color = "#${colors.base09}";
-      inside-ver-color = "#${colors.base09}";
-      inside-color = "#${colors.base01}";
-      text-color = "#${colors.base07}";
-      text-clear-color = "#${colors.base01}";
-      text-ver-color = "#${colors.base01}";
-      text-wrong-color = "#${colors.base01}";
-      text-caps-lock-color = "#${colors.base07}";
-      inside-clear-color = "#${colors.base0C}";
-      ring-clear-color = "#${colors.base0C}";
-      inside-caps-lock-color = "#${colors.base09}";
-      ring-caps-lock-color = "#${colors.base02}";
-      separaton-color = "#${colors.base02}";
+      color = "2e3440ff";
+
+      bs-hl-color = "b48eadff";
+      caps-lock-bs-hl-color = "d08770ff";
+      inside-color = "2e3440ff";
+      inside-clear-color = "81a1c1ff";
+      inside-ver-color = "5e81acff";
+      inside-wrong-color = "bf616aff";
+      key-hl-color = "a3be8cff";
+      layout-bg-color = "2e3440ff";
+      ring-color = "3b4252ff";
+      ring-clear-color = "88c0d0ff";
+      ring-ver-color = "81a1c1ff";
+      ring-wrong-color = "d08770ff";
+      separator-color = "3b4252ff";
+      text-color = "eceff4ff";
+      text-clear-color = "3b4252ff";
+      text-ver-color = "3b4252ff";
+      text-wrong-color = "3b4252ff";
     };
   };
 }

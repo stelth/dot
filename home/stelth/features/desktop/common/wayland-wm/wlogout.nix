@@ -1,10 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}: let
-  inherit (config.colorscheme) colors;
-in {
+{pkgs, ...}: {
   programs.wlogout = {
     enable = true;
 
@@ -53,12 +47,12 @@ in {
       }
 
       window {
-        background-color: #${colors.base00};
+        background-color: rgba(46, 52, 64, 0.9);
       }
 
       button {
-        color: #${colors.base05};
-        background-color: #${colors.base01};
+        color: #5e91ac;
+        background-color: #2d3440;
         border-style: solid;
         border-width: 2px;
         background-repeat: no-repeat;
@@ -67,7 +61,8 @@ in {
       }
 
       button:focus, button:active, button:hover {
-        background-color: #${colors.base07};
+        background-color: #4c566a;
+        color: #81a1c1;
         outline-style: none;
       }
 

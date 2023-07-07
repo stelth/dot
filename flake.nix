@@ -17,7 +17,6 @@
 
     hardware.url = "github:nixos/nixos-hardware";
     impermanence.url = "github:nix-community/impermanence";
-    nix-colors.url = "github:misterio77/nix-colors";
     sops-nix.url = "github:mic92/sops-nix";
 
     home-manager = {

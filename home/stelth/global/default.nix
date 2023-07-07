@@ -4,12 +4,9 @@
   config,
   outputs,
   ...
-}: let
-  inherit (inputs.nix-colors) colorSchemes;
-in {
+}: {
   imports =
     [
-      inputs.nix-colors.homeManagerModule
       inputs.impermanence.nixosModules.home-manager.impermanence
     ]
     ++ (builtins.attrValues outputs.homeManagerModules);
@@ -54,8 +51,4 @@ in {
       };
     };
   };
-
-  colorscheme = lib.mkDefault colorSchemes.dracula;
-
-  home.file.".colorscheme".text = config.colorscheme.slug;
 }

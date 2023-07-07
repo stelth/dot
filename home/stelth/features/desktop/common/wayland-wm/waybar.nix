@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   # Dependencies
   jq = "${pkgs.jq}/bin/jq";
   playerctl = "${pkgs.playerctl}/bin/playerctl";
@@ -46,6 +42,7 @@ in {
         position = "top";
         modules-left = [
           "wlr/workspaces"
+          "idle_inhibitor"
           "custom/currentplayer"
           "custom/player"
         ];
@@ -63,6 +60,21 @@ in {
           "custom/hostname"
         ];
 
+        "wlr/workspaces" = {
+          disable-scroll = true;
+          all-outputs = true;
+          format = "{icon}";
+          format-icons = {
+            "1" = "<span color=\"#D8DEE9\">1</span>";
+            "2" = "<span color=\"#88C0D0\">2</span>";
+            "3" = "<span color=\"#A3BE8C\">3</span>";
+            "4" = "<span color=\"#D8DEE9\">4</span>";
+            "urgent" = "";
+            "focused" = "";
+            "default" = "";
+          };
+        };
+
         clock = {
           format = "{:%d/%m %H:%M}";
           tooltip-format = ''
@@ -70,11 +82,11 @@ in {
             <tt><small>{calendar}</small></tt>'';
         };
         cpu = {
-          format = " {usage}%";
+          format = "  {usage}%";
           on-click = systemMonitor;
         };
         memory = {
-          format = "󰍛 {}%";
+          format = "󰍛  {}%";
           interval = 5;
           on-click = systemMonitor;
         };
@@ -137,7 +149,7 @@ in {
             tooltip = "$player ($count available)";
             text = "$more";
           };
-          format = "{icon}{}";
+          format = "{icon}";
           format-icons = {
             "No player active" = " ";
             "Celluloid" = "󰎁 ";
@@ -191,94 +203,297 @@ in {
     # x y -> vertical, horizontal
     # x y z -> top, horizontal, bottom
     # w x y z -> top, right, bottom, left
-    style = let
-      inherit (config.colorscheme) colors;
-    in
-      /*
-      css
-      */
-      ''
-        * {
-          font-family: "Iosevka Nerd Font Propo", "Iosevka Nerd Font Mono";
-          font-size: 12pt;
-          padding: 0 8px;
-        }
+    style = ''
 
-        .modules-right {
-          margin-right: -15px;
-        }
+      @keyframes blink-warning {
+          70% {
+              color: @light;
+          }
 
-        .modules-left {
-          margin-left: -15px;
-        }
+          to {
+              color: @light;
+              background-color: @warning;
+          }
+      }
 
-        window#waybar.top {
-          opacity: 0.95;
+      @keyframes blink-critical {
+          70% {
+            color: @light;
+          }
+
+          to {
+              color: @light;
+              background-color: @critical;
+          }
+      }
+
+
+      /* -----------------------------------------------------------------------------
+       * Styles
+       * -------------------------------------------------------------------------- */
+
+      /* COLORS */
+
+      /* Nord */
+      @define-color bg #2E3440;
+      @define-color light #D8DEE9;
+      @define-color warning #ebcb8b;
+      @define-color critical #BF616A;
+      @define-color mode #434C5E;
+      @define-color workspacesfocused #4C566A;
+      @define-color tray @workspacesfocused;
+      @define-color sound #EBCB8B;
+      @define-color network #5D7096;
+      @define-color memory #546484;
+      @define-color cpu #596A8D;
+      @define-color temp #4D5C78;
+      @define-color layout #5e81ac;
+      @define-color battery #88c0d0;
+      @define-color date #434C5E;
+      @define-color time #434C5E;
+      @define-color backlight #434C5E;
+      @define-color nord_bg #434C5E;
+      @define-color nord_bg_blue #546484;
+      @define-color nord_light #D8DEE9;
+      @define-color nord_light_font #D8DEE9;
+      @define-color nord_dark_font #434C5E;
+
+      /* Reset all styles */
+      * {
+          border: none;
+          border-radius: 3px;
+          min-height: 0;
+          margin: 0.2em 0.3em 0.2em 0.3em;
+      }
+
+      /* The whole bar */
+      #waybar {
+          background: @bg;
+          color: @light;
+          font-family: "Iosevka Nerd Font", "Iosevka Nerd Font Mono";
+          font-size: 12px;
+          font-weight: bold;
+      }
+
+      /* Each module */
+      #battery,
+      #clock,
+      #cpu,
+      #custom-layout,
+      #memory,
+      #mode,
+      #network,
+      #pulseaudio,
+      #temperature,
+      #custom-alsa,
+      #custom-pacman,
+      #custom-weather,
+      #custom-gpg-agent,
+      #tray,
+      #backlight,
+      #language,
+      #custom-currentplayer,
+      #custom-player,
+      #custom-cpugovernor {
+          padding-left: 0.6em;
+          padding-right: 0.6em;
+      }
+
+      /* Each module that should blink */
+      #mode,
+      #memory,
+      #temperature,
+      #battery {
+          animation-timing-function: linear;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+      }
+
+      /* Each critical module */
+      #memory.critical,
+      #cpu.critical,
+      #temperature.critical,
+      #battery.critical {
+          color: @critical;
+      }
+
+      /* Each critical that should blink */
+      #mode,
+      #memory.critical,
+      #temperature.critical,
+      #battery.critical.discharging {
+          animation-name: blink-critical;
+          animation-duration: 2s;
+      }
+
+      /* Each warning */
+      #network.disconnected,
+      #memory.warning,
+      #cpu.warning,
+      #temperature.warning,
+      #battery.warning {
+          background: @warning;
+          color: @nord_dark_font;
+      }
+
+      /* Each warning that should blink */
+      #battery.warning.discharging {
+          animation-name: blink-warning;
+          animation-duration: 3s;
+      }
+
+      /* Workspaces stuff */
+
+      #workspaces {
+       /*   color: #D8DEE9;
+          margin-right: 10px;*/
+      }
+
+      #workspaces button {
+          font-weight: bold; /* Somewhy the bar-wide setting is ignored*/
           padding: 0;
-          background-color: #${colors.base00};
-          border: 2px solid #${colors.base0C};
-          border-radius: 10px;
-        }
-        window#waybar.bottom {
-          opacity: 0.90;
-          background-color: #${colors.base00};
-          border: 2px solid #${colors.base0C};
-          border-radius: 10px;
-        }
+          /*color: #999;*/
+          opacity: 0.3;
+          background: none;
+          font-size: 1em;
+      }
 
-        window#waybar {
-          color: #${colors.base05};
-        }
+      #workspaces button.focused {
+          background: @workspacesfocused;
+          color: #D8DEE9;
+          opacity: 1;
+          padding: 0 0.4em;
+      }
 
-        #workspaces button {
-          background-color: #${colors.base01};
-          color: #${colors.base05};
-          margin: 4px;
-        }
-        #workspaces button.hidden {
-          background-color: #${colors.base00};
-          color: #${colors.base04};
-        }
-        #workspaces button.focused,
-        #workspaces button.active {
-          background-color: #${colors.base0A};
-          color: #${colors.base00};
-        }
+      #workspaces button.urgent {
+          border-color: #c9545d;
+          color: #c9545d;
+          opacity: 1;
+      }
 
-        #clock {
-          background-color: #${colors.base0C};
-          color: #${colors.base00};
-          padding-left: 15px;
-          padding-right: 15px;
-          margin-top: 0;
-          margin-bottom: 0;
-          border-radius: 10px;
-        }
+      #window {
+          margin-right: 40px;
+          margin-left: 40px;
+          font-weight: normal;
+      }
+      #bluetooth {
+          background: @nord_bg_blue;
+          font-size: 1.2em;
+          font-weight: bold;
+          padding: 0 0.6em;
+      }
+      #custom-gpu {
+          background: @nord_bg;
+          font-weight: bold;
+          padding: 0 0.6em;
+      }
+      #custom-weather {
+          background: @mode;
+          font-weight: bold;
+          padding: 0 0.6em;
+      }
+      #custom-pacman {
+          background: @nord_light;
+          color: @nord_dark_font;
+          font-weight: bold;
+          padding: 0 0.6em;
+      }
+      #custom-scratchpad-indicator {
+          background: @nord_light;
+          color: @nord_dark_font;
+          font-weight: bold;
+          padding: 0 0.6em;
+      }
+      #idle_inhibitor {
+          background: @mode;
+          /*font-size: 1.6em;*/
+          font-weight: bold;
+          padding: 0 0.6em;
+      }
+      #custom-alsa {
+          background: @sound;
+      }
 
-        #custom-menu {
-          background-color: #${colors.base0C};
-          color: #${colors.base00};
-          padding-left: 15px;
-          padding-right: 22px;
-          margin-left: 0;
-          margin-right: 10px;
-          margin-top: 0;
-          margin-bottom: 0;
-          border-radius: 10px;
-        }
-        #custom-hostname {
-          background-color: #${colors.base0C};
-          color: #${colors.base00};
-          padding-left: 15px;
-          padding-right: 18px;
-          margin-right: 0;
-          margin-top: 0;
-          margin-bottom: 0;
-          border-radius: 10px;
-        }
-        #tray {
-          color: #${colors.base05};
-        }
-      '';
+      #network {
+          background: @nord_bg_blue;
+      }
+
+      #memory {
+          background: @memory;
+      }
+
+      #cpu {
+          background: @nord_bg;
+          color: #D8DEE9;
+      }
+      #cpu.critical {
+          color: @nord_dark_font;
+      }
+      #language {
+          background: @nord_bg_blue;
+          color: #D8DEE9;
+          padding: 0 0.4em;
+      }
+      #custom-cpugovernor {
+          background-color: @nord_light;
+          color: @nord_dark_font;
+      }
+      #custom-cpugovernor.perf {
+
+      }
+      #temperature {
+          background-color: @nord_bg;
+          color: #D8DEE9;
+      }
+      #temperature.critical {
+          background:  @critical;
+      }
+      #custom-layout {
+          background: @layout;
+      }
+
+      #battery {
+          background: @battery;
+      }
+
+      #backlight {
+          background: @backlight;
+      }
+
+      #clock {
+          background: @nord_bg_blue;
+          color: #D8DEE9;
+      }
+      #clock.date {
+          background: @date;
+      }
+
+      #clock.time {
+          background: @mode;
+      }
+
+      #pulseaudio { /* Unsused but kept for those who needs it */
+          background: @nord_bg_blue;
+          color: #D8DEE9;
+      }
+
+      #pulseaudio.muted {
+          background: #BF616A;
+          color: #BF616A;
+          /* No styles */
+      }
+      #pulseaudio.source-muted {
+          background: #D08770;
+          color: #D8DEE9;
+          /* No styles */
+      }
+      #tray {
+          background: #434C5E;
+      }
+
+      #custom-gpg-agent {
+          background: #434C5E;
+      }
+    '';
   };
 }
