@@ -79,6 +79,14 @@ in ''
   vnoremap J :m '>+1<CR>gv=gv
   vnoremap K :m '<-2<CR>gv=gv
 
+  nnoremap <Right> :bnext<CR>
+  nnoremap <Left> :bprev<CR>
+
+  # airline {{{
+  g:airline#extensions#tabline#enabled = 1
+  g:airline_powerline_fonts = 1
+  # }}}
+
   # asyncrun {{{
   g:asyncrun_open = 20
   # }}}

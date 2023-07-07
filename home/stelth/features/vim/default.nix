@@ -33,9 +33,9 @@
         markdown-preview-nvim
         search-complete-vim
         undotree
+        vim-airline
         vim-dispatch
         vim-eunuch
-        vim-flagship
         vim-fugitive
         vim-manpager
         vim-orgmode
