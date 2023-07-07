@@ -1,11 +1,8 @@
 {
-  config,
   pkgs,
   lib,
   ...
-}: let
-  color = pkgs.writeText "color.vim" (import ./theme.nix config.colorscheme);
-in ''
+}: ''
   vim9script
   set encoding=utf-8
   scriptencoding utf-8
@@ -55,6 +52,9 @@ in ''
   set viewdir=$XDG_STATE_HOME/vim/view
   # }}}
 
+  set background=dark
+  colorscheme nord
+
   # => Leader
   g:mapleader = ' '
 
@@ -73,8 +73,6 @@ in ''
   set termguicolors
   set undofile
   set updatetime=300
-
-  source ${color}
 
   vnoremap J :m '>+1<CR>gv=gv
   vnoremap K :m '<-2<CR>gv=gv

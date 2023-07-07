@@ -31,6 +31,7 @@
         fzf-vim
         is-vim
         markdown-preview-nvim
+        nord-vim
         search-complete-vim
         undotree
         vim-airline
