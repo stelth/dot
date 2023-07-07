@@ -14,16 +14,5 @@
       vimPlugins = prev.vimPlugins // final.callPackage ../pkgs/vim-plugins {};
     };
 
-  modifications = final: prev: {
-    pfetch = prev.pfetch.overrideAttrs (oa: {
-      version = "unstable-2021-12-10";
-      src = final.fetchFromGitHub {
-        owner = "dylanaraps";
-        repo = "pfetch";
-        rev = "a906ff89680c78cec9785f3ff49ca8b272a0f96b";
-        sha256 = "sha256-9n5w93PnSxF53V12iRqLyj0hCrJ3jRibkw8VK3tFDvo=";
-      };
-      patches = (oa.patches or []) ++ [./pfetch.patch];
-    });
-  };
+  modifications = final: prev: {};
 }
