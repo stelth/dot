@@ -1,1 +1,4 @@
-{}
+{...}: {
+  flake.nixosModules = {
+  };
+}

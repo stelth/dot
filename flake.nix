@@ -60,7 +60,9 @@
       imports = [
         inputs.devenv.flakeModule
         ./devenv.nix
+
         ./flake/lib
+        ./modules
       ];
 
       systems = ["x86_64-linux"];
@@ -70,9 +72,6 @@
       };
 
       flake = {
-        nixosModules = import ./modules/nixos;
-        homeManagerModules = import ./modules/home-manager;
-
         overlays = import ./overlays {inherit inputs outputs;};
 
         nixosConfigurations = {

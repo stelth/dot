@@ -4,19 +4,17 @@
   pkgs,
   ...
 }: {
-  imports =
-    [
-      inputs.home-manager.nixosModules.home-manager
-      ./locale.nix
-      ./nix.nix
-      ./openssh.nix
-      ./optin-persistence.nix
-      ./sops.nix
-      ./systemd-initrd.nix
-      ./yubikey.nix
-      ./zsh.nix
-    ]
-    ++ (builtins.attrValues outputs.nixosModules);
+  imports = [
+    inputs.home-manager.nixosModules.home-manager
+    ./locale.nix
+    ./nix.nix
+    ./openssh.nix
+    ./optin-persistence.nix
+    ./sops.nix
+    ./systemd-initrd.nix
+    ./yubikey.nix
+    ./zsh.nix
+  ];
 
   home-manager = {
     useUserPackages = true;
