@@ -75,8 +75,6 @@
 
         overlays = import ./overlays {inherit inputs outputs;};
 
-        wallpapers = import ./home/common/wallpapers;
-
         nixosConfigurations = {
           kvasir = mkNixos [./hosts/kvasir];
         };

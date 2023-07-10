@@ -1,8 +1,4 @@
-{
-  home,
-  wallpaper,
-  ...
-}: let
+{home, ...}: let
   inherit (home.sessionVariables) TERMINAL BROWSER EDITOR;
 in ''
   general {
@@ -69,8 +65,8 @@ in ''
   windowrule=workspace special,1Password
 
   # Startup
+  exec = hyprpaper
   exec-once=waybar
-  exec=swaybg -i ${wallpaper} --mode stretch
   exec-once=mako
   exec-once=swayidle -w
   exec-once=1password

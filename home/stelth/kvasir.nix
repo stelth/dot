@@ -1,4 +1,4 @@
-{outputs, ...}: {
+{...}: {
   imports = [
     ./global
     ./features/cli
@@ -7,6 +7,4 @@
     ./features/music
     ./features/wine
   ];
-
-  wallpaper = outputs.wallpapers.kosmos-space-dark;
 }

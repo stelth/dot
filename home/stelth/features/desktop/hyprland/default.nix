@@ -12,7 +12,7 @@
 
   home.packages = with pkgs; [
     inputs.hyprwm-contrib.packages.${system}.grimblast
-    swaybg
+    hyprpaper
     swayidle
   ];
 
@@ -32,7 +32,14 @@
   wayland.windowManager.hyprland = {
     enable = true;
     extraConfig = import ./config.nix {
-      inherit (config) home wallpaper;
+      inherit (config) home;
     };
   };
+
+  xdg.configFile."hypr/wallpaper.png".source = ./wallpaper.png;
+
+  xdg.configFile."hypr/hyprpaper.conf".text = ''
+    preload = ~/.config/hypr/wallpaper.png
+    wallpaper = ,~/.config/hypr/wallpaper.png
+  '';
 }
