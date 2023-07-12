@@ -31,6 +31,7 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
+    nvidiaPatches = true;
     extraConfig = import ./config.nix {
       inherit (config) home;
     };
