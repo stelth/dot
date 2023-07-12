@@ -268,7 +268,6 @@
     autoHighlightDiags: v:true,
     completionTextEdit: v:false,
     showDiagWithVirtualText: v:true,
-    showInlayHints: v:true,
     snippetSupport: v:true,
     vsnipSupport: v:true,
     ultisnipsSupport: v:false,
