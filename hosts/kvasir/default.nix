@@ -15,6 +15,7 @@
     ../common/optional/libvirt.nix
     ../common/optional/pipewire.nix
     ../common/optional/podman.nix
+    ../common/optional/printing.nix
     ../common/optional/sddm.nix
     ../common/optional/workvpn.nix
   ];

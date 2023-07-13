@@ -19,6 +19,8 @@ in {
         config.users.groups.keys.name
         "networkmanager"
         "libvirtd"
+        "scanner"
+        "lp"
       ];
 
     openssh.authorizedKeys.keys = [(builtins.readFile ../../../../home/stelth/ssh.pub)];
