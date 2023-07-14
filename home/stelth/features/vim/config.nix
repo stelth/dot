@@ -268,13 +268,14 @@
     autoHighlightDiags: v:true,
     completionTextEdit: v:false,
     showDiagWithVirtualText: v:true,
+    showInlayHints: v:true,
     snippetSupport: v:true,
     vsnipSupport: v:true,
     ultisnipsSupport: v:false,
     useBufferCompletion: v:true,
   }
 
-  autocmd VimEnter * call LspOptionsSet(lspOpts)
+  lsp#options#OptionsSet(lspOpts)
 
   def OnLspBufferAttached()
     nmap <buffer> <leader>cf :LspFormat<CR>
