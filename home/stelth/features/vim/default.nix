@@ -39,6 +39,7 @@
         vim-eunuch
         vim-fugitive
         vim-manpager
+        vim-markdown-toc
         vim-orgmode
         vim-pager
         vim-repeat
