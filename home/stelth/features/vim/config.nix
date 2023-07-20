@@ -166,23 +166,17 @@
     filetype: ['c', 'cpp'],
     path: '${pkgs.clang-tools_16}/bin/clangd',
     args: ['--background-index', '--clang-tidy'],
-  }])
-
-  lsp#lsp#AddServer([{
+  }, {
     name: 'cmake-language-server',
     filetype: 'cmake',
     path: '${lib.getExe pkgs.cmake-language-server}',
     args: [],
-  }])
-
-  lsp#lsp#AddServer([{
+  }, {
     name: 'dockerls',
     filetype: 'dockerfile',
     path: '${lib.getExe pkgs.nodePackages.dockerfile-language-server-nodejs}',
     args: ['--stdio'],
-  }])
-
-  lsp#lsp#AddServer([{
+  }, {
     name: 'jsonls',
     filetype: [
       'json',
@@ -196,16 +190,12 @@
     initializationOptions: {
       provideFormatter: v:true,
     },
-  }])
-
-  lsp#lsp#AddServer([{
+  }, {
     name: 'marksman',
     filetype: 'markdown',
     path: '${lib.getExe pkgs.marksman}',
     args: [],
-  }])
-
-  lsp#lsp#AddServer([{
+  }, {
     name: 'nil',
     filetype: 'nix',
     path: '${lib.getExe pkgs.nil}',
@@ -213,30 +203,22 @@
     features: {
       documentFormatting: v:false,
     },
-  }])
-
-  lsp#lsp#AddServer([{
+  }, {
     name: 'pyright',
     filetype: 'python',
     path: '${pkgs.nodePackages.pyright}/bin/pyright-langserver',
     args: ['--stdio'],
-  }])
-
-  lsp#lsp#AddServer([{
+  }, {
     name: 'bashls',
     filetype: 'sh',
     path: '${lib.getExe pkgs.nodePackages.bash-language-server}',
     args: ['start'],
-  }])
-
-  lsp#lsp#AddServer([{
+  }, {
     name: 'vimls',
     filetype: 'vim',
     path: '${lib.getExe pkgs.nodePackages.vim-language-server}',
     args: ['--stdio'],
-  }])
-
-  lsp#lsp#AddServer([{
+  }, {
     name: 'yamlls',
     filetype: [
       'yaml',
@@ -244,9 +226,7 @@
     ],
     path: '${lib.getExe pkgs.nodePackages.yaml-language-server}',
     args: ['--stdio'],
-  }])
-
-  lsp#lsp#AddServer([{
+  }, {
     name: 'efm',
     filetype: [
       'sh',
