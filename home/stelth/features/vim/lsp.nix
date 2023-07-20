@@ -17,6 +17,7 @@
       cmake-language-server # cmake
       nodePackages.dockerfile-language-server-nodejs # docker
       nodePackages.vscode-json-languageserver # json
+      marksman
       nodePackages.pyright # python
       nil # nix
       nodePackages.vim-language-server # vim

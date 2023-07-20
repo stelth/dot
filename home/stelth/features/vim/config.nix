@@ -199,6 +199,13 @@
   }])
 
   lsp#lsp#AddServer([{
+    name: 'marksman',
+    filetype: 'markdown',
+    path: '${lib.getExe pkgs.marksman}',
+    args: [],
+  }])
+
+  lsp#lsp#AddServer([{
     name: 'nil',
     filetype: 'nix',
     path: '${lib.getExe pkgs.nil}',
