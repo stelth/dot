@@ -251,7 +251,7 @@
     },
   }])
 
-  var lspOpts = {
+  lsp#options#OptionsSet({
     autoHighlightDiags: v:true,
     completionTextEdit: v:false,
     showDiagWithVirtualText: v:true,
@@ -260,9 +260,7 @@
     vsnipSupport: v:true,
     ultisnipsSupport: v:false,
     useBufferCompletion: v:true,
-  }
-
-  lsp#options#OptionsSet(lspOpts)
+  })
 
   def OnLspBufferAttached()
     nmap <buffer> <leader>cf :LspFormat<CR>
