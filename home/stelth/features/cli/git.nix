@@ -1,7 +1,6 @@
-{pkgs, ...}: {
+{...}: {
   programs.git = {
     enable = true;
-    package = pkgs.gitAndTools.gitFull;
     userName = "Jason Cox";
     userEmail = "steel300@gmail.com";
     extraConfig = {
@@ -14,6 +13,10 @@
       color.ui = true;
       commit.gpgSign = true;
       user.signingkey = "EDE32FA164BE1F4A!";
+      merge = {
+        conflictStyle = "diff3";
+        tool = "vimdiff";
+      };
     };
     lfs.enable = true;
     ignores = [".direnv" "result"];
