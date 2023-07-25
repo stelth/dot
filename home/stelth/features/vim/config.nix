@@ -87,15 +87,6 @@
     nmap <leader>gs :GFiles?<CR>
     " }}}
 
-    " search-complete.vim {{{
-    augroup MySearchComplete | autocmd!
-      autocmd WinEnter,BufEnter * call g:SearchCompleteSetup({
-                  \   'borderchars': ['─', '│', '─', '│', '┌', '┐', '┘', '└'],
-                  \   'flatMenu': v:false,
-                  \ })
-    augroup END
-    " }}}
-
     " undotree {{{
     let g:undotree_ShortIndicators=1
     let g:undotree_WindowLayout=4

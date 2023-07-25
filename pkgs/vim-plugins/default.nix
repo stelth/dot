@@ -1,4 +1,4 @@
 {pkgs}: {
-  search-complete-vim = pkgs.callPackage ./search-complete {};
+  autosuggest-vim = pkgs.callPackage ./autosuggest-vim {};
   vim9-lsp = pkgs.callPackage ./lsp {};
 }
