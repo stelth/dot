@@ -5,6 +5,8 @@
     "/persist/home/stelth" = {
       directories = [
         ".local/share/FreeCAD"
+        ".config/FreeCAD"
+        ".cache/FreeCAD"
       ];
     };
   };
