@@ -39,6 +39,7 @@
         vim-tmux-navigator
         vim-unimpaired
         vim-vinegar
+        vimcomplete
       ]
       ++ lib.optionals pkgs.stdenvNoCC.isLinux [vim-wayland-clipboard];
   };
