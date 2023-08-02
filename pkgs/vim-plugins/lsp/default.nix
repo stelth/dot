@@ -10,8 +10,8 @@ in
     src = fetchFromGitHub {
       owner = "yegappan";
       repo = "lsp";
-      rev = "e117912131d18ece0c97248e142606da2844c56d";
-      sha256 = "37sPeWybCSE2jF4ObxfuBOPPchUtlCjEH4QMAmsbOlk=";
+      rev = "c5bcc14b14e57ad9f710da87640888894ff23e76";
+      sha256 = "pTrxD6Aziv7ETNh4FTb/5Tfwt7jg+A62TdgUZWRlPHE=";
     };
     meta.homepage = "https://github.com/yegappan/lsp";
   }
