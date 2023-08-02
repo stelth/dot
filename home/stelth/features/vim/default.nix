@@ -51,6 +51,7 @@
         vim-unimpaired
         vim-vinegar
         vimcomplete
+        vsnip-complete-vim
       ]
       ++ lib.optionals pkgs.stdenvNoCC.isLinux [vim-wayland-clipboard];
   };
