@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   pkgs,
   ...
@@ -8,10 +9,20 @@
     ./lsp.nix
   ];
 
+  home.persistence = {
+    "/persist/home/stelth".directories = [".config/coc"];
+  };
+
+  xdg.configFile."vim/vimrc".text = import ./config.nix {
+    inherit config lib pkgs;
+  };
+
   programs.vim = {
     enable = true;
     defaultEditor = true;
-    extraConfig = import ./config.nix {inherit lib pkgs;};
+    extraConfig = ''
+      source ~/.config/vim/vimrc
+    '';
     plugins = with pkgs.vimPlugins;
       [
         asyncrun-vim
