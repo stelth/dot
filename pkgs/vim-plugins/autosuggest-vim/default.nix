@@ -10,8 +10,8 @@ in
     src = fetchFromGitHub {
       owner = "girishji";
       repo = "autosuggest.vim";
-      rev = "daf6a441f0043dceb5a4f4863d61ba9fa256901a";
-      sha256 = "VME3AEz2rJl13dsXIcZ/+AO9anE1HL0iRsPjJBWrnNo=";
+      rev = "0f3e891e2cc71fd9cb02a86b5b16c1f92e24acb6";
+      sha256 = "w7qd2DEf0xxBoeWUvt4NDPriu5EY7UjUFgQlgj/HztY=";
     };
     meta.homepage = "https://github.com/girishji/autosuggest.vim";
   }
