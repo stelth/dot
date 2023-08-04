@@ -5,6 +5,7 @@
 }: ''
   vim9script
   set encoding=utf-8
+
   scriptencoding utf-8
 
   # Vimrc 2.0 {{{
@@ -114,6 +115,18 @@
   g:undotree_ShortIndicators = 1
   g:undotree_WindowLayout = 4
   nnoremap <silent> <leader>u :UndotreeToggle<CR>
+  # }}}
+
+  # vimcomplete {{{
+  var options: dict<any> = {
+    completor: { shuffleEqualPriority: true },
+    buffer: { enable: true },
+    lsp: { enable: true, filetypes: ['*'], },
+    path: { enable: true },
+    vsnip: { enable: true },
+  }
+  autocmd VimEnter * g:VimCompleteOptionsSet(options) | VimCompleteEnable
+
   # }}}
 
   # vim-vsnip {{{
@@ -246,9 +259,6 @@
     completionTextEdit: v:false,
     showDiagWithVirtualText: v:true,
     showInlayHints: v:true,
-    snippetSupport: v:true,
-    vsnipSupport: v:true,
-    ultisnipsSupport: v:false,
     useBufferCompletion: v:true,
   })
 
@@ -280,9 +290,6 @@
     nmap <buffer> <leader>co :LspOutgoingCalls<CR>
   enddef
 
-  augroup lsp_install
-    au!
-    autocmd User LspAttached OnLspBufferAttached()
-  augroup END
+  autocmd User LspAttached OnLspBufferAttached()
   # }}}
 ''
