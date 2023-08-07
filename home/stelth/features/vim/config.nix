@@ -125,7 +125,8 @@
     path: { enable: true },
     vsnip: { enable: true },
   }
-  autocmd VimEnter * g:VimCompleteOptionsSet(options) | VimCompleteEnable
+  autocmd VimEnter * g:VimCompleteOptionsSet(options)
+  autocmd FileType * VimCompleteEnable
 
   # }}}
 
