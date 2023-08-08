@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  home.packages = with pkgs; [freecad];
+  home.packages = with pkgs; [freecad graphviz];
 
   home.persistence = {
     "/persist/home/stelth" = {
