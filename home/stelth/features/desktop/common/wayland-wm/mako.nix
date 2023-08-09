@@ -7,8 +7,8 @@
     height = 150;
     borderSize = 2;
     defaultTimeout = 12000;
-    backgroundColor = "#2e3440ff";
-    borderColor = "#4c566aff";
-    textColor = "#eceff4ff";
+    backgroundColor = "#191724";
+    borderColor = "#6e6a86";
+    textColor = "#e0def4";
   };
 }

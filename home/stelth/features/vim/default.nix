@@ -32,7 +32,7 @@
         fzf-vim
         is-vim
         markdown-preview-nvim
-        nord-vim
+        rose-pine-vim
         undotree
         vim-airline
         vim-dispatch

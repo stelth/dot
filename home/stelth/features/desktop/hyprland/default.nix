@@ -16,6 +16,8 @@
     swayidle
   ];
 
+  xdg.configFile."hypr/rose-pine.conf".text = import ./rose-pine.nix {};
+
   programs.waybar.package = pkgs.waybar.overrideAttrs (oa: {
     mesonFlags = (oa.mesonFlags or []) ++ ["-Dexperimental=true"];
     patches =

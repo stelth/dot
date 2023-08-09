@@ -2,7 +2,7 @@
   imports = [
     ./1password.nix
     ./chrome.nix
-    ./discord.nix
+    ./discord
     ./font.nix
     ./gtk.nix
     ./kdeconnect.nix

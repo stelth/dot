@@ -1,11 +1,15 @@
 {home, ...}: let
   inherit (home.sessionVariables) TERMINAL BROWSER EDITOR;
 in ''
+  source=~/.config/hypr/rose-pine.conf
+
   general {
     gaps_in=2
     gaps_out=5
     border_size=2.7
     cursor_inactive_timeout=4
+    col.active_border = $iris
+    col.inactive_border = $muted
   }
 
   decoration {
@@ -16,8 +20,7 @@ in ''
     drop_shadow=true
     shadow_range=12
     shadow_offset=3 3
-    col.shadow=0x44000000
-    col.shadow_inactive=0x66000000
+    col.shadow=rgba(1a1a1aee)
   }
 
   animations {

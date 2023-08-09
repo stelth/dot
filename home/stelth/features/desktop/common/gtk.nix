@@ -6,12 +6,12 @@
       size = 12;
     };
     theme = {
-      name = "Nordic";
-      package = pkgs.nordic;
+      name = "rose-pine";
+      package = pkgs.rose-pine-gtk-theme;
     };
     iconTheme = {
-      name = "Papirus";
-      package = pkgs.papirus-icon-theme;
+      name = "rose-pine";
+      package = pkgs.rose-pine-icon-theme;
     };
   };
 

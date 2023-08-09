@@ -1,10 +1,10 @@
 {pkgs, ...}: {
   imports = [
-    ./foot.nix
+    ./foot
     ./mako.nix
     ./swaylock.nix
-    ./waybar.nix
-    ./wlogout.nix
+    ./waybar
+    ./wlogout
     ./wofi.nix
   ];
 

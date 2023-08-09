@@ -54,7 +54,7 @@
   # }}}
 
   set background=dark
-  colorscheme nord
+  colorscheme rosepine
 
   # => Leader
   g:mapleader = ' '
