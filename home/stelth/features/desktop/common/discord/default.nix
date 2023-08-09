@@ -1,9 +1,9 @@
 {pkgs, ...}: {
-  home.packages = with pkgs; [discord discocss];
+  home.packages = with pkgs; [betterdiscordctl discord];
 
   home.persistence = {
-    "/persist/home/stelth".directories = [".config/discord"];
+    "/persist/home/stelth".directories = [".config/discord" ".config/BetterDiscord"];
   };
 
-  xdg.configFile."discocss/custom.css".text = import ./theme.nix {};
+  xdg.configFile."BetterDiscord/themes".source = ./themes;
 }
