@@ -126,7 +126,6 @@
     vsnip: { enable: true },
   }
   autocmd VimEnter * g:VimCompleteOptionsSet(options)
-  autocmd FileType * VimCompleteEnable
 
   # }}}
 
