@@ -79,8 +79,8 @@ in ''
   bind=SUPER,v,exec,${TERMINAL} $SHELL -ic ${EDITOR}
   bind=SUPER,b,exec,${BROWSER}
 
-  bind=SUPER,x,exec,wofi -S drun -x 10 -y 10 -W 25% -H 60%
-  bind=SUPER,d,exec,wofi -S run
+  bind=SUPER,x,exec,rofi -show drun
+  bind=SUPER,d,exec,rofi -show run
 
   # Lock screen
   bind=SUPER,backspace,exec,swaylock -S

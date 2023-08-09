@@ -2,10 +2,10 @@
   imports = [
     ./foot
     ./mako.nix
+    ./runner
     ./swaylock.nix
     ./waybar
     ./wlogout
-    ./wofi.nix
   ];
 
   home.packages = with pkgs; [
