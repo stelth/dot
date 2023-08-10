@@ -1,8 +1,8 @@
 {...}: {
   imports = [
     ./1password.nix
+    ./chat
     ./chrome.nix
-    ./discord
     ./font.nix
     ./gtk.nix
     ./kdeconnect.nix
