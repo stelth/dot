@@ -236,6 +236,7 @@
   }])
 
   lsp#options#OptionsSet({
+    autoHighlight: v:true,
     autoHighlightDiags: v:true,
     completionTextEdit: v:false,
     showDiagWithVirtualText: v:true,
