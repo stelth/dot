@@ -128,18 +128,6 @@
   nnoremap <silent> <leader>u :UndotreeToggle<CR>
   # }}}
 
-  # vimcomplete {{{
-  var options: dict<any> = {
-    completor: { shuffleEqualPriority: true },
-    buffer: { enable: true },
-    lsp: { enable: true, filetypes: ['*'], },
-    path: { enable: true },
-    vsnip: { enable: true },
-  }
-  autocmd VimEnter * g:VimCompleteOptionsSet(options)
-
-  # }}}
-
   # vim-vsnip {{{
   imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
   smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
@@ -147,24 +135,6 @@
   # Expand or jump
   imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
   smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
-
-  def! g:WhitespaceOnly(): bool
-    return strpart(getline('.'), col('.') - 2, 1) =~ '^\s*$'
-  enddef
-
-  def! g:LspCleverTab(): string
-    return pumvisible() ? "\<c-n>" : vsnip#jumpable(1) ? "\<Plug>(vsnip-jump-next)" : g:WhitespaceOnly() ? "\<tab>" : "\<c-n>"
-  enddef
-
-  def! g:LspCleverSTab(): string
-    return pumvisible() ? "\<c-p>" : vsnip#jumpable(-1) ? "\<Plug>(vsnip-jump-prev)" : g:WhitespaceOnly() ? "\<s-tab>" : "\<c-p>"
-  enddef
-
-  # Jump forward or backward
-  inoremap <expr> <Tab> g:LspCleverTab()
-  snoremap <expr> <Tab> g:LspCleverTab()
-  inoremap <expr> <S-Tab> g:LspCleverSTab()
-  snoremap <expr> <S-Tab> g:LspCleverSTab()
 
   # Select or cut text to use as $TM_SELECTED_TEXT in the next snippet.
   # See https://github.com/hrsh7th/vim-vsnip/pull/50
@@ -302,5 +272,18 @@
   enddef
 
   autocmd User LspAttached OnLspBufferAttached()
+  # }}}
+
+  # vimcomplete {{{
+  g:vimcomplete_tab_enable = 1
+
+  var options: dict<any> = {
+    completor: { shuffleEqualPriority: true },
+    buffer: { enable: true, priority: 10 },
+    lsp: { enable: true, priority: 8 },
+    path: { enable: true, priority: 12 },
+    vsnip: { enable: true, priority: 11 },
+  }
+  autocmd VimEnter * g:VimCompleteOptionsSet(options)
   # }}}
 ''
