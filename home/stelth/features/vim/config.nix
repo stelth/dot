@@ -81,11 +81,6 @@
   nnoremap <Right> :bnext<CR>
   nnoremap <Left> :bprev<CR>
 
-  # airline {{{
-  g:airline#extensions#tabline#enabled = 1
-  g:airline_powerline_fonts = 1
-  # }}}
-
   # asyncrun {{{
   g:asyncrun_open = 20
   # }}}
@@ -109,6 +104,22 @@
   nmap <leader>gc :Commits<CR>
   nmap <leader>gcc :BCommits<CR>
   nmap <leader>gs :GFiles?<CR>
+  # }}}
+
+  # {{{
+  set showtabline=2
+  g:lightline = {
+    colorscheme: 'rosepine',
+    tabline: {
+      left: [['buffers']],
+    },
+    component_expand: {
+      buffers: 'lightline#bufferline#buffers'
+    },
+    component_type: {
+      buffers: 'tabsel'
+    },
+  }
   # }}}
 
   # undotree {{{

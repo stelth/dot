@@ -31,10 +31,11 @@
         autosuggest-vim
         fzf-vim
         is-vim
+        lightline-bufferline
+        lightline-vim
         markdown-preview-nvim
         rose-pine-vim
         undotree
-        vim-airline
         vim-dispatch
         vim-eunuch
         vim-fugitive
