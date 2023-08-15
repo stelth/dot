@@ -6,12 +6,12 @@
 in
   vimUtils.buildVimPlugin {
     inherit pname;
-    version = "2023-08-10";
+    version = "2023-08-11";
     src = fetchFromGitHub {
       owner = "girishji";
       repo = "vimcomplete";
-      rev = "6d43bf2d9d0910f3d6ddad671e2069e7c05efac4";
-      sha256 = "zcBIcx5G0rlXP4A+NMr4q05oMh8yCtaJ05OeNMtQaVU=";
+      rev = "55014483a2b1236b0c3405a6188ebcd7d6c5eacf";
+      sha256 = "MBQySp6cwkEljGl31M+H8bxAAR18vrSBILf08CHd65E=";
     };
     meta.homepage = "https://github.com/girishji/vimcomplete";
   }
