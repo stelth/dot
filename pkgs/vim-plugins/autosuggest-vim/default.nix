@@ -6,12 +6,12 @@
 in
   vimUtils.buildVimPlugin {
     inherit pname;
-    version = "2023-08-11";
+    version = "2023-08-18";
     src = fetchFromGitHub {
       owner = "girishji";
       repo = "autosuggest.vim";
-      rev = "680e18f59fe49d3c3e7d8092e0d6b41f9a7bfb71";
-      sha256 = "OtMFCUVSTWikKa33R7IlI58wajDURelW6r3szXhvLb0=";
+      rev = "20aab73efa48e4af7ec1b4108f088b2eb85e61e9";
+      sha256 = "RBFlpl0MDWQxNXvctkdCW1LU0WbPad/VDOfEtyondmY=";
     };
     meta.homepage = "https://github.com/girishji/autosuggest.vim";
   }
