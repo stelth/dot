@@ -44,12 +44,6 @@
       format-command: '${lib.getExe pkgs.dprint}'
       format-stdin: true
 
-    hadolint: &hadolint
-      prefix: 'hadolint'
-      lint-command: '${lib.getExe pkgs.hadolint}'
-      lint-formats:
-        - '%f:%l %m'
-
     google-java-format: &google-java-format
       format-command: '${lib.getExe pkgs.google-java-format} -'
       format-stdin: true
@@ -150,7 +144,6 @@
       - <<: *cpplint
     dockerfile:
       - <<: *dprint
-      - <<: *hadolint
     gitcommit:
       - <<: *gitlint
     java:

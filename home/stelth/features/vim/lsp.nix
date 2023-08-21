@@ -28,7 +28,6 @@
       shfmt # bash
       cmake-format # c/cpp
       dprint # docker
-      hadolint # docker
       gitlint # git
       google-java-format # java
       nodePackages.fixjson # json
