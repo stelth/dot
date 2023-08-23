@@ -54,7 +54,7 @@
     flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [
         inputs.devenv.flakeModule
-        ./devenv.nix
+        ./flake/devenv
 
         ./flake/lib
         ./modules
