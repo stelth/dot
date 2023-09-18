@@ -1,5 +1,5 @@
 {home, ...}: let
-  inherit (home.sessionVariables) TERMINAL BROWSER EDITOR;
+  inherit (home.sessionVariables) TERMINAL EDITOR;
 in ''
   source=~/.config/hypr/rose-pine.conf
 
@@ -77,7 +77,6 @@ in ''
   bind=SUPER,Return,exec,${TERMINAL}
   bind=SUPER,w,exec,makoctl,dismiss
   bind=SUPER,v,exec,${TERMINAL} $SHELL -ic ${EDITOR}
-  bind=SUPER,b,exec,${BROWSER}
 
   bind=SUPER,x,exec,rofi -show drun
   bind=SUPER,d,exec,rofi -show run
