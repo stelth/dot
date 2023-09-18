@@ -10,8 +10,8 @@ in
     src = fetchFromGitHub {
       owner = "girishji";
       repo = "vimcomplete";
-      rev = "ff879850a392a5dab37f1763e51a1c27617a9ee5";
-      sha256 = "xA2L8OQW/cZkqKcCf+onxHTnBS9niA2WXhXyzV9tQ2g=";
+      rev = "51019d137ccad5d1d428d4fd0621607bbd452d2b";
+      sha256 = "Hi8LagnisOou/r15H8FOVGdF2oGv2a/oFFZ1V9j9L2w=";
     };
     meta.homepage = "https://github.com/girishji/vimcomplete";
   }
