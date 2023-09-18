@@ -24,7 +24,7 @@ in {
       ];
 
     openssh.authorizedKeys.keys = [(builtins.readFile ../../../../home/stelth/ssh.pub)];
-    passwordFile = config.sops.secrets.stelth-password.path;
+    hashedPasswordFile = config.sops.secrets.stelth-password.path;
 
     packages = [pkgs.home-manager];
   };
