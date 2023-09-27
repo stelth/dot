@@ -14,11 +14,6 @@
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
 
-    initrd = {
-      availableKernelModules = ["ata_generic" "ehci_pci" "ahci" "isci" "xhci_pci" "usbhid" "sd_mod" "sr_mod"];
-      kernelModules = ["kvm-intel"];
-    };
-
     loader = {
       efi = {
         canTouchEfiVariables = true;
