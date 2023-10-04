@@ -6,7 +6,7 @@
 in
   vimUtils.buildVimPlugin {
     inherit pname;
-    version = "2023-08-14";
+    version = "2023-09-13";
     src = fetchFromGitHub {
       owner = "yegappan";
       repo = "lsp";
