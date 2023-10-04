@@ -60,7 +60,8 @@ in ''
   }
 
   # Window Rules
-  windowrule=workspace special,1Password
+  windowrulev2=workspace special,class:(1Password)
+  windowrulev2=workspace special,class:(Cider)
 
   # Startup
   exec = hyprpaper
@@ -68,6 +69,7 @@ in ''
   exec-once=mako
   exec-once=swayidle -w
   exec-once=1password
+  exec-once=cider
 
   # Mouse binding
   bindm=SUPER,mouse:272,movewindow
