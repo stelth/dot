@@ -35,13 +35,13 @@ in {
     enable = true;
     settings = {
       primary = {
-        mode = "dock";
         layer = "top";
         height = 40;
         margin = "6";
         position = "top";
         modules-left = [
-          "wlr/workspaces"
+          "hyprland/workspaces"
+          "hyprland/submap"
           "idle_inhibitor"
           "custom/currentplayer"
           "custom/player"
@@ -59,19 +59,6 @@ in {
           "tray"
           "custom/hostname"
         ];
-
-        "wlr/workspaces" = {
-          disable-scroll = true;
-          all-outputs = true;
-          format = "{icon}";
-          format-icons = {
-            "1" = "<span color=\"#6e6a86\">1</span>";
-            "2" = "<span color=\"#908caa\">2</span>";
-            "urgent" = "";
-            "focused" = "";
-            "default" = "";
-          };
-        };
 
         clock = {
           format = "{:%d/%m %H:%M}";
@@ -158,6 +145,7 @@ in {
             "discord" = " 󰙯 ";
             "sublimemusic" = " ";
             "kdeconnect" = "󰄡 ";
+            "cider" = "";
           };
           on-click = "${playerctld} shift";
           on-click-right = "${playerctld} unshift";
