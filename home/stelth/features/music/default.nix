@@ -1,7 +1,7 @@
 {pkgs, ...}: {
-  home.packages = with pkgs; [spotify];
+  home.packages = with pkgs; [cider];
 
   home.persistence = {
-    "/persist/home/stelth".directories = [".config/spotify"];
+    "/persist/home/stelth".directories = [".config/Cider"];
   };
 }
