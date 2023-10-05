@@ -142,6 +142,7 @@ in {
             "ncspot" = " 󰓇";
             "qutebrowser" = "󰖟";
             "firefox" = " ";
+            "chromium" = "";
             "discord" = " 󰙯 ";
             "sublimemusic" = " ";
             "kdeconnect" = "󰄡 ";
