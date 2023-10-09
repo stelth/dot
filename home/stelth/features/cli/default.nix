@@ -31,7 +31,6 @@
     comma
     bc
     ncdu
-    diffsitter
     ripgrep
     sessionizer
   ];
