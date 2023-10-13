@@ -66,6 +66,7 @@
 
         ./flake/lib
         ./modules
+        ./overlays
       ];
 
       systems = ["x86_64-linux"];
@@ -75,8 +76,6 @@
       };
 
       flake = {
-        overlays = import ./overlays {inherit inputs outputs;};
-
         nixosConfigurations = {
           kvasir = mkNixos [./hosts/kvasir];
         };
