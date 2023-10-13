@@ -1,15 +1,24 @@
-{withSystem, ...}: {
-  flake.overlays.additions = final: prev:
-    withSystem prev.stdenv.hostPlatform.system (
-      {config, ...}: {
-        inherit
-          (config.packages)
-          sessionizer
-          switch-back-to-nvim
-          sysdo
-          tmux-cht
-          ;
-        vimPlugins = prev.vimPlugins // final.callPackage ../pkgs/vim-plugins {};
-      }
-    );
+{inputs, ...}: {
+  imports = [
+    inputs.flake-parts.flakeModules.easyOverlay
+  ];
+
+  perSystem = {
+    config,
+    pkgs,
+    final,
+    ...
+  }: {
+    overlayAttrs = {
+      inherit
+        (config.packages)
+        sessionizer
+        switch-back-to-nvim
+        sysdo
+        tmux-cht
+        ;
+
+      vimPlugins = pkgs.vimPlugins // final.callPackage ../pkgs/vim-plugins {};
+    };
+  };
 }
