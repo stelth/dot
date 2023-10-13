@@ -1,8 +1,4 @@
-{
-  inputs,
-  lib,
-  ...
-}: {
+{inputs, ...}: {
   perSystem = {pkgs, ...}: {
     devenv.shells.default = {
       packages = with pkgs; [
