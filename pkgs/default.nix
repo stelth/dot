@@ -1,4 +1,4 @@
-{pkgs ? import <nixpkgs> {}}: {
+{pkgs}: {
   sessionizer = pkgs.callPackage ./sessionizer {};
   switch-back-to-nvim = pkgs.callPackage ./switch-back-to-nvim {};
   sysdo = pkgs.callPackage ./sysdo {};
