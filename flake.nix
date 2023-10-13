@@ -46,10 +46,11 @@
     ...
   }: let
     inherit (self) outputs;
+    defaultModules = [inputs.nur.nixosModules.nur];
 
-    mkNixos = modules:
+    mkNixos = hostModules:
       inputs.nixpkgs.lib.nixosSystem {
-        inherit modules;
+        modules = hostModules ++ defaultModules;
         specialArgs = {inherit inputs outputs;};
       };
 
