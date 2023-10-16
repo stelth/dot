@@ -13,9 +13,12 @@
     profiles."stelth" = {
       extensions = with config.nur.repos.rycee.firefox-addons; [
         behind-the-overlay-revival
+        # bypass-paywalls-clean
+        clearurls
         darkreader
         decentraleyes
         facebook-container
+        localcdn
         onepassword-password-manager
         tridactyl
         ublock-origin
