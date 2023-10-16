@@ -12,7 +12,10 @@
 
     profiles."stelth" = {
       extensions = with config.nur.repos.rycee.firefox-addons; [
+        behind-the-overlay-revival
+        darkreader
         decentraleyes
+        facebook-container
         onepassword-password-manager
         tridactyl
         ublock-origin
