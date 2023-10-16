@@ -68,13 +68,10 @@
         ./flake/lib
         ./modules
         ./overlays
+        ./pkgs
       ];
 
       systems = ["x86_64-linux"];
-
-      perSystem = {pkgs, ...}: {
-        packages = import ./pkgs {inherit pkgs;};
-      };
 
       flake = {
         nixosConfigurations = {
