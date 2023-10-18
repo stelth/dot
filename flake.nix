@@ -63,9 +63,8 @@
     flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [
         inputs.devenv.flakeModule
-        ./flake/devenv
+        ./devshell
 
-        ./flake/lib
         ./modules
         ./overlays
         ./pkgs
