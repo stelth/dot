@@ -65,7 +65,6 @@
         inputs.devenv.flakeModule
         ./devshell
 
-        ./modules
         ./overlays
         ./pkgs
       ];
