@@ -18,7 +18,7 @@
         tmux-cht
         ;
 
-      vimPlugins = pkgs.vimPlugins // final.callPackage ../pkgs/vim-plugins {};
+      vimPlugins = pkgs.vimPlugins // final.callPackage ../packages/vim-plugins {};
     };
   };
 }

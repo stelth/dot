@@ -57,14 +57,23 @@
       imports = [
         ./devshell/flake-module.nix
         ./overlays/flake-module.nix
-
-        ./pkgs
+        ./packages/flake-module.nix
       ];
 
       systems = ["x86_64-linux" "aarch64-linux" "aarch64-darwin"];
 
-      perSystem = {config, ...}: {
+      perSystem = {
+        config,
+        lib,
+        system,
+        ...
+      }: {
         formatter = config.treefmt.build.wrapper;
+
+        checks = let
+          nixosMachines = lib.mapAttrs' (name: config: lib.nameValuePair "nixos-${name}" config.config.system.build.toplevel) ((lib.filterAttrs (_: config: config.pkgs.system == system)) self.nixosConfigurations);
+        in
+          nixosMachines;
       };
 
       flake = {
