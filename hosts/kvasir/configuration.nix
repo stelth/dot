@@ -1,6 +1,8 @@
 {...}: {
   networking = {
     hostName = "kvasir";
+
+    interfaces.eno1.useDHCP = true;
   };
 
   programs = {
