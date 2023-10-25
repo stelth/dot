@@ -1,5 +1,4 @@
 {
-  inputs,
   config,
   pkgs,
   ...
@@ -7,11 +6,10 @@
   imports = [
     ../common
     ../common/wayland-wm
-    inputs.hyprland.homeManagerModules.default
   ];
 
   home.packages = with pkgs; [
-    inputs.hyprwm-contrib.packages.${system}.grimblast
+    grimblast
     hyprpaper
     swayidle
   ];

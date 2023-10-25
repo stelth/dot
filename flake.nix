@@ -24,9 +24,6 @@
 
     nur.url = "github:nix-community/NUR";
 
-    hyprland.url = "github:hyprwm/hyprland";
-    hyprwm-contrib.url = "github:hyprwm/contrib";
-
     flake-parts.url = "github:hercules-ci/flake-parts";
     devenv.url = "github:cachix/devenv";
     treefmt-nix.url = "github:numtide/treefmt-nix";
