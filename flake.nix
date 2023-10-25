@@ -100,7 +100,7 @@
 
       flake = {
         nixosConfigurations = {
-          kvasir = mkNixos [./hosts/kvasir];
+          kvasir = mkNixos [./nixos/kvasir];
         };
 
         homeConfigurations = {
