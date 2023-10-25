@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    inputs.nur.hmModules.nur
+    inputs.nur-packages.hmModules.nur
   ];
 
   programs.firefox = {
