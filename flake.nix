@@ -65,15 +65,20 @@
       perSystem = {
         config,
         lib,
+        inputs',
+        self',
         system,
         ...
       }: {
+        _module.args.pkgs = inputs'.nixpkgs.legacyPackages;
+
         formatter = config.treefmt.build.wrapper;
 
         checks = let
           nixosMachines = lib.mapAttrs' (name: config: lib.nameValuePair "nixos-${name}" config.config.system.build.toplevel) ((lib.filterAttrs (_: config: config.pkgs.system == system)) self.nixosConfigurations);
+          packages = lib.mapAttrs' (n: lib.nameValuePair "package-${n}") self'.packages;
         in
-          nixosMachines;
+          nixosMachines // packages;
       };
 
       flake = {
