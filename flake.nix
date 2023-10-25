@@ -25,15 +25,11 @@
     nur.url = "github:nix-community/NUR";
 
     flake-parts.url = "github:hercules-ci/flake-parts";
-    devenv.url = "github:cachix/devenv";
     treefmt-nix.url = "github:numtide/treefmt-nix";
 
-    nix2container = {
-      url = "github:nlewo/nix2container";
+    pre-commit-hooks-nix = {
+      url = "github:cachix/pre-commit-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    mk-shell-bin = {
-      url = "github:rrbutani/nix-mk-shell-bin";
     };
   };
 
@@ -59,14 +55,17 @@
   in
     flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [
-        inputs.devenv.flakeModule
-        ./devshell
+        ./devshell/flake-module.nix
 
         ./overlays
         ./pkgs
       ];
 
-      systems = ["x86_64-linux"];
+      systems = ["x86_64-linux" "aarch64-linux" "aarch64-darwin"];
+
+      perSystem = {config, ...}: {
+        formatter = config.treefmt.build.wrapper;
+      };
 
       flake = {
         nixosConfigurations = {
