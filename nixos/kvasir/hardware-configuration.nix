@@ -7,7 +7,7 @@
   ...
 }: {
   imports = [
-    ../common/optional/ephemeral-btrfs.nix
+    ../modules/ephemeral-btrfs.nix
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
