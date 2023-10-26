@@ -21,6 +21,18 @@
     };
   };
 
+  hardware = {
+    nvidia = {
+      prime.offload.enable = false;
+      modesetting.enable = true;
+    };
+    opengl = {
+      enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
+    };
+  };
+
   fileSystems = {
     "/srv/logs" = {
       device = "/dev/disk/by-label/data";
@@ -36,6 +48,5 @@
     }
   ];
 
-  nixpkgs.hostPlatform = "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = true;
 }

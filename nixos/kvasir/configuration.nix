@@ -1,26 +1,27 @@
 {...}: {
+  imports = [
+    ./hardware-configuration.nix
+
+    ../modules/yubikey.nix
+    ../modules/1password.nix
+    ../modules/ergodox.nix
+    ../modules/printing.nix
+    ../modules/sddm.nix
+  ];
+
   networking = {
     hostName = "kvasir";
 
     interfaces.eno1.useDHCP = true;
   };
 
-  programs = {
-    dconf.enable = true;
-    kdeconnect.enable = true;
+  time.timeZone = null;
+  services = {
+    geoclue2.enable = true;
+    openssh.enable = true;
   };
 
-  hardware = {
-    nvidia = {
-      prime.offload.enable = false;
-      modesetting.enable = true;
-    };
-    opengl = {
-      enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
-    };
-  };
+  programs.vim.defaultEditor = true;
 
   security.polkit.enable = true;
 

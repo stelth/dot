@@ -54,25 +54,11 @@
     self,
     flake-parts,
     ...
-  }: let
-    inherit (self) outputs;
-    defaultModules = [inputs.nur-packages.nixosModules.nur];
-
-    mkNixos = hostModules:
-      inputs.nixpkgs.lib.nixosSystem {
-        modules = hostModules ++ defaultModules;
-        specialArgs = {inherit inputs outputs;};
-      };
-
-    mkHome = modules: pkgs:
-      inputs.home-manager.lib.homeManagerConfiguration {
-        inherit modules pkgs;
-        extraSpecialArgs = {inherit inputs outputs;};
-      };
-  in
-    flake-parts.lib.mkFlake {inherit inputs;} {
+  }:
+    (flake-parts.lib.evalFlakeModule {inherit inputs;} {
       imports = [
         ./devshell/flake-module.nix
+        ./nixos/flake-module.nix
         ./overlays/flake-module.nix
         ./packages/flake-module.nix
       ];
@@ -99,15 +85,7 @@
         in
           nixosMachines // packages // devShells // homeConfigurations;
       };
-
-      flake = {
-        nixosConfigurations = {
-          kvasir = mkNixos [./nixos/kvasir];
-        };
-
-        homeConfigurations = {
-          "stelth@kvasir" = mkHome [./home/stelth/kvasir.nix] inputs.nixpkgs.legacyPackages."x86_64-linux";
-        };
-      };
-    };
+    })
+    .config
+    .flake;
 }
