@@ -16,6 +16,7 @@
       ./modules/minimal-docs.nix
       ./modules/nix-daemon.nix
       ./modules/nix-path.nix
+      ./modules/sshd.nix
       ./modules/optin-persistence.nix
       ./modules/pinned-registry.nix
       ./modules/sops.nix
@@ -40,6 +41,8 @@ in {
         imports = [
           ./kvasir/configuration.nix
           defaultModule
+
+          inputs.home-manager.nixosModules.home-manager
 
           inputs.nixos-hardware.nixosModules.common-cpu-intel
           inputs.nixos-hardware.nixosModules.common-gpu-nvidia
