@@ -27,13 +27,13 @@
       asyncrun-vim
       asynctasks-vim
       auto-pairs
-      autosuggest-vim
+      pkgs.autosuggest-vim
       fzf-vim
       is-vim
       lightline-bufferline
       lightline-vim
       markdown-preview-nvim
-      rose-pine-vim
+      pkgs.rose-pine-vim
       undotree
       vim-dispatch
       vim-eunuch
@@ -50,8 +50,8 @@
       vim-tmux-navigator
       vim-unimpaired
       vim-vinegar
-      vimcomplete
-      vsnip-complete-vim
+      pkgs.vimcomplete
+      pkgs.vsnip-complete-vim
     ];
   };
 }
