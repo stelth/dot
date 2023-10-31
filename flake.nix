@@ -70,7 +70,7 @@
         extraSpecialArgs = {inherit inputs outputs;};
       };
   in
-    flake-parts.lib.mkFlake {inherit inputs;} {
+    (flake-parts.lib.evalFlakeModule {inherit inputs;} {
       imports = [
         ./devshell/flake-module.nix
         ./packages/flake-module.nix
@@ -108,5 +108,7 @@
           "stelth@kvasir" = mkHome [./home/stelth/kvasir.nix] inputs.nixpkgs.legacyPackages."x86_64-linux";
         };
       };
-    };
+    })
+    .config
+    .flake;
 }
