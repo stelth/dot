@@ -42,7 +42,7 @@
     ++ lib.optionals (!pkgs.stdenvNoCC.isDarwin) [checkmake];
 
   programs.vim = {
-    plugins = with pkgs; [
+    plugins = with pkgs.vimPlugins; [
       vim9-lsp
     ];
   };
