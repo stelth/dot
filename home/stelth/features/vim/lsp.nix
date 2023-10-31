@@ -2,7 +2,22 @@
   lib,
   pkgs,
   ...
-}: {
+}: let
+  inherit (pkgs.vimUtils) buildVimPlugin;
+  inherit (pkgs) fetchFromGitHub;
+
+  vim9-lsp = buildVimPlugin {
+    pname = "vim9-lsp";
+    version = "2023-09-13";
+    src = fetchFromGitHub {
+      owner = "yegappan";
+      repo = "lsp";
+      rev = "22330283aba45977b0391234c1475e7a369371ea";
+      sha256 = "uLgNOVjEfupYozeViWYriMb8rnUrFgpgwPlA4WJh3A0=";
+    };
+    meta.homepage = "https://github.com/yegappan/lsp";
+  };
+in {
   xdg.configFile."efm-langserver/config.yaml".text = import ./efm.nix {inherit lib pkgs;};
 
   home.packages = with pkgs;
@@ -42,7 +57,7 @@
     ++ lib.optionals (!pkgs.stdenvNoCC.isDarwin) [checkmake];
 
   programs.vim = {
-    plugins = with pkgs.vimPlugins; [
+    plugins = [
       vim9-lsp
     ];
   };
