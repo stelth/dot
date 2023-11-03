@@ -8,4 +8,10 @@
     ./features/music
     ./features/wine
   ];
+
+  home.persistence = {
+    "/persist/home/stelth".directories = [
+      ".config/Yubico"
+    ];
+  };
 }
