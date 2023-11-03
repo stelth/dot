@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   imports = [
     ./1password.nix
     ./chat
@@ -21,4 +21,8 @@
   };
 
   xdg.mimeApps.enable = true;
+
+  home.packages = with pkgs; [
+    zathura
+  ];
 }
