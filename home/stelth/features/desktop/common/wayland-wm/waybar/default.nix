@@ -169,7 +169,7 @@ in {
           interval = 2;
           return-type = "json";
           exec = let
-            gpgCmds = import ../../../../cli/gpg-commands.nix {inherit pkgs;};
+            gpgCmds = import ./gpg-commands.nix {inherit pkgs;};
           in
             jsonOutput "gpg-agent" {
               pre = ''status=$(${gpgCmds.isUnlocked} && echo "unlocked" || echo "locked")'';

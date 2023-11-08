@@ -1,17 +1,14 @@
 {
-  outputs,
+  config,
   lib,
   ...
-}: let
-  hostnames = builtins.attrNames outputs.nixosConfigurations;
-in {
+}: {
   programs.ssh = {
     enable = true;
     includes = ["~/.1password/ssh_config"];
 
     matchBlocks = {
       net = {
-        host = builtins.concatStringsSep " " hostnames;
         forwardAgent = true;
         remoteForwards = [
           {
@@ -52,7 +49,9 @@ in {
     };
   };
 
-  home.persistence = {
-    "/persist/home/stelth".directories = [".ssh"];
+  home = lib.optionalAttrs (builtins.hasAttr "persistence" config.home) {
+    persistence = {
+      "/persist/home/stelth".directories = [".ssh"];
+    };
   };
 }

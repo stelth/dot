@@ -76,9 +76,11 @@ in {
     };
   };
 
-  home.persistence = {
-    "/persist/home/stelth" = {
-      directories = [".local/share/zoxide" ".local/share/zsh"];
+  home = lib.optionalAttrs (builtins.hasAttr "persistence" config.home) {
+    persistence = {
+      "/persist/home/stelth" = {
+        directories = [".local/share/zoxide" ".local/share/zsh"];
+      };
     };
   };
 }

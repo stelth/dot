@@ -3,6 +3,7 @@
     ./global
     # ./features/cad
     ./features/cli
+    ./features/gpg
     ./features/desktop/hyprland
     ./features/vim
     ./features/music

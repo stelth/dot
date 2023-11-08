@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   imports = [
-    ../../darwin/modules/cli
-    ../../darwin/modules/vim
+    ./features/cli
+    ./features/vim
   ];
 
   home.packages = with pkgs; [

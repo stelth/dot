@@ -60,8 +60,10 @@ in {
     ./lsp.nix
   ];
 
-  home.persistence = {
-    "/persist/home/stelth".directories = [".config/coc"];
+  home = lib.optionalAttrs (builtins.hasAttr "persistence" config.home) {
+    persistence = {
+      "/persist/home/stelth".directories = [".config/coc"];
+    };
   };
 
   xdg.configFile."vim/vimrc".text = import ./config.nix {
