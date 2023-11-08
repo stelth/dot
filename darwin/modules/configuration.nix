@@ -5,16 +5,7 @@
 }: {
   # Nix configuration ------------------------------------------------------------------------------
 
-  nix.binaryCaches = [
-    "https://cache.nixos.org/"
-  ];
-  nix.binaryCachePublicKeys = [
-    "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-  ];
-  nix.trustedUsers = [
-    "@admin"
-  ];
-  users.nix.configureBuildUsers = true;
+  nix.configureBuildUsers = true;
 
   # Enable experimental nix command and flakes
   # nix.package = pkgs.nixUnstable;

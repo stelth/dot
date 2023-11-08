@@ -104,8 +104,9 @@
           packages = lib.mapAttrs' (n: lib.nameValuePair "package-${n}") self'.packages;
           devShells = lib.mapAttrs' (n: lib.nameValuePair "devShell-${n}") self'.devShells;
           homeConfigurations = lib.mapAttrs' (name: config: lib.nameValuePair "home-manager-${name}" config.activation-script) (self'.legacyPackages.homeConfigurations or {});
+          darwinConfigurations = lib.mapAttrs' (name: config: lib.nameValuePair "darwin-${name}" config.config.system.build.toplevel) ((lib.filterAttrs (_: config: config.pkgs.system == system)) self.darwinConfigurations);
         in
-          nixosMachines // packages // devShells // homeConfigurations;
+          nixosMachines // packages // devShells // homeConfigurations // darwinConfigurations;
       };
 
       flake = {
