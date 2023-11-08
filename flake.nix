@@ -48,6 +48,11 @@
     impermanence = {
       url = "github:nix-community/impermanence";
     };
+
+    darwin = {
+      url = "github:lnl7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
