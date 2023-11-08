@@ -86,12 +86,16 @@
       perSystem = {
         config,
         lib,
-        inputs',
         self',
         system,
         ...
       }: {
-        _module.args.pkgs = inputs'.nixpkgs.legacyPackages;
+        _module.args.pkgs = import inputs.nixpkgs {
+          inherit system;
+          overlays = [
+            outputs.overlays.default
+          ];
+        };
 
         formatter = config.treefmt.build.wrapper;
 
@@ -111,6 +115,10 @@
 
         homeConfigurations = {
           "stelth@kvasir" = mkHome [./home/stelth/kvasir.nix] inputs.nixpkgs.legacyPackages."x86_64-linux";
+        };
+
+        darwinConfigurations = {
+          "jcox@Jasons-MacBook-Pro" = import ./darwin {inherit inputs outputs;};
         };
       };
     })

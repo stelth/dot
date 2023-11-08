@@ -24,5 +24,9 @@
         tmux-cht
         ;
     };
+
+    apps = {
+      sysdo.program = "${config.packages.sysdo}/bin/sysdo";
+    };
   };
 }
