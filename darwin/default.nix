@@ -23,7 +23,7 @@ in
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          users.jcox = import ./home.nix;
+          users.jcox = import ../home/stelth/jasons-macbook-pro.nix;
         };
       }
     ];
