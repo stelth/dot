@@ -62,7 +62,11 @@ in {
 
   home = lib.optionalAttrs (builtins.hasAttr "persistence" config.home) {
     persistence = {
-      "/persist/home/stelth".directories = [".config/coc"];
+      "/persist/home/stelth".directories = [
+        ".config/coc"
+        ".local/share/vim"
+        ".local/state/vim"
+      ];
     };
   };
 
