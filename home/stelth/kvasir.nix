@@ -1,7 +1,7 @@
 {...}: {
   imports = [
     ./global
-    # ./features/cad
+    ./features/cad
     ./features/cli
     ./features/gpg
     ./features/desktop/hyprland
