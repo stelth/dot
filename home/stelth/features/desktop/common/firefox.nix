@@ -58,7 +58,7 @@
         "extensions.getAddons.showPane" = false;
         "extensions.htmlaboutaddons.recommendations.enabled" = false;
         "extensions.pocket.enabled" = false;
-        "identity.fxaccounts.enabled" = false;
+        "identity.fxaccounts.enabled" = true;
         "privacy.trackingprotection.enabled" = true;
         "privacy.trackingprotection.socialtracking.enabled" = true;
       };
