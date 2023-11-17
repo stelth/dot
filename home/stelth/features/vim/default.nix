@@ -9,12 +9,12 @@
 
   autosuggest-vim = buildVimPlugin {
     pname = "autosuggest-vim";
-    version = "2023-10-01";
+    version = "2023-11-16";
     src = fetchFromGitHub {
       owner = "girishji";
       repo = "autosuggest.vim";
-      rev = "b2a725b49f74cf018bf4c53e638d1df7a790bb59";
-      sha256 = "HP1jXrp3l9Z3wviUT/8I6Z+Be9k3AMPxnqQporFkUPk=";
+      rev = "395d49fe45f08e531cd8a6590d582e2ed27864fc";
+      sha256 = "412Y4PyQMYPRcJ+zscSdS2Ar5HRdVCjn+/2mEai0ZV8=";
     };
     meta.homepage = "https://github.com/girishji/autosuggest.vim";
   };
@@ -33,12 +33,12 @@
 
   vimcomplete = buildVimPlugin {
     pname = "vimcomplete";
-    version = "2023-10-03";
+    version = "2023-10-30";
     src = fetchFromGitHub {
       owner = "girishji";
       repo = "vimcomplete";
-      rev = "838326b16c627718d1814980988db46ec5e83104";
-      sha256 = "yPP2vn8AanZLM1+LCJinoPJ3u1FrGvk2+9pE08HklLk=";
+      rev = "439d47ba0eeabe2d72ba00165627337f98cdf4a1";
+      sha256 = "sJGSh/03PpXP1UTH9WnyVf5rnE86lVfa39ovykQfk9o=";
     };
     meta.homepage = "https://github.com/girishji/vimcomplete";
   };
