@@ -1,16 +1,12 @@
 {...}: {
-  programs.google-chrome-beta = {
+  programs.google-chrome = {
     enable = true;
   };
 
   home = {
-    sessionVariables.BROWSER = "google-chrome-beta";
-
     persistence = {
       "/persist/home/stelth".directories = [
         ".config/google-chrome"
-        ".config/google-chrome-beta"
-        ".config/google-chrome-unstable"
       ];
     };
   };

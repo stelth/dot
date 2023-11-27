@@ -2,7 +2,7 @@
   imports = [
     ./1password.nix
     ./chat
-    ./firefox.nix
+    ./chrome.nix
     ./font.nix
     ./gtk.nix
     ./kdeconnect.nix
@@ -12,6 +12,7 @@
   ];
 
   home.sessionVariables = {
+    BROWSER = "google-chrome";
     NIXOS_OZONE_WL = "1";
     WLR_NO_HARDWARE_CURSORS = "1";
     XDG_CACHE_HOME = "$HOME/.cache";
