@@ -5,9 +5,9 @@ vim.o.timeoutlen = 300
 -- Make all keymaps silent by default
 local keymap_set = vim.keymap.set
 vim.keymap.set = function(mode, lhs, rhs, opts)
-	opts = opts or {}
-	opts.silent = opts.silent ~= false
-	return keymap_set(mode, lhs, rhs, opts)
+    opts = opts or {}
+    opts.silent = opts.silent ~= false
+    return keymap_set(mode, lhs, rhs, opts)
 end
 
 vim.keymap.set("n", "Y", "yg$")
@@ -28,10 +28,10 @@ vim.keymap.set("n", "<leader>gb", telescope_builtin.git_branches, { desc = "Bran
 vim.keymap.set("n", "<leader>gs", telescope_builtin.git_status, { desc = "Status" })
 vim.keymap.set("n", "<leader>gww", require("telescope").extensions.git_worktree.git_worktrees, { desc = "Worktrees" })
 vim.keymap.set(
-	"n",
-	"<leader>gwc",
-	require("telescope").extensions.git_worktree.create_git_worktree,
-	{ desc = "Create worktree" }
+    "n",
+    "<leader>gwc",
+    require("telescope").extensions.git_worktree.create_git_worktree,
+    { desc = "Create worktree" }
 )
 vim.keymap.set("n", "<leader>gn", require("neogit").open, { desc = "Neogit" })
 
@@ -53,14 +53,14 @@ vim.keymap.set("n", "<leader>sb", telescope_builtin.current_buffer_fuzzy_find, {
 vim.keymap.set("n", "<leader>sh", telescope_builtin.command_history, { desc = "Command History" })
 vim.keymap.set("n", "<leader>sm", telescope_builtin.marks, { desc = "Marks" })
 vim.keymap.set("n", "<leader>sw", function()
-	telescope_builtin.grep_string({ search = vim.fn.expand("<cword>") })
+    telescope_builtin.grep_string({ search = vim.fn.expand("<cword>") })
 end, { desc = "Current Word" })
 vim.keymap.set("n", "<leader>ff", telescope_builtin.find_files, { desc = "Find File" })
 vim.keymap.set("n", "<leader>fr", telescope_builtin.oldfiles, { desc = "Recent Files" })
 
 -- Switch buffer
 vim.keymap.set("n", "<leader>,", function()
-	telescope_builtin.buffers({ show_all_buffers = true })
+    telescope_builtin.buffers({ show_all_buffers = true })
 end, { desc = "Switch Buffer" })
 
 -- Quick search

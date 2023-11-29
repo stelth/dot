@@ -16,7 +16,6 @@
           alejandra.enable = true;
           deadnix.enable = true;
           shfmt.enable = true;
-          stylua.enable = true;
         };
         settings = {
           deadnix = {
@@ -36,7 +35,6 @@
         prettier.enable = true;
         shellcheck.enable = true;
         shfmt.enable = false;
-        stylua.enable = true;
       };
     };
 
