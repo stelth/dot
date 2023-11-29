@@ -71,6 +71,7 @@
       noice-nvim
       null-ls-nvim
       nvim-cmp
+      nvim-hlslens
       nvim-lspconfig
       nvim-navic
       nvim-notify
