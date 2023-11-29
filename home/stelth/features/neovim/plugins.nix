@@ -78,6 +78,7 @@
       nvim-terminal-lua
       nvim-treesitter.withAllGrammars
       nvim-treesitter-textobjects
+      nvim-ts-context-commentstring
       nvim-web-devicons
       rose-pine
       telescope-fzf-native-nvim
