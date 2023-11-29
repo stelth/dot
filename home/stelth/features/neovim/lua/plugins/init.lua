@@ -57,5 +57,7 @@ vim.g.matchup_matchparen_offscreen = {
     method = "status_manual",
 }
 
+require("neogit").setup({})
+
 require("plugins.nvim-cmp")
 require("plugins.telescope-nvim")
