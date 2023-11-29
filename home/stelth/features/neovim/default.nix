@@ -1,10 +1,24 @@
-{pkgs, ...}: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [./plugins.nix];
 
   xdg.configFile = {
     "nvim/lua" = {
       recursive = true;
       source = ./lua;
+    };
+  };
+
+  home = lib.optionalAttrs (builtins.hasAttr "persistence" config.home) {
+    persistence = {
+      "/persist/home/stelth".directories = [
+        ".local/share/nvim"
+        ".local/state/nvim"
+      ];
     };
   };
 
