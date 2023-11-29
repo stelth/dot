@@ -59,5 +59,6 @@ vim.g.matchup_matchparen_offscreen = {
 
 require("neogit").setup({})
 
+require("plugins.noice")
 require("plugins.nvim-cmp")
 require("plugins.telescope-nvim")

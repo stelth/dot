@@ -69,10 +69,12 @@
       mini-nvim
       neodev-nvim
       neogit
+      noice-nvim
       null-ls-nvim
       nvim-cmp
       nvim-lspconfig
       nvim-navic
+      nvim-notify
       nvim-terminal-lua
       nvim-treesitter.withAllGrammars
       nvim-treesitter-textobjects
