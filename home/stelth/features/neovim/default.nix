@@ -24,6 +24,7 @@
 
   programs.neovim = {
     enable = true;
+    defaultEditor = true;
     vimAlias = true;
     withNodeJs = false;
     withPython3 = false;
