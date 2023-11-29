@@ -84,6 +84,7 @@
       telescope-nvim
       telescope-undo-nvim
       vim-matchup
+      vim-tmux-navigator
     ];
   };
 }
