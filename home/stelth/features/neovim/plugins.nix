@@ -63,7 +63,6 @@
       cmp_luasnip
       dressing-nvim
       friendly-snippets
-      git-worktree-nvim
       inc-rename-nvim
       luasnip
       mini-nvim

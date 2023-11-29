@@ -26,14 +26,6 @@ vim.keymap.set("n", "<BS>", vim.cmd.nohlsearch)
 vim.keymap.set("n", "<leader>gc", telescope_builtin.git_commits, { desc = "Commits" })
 vim.keymap.set("n", "<leader>gb", telescope_builtin.git_branches, { desc = "Branches" })
 vim.keymap.set("n", "<leader>gs", telescope_builtin.git_status, { desc = "Status" })
-vim.keymap.set("n", "<leader>gww", require("telescope").extensions.git_worktree.git_worktrees, { desc = "Worktrees" })
-vim.keymap.set(
-    "n",
-    "<leader>gwc",
-    require("telescope").extensions.git_worktree.create_git_worktree,
-    { desc = "Create worktree" }
-)
-vim.keymap.set("n", "<leader>gn", require("neogit").open, { desc = "Neogit" })
 
 -- Help keymaps
 vim.keymap.set("n", "<leader>ht", telescope_builtin.builtin, { desc = "Telescope" })

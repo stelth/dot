@@ -4,8 +4,6 @@ require("barbecue").setup({
     attach_navic = false,
 })
 
-require("git-worktree").setup({})
-
 require("inc_rename").setup()
 
 require("terminal").setup({})
