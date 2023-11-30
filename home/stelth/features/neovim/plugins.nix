@@ -15,7 +15,7 @@
 in {
   programs.neovim = {
     extraPackages = with pkgs; [
-      # lsp servers
+      ### lsp servers
       nodePackages.bash-language-server # bash
       clang-tools # c/c++ clangd
       nodePackages.vscode-json-languageserver # json files
@@ -25,8 +25,32 @@ in {
       nil # nix
       python311Packages.python-lsp-server # python
       taplo # toml
-      typos # all, checks for spelling errors
       yaml-language-server # yaml
+
+      ### linters
+      # Markdown
+      nodePackages.alex
+      markdownlint-cli2
+      # Python
+      bandit
+      python311Packages.flake8
+      pylint
+      # git commit messages
+      commitlint
+      # C / C++
+      cpplint
+      # json / jsonc
+      nodePackages.jsonlint
+      # lua
+      selene
+      # bash
+      shellcheck
+      # nix
+      statix
+      # all
+      typos
+      # yaml
+      yamllint
     ];
 
     plugins = with pkgs.vimPlugins; [
@@ -46,6 +70,7 @@ in {
       noice-nvim
       nvim-cmp
       nvim-hlslens
+      nvim-lint
       nvim-lspconfig
       nvim-navic
       nvim-notify
