@@ -1,6 +1,6 @@
 require("lint").linters_by_ft = {
-	c = { "clang-tidy", "cpplint" },
-	cpp = { "clang-tidy", "cpplint" },
+	c = { "clangtidy", "cpplint" },
+	cpp = { "clangtidy", "cpplint" },
 	gitcommit = { "commitlint" },
 	json = { "jsonlint" },
 	jsonc = { "jsonlint" },
