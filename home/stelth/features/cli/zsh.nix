@@ -56,9 +56,7 @@ in {
                     --preview "bat --color=always {1} --theme='Solarized (light)' --highlight-line {2}" \
                     --preview-window 'up,60%,border-bottom,+{2}+3/3,~3')
               file=''${result%%:*}
-              echo "$file"
               linenumber=$(echo "''${result}" | cut -d: -f2)
-              echo "$linenumber"
               if [[ -n "$file" ]]; then
                       $EDITOR +"''${linenumber}" "$file"
               fi
