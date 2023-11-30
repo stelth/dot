@@ -1,57 +1,32 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  neocmakelsp = pkgs.rustPlatform.buildRustPackage rec {
+    pname = "neocmakelsp";
+    version = "0.6.16";
+
+    src = pkgs.fetchFromGitHub {
+      owner = "Decodetalkers";
+      repo = "neocmakelsp";
+      rev = "v${version}";
+      hash = "sha256-tQlRo/g4FlR26CrVagzgHvPM4PQ29kSa1ziXFFH83h4=";
+    };
+
+    cargoHash = "sha256-1WoFceHua8GTZg1XlrRWdu3o8EE4eOkfNUszxOiod6A=";
+  };
+in {
   programs.neovim = {
     extraPackages = with pkgs; [
-      # C/C++
-      clang-tools
-      cppcheck
-      cpplint
-      include-what-you-use
-      lldb
-
-      # Java
-      jdt-language-server
-
-      #nix
-      alejandra
-      deadnix
-      rnix-lsp
-      statix
-
-      # python
-      (python3.withPackages
-        (ps: with ps; [black debugpy flake8 isort yamllint pylint]))
-      nodePackages.pyright
-
-      # Lua
-      stylua
-      lua-language-server
-
-      # Docker
-      nodePackages.dockerfile-language-server-nodejs
-      hadolint
-
-      # Shell scripting
-      nodePackages.bash-language-server
-      shellcheck
-      shellharden
-      shfmt
-
-      # {C}Make
-      checkmake
-      cmake-format
-      cmake-language-server
-
-      # Additional
-      actionlint
-      gitlint
-      marksman
-      nodePackages.jsonlint
-      nodePackages.markdownlint-cli
-      nodePackages.prettier
-      nodePackages.vscode-json-languageserver
-      nodePackages.yaml-language-server
-      proselint
-      taplo
+      # lsp servers
+      nodePackages.bash-language-server # bash
+      clang-tools # c/c++ clangd
+      nodePackages.vscode-json-languageserver # json files
+      lua-language-server # lua
+      marksman # markdown
+      neocmakelsp # cmake
+      nil # nix
+      python311Packages.python-lsp-server # python
+      taplo # toml
+      typos # all, checks for spelling errors
+      yaml-language-server # yaml
     ];
 
     plugins = with pkgs.vimPlugins; [
@@ -69,7 +44,6 @@
       neodev-nvim
       neogit
       noice-nvim
-      null-ls-nvim
       nvim-cmp
       nvim-hlslens
       nvim-lspconfig
