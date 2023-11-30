@@ -62,6 +62,7 @@ require("neogit").setup({})
 
 require("hlslens").setup({})
 
+require('plugins.formatter')
 require("plugins.noice")
 require("plugins.nvim-cmp")
 require('plugins.nvim-lint')

@@ -51,6 +51,23 @@ in {
       typos
       # yaml
       yamllint
+
+      ### Formatters
+      # cmake
+      cmake-format
+      # json
+      prettierd
+      # lua
+      stylua
+      # nix
+      alejandra
+      # python
+      black
+      isort
+      # shell
+      shfmt
+      # toml
+      taplo
     ];
 
     plugins = with pkgs.vimPlugins; [
@@ -62,6 +79,7 @@ in {
       cmp_luasnip
       dressing-nvim
       friendly-snippets
+      formatter-nvim
       inc-rename-nvim
       luasnip
       mini-nvim

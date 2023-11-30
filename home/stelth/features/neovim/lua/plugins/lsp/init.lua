@@ -42,7 +42,4 @@ lspconfig.pylsp.setup(make_config({}))
 
 lspconfig.taplo.setup(make_config({}))
 
--- Need to wait until nvim-lspconfig is updated
--- lspconfig.typos_lsp.setup(make_config({})) 
-
 lspconfig.yamlls.setup(make_config({}))
