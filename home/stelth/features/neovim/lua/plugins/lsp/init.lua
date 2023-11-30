@@ -6,7 +6,9 @@ lspconfig.bashls.setup(make_config({}))
 
 lspconfig.clangd.setup(make_config({}))
 
-lspconfig.jsonls.setup(make_config({}))
+lspconfig.jsonls.setup(make_config({
+	cmd = { "vscode-json-languageserver", "--stdio" },
+}))
 
 require("neodev").setup({
 	override = function(root_dir, library)

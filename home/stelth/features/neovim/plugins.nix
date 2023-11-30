@@ -17,7 +17,7 @@ in {
     extraPackages = with pkgs; [
       ### lsp servers
       nodePackages.bash-language-server # bash
-      clang-tools # c/c++ clangd
+      clang-tools_16 # c/c++ clangd
       nodePackages.vscode-json-languageserver # json files
       lua-language-server # lua
       marksman # markdown
