@@ -33,12 +33,12 @@
 
   vimcomplete = buildVimPlugin {
     pname = "vimcomplete";
-    version = "2023-10-30";
+    version = "2023-11-29";
     src = fetchFromGitHub {
       owner = "girishji";
       repo = "vimcomplete";
-      rev = "439d47ba0eeabe2d72ba00165627337f98cdf4a1";
-      sha256 = "sJGSh/03PpXP1UTH9WnyVf5rnE86lVfa39ovykQfk9o=";
+      rev = "92afa7730539b52f2ed51802d85ef3fcd21dafef";
+      sha256 = "sha256-DdbmYesolC19T6EgWFenz/CTr6YcAqi+Uy/Xab5A3jg=";
     };
     meta.homepage = "https://github.com/girishji/vimcomplete";
   };

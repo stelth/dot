@@ -8,12 +8,12 @@
 
   vim9-lsp = buildVimPlugin {
     pname = "vim9-lsp";
-    version = "2023-10-16";
+    version = "2023-11-28";
     src = fetchFromGitHub {
       owner = "yegappan";
       repo = "lsp";
-      rev = "38970403dc4d602056ea4028664206ffce74e82a";
-      sha256 = "fFbDfWaLgorWDr7kAonJJp5XSIzCc0E/J0qyo9Z5voQ=";
+      rev = "ad380a8fb0979bf45e9bd74c8a64a7d235763b6e";
+      sha256 = "sha256-H+Sn+ohNS2N02/esBuVcINRkQlv+wTk0MO3gzrbhYDM=";
     };
     meta.homepage = "https://github.com/yegappan/lsp";
   };
