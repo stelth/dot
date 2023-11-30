@@ -92,7 +92,6 @@ in {
       nvim-lspconfig
       nvim-navic
       nvim-notify
-      nvim-terminal-lua
       nvim-treesitter.withAllGrammars
       nvim-treesitter-textobjects
       nvim-ts-context-commentstring

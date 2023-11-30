@@ -6,8 +6,6 @@ require("barbecue").setup({
 
 require("inc_rename").setup()
 
-require("terminal").setup({})
-
 require("luasnip").config.set_config({
     history = true,
     enable_autosnippets = true,

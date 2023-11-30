@@ -8,29 +8,25 @@ lspconfig.clangd.setup(make_config({}))
 
 lspconfig.jsonls.setup(make_config({}))
 
-lspconfig.lua_ls.setup(make_config{
-  on_init = function(client)
-    local path = client.workspace_folders[1].name
-    if not vim.loop.fs_stat(path..'/.luarc.json') and not vim.loop.fs_stat(path..'/.luarc.jsonc') then
-      client.config.settings = vim.tbl_deep_extend('force', client.config.settings, {
-        Lua = {
-          runtime = {
-            version = 'LuaJIT'
-          },
-          workspace = {
-            checkThirdParty = false,
-            library = {
-              vim.env.VIMRUNTIME
-            }
-          }
-        }
-      })
-
-      client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
-    end
-    return true
-  end
+require("neodev").setup({
+	override = function(root_dir, library)
+		if root_dir:find("repos/dot", 1, true) == 1 then
+			library.enabled = true
+			library.plugins = true
+			library.types = true
+			library.runtime = true
+		end
+	end,
 })
+lspconfig.lua_ls.setup(make_config({
+	settings = {
+		Lua = {
+			completion = {
+				callSnippet = "Replace",
+			},
+		},
+	},
+}))
 
 lspconfig.marksman.setup(make_config({}))
 
