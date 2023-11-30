@@ -1,8 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./features/cli
-    ./features/neovim
-    # ./features/vim
+    ./features/vim
   ];
 
   home.packages = with pkgs; [
