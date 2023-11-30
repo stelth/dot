@@ -81,6 +81,7 @@ in {
       friendly-snippets
       formatter-nvim
       inc-rename-nvim
+      lsp-inlayhints-nvim
       luasnip
       mini-nvim
       neodev-nvim
