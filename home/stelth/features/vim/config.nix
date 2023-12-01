@@ -85,6 +85,11 @@
   g:asyncrun_open = 20
   # }}}
 
+  # vim-highlightedyank {{{
+  g:highlightedyank_highlight_duration = 300
+  # }}}
+
+
   # fzf-vim {{{
   nmap <leader>hc :Commands<CR>
   nmap <leader>ht :Helptags<CR>
