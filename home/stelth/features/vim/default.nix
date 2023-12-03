@@ -31,6 +31,18 @@
     meta.homepage = "https://github.com/rose-pine/vim";
   };
 
+  vim9-lsp = buildVimPlugin {
+    pname = "vim9-lsp";
+    version = "2023-11-28";
+    src = fetchFromGitHub {
+      owner = "yegappan";
+      repo = "lsp";
+      rev = "ad380a8fb0979bf45e9bd74c8a64a7d235763b6e";
+      sha256 = "sha256-H+Sn+ohNS2N02/esBuVcINRkQlv+wTk0MO3gzrbhYDM=";
+    };
+    meta.homepage = "https://github.com/yegappan/lsp";
+  };
+
   vimcomplete = buildVimPlugin {
     pname = "vimcomplete";
     version = "2023-11-29";
@@ -55,23 +67,58 @@
     meta.homepage = "https://github.com/girishji/vsnip-complete.vim";
   };
 in {
-  imports = [
-    ./dev.nix
-    ./lsp.nix
-  ];
+  home =
+    {
+      packages = with pkgs; [
+        cmake
+        ninja
 
-  home = lib.optionalAttrs (builtins.hasAttr "persistence" config.home) {
-    persistence = {
-      "/persist/home/stelth".directories = [
-        ".config/coc"
-        ".local/share/vim"
-        ".local/state/vim"
+        # mandatory
+        nodejs
+        efm-langserver
+
+        # language servers
+        nodePackages.bash-language-server # bash
+        clang-tools_16 # c/cpp
+        cmake-language-server # cmake
+        nodePackages.dockerfile-language-server-nodejs # docker
+        nodePackages.vscode-json-languageserver # json
+        marksman
+        nodePackages.pyright # python
+        nil # nix
+        nodePackages.vim-language-server # vim
+        nodePackages.yaml-language-server # yaml
+
+        # linters / formatters
+        shellcheck # bash
+        shfmt # bash
+        cmake-format # c/cpp
+        dprint # docker
+        gitlint # git
+        google-java-format # java
+        nodePackages.fixjson # json
+        nodePackages.jsonlint # json
+        nodePackages.write-good # json
+        alejandra # nix
+        statix # nic
+        (python3.withPackages (ps: with ps; [black flake8 isort pylint])) # python
+        vim-vint # vim
+        yamllint # yaml
       ];
+    }
+    // lib.optionalAttrs (builtins.hasAttr "persistence" config.home) {
+      persistence = {
+        "/persist/home/stelth".directories = [
+          ".config/coc"
+          ".local/share/vim"
+          ".local/state/vim"
+        ];
+      };
     };
-  };
 
-  xdg.configFile."vim/vimrc".text = import ./config.nix {
-    inherit config lib pkgs;
+  xdg.configFile = {
+    "vim/vimrc".text = import ./config.nix {inherit config lib pkgs;};
+    "efm-langserver/config.yaml".text = import ./efm.nix {inherit lib pkgs;};
   };
 
   programs.vim = {
@@ -83,17 +130,25 @@ in {
     plugins = with pkgs.vimPlugins; [
       auto-pairs
       autosuggest-vim
+      friendly-snippets
       fzf-vim
       lightline-bufferline
       lightline-vim
       rose-pine-vim
       undotree
+      vim-commentary
+      vim-endwise
       vim-highlightedyank
+      vim-polyglot
       vim-sensible
       vim-signify
+      vim-snippets
       vim-speeddating
       vim-surround
       vim-tmux-navigator
+      vim-vsnip
+      vim-vsnip-integ
+      vim9-lsp
       vimcomplete
       vsnip-complete-vim
     ];
