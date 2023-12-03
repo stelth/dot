@@ -26,7 +26,50 @@ in {
         ninja
         nodejs # mandatory for coc-nvim
 
+        # Bash
+        shellcheck
+        shfmt
+
+        #C/CPP
         clang-tools
+        cpplint
+
+        # CMake
+        cmake-format
+
+        # Docker
+        hadolint
+
+        # Git
+        gitlint
+
+        # Java
+        google-java-format
+
+        # JSON
+        nodePackages.fixjson
+
+        # Makefiles
+        checkmake
+
+        # Markdown
+        nodePackages.prettier
+        vale
+        nodePackages.write-good
+
+        # Nix
+        alejandra
+        statix
+
+        # Python
+        (python3.withPackages
+          (ps: with ps; [black flake8 isort pylint]))
+
+        # Vim
+        vim-vint
+
+        # YAML
+        yamllint
       ];
     }
     // lib.optionalAttrs (builtins.hasAttr "persistence" config.home) {
