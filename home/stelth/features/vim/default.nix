@@ -45,6 +45,10 @@ in {
 
   programs.vim = {
     enable = true;
+    packageConfigurable = pkgs.vim-full.override {
+      guiSupport = "no";
+      darwinSupport = pkgs.stdenvNoCC.isDarwin;
+    };
     defaultEditor = true;
     extraConfig = import ./config.nix {inherit config lib pkgs;};
     plugins = with pkgs.vimPlugins; [
