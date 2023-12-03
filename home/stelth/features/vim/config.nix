@@ -1,61 +1,34 @@
 {...}: ''
-  vim9script
   set encoding=utf-8
 
-  scriptencoding utf-8
+  " Vimrc 2.0 {{{
+  if empty($MYVIMRC) | let $MYVIMRC = expand('<sfile>:p') | endif
 
-  # Vimrc 2.0 {{{
-
-  const xdg = {
-    XDG_CONFIG_HOME: '~/.config',
-    XDG_CACHE_HOME: '~/.cache',
-    XDG_DATA_HOME: '~/.local/share',
-    XDG_STATE_HOME: '~/.local/state',
-  }
-  for [key, default] in items(xdg)
-    if !has_key(environ(), key)
-      setenv(key, expand(default))
-    endif
-  endfor
-
-  if empty($MYVIMRC)
-    $MYVIMRC = expand('<sfile>:p')
-  endif
+  if empty($XDG_CACHE_HOME) | let $XDG_CACHE_HOME = $HOME.'./cache' | endif
+  if empty($XDG_CONFIG_HOME) | let $XDG_CONFIG_HOME = $HOME.'/.config' | endif
+  if empty($XDG_DATA_HOME) | let $XDG_DATA_HOME = $HOME.'/.local/share' | endif
+  if empty($XDG_STATE_HOME) | let $XDG_STATE_HOME = $HOME.'/.local/state' | endif
 
   set runtimepath^=$XDG_CONFIG_HOME/vim
   set runtimepath+=$XDG_DATA_HOME/vim
   set runtimepath+=$XDG_CONFIG_HOME/vim/after
 
-  set viminfo+=n$XDG_STATE_HOME/vim/viminfo
-
   set packpath^=$XDG_DATA_HOME/vim,$XDG_CONFIG_HOME/vim
   set packpath+=$XDG_CONFIG_HOME/vim/after,$XDG_DATA_HOME/vim/after
 
-  g:netrw_home = $XDG_CACHE_HOME .. '/vim/netrw'
+  let g:netrw_home = $XDG_DATA_HOME.'/vim'
+  call mkdir($XDG_DATA_HOME.'/vim/spell', 'p', 0700)
 
-  def EnsureDir(dir: string): void
-    if filewritable(dir) != 2
-      mkdir(dir, "p")
-    endif
-  enddef
+  set backupdir=$XDG_STATE_HOME/vim/backup | call mkdir(&backupdir, 'p', 0700)
+  set directory=$XDG_STATE_HOME/vim/swap | call mkdir(&directory, 'p', 0700)
+  set undodir=$XDG_STATE_HOME/vim/undo | call mkdir(&undodir, 'p', 0700)
+  set viewdir=$XDG_STATE_HOME/vim/view | call mkdir(&viewdir, 'p', 0700)
+  " }}}
 
-  for dir_name in ['backup', 'swap', 'undo', 'view']
-    EnsureDir($XDG_STATE_HOME .. '/vim/' .. dir_name)
-  endfor
+  " => Leader
+  let g:mapleader = ' '
 
-  set backupdir=$XDG_STATE_HOME/vim/backup
-  set directory=$XDG_STATE_HOME/vim/swap
-  set undodir=$XDG_STATE_HOME/vim/undo
-  set viewdir=$XDG_STATE_HOME/vim/view
-  # }}}
-
-  set background=dark
-  colorscheme rosepine
-
-  # => Leader
-  g:mapleader = ' '
-
-  # => General Settings
+  " => General Settings
   set clipboard^=unnamed,unnamedplus
   set cursorline
   set hlsearch
@@ -71,18 +44,21 @@
   set undofile
   set updatetime=300
 
+  set background=dark
+  colorscheme rosepine
+
   vnoremap J :m '>+1<CR>gv=gv
   vnoremap K :m '<-2<CR>gv=gv
 
   nnoremap <Right> :bnext<CR>
   nnoremap <Left> :bprev<CR>
 
-  # vim-highlightedyank {{{
-  g:highlightedyank_highlight_duration = 300
-  # }}}
+  " vim-highlightedyank {{{
+  let g:highlightedyank_highlight_duration = 300
+  " }}}
 
 
-  # fzf-vim {{{
+  " fzf-vim {{{
   nmap <leader>hc :Commands<CR>
   nmap <leader>ht :Helptags<CR>
   nmap <leader>hm :Maps<CR>
@@ -101,28 +77,156 @@
   nmap <leader>gc :Commits<CR>
   nmap <leader>gcc :BCommits<CR>
   nmap <leader>gs :GFiles?<CR>
-  # }}}
+  " }}}
 
-  # undotree {{{
-  g:undotree_ShortIndicators = 1
-  g:undotree_WindowLayout = 4
+  " undotree {{{
+  let g:undotree_ShortIndicators = 1
+  let g:undotree_WindowLayout = 4
   nnoremap <silent> <leader>u :UndotreeToggle<CR>
-  # }}}
+  " }}}
 
-  # vim-vsnip {{{
-  imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
-  smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+  " coc-nvim {{{
+  let g:coc_config_home = $XDG_CONFIG_HOME .. '/vim'
 
-  # Expand or jump
-  imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
-  smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+  inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+  inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-  # Select or cut text to use as $TM_SELECTED_TEXT in the next snippet.
-  # See https://github.com/hrsh7th/vim-vsnip/pull/50
-  nmap        s   <Plug>(vsnip-select-text)
-  xmap        s   <Plug>(vsnip-select-text)
-  nmap        S   <Plug>(vsnip-cut-text)
-  xmap        S   <Plug>(vsnip-cut-text)
-  # }}}
+  " Make <CR> to accept selected completion item or notify coc.nvim to format
+  " <C-g>u breaks current undo, please make your own choice
+  inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                                \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
+  function! CheckBackspace() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+  endfunction
+
+  " Use <c-space> to trigger completion
+  if has('nvim')
+    inoremap <silent><expr> <c-space> coc#refresh()
+  else
+    inoremap <silent><expr> <c-@> coc#refresh()
+  endif
+
+  " Use `[g` and `]g` to navigate diagnostics
+  " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
+  nmap <silent> [g <Plug>(coc-diagnostic-prev)
+  nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+  " GoTo code navigation
+  nmap <silent> gd <Plug>(coc-definition)
+  nmap <silent> gy <Plug>(coc-type-definition)
+  nmap <silent> gi <Plug>(coc-implementation)
+  nmap <silent> gr <Plug>(coc-references)
+
+  " Use K to show documentation in preview window
+  nnoremap <silent> K :call ShowDocumentation()<CR>
+
+  function! ShowDocumentation()
+    if CocAction('hasProvider', 'hover')
+      call CocActionAsync('doHover')
+    else
+      call feedkeys('K', 'in')
+    endif
+  endfunction
+
+  " Highlight the symbol and its references when holding the cursor
+  autocmd CursorHold * silent call CocActionAsync('highlight')
+
+  " Symbol renaming
+  nmap <leader>rn <Plug>(coc-rename)
+
+  " Formatting selected code
+  xmap <leader>f  <Plug>(coc-format-selected)
+  nmap <leader>f  <Plug>(coc-format-selected)
+
+  augroup mygroup
+    autocmd!
+    " Setup formatexpr specified filetype(s)
+    autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+    " Update signature help on jump placeholder
+    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+  augroup end
+
+  " Applying code actions to the selected code block
+  " Example: `<leader>aap` for current paragraph
+  xmap <leader>a  <Plug>(coc-codeaction-selected)
+  nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+  " Remap keys for applying code actions at the cursor position
+  nmap <leader>ac  <Plug>(coc-codeaction-cursor)
+  " Remap keys for apply code actions affect whole buffer
+  nmap <leader>as  <Plug>(coc-codeaction-source)
+  " Apply the most preferred quickfix action to fix diagnostic on the current line
+  nmap <leader>qf  <Plug>(coc-fix-current)
+
+  " Remap keys for applying refactor code actions
+  nmap <silent> <leader>re <Plug>(coc-codeaction-refactor)
+  xmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
+  nmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
+
+  " Run the Code Lens action on the current line
+  nmap <leader>cl  <Plug>(coc-codelens-action)
+
+  " Map function and class text objects
+  " NOTE: Requires 'textDocument.documentSymbol' support from the language server
+  xmap if <Plug>(coc-funcobj-i)
+  omap if <Plug>(coc-funcobj-i)
+  xmap af <Plug>(coc-funcobj-a)
+  omap af <Plug>(coc-funcobj-a)
+  xmap ic <Plug>(coc-classobj-i)
+  omap ic <Plug>(coc-classobj-i)
+  xmap ac <Plug>(coc-classobj-a)
+  omap ac <Plug>(coc-classobj-a)
+
+  " Remap <C-f> and <C-b> to scroll float windows/popups
+  if has('nvim-0.4.0') || has('patch-8.2.0750')
+    nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+    nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+    inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+    inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+    vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+    vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  endif
+
+  " Use CTRL-S for selections ranges
+  " Requires 'textDocument/selectionRange' support of language server
+  nmap <silent> <C-s> <Plug>(coc-range-select)
+  xmap <silent> <C-s> <Plug>(coc-range-select)
+
+  " Add `:Format` command to format current buffer
+  command! -nargs=0 Format :call CocActionAsync('format')
+
+  " Add `:Fold` command to fold current buffer
+  command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+  " Add `:OR` command for organize imports of the current buffer
+  command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
+
+  " Add (Neo)Vim's native statusline support
+  " NOTE: Please see `:h coc-status` for integrations with external plugins that
+  " provide custom statusline: lightline.vim, vim-airline
+  set statusline^=%{coc#status()}%{get(b:,'coc_current_function','\')}
+
+  " Mappings for CoCList
+  " Show all diagnostics
+  nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+  " Manage extensions
+  nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+  " Show commands
+  nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+  " Find symbol of current document
+  nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+  " Search workspace symbols
+  nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+  " Do default action for next item
+  nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+  " Do default action for previous item
+  nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+  " Resume latest coc list
+  nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+  " }}}
 ''

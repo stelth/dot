@@ -24,6 +24,9 @@ in {
       packages = with pkgs; [
         cmake
         ninja
+        nodejs # mandatory for coc-nvim
+
+        clang-tools
       ];
     }
     // lib.optionalAttrs (builtins.hasAttr "persistence" config.home) {
@@ -37,18 +40,29 @@ in {
     };
 
   xdg.configFile = {
-    "vim/vimrc".text = import ./config.nix {inherit config lib pkgs;};
+    "vim/coc-settings.json".text = import ./coc-settings.nix {inherit lib pkgs;};
   };
 
   programs.vim = {
     enable = true;
     defaultEditor = true;
-    extraConfig = ''
-      source ~/.config/vim/vimrc
-    '';
+    extraConfig = import ./config.nix {inherit config lib pkgs;};
     plugins = with pkgs.vimPlugins; [
       auto-pairs
-      friendly-snippets
+      coc-clangd
+      coc-cmake
+      coc-diagnostic
+      coc-git
+      coc-json
+      coc-lists
+      coc-markdownlint
+      coc-nvim
+      coc-prettier
+      coc-pyright
+      coc-sh
+      coc-snippets
+      coc-vimlsp
+      coc-yaml
       fzf-vim
       rose-pine-vim
       undotree
@@ -63,8 +77,6 @@ in {
       vim-speeddating
       vim-surround
       vim-tmux-navigator
-      vim-vsnip
-      vim-vsnip-integ
     ];
   };
 }
