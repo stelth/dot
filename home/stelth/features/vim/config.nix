@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: ''
+{...}: ''
   vim9script
   set encoding=utf-8
 
@@ -81,10 +77,6 @@
   nnoremap <Right> :bnext<CR>
   nnoremap <Left> :bprev<CR>
 
-  # asyncrun {{{
-  g:asyncrun_open = 20
-  # }}}
-
   # vim-highlightedyank {{{
   g:highlightedyank_highlight_duration = 300
   # }}}
@@ -111,22 +103,6 @@
   nmap <leader>gs :GFiles?<CR>
   # }}}
 
-  # {{{
-  set showtabline=2
-  g:lightline = {
-    colorscheme: 'rosepine',
-    tabline: {
-      left: [['buffers']],
-    },
-    component_expand: {
-      buffers: 'lightline#bufferline#buffers'
-    },
-    component_type: {
-      buffers: 'tabsel'
-    },
-  }
-  # }}}
-
   # undotree {{{
   g:undotree_ShortIndicators = 1
   g:undotree_WindowLayout = 4
@@ -149,147 +125,4 @@
   xmap        S   <Plug>(vsnip-cut-text)
   # }}}
 
-  # lsp {{{
-  lsp#lsp#AddServer([{
-    name: 'clangd',
-    filetype: ['c', 'cpp'],
-    path: '${pkgs.clang-tools_16}/bin/clangd',
-    args: ['--background-index', '--clang-tidy'],
-  }, {
-    name: 'cmake-language-server',
-    filetype: 'cmake',
-    path: '${lib.getExe pkgs.cmake-language-server}',
-    args: [],
-  }, {
-    name: 'dockerls',
-    filetype: 'dockerfile',
-    path: '${lib.getExe pkgs.nodePackages.dockerfile-language-server-nodejs}',
-    args: ['--stdio'],
-  }, {
-    name: 'jsonls',
-    filetype: [
-      'json',
-      'jsonc'
-    ],
-    path: '${lib.getExe pkgs.nodePackages.vscode-json-languageserver}',
-    args: ['--stdio'],
-    features: {
-      documentFormatting: v:true,
-    },
-    initializationOptions: {
-      provideFormatter: v:true,
-    },
-  }, {
-    name: 'marksman',
-    filetype: 'markdown',
-    path: '${lib.getExe pkgs.marksman}',
-    args: [],
-  }, {
-    name: 'nil',
-    filetype: 'nix',
-    path: '${lib.getExe pkgs.nil}',
-    args: [],
-    features: {
-      documentFormatting: v:false,
-    },
-  }, {
-    name: 'pyright',
-    filetype: 'python',
-    path: '${pkgs.nodePackages.pyright}/bin/pyright-langserver',
-    args: ['--stdio'],
-  }, {
-    name: 'bashls',
-    filetype: 'sh',
-    path: '${lib.getExe pkgs.nodePackages.bash-language-server}',
-    args: ['start'],
-  }, {
-    name: 'vimls',
-    filetype: 'vim',
-    path: '${lib.getExe pkgs.nodePackages.vim-language-server}',
-    args: ['--stdio'],
-  }, {
-    name: 'yamlls',
-    filetype: [
-      'yaml',
-      'yaml.docker-compose'
-    ],
-    path: '${lib.getExe pkgs.nodePackages.yaml-language-server}',
-    args: ['--stdio'],
-  }, {
-    name: 'efm',
-    filetype: [
-      'sh',
-      'c',
-      'cpp',
-      'dockerfile',
-      'gitcommit',
-      'java',
-      'json',
-      'json5',
-      'make',
-      'markdown',
-      'nix',
-      'python',
-      'vim',
-      'yaml',
-    ],
-    path: '${lib.getExe pkgs.efm-langserver}',
-    args: [],
-    initializationOptions: {
-      documentFormatting: v:true,
-    },
-  }])
-
-  lsp#options#OptionsSet({
-    autoHighlight: v:true,
-    autoHighlightDiags: v:true,
-    completionTextEdit: v:false,
-    showDiagWithVirtualText: v:true,
-    showInlayHints: v:true,
-    useBufferCompletion: v:true,
-  })
-
-  def OnLspBufferAttached()
-    nmap <buffer> <leader>cf :LspFormat<CR>
-    vmap <buffer> <leader>cf :LspFormat<CR>
-    nmap <buffer> <leader>ca :LspCodeAction<CR>
-    vmap <buffer> <leader>ca :LspCodeAction<CR>
-    nmap <buffer> <leader>cr :LspRename<CR>
-    nmap <buffer> <leader>gp :LspPeekDefinition<CR>
-    nmap <buffer> <leader>gd :LspGotoDefinition<CR>
-    nmap <buffer> <leader>wa :LspWorkspaceAddFolder<CR>
-    nmap <buffer> <leader>wr :LspWorkspaceRemoveFolder<CR>
-    nmap <buffer> <leader>wl :LspWorkspaceListFolders<CR>
-    nmap <buffer> <leader>gi :LspGotoImpl<CR>
-    nmap <buffer> <leader>gT :LspGotoTypeDefinition<CR>
-    nmap <buffer> <leader>gt :LspPeekTypeDefinition<CR>
-    nmap <buffer> <leader>sl :LspDiagCurrent<CR>
-    nmap <buffer> <leader>sb :LspDiagFirst<CR>
-    nmap <buffer> <leader>sc :LspDiagHere<CR>
-    nmap <buffer> <leader>[g :LspDiagPrev<CR>
-    nmap <buffer> <leader>]g :LspDiagNext<CR>
-    nmap <buffer> <leader>[d :LspDiagLast<CR>
-    nmap <buffer> <leader>]d :LspDiagFirst<CR>
-    nmap <buffer> <leader>q :LspDiagShow<CR>
-    nmap <buffer> K :LspHover<CR>
-    nmap <buffer> <leader>o :LspOutline<CR>
-    nmap <buffer> <leader>ci :LspIncomingCalls<CR>
-    nmap <buffer> <leader>co :LspOutgoingCalls<CR>
-  enddef
-
-  autocmd User LspAttached OnLspBufferAttached()
-  # }}}
-
-  # vimcomplete {{{
-  g:vimcomplete_tab_enable = 1
-
-  var options: dict<any> = {
-    completor: { shuffleEqualPriority: true },
-    buffer: { enable: true, priority: 10 },
-    lsp: { enable: true, priority: 8 },
-    path: { enable: true, priority: 12 },
-    vsnip: { enable: true, priority: 11 },
-  }
-  autocmd VimEnter * g:VimCompleteOptionsSet(options)
-  # }}}
 ''
