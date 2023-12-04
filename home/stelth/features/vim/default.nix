@@ -32,7 +32,6 @@ in {
 
         #C/CPP
         clang-tools
-        cpplint
 
         # CMake
         cmake-format

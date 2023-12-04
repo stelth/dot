@@ -122,9 +122,7 @@
     },
 
     "diagnostic-languageserver.filetypes": {
-      "c": "cpplint",
       "cmake": "cmake-lint",
-      "cpp": "cpplint",
       "dockerfile": "hadolint",
       "gitcommit": "gitlint",
       "make": "checkmake",
