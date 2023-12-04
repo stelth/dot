@@ -12,7 +12,7 @@
   ];
 
   home.sessionVariables = {
-    BROWSER = "google-chrome";
+    BROWSER = "google-chrome-stable";
     NIXOS_OZONE_WL = "1";
     WLR_NO_HARDWARE_CURSORS = "1";
     XDG_CACHE_HOME = "$HOME/.cache";
