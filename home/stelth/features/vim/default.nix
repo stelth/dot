@@ -3,22 +3,7 @@
   lib,
   pkgs,
   ...
-}: let
-  inherit (pkgs.vimUtils) buildVimPlugin;
-  inherit (pkgs) fetchFromGitHub;
-
-  rose-pine-vim = buildVimPlugin {
-    pname = "rose-pine-vim";
-    version = "2023-01-16";
-    src = fetchFromGitHub {
-      owner = "rose-pine";
-      repo = "vim";
-      rev = "d149980cfa5cdec487df23b2e9963c3256f3a9f3";
-      sha256 = "a+RCmgSG+snwBVQCzSnp8wVxSoQcLqoJjnTiDviTGqc=";
-    };
-    meta.homepage = "https://github.com/rose-pine/vim";
-  };
-in {
+}: {
   home =
     {
       packages = with pkgs; [
@@ -95,6 +80,7 @@ in {
     extraConfig = import ./config.nix {inherit config lib pkgs;};
     plugins = with pkgs.vimPlugins; [
       auto-pairs
+      catppuccin-vim
       coc-clangd
       coc-cmake
       coc-diagnostic
@@ -110,7 +96,6 @@ in {
       coc-vimlsp
       coc-yaml
       fzf-vim
-      rose-pine-vim
       undotree
       vim-commentary
       vim-endwise
