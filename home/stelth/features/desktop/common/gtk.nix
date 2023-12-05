@@ -6,12 +6,14 @@
       size = 12;
     };
     theme = {
+      name = "Catppuccin-Mocha-Standard-Blue-Dark";
       package = pkgs.catppuccin-gtk.override {
         variant = "mocha";
       };
     };
     iconTheme = {
-      package = pkgs.catppuccin-gtk;
+      name = "Vimix";
+      package = pkgs.vimix-icon-theme;
     };
   };
 

@@ -8,8 +8,8 @@ in ''
     gaps_out=5
     border_size=2.7
     cursor_inactive_timeout=4
-    col.active_border = $iris
-    col.inactive_border = $muted
+    col.active_border = $blue
+    col.inactive_border = $sapphire
   }
 
   decoration {
