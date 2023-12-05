@@ -110,6 +110,7 @@
         '';
         type = "lua";
       }
+      vim-tmux-navigator
     ];
   };
 }
