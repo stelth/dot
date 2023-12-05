@@ -16,4 +16,9 @@
       ".config/Yubico"
     ];
   };
+
+  programs.neovim = {
+    defaultEditor = true;
+    vimAlias = true;
+  };
 }
