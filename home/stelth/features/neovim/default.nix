@@ -4,13 +4,6 @@
   pkgs,
   ...
 }: {
-  xdg.configFile = {
-    "nvim/lua" = {
-      recursive = true;
-      source = ./lua;
-    };
-  };
-
   home = lib.optionalAttrs (builtins.hasAttr "persistence" config.home) {
     persistence = {
       "/persist/home/stelth".directories = [
@@ -26,13 +19,41 @@
     withPython3 = false;
     withRuby = false;
 
-    extraPackages = with pkgs; [fd tree-sitter];
+    extraPackages = with pkgs; [
+      fd
+      tree-sitter
 
-    extraLuaConfig = ''
-      require('settings')
-      require('plugins')
-      require('keymaps')
-    '';
+      # C/C++
+      clang-tools
+
+      # Java
+      jdt-language-server
+
+      #nix
+      nil
+
+      # python
+      nodePackages.pyright
+
+      # Lua
+      lua-language-server
+
+      # Docker
+      nodePackages.dockerfile-language-server-nodejs
+
+      # Shell scripting
+      nodePackages.bash-language-server
+
+      # {C}Make
+      cmake-language-server
+
+      # Additional
+      marksman
+      nodePackages.vscode-json-languageserver
+      nodePackages.yaml-language-server
+    ];
+
+    extraLuaConfig = import ./settings/settings.nix {};
 
     plugins = with pkgs.vimPlugins; [
       catppuccin-nvim
@@ -42,17 +63,53 @@
       cmp-path
       cmp_luasnip
       friendly-snippets
-      luasnip
-      mini-nvim
+      {
+        plugin = luasnip;
+        config = ''
+          require("luasnip").config.set_config({
+          	history = true,
+          	enable_autosnippets = true,
+          	updateEvents = "TextChanged,TextChangedI",
+          })
+          require("luasnip/loaders/from_vscode").lazy_load()
+        '';
+        type = "lua";
+      }
+      {
+        plugin = mini-nvim;
+        config = import ./settings/mini-nvim.nix {};
+        type = "lua";
+      }
+      neodev-nvim
       nvim-cmp
-      nvim-lspconfig
-      nvim-treesitter.withAllGrammars
+      {
+        plugin = nvim-lspconfig;
+        config = import ./settings/lsp.nix {inherit lib pkgs;};
+        type = "lua";
+      }
+      {
+        plugin = nvim-treesitter.withAllGrammars;
+        config = import ./settings/treesitter.nix {};
+        type = "lua";
+      }
       nvim-treesitter-textobjects
       nvim-ts-context-commentstring
       telescope-fzf-native-nvim
-      telescope-nvim
+      {
+        plugin = telescope-nvim;
+        config = import ./settings/telescope.nix {};
+        type = "lua";
+      }
       telescope-undo-nvim
-      vim-matchup
+      {
+        plugin = vim-matchup;
+        config = ''
+          vim.g.matchup_matchparen_offscreen = {
+          	method = "status_manual",
+          }
+        '';
+        type = "lua";
+      }
     ];
   };
 }
