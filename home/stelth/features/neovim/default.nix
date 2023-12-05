@@ -53,7 +53,7 @@
       nodePackages.yaml-language-server
     ];
 
-    extraLuaConfig = import ./settings/settings.nix {};
+    extraLuaConfig = import ./settings/settings.nix {} + "\n" + import ./keymaps.nix {};
 
     plugins = with pkgs.vimPlugins; [
       catppuccin-nvim
