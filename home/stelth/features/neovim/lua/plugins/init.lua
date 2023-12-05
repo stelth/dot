@@ -63,3 +63,12 @@ telescope.setup({
 
 telescope.load_extension("fzf")
 telescope.load_extension("undo")
+
+require("luasnip").config.set_config({
+	history = true,
+	enable_autosnippets = true,
+	updateEvents = "TextChanged,TextChangedI",
+})
+require("luasnip/loaders/from_vscode").lazy_load()
+
+require("plugins.nvim-cmp")

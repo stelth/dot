@@ -36,7 +36,16 @@
 
     plugins = with pkgs.vimPlugins; [
       catppuccin-nvim
+      cmp-buffer
+      cmp-git
+      cmp-nvim-lsp
+      cmp-path
+      cmp_luasnip
+      friendly-snippets
+      luasnip
       mini-nvim
+      nvim-cmp
+      nvim-lspconfig
       nvim-treesitter.withAllGrammars
       nvim-treesitter-textobjects
       nvim-ts-context-commentstring
