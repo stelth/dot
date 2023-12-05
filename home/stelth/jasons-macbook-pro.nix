@@ -2,6 +2,7 @@
   imports = [
     ./features/cli
     ./features/vim
+    ./features/neovim
   ];
 
   home.packages = with pkgs; [
