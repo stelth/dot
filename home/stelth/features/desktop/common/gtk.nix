@@ -6,12 +6,12 @@
       size = 12;
     };
     theme = {
-      name = "rose-pine";
-      package = pkgs.rose-pine-gtk-theme;
+      package = pkgs.catppuccin-gtk.override {
+        variant = "mocha";
+      };
     };
     iconTheme = {
-      name = "rose-pine";
-      package = pkgs.rose-pine-icon-theme;
+      package = pkgs.catppuccin-gtk;
     };
   };
 

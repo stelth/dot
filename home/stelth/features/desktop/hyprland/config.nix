@@ -1,7 +1,7 @@
 {home, ...}: let
   inherit (home.sessionVariables) TERMINAL EDITOR;
 in ''
-  source=~/.config/hypr/rose-pine.conf
+  source=~/.config/hypr/catppuccin.conf
 
   general {
     gaps_in=2

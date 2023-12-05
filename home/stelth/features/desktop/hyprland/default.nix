@@ -14,7 +14,16 @@
     swayidle
   ];
 
-  xdg.configFile."hypr/rose-pine.conf".text = import ./rose-pine.nix {};
+  xdg = {
+    configFile = {
+      "hypr/catppuccin.conf".text = import ./catppuccin.nix {};
+      "hypr/hyprpaper.conf".text = ''
+        preload = ~/.config/hypr/wallpaper.png
+        wallpaper = ,~/.config/hypr/wallpaper.png
+      '';
+      "hypr/wallpaper.png".source = ./wallpaper.png;
+    };
+  };
 
   programs.waybar.package = pkgs.waybar.overrideAttrs (oa: {
     mesonFlags = (oa.mesonFlags or []) ++ ["-Dexperimental=true"];
@@ -35,11 +44,4 @@
       inherit (config) home;
     };
   };
-
-  xdg.configFile."hypr/wallpaper.png".source = ./wallpaper.png;
-
-  xdg.configFile."hypr/hyprpaper.conf".text = ''
-    preload = ~/.config/hypr/wallpaper.png
-    wallpaper = ,~/.config/hypr/wallpaper.png
-  '';
 }
