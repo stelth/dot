@@ -51,5 +51,3 @@ vim.g.loaded_zip = 1
 vim.g.loaded_zipPlugin = 1
 
 vim.cmd.colorscheme("catppuccin")
-
-require("plugins")

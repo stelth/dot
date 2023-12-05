@@ -31,6 +31,7 @@
     extraLuaConfig = ''
       require('settings')
       require('plugins')
+      require('keymaps')
     '';
 
     plugins = with pkgs.vimPlugins; [
