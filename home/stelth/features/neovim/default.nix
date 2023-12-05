@@ -75,13 +75,18 @@
         '';
         type = "lua";
       }
+      gitsigns-nvim
       {
         plugin = mini-nvim;
         config = import ./settings/mini-nvim.nix {};
         type = "lua";
       }
       neodev-nvim
-      nvim-cmp
+      {
+        plugin = nvim-cmp;
+        config = import ./settings/cmp-nvim.nix {};
+        type = "lua";
+      }
       {
         plugin = nvim-lspconfig;
         config = import ./settings/lsp.nix {inherit lib pkgs;};
