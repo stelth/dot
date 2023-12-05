@@ -197,7 +197,6 @@
 
   local nls = require('null-ls')
   nls.setup({
-    debug = true,
     sources = {
       -- code actions
       nls.builtins.code_actions.gitsigns,
