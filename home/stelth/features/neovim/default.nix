@@ -23,34 +23,37 @@
       fd
       tree-sitter
 
-      # C/C++
-      clang-tools
+      # Language Servers
+      clang-tools # C/C++
+      jdt-language-server # Java
+      nil # Nix
+      nodePackages.pyright # Python
+      lua-language-server # Lua
+      nodePackages.bash-language-server # Shell
+      cmake-language-server # CMake
+      marksman # Markdown
+      nodePackages.vscode-json-languageserver # JSON
+      nodePackages.yaml-language-server # YAML
 
-      # Java
-      jdt-language-server
+      # none-ls linters
+      shellcheck # Shell
+      statix # Nix
+      checkmake # Makefile
+      cmake-format # CMake
+      gitlint # Git commits
+      deadnix # Nix
+      (python3.withPackages (ps: with ps; [black flake8 pylint reorder-python-imports])) # Python
+      nodePackages.jsonlint # JSON
+      markdownlint-cli # Markdown
+      selene # Lua
+      yamllint # YAML
 
-      #nix
-      nil
-
-      # python
-      nodePackages.pyright
-
-      # Lua
-      lua-language-server
-
-      # Docker
-      nodePackages.dockerfile-language-server-nodejs
-
-      # Shell scripting
-      nodePackages.bash-language-server
-
-      # {C}Make
-      cmake-language-server
-
-      # Additional
-      marksman
-      nodePackages.vscode-json-languageserver
-      nodePackages.yaml-language-server
+      # none-ls formatters
+      alejandra # Nix
+      beautysh # Shell
+      nodePackages.fixjson # JSON
+      google-java-format # Java
+      stylua # Lua
     ];
 
     extraLuaConfig = import ./settings/settings.nix {} + "\n" + import ./keymaps.nix {};
@@ -87,6 +90,7 @@
         config = import ./settings/cmp-nvim.nix {};
         type = "lua";
       }
+      none-ls-nvim
       {
         plugin = nvim-lspconfig;
         config = import ./settings/lsp.nix {inherit lib pkgs;};
