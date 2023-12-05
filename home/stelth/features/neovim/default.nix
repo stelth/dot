@@ -39,6 +39,9 @@
       nvim-treesitter.withAllGrammars
       nvim-treesitter-textobjects
       nvim-ts-context-commentstring
+      telescope-fzf-native-nvim
+      telescope-nvim
+      telescope-undo-nvim
       vim-matchup
     ];
   };
