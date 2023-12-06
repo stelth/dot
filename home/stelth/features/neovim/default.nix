@@ -25,7 +25,6 @@
 
       # Language Servers
       clang-tools # C/C++
-      jdt-language-server # Java
       nil # Nix
       nodePackages.pyright # Python
       lua-language-server # Lua
@@ -52,7 +51,6 @@
       alejandra # Nix
       beautysh # Shell
       nodePackages.fixjson # JSON
-      google-java-format # Java
       stylua # Lua
     ];
 

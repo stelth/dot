@@ -156,10 +156,6 @@
     },
   }))
 
-  lspconfig.jdtls.setup(M.make_config({
-    cmd = { '${lib.getExe pkgs.jdt-language-server}' },
-  }))
-
   lspconfig.jsonls.setup(M.make_config({
     cmd = { "${lib.getExe pkgs.nodePackages.vscode-json-languageserver}", "--stdio" },
   }))
