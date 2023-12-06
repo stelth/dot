@@ -80,7 +80,7 @@ in ''
   bind=SUPER,w,exec,makoctl,dismiss
   bind=SUPER,v,exec,${TERMINAL} $SHELL -ic ${EDITOR}
 
-  bind=SUPER,x,exec,rofi -show drun
+  bind=SUPER,x,exec,rofi -show drun -show-icons
   bind=SUPER,d,exec,rofi -show run
 
   # Lock screen
