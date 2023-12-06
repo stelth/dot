@@ -59,6 +59,7 @@
     extraLuaConfig = import ./settings/settings.nix {} + "\n" + import ./keymaps.nix {};
 
     plugins = with pkgs.vimPlugins; [
+      auto-pairs
       catppuccin-nvim
       cmp-buffer
       cmp-git
@@ -91,23 +92,6 @@
         type = "lua";
       }
       none-ls-nvim
-      {
-        plugin = nvim-autopairs;
-        config = ''
-          require('nvim-autopairs').setup({
-            check_ts = true,
-          })
-
-          -- If you want insert `(` after select function or method item
-          local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-          local cmp = require('cmp')
-          cmp.event:on(
-            'confirm_done',
-            cmp_autopairs.on_confirm_done()
-          )
-        '';
-        type = "lua";
-      }
       {
         plugin = nvim-lspconfig;
         config = import ./settings/lsp.nix {inherit lib pkgs;};
