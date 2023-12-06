@@ -79,7 +79,13 @@
         '';
         type = "lua";
       }
-      gitsigns-nvim
+      {
+        plugin = gitsigns-nvim;
+        config = ''
+          require('gitsigns').setup({})
+        '';
+        type = "lua";
+      }
       {
         plugin = mini-nvim;
         config = import ./settings/mini-nvim.nix {};
