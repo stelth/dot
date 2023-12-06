@@ -25,6 +25,12 @@
   vim.keymap.set("n", "<leader>k", vim.cmd.lnext)
   vim.keymap.set("n", "<leader>j", vim.cmd.lprev)
 
+  vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+  vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+  vim.keymap.set("n", "<Right>", ":bnext<CR>")
+  vim.keymap.set("n", "<Left>", ":bprev<CR>")
+
   local telescope_builtin = require("telescope.builtin")
 
   -- Git keymaps
