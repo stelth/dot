@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   imports = [
     ./features/cli
-    ./features/vim
     ./features/neovim
   ];
 

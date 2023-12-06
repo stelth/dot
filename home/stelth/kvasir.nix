@@ -5,7 +5,6 @@
     ./features/cli
     ./features/gpg
     ./features/desktop/hyprland
-    ./features/vim
     ./features/neovim
     ./features/music
     ./features/wine
