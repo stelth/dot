@@ -148,7 +148,6 @@
   lspconfig.clangd.setup(M.make_config({
     cmd = {
       "${pkgs.clang-tools}/bin/clangd",
-      "--background-index",
     },
   }))
 
