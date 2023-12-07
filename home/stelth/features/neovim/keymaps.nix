@@ -1,6 +1,4 @@
 {...}: ''
-  vim.o.timeoutlen = 300
-
   -- Make all keymaps silent by default
   local keymap_set = vim.keymap.set
   vim.keymap.set = function(mode, lhs, rhs, opts)

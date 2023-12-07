@@ -59,6 +59,7 @@
     plugins = with pkgs.vimPlugins; [
       auto-pairs
       catppuccin-nvim
+      clangd_extensions-nvim
       cmp-buffer
       cmp-git
       cmp-nvim-lsp
