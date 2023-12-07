@@ -123,8 +123,6 @@
   M.on_attach = function(client, bufnr)
     M.format_callback(client, bufnr)
     M.keymap_callback(client, bufnr)
-    require('clangd_extensions.inlay_hints').setup_autocmd()
-    require('clangd_extensions.inlay_hints').set_inlay_hints()
   end
 
   M.make_config = function(custom_config)
@@ -148,6 +146,12 @@
   lspconfig.clangd.setup(M.make_config({
     cmd = {
       "${pkgs.clang-tools}/bin/clangd",
+    },
+    init_options = {
+      clangdFileStatus = true,
+      usePlaceholders = true,
+      completeUnimported = true,
+      semanticHighlighting = true,
     },
   }))
 
