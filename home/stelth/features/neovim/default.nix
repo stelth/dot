@@ -66,8 +66,16 @@
       cmp_luasnip
       friendly-snippets
       {
+        plugin = gitsigns-nvim;
+        config = ''
+          require('gitsigns').setup({})
+        '';
+        type = "lua";
+      }
+      {
         plugin = luasnip;
         config = ''
+          plugin = luasnip;
           require("luasnip").config.set_config({
           	history = true,
           	enable_autosnippets = true,
@@ -78,18 +86,18 @@
         type = "lua";
       }
       {
-        plugin = gitsigns-nvim;
-        config = ''
-          require('gitsigns').setup({})
-        '';
-        type = "lua";
-      }
-      {
         plugin = mini-nvim;
         config = import ./settings/mini-nvim.nix {};
         type = "lua";
       }
       neodev-nvim
+      {
+        plugin = nvim-notify;
+        config = ''
+          vim.notify = require('notify')
+        '';
+        type = "lua";
+      }
       {
         plugin = nvim-cmp;
         config = import ./settings/cmp-nvim.nix {};
