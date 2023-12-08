@@ -12,6 +12,7 @@
   		option_toggle_prefix = "<Space>t",
   	},
   })
+  vim.g.mapleader = "\\"
 
   local indent = 2
 
