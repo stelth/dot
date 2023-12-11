@@ -10,7 +10,10 @@
   ];
 
   nixpkgs = {
-    overlays = builtins.attrValues outputs.overlays ++ [inputs.neovim-nightly.overlay];
+    overlays = [
+      outputs.overlays.default
+      inputs.neovim-nightly.overlay
+    ];
     config = {
       allowUnfree = true;
       allowUnfreePredicate = _: true;
