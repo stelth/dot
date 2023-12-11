@@ -203,7 +203,7 @@
 
       -- diagnostics
       nls.builtins.diagnostics.clang_check.with({
-        command = '${pkgs.clang-tools}/bin/clang-check'
+        command = '${pkgs.clang-tools_16}/bin/clang-check'
       }),
       nls.builtins.diagnostics.cmake_lint,
       nls.builtins.diagnostics.deadnix,
@@ -222,7 +222,7 @@
       nls.builtins.formatting.beautysh,
       nls.builtins.formatting.black,
       nls.builtins.formatting.clang_format.with({
-        command = '${pkgs.clang-tools}/bin/clang-format'
+        command = '${pkgs.clang-tools_16}/bin/clang-format'
       }),
       nls.builtins.formatting.gersemi,
       nls.builtins.formatting.fixjson,

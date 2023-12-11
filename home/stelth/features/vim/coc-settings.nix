@@ -14,7 +14,7 @@
     "suggest.removeDuplicateItems": true,
     "suggest.noselect": true,
 
-    "clangd.path": "${pkgs.clang-tools}/bin/clangd",
+    "clangd.path": "${pkgs.clang-tools_16}/bin/clangd",
     "clangd.arguments": [
       "--background-index",
       "--clang-tidy",
