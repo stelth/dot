@@ -197,7 +197,6 @@
   nls.setup({
     sources = {
       -- code actions
-      nls.builtins.code_actions.gitsigns,
       nls.builtins.code_actions.shellcheck,
       nls.builtins.code_actions.statix,
 
