@@ -16,7 +16,7 @@
         shfmt
 
         #C/CPP
-        clang-tools
+        clang-tools_16
 
         # CMake
         cmake-format

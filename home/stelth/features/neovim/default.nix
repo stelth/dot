@@ -24,7 +24,7 @@
       tree-sitter
 
       # Language Servers
-      clang-tools # C/C++
+      clang-tools_16 # C/C++
       nil # Nix
       nodePackages.pyright # Python
       lua-language-server # Lua

@@ -123,6 +123,9 @@
   M.on_attach = function(client, bufnr)
     M.format_callback(client, bufnr)
     M.keymap_callback(client, bufnr)
+    if client.server_capabilities.inlayHintProvider then
+      vim.lsp.inlay_hint.enable(bufnr, true)
+    end
   end
 
   M.make_config = function(custom_config)
@@ -145,7 +148,7 @@
 
   lspconfig.clangd.setup(M.make_config({
     cmd = {
-      "${pkgs.clang-tools}/bin/clangd",
+      "${pkgs.clang-tools_16}/bin/clangd",
     },
     init_options = {
       clangdFileStatus = true,
