@@ -50,6 +50,7 @@
       # none-ls formatters
       alejandra # Nix
       beautysh # Shell
+      gersemi # CMake
       nodePackages.fixjson # JSON
       stylua # Lua
     ];

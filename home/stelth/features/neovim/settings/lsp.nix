@@ -224,7 +224,7 @@
       nls.builtins.formatting.clang_format.with({
         command = '${pkgs.clang-tools}/bin/clang-format'
       }),
-      nls.builtins.formatting.cmake_format,
+      nls.builtins.formatting.gersemi,
       nls.builtins.formatting.fixjson,
       nls.builtins.formatting.google_java_format,
       nls.builtins.formatting.markdownlint,
