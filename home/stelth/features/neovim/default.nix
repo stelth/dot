@@ -125,15 +125,6 @@
       }
       telescope-undo-nvim
       {
-        plugin = toggleterm-nvim;
-        config = ''
-          require('toggleterm').setup({
-            open_mapping = "<leader>tt"
-          })
-        '';
-        type = "lua";
-      }
-      {
         plugin = vim-matchup;
         config = ''
           vim.g.matchup_matchparen_offscreen = {
