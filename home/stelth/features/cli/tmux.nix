@@ -12,6 +12,7 @@
       tmuxPlugins.yank
     ];
     extraConfig = ''
+      set-option -sa terminal-overrides ",xterm*:Tc"
       bind-key -r f run-shell "tmux neww sessionizer"
 
       is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
