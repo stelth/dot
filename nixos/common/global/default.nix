@@ -22,7 +22,7 @@
   };
 
   nixpkgs = {
-    overlays = builtins.attrValues outputs.overlays;
+    overlays = [outputs.overlays.default];
     config = {
       allowUnfree = true;
       allowUnfreePredicate = _: true;

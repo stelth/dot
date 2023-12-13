@@ -89,17 +89,13 @@
 
       perSystem = {
         config,
+        inputs',
         lib,
         self',
         system,
         ...
       }: {
-        _module.args.pkgs = import inputs.nixpkgs {
-          inherit system;
-          overlays = [
-            outputs.overlays.default
-          ];
-        };
+        _module.args.pkgs = inputs'.nixpkgs.legacyPackages;
 
         formatter = config.treefmt.build.wrapper;
 
