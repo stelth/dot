@@ -962,7 +962,9 @@ div[class^="contentRegion"]
   background-color: #cdd6f4;
 }
 div[class^="contentRegion"] #appearance-tab div[class^="selectionCircle"] {
-  box-shadow: inset 0 0 0 2px #89b4fa, inset 0 0 0 4px var(--background-primary);
+  box-shadow:
+    inset 0 0 0 2px #89b4fa,
+    inset 0 0 0 4px var(--background-primary);
 }
 div[class^="contentRegion"]
   #appearance-tab
@@ -1285,7 +1287,8 @@ div[class^="standardSidebarView"]
 }
 
 div[class^="premiumFeatureBorder"] {
-  background: linear-gradient(#11111b, #11111b) padding-box,
+  background:
+    linear-gradient(#11111b, #11111b) padding-box,
     linear-gradient(45deg, #cba6f7, #f5c2e7) border-box;
 }
 div[class^="premiumFeatureBorder"] div[class^="premiumBackground"] {
@@ -1555,7 +1558,9 @@ div[class^="bar"] svg[class^="voiceChannelsIcon"] path {
   border-radius: 0.4rem;
 }
 [class^="chatContent"] div[class*="isBurstReactionPicker_"] {
-  box-shadow: 0 0 0 2px #cba6f7, 0 0 16px #b4befe;
+  box-shadow:
+    0 0 0 2px #cba6f7,
+    0 0 16px #b4befe;
 }
 [class^="chatContent"] div[class^="navButtonSuperReactActive"],
 [class^="chatContent"] div[class^="navButtonSuperReactActive"]:hover {
@@ -1576,7 +1581,9 @@ div[class^="bar"] svg[class^="voiceChannelsIcon"] path {
 }
 [class^="chatContent"] div[class*="isBurstReactionPicker"] {
   border: none;
-  box-shadow: 0 0 0 2px #cba6f7, 0 0 16px #b4befe;
+  box-shadow:
+    0 0 0 2px #cba6f7,
+    0 0 16px #b4befe;
 }
 [class^="chatContent"] div[class*="playButtonContainer_"] {
   background: var(--brand-experiment) !important;
@@ -2700,9 +2707,11 @@ section[class*="positionContainer_"] button[class*="navButtonActive"] {
   -webkit-box-shadow: inset 0 1px 0 #313244;
 }
 .theme-light > div[class^="focusLock"] > div[class^="root"] {
-  box-shadow: 0 0 0 1px #313244,
+  box-shadow:
+    0 0 0 1px #313244,
     0 2px 10px 0 hsla(0, calc(var(--saturation-factor, 1) * 0%), 0%, 0.1);
-  -webkit-box-shadow: 0 0 0 1px #313244,
+  -webkit-box-shadow:
+    0 0 0 1px #313244,
     0 2px 10px 0 hsla(0, calc(var(--saturation-factor, 1) * 0%), 0%, 0.1);
 }
 .theme-light div[class^="focusLock"] div[class^="downloadApps"] {
@@ -3542,23 +3551,33 @@ div[class^="tags"] div[class^="pinIcon"] path {
 }
 
 div[class*="avatarSpeaking_"] {
-  -webkit-box-shadow: inset 0 0 0 2px #a6e3a1,
+  -webkit-box-shadow:
+    inset 0 0 0 2px #a6e3a1,
     inset 0 0 0 3px var(--background-secondary);
-  box-shadow: inset 0 0 0 2px #a6e3a1,
+  box-shadow:
+    inset 0 0 0 2px #a6e3a1,
     inset 0 0 0 3px var(--background-secondary);
 }
 
 div[class*="videoLayer_"]
   > div[class^="tileChild"]
   > div[class^="border"][class*="speaking_"] {
-  -webkit-box-shadow: inset 0 0 0 2px #a6e3a1, inset 0 0 0 3px #a6e3a1;
-  box-shadow: inset 0 0 0 2px #a6e3a1, inset 0 0 0 3px #a6e3a1;
+  -webkit-box-shadow:
+    inset 0 0 0 2px #a6e3a1,
+    inset 0 0 0 3px #a6e3a1;
+  box-shadow:
+    inset 0 0 0 2px #a6e3a1,
+    inset 0 0 0 3px #a6e3a1;
 }
 div[class*="videoLayer_"]
   > div[class^="tileChild"]
   > div[class^="border"][class*="voiceChannelEffect_"] {
-  -webkit-box-shadow: inset 0 0 0 2px #89b4fa, inset 0 0 0 3px #89b4fa;
-  box-shadow: inset 0 0 0 2px #89b4fa, inset 0 0 0 3px #89b4fa;
+  -webkit-box-shadow:
+    inset 0 0 0 2px #89b4fa,
+    inset 0 0 0 3px #89b4fa;
+  box-shadow:
+    inset 0 0 0 2px #89b4fa,
+    inset 0 0 0 3px #89b4fa;
 }
 
 div[class*="featureIcon_"] path {
