@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   imports = [
+    ./foot
     ./mako.nix
     ./runner
     ./swaylock.nix

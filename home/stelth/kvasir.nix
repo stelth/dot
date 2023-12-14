@@ -8,18 +8,12 @@
     ./features/neovim
     ./features/music
     ./features/wine
-    ./features/wezterm
   ];
 
-  home = {
-    persistence = {
-      "/persist/home/stelth".directories = [
-        ".config/Yubico"
-      ];
-    };
-    sessionVariables = {
-      TERMINAL = "wezterm";
-    };
+  home.persistence = {
+    "/persist/home/stelth".directories = [
+      ".config/Yubico"
+    ];
   };
 
   programs.neovim = {
