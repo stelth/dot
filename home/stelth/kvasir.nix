@@ -3,6 +3,7 @@
     ./global
     ./features/cad
     ./features/cli
+    ./features/foot
     ./features/gpg
     ./features/desktop/hyprland
     ./features/neovim
@@ -18,7 +19,7 @@
       ];
     };
     sessionVariables = {
-      TERMINAL = "wezterm";
+      TERMINAL = "footclient";
     };
   };
 
