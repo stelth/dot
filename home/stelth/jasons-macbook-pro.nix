@@ -2,7 +2,6 @@
   imports = [
     ./features/cli
     ./features/neovim
-    ./features/wezterm
   ];
 
   home.packages = with pkgs; [
