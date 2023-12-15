@@ -225,7 +225,9 @@
       }),
       nls.builtins.formatting.gersemi,
       nls.builtins.formatting.fixjson,
-      nls.builtins.formatting.google_java_format,
+      nls.builtins.formatting.google_java_format.with({
+        command = '${lib.getExe pkgs.google-java-format}',
+      }),
       nls.builtins.formatting.markdownlint,
       nls.builtins.formatting.reorder_python_imports,
       nls.builtins.formatting.stylua,
