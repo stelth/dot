@@ -171,7 +171,7 @@
   }))
 
   lspconfig.pyright.setup(M.make_config({
-    cmd = { '${lib.getExe pkgs.nodePackages.pyright}', '--stdio' }
+    cmd = { '${lib.getExe pkgs.nodePackages.pyright}'}
   }))
 
   lspconfig.nil_ls.setup(M.make_config({
