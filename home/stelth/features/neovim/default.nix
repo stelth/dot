@@ -111,6 +111,13 @@
         type = "lua";
       }
       {
+        plugin = nvim-hlslens;
+        config = ''
+          require('hlslens').setup()
+        '';
+        type = "lua";
+      }
+      {
         plugin = nvim-treesitter.withAllGrammars;
         config = import ./settings/treesitter.nix {};
         type = "lua";
