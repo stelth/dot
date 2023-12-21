@@ -1,13 +1,23 @@
 {pkgs, ...}: {
-  services.printing.enable = true;
-  services.printing.drivers = [pkgs.hplipWithPlugin];
+  services = {
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+    };
 
-  hardware.sane.enable = true;
-  hardware.sane.extraBackends = [pkgs.hplipWithPlugin];
+    printing = {
+      enable = true;
+      drivers = [pkgs.hplipWithPlugin];
+    };
+  };
 
-  services.avahi.enable = true;
-  services.avahi.nssmdns = true;
-  services.avahi.openFirewall = true;
+  hardware = {
+    sane = {
+      enable = true;
+      extraBackends = [pkgs.hplipWithPlugin];
+    };
+  };
 
   environment.persistence."/persist" = {
     directories = [
