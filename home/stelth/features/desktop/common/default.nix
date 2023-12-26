@@ -5,7 +5,6 @@
     ./chrome.nix
     ./font.nix
     ./gtk.nix
-    ./kdeconnect.nix
     ./pavucontrol.nix
     ./playerctl.nix
     ./qt.nix
