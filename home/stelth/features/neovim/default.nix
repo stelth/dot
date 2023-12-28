@@ -20,7 +20,9 @@
     withRuby = false;
 
     extraPackages = with pkgs; [
+      # misc
       fd
+      sqlite
       tree-sitter
 
       # Language Servers
@@ -137,6 +139,15 @@
           vim.g.matchup_matchparen_offscreen = {
           	method = "status_manual",
           }
+        '';
+        type = "lua";
+      }
+      vim-dadbod
+      vim-dadbod-completion
+      {
+        plugin = vim-dadbod-ui;
+        config = ''
+          vim.g.db_ui_use_nerd_fonts = 1
         '';
         type = "lua";
       }

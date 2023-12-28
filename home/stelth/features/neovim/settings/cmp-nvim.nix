@@ -58,5 +58,13 @@
   	},
   })
 
+  cmp.setup.filetype({"sql", "mysql", "plsql"}, {
+    sources = cmp.config.sources({
+      { name = "vim-dadbod-completion" },
+  		{ name = "nvim_lsp" },
+  		{ name = "buffer" },
+    })
+  })
+
   require("cmp_git").setup()
 ''
