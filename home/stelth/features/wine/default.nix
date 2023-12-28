@@ -12,6 +12,7 @@
           directory = ".local/share/bottles";
           method = "symlink";
         }
+        ".local/share/applications"
       ];
     };
   };
