@@ -47,6 +47,7 @@
       nodePackages.jsonlint # JSON
       markdownlint-cli # Markdown
       selene # Lua
+      sqlfluff # SQL, does formatting and linting
       yamllint # YAML
 
       # none-ls formatters
@@ -148,6 +149,7 @@
         plugin = vim-dadbod-ui;
         config = ''
           vim.g.db_ui_use_nerd_fonts = 1
+          vim.g.db_ui_save_location = '~/.local/share/neovim/db_ui'
         '';
         type = "lua";
       }

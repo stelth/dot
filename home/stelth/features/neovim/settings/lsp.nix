@@ -213,6 +213,9 @@
       nls.builtins.diagnostics.pylint,
       nls.builtins.diagnostics.selene,
       nls.builtins.diagnostics.shellcheck,
+      nls.builtins.diagnostics.sqlfluff.with({
+        extra_args = { '--dialect', 'sqlite' },
+      }),
       nls.builtins.diagnostics.statix,
       nls.builtins.diagnostics.yamllint,
 
@@ -230,6 +233,9 @@
       }),
       nls.builtins.formatting.markdownlint,
       nls.builtins.formatting.reorder_python_imports,
+      nls.builtins.formatting.sqlfluff.with({
+        extra_args = { '--dialect', 'sqlite' },
+      }),
       nls.builtins.formatting.stylua,
     }
   })
