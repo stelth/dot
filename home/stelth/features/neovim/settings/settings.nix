@@ -5,12 +5,12 @@
   vim.loader.enable()
 
   require("mini.basics").setup({
-  	options = {
-  		extra_ui = true,
-  	},
-  	mappings = {
-  		option_toggle_prefix = "<Space>t",
-  	},
+    options = {
+      extra_ui = true,
+    },
+    mappings = {
+      option_toggle_prefix = "<Space>t",
+    },
   })
 
   local indent = 2
