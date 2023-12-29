@@ -15,8 +15,6 @@
   vim.keymap.set("i", ",", ",<C-g>u")
   vim.keymap.set("i", ".", ".<C-g>u")
   vim.keymap.set("i", ";", ";<C-g>u")
-  vim.keymap.set({ "n", "x", "o" }, "n", "'Nn'[v:searchforward]", { expr = true })
-  vim.keymap.set({ "n", "x", "o" }, "N", "'nN'[v:searchforward]", { expr = true })
   vim.keymap.set("n", "<C-k>", vim.cmd.cnext)
   vim.keymap.set("n", "<C-j>", vim.cmd.cprev)
   vim.keymap.set("n", "<BS>", vim.cmd.nohlsearch)
@@ -71,8 +69,8 @@
   vim.keymap.set("n", "<leader>u", require("telescope").extensions.undo.undo)
 
   -- hlslens
-  vim.keymap.set("n", "n", [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR>
-  vim.keymap.set("n", "N", [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR>
+  vim.keymap.set("n", "n", [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><CMD> lua require('hlslens').start()<CR>]])
+  vim.keymap.set("n", "N", [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><CMD> lua require('hlslens').start()<CR>]])
   vim.keymap.set("n", "*", [[*<Cmd>lua require('hlslens').start()<CR>]])
   vim.keymap.set("n", "#", [[#<Cmd>lua require('hlslens').start()<CR>]])
   vim.keymap.set("n", "g*", [[g*<Cmd>lua require('hlslens').start()<CR>]])
