@@ -194,7 +194,7 @@
   }))
 
   local nls = require('null-ls')
-  nls.setup({
+  nls.setup(M.make_config({
     sources = {
       -- code actions
       nls.builtins.code_actions.shellcheck,
@@ -238,5 +238,5 @@
       }),
       nls.builtins.formatting.stylua,
     }
-  })
+  }))
 ''
