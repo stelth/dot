@@ -58,7 +58,7 @@
       stylua # Lua
     ];
 
-    extraLuaConfig = import ./settings/settings.nix {} + "\n" + import ./keymaps.nix {};
+    extraLuaConfig = import ./settings/settings.nix {} + "\n" + import ./settings/keymaps.nix {};
 
     plugins = with pkgs.vimPlugins; [
       auto-pairs
