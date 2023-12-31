@@ -2,6 +2,9 @@
   home.packages = with pkgs; [
     bottles
     gamescope
+
+    wineWowPackages.waylandFull
+    winetricks
   ];
 
   home.persistence = {

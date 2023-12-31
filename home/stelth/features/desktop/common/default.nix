@@ -3,6 +3,7 @@
     ./1password.nix
     ./chat
     ./chrome.nix
+    ./firefox.nix
     ./font.nix
     ./gtk.nix
     ./pavucontrol.nix
