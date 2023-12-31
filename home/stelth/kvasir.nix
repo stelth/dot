@@ -4,7 +4,9 @@
     ./features/cad
     ./features/cli
     ./features/gpg
-    ./features/desktop/hyprland
+    ./features/desktop/common
+    ./features/desktop/common/wayland-wm/foot
+    ./features/desktop/kde.nix
     ./features/neovim
     ./features/music
     ./features/wine

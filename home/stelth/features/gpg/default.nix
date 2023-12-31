@@ -14,7 +14,7 @@
       name = "curses";
     };
 in {
-  home.packages = pinentry.packages;
+  home.packages = [pkgs.pinentry-qt];
 
   services.gpg-agent = {
     enable = true;
