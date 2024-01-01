@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{...}: {
   home = {
     sessionVariables = {
       TERMINAL = "footclient";
@@ -16,5 +16,4 @@
       };
     };
   };
-  systemd.user.services.foot.Service.ExecSearchPath = "${pkgs.foot}/bin:${pkgs.xdg-utils}/bin";
 }

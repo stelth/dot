@@ -1,9 +1,8 @@
-{pkgs, ...}: {
+{...}: {
   imports = [
     ./1password.nix
     ./chat
     ./chrome.nix
-    ./firefox.nix
     ./font.nix
     ./pavucontrol.nix
     ./playerctl.nix
@@ -20,8 +19,4 @@
   };
 
   xdg.mimeApps.enable = true;
-
-  home.packages = with pkgs; [
-    zathura
-  ];
 }

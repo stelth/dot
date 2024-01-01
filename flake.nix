@@ -14,10 +14,6 @@
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    nur-packages = {
-      url = "github:nix-community/NUR";
-    };
-
     sops-nix = {
       url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -65,7 +61,7 @@
     ...
   }: let
     inherit (self) outputs;
-    defaultModules = [inputs.nur-packages.nixosModules.nur];
+    defaultModules = [];
 
     mkNixos = hostModules:
       inputs.nixpkgs.lib.nixosSystem {

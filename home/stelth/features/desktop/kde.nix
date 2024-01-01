@@ -5,6 +5,7 @@
 
   home.persistence."/persist/home/stelth" = {
     directories = [
+      ".config/autostart"
       ".config/gtk-3.0"
       ".config/gtk-4.0"
       ".config/KDE"
