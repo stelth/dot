@@ -22,6 +22,7 @@
     extraPackages = with pkgs; [
       # misc
       fd
+      nodejs
       sqlite
       tree-sitter
 
