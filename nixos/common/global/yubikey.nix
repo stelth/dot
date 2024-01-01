@@ -8,4 +8,8 @@
     login.u2fAuth = true;
     sudo.u2fAuth = true;
   };
+
+  environment.systemPackages = with pkgs; [
+    yubikey-personalization
+  ];
 }
