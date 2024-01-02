@@ -59,7 +59,7 @@
       stylua # Lua
     ];
 
-    extraLuaConfig = import ./settings/settings.nix {} + "\n" + import ./settings/keymaps.nix {};
+    extraLuaConfig = import ./settings/settings.nix {};
 
     plugins = with pkgs.vimPlugins; [
       catppuccin-nvim
@@ -160,12 +160,7 @@
       vim-tmux-navigator
       {
         plugin = which-key-nvim;
-        config = ''
-          vim.o.timeout = true
-          vim.o.timeoutlen = 300
-
-          require('which-key').setup({})
-        '';
+        config = import ./settings/keymaps.nix {};
         type = "lua";
       }
     ];
