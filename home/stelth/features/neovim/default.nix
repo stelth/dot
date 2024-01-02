@@ -89,11 +89,6 @@
         '';
         type = "lua";
       }
-      {
-        plugin = mini-nvim;
-        config = import ./settings/mini-nvim.nix {};
-        type = "lua";
-      }
       neodev-nvim
       {
         plugin = nvim-notify;

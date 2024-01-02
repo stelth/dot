@@ -4,18 +4,8 @@
   -- ----------------------------------
   vim.loader.enable()
 
-  require("mini.basics").setup({
-    options = {
-      extra_ui = true,
-    },
-    mappings = {
-      option_toggle_prefix = "<Space>t",
-    },
-  })
-
   local indent = 2
 
-  vim.opt.backupdir = vim.fn.stdpath("state") .. "/backup"
   vim.opt.clipboard = "unnamedplus"
   vim.opt.conceallevel = 3
   vim.opt.diffopt:append("linematch:60")
@@ -24,11 +14,15 @@
   vim.opt.grepformat = "%f:%l:%c:%m"
   vim.opt.inccommand = "nosplit"
   vim.opt.laststatus = 0
+  vim.opt.number = true
   vim.opt.relativenumber = true
   vim.opt.shiftwidth = indent
+  vim.opt.signcolumn = 'yes'
+  vim.opt.smartindent = true
   vim.opt.spell = true
   vim.opt.swapfile = false
   vim.opt.tabstop = indent
+  vim.opt.undofile = true
   vim.opt.undolevels = 10000
   vim.opt.updatetime = 50
   vim.opt.wildmode = "longest:full,full"
