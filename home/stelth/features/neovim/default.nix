@@ -62,7 +62,6 @@
     extraLuaConfig = import ./settings/settings.nix {} + "\n" + import ./settings/keymaps.nix {};
 
     plugins = with pkgs.vimPlugins; [
-      auto-pairs
       catppuccin-nvim
       cmp-buffer
       cmp-git
