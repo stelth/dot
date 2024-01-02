@@ -155,6 +155,16 @@
         type = "lua";
       }
       vim-tmux-navigator
+      {
+        plugin = which-key-nvim;
+        config = ''
+          vim.o.timeout = true
+          vim.o.timeoutlen = 300
+
+          require('which-key').setup({})
+        '';
+        type = "lua";
+      }
     ];
   };
 }
