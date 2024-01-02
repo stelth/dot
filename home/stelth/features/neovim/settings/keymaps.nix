@@ -85,4 +85,35 @@
     J = { [[:m '>+1<CR>gv=gv]], "Move Down" },
     K = { [[:m '<-2<CR>gv=gv]], "Move Up" },
   }, { mode = "v" })
+
+  vim.api.nvim_create_autocmd('LspAttach', {
+    callback = function(ev)
+      local opts = { buffer = ev.buf }
+      wk.register({
+        c = {
+          name = "code",
+          a = { vim.lsp.buf.code_action, "Code Action", mode = "v" },
+          f = { function()
+              M.format(vim.api.nvim_get_current_buf())
+            end, "Format" },
+          d = { vim.diagnostic.open_float, "Line Diagnostics" },
+          l = {
+            name = "LSP",
+            i = { vim.cmd.LspInfo, "Lsp Info" },
+            a = { vim.lsp.buf.add_workspace_folder, "Add Workspace Folder" },
+            r = { vim.lsp.buf.remove_workspace_folder, "Remove Workspace Folder" },
+            l = { vim.lsp.buf.list_workspace_folders, "List Workspace Folders" },
+          },
+        },
+        xd = { telescope_builtin.diagnostics, "Search Diagnostics" },
+        tf = { M.toggle_formatting, "Toggle Formatting" },
+        gd = { telescope_builtin.lsp_definitions, "Goto Definition" },
+        gr = { telescope_builtin.lsp_references, "References" },
+        gs = { vim.lsp.buf.signature_help, "Signature Help" },
+        gI = { telescope_builtin.lsp_implementations, "Goto Implementation" },
+        gt = { telescope_builtin.lsp_type_definitions, "Goto Type Definition" },
+        K = { vim.lsp.buf.hover, "" },
+      }, opts)
+    end,
+  })
 ''
