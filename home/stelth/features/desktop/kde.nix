@@ -60,6 +60,7 @@
       ".config/ksmserverrc"
       ".config/ksplashrc"
       ".config/ktimezonedrc"
+      ".config/kwalletrc"
       ".config/kwinrc"
       ".config/kwinrulesrc"
       ".config/kxkbrc"
@@ -77,8 +78,6 @@
       ".config/spectaclerc"
       ".config/startkderc"
       ".config/systemsettingsrc"
-      ".config/Trolltech.conf"
-      ".config/user-dirs.dirs"
       ".config/user-dirs.locale"
 
       ".local/share/krunnerstaterc"
