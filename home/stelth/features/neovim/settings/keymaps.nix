@@ -75,4 +75,17 @@
   vim.keymap.set("n", "#", [[#<Cmd>lua require('hlslens').start()<CR>]])
   vim.keymap.set("n", "g*", [[g*<Cmd>lua require('hlslens').start()<CR>]])
   vim.keymap.set("n", "g#", [[g#<Cmd>lua require('hlslens').start()<CR>]])
+
+  -- trouble
+  vim.keymap.set("n", "<leader>tt", function()
+    require('trouble').toggle()
+  end)
+
+  vim.keymap.set("n", "<leader>tn", function()
+    require("trouble").next({skip_groups = true, jump = true})
+  end)
+
+  vim.keymap.set("n", "<leader>tp", function()
+    require("trouble").previous({skip_groups = true, jump = true})
+  end)
 ''

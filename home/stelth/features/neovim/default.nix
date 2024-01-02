@@ -143,6 +143,15 @@
         '';
         type = "lua";
       }
+      {
+        plugin = trouble-nvim;
+        config = ''
+          require('trouble').setup({
+            icons = false,
+          })
+        '';
+        type = "lua";
+      }
       vim-dadbod
       vim-dadbod-completion
       {

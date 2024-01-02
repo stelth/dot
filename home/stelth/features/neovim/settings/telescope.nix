@@ -1,5 +1,9 @@
 {...}: ''
+  local actions = require('telescope.actions')
+  local trouble = require('trouble.providers.telescope')
+
   local telescope = require("telescope")
+
   telescope.setup({
     defaults = {
       file_sorter = require("telescope.sorters").get_fzy_sorter,
@@ -18,6 +22,10 @@
           preview_height = 0.6,
           preview_cutoff = 0,
         },
+      },
+      mappings = {
+        i = { ["<c-t>"] = trouble.open_with_trouble },
+        n = { ["<c-t>"] = trouble.open_with_trouble },
       },
     },
   })
