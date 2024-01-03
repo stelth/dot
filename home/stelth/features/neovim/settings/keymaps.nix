@@ -109,15 +109,18 @@ lua
             l = { vim.lsp.buf.list_workspace_folders, "List Workspace Folders" },
           },
           r = { vim.lsp.buf.rename, "Rename" },
+          xd = { telescope_builtin.diagnostics, "Search Diagnostics" },
+          tf = { M.toggle_formatting, "Toggle Formatting" },
+          gd = { telescope_builtin.lsp_definitions, "Goto Definition" },
+          gr = { telescope_builtin.lsp_references, "References" },
+          gs = { vim.lsp.buf.signature_help, "Signature Help" },
+          gI = { telescope_builtin.lsp_implementations, "Goto Implementation" },
+          gt = { telescope_builtin.lsp_type_definitions, "Goto Type Definition" },
         },
-        xd = { telescope_builtin.diagnostics, "Search Diagnostics" },
-        tf = { M.toggle_formatting, "Toggle Formatting" },
-        gd = { telescope_builtin.lsp_definitions, "Goto Definition" },
-        gr = { telescope_builtin.lsp_references, "References" },
-        gs = { vim.lsp.buf.signature_help, "Signature Help" },
-        gI = { telescope_builtin.lsp_implementations, "Goto Implementation" },
-        gt = { telescope_builtin.lsp_type_definitions, "Goto Type Definition" },
-        K = { vim.lsp.buf.hover, "" },
+      }, vim.tbl_deep_extend("force", opts, {prefix = "<leader>"}))
+
+      wk.register({
+          K = { vim.lsp.buf.hover, "" },
       }, opts)
     end,
   })
