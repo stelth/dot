@@ -92,7 +92,7 @@
       wk.register({
         c = {
           name = "code",
-          a = { vim.lsp.buf.code_action, "Code Action", mode = "v" },
+          a = { vim.lsp.buf.code_action, "Code Action" },
           f = { function()
               M.format(vim.api.nvim_get_current_buf())
             end, "Format" },
