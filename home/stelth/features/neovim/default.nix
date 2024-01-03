@@ -62,6 +62,17 @@
     extraLuaConfig = import ./settings/settings.nix {};
 
     plugins = with pkgs.vimPlugins; [
+      {
+        plugin = bufferline-nvim;
+        config =
+          /*
+          lua
+          */
+          ''
+            require('bufferline').setup({})
+          '';
+        type = "lua";
+      }
       catppuccin-nvim
       cmp-buffer
       cmp-git
@@ -77,6 +88,17 @@
           */
           ''
             require('gitsigns').setup({})
+          '';
+        type = "lua";
+      }
+      {
+        plugin = lualine-nvim;
+        config =
+          /*
+          lua
+          */
+          ''
+            require('lualine').setup({})
           '';
         type = "lua";
       }
@@ -98,17 +120,7 @@
         type = "lua";
       }
       neodev-nvim
-      {
-        plugin = nvim-notify;
-        config =
-          /*
-          lua
-          */
-          ''
-            vim.notify = require('notify')
-          '';
-        type = "lua";
-      }
+      nvim-notify
       {
         plugin = noice-nvim;
         config =

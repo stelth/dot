@@ -17,7 +17,7 @@ lua
   vim.opt.grepprg = "rg --vimgrep"
   vim.opt.grepformat = "%f:%l:%c:%m"
   vim.opt.inccommand = "nosplit"
-  vim.opt.laststatus = 0
+  vim.opt.laststatus = 2
   vim.opt.number = true
   vim.opt.relativenumber = true
   vim.opt.shiftwidth = indent
