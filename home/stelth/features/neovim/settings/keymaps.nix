@@ -104,6 +104,7 @@
             r = { vim.lsp.buf.remove_workspace_folder, "Remove Workspace Folder" },
             l = { vim.lsp.buf.list_workspace_folders, "List Workspace Folders" },
           },
+          r = { vim.lsp.buf.rename, "Rename" },
         },
         xd = { telescope_builtin.diagnostics, "Search Diagnostics" },
         tf = { M.toggle_formatting, "Toggle Formatting" },
