@@ -71,54 +71,70 @@
       friendly-snippets
       {
         plugin = gitsigns-nvim;
-        config = ''
-          require('gitsigns').setup({})
-        '';
+        config =
+          /*
+          lua
+          */
+          ''
+            require('gitsigns').setup({})
+          '';
         type = "lua";
       }
       {
         plugin = luasnip;
-        config = ''
-          plugin = luasnip;
-          require("luasnip").config.set_config({
-          	history = true,
-          	enable_autosnippets = true,
-          	updateEvents = "TextChanged,TextChangedI",
-          })
-          require("luasnip/loaders/from_vscode").lazy_load()
-        '';
+        config =
+          /*
+          lua
+          */
+          ''
+            plugin = luasnip;
+            require("luasnip").config.set_config({
+            	history = true,
+            	enable_autosnippets = true,
+            	updateEvents = "TextChanged,TextChangedI",
+            })
+            require("luasnip/loaders/from_vscode").lazy_load()
+          '';
         type = "lua";
       }
       neodev-nvim
       {
         plugin = nvim-notify;
-        config = ''
-          vim.notify = require('notify')
-        '';
+        config =
+          /*
+          lua
+          */
+          ''
+            vim.notify = require('notify')
+          '';
         type = "lua";
       }
       {
         plugin = noice-nvim;
-        config = ''
-          require("noice").setup({
-            lsp = {
-              -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-              override = {
-                ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-                ["vim.lsp.util.stylize_markdown"] = true,
-                ["cmp.entry.get_documentation"] = true,
+        config =
+          /*
+          lua
+          */
+          ''
+            require("noice").setup({
+              lsp = {
+                -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+                override = {
+                  ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+                  ["vim.lsp.util.stylize_markdown"] = true,
+                  ["cmp.entry.get_documentation"] = true,
+                },
               },
-            },
-            -- you can enable a preset for easier configuration
-            presets = {
-              bottom_search = true, -- use a classic bottom cmdline for search
-              command_palette = true, -- position the cmdline and popupmenu together
-              long_message_to_split = true, -- long messages will be sent to a split
-              inc_rename = false, -- enables an input dialog for inc-rename.nvim
-              lsp_doc_border = false, -- add a border to hover docs and signature help
-            },
-          })
-        '';
+              -- you can enable a preset for easier configuration
+              presets = {
+                bottom_search = true, -- use a classic bottom cmdline for search
+                command_palette = true, -- position the cmdline and popupmenu together
+                long_message_to_split = true, -- long messages will be sent to a split
+                inc_rename = false, -- enables an input dialog for inc-rename.nvim
+                lsp_doc_border = false, -- add a border to hover docs and signature help
+              },
+            })
+          '';
         type = "lua";
       }
       none-ls-nvim
@@ -155,30 +171,42 @@
       telescope-undo-nvim
       {
         plugin = vim-matchup;
-        config = ''
-          vim.g.matchup_matchparen_offscreen = {
-          	method = "status_manual",
-          }
-        '';
+        config =
+          /*
+          lua
+          */
+          ''
+            vim.g.matchup_matchparen_offscreen = {
+            	method = "status_manual",
+            }
+          '';
         type = "lua";
       }
       {
         plugin = trouble-nvim;
-        config = ''
-          require('trouble').setup({
-            icons = false,
-          })
-        '';
+        config =
+          /*
+          lua
+          */
+          ''
+            require('trouble').setup({
+              icons = false,
+            })
+          '';
         type = "lua";
       }
       vim-dadbod
       vim-dadbod-completion
       {
         plugin = vim-dadbod-ui;
-        config = ''
-          vim.g.db_ui_use_nerd_fonts = 1
-          vim.g.db_ui_save_location = '~/.local/share/neovim/db_ui'
-        '';
+        config =
+          /*
+          lua
+          */
+          ''
+            vim.g.db_ui_use_nerd_fonts = 1
+            vim.g.db_ui_save_location = '~/.local/share/neovim/db_ui'
+          '';
         type = "lua";
       }
       vim-tmux-navigator

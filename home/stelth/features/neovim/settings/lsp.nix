@@ -2,7 +2,11 @@
   lib,
   pkgs,
   ...
-}: ''
+}:
+/*
+lua
+*/
+''
   local warn = function(msg, name)
     vim.notify(msg, vim.log.levels.WARN, { title = name })
   end

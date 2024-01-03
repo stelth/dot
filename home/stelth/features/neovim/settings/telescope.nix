@@ -1,4 +1,8 @@
-{...}: ''
+{...}:
+/*
+lua
+*/
+''
   local actions = require('telescope.actions')
   local trouble = require('trouble.providers.telescope')
 
