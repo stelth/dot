@@ -15,8 +15,13 @@ lua
     enabled = function()
       return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt"
     end,
+    preselect = cmp.PreselectMode.None,
     completion = {
-      completeopt = "menu,menuone,noinsert",
+      completeopt = "menu,menuone,noselect",
+    },
+    window = {
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
     },
     snippet = {
       expand = function(args)
@@ -26,10 +31,10 @@ lua
     mapping = cmp.mapping.preset.insert({
       ["<C-Space>"] = cmp.mapping.complete(),
       ["<C-e>"] = cmp.mapping.close(),
-      ["<CR>"] = cmp.mapping.confirm({ select = true }),
+      ["<CR>"] = cmp.mapping.confirm({ select = false }),
       ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
-          cmp.select_next_item()
+          cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
         elseif luasnip.expand_or_jumpable() then
           luasnip.expand_or_jump()
         elseif has_words_before() then
@@ -40,7 +45,7 @@ lua
       end, { "i", "s" }),
       ["<S-Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
-          cmp.select_prev_item()
+          cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
         elseif luasnip.jumpable(-1) then
           luasnip.jump(-1)
         else
