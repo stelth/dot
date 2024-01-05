@@ -53,6 +53,10 @@
     neovim-nightly = {
       url = "github:nix-community/neovim-nightly-overlay";
     };
+
+    kde6 = {
+      url = "github:nix-community/kde2nix";
+    };
   };
 
   outputs = inputs @ {

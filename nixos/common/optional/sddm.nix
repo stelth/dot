@@ -1,4 +1,7 @@
-{...}: {
+{inputs, ...}: {
+  imports = [
+    inputs.kde6.nixosModules.plasma6
+  ];
   services.xserver = {
     enable = true;
     videoDrivers = ["nvidia"];
@@ -9,10 +12,10 @@
         enableHidpi = true;
       };
 
-      defaultSession = "plasmawayland";
+      defaultSession = "plasma";
     };
 
-    desktopManager.plasma5.enable = true;
+    desktopManager.plasma6.enable = true;
 
     libinput.enable = true;
   };
