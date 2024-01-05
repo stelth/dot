@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  home.packages = with pkgs; [betterdiscordctl discord slack];
+  home.packages = with pkgs; [betterdiscordctl discord];
 
   home.persistence = {
     "/persist/home/stelth".directories = [
