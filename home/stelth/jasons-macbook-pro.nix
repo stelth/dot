@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./features/cli
-    ./features/neovim
+    ./features/vim
   ];
 
   home.packages = with pkgs; [
@@ -10,8 +10,7 @@
 
   home.stateVersion = "23.11";
 
-  programs.neovim = {
+  programs.vim = {
     defaultEditor = true;
-    vimAlias = true;
   };
 }
