@@ -53,6 +53,8 @@
   nnoremap <Right> :bnext<CR>
   nnoremap <Left> :bprev<CR>
 
+  nnoremap <BS> :noh<CR>
+
   " vim-highlightedyank {{{
   let g:highlightedyank_highlight_duration = 300
   " }}}
