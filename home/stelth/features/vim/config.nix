@@ -207,7 +207,20 @@
   " Add (Neo)Vim's native statusline support
   " NOTE: Please see `:h coc-status` for integrations with external plugins that
   " provide custom statusline: lightline.vim, vim-airline
-  autocmd User Flags call Hoist("buffer", " %{coc#status()} ")
+  function! StatusDiagnostic() abort
+   let info = get(b:, 'coc_diagnostic_info', {})
+   if empty(info) | return ''' | endif
+   let msgs = []
+   if get(info, 'error', 0)
+     call add(msgs, 'E' . info['error'])
+   endif
+   if get(info, 'warning', 0)
+     call add(msgs, 'W' . info['warning'])
+   endif
+   return '[' . join(msgs, ' ') . get(g:, 'coc_status', ''') . ']'
+  endfunction
+
+  autocmd User Flags call Hoist("buffer", "%{StatusDiagnostic()}")
 
   " Mappings for CoCList
   " Show all diagnostics
