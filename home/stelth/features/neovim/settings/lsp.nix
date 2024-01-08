@@ -84,7 +84,7 @@ lua
 
   lspconfig.clangd.setup(M.make_config({
     cmd = {
-      "${pkgs.clang-tools_16}/bin/clangd",
+      "${pkgs.clang-tools_17}/bin/clangd",
     },
     init_options = {
       clangdFileStatus = true,
@@ -138,7 +138,7 @@ lua
 
       -- diagnostics
       nls.builtins.diagnostics.clang_check.with({
-        command = '${pkgs.clang-tools_16}/bin/clang-check'
+        command = '${pkgs.clang-tools_17}/bin/clang-check'
       }),
       nls.builtins.diagnostics.cmake_lint,
       nls.builtins.diagnostics.deadnix,
@@ -160,7 +160,7 @@ lua
       nls.builtins.formatting.beautysh,
       nls.builtins.formatting.black,
       nls.builtins.formatting.clang_format.with({
-        command = '${pkgs.clang-tools_16}/bin/clang-format'
+        command = '${pkgs.clang-tools_17}/bin/clang-format'
       }),
       nls.builtins.formatting.gersemi,
       nls.builtins.formatting.fixjson,

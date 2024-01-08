@@ -7,9 +7,9 @@
     ./features/desktop/common
     ./features/desktop/common/wayland-wm/foot
     ./features/desktop/kde.nix
-    ./features/neovim
     ./features/music
     ./features/wine
+    ./features/vim
   ];
 
   home.persistence = {
@@ -18,8 +18,7 @@
     ];
   };
 
-  programs.neovim = {
+  programs.vim = {
     defaultEditor = true;
-    vimAlias = true;
   };
 }

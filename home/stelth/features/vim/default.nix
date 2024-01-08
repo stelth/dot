@@ -16,7 +16,7 @@
         shfmt
 
         #C/CPP
-        clang-tools_16
+        clang-tools_17
 
         # CMake
         cmake-format
@@ -78,7 +78,6 @@
     };
     extraConfig = import ./config.nix {inherit config lib pkgs;};
     plugins = with pkgs.vimPlugins; [
-      auto-pairs
       catppuccin-vim
       coc-clangd
       coc-cmake
@@ -97,7 +96,6 @@
       fzf-vim
       undotree
       vim-commentary
-      vim-endwise
       vim-flagship
       vim-highlightedyank
       vim-polyglot
