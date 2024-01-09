@@ -92,6 +92,8 @@
       fzf-vim
       undotree
       vim-commentary
+      vim-dadbod
+      vim-dadbod-ui
       vim-flagship
       vim-highlightedyank
       vim-polyglot

@@ -59,6 +59,10 @@
   let g:highlightedyank_highlight_duration = 300
   " }}}
 
+  " vim-dadbod {{{
+  let g:db_ui_user_nerd_fonts = 1
+  let g:db_ui_save_location = '~/.local/share/vim/db_ui'
+  " }}}
 
   " fzf-vim {{{
   nmap <leader>hc :Commands<CR>
