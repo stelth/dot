@@ -133,7 +133,6 @@
       "markdown": ["vale", "write-good"],
       "nix": "statix",
       "python": ["flake8", "pylint"],
-      "sh": "shellcheck",
       "vim": "vint",
       "yaml": "yamllint"
     },
