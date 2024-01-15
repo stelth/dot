@@ -36,5 +36,5 @@ in {
       hosts;
   };
 
-  security.pam.enableSSHAgentAuth = true;
+  security.pam.sshAgentAuth.enable = true;
 }
