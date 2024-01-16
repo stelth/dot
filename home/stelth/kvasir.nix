@@ -21,4 +21,12 @@
   programs.vim = {
     defaultEditor = true;
   };
+
+  xdg.mimeApps.defaultApplications = {
+    "text/html" = "google-chrome-stable.desktop";
+    "x-scheme-handler/http" = "google-chrome-stable.desktop";
+    "x-scheme-handler/https" = "google-chrome-stable.desktop";
+    "x-scheme-handler/about" = "google-chrome-stable.desktop";
+    "x-scheme-handler/unknown" = "google-chrome-stable.desktop";
+  };
 }
