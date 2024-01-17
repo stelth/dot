@@ -101,7 +101,6 @@
       vim-signify
       vim-snippets
       vim-speeddating
-      vim-surround
       vim-tmux-navigator
     ];
   };
