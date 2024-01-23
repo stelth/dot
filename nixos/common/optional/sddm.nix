@@ -7,6 +7,7 @@
       sddm = {
         enable = true;
         enableHidpi = true;
+        wayland.enable = true;
       };
 
       defaultSession = "plasmawayland";
