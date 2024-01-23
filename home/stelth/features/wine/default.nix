@@ -1,21 +1,19 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    bottles
-    gamescope
-
-    wineWowPackages.waylandFull
-    winetricks
+    lutris
   ];
 
   home.persistence = {
     "/persist/home/stelth" = {
       allowOther = true;
       directories = [
+        ".local/share/applications"
         {
-          directory = ".local/share/bottles";
+          directory = "Games/Lutris";
           method = "symlink";
         }
-        ".local/share/applications"
+        ".config/lutris"
+        ".local/share/lutris"
       ];
     };
   };
