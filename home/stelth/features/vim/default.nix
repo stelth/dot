@@ -71,6 +71,10 @@
   };
 
   programs.vim = {
+    packageConfigurable =
+      if pkgs.stdenvNoCC.isDarwin
+      then pkgs.vim-darwin
+      else pkgs.vim-full;
     enable = true;
     extraConfig = import ./config.nix {inherit config lib pkgs;};
     plugins = with pkgs.vimPlugins; [
