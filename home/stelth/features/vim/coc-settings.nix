@@ -3,7 +3,7 @@
     "coc.preferences.colorSupport": true,
     "coc.preferences.formatOnSaveFiletypes": ["*"],
     "coc.preferences.snippets.enable": true,
-    "coc.preferences.useQuickFixForLocations": true,
+    "coc.preferences.useQuickfixForLocations": true,
     "codeLens.enable": true,
     "diagnostic.virtualText": true,
     "diagnostic.virtualTextCurrentLineOnly": false,

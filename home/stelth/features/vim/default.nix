@@ -101,6 +101,7 @@
       vim-flagship
       vim-highlightedyank
       vim-polyglot
+      vim-qf
       vim-sensible
       vim-signify
       vim-snippets
