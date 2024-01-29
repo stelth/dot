@@ -209,20 +209,6 @@
   " Add `:OR` command for organize imports of the current buffer
   command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
 
-  " Add (Neo)Vim's native statusline support
-  " NOTE: Please see `:h coc-status` for integrations with external plugins that
-  " provide custom statusline: lightline.vim, vim-airline
-  function! StatusDiagnostic() abort
-   let info = get(b:, 'coc_diagnostic_info', {})
-   if empty(info) | return ''' | endif
-   let msgs = []
-   call add(msgs, 'E' . info['error'])
-   call add(msgs, 'W' . info['warning'])
-   return '[' . join(msgs, ' ') . get(g:, 'coc_status', ''') . ']'
-  endfunction
-
-  autocmd User Flags call Hoist("buffer", "%{StatusDiagnostic()}")
-
   " Mappings for CoCList
   " Show all diagnostics
   nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
