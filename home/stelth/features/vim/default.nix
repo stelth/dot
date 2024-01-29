@@ -77,36 +77,38 @@
       else pkgs.vim-full;
     enable = true;
     extraConfig = import ./config.nix {inherit config lib pkgs;};
-    plugins = with pkgs.vimPlugins; [
-      catppuccin-vim
-      coc-clangd
-      coc-cmake
-      coc-diagnostic
-      coc-git
-      coc-json
-      coc-lists
-      coc-markdownlint
-      coc-nvim
-      coc-prettier
-      coc-pyright
-      coc-sh
-      coc-snippets
-      coc-vimlsp
-      coc-yaml
-      fzf-vim
-      undotree
-      vim-commentary
-      vim-dadbod
-      vim-dadbod-ui
-      vim-flagship
-      vim-highlightedyank
-      vim-polyglot
-      vim-qf
-      vim-sensible
-      vim-signify
-      vim-snippets
-      vim-speeddating
-      vim-tmux-navigator
-    ];
+    plugins = with pkgs.vimPlugins;
+      [
+        catppuccin-vim
+        coc-clangd
+        coc-cmake
+        coc-diagnostic
+        coc-git
+        coc-json
+        coc-lists
+        coc-markdownlint
+        coc-nvim
+        coc-prettier
+        coc-pyright
+        coc-sh
+        coc-snippets
+        coc-vimlsp
+        coc-yaml
+        fzf-vim
+        undotree
+        vim-commentary
+        vim-dadbod
+        vim-dadbod-ui
+        vim-flagship
+        vim-highlightedyank
+        vim-polyglot
+        vim-qf
+        vim-sensible
+        vim-signify
+        vim-snippets
+        vim-speeddating
+        vim-tmux-navigator
+      ]
+      ++ lib.optionals pkgs.stdenvNoCC.isLinux [pkgs.vimPlugins.vim-wayland-clipboard];
   };
 }
