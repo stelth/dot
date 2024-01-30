@@ -94,11 +94,13 @@
         coc-vimlsp
         coc-yaml
         fzf-vim
+        lightline-vim
         undotree
         vim-commentary
         vim-dadbod
         vim-dadbod-ui
         vim-highlightedyank
+        vim-lightline-coc
         vim-polyglot
         vim-qf
         vim-sensible

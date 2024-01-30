@@ -55,6 +55,22 @@
 
   nnoremap <BS> :noh<CR>
 
+  " lightline-vim {{{
+  let g:lightline = {
+  \   'colorscheme': 'catppuccin_mocha',
+  \   'active': {
+  \     'left': [
+  \       [ 'mode', 'paste' ],
+  \       [ 'readonly', 'filename', 'modified' ],
+  \       [ 'coc_info', 'coc_hints', 'coc_errors', 'coc_warnings', 'coc_ok' ],
+  \       [ 'coc_status' ]]
+  \   }
+  \ }
+  set noshowmode
+
+  call lightline#coc#register()
+  " }}}
+
   " vim-highlightedyank {{{
   let g:highlightedyank_highlight_duration = 300
   " }}}
