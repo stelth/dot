@@ -85,7 +85,6 @@
         coc-diagnostic
         coc-git
         coc-json
-        coc-lists
         coc-markdownlint
         coc-nvim
         coc-prettier
