@@ -8,6 +8,7 @@
     disableConfirmationPrompt = true;
     clock24 = true;
     plugins = with pkgs; [
+      tmuxPlugins.catppuccin
       tmuxPlugins.sensible
       tmuxPlugins.yank
     ];
