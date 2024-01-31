@@ -97,8 +97,6 @@
         lightline-vim
         undotree
         vim-commentary
-        vim-dadbod
-        vim-dadbod-ui
         vim-highlightedyank
         vim-lightline-coc
         vim-sensible
