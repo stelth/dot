@@ -101,12 +101,8 @@
         vim-dadbod-ui
         vim-highlightedyank
         vim-lightline-coc
-        vim-polyglot
-        vim-qf
         vim-sensible
-        vim-signify
         vim-snippets
-        vim-speeddating
         vim-tmux-navigator
       ]
       ++ lib.optionals pkgs.stdenvNoCC.isLinux [pkgs.vimPlugins.vim-wayland-clipboard];
