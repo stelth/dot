@@ -1,10 +1,10 @@
 {pkgs, ...}:
 pkgs.python3Packages.buildPythonPackage rec {
   pname = "gersemi";
-  version = "0.9.3";
+  version = "0.11.0";
   src = pkgs.fetchPypi {
     inherit pname version;
-    sha256 = "fNhmq9KKOwlc50iDEd9pqHCM0br9Yt+nKtrsoS1d5ng=";
+    sha256 = "sha256-K8ZbVVYiEazdjbuAUa8r9lJyjOPt2jsKbUAovTx9XeY=";
   };
 
   nativeBuildInputs = with pkgs.python3Packages; [
