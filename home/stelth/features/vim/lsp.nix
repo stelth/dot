@@ -76,6 +76,7 @@
     args: [],
     initializationOptions: {
       documentFormatting: v:true,
+      completion: v:true,
     },
     debug: v:true,
   }])
@@ -85,11 +86,31 @@
     autoHighlight: v:true,
     autoHighlightDiags: v:true,
     completionTextEdit: v:false,
+    omniComplete: v:true,
     showDiagWithVirtualText: v:true,
     showInlayHints: v:true,
+    snippetSupport: v:true,
+    ultisnipsSupprt: v:false,
     useBufferCompletion: v:true,
-    omniComplete: v:true,
+    vsnipSupport: v:true,
   })
+
+  def g:WhitespaceOnly(): bool
+    return strpart(getline('.'), col('.') - 2, 1) =~ '^\s*$'
+  enddef
+
+  def g:LspCleverTab(): string
+    return pumvisible() ? "\<C-n>" : vsnip#jumpable(1) ? "\<Plug>(vsnip-jump-next)" : g:WhitespaceOnly() ? "\<TAB>" : "\<C-n>"
+  enddef
+
+  def g:LspCleverSTab(): string
+    return pumvisible() ? "\<C-p>" : vsnip#jumpable(-1) ? "\<Plug>(vsnip-jump-prev)" : g:WhitespaceOnly() ? "\<S-TAB>" : "\<C-p>"
+  enddef
+
+  inoremap <expr> <TAB> g:LspCleverTab()
+  snoremap <expr> <TAB> g:LspCleverTab()
+  inoremap <expr> <S-TAB> g:LspCleverSTab()
+  snoremap <expr> <S-TAB> g:LspCleverSTab()
 
   def OnLspBufferAttached()
     nmap <buffer> <leader>cf :LspFormat<CR>
