@@ -4,42 +4,46 @@
   pkgs,
   ...
 }: {
+  xdg.configFile."vim/lsp.vim".text = import ./lsp.nix {
+    inherit lib pkgs;
+  };
+
+  xdg.configFile."efm-langserver/config.yaml".text = import ./efm.nix {inherit lib pkgs;};
+
   home =
     {
       packages = with pkgs; [
+        # Mandatory
         cmake
-        ninja
-        nodejs # mandatory for coc-nvim
+        nodejs
+        efm-langserver
+
+        # Language servers
+        nodePackages.bash-language-server # bash
+        clang-tools_17 # C/CPP
+        cmake-language-server # CMake
+        nodePackages.vscode-json-languageserver # json
+        marksman # markdown
+        nil # nix
+        nodePackages.pyright # python
+        nodePackages.vim-language-server # viml
+        nodePackages.yaml-language-server # yaml
 
         # Bash
         shellcheck
         shfmt
 
-        #C/CPP
-        clang-tools_17
-
         # CMake
-        cmake-format
-
-        # Docker
-        hadolint
+        gersemi
 
         # Git
         gitlint
-
-        # Java
-        google-java-format
 
         # JSON
         nodePackages.fixjson
 
         # Makefiles
         checkmake
-
-        # Markdown
-        nodePackages.prettier
-        vale
-        nodePackages.write-good
 
         # Nix
         alejandra
@@ -59,16 +63,11 @@
     // lib.optionalAttrs (builtins.hasAttr "persistence" config.home) {
       persistence = {
         "/persist/home/stelth".directories = [
-          ".config/coc"
           ".local/share/vim"
           ".local/state/vim"
         ];
       };
     };
-
-  xdg.configFile = {
-    "vim/coc-settings.json".text = import ./coc-settings.nix {inherit lib pkgs;};
-  };
 
   programs.vim = {
     packageConfigurable =
@@ -80,28 +79,18 @@
     plugins = with pkgs.vimPlugins;
       [
         catppuccin-vim
-        coc-clangd
-        coc-cmake
-        coc-diagnostic
-        coc-git
-        coc-json
-        coc-markdownlint
-        coc-nvim
-        coc-prettier
-        coc-pyright
-        coc-sh
-        coc-snippets
-        coc-vimlsp
-        coc-yaml
+        friendly-snippets
         fzf-vim
         lightline-vim
         undotree
         vim-commentary
         vim-highlightedyank
-        vim-lightline-coc
         vim-sensible
         vim-snippets
         vim-tmux-navigator
+        vim-vsnip
+        vim-vsnip-integ
+        vim9-lsp
       ]
       ++ lib.optionals pkgs.stdenvNoCC.isLinux [pkgs.vimPlugins.vim-wayland-clipboard];
   };

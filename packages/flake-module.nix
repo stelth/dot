@@ -5,6 +5,7 @@
 
   perSystem = {
     config,
+    final,
     pkgs,
     ...
   }: {
@@ -25,6 +26,8 @@
         sysdo
         tmux-cht
         ;
+
+      vimPlugins = pkgs.vimPlugins // final.callPackage ./vim {};
     };
 
     apps = {
