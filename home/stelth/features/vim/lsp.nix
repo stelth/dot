@@ -138,6 +138,16 @@
     nmap <buffer> <leader>o :LspOutline<CR>
     nmap <buffer> <leader>ci :LspIncomingCalls<CR>
     nmap <buffer> <leader>co :LspOutgoingCalls<CR>
+
+    highlight LspDiagVirtualTextError guifg='#f38ba8'
+    highlight LspDiagVirtualTextHint guifg='#f9e2af'
+    highlight LspDiagVirtualTextInfo guifg='#94e2d5'
+    highlight LspDiagVirtualTextWarning guifg='#94e2d5'
+
+    highlight LspDiagInlineError guifg='#f38ba8'
+    highlight LspDiagInlineHint guifg='#f9e2af'
+    highlight LspDiagInlineInfo guifg='#94e2d5'
+    highlight LspDiagInlineWarning guifg='#94e2d5'
   enddef
 
   autocmd User LspAttached OnLspBufferAttached()
