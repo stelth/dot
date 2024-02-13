@@ -139,6 +139,8 @@
     nmap <buffer> <leader>ci :LspIncomingCalls<CR>
     nmap <buffer> <leader>co :LspOutgoingCalls<CR>
 
+    autocmd CursorHold * LspHover
+
     highlight LspDiagVirtualTextError guifg='#f38ba8'
     highlight LspDiagVirtualTextHint guifg='#f9e2af'
     highlight LspDiagVirtualTextInfo guifg='#94e2d5'
