@@ -8,7 +8,7 @@
   set encoding=utf-8
   scriptencoding utf-8
 
-  # Vimrc 2.0 {{{
+  # => Vimrc 2.0
   const xdg = {
     XDG_CONFIG_HOME: '~/.config',
     XDG_CACHE_HOME: '~/.cache',
@@ -51,7 +51,6 @@
   set directory=$XDG_STATE_HOME/vim/swap | call mkdir(&directory, 'p', 0700)
   set undodir=$XDG_STATE_HOME/vim/undo | call mkdir(&undodir, 'p', 0700)
   set viewdir=$XDG_STATE_HOME/vim/view | call mkdir(&viewdir, 'p', 0700)
-  # }}}
 
   # => Leader
   g:mapleader = ' '
@@ -82,6 +81,13 @@
   nnoremap <Left> :bprev<CR>
 
   nnoremap <BS> :noh<CR>
+
+  # => Load plugins
+  packadd friendly-snippets
+  packadd vim-vsnip
+  packadd vim-vsnip-integ
+  packadd vim9-lsp
+  packadd vimcomplete
 
   # => lightline
   g:lightline = {'colorscheme': 'catppuccin_mocha'}
@@ -115,7 +121,7 @@
   nnoremap <silent> <leader>u :UndotreeToggle<CR>
 
   # => lsp
-  lsp#lsp#AddServer([{
+  var lsp_servers = [{
     name: 'bashls',
     filetype: ['sh'],
     path: '${lib.getExe pkgs.nodePackages.bash-language-server}',
@@ -189,38 +195,25 @@
       completion: v:true,
     },
     debug: v:true,
-  }])
+  }]
+  g:LspAddServer(lsp_servers)
 
-  lsp#options#OptionsSet({
-    autoComplete: v:true,
-    autoHighlight: v:true,
-    autoHighlightDiags: v:true,
-    completionTextEdit: v:false,
-    omniComplete: v:true,
-    showDiagWithVirtualText: v:true,
-    showInlayHints: v:true,
-    snippetSupport: v:true,
-    ultisnipsSupprt: v:false,
-    useBufferCompletion: v:true,
-    vsnipSupport: v:true,
-  })
-
-  def g:WhitespaceOnly(): bool
-    return strpart(getline('.'), col('.') - 2, 1) =~ '^\s*$'
-  enddef
-
-  def g:LspCleverTab(): string
-    return pumvisible() ? "\<C-n>" : vsnip#jumpable(1) ? "\<Plug>(vsnip-jump-next)" : g:WhitespaceOnly() ? "\<TAB>" : "\<C-n>"
-  enddef
-
-  def g:LspCleverSTab(): string
-    return pumvisible() ? "\<C-p>" : vsnip#jumpable(-1) ? "\<Plug>(vsnip-jump-prev)" : g:WhitespaceOnly() ? "\<S-TAB>" : "\<C-p>"
-  enddef
-
-  inoremap <expr> <TAB> g:LspCleverTab()
-  snoremap <expr> <TAB> g:LspCleverTab()
-  inoremap <expr> <S-TAB> g:LspCleverSTab()
-  snoremap <expr> <S-TAB> g:LspCleverSTab()
+  var lsp_options = {
+    autoHighlightDiags: true,
+    showDiagWithVirtualText: true,
+    highlightDiagInline: true,
+    diagVirtualTextAlign: 'after',
+    completionMatcher: 'case',
+    diagSignErrorText: '●',
+    diagSignHintText: '●',
+    diagSignInfoText: '●',
+    diagSignWarningText: '●',
+    showSignature: true,
+    echoSignature: false,
+    useBufferCompletion: false,
+    completionTextEdit: false,
+  }
+  g:LspOptionsSet(lsp_options)
 
   def OnLspBufferAttached()
     nmap <buffer> <leader>cf :LspFormat<CR>
@@ -249,8 +242,6 @@
     nmap <buffer> <leader>ci :LspIncomingCalls<CR>
     nmap <buffer> <leader>co :LspOutgoingCalls<CR>
 
-    autocmd CursorHold * LspHover
-
     highlight LspDiagVirtualTextError guifg='#f38ba8'
     highlight LspDiagVirtualTextHint guifg='#f9e2af'
     highlight LspDiagVirtualTextInfo guifg='#94e2d5'
@@ -263,4 +254,17 @@
   enddef
 
   autocmd User LspAttached OnLspBufferAttached()
+
+  # => vimcomplete
+
+  g:vimcomplete_tab_enable = 1
+  g:vimcomplete_noname_buf_enable = v:true
+
+  var vimcomplete_options = {
+    completor: { shuffleEqualPriority: v:true },
+    buffer: { enable: v:true, urlComplete: true, envComplete: true },
+    lsp: { enable: v:true },
+    vsnip: { enable: v:true },
+  }
+  g:VimCompleteOptionsSet(vimcomplete_options)
 ''
