@@ -208,6 +208,7 @@
     diagSignHintText: '●',
     diagSignInfoText: '●',
     diagSignWarningText: '●',
+    showInlayHints: true,
     showSignature: true,
     echoSignature: false,
     useBufferCompletion: false,
