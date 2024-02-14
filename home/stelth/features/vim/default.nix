@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  xdg.configFile."vim/lsp.vim".text = import ./lsp.nix {
+  xdg.configFile."vim/vimrc".text = import ./config.nix {
     inherit lib pkgs;
   };
 
@@ -75,7 +75,9 @@
       then pkgs.vim-darwin
       else pkgs.vim-full;
     enable = true;
-    extraConfig = import ./config.nix {inherit config lib pkgs;};
+    extraConfig = ''
+      source ~/.config/vim/vimrc
+    '';
     plugins = with pkgs.vimPlugins;
       [
         catppuccin-vim

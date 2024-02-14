@@ -1,34 +1,62 @@
-{...}: ''
+{
+  lib,
+  pkgs,
+  ...
+}: ''
+  vim9script
+
   set encoding=utf-8
+  scriptencoding utf-8
 
-  " Vimrc 2.0 {{{
-  if empty($MYVIMRC) | let $MYVIMRC = expand('<sfile>:p') | endif
+  # Vimrc 2.0 {{{
+  const xdg = {
+    XDG_CONFIG_HOME: '~/.config',
+    XDG_CACHE_HOME: '~/.cache',
+    XDG_DATA_HOME: '~/.local/share',
+    XDG_STATE_HOME: '~/.local/state',
+  }
 
-  if empty($XDG_CACHE_HOME) | let $XDG_CACHE_HOME = $HOME.'./cache' | endif
-  if empty($XDG_CONFIG_HOME) | let $XDG_CONFIG_HOME = $HOME.'/.config' | endif
-  if empty($XDG_DATA_HOME) | let $XDG_DATA_HOME = $HOME.'/.local/share' | endif
-  if empty($XDG_STATE_HOME) | let $XDG_STATE_HOME = $HOME.'/.local/state' | endif
+  for [key, default] in items(xdg)
+    if !has_key(environ(), key)
+      setenv(key, expand(default))
+    endif
+  endfor
+
+  if empty($MYVIMRC)
+    $MYVIMRC = expand('<sfile>:p')
+  endif
 
   set runtimepath^=$XDG_CONFIG_HOME/vim
   set runtimepath+=$XDG_DATA_HOME/vim
   set runtimepath+=$XDG_CONFIG_HOME/vim/after
 
+  set viminfo+=n$XDG_STATE_HOME/vim/viminfo
+
   set packpath^=$XDG_DATA_HOME/vim,$XDG_CONFIG_HOME/vim
   set packpath+=$XDG_CONFIG_HOME/vim/after,$XDG_DATA_HOME/vim/after
 
-  let g:netrw_home = $XDG_DATA_HOME.'/vim'
-  call mkdir($XDG_DATA_HOME.'/vim/spell', 'p', 0700)
+  g:netrw_home = $XDG_CACHE_HOME .. '/vim/netrw'
+
+  def EnsureDir(dir: string): void
+    if filewritable(dir) != 2
+      mkdir(dir, "p")
+    endif
+  enddef
+
+  for dir_name in ['backup', 'swap', 'undo', 'view']
+    EnsureDir($XDG_STATE_HOME .. '/vim/' .. dir_name)
+  endfor
 
   set backupdir=$XDG_STATE_HOME/vim/backup | call mkdir(&backupdir, 'p', 0700)
   set directory=$XDG_STATE_HOME/vim/swap | call mkdir(&directory, 'p', 0700)
   set undodir=$XDG_STATE_HOME/vim/undo | call mkdir(&undodir, 'p', 0700)
   set viewdir=$XDG_STATE_HOME/vim/view | call mkdir(&viewdir, 'p', 0700)
-  " }}}
+  # }}}
 
-  " => Leader
-  let g:mapleader = ' '
+  # => Leader
+  g:mapleader = ' '
 
-  " => General Settings
+  # => General Settings
   set clipboard^=unnamed,unnamedplus
   set cursorline
   set hlsearch
@@ -55,15 +83,13 @@
 
   nnoremap <BS> :noh<CR>
 
-  " lightline {{{
-  let g:lightline = {'colorscheme': 'catppuccin_mocha'}
-  " }}}
+  # => lightline
+  g:lightline = {'colorscheme': 'catppuccin_mocha'}
 
-  " vim-highlightedyank {{{
-  let g:highlightedyank_highlight_duration = 300
-  " }}}
+  # => vim-highlightedyank
+  g:highlightedyank_highlight_duration = 300
 
-  " fzf-vim {{{
+  # => fzf-vim
   nmap <leader>hc :Commands<CR>
   nmap <leader>ht :Helptags<CR>
   nmap <leader>hm :Maps<CR>
@@ -82,13 +108,159 @@
   nmap <leader>gc :Commits<CR>
   nmap <leader>gcc :BCommits<CR>
   nmap <leader>gs :GFiles?<CR>
-  " }}}
 
-  " undotree {{{
-  let g:undotree_ShortIndicators = 1
-  let g:undotree_WindowLayout = 4
+  # => undotree
+  g:undotree_ShortIndicators = 1
+  g:undotree_WindowLayout = 4
   nnoremap <silent> <leader>u :UndotreeToggle<CR>
-  " }}}
 
-  source ~/.config/vim/lsp.vim
+  # => lsp
+  lsp#lsp#AddServer([{
+    name: 'bashls',
+    filetype: ['sh'],
+    path: '${lib.getExe pkgs.nodePackages.bash-language-server}',
+    args: ['start'],
+  }, {
+    name: 'clangd',
+    filetype: ['c', 'cpp'],
+    path: '${pkgs.clang-tools_17}/bin/clangd',
+    args: ['--background-index'],
+  }, {
+    name: 'cmake-language-server',
+    filetype: ['cmake'],
+    path: '${lib.getExe pkgs.cmake-language-server}',
+    args: [],
+  }, {
+    name: 'nil',
+    filetype: ['nix'],
+    path: '${lib.getExe pkgs.nil}',
+    args: [],
+    features: {
+      documentFormatting: v:false,
+    },
+  }, {
+    name: 'vscode-json-server',
+    filetype: ['json'],
+    path: '${lib.getExe pkgs.nodePackages.vscode-json-languageserver}',
+    args: ['--stdio'],
+  }, {
+    name: 'marksman',
+    filetype: ['markdown'],
+    path: '${lib.getExe pkgs.marksman}',
+    args: [],
+  }, {
+    name: 'pyright',
+    filetype: ['python'],
+    path: '${pkgs.nodePackages.pyright}/bin/pyright-langserver',
+    args: ['--stdio'],
+    workspaceConfig: {
+      python: {
+        pythonPath: '${lib.getExe pkgs.python3}',
+      },
+    },
+  }, {
+    name: 'vimls',
+    filetype: ['vim'],
+    path: '${lib.getExe pkgs.nodePackages.vim-language-server}',
+    args: ['--stdio'],
+  }, {
+    name: 'yamlls',
+    filetype: ['yaml', 'yaml.docker-compose'],
+    path: '${lib.getExe pkgs.nodePackages.yaml-language-server}',
+    args: ['--stdio'],
+  }, {
+    name: 'efm',
+    filetype: [
+      'sh',
+      'cmake',
+      'gitcommit',
+      'json',
+      'json5',
+      'make',
+      'nix',
+      'python',
+      'vim',
+      'yaml',
+    ],
+    path: '${lib.getExe pkgs.efm-langserver}',
+    args: [],
+    initializationOptions: {
+      documentFormatting: v:true,
+      completion: v:true,
+    },
+    debug: v:true,
+  }])
+
+  lsp#options#OptionsSet({
+    autoComplete: v:true,
+    autoHighlight: v:true,
+    autoHighlightDiags: v:true,
+    completionTextEdit: v:false,
+    omniComplete: v:true,
+    showDiagWithVirtualText: v:true,
+    showInlayHints: v:true,
+    snippetSupport: v:true,
+    ultisnipsSupprt: v:false,
+    useBufferCompletion: v:true,
+    vsnipSupport: v:true,
+  })
+
+  def g:WhitespaceOnly(): bool
+    return strpart(getline('.'), col('.') - 2, 1) =~ '^\s*$'
+  enddef
+
+  def g:LspCleverTab(): string
+    return pumvisible() ? "\<C-n>" : vsnip#jumpable(1) ? "\<Plug>(vsnip-jump-next)" : g:WhitespaceOnly() ? "\<TAB>" : "\<C-n>"
+  enddef
+
+  def g:LspCleverSTab(): string
+    return pumvisible() ? "\<C-p>" : vsnip#jumpable(-1) ? "\<Plug>(vsnip-jump-prev)" : g:WhitespaceOnly() ? "\<S-TAB>" : "\<C-p>"
+  enddef
+
+  inoremap <expr> <TAB> g:LspCleverTab()
+  snoremap <expr> <TAB> g:LspCleverTab()
+  inoremap <expr> <S-TAB> g:LspCleverSTab()
+  snoremap <expr> <S-TAB> g:LspCleverSTab()
+
+  def OnLspBufferAttached()
+    nmap <buffer> <leader>cf :LspFormat<CR>
+    vmap <buffer> <leader>cf :LspFormat<CR>
+    nmap <buffer> <leader>ca :LspCodeAction<CR>
+    vmap <buffer> <leader>ca :LspCodeAction<CR>
+    nmap <buffer> <leader>cr :LspRename<CR>
+    nmap <buffer> <leader>gp :LspPeekDefinition<CR>
+    nmap <buffer> <leader>gd :LspGotoDefinition<CR>
+    nmap <buffer> <leader>wa :LspWorkspaceAddFolder<CR>
+    nmap <buffer> <leader>wr :LspWorkspaceRemoveFolder<CR>
+    nmap <buffer> <leader>wl :LspWorkspaceListFolders<CR>
+    nmap <buffer> <leader>gi :LspGotoImpl<CR>
+    nmap <buffer> <leader>gT :LspGotoTypeDefinition<CR>
+    nmap <buffer> <leader>gt :LspPeekTypeDefinition<CR>
+    nmap <buffer> <leader>sl :LspDiagCurrent<CR>
+    nmap <buffer> <leader>sb :LspDiagFirst<CR>
+    nmap <buffer> <leader>sc :LspDiagHere<CR>
+    nmap <buffer> <leader>[g :LspDiagPrev<CR>
+    nmap <buffer> <leader>]g :LspDiagNext<CR>
+    nmap <buffer> <leader>[d :LspDiagLast<CR>
+    nmap <buffer> <leader>]d :LspDiagFirst<CR>
+    nmap <buffer> <leader>q :LspDiagShow<CR>
+    nmap <buffer> K :LspHover<CR>
+    nmap <buffer> <leader>o :LspOutline<CR>
+    nmap <buffer> <leader>ci :LspIncomingCalls<CR>
+    nmap <buffer> <leader>co :LspOutgoingCalls<CR>
+
+    autocmd CursorHold * LspHover
+
+    highlight LspDiagVirtualTextError guifg='#f38ba8'
+    highlight LspDiagVirtualTextHint guifg='#f9e2af'
+    highlight LspDiagVirtualTextInfo guifg='#94e2d5'
+    highlight LspDiagVirtualTextWarning guifg='#94e2d5'
+
+    highlight LspDiagInlineError guifg='#f38ba8'
+    highlight LspDiagInlineHint guifg='#f9e2af'
+    highlight LspDiagInlineInfo guifg='#94e2d5'
+    highlight LspDiagInlineWarning guifg='#94e2d5'
+  enddef
+
+  autocmd User LspAttached OnLspBufferAttached()
 ''
