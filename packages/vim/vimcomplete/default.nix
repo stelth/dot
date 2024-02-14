@@ -15,5 +15,9 @@ in
       sha256 = "sha256-kgY4zYxfhg0dv4EwU/vwcHlA74ptiMkZGbKHnlzr6vo=";
     };
 
+    patches = [
+      ./fix-getscriptinfo.patch
+    ];
+
     meta.homepage = "https://www.github.com/girishji/vimcomplete";
   }

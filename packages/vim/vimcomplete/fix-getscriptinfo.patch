@@ -1,0 +1,13 @@
+diff --git a/plugin/plugins.vim b/plugin/plugins.vim
+index 54639e5..ccdf935 100644
+--- a/plugin/plugins.vim
++++ b/plugin/plugins.vim
+@@ -71,7 +71,7 @@ def! g:VimCompleteOptionsSet(opts: dict<any>)
+         if newopts->has_key('maxCount')
+             newopts.maxCount = abs(newopts.maxCount)
+         endif
+-        if !getscriptinfo({ name: $'vimcomplete/autoload/{key}' })->empty()
++        if !getscriptinfo({ name: $'autoload/{key}' })->empty()
+             var o = eval($'{key}.options')
+             o->extend(newopts)
+         endif
