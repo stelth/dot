@@ -12,14 +12,15 @@
     ./features/vim
   ];
 
-  home.persistence = {
-    "/persist/home/stelth".directories = [
-      ".config/Yubico"
-    ];
-  };
-
-  programs.vim = {
-    defaultEditor = true;
+  home = {
+    persistence = {
+      "/persist/home/stelth".directories = [
+        ".config/Yubico"
+      ];
+    };
+    sessionVariables = {
+      EDITOR = "vim";
+    };
   };
 
   xdg.mimeApps.defaultApplications = {
