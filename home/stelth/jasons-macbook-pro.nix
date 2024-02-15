@@ -10,7 +10,5 @@
 
   home.stateVersion = "23.11";
 
-  programs.vim = {
-    defaultEditor = true;
-  };
+  home.sessionVariables.EDITOR = "vim";
 }
