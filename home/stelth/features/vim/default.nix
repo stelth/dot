@@ -39,11 +39,12 @@
     };
   };
 in {
-  xdg.configFile."vim/vimrc".text = import ./config.nix {
-    inherit lib pkgs;
+  xdg.configFile = {
+    "vim/vimrc".text = import ./config.nix {
+      inherit lib pkgs;
+    };
+    "efm-langserver/config.yaml".text = import ./efm.nix {inherit lib pkgs;};
   };
-
-  xdg.configFile."efm-langserver/config.yaml".text = import ./efm.nix {inherit lib pkgs;};
 
   home =
     {

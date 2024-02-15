@@ -167,7 +167,7 @@
   }, {
     name: 'vimls',
     filetype: ['vim'],
-    path: '${lib.getExe pkgs.nodePackages.vim-language-server}',
+    path: '${pkgs.nodePackages.vim-language-server}/lib/node_modules/vim-language-server/bin/index.js',
     args: ['--stdio'],
   }, {
     name: 'yamlls',
@@ -188,7 +188,7 @@
       'vim',
       'yaml',
     ],
-    path: '${lib.getExe pkgs.efm-langserver}',
+    path: '${pkgs.efm-langserver}/bin/efm-langserver',
     args: [],
     initializationOptions: {
       documentFormatting: v:true,

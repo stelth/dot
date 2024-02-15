@@ -26,7 +26,7 @@
         - '%l: %m'
 
     fixjson-format: &fixjson-format
-      format-command: '${lib.getExe pkgs.nodePackages.fixjson}'
+      format-command: '${pkgs.nodePackages.fixjson}/lib/node_modules/fixjson/bin/main.js'
       format-stdin: true
 
     checkmake-lint: &checkmake-lint
@@ -67,7 +67,7 @@
 
     pylint-lint: &pylint-lint
       prefix: pylint
-      lint-command: '${lib.getExe pkgs.python3Packages.pylint} --output-format=text --score=no --msg-template {path}:{line}:{column}:{C}:{msg} ''${INPUT}'
+      lint-command: '${pkgs.python3Packages.pylint}/bin/pylint --output-format=text --score=no --msg-template {path}:{line}:{column}:{C}:{msg} ''${INPUT}'
       lint-stdin: false
       lint-formats:
         - '%f:%l:%c:%t:%m'
@@ -88,7 +88,7 @@
 
     yamllint-lint: &yamllint-lint
       prefix: yamllint
-      lint-command: '${lib.getExe pkgs.yamllint} --strict --format parsable ''${INPUT}'
+      lint-command: '${pkgs.yamllint}/bin/yamllint --strict --format parsable ''${INPUT}'
       lint-stdin: false
       lint-formats:
         - '%f:%l"%c: [%t%*[a-z]] %m'
