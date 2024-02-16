@@ -199,6 +199,7 @@
   g:LspAddServer(lsp_servers)
 
   var lsp_options = {
+    autoHighlight: true,
     autoHighlightDiags: true,
     completionMatcher: 'case',
     completionTextEdit: false,
