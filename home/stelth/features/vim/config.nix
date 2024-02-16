@@ -200,19 +200,19 @@
 
   var lsp_options = {
     autoHighlightDiags: true,
-    showDiagWithVirtualText: true,
-    highlightDiagInline: true,
-    diagVirtualTextAlign: 'after',
     completionMatcher: 'case',
+    completionTextEdit: false,
     diagSignErrorText: '●',
     diagSignHintText: '●',
     diagSignInfoText: '●',
     diagSignWarningText: '●',
+    diagVirtualTextAlign: 'after',
+    echoSignature: false,
+    highlightDiagInline: true,
+    showDiagWithVirtualText: true,
     showInlayHints: true,
     showSignature: true,
-    echoSignature: false,
     useBufferCompletion: false,
-    completionTextEdit: false,
   }
   g:LspOptionsSet(lsp_options)
 
@@ -243,17 +243,23 @@
     nmap <buffer> <leader>ci :LspIncomingCalls<CR>
     nmap <buffer> <leader>co :LspOutgoingCalls<CR>
 
-    highlight LspDiagVirtualTextError guifg='#f38ba8'
-    highlight LspDiagVirtualTextHint guifg='#f9e2af'
-    highlight LspDiagVirtualTextInfo guifg='#94e2d5'
-    highlight LspDiagVirtualTextWarning guifg='#94e2d5'
-
-    highlight LspDiagInlineError guifg='#f38ba8'
-    highlight LspDiagInlineHint guifg='#f9e2af'
-    highlight LspDiagInlineInfo guifg='#94e2d5'
-    highlight LspDiagInlineWarning guifg='#94e2d5'
+    if &background == 'dark'
+        highlight  LspDiagVirtualTextError    ctermbg=none  ctermfg=1
+        highlight  LspDiagVirtualTextWarning  ctermbg=none  ctermfg=3
+        highlight  LspDiagVirtualTextHint     ctermbg=none  ctermfg=2
+        highlight  LspDiagVirtualTextInfo     ctermbg=none  ctermfg=5
+    endif
+    highlight  link  LspDiagSignErrorText    LspDiagVirtualTextError
+    highlight  link  LspDiagSignWarningText  LspDiagVirtualTextWarning
+    highlight  link  LspDiagSignHintText     LspDiagVirtualTextHint
+    highlight  link  LspDiagSignInfoText     LspDiagVirtualTextInfo
+    highlight LspDiagInlineError ctermfg=none cterm=undercurl
+    highlight LspDiagInlineWarning ctermfg=none cterm=none
+    highlight LspDiagInlineHint ctermfg=none cterm=none
+    highlight LspDiagInlineInfo ctermfg=none cterm=none
+    highlight LspDiagVirtualText ctermfg=1
+    highlight LspDiagLine ctermbg=none
   enddef
-
   autocmd User LspAttached OnLspBufferAttached()
 
   # => vimcomplete
