@@ -213,6 +213,22 @@
   }
   g:LspOptionsSet(lsp_options)
 
+  g:should_format_on_save = v:true
+  def g:ToggleFormat()
+    g:should_format_on_save = !g:should_format_on_save
+    if g:should_format_on_save
+      echo "Autoformatting enabled"
+    else
+      echo "Autoformatting disabled"
+    endif
+  enddef
+
+  def g:FormatBuffer()
+    if g:should_format_on_save
+      LspFormat
+    endif
+  enddef
+
   def OnLspBufferAttached()
     nmap <buffer> <leader>cf :LspFormat<CR>
     vmap <buffer> <leader>cf :LspFormat<CR>
@@ -239,6 +255,7 @@
     nmap <buffer> <leader>o :LspOutline<CR>
     nmap <buffer> <leader>ci :LspIncomingCalls<CR>
     nmap <buffer> <leader>co :LspOutgoingCalls<CR>
+    nmap <silent><buffer> <leader>tf :<C-u>call g:ToggleFormat()<CR>
 
     if &background == 'dark'
         highlight  LspDiagVirtualTextError    ctermbg=none  ctermfg=1
@@ -256,6 +273,11 @@
     highlight LspDiagInlineInfo ctermfg=none cterm=none
     highlight LspDiagVirtualText ctermfg=1
     highlight LspDiagLine ctermbg=none
+
+    augroup LspFormatting
+      autocmd! * <buffer>
+      au BufWritePost <buffer> call g:FormatBuffer()
+    augroup END
   enddef
   autocmd User LspAttached OnLspBufferAttached()
 
