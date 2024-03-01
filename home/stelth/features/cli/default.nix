@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./direnv.nix
+    ./gh.nix
     ./git.nix
     ./nix-index.nix
     ./pfetch.nix
