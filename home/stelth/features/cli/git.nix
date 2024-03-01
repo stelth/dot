@@ -17,6 +17,12 @@
         conflictStyle = "diff3";
         tool = "vimdiff";
       };
+      diff = {
+        tool = "vimdiff";
+      };
+      difftool = {
+        prompt = false;
+      };
     };
     lfs.enable = true;
     ignores = [".direnv" "result"];
