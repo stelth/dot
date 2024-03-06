@@ -10,6 +10,7 @@
     ./features/music
     ./features/wine
     ./features/vim
+    ./features/virt
   ];
 
   home = {
