@@ -13,6 +13,10 @@
     nvidia = {
       prime.offload.enable = false;
       modesetting.enable = true;
+      powerManagement = {
+        enable = false;
+        finegrained = false;
+      };
     };
     opengl = {
       enable = true;
