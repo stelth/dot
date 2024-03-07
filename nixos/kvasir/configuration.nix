@@ -5,10 +5,6 @@
     interfaces.eno1.useDHCP = true;
   };
 
-  programs = {
-    dconf.enable = true;
-  };
-
   hardware = {
     nvidia = {
       prime.offload.enable = false;
