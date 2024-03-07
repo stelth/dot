@@ -27,10 +27,12 @@
   };
 
   home.packages = with pkgs; [
-    comma
     bc
+    comma
+    file
     ncdu
     ripgrep
+    rsync
     sessionizer
   ];
 }
