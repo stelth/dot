@@ -82,13 +82,6 @@
 
   nnoremap <BS> :noh<CR>
 
-  # => Load plugins
-  packadd friendly-snippets
-  packadd vim-vsnip
-  packadd vim-vsnip-integ
-  packadd vim9-lsp
-  packadd vimcomplete
-
   # => lightline
   g:lightline = {'colorscheme': 'catppuccin_mocha'}
 
@@ -196,7 +189,7 @@
     },
     debug: v:true,
   }]
-  g:LspAddServer(lsp_servers)
+  autocmd User LspSetup call LspAddServer(lsp_servers)
 
   var lsp_options = {
     autoHighlight: true,
@@ -211,7 +204,7 @@
     showSignature: true,
     useBufferCompletion: false,
   }
-  g:LspOptionsSet(lsp_options)
+  autocmd User LspSetup call LspOptionsSet(lsp_options)
 
   g:should_format_on_save = v:true
   def g:ToggleFormat()
@@ -292,5 +285,5 @@
     lsp: { enable: v:true },
     vsnip: { enable: v:true },
   }
-  g:VimCompleteOptionsSet(vimcomplete_options)
+  autocmd VimEnter * g:VimCompleteOptionsSet(vimcomplete_options)
 ''
