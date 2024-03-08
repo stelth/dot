@@ -16,7 +16,7 @@
     ../common/users/stelth
 
     ../common/optional/1password.nix
-    ../common/optional/ergodox.nix
+    ../common/optional/keyboards
     ../common/optional/libvirt.nix
     ../common/optional/podman.nix
     ../common/optional/printing.nix
