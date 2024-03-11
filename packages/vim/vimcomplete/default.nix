@@ -11,8 +11,8 @@ in
     src = fetchFromGitHub {
       owner = "girishji";
       repo = "vimcomplete";
-      rev = "94fdb9973dd25af816c991396a38efd962fcb6d3";
-      sha256 = "sha256-F5xh9ejzIcKoQVRse0t8FPYMgLLkwaI1cV+sIXNJQLA=";
+      rev = "9b7998ef33fbce5320ad5d1160b2cf31391962d6";
+      sha256 = "sha256-MTD3iAAEVHFdsGfflC/eZK9EbFQxv6wTtKwsriVlyL8=";
     };
 
     patches = [
