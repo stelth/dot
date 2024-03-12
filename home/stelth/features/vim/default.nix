@@ -3,42 +3,7 @@
   lib,
   pkgs,
   ...
-}: let
-  pkgConfigurable =
-    if pkgs.stdenvNoCC.isDarwin
-    then pkgs.vim-darwin
-    else pkgs.vim-full;
-
-  my_vim = pkgConfigurable.customize {
-    name = "vim";
-    vimrcConfig = {
-      customRC = ''
-        source ~/.config/vim/vimrc
-      '';
-      packages.myPlugins = with pkgs.vimPlugins; {
-        start =
-          [
-            catppuccin-vim
-            friendly-snippets
-            fzf-vim
-            lightline-vim
-            undotree
-            vim-commentary
-            vim-highlightedyank
-            vim-sensible
-            vim-tmux-navigator
-            vim-vsnip
-            vim-vsnip-integ
-            vim9-lsp
-            vimcomplete
-          ]
-          ++ lib.optionals pkgs.stdenvNoCC.isLinux [pkgs.vimPlugins.vim-wayland-clipboard];
-        opt = [
-        ];
-      };
-    };
-  };
-in {
+}: {
   xdg.configFile = {
     "vim/vimrc".text = import ./config.nix {
       inherit lib pkgs;
@@ -46,11 +11,37 @@ in {
     "efm-langserver/config.yaml".text = import ./efm.nix {inherit lib pkgs;};
   };
 
+  programs.vim = {
+    packageConfigurable =
+      if pkgs.stdenvNoCC.isDarwin
+      then pkgs.vim-darwin
+      else pkgs.vim-full;
+    enable = true;
+    extraConfig = ''
+      source ~/.config/vim/vimrc
+    '';
+    plugins = with pkgs.vimPlugins;
+      [
+        catppuccin-vim
+        friendly-snippets
+        fzf-vim
+        lightline-vim
+        undotree
+        vim-commentary
+        vim-highlightedyank
+        vim-sensible
+        vim-tmux-navigator
+        vim-vsnip
+        vim-vsnip-integ
+        vim9-lsp
+        vimcomplete
+      ]
+      ++ lib.optionals pkgs.stdenvNoCC.isLinux [pkgs.vimPlugins.vim-wayland-clipboard];
+  };
+
   home =
     {
       packages = with pkgs; [
-        my_vim
-
         # Mandatory
         cmake
         nodejs
