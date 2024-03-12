@@ -8,6 +8,8 @@
     "vim/vimrc".text = import ./config.nix {
       inherit lib pkgs;
     };
+    "vim/after/plugin/scope.vim".text = import ./scope.nix {};
+    "vim/after/plugin/vimcomplete.vim".text = import ./vimcomplete.nix {};
     "efm-langserver/config.yaml".text = import ./efm.nix {inherit lib pkgs;};
   };
 
@@ -20,12 +22,21 @@
     extraConfig = ''
       source ~/.config/vim/vimrc
     '';
+    settings = {
+      background = "dark";
+      ignorecase = true;
+      mouse = "a";
+      number = true;
+      relativenumber = true;
+      smartcase = true;
+      undofile = true;
+    };
     plugins = with pkgs.vimPlugins;
       [
         catppuccin-vim
         friendly-snippets
-        fzf-vim
         lightline-vim
+        scope-vim
         undotree
         vim-commentary
         vim-highlightedyank
@@ -44,8 +55,9 @@
       packages = with pkgs; [
         # Mandatory
         cmake
-        nodejs
         efm-langserver
+        fd
+        nodejs
 
         # Language servers
         nodePackages.bash-language-server # bash

@@ -59,19 +59,12 @@
   set clipboard^=unnamed,unnamedplus
   set cursorline
   set hlsearch
-  set ignorecase
-  set mouse=a
   set nowritebackup
-  set number
-  set relativenumber
   set signcolumn=yes
-  set smartcase
   set smartindent
   set termguicolors
-  set undofile
   set updatetime=300
 
-  set background=dark
   colorscheme catppuccin_mocha
 
   vnoremap J :m '>+1<CR>gv=gv
@@ -82,36 +75,8 @@
 
   nnoremap <BS> :noh<CR>
 
-  # => lightline
-  g:lightline = {'colorscheme': 'catppuccin_mocha'}
-
-  # => vim-highlightedyank
-  g:highlightedyank_highlight_duration = 300
-
-  # => fzf-vim
-  nmap <leader>hc :Commands<CR>
-  nmap <leader>ht :Helptags<CR>
-  nmap <leader>hm :Maps<CR>
-  nmap <leader>hf :Filetypes<CR>
-  nmap <leader>sg :Rg<CR>
-  nmap <leader>sb :BLines<CR>
-  nmap <leader>sh :History:<CR>
-  nmap <leader>sm :Marks<CR>
-  nmap <leader>sw :execute 'Rg ' . expand('<cword>')<CR>
-  nmap <leader>ff :Files<CR>
-
-  nmap <leader>, :Buffers<CR>
-  nmap <leader>/ :Rg<CR>
-  nmap <leader>: :History:<CR>
-
-  nmap <leader>gc :Commits<CR>
-  nmap <leader>gcc :BCommits<CR>
-  nmap <leader>gs :GFiles?<CR>
-
-  # => undotree
-  g:undotree_ShortIndicators = 1
-  g:undotree_WindowLayout = 4
-  nnoremap <silent> <leader>u :UndotreeToggle<CR>
+  # => lightline.vim
+  g:lightline = { 'colorscheme': 'catppuccin_mocha' }
 
   # => lsp
   var lsp_servers = [{
@@ -274,16 +239,11 @@
   enddef
   autocmd User LspAttached OnLspBufferAttached()
 
-  # => vimcomplete
+  # => undotree
+  g:undotree_ShortIndicators = 1
+  g:undotree_WindowLayout = 4
+  nnoremap <silent> <leader>u :UndotreeToggle<CR>
 
-  g:vimcomplete_tab_enable = 1
-  g:vimcomplete_noname_buf_enable = v:true
-
-  var vimcomplete_options = {
-    completor: { shuffleEqualPriority: v:true },
-    buffer: { enable: v:true, urlComplete: true, envComplete: true },
-    lsp: { enable: v:true },
-    vsnip: { enable: v:true },
-  }
-  autocmd VimEnter * g:VimCompleteOptionsSet(vimcomplete_options)
+  # => vim-highlightedyank
+  g:highlightedyank_highlight_duration = 300
 ''
