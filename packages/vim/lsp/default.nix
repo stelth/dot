@@ -3,7 +3,7 @@
   fetchFromGitHub,
 }: let
   pname = "vim9-lsp";
-  version = "2024-02-26";
+  version = "2024-03-12";
 in
   vimUtils.buildVimPlugin {
     inherit pname version;
@@ -11,8 +11,8 @@ in
     src = fetchFromGitHub {
       owner = "yegappan";
       repo = "lsp";
-      rev = "0b9bba0ee4eaa84a75d88a0775b3b34dbf42b12d";
-      sha256 = "sha256-tNOUJw/4MtlwK3PJxlRSd9gosfAF4uX778wwZFsTF78=";
+      rev = "9111948aa541df98c66da57ab34e3f9914f44d01";
+      sha256 = "sha256-9lWv3I+tfuYkEwKfq4/JZ4lnNV5nmpqguA02gwY66RU=";
     };
 
     meta.homepage = "https://www.github.com/yegappan/lsp";
