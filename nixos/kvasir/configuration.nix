@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   networking = {
     hostName = "kvasir";
 
@@ -18,8 +18,13 @@
       enable = true;
       driSupport = true;
       driSupport32Bit = true;
+      extraPackages = with pkgs; [
+        vaapiVdpau
+      ];
     };
   };
+
+  services.fstrim.enable = true;
 
   security.polkit.enable = true;
 
