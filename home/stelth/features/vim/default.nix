@@ -20,6 +20,7 @@
           [
             catppuccin-vim
             friendly-snippets
+            fzf-vim
             lightline-vim
             undotree
             vim-commentary
@@ -33,7 +34,6 @@
           ]
           ++ lib.optionals pkgs.stdenvNoCC.isLinux [pkgs.vimPlugins.vim-wayland-clipboard];
         opt = [
-          scope-vim
         ];
       };
     };
@@ -53,9 +53,8 @@ in {
 
         # Mandatory
         cmake
-        fd
-        efm-langserver
         nodejs
+        efm-langserver
 
         # Language servers
         nodePackages.bash-language-server # bash

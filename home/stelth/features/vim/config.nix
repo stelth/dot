@@ -88,17 +88,25 @@
   # => vim-highlightedyank
   g:highlightedyank_highlight_duration = 300
 
-  # => scope.vim
-  packadd scope-vim
-  import autoload 'scope/fuzzy.vim'
+  # => fzf-vim
+  nmap <leader>hc :Commands<CR>
+  nmap <leader>ht :Helptags<CR>
+  nmap <leader>hm :Maps<CR>
+  nmap <leader>hf :Filetypes<CR>
+  nmap <leader>sg :Rg<CR>
+  nmap <leader>sb :BLines<CR>
+  nmap <leader>sh :History:<CR>
+  nmap <leader>sm :Marks<CR>
+  nmap <leader>sw :execute 'Rg ' . expand('<cword>')<CR>
+  nmap <leader>ff :Files<CR>
 
-  nnoremap <leader>/ <scriptcmd>fuzzy.Grep('rg --vimgrep --no-heading --smart-case')<CR>
-  nnoremap <leader>ff <scriptcmd>fuzzy.File('fd -tf --follow', 100000)<CR>
-  nnoremap <leader>, <scriptcmd>fuzzy.Buffer()<CR>
-  nnoremap <leader>sb <scriptcmd>fuzzy.BufSearch()<CR>
-  nnoremap <leader>hc <scriptcmd>fuzzy.CmdHistory()<CR>
-  nnoremap <leader>ht <scriptcmd>fuzzy.Help()<CR>
-  nnoremap <leader>ho <scriptcmd>fuzzy.Option()<CR>
+  nmap <leader>, :Buffers<CR>
+  nmap <leader>/ :Rg<CR>
+  nmap <leader>: :History:<CR>
+
+  nmap <leader>gc :Commits<CR>
+  nmap <leader>gcc :BCommits<CR>
+  nmap <leader>gs :GFiles?<CR>
 
   # => undotree
   g:undotree_ShortIndicators = 1
