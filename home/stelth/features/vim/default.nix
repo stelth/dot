@@ -34,8 +34,6 @@
     plugins = with pkgs.vimPlugins;
       [
         catppuccin-vim
-        easyjump-vim
-        fFtT-vim
         friendly-snippets
         lightline-vim
         scope-vim
@@ -43,7 +41,6 @@
         vim-commentary
         vim-highlightedyank
         vim-sensible
-        vim-tmux-navigator
         vim-vsnip
         vim-vsnip-integ
         vim9-lsp
