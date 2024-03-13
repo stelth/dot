@@ -34,8 +34,6 @@
     plugins = with pkgs.vimPlugins;
       [
         catppuccin-vim
-        easyjump-vim
-        fFtT-vim
         friendly-snippets
         lightline-vim
         scope-vim
