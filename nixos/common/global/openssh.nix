@@ -13,11 +13,24 @@ in {
   services.openssh = {
     enable = true;
     settings = {
+      GatewayPorts = "clientspecified";
+      KbdInteractiveAuthentication = false;
       PasswordAuthentication = false;
       PermitRootLogin = "no";
       StreamLocalBindUnlink = "yes";
-      GatewayPorts = "clientspecified";
+      UseDns = false;
+      X11Forwarding = false;
+
+      KexAlgorithms = [
+        "curve25519-sha256"
+        "curve25519-sha256@libssh.org"
+        "diffie-hellman-group16-sha512"
+        "diffie-hellman-group18-sha512"
+        "sntrup761x25519-sha512@openssh.com"
+      ];
     };
+
+    authorizedKeysFiles = ["/etc/ssh/authorized_keys.d/%u"];
 
     hostKeys = [
       {
@@ -36,5 +49,9 @@ in {
       hosts;
   };
 
-  security.pam.sshAgentAuth.enable = true;
+  security.pam.sshAgentAuth = {
+    enable = true;
+
+    authorizedKeysFiles = ["/etc/ssh/authorized_keys.d/%u"];
+  };
 }

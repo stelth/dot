@@ -1,8 +1,7 @@
 {pkgs, ...}: {
   networking = {
     hostName = "kvasir";
-
-    interfaces.eno1.useDHCP = true;
+    networkmanager.enable = true;
   };
 
   hardware = {
@@ -23,6 +22,9 @@
       ];
     };
   };
+
+  systemd.services.NetworkManager-wait-online.enable = false;
+  systemd.network.wait-online.enable = false;
 
   services.fstrim.enable = true;
 

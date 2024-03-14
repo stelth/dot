@@ -35,6 +35,4 @@ in {
   };
 
   home-manager.users.stelth = import home/${config.networking.hostName}.nix;
-
-  security.pam.services = {swaylock = {};};
 }

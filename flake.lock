@@ -232,7 +232,6 @@
         "nixpkgs": "nixpkgs",
         "pre-commit-hooks-nix": "pre-commit-hooks-nix",
         "sops-nix": "sops-nix",
-        "srvos": "srvos",
         "treefmt-nix": "treefmt-nix"
       }
     },
@@ -254,26 +253,6 @@
       "original": {
         "owner": "mic92",
         "repo": "sops-nix",
-        "type": "github"
-      }
-    },
-    "srvos": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1709894640,
-        "narHash": "sha256-prpcUATCGnIbh2FaHiKBV/sS+agUtzU2IAt+VTdKRVk=",
-        "owner": "numtide",
-        "repo": "srvos",
-        "rev": "434ad8453dffd81b91fddc0d68fb65d9bc5d5059",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "srvos",
         "type": "github"
       }
     },

@@ -11,7 +11,9 @@
     ./openssh.nix
     ./optin-persistence.nix
     ./sops.nix
+    ./sudo.nix
     ./systemd-initrd.nix
+    ./upgrade-diff.nix
     ./yubikey.nix
     ./zsh.nix
   ];
