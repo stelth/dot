@@ -5,9 +5,7 @@
   ...
 }: {
   xdg.configFile = {
-    "vim/vimrc".text = import ./config.nix {
-      inherit lib pkgs;
-    };
+    "vim/vimrc".text = import ./config.nix {inherit lib pkgs;};
     "vim/plugin/lightline.vim".text = import ./lightline.nix {};
     "vim/plugin/lsp.vim".text = import ./lsp.nix {inherit lib pkgs;};
     "vim/plugin/undotree.vim".text = import ./undotree.nix {};
