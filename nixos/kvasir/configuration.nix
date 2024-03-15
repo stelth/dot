@@ -1,7 +1,8 @@
 {pkgs, ...}: {
   networking = {
     hostName = "kvasir";
-    networkmanager.enable = true;
+
+    useNetworkd = true;
   };
 
   hardware = {
@@ -23,11 +24,8 @@
     };
   };
 
-  systemd.services.NetworkManager-wait-online.enable = false;
-  systemd.network.wait-online.enable = false;
-
   services.fstrim.enable = true;
-
+  systemd.network.wait-online.enable = false;
   security.polkit.enable = true;
 
   system.stateVersion = "22.05";
