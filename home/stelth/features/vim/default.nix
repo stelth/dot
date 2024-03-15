@@ -8,6 +8,10 @@
     "vim/vimrc".text = import ./config.nix {
       inherit lib pkgs;
     };
+    "vim/plugin/lightline.vim".text = import ./lightline.nix {};
+    "vim/plugin/lsp.vim".text = import ./lsp.nix {inherit lib pkgs;};
+    "vim/plugin/undotree.vim".text = import ./undotree.nix {};
+    "vim/plugin/vim-highlightedyank.vim".text = import ./vim-highlightedyank.nix {};
     "vim/after/plugin/scope.vim".text = import ./scope.nix {};
     "vim/after/plugin/vimcomplete.vim".text = import ./vimcomplete.nix {};
     "efm-langserver/config.yaml".text = import ./efm.nix {inherit lib pkgs;};
