@@ -2,7 +2,7 @@
   vimUtils,
   fetchFromGitHub,
 }: let
-  pname = "fTtT-vim";
+  pname = "fFtT-vim";
   version = "2024-03-10";
 in
   vimUtils.buildVimPlugin {
