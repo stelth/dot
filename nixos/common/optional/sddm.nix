@@ -3,21 +3,23 @@
     wl-clipboard
   ];
 
-  services.xserver = {
-    enable = true;
+  services = {
+    xserver = {
+      enable = true;
 
-    videoDrivers = ["nvidia"];
+      videoDrivers = ["nvidia"];
 
-    displayManager = {
-      sddm = {
-        enable = true;
-        enableHidpi = true;
-        wayland.enable = true;
+      displayManager = {
+        sddm = {
+          enable = true;
+          enableHidpi = true;
+          wayland.enable = true;
+        };
       };
+
+      libinput.enable = true;
     };
 
     desktopManager.plasma6.enable = true;
-
-    libinput.enable = true;
   };
 }

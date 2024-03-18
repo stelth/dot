@@ -7,8 +7,6 @@
     ./features/desktop/common
     ./features/desktop/common/wayland-wm/foot
     ./features/desktop/kde.nix
-    ./features/music
-    ./features/wine
     ./features/vim
     ./features/virt
   ];

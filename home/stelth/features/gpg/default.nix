@@ -3,8 +3,8 @@
 
   services.gpg-agent = {
     enable = true;
+    pinentryPackage = pkgs.pinentry-qt;
     enableSshSupport = true;
-    pinentryFlavor = "qt";
     enableExtraSocket = true;
   };
 
