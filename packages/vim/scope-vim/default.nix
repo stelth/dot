@@ -3,7 +3,7 @@
   fetchFromGitHub,
 }: let
   pname = "scope-vim";
-  version = "2024-03-15";
+  version = "2024-03-17";
 in
   vimUtils.buildVimPlugin {
     inherit pname version;
@@ -11,8 +11,8 @@ in
     src = fetchFromGitHub {
       owner = "girishji";
       repo = "scope.vim";
-      rev = "005bbbfe95fef01fcf78d67a89e2286b25be24e3";
-      sha256 = "sha256-K8AydK0SSQlL7vmcw7G2KJpxMk9v+fLT5X2iE2NFL3Q=";
+      rev = "f3af0a17d975923523019811773eb898bd259495";
+      sha256 = "sha256-Vl5ZO27nJJANroojgAQVGiEHLBTKzuSApOySNvhA0Ow=";
     };
 
     meta.homepage = "https://www.github.com/girishji/scope.vim";
