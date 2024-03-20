@@ -9,6 +9,7 @@
     ../common/optional/1password.nix
     ../common/optional/keyboards
     ../common/optional/libvirt.nix
+    ../common/optional/perf.nix
     ../common/optional/pipewire.nix
     ../common/optional/podman.nix
     ../common/optional/printing.nix
