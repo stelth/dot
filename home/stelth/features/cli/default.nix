@@ -27,7 +27,6 @@
 
   home.packages = with pkgs; [
     bc
-    comma
     file
     ncdu
     ripgrep
