@@ -3,7 +3,6 @@
     ./direnv.nix
     ./gh.nix
     ./git.nix
-    ./nix-index.nix
     ./pfetch.nix
     ./ssh.nix
     ./starship.nix
