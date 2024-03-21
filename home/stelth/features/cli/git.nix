@@ -13,16 +13,10 @@
       color.ui = true;
       commit.gpgSign = true;
       user.signingkey = "EDE32FA164BE1F4A!";
-      merge = {
-        conflictStyle = "diff3";
-        tool = "vimdiff";
-      };
-      diff = {
-        tool = "vimdiff";
-      };
-      difftool = {
-        prompt = false;
-      };
+    };
+    difftastic = {
+      enable = true;
+      background = "dark";
     };
     lfs.enable = true;
     ignores = [".direnv" "result"];
