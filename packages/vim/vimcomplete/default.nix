@@ -3,7 +3,7 @@
   fetchFromGitHub,
 }: let
   pname = "vimcomplete";
-  version = "2024-03-18";
+  version = "2024-03-24";
 in
   vimUtils.buildVimPlugin {
     inherit pname version;
@@ -11,8 +11,8 @@ in
     src = fetchFromGitHub {
       owner = "girishji";
       repo = "vimcomplete";
-      rev = "250bba74de2897ba344d0ba06d8e5748d7bf4d67";
-      sha256 = "sha256-l7mJM4uERDazXffyGvInT/9xzeWghArG26bxLMnoLt8=";
+      rev = "f85c30e62ed079998226347b903409931c2b3754";
+      sha256 = "sha256-L/JMS+KuPly2GZ+GnpFhlkC2EAbWaci3HtR/8dUozcY=";
     };
 
     patches = [
