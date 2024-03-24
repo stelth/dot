@@ -12,16 +12,16 @@
         hooks = {
           alejandra.enable = true;
           black.enable = true;
-          deadnix.enable = true;
+          deadnix = {
+            enable = true;
+            settings = {
+              edit = true;
+              noLambdaArg = true;
+            };
+          };
           shellcheck.enable = true;
           shfmt.enable = true;
           stylua.enable = true;
-        };
-        settings = {
-          deadnix = {
-            edit = true;
-            noLambdaArg = true;
-          };
         };
       };
     };
