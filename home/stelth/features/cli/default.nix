@@ -3,6 +3,7 @@
     ./direnv.nix
     ./gh.nix
     ./git.nix
+    ./nix-index.nix
     ./pfetch.nix
     ./ssh.nix
     ./starship.nix
@@ -27,6 +28,7 @@
 
   home.packages = with pkgs; [
     bc
+    comma
     file
     ncdu
     ripgrep
