@@ -11,8 +11,8 @@ in
     src = fetchFromGitHub {
       owner = "girishji";
       repo = "scope.vim";
-      rev = "3a51d790ed438f33f77050adcb58ed6e6c476b3b";
-      sha256 = "sha256-ae5AfRzv19VlDQvmaFDTVXQoDVWRwwsz/wSJRC3CPaw=";
+      rev = "e94143a48ce64860ddb400ebbe731f61b5a10bff";
+      sha256 = "sha256-S521Nc4vRNCYwACgJLbhLMsWTC6dSrv6DFZiXvOlCtE=";
     };
 
     meta.homepage = "https://www.github.com/girishji/scope.vim";
